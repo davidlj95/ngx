@@ -7,10 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "lint": "ng lint",
     "build:ngx-metadata": "ng build ngx-metadata",
     "test:ngx-metadata": "ng test ngx-metadata",
-    "lint:ngx-metadata": "ng lint ngx-metadata",
-    "lint": "ng lint"
+    "lint:ngx-metadata": "ng lint ngx-metadata"
   },
   "private": true,
   "dependencies": {

@@ -6,7 +6,7 @@
     "ngx-metadata": {
       "projectType": "library",
       "root": "projects/ngx-metadata",
-      "sourceRoot": "projects/ngx-metadata/src",
+      "sourceRoot": "projects/ngx-metadata",
       "prefix": "lib",
       "architect": {
         "build": {

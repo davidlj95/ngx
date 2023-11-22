@@ -11,7 +11,10 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "paths": {
-      "ngx-metadata": ["./dist/ngx-metadata"]
+      // 👇 Changed to add secondary entry points
+      // "ngx-metadata": ["./dist/ngx-metadata"],
+      "ngx-metadata/*": ["./projects/ngx-metadata/*"],
+      "ngx-metadata": ["./projects/ngx-metadata"]
     },
     "sourceMap": true,
     "declaration": false,

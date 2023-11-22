@@ -10,7 +10,11 @@
     "lint": "ng lint",
     "build:ngx-metadata": "ng build ngx-metadata",
     "test:ngx-metadata": "ng test ngx-metadata",
-    "lint:ngx-metadata": "ng lint ngx-metadata"
+    "lint:ngx-metadata": "ng lint ngx-metadata",
+    "format-check": "prettier --check",
+    "format-check-all": "npm run format-check -- .",
+    "format": "prettier --ignore-unknown --write",
+    "format-all": "npm run format -- ."
   },
   "private": true,
   "dependencies": {
@@ -39,6 +43,7 @@
     "@typescript-eslint/eslint-plugin": "6.11.0",
     "@typescript-eslint/parser": "6.11.0",
     "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -46,6 +51,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^17.0.0",
+    "prettier": "^3.1.0",
     "typescript": "~5.2.2"
   }
 }

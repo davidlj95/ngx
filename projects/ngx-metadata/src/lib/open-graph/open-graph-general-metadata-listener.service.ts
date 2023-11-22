@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy, Optional } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { GeneralMetadataAppliersService } from '../general-metadata/general-metadata-appliers.service'
-import { GeneralMetadata } from '../general-metadata/general-metadata'
+import { GeneralMetadata } from '../general-metadata'
 import { OpenGraphAppliersService } from './open-graph-appliers.service'
 
 @Injectable()

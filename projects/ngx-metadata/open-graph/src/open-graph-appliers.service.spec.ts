@@ -4,8 +4,9 @@ import { OpenGraphAppliersService } from './open-graph-appliers.service'
 import { _MetaCommand, _MetaCommandService } from 'ngx-metadata/common'
 import { MockProvider } from 'ng-mocks'
 import { OpenGraphProperty } from './open-graph-property'
-import { OpenGraphImage, OpenGraphType } from '.'
 import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
+import { OpenGraphImage } from './open-graph-image'
+import { OpenGraphType } from './open-graph-type'
 
 describe('OpenGraphAppliersService', () => {
   enableAutoSpy()

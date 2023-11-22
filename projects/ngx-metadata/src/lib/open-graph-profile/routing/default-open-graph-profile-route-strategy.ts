@@ -3,14 +3,14 @@ import { OpenGraphProfile } from '../open-graph-profile'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { OpenGraphProfileRouteStrategy } from './open-graph-profile-route-strategy'
 import { OpenGraphProfileService } from '../open-graph-profile.service'
-import { KEY as OPEN_GRAPH_KEY } from '../../open-graph/routing/default-open-graph-route-strategy'
+import { _OPEN_GRAPH_ROUTE_KEY } from 'ngx-metadata/open-graph'
 import {
   _CurrentRouteDataKeyPathMetadataStrategy,
   _KEY_PATH_SEPARATOR,
 } from 'ngx-metadata/routing'
 
 export const KEY = 'profile'
-export const KEY_PATH = `${OPEN_GRAPH_KEY}${_KEY_PATH_SEPARATOR}${KEY}`
+export const KEY_PATH = `${_OPEN_GRAPH_ROUTE_KEY}${_KEY_PATH_SEPARATOR}${KEY}`
 
 @Injectable()
 export class DefaultOpenGraphProfileRouteStrategy

@@ -1,5 +1,5 @@
 import { _ComposableMetaCommandProperty } from 'ngx-metadata/common'
-import { OpenGraphProperty } from '../open-graph/open-graph-property'
+import { _OpenGraphProperty } from 'ngx-metadata/open-graph'
 
 export class OpenGraphProfileProperty extends _ComposableMetaCommandProperty {
   public static PREFIX = `profile`
@@ -17,10 +17,10 @@ export class OpenGraphProfileProperty extends _ComposableMetaCommandProperty {
   constructor(...names: ReadonlyArray<string>) {
     super(
       {
-        separator: OpenGraphProperty.SEPARATOR,
+        separator: _OpenGraphProperty.SEPARATOR,
         attribute: 'property',
       },
-      ...[OpenGraphProperty.PREFIX, OpenGraphProfileProperty.PREFIX, ...names],
+      ...[_OpenGraphProperty.PREFIX, OpenGraphProfileProperty.PREFIX, ...names],
     )
     OpenGraphProfileProperty._all.add(this)
   }

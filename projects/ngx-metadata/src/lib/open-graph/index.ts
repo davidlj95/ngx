@@ -1,6 +1,0 @@
-export { OpenGraphModule } from './open-graph.module'
-export { OpenGraphService } from './open-graph.service'
-export { DefaultOpenGraphRouteData } from './routing/default-open-graph-route-data'
-export { OpenGraph } from './open-graph'
-export { OpenGraphImage } from './open-graph-image'
-export { OpenGraphType } from './open-graph-type'

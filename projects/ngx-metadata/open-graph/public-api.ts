@@ -1,0 +1,8 @@
+export { OpenGraphModule as NgxMetadataOpenGraphModule } from './src/open-graph.module'
+export * from './src/routing/default-open-graph-route-data'
+export { KEY as _OPEN_GRAPH_ROUTE_KEY } from './src/routing/default-open-graph-route-strategy'
+export * from './src/open-graph.service'
+export * from './src/open-graph'
+export * from './src/open-graph-image'
+export { OpenGraphProperty as _OpenGraphProperty } from './src/open-graph-property'
+export * from './src/open-graph-type'

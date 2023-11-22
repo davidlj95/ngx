@@ -3,26 +3,25 @@ import { TestBed } from '@angular/core/testing'
 import { GeneralMetadataAppliersService } from './general-metadata-appliers.service'
 import { Title } from '@angular/platform-browser'
 import { MockProvider } from 'ng-mocks'
-import { MetaCommand } from '../common/meta-command/meta-command'
 import { StandardMetaProperty } from './standard-meta-property'
-import { MetaCommandService } from '../common/meta-command/meta-command.service'
 import { VERSION } from '@angular/core'
 import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attribute.service'
 import { GeneralMetadata } from './general-metadata'
 import { GeneralMetadataImage } from './general-metadata-image'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
+import { _MetaCommand, _MetaCommandService } from 'ngx-metadata/common'
 
 describe('GeneralMetadataAppliersService', () => {
   enableAutoSpy()
 
   let sut: GeneralMetadataAppliersService
   // noinspection DuplicatedCode
-  let metaCommandService: MetaCommandService
+  let metaCommandService: _MetaCommandService
 
   beforeEach(() => {
     sut = makeSut()
-    metaCommandService = TestBed.inject(MetaCommandService)
+    metaCommandService = TestBed.inject(_MetaCommandService)
   })
 
   describe('title', () => {
@@ -82,7 +81,7 @@ describe('GeneralMetadataAppliersService', () => {
       sut.description(description)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(StandardMetaProperty.DESCRIPTION, description),
+        new _MetaCommand(StandardMetaProperty.DESCRIPTION, description),
       )
     })
 
@@ -105,7 +104,7 @@ describe('GeneralMetadataAppliersService', () => {
       sut.author(author)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(StandardMetaProperty.AUTHOR, author),
+        new _MetaCommand(StandardMetaProperty.AUTHOR, author),
       )
     })
   })
@@ -117,7 +116,7 @@ describe('GeneralMetadataAppliersService', () => {
       sut.keywords(keywords)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(StandardMetaProperty.KEYWORDS, 'Lorem,ipsum,lorem'),
+        new _MetaCommand(StandardMetaProperty.KEYWORDS, 'Lorem,ipsum,lorem'),
       )
     })
   })
@@ -130,7 +129,7 @@ describe('GeneralMetadataAppliersService', () => {
         sut.generator(generator)
 
         expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-          new MetaCommand(
+          new _MetaCommand(
             StandardMetaProperty.GENERATOR,
             `Angular v${VERSION.full}`,
           ),
@@ -145,7 +144,7 @@ describe('GeneralMetadataAppliersService', () => {
         sut.generator(generator)
 
         expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-          new MetaCommand(StandardMetaProperty.GENERATOR, undefined),
+          new _MetaCommand(StandardMetaProperty.GENERATOR, undefined),
         )
       })
     })
@@ -157,7 +156,7 @@ describe('GeneralMetadataAppliersService', () => {
           sut.generator(generator)
 
           expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-            new MetaCommand(StandardMetaProperty.GENERATOR, generator),
+            new _MetaCommand(StandardMetaProperty.GENERATOR, generator),
           )
         })
       })
@@ -171,7 +170,10 @@ describe('GeneralMetadataAppliersService', () => {
       sut.applicationName(applicationName)
 
       expect(metaCommandService.apply).toHaveBeenCalledWith(
-        new MetaCommand(StandardMetaProperty.APPLICATION_NAME, applicationName),
+        new _MetaCommand(
+          StandardMetaProperty.APPLICATION_NAME,
+          applicationName,
+        ),
       )
     })
 
@@ -265,7 +267,7 @@ function makeSut() {
     providers: [
       GeneralMetadataAppliersService,
       MockProvider(Title),
-      MockProvider(MetaCommandService),
+      MockProvider(_MetaCommandService),
       MockProvider(LinkRelCanonicalService),
       MockProvider(HtmlLangAttributeService),
     ],

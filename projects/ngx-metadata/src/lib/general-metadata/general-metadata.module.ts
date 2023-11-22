@@ -10,10 +10,10 @@ import { GeneralMetadataRouteStrategy } from './routing/general-metadata-route-s
 import { GeneralMetadata } from './general-metadata'
 import { GENERAL_METADATA_DEFAULTS } from './general-metadata-defaults'
 import { GENERAL_METADATA_DEFAULTS_TOKEN } from './general-metadata-defaults-token'
-import { makeForRootGuard } from '../common/make-for-root-guard'
+import { _makeForRootGuard } from 'ngx-metadata/common'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
 
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = makeForRootGuard(
+const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
   'GeneralMetadata',
   GeneralMetadataAppliersService,
 )

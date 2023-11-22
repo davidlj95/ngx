@@ -4,7 +4,7 @@ import { GeneralMetadataApplierService } from './general-metadata-applier.servic
 import { MockProvider } from 'ng-mocks'
 import { GeneralMetadataAppliersService } from './general-metadata-appliers.service'
 import { GeneralMetadata } from './general-metadata'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('GeneralMetadataApplierService', () => {
   enableAutoSpy()

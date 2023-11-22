@@ -9,9 +9,9 @@ import { DefaultTwitterCardRouteStrategy } from './routing/default-twitter-card-
 import { TwitterCard } from './twitter-card'
 import { TWITTER_CARD_DEFAULTS } from './twitter-card-defaults'
 import { TWITTER_CARD_DEFAULTS_TOKEN } from './twitter-card-defaults-token'
-import { makeForRootGuard } from '../common/make-for-root-guard'
+import { _makeForRootGuard } from 'ngx-metadata/common'
 
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = makeForRootGuard(
+const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
   'TwitterCardModule',
   TwitterCardGeneralMetadataListenerService,
 )

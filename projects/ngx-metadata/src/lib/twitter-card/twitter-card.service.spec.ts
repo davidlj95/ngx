@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing'
 
 import { TwitterCardService } from './twitter-card.service'
 import { MockProvider } from 'ng-mocks'
-import { DefaultsService } from '../common/defaults.service'
+import { _DefaultsService } from 'ngx-metadata/common'
 import { TwitterCardApplierService } from './twitter-card-applier.service'
 import { TWITTER_CARD_DEFAULTS_TOKEN } from './twitter-card-defaults-token'
 import { TwitterCard } from './twitter-card'
 import { Provider } from '@angular/core'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('TwitterCardService', () => {
   enableAutoSpy()
@@ -26,7 +26,7 @@ describe('TwitterCardService', () => {
       it('should merge provided metadata with defaults', () => {
         sut.apply(metadata)
 
-        const defaultsService = TestBed.inject(DefaultsService)
+        const defaultsService = TestBed.inject(_DefaultsService)
         expect(defaultsService.resolve).toHaveBeenCalledOnceWith(
           metadata,
           defaults,
@@ -35,8 +35,8 @@ describe('TwitterCardService', () => {
 
       it('should apply metadata with defaults included', () => {
         const defaultsService = TestBed.inject(
-          DefaultsService,
-        ) as jasmine.SpyObj<DefaultsService>
+          _DefaultsService,
+        ) as jasmine.SpyObj<_DefaultsService>
         const resolvedDefaults = { ...metadata, ...defaults }
         defaultsService.resolve.and.returnValue(resolvedDefaults)
 
@@ -67,7 +67,7 @@ describe('TwitterCardService', () => {
 function makeSut(opts: { defaults?: TwitterCard } = {}) {
   const providers: Provider[] = [
     TwitterCardService,
-    MockProvider(DefaultsService),
+    MockProvider(_DefaultsService),
     MockProvider(TwitterCardApplierService),
   ]
 

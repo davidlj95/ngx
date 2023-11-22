@@ -2,17 +2,16 @@ import { Inject, Injectable, Optional } from '@angular/core'
 import { OpenGraph } from './open-graph'
 import { OpenGraphApplierService } from './open-graph-applier.service'
 import { OPEN_GRAPH_DEFAULTS_TOKEN } from './open-graph-defaults-token'
-import { MetadataApplier } from '../common/metadata-applier'
-import { DefaultsService } from '../common/defaults.service'
+import { _DefaultsService, _MetadataApplier } from 'ngx-metadata/common'
 
 @Injectable()
-export class OpenGraphService implements MetadataApplier<OpenGraph> {
+export class OpenGraphService implements _MetadataApplier<OpenGraph> {
   constructor(
     private readonly applierService: OpenGraphApplierService,
     @Optional()
     @Inject(OPEN_GRAPH_DEFAULTS_TOKEN)
     private readonly defaults: OpenGraph | null,
-    private readonly defaultsService: DefaultsService,
+    private readonly defaultsService: _DefaultsService,
   ) {}
 
   apply(metadata: OpenGraph) {

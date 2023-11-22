@@ -5,7 +5,7 @@ import { MockProvider } from 'ng-mocks'
 import { OpenGraphAppliersService } from './open-graph-appliers.service'
 import { OpenGraph } from './open-graph'
 import { OpenGraphType } from './open-graph-type'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('OpenGraphApplierService', () => {
   enableAutoSpy()

@@ -1,6 +1,6 @@
-import { MetaCommandProperty } from '../common/meta-command/meta-command-property'
+import { _MetaCommandProperty } from 'ngx-metadata/common'
 
-export class StandardMetaProperty extends MetaCommandProperty {
+export class StandardMetaProperty extends _MetaCommandProperty {
   public static DESCRIPTION = new this('description')
   public static KEYWORDS = new this('keywords')
   public static AUTHOR = new this('author')

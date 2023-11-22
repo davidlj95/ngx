@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { MetadataApplier } from '../common/metadata-applier'
+import { _MetadataApplier } from 'ngx-metadata/common'
 import { OpenGraph } from './open-graph'
 import { OpenGraphAppliersService } from './open-graph-appliers.service'
 
@@ -10,7 +10,7 @@ import { OpenGraphAppliersService } from './open-graph-appliers.service'
  * [OpenGraphService]
  */
 @Injectable()
-export class OpenGraphApplierService implements MetadataApplier<OpenGraph> {
+export class OpenGraphApplierService implements _MetadataApplier<OpenGraph> {
   constructor(private readonly appliers: OpenGraphAppliersService) {}
 
   apply(metadata: OpenGraph): void {

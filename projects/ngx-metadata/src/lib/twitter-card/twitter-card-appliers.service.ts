@@ -1,57 +1,59 @@
 import { Injectable } from '@angular/core'
-import { MetadataAppliers } from '../common/metadata-appliers'
+import {
+  _MetaCommand,
+  _MetaCommandService,
+  _MetadataAppliers,
+} from 'ngx-metadata/common'
 import { TwitterCard } from './twitter-card'
 import { TwitterCardType } from './twitter-card-type'
 import { TwitterCardImage } from './twitter-card-image'
-import { MetaCommand } from '../common/meta-command/meta-command'
 import { TwitterCardMetaProperty } from './twitter-card-meta-property'
-import { MetaCommandService } from '../common/meta-command/meta-command.service'
 
 @Injectable()
 export class TwitterCardAppliersService
-  implements MetadataAppliers<TwitterCard>
+  implements _MetadataAppliers<TwitterCard>
 {
-  constructor(private readonly metaCommandService: MetaCommandService) {}
+  constructor(private readonly metaCommandService: _MetaCommandService) {}
 
   card(card: TwitterCardType | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.CARD, card),
+      new _MetaCommand(TwitterCardMetaProperty.CARD, card),
     )
   }
 
   site(site: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.SITE, site),
+      new _MetaCommand(TwitterCardMetaProperty.SITE, site),
     )
   }
 
   siteId(siteId: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.SITE_ID, siteId),
+      new _MetaCommand(TwitterCardMetaProperty.SITE_ID, siteId),
     )
   }
 
   creator(creator: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.CREATOR, creator),
+      new _MetaCommand(TwitterCardMetaProperty.CREATOR, creator),
     )
   }
 
   creatorId(creatorId: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.CREATOR_ID, creatorId),
+      new _MetaCommand(TwitterCardMetaProperty.CREATOR_ID, creatorId),
     )
   }
 
   description(description: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.DESCRIPTION, description),
+      new _MetaCommand(TwitterCardMetaProperty.DESCRIPTION, description),
     )
   }
 
   title(title: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.TITLE, title),
+      new _MetaCommand(TwitterCardMetaProperty.TITLE, title),
     )
   }
 
@@ -59,16 +61,16 @@ export class TwitterCardAppliersService
     if (image === null) {
       const imageProperties = TwitterCardMetaProperty.images()
       for (const property of imageProperties) {
-        this.metaCommandService.apply(new MetaCommand(property, null))
+        this.metaCommandService.apply(new _MetaCommand(property, null))
       }
       return
     }
 
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.IMAGE, image?.url?.toString()),
+      new _MetaCommand(TwitterCardMetaProperty.IMAGE, image?.url?.toString()),
     )
     this.metaCommandService.apply(
-      new MetaCommand(TwitterCardMetaProperty.IMAGE_ALT, image?.alt),
+      new _MetaCommand(TwitterCardMetaProperty.IMAGE_ALT, image?.alt),
     )
   }
 }

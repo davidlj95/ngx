@@ -1,11 +1,13 @@
 import { EventEmitter, Injectable, VERSION } from '@angular/core'
 import { Title } from '@angular/platform-browser'
-import { MetaCommandService } from '../common/meta-command/meta-command.service'
-import { MetaCommand } from '../common/meta-command/meta-command'
+import {
+  _MetaCommand,
+  _MetaCommandService,
+  _MetadataAppliers,
+} from 'ngx-metadata/common'
 import { StandardMetaProperty } from './standard-meta-property'
 import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attribute.service'
 import { GeneralMetadataImage } from './general-metadata-image'
-import { MetadataAppliers } from '../common/metadata-appliers'
 import { GeneralMetadata } from './general-metadata'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
 
@@ -16,13 +18,13 @@ import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical
  */
 @Injectable()
 export class GeneralMetadataAppliersService
-  implements MetadataAppliers<GeneralMetadata>
+  implements _MetadataAppliers<GeneralMetadata>
 {
   public readonly changes$ = new EventEmitter<GeneralMetadata>()
 
   constructor(
     private titleService: Title,
-    private metaCommandService: MetaCommandService,
+    private metaCommandService: _MetaCommandService,
     private linkRelCanonicalService: LinkRelCanonicalService,
     private htmlLangAttributeService: HtmlLangAttributeService,
   ) {}
@@ -36,20 +38,20 @@ export class GeneralMetadataAppliersService
 
   description(description: string | undefined | null) {
     this.metaCommandService.apply(
-      new MetaCommand(StandardMetaProperty.DESCRIPTION, description),
+      new _MetaCommand(StandardMetaProperty.DESCRIPTION, description),
     )
     this.changes$.emit({ description })
   }
 
   author(author: string | undefined | null) {
     this.metaCommandService.apply(
-      new MetaCommand(StandardMetaProperty.AUTHOR, author),
+      new _MetaCommand(StandardMetaProperty.AUTHOR, author),
     )
   }
 
   keywords(keywords: readonly string[] | undefined | null) {
     this.metaCommandService.apply(
-      new MetaCommand(
+      new _MetaCommand(
         StandardMetaProperty.KEYWORDS,
         keywords ? keywords.join(',') : keywords,
       ),
@@ -58,7 +60,7 @@ export class GeneralMetadataAppliersService
 
   generator(generator: boolean | undefined | null) {
     this.metaCommandService.apply(
-      new MetaCommand(
+      new _MetaCommand(
         StandardMetaProperty.GENERATOR,
         generator === true
           ? `Angular v${VERSION.full}`
@@ -71,7 +73,7 @@ export class GeneralMetadataAppliersService
 
   applicationName(applicationName: string | undefined | null) {
     this.metaCommandService.apply(
-      new MetaCommand(StandardMetaProperty.APPLICATION_NAME, applicationName),
+      new _MetaCommand(StandardMetaProperty.APPLICATION_NAME, applicationName),
     )
     this.changes$.emit({ applicationName })
   }

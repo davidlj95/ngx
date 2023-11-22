@@ -5,7 +5,7 @@ import { MockProvider } from 'ng-mocks'
 import { TwitterCardAppliersService } from './twitter-card-appliers.service'
 import { TwitterCard } from './twitter-card'
 import { TwitterCardType } from './twitter-card-type'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('TwitterCardApplierService', () => {
   enableAutoSpy()

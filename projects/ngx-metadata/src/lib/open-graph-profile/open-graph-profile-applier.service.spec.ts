@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing'
 import { OpenGraphProfileApplierService } from './open-graph-profile-applier.service'
 import { MockProvider } from 'ng-mocks'
 import { OpenGraphProfile } from './open-graph-profile'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 import { OpenGraphProfileAppliersService } from './open-graph-profile-appliers.service'
 
 describe('OpenGraphProfileApplierService', () => {

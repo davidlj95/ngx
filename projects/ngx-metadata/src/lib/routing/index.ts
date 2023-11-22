@@ -1,1 +1,1 @@
-export { NgxMetadataRoutingModule } from './ngx-metadata-routing.module'
+export { RoutingModule as NgxMetadataRoutingModule } from './routing.module'

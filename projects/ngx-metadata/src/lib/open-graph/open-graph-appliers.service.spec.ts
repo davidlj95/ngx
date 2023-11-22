@@ -1,23 +1,22 @@
 import { TestBed } from '@angular/core/testing'
 
 import { OpenGraphAppliersService } from './open-graph-appliers.service'
-import { MetaCommand } from '../common/meta-command/meta-command'
+import { _MetaCommand, _MetaCommandService } from 'ngx-metadata/common'
 import { MockProvider } from 'ng-mocks'
-import { MetaCommandService } from '../common/meta-command/meta-command.service'
 import { OpenGraphProperty } from './open-graph-property'
 import { OpenGraphImage, OpenGraphType } from '.'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('OpenGraphAppliersService', () => {
   enableAutoSpy()
 
   let sut: OpenGraphAppliersService
   // noinspection DuplicatedCode
-  let metaCommandService: MetaCommandService
+  let metaCommandService: _MetaCommandService
 
   beforeEach(() => {
     sut = makeSut()
-    metaCommandService = TestBed.inject(MetaCommandService)
+    metaCommandService = TestBed.inject(_MetaCommandService)
   })
 
   describe('title', () => {
@@ -27,7 +26,7 @@ describe('OpenGraphAppliersService', () => {
       sut.title(title)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProperty.TITLE, title),
+        new _MetaCommand(OpenGraphProperty.TITLE, title),
       )
     })
   })
@@ -39,7 +38,7 @@ describe('OpenGraphAppliersService', () => {
       sut.type(type)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProperty.TYPE, type),
+        new _MetaCommand(OpenGraphProperty.TYPE, type),
       )
     })
   })
@@ -62,22 +61,22 @@ describe('OpenGraphAppliersService', () => {
           Object.keys(image).length,
         )
         expect(metaCommandService.apply).toHaveBeenCalledWith(
-          new MetaCommand(OpenGraphProperty.IMAGE, image.url?.toString()),
+          new _MetaCommand(OpenGraphProperty.IMAGE, image.url?.toString()),
         )
         expect(metaCommandService.apply).toHaveBeenCalledWith(
-          new MetaCommand(OpenGraphProperty.IMAGE_ALT, image.alt),
+          new _MetaCommand(OpenGraphProperty.IMAGE_ALT, image.alt),
         )
         expect(metaCommandService.apply).toHaveBeenCalledWith(
-          new MetaCommand(OpenGraphProperty.IMAGE_TYPE, image.type),
+          new _MetaCommand(OpenGraphProperty.IMAGE_TYPE, image.type),
         )
         expect(metaCommandService.apply).toHaveBeenCalledWith(
-          new MetaCommand(
+          new _MetaCommand(
             OpenGraphProperty.IMAGE_WIDTH,
             image.width?.toString(),
           ),
         )
         expect(metaCommandService.apply).toHaveBeenCalledWith(
-          new MetaCommand(
+          new _MetaCommand(
             OpenGraphProperty.IMAGE_HEIGHT,
             image.height?.toString(),
           ),
@@ -99,7 +98,7 @@ describe('OpenGraphAppliersService', () => {
         )
         for (const imageProperty of imageProperties) {
           expect(metaCommandService.apply).toHaveBeenCalledWith(
-            new MetaCommand(imageProperty, image),
+            new _MetaCommand(imageProperty, image),
           )
         }
       })
@@ -144,7 +143,7 @@ describe('OpenGraphAppliersService', () => {
       sut.url(url)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProperty.URL, url.toString()),
+        new _MetaCommand(OpenGraphProperty.URL, url.toString()),
       )
     })
   })
@@ -156,7 +155,7 @@ describe('OpenGraphAppliersService', () => {
       sut.description(description)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProperty.DESCRIPTION, description),
+        new _MetaCommand(OpenGraphProperty.DESCRIPTION, description),
       )
     })
   })
@@ -168,7 +167,7 @@ describe('OpenGraphAppliersService', () => {
       sut.locale(locale)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProperty.LOCALE, locale),
+        new _MetaCommand(OpenGraphProperty.LOCALE, locale),
       )
     })
   })
@@ -180,7 +179,7 @@ describe('OpenGraphAppliersService', () => {
       sut.siteName(siteName)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProperty.SITE_NAME, siteName),
+        new _MetaCommand(OpenGraphProperty.SITE_NAME, siteName),
       )
     })
   })
@@ -188,7 +187,7 @@ describe('OpenGraphAppliersService', () => {
 
 function makeSut() {
   TestBed.configureTestingModule({
-    providers: [OpenGraphAppliersService, MockProvider(MetaCommandService)],
+    providers: [OpenGraphAppliersService, MockProvider(_MetaCommandService)],
   })
   return TestBed.inject(OpenGraphAppliersService)
 }

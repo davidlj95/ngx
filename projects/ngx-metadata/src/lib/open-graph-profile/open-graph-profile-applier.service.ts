@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-import { MetadataApplier } from '../common/metadata-applier'
 import { OpenGraphProfile } from './open-graph-profile'
 import { OpenGraphProfileAppliersService } from './open-graph-profile-appliers.service'
+import { _MetadataApplier } from 'ngx-metadata/common'
 
 /**
  * Applies all Open Graph Profile metadata provided
@@ -11,7 +11,7 @@ import { OpenGraphProfileAppliersService } from './open-graph-profile-appliers.s
  */
 @Injectable()
 export class OpenGraphProfileApplierService
-  implements MetadataApplier<OpenGraphProfile>
+  implements _MetadataApplier<OpenGraphProfile>
 {
   constructor(private readonly appliers: OpenGraphProfileAppliersService) {}
 

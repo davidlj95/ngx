@@ -10,13 +10,13 @@ import { MetadataRouteStrategy } from '../routing/metadata-route-strategy'
 import { OpenGraphProfileRouteStrategy } from './routing/open-graph-profile-route-strategy'
 import { OpenGraphProfile } from './open-graph-profile'
 import { OPEN_GRAPH_PROFILE_DEFAULTS_TOKEN } from './open-graph-profile-defaults-token'
-import { makeForRootGuard } from '../common/make-for-root-guard'
+import { _makeForRootGuard } from 'ngx-metadata/common'
 import { OpenGraphProfileAppliersService } from './open-graph-profile-appliers.service'
 import { OpenGraphProfileService } from './open-graph-profile.service'
 import { DefaultOpenGraphProfileRouteStrategy } from './routing/default-open-graph-profile-route-strategy'
 
 const DUMMY_TOKEN = new InjectionToken<void>('Dummy token for guard')
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = makeForRootGuard(
+const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
   'OpenGraphProfileModule',
   DUMMY_TOKEN,
 )

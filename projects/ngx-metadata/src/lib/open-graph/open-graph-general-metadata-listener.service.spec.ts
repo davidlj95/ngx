@@ -2,11 +2,11 @@ import { TestBed } from '@angular/core/testing'
 
 import { OpenGraphGeneralMetadataListenerService } from './open-graph-general-metadata-listener.service'
 import { EventEmitter, Provider } from '@angular/core'
-import { GeneralMetadata } from '../general-metadata/general-metadata'
+import { GeneralMetadata } from '../general-metadata'
 import { MockProvider } from 'ng-mocks'
 import { GeneralMetadataAppliersService } from '../general-metadata/general-metadata-appliers.service'
 import { OpenGraphAppliersService } from './open-graph-appliers.service'
-import { GeneralMetadataImage } from '../general-metadata/general-metadata-image'
+import { GeneralMetadataImage } from '../general-metadata'
 import { enableAutoSpy } from '../__tests__/enable-auto-spy'
 
 describe('OpenGraphGeneralMetadataListenerService', () => {

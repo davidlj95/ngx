@@ -1,4 +1,4 @@
-import { MetadataRouteStrategy } from '../../routing/metadata-route-strategy'
+import { _MetadataRouteStrategy } from 'ngx-metadata/routing'
 import { OpenGraphProfile } from '../open-graph-profile'
 
-export abstract class OpenGraphProfileRouteStrategy extends MetadataRouteStrategy<OpenGraphProfile> {}
+export abstract class OpenGraphProfileRouteStrategy extends _MetadataRouteStrategy<OpenGraphProfile> {}

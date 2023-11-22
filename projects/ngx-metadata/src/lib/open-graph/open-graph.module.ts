@@ -2,7 +2,7 @@ import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core'
 import { OpenGraphService } from './open-graph.service'
 import { OpenGraphApplierService } from './open-graph-applier.service'
 import { OpenGraphAppliersService } from './open-graph-appliers.service'
-import { MetadataRouteStrategy } from '../routing/metadata-route-strategy'
+import { _MetadataRouteStrategy } from 'ngx-metadata/routing'
 import { DefaultOpenGraphRouteStrategy } from './routing/default-open-graph-route-strategy'
 import { OpenGraphGeneralMetadataListenerService } from './open-graph-general-metadata-listener.service'
 import { OpenGraphRouteStrategy } from './routing/open-graph-route-strategy'
@@ -48,7 +48,7 @@ export class OpenGraphModule {
           useClass: DefaultOpenGraphRouteStrategy,
         },
         {
-          provide: MetadataRouteStrategy,
+          provide: _MetadataRouteStrategy,
           useExisting: OpenGraphRouteStrategy,
           multi: true,
         },

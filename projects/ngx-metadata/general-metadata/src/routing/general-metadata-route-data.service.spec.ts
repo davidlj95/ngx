@@ -5,7 +5,7 @@ import { MockProvider } from 'ng-mocks'
 import { GeneralMetadata } from '../general-metadata'
 import { GENERAL_METADATA_DEFAULTS_TOKEN } from '../general-metadata-defaults-token'
 import { Provider } from '@angular/core'
-import { MetadataRouteStrategy } from '../../routing/metadata-route-strategy'
+import { _MetadataRouteStrategy } from 'ngx-metadata/routing'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { DefaultGeneralMetadataRouteStrategy } from './default-general-metadata-route-strategy'
 import { GeneralMetadataRouteStrategy } from './general-metadata-route-strategy'
@@ -27,7 +27,7 @@ describe('GeneralMetadataRouteDataService', () => {
         sut = makeSut()
         generalMetadataRouteStrategy = TestBed.inject(
           GeneralMetadataRouteStrategy,
-        ) as jasmine.SpyObj<MetadataRouteStrategy<GeneralMetadata>>
+        ) as jasmine.SpyObj<_MetadataRouteStrategy<GeneralMetadata>>
       })
 
       describe('when no data has been resolved for route', () => {
@@ -63,7 +63,7 @@ describe('GeneralMetadataRouteDataService', () => {
         sut = makeSut({ defaults })
         generalMetadataRouteStrategy = TestBed.inject(
           GeneralMetadataRouteStrategy,
-        ) as jasmine.SpyObj<MetadataRouteStrategy<GeneralMetadata>>
+        ) as jasmine.SpyObj<_MetadataRouteStrategy<GeneralMetadata>>
         defaultsService = TestBed.inject(
           _DefaultsService,
         ) as jasmine.SpyObj<_DefaultsService>

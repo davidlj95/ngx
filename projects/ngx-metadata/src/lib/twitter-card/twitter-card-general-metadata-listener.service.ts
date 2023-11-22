@@ -1,7 +1,9 @@
 import { Injectable, OnDestroy, Optional } from '@angular/core'
 import { Subscription } from 'rxjs'
-import { GeneralMetadataAppliersService } from '../general-metadata/general-metadata-appliers.service'
-import { GeneralMetadata } from '../general-metadata'
+import {
+  _GeneralMetadataAppliersService,
+  GeneralMetadata,
+} from 'ngx-metadata/general-metadata'
 import { TwitterCardAppliersService } from './twitter-card-appliers.service'
 
 @Injectable()
@@ -10,7 +12,7 @@ export class TwitterCardGeneralMetadataListenerService implements OnDestroy {
 
   constructor(
     @Optional()
-    private readonly generalMetadataAppliersService: GeneralMetadataAppliersService | null,
+    private readonly generalMetadataAppliersService: _GeneralMetadataAppliersService | null,
     private readonly appliers: TwitterCardAppliersService,
   ) {}
 

@@ -1,11 +1,11 @@
 import { Injectable, Optional } from '@angular/core'
 import { OpenGraph } from '../open-graph'
 import { ActivatedRouteSnapshot } from '@angular/router'
-import { GeneralMetadataRouteDataService } from '../../general-metadata/routing/general-metadata-route-data.service'
 import { _DefaultsService } from 'ngx-metadata/common'
 import { OpenGraphRouteStrategy } from './open-graph-route-strategy'
-import { CurrentRouteDataKeyPathMetadataStrategy } from '../../routing/current-route-data-key-path-metadata-strategy'
+import { _CurrentRouteDataKeyPathMetadataStrategy } from 'ngx-metadata/routing'
 import { OpenGraphService } from '../open-graph.service'
+import { _GeneralMetadataRouteDataService } from 'ngx-metadata/general-metadata'
 
 export const KEY = 'openGraph'
 export const KEY_PATH = `${KEY}`
@@ -13,9 +13,9 @@ export const KEY_PATH = `${KEY}`
 @Injectable()
 export class DefaultOpenGraphRouteStrategy implements OpenGraphRouteStrategy {
   constructor(
-    private readonly currentRouteDataKeyPathMetadataStrategy: CurrentRouteDataKeyPathMetadataStrategy,
+    private readonly currentRouteDataKeyPathMetadataStrategy: _CurrentRouteDataKeyPathMetadataStrategy,
     @Optional()
-    private readonly generalMetadataRouteData: GeneralMetadataRouteDataService | null,
+    private readonly generalMetadataRouteData: _GeneralMetadataRouteDataService | null,
     private readonly defaultsService: _DefaultsService,
     private readonly openGraphService: OpenGraphService,
   ) {}

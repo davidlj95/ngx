@@ -2,9 +2,12 @@ import { TestBed } from '@angular/core/testing'
 
 import { OpenGraphGeneralMetadataListenerService } from './open-graph-general-metadata-listener.service'
 import { EventEmitter, Provider } from '@angular/core'
-import { GeneralMetadata, GeneralMetadataImage } from '../general-metadata'
+import {
+  _GeneralMetadataAppliersService,
+  GeneralMetadata,
+  GeneralMetadataImage,
+} from 'ngx-metadata/general-metadata'
 import { MockProvider } from 'ng-mocks'
-import { GeneralMetadataAppliersService } from '../general-metadata/general-metadata-appliers.service'
 import { OpenGraphAppliersService } from './open-graph-appliers.service'
 import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
@@ -150,7 +153,7 @@ function makeSut(
 
   if (!opts.generalMetadataUnavailable) {
     providers.push(
-      MockProvider(GeneralMetadataAppliersService, {
+      MockProvider(_GeneralMetadataAppliersService, {
         changes$: opts.changes$ ?? new EventEmitter(),
       }),
     )

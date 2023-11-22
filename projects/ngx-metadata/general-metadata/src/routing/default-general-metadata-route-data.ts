@@ -1,9 +1,9 @@
-import { _MAIN_KEY } from 'ngx-metadata/routing'
+import { _ROUTING_KEY } from 'ngx-metadata/routing'
 import { KEY } from './default-general-metadata-route-strategy'
 import { GeneralMetadata } from '../general-metadata'
 
 export interface DefaultGeneralMetadataRouteData {
-  [_MAIN_KEY]: {
+  [_ROUTING_KEY]: {
     [KEY]: GeneralMetadata
   }
 }

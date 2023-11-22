@@ -9,8 +9,8 @@ import {
   _ROUTING_KEY_SEPARATOR,
 } from 'ngx-metadata/routing'
 
-export const KEY = 'profile'
-export const KEY_PATH = `${_OPEN_GRAPH_ROUTING_KEY}${_ROUTING_KEY_SEPARATOR}${KEY}`
+export const ROUTING_KEY = 'profile'
+export const ROUTING_KEY_PATH = `${_OPEN_GRAPH_ROUTING_KEY}${_ROUTING_KEY_SEPARATOR}${ROUTING_KEY}`
 
 @Injectable()
 export class DefaultOpenGraphProfileRouteStrategy
@@ -26,7 +26,7 @@ export class DefaultOpenGraphProfileRouteStrategy
   ): OpenGraphProfile | undefined {
     return this.currentRouteDataKeyPathMetadataStrategy.resolve(
       routeSnapshot,
-      KEY_PATH,
+      ROUTING_KEY_PATH,
     )
   }
 

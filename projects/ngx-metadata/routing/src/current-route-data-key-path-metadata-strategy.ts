@@ -17,7 +17,7 @@ export class CurrentRouteDataKeyPathMetadataStrategy {
     keyPath: string,
   ): T | undefined {
     const currentRoute = this.getCurrentSnapshotFromRootSnapshot(routeSnapshot)
-    const keys = [MAIN_KEY, ...keyPath.split(KEY_PATH_SEPARATOR)]
+    const keys = [ROUTING_KEY, ...keyPath.split(ROUTING_KEY_SEPARATOR)]
     let object = currentRoute.data
     for (const key of keys) {
       if (object === undefined) {
@@ -29,5 +29,5 @@ export class CurrentRouteDataKeyPathMetadataStrategy {
   }
 }
 
-export const KEY_PATH_SEPARATOR = '.'
-export const MAIN_KEY = 'meta'
+export const ROUTING_KEY_SEPARATOR = '.'
+export const ROUTING_KEY = 'meta'

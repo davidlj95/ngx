@@ -1,6 +1,6 @@
 import {
   CurrentRouteDataKeyPathMetadataStrategy,
-  MAIN_KEY,
+  ROUTING_KEY,
 } from './current-route-data-key-path-metadata-strategy'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider, MockService } from 'ng-mocks'
@@ -30,7 +30,7 @@ describe('CurrentRouteDataKeyPathMetadataStrategy', () => {
 
       beforeEach(() => {
         currentSnapshot.data = {
-          [MAIN_KEY]: { [keyPath]: dummyData },
+          [ROUTING_KEY]: { [keyPath]: dummyData },
         }
       })
 
@@ -59,7 +59,7 @@ describe('CurrentRouteDataKeyPathMetadataStrategy', () => {
       describe('when path does exist', () => {
         beforeEach(() => {
           currentSnapshot.data = {
-            [MAIN_KEY]: { [firstKey]: { [secondKey]: dummyData } },
+            [ROUTING_KEY]: { [firstKey]: { [secondKey]: dummyData } },
           }
         })
 

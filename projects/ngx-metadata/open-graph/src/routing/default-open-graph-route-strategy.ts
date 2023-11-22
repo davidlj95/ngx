@@ -7,8 +7,7 @@ import { _CurrentRouteDataKeyPathMetadataStrategy } from 'ngx-metadata/routing'
 import { OpenGraphService } from '../open-graph.service'
 import { _GeneralMetadataRouteDataService } from 'ngx-metadata/general-metadata'
 
-export const KEY = 'openGraph'
-export const KEY_PATH = `${KEY}`
+export const ROUTING_KEY = 'openGraph'
 
 @Injectable()
 export class DefaultOpenGraphRouteStrategy implements OpenGraphRouteStrategy {
@@ -23,7 +22,7 @@ export class DefaultOpenGraphRouteStrategy implements OpenGraphRouteStrategy {
   public resolve(routeSnapshot: ActivatedRouteSnapshot): OpenGraph | undefined {
     const openGraph = this.currentRouteDataKeyPathMetadataStrategy.resolve(
       routeSnapshot,
-      KEY_PATH,
+      ROUTING_KEY,
     )
     if (!this.generalMetadataRouteData) {
       return openGraph

@@ -9,9 +9,9 @@ import { OpenGraphRouteStrategy } from './routing/open-graph-route-strategy'
 import { OPEN_GRAPH_DEFAULTS } from './open-graph-defaults'
 import { OpenGraph } from './open-graph'
 import { OPEN_GRAPH_DEFAULTS_TOKEN } from './open-graph-defaults-token'
-import { makeForRootGuard } from '../common/make-for-root-guard'
+import { _makeForRootGuard } from 'ngx-metadata/common'
 
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = makeForRootGuard(
+const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
   'OpenGraphModule',
   OpenGraphGeneralMetadataListenerService,
 )

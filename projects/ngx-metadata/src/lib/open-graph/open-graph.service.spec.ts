@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing'
 
 import { OpenGraphService } from './open-graph.service'
 import { MockProvider } from 'ng-mocks'
-import { DefaultsService } from '../common/defaults.service'
+import { _DefaultsService } from 'ngx-metadata/common'
 import { OpenGraph } from './open-graph'
 import { OPEN_GRAPH_DEFAULTS_TOKEN } from './open-graph-defaults-token'
 import { OpenGraphApplierService } from './open-graph-applier.service'
 import { Provider } from '@angular/core'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('OpenGraphService', () => {
   enableAutoSpy()
@@ -26,7 +26,7 @@ describe('OpenGraphService', () => {
       it('should merge provided metadata with defaults', () => {
         sut.apply(metadata)
 
-        const defaultsService = TestBed.inject(DefaultsService)
+        const defaultsService = TestBed.inject(_DefaultsService)
         expect(defaultsService.resolve).toHaveBeenCalledOnceWith(
           metadata,
           defaults,
@@ -35,8 +35,8 @@ describe('OpenGraphService', () => {
 
       it('should apply metadata with defaults included', () => {
         const defaultsService = TestBed.inject(
-          DefaultsService,
-        ) as jasmine.SpyObj<DefaultsService>
+          _DefaultsService,
+        ) as jasmine.SpyObj<_DefaultsService>
         const resolvedDefaults = { ...metadata, ...defaults }
         defaultsService.resolve.and.returnValue(resolvedDefaults)
 
@@ -67,7 +67,7 @@ describe('OpenGraphService', () => {
 function makeSut(opts: { defaults?: OpenGraph } = {}) {
   const providers: Provider[] = [
     OpenGraphService,
-    MockProvider(DefaultsService),
+    MockProvider(_DefaultsService),
     MockProvider(OpenGraphApplierService),
   ]
 

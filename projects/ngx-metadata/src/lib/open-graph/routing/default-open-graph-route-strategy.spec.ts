@@ -7,10 +7,10 @@ import { ActivatedRouteSnapshot } from '@angular/router'
 import { GeneralMetadataRouteDataService } from '../../general-metadata/routing/general-metadata-route-data.service'
 import { Provider } from '@angular/core'
 import { GeneralMetadata } from '../../general-metadata'
-import { DefaultsService } from '../../common/defaults.service'
+import { _DefaultsService } from 'ngx-metadata/common'
 import { CurrentRouteDataKeyPathMetadataStrategy } from '../../routing/current-route-data-key-path-metadata-strategy'
 import { OpenGraphService } from '../open-graph.service'
-import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('DefaultOpenGraphRouteStrategy', () => {
   enableAutoSpy()
@@ -172,7 +172,7 @@ function makeSut(opts: { generalMetadata?: boolean } = {}) {
   const providers: Provider[] = [
     DefaultOpenGraphRouteStrategy,
     MockProvider(CurrentRouteDataKeyPathMetadataStrategy),
-    DefaultsService,
+    _DefaultsService,
     MockProvider(OpenGraphService),
   ]
 

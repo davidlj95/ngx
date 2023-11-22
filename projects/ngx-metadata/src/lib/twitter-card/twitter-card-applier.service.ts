@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core'
-import { MetadataApplier } from '../common/metadata-applier'
+import { _MetadataApplier } from 'ngx-metadata/common'
 import { TwitterCard } from './twitter-card'
 import { TwitterCardAppliersService } from './twitter-card-appliers.service'
 
 @Injectable()
-export class TwitterCardApplierService implements MetadataApplier<TwitterCard> {
+export class TwitterCardApplierService
+  implements _MetadataApplier<TwitterCard>
+{
   constructor(private readonly appliers: TwitterCardAppliersService) {}
 
   apply(metadata: TwitterCard): void {

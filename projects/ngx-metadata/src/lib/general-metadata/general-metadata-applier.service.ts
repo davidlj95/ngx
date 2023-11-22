@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { MetadataApplier } from '../common/metadata-applier'
+import { _MetadataApplier } from 'ngx-metadata/common'
 import { GeneralMetadata } from './general-metadata'
 import { GeneralMetadataAppliersService } from './general-metadata-appliers.service'
 
@@ -11,7 +11,7 @@ import { GeneralMetadataAppliersService } from './general-metadata-appliers.serv
  */
 @Injectable()
 export class GeneralMetadataApplierService
-  implements MetadataApplier<GeneralMetadata>
+  implements _MetadataApplier<GeneralMetadata>
 {
   constructor(private readonly appliers: GeneralMetadataAppliersService) {}
 

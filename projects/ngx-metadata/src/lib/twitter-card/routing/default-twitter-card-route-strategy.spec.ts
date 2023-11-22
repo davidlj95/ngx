@@ -5,12 +5,12 @@ import { ActivatedRouteSnapshot } from '@angular/router'
 import { GeneralMetadataRouteDataService } from '../../general-metadata/routing/general-metadata-route-data.service'
 import { Provider } from '@angular/core'
 import { GeneralMetadata } from '../../general-metadata'
-import { DefaultsService } from '../../common/defaults.service'
+import { _DefaultsService } from 'ngx-metadata/common'
 import { TwitterCard } from '../twitter-card'
 import { TwitterCardType } from '../twitter-card-type'
 import { CurrentRouteDataKeyPathMetadataStrategy } from '../../routing/current-route-data-key-path-metadata-strategy'
 import { TwitterCardService } from '../twitter-card.service'
-import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('DefaultTwitterCardRouteStrategy', () => {
   enableAutoSpy()
@@ -151,7 +151,7 @@ function makeSut(opts: { generalMetadata?: boolean } = {}) {
   const providers: Provider[] = [
     DefaultTwitterCardRouteStrategy,
     MockProvider(CurrentRouteDataKeyPathMetadataStrategy),
-    DefaultsService,
+    _DefaultsService,
     MockProvider(TwitterCardService),
   ]
 

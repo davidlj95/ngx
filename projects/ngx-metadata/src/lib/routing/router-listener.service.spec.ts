@@ -11,7 +11,7 @@ import {
 } from '@angular/router'
 import { EventEmitter, Provider } from '@angular/core'
 import { MetadataRouteStrategy } from './metadata-route-strategy'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('RouterListenerService', () => {
   enableAutoSpy()

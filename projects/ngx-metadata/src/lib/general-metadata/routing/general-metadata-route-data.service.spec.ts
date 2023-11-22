@@ -3,14 +3,14 @@ import { TestBed } from '@angular/core/testing'
 import { GeneralMetadataRouteDataService } from './general-metadata-route-data.service'
 import { MockProvider } from 'ng-mocks'
 import { GeneralMetadata } from '../general-metadata'
-import { DefaultsService } from '../../common/defaults.service'
 import { GENERAL_METADATA_DEFAULTS_TOKEN } from '../general-metadata-defaults-token'
 import { Provider } from '@angular/core'
 import { MetadataRouteStrategy } from '../../routing/metadata-route-strategy'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { DefaultGeneralMetadataRouteStrategy } from './default-general-metadata-route-strategy'
 import { GeneralMetadataRouteStrategy } from './general-metadata-route-strategy'
-import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
+import { _DefaultsService } from 'ngx-metadata/common'
 
 describe('GeneralMetadataRouteDataService', () => {
   enableAutoSpy()
@@ -57,7 +57,7 @@ describe('GeneralMetadataRouteDataService', () => {
       }
       let sut: GeneralMetadataRouteDataService
       let generalMetadataRouteStrategy: jasmine.SpyObj<GeneralMetadataRouteStrategy>
-      let defaultsService: jasmine.SpyObj<DefaultsService>
+      let defaultsService: jasmine.SpyObj<_DefaultsService>
 
       beforeEach(() => {
         sut = makeSut({ defaults })
@@ -65,8 +65,8 @@ describe('GeneralMetadataRouteDataService', () => {
           GeneralMetadataRouteStrategy,
         ) as jasmine.SpyObj<MetadataRouteStrategy<GeneralMetadata>>
         defaultsService = TestBed.inject(
-          DefaultsService,
-        ) as jasmine.SpyObj<DefaultsService>
+          _DefaultsService,
+        ) as jasmine.SpyObj<_DefaultsService>
       })
 
       describe('when no data has been resolved for route', () => {
@@ -100,7 +100,7 @@ function makeSut(
 ): GeneralMetadataRouteDataService {
   const providers: Provider[] = [
     GeneralMetadataRouteDataService,
-    MockProvider(DefaultsService),
+    MockProvider(_DefaultsService),
     MockProvider(DefaultGeneralMetadataRouteStrategy),
     {
       provide: GeneralMetadataRouteStrategy,

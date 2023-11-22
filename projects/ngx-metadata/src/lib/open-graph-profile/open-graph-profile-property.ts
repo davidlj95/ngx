@@ -1,7 +1,7 @@
-import { ComposableMetaCommandProperty } from '../common/meta-command/composable-meta-command-property'
+import { _ComposableMetaCommandProperty } from 'ngx-metadata/common'
 import { OpenGraphProperty } from '../open-graph/open-graph-property'
 
-export class OpenGraphProfileProperty extends ComposableMetaCommandProperty {
+export class OpenGraphProfileProperty extends _ComposableMetaCommandProperty {
   public static PREFIX = `profile`
 
   private static _all: Set<OpenGraphProfileProperty> = new Set()

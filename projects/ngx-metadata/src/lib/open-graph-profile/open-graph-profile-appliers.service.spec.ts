@@ -1,23 +1,22 @@
 import { TestBed } from '@angular/core/testing'
 
-import { MetaCommand } from '../common/meta-command/meta-command'
 import { MockProvider } from 'ng-mocks'
-import { MetaCommandService } from '../common/meta-command/meta-command.service'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 import { OpenGraphProfileAppliersService } from './open-graph-profile-appliers.service'
 import { OpenGraphProfileProperty } from './open-graph-profile-property'
 import { OpenGraphProfileGender } from './open-graph-profile-gender'
+import { _MetaCommand, _MetaCommandService } from 'ngx-metadata/common'
 
 describe('OpenGraphProfileAppliersService', () => {
   enableAutoSpy()
 
   let sut: OpenGraphProfileAppliersService
   // noinspection DuplicatedCode
-  let metaCommandService: MetaCommandService
+  let metaCommandService: _MetaCommandService
 
   beforeEach(() => {
     sut = makeSut()
-    metaCommandService = TestBed.inject(MetaCommandService)
+    metaCommandService = TestBed.inject(_MetaCommandService)
   })
 
   describe('firstName', () => {
@@ -27,7 +26,7 @@ describe('OpenGraphProfileAppliersService', () => {
       sut.firstName(firstName)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProfileProperty.FIRST_NAME, firstName),
+        new _MetaCommand(OpenGraphProfileProperty.FIRST_NAME, firstName),
       )
     })
   })
@@ -39,7 +38,7 @@ describe('OpenGraphProfileAppliersService', () => {
       sut.lastName(lastName)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProfileProperty.LAST_NAME, lastName),
+        new _MetaCommand(OpenGraphProfileProperty.LAST_NAME, lastName),
       )
     })
   })
@@ -51,7 +50,7 @@ describe('OpenGraphProfileAppliersService', () => {
       sut.username(username)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProfileProperty.USERNAME, username),
+        new _MetaCommand(OpenGraphProfileProperty.USERNAME, username),
       )
     })
   })
@@ -63,7 +62,7 @@ describe('OpenGraphProfileAppliersService', () => {
       sut.gender(gender)
 
       expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new MetaCommand(OpenGraphProfileProperty.GENDER, gender),
+        new _MetaCommand(OpenGraphProfileProperty.GENDER, gender),
       )
     })
   })
@@ -73,7 +72,7 @@ function makeSut() {
   TestBed.configureTestingModule({
     providers: [
       OpenGraphProfileAppliersService,
-      MockProvider(MetaCommandService),
+      MockProvider(_MetaCommandService),
     ],
   })
   return TestBed.inject(OpenGraphProfileAppliersService)

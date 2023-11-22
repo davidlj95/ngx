@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { GeneralMetadataRouteDataService } from '../../general-metadata/routing/general-metadata-route-data.service'
-import { DefaultsService } from '../../common/defaults.service'
+import { _DefaultsService } from 'ngx-metadata/common'
 import { TwitterCardRouteStrategy } from './twitter-card-route-strategy'
 import { TwitterCard } from '../twitter-card'
 import { CurrentRouteDataKeyPathMetadataStrategy } from '../../routing/current-route-data-key-path-metadata-strategy'
@@ -17,7 +17,7 @@ export class DefaultTwitterCardRouteStrategy
     private readonly currentRouteDataKeyPathMetadataStrategy: CurrentRouteDataKeyPathMetadataStrategy,
     @Optional()
     private readonly generalMetadataRouteData: GeneralMetadataRouteDataService | null,
-    private readonly defaultsService: DefaultsService,
+    private readonly defaultsService: _DefaultsService,
     private readonly twitterCardService: TwitterCardService,
   ) {}
 

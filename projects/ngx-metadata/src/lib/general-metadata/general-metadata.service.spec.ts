@@ -3,11 +3,11 @@ import { TestBed } from '@angular/core/testing'
 import { GeneralMetadataService } from './general-metadata.service'
 import { MockProvider } from 'ng-mocks'
 import { GeneralMetadata } from './general-metadata'
-import { DefaultsService } from '../common/defaults.service'
 import { GENERAL_METADATA_DEFAULTS_TOKEN } from './general-metadata-defaults-token'
 import { GeneralMetadataApplierService } from './general-metadata-applier.service'
 import { Provider } from '@angular/core'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
+import { _DefaultsService } from 'ngx-metadata/common'
 
 describe('GeneralMetadataService', () => {
   enableAutoSpy()
@@ -26,7 +26,7 @@ describe('GeneralMetadataService', () => {
       it('should merge provided metadata with defaults', () => {
         sut.apply(metadata)
 
-        const defaultsService = TestBed.inject(DefaultsService)
+        const defaultsService = TestBed.inject(_DefaultsService)
         expect(defaultsService.resolve).toHaveBeenCalledOnceWith(
           metadata,
           defaults,
@@ -35,8 +35,8 @@ describe('GeneralMetadataService', () => {
 
       it('should apply metadata with defaults included', () => {
         const defaultsService = TestBed.inject(
-          DefaultsService,
-        ) as jasmine.SpyObj<DefaultsService>
+          _DefaultsService,
+        ) as jasmine.SpyObj<_DefaultsService>
         const resolvedDefaults = { ...metadata, ...defaults }
         defaultsService.resolve.and.returnValue(resolvedDefaults)
 
@@ -67,7 +67,7 @@ describe('GeneralMetadataService', () => {
 function makeSut(opts: { defaults?: GeneralMetadata } = {}) {
   const providers: Provider[] = [
     GeneralMetadataService,
-    MockProvider(DefaultsService),
+    MockProvider(_DefaultsService),
     MockProvider(GeneralMetadataApplierService),
   ]
 

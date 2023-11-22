@@ -6,7 +6,7 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider, MockService } from 'ng-mocks'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { GET_CURRENT_SNAPSHOT_FROM_ROOT_SNAPSHOT_TOKEN } from './get-current-snapshot-from-root-snapshot'
-import { enableAutoSpy } from '../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('CurrentRouteDataKeyPathMetadataStrategy', () => {
   enableAutoSpy()

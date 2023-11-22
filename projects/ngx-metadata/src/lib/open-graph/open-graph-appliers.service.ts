@@ -1,30 +1,34 @@
 import { Injectable } from '@angular/core'
-import { MetadataAppliers } from '../common/metadata-appliers'
 import { OpenGraph } from './open-graph'
 import { OpenGraphType } from './open-graph-type'
 import { OpenGraphImage } from './open-graph-image'
-import { MetaCommand } from '../common/meta-command/meta-command'
+import {
+  _MetaCommand,
+  _MetaCommandService,
+  _MetadataAppliers,
+} from 'ngx-metadata/common'
 import { OpenGraphProperty } from './open-graph-property'
-import { MetaCommandService } from '../common/meta-command/meta-command.service'
 
 @Injectable()
-export class OpenGraphAppliersService implements MetadataAppliers<OpenGraph> {
-  constructor(private readonly metaCommandService: MetaCommandService) {}
+export class OpenGraphAppliersService implements _MetadataAppliers<OpenGraph> {
+  constructor(private readonly metaCommandService: _MetaCommandService) {}
 
   title(title: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(OpenGraphProperty.TITLE, title),
+      new _MetaCommand(OpenGraphProperty.TITLE, title),
     )
   }
 
   type(type: OpenGraphType | undefined | null): void {
-    this.metaCommandService.apply(new MetaCommand(OpenGraphProperty.TYPE, type))
+    this.metaCommandService.apply(
+      new _MetaCommand(OpenGraphProperty.TYPE, type),
+    )
   }
 
   image(image: OpenGraphImage | undefined | null): void {
     if (image === null || image === undefined) {
       const imageProperties = OpenGraphProperty.images().map(
-        (property) => new MetaCommand(property, null),
+        (property) => new _MetaCommand(property, null),
       )
       for (const imageProperty of imageProperties) {
         this.metaCommandService.apply(imageProperty)
@@ -35,55 +39,58 @@ export class OpenGraphAppliersService implements MetadataAppliers<OpenGraph> {
     const imageUrl = image.url?.toString()
     if (imageUrl !== undefined) {
       this.metaCommandService.apply(
-        new MetaCommand(OpenGraphProperty.IMAGE, imageUrl),
+        new _MetaCommand(OpenGraphProperty.IMAGE, imageUrl),
       )
     }
 
     const imageAlt = image.alt
     if (imageAlt !== undefined) {
       this.metaCommandService.apply(
-        new MetaCommand(OpenGraphProperty.IMAGE_ALT, imageAlt),
+        new _MetaCommand(OpenGraphProperty.IMAGE_ALT, imageAlt),
       )
     }
 
     this.metaCommandService.apply(
-      new MetaCommand(
+      new _MetaCommand(
         OpenGraphProperty.IMAGE_SECURE_URL,
         image.secureUrl?.toString(),
       ),
     )
     this.metaCommandService.apply(
-      new MetaCommand(OpenGraphProperty.IMAGE_TYPE, image.type),
+      new _MetaCommand(OpenGraphProperty.IMAGE_TYPE, image.type),
     )
     this.metaCommandService.apply(
-      new MetaCommand(OpenGraphProperty.IMAGE_WIDTH, image.width?.toString()),
+      new _MetaCommand(OpenGraphProperty.IMAGE_WIDTH, image.width?.toString()),
     )
     this.metaCommandService.apply(
-      new MetaCommand(OpenGraphProperty.IMAGE_HEIGHT, image.height?.toString()),
+      new _MetaCommand(
+        OpenGraphProperty.IMAGE_HEIGHT,
+        image.height?.toString(),
+      ),
     )
   }
 
   url(url: URL | string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(OpenGraphProperty.URL, url?.toString()),
+      new _MetaCommand(OpenGraphProperty.URL, url?.toString()),
     )
   }
 
   description(description: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(OpenGraphProperty.DESCRIPTION, description),
+      new _MetaCommand(OpenGraphProperty.DESCRIPTION, description),
     )
   }
 
   locale(locale: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(OpenGraphProperty.LOCALE, locale),
+      new _MetaCommand(OpenGraphProperty.LOCALE, locale),
     )
   }
 
   siteName(siteName: string | undefined | null): void {
     this.metaCommandService.apply(
-      new MetaCommand(OpenGraphProperty.SITE_NAME, siteName),
+      new _MetaCommand(OpenGraphProperty.SITE_NAME, siteName),
     )
   }
 }

@@ -5,7 +5,7 @@ import { MetaCommandProperty } from './meta-command-property'
 import { MetaCommand } from './meta-command'
 import { MockProvider } from 'ng-mocks'
 import { Meta } from '@angular/platform-browser'
-import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
+import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
 describe('MetaCommandService', () => {
   enableAutoSpy()

@@ -2,9 +2,9 @@ import { Inject, Injectable, Optional } from '@angular/core'
 import { MetadataRouteStrategy } from '../../routing/metadata-route-strategy'
 import { GeneralMetadata } from '../general-metadata'
 import { ActivatedRouteSnapshot } from '@angular/router'
-import { DefaultsService } from '../../common/defaults.service'
 import { GENERAL_METADATA_DEFAULTS_TOKEN } from '../general-metadata-defaults-token'
 import { GeneralMetadataRouteStrategy } from './general-metadata-route-strategy'
+import { _DefaultsService } from 'ngx-metadata/common'
 
 @Injectable()
 export class GeneralMetadataRouteDataService
@@ -15,7 +15,7 @@ export class GeneralMetadataRouteDataService
     @Optional()
     @Inject(GENERAL_METADATA_DEFAULTS_TOKEN)
     private readonly defaults: GeneralMetadata | null,
-    private readonly defaultsService: DefaultsService,
+    private readonly defaultsService: _DefaultsService,
   ) {}
 
   resolve(routeSnapshot: ActivatedRouteSnapshot): GeneralMetadata | undefined {

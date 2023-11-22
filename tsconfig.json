@@ -11,9 +11,7 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "paths": {
-      "ngx-metadata": [
-        "./dist/ngx-metadata"
-      ]
+      "ngx-metadata": ["./dist/ngx-metadata"]
     },
     "sourceMap": true,
     "declaration": false,
@@ -23,10 +21,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

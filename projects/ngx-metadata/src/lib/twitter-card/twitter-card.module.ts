@@ -2,7 +2,7 @@ import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core'
 import { TwitterCardService } from './twitter-card.service'
 import { TwitterCardApplierService } from './twitter-card-applier.service'
 import { TwitterCardAppliersService } from './twitter-card-appliers.service'
-import { MetadataRouteStrategy } from '../routing/metadata-route-strategy'
+import { _MetadataRouteStrategy } from 'ngx-metadata/routing'
 import { TwitterCardGeneralMetadataListenerService } from './twitter-card-general-metadata-listener.service'
 import { TwitterCardRouteStrategy } from './routing/twitter-card-route-strategy'
 import { DefaultTwitterCardRouteStrategy } from './routing/default-twitter-card-route-strategy'
@@ -48,7 +48,7 @@ export class TwitterCardModule {
           useClass: DefaultTwitterCardRouteStrategy,
         },
         {
-          provide: MetadataRouteStrategy,
+          provide: _MetadataRouteStrategy,
           useExisting: TwitterCardRouteStrategy,
           multi: true,
         },

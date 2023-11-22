@@ -1,5 +1,5 @@
 import { Inject, Injectable, Optional } from '@angular/core'
-import { MetadataRouteStrategy } from '../../routing/metadata-route-strategy'
+import { _MetadataRouteStrategy } from 'ngx-metadata/routing'
 import { GeneralMetadata } from '../general-metadata'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { GENERAL_METADATA_DEFAULTS_TOKEN } from '../general-metadata-defaults-token'
@@ -8,7 +8,7 @@ import { _DefaultsService } from 'ngx-metadata/common'
 
 @Injectable()
 export class GeneralMetadataRouteDataService
-  implements Pick<MetadataRouteStrategy<GeneralMetadata>, 'resolve'>
+  implements Pick<_MetadataRouteStrategy<GeneralMetadata>, 'resolve'>
 {
   constructor(
     private readonly generalMetadataRouteStrategy: GeneralMetadataRouteStrategy,

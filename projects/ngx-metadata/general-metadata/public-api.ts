@@ -1,0 +1,7 @@
+export { GeneralMetadataModule as NgxMetadataGeneralModule } from './src/general-metadata.module'
+export * from './src/routing/default-general-metadata-route-data'
+export { GeneralMetadataRouteDataService as _GeneralMetadataRouteDataService } from './src/routing/general-metadata-route-data.service'
+export * from './src/general-metadata.service'
+export { GeneralMetadataAppliersService as _GeneralMetadataAppliersService } from './src/general-metadata-appliers.service'
+export * from './src/general-metadata'
+export * from './src/general-metadata-image'

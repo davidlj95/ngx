@@ -2,7 +2,7 @@ import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core'
 import { GeneralMetadataService } from './general-metadata.service'
 import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attribute.service'
 import { DefaultGeneralMetadataRouteStrategy } from './routing/default-general-metadata-route-strategy'
-import { MetadataRouteStrategy } from '../routing/metadata-route-strategy'
+import { _MetadataRouteStrategy } from 'ngx-metadata/routing'
 import { GeneralMetadataAppliersService } from './general-metadata-appliers.service'
 import { GeneralMetadataApplierService } from './general-metadata-applier.service'
 import { GeneralMetadataRouteDataService } from './routing/general-metadata-route-data.service'
@@ -48,7 +48,7 @@ export class GeneralMetadataModule {
           useClass: DefaultGeneralMetadataRouteStrategy,
         },
         {
-          provide: MetadataRouteStrategy,
+          provide: _MetadataRouteStrategy,
           useExisting: GeneralMetadataRouteStrategy,
           multi: true,
         },

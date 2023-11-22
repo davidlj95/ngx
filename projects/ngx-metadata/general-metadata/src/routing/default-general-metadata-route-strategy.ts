@@ -3,7 +3,7 @@ import { GeneralMetadata } from '../general-metadata'
 import { GeneralMetadataService } from '../general-metadata.service'
 import { GeneralMetadataRouteStrategy } from './general-metadata-route-strategy'
 import { ActivatedRouteSnapshot } from '@angular/router'
-import { CurrentRouteDataKeyPathMetadataStrategy } from '../../routing/current-route-data-key-path-metadata-strategy'
+import { _CurrentRouteDataKeyPathMetadataStrategy } from 'ngx-metadata/routing'
 
 export const KEY = 'general'
 
@@ -12,7 +12,7 @@ export class DefaultGeneralMetadataRouteStrategy
   implements GeneralMetadataRouteStrategy
 {
   constructor(
-    private readonly currentRouteDataKeyPathMetadataStrategy: CurrentRouteDataKeyPathMetadataStrategy,
+    private readonly currentRouteDataKeyPathMetadataStrategy: _CurrentRouteDataKeyPathMetadataStrategy,
     private readonly generalMetadataService: GeneralMetadataService,
   ) {}
 

@@ -6,7 +6,7 @@ import {
   Optional,
 } from '@angular/core'
 import { OpenGraphProfileApplierService } from './open-graph-profile-applier.service'
-import { MetadataRouteStrategy } from '../routing/metadata-route-strategy'
+import { _MetadataRouteStrategy } from 'ngx-metadata/routing'
 import { OpenGraphProfileRouteStrategy } from './routing/open-graph-profile-route-strategy'
 import { OpenGraphProfile } from './open-graph-profile'
 import { OPEN_GRAPH_PROFILE_DEFAULTS_TOKEN } from './open-graph-profile-defaults-token'
@@ -49,7 +49,7 @@ export class OpenGraphProfileModule {
           useClass: DefaultOpenGraphProfileRouteStrategy,
         },
         {
-          provide: MetadataRouteStrategy,
+          provide: _MetadataRouteStrategy,
           useExisting: OpenGraphProfileRouteStrategy,
           multi: true,
         },

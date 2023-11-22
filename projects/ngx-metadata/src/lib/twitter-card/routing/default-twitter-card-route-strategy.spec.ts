@@ -2,13 +2,15 @@ import { TestBed } from '@angular/core/testing'
 import { DefaultTwitterCardRouteStrategy } from './default-twitter-card-route-strategy'
 import { MockProvider, MockService } from 'ng-mocks'
 import { ActivatedRouteSnapshot } from '@angular/router'
-import { GeneralMetadataRouteDataService } from '../../general-metadata/routing/general-metadata-route-data.service'
+import {
+  _GeneralMetadataRouteDataService,
+  GeneralMetadata,
+} from 'ngx-metadata/general-metadata'
 import { Provider } from '@angular/core'
-import { GeneralMetadata } from '../../general-metadata'
 import { _DefaultsService } from 'ngx-metadata/common'
 import { TwitterCard } from '../twitter-card'
 import { TwitterCardType } from '../twitter-card-type'
-import { CurrentRouteDataKeyPathMetadataStrategy } from '../../routing/current-route-data-key-path-metadata-strategy'
+import { _CurrentRouteDataKeyPathMetadataStrategy } from 'ngx-metadata/routing'
 import { TwitterCardService } from '../twitter-card.service'
 import { enableAutoSpy } from 'ngx-metadata/__tests__/enable-auto-spy'
 
@@ -27,8 +29,8 @@ describe('DefaultTwitterCardRouteStrategy', () => {
     it('should resolve route data using proper key path', () => {
       const sut = makeSut()
       const currentRouteDataKeyPathMetadataStrategy = TestBed.inject(
-        CurrentRouteDataKeyPathMetadataStrategy,
-      ) as jasmine.SpyObj<CurrentRouteDataKeyPathMetadataStrategy>
+        _CurrentRouteDataKeyPathMetadataStrategy,
+      ) as jasmine.SpyObj<_CurrentRouteDataKeyPathMetadataStrategy>
       currentRouteDataKeyPathMetadataStrategy.resolve.and.returnValue(
         dummyMetadata,
       )
@@ -44,8 +46,8 @@ describe('DefaultTwitterCardRouteStrategy', () => {
       it('should return metadata from route using simple strategy', () => {
         const sut = makeSut()
         const currentRouteDataKeyPathMetadataStrategy = TestBed.inject(
-          CurrentRouteDataKeyPathMetadataStrategy,
-        ) as jasmine.SpyObj<CurrentRouteDataKeyPathMetadataStrategy>
+          _CurrentRouteDataKeyPathMetadataStrategy,
+        ) as jasmine.SpyObj<_CurrentRouteDataKeyPathMetadataStrategy>
         currentRouteDataKeyPathMetadataStrategy.resolve.and.returnValue(
           dummyMetadata,
         )
@@ -68,19 +70,19 @@ describe('DefaultTwitterCardRouteStrategy', () => {
         },
       }
       let sut: DefaultTwitterCardRouteStrategy
-      let currentRouteDataKeyPathMetadataStrategy: jasmine.SpyObj<CurrentRouteDataKeyPathMetadataStrategy>
+      let currentRouteDataKeyPathMetadataStrategy: jasmine.SpyObj<_CurrentRouteDataKeyPathMetadataStrategy>
 
       beforeEach(() => {
         sut = makeSut({ generalMetadata: true })
         const generalMetadataRouteDataService = TestBed.inject(
-          GeneralMetadataRouteDataService,
-        ) as jasmine.SpyObj<GeneralMetadataRouteDataService>
+          _GeneralMetadataRouteDataService,
+        ) as jasmine.SpyObj<_GeneralMetadataRouteDataService>
         generalMetadataRouteDataService.resolve.and.returnValue(
           compatibleGeneralMetadata,
         )
         currentRouteDataKeyPathMetadataStrategy = TestBed.inject(
-          CurrentRouteDataKeyPathMetadataStrategy,
-        ) as jasmine.SpyObj<CurrentRouteDataKeyPathMetadataStrategy>
+          _CurrentRouteDataKeyPathMetadataStrategy,
+        ) as jasmine.SpyObj<_CurrentRouteDataKeyPathMetadataStrategy>
       })
 
       describe('when no twitter card data can be resolved', () => {
@@ -150,13 +152,13 @@ describe('DefaultTwitterCardRouteStrategy', () => {
 function makeSut(opts: { generalMetadata?: boolean } = {}) {
   const providers: Provider[] = [
     DefaultTwitterCardRouteStrategy,
-    MockProvider(CurrentRouteDataKeyPathMetadataStrategy),
+    MockProvider(_CurrentRouteDataKeyPathMetadataStrategy),
     _DefaultsService,
     MockProvider(TwitterCardService),
   ]
 
   if (opts.generalMetadata) {
-    providers.push(MockProvider(GeneralMetadataRouteDataService))
+    providers.push(MockProvider(_GeneralMetadataRouteDataService))
   }
 
   TestBed.configureTestingModule({

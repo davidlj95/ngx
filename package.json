@@ -19,6 +19,7 @@
     "lint-staged": "lint-staged"
   },
   "private": true,
+  "packageManager": "pnpm@8.10.5",
   "dependencies": {
     "@angular/animations": "^17.0.0",
     "@angular/common": "^17.0.0",

@@ -13,7 +13,8 @@ lint:
 	pnpm run lint --max-warnings 0
 
 test:
-	pnpm run test -- --browsers=ChromeHeadless --no-watch --no-progress --reporters progress --code-coverage
+	pnpm run test --browsers=ChromeHeadless --no-watch --no-progress \
+		--reporters progress --code-coverage
 
 run-main:
 	cd .. && act

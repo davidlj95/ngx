@@ -1,0 +1,5 @@
+export { GeneralMetadataModule } from './general-metadata.module'
+export { GeneralMetadataService } from './general-metadata.service'
+export { DefaultGeneralMetadataRouteData } from './routing/default-general-metadata-route-data'
+export { GeneralMetadata } from './general-metadata'
+export { GeneralMetadataImage } from './general-metadata-image'

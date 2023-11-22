@@ -1,0 +1,22 @@
+name: Push to main
+
+on:
+  push:
+    branches: ['main']
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/reusable-build.yml
+  test:
+    name: Test
+    uses: ./.github/workflows/reusable-test.yml
+  lint:
+    name: Lint
+    uses: ./.github/workflows/reusable-lint.yml
+  style:
+    name: Style
+    uses: ./.github/workflows/reusable-style.yml

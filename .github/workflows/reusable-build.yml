@@ -1,0 +1,33 @@
+name: Build
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: Git reference to checkout. Defaults to @actions/checkout default.
+        type: string
+        required: false
+        default: ''
+
+jobs:
+  build:
+    name: Build libraries
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Cache Angular build
+        uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3
+        env:
+          cache-name: angular-cache
+        with:
+          path: .angular/cache
+          key: ${{ env.cache-name }}-${{ inputs.ref != '' && inputs.ref || github.ref }}
+          restore-keys: |
+            ${{ env.cache-name }}
+      - name: Build libraries
+        run: cd .ci && make build

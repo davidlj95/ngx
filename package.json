@@ -18,7 +18,8 @@
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "commitlint-edit-msg": "commitlint --verbose --edit",
-    "commitlint-last": "commitlint --verbose --from HEAD~1"
+    "commitlint-last": "commitlint --verbose --from HEAD~1",
+    "generate-prettier-ignore": "cp .gitignore .prettierignore && cat .part.prettierignore >> .prettierignore"
   },
   "private": true,
   "packageManager": "pnpm@8.10.5",

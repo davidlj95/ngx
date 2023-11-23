@@ -1,0 +1,2 @@
+# Extra .prettierignore rules (apart from .gitignore ones)
+pnpm-lock.yaml

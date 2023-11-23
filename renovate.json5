@@ -1,0 +1,71 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  // 👇 Defined in https://github.com/renovatebot/renovate/blob/37.0.2/lib/config/presets/internal/config.ts
+  extends: ['config:js-lib', 'config:best-practices'],
+  prHourlyLimit: 0,
+  prConcurrentLimit: 5,
+  schedule: [
+    // Validate using https://codepen.io/rationaltiger24/full/ZExQEgK
+    // Though even if that says is valid, maybe invalid 🙃 as it wants 0 errors despite compiling
+    // So to be sure, `npm i later` on a tmp dir, `var later = require('later')' and check
+    // `later.parse.text('whatever schedule')` returns no errors (-1)
+    'at 9:00 am on the 1-7 day of the month on Saturday',
+  ],
+  timezone: 'Europe/Madrid',
+  labels: ['dependencies'],
+  packageRules: [
+    // Semantic commit messages & PR titles. Mocks @dependabot ones:
+    // build(deps) for production dependencies, build(deps-dev) for dev dependencies (see below)
+    // ℹ️ If placing this 👇 commit type and scope default in root config doesn't work. Most probably the config
+    // presets override that
+    {
+      matchFileNames: ['**/*'],
+      semanticCommitType: 'build',
+      semanticCommitScope: 'deps-dev',
+    },
+    {
+      matchDepTypes: ['dependencies'],
+      semanticCommitScope: 'deps',
+    },
+    {
+      matchUpdateTypes: ['pin', 'pinDigest'],
+      semanticCommitScope: 'deps',
+    },
+    // Tagging
+    {
+      matchManagers: ['github-actions'],
+      addLabels: ['github-actions'],
+    },
+    {
+      matchCategories: ['js'],
+      addLabels: ['javascript'],
+    },
+    {
+      matchCategories: ['node'],
+      addLabels: ['node'],
+    },
+    // Auto-merge minor/patch production ones & dev dependencies
+    {
+      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
+      automerge: true,
+    },
+    {
+      matchDepTypes: ['devDependencies'],
+      automerge: true,
+    },
+    // Angular v17 compatibilities
+    // https://angular.io/guide/versions
+    {
+      matchPackageNames: ['node'],
+      allowedVersions: '^18.13.0 || ^20.9.0',
+    },
+    {
+      matchPackageNames: ['typescript'],
+      allowedVersions: '>=4.9.3 <5.3.0',
+    },
+    {
+      matchPackageNames: ['rxjs'],
+      allowedVersions: '^6.5.3 || ^7.4.0',
+    },
+  ],
+}

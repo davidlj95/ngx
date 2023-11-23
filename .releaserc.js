@@ -11,9 +11,11 @@ module.exports = {
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
+    //👇 Publish built version
     ['@semantic-release/npm', { pkgRoot: './dist/ngx-metadata' }],
     '@semantic-release/github',
   ],
+  //👇 Add library name in tag
   tagFormat: 'ngx-metadata-v${version}',
   preset: 'conventionalcommits',
   presetConfig: {
@@ -66,6 +68,8 @@ module.exports = {
     ],
   },
   writerOpts: {
+    //👇 Add library name in release notes
+    // https://github.com/conventional-changelog/conventional-changelog/tree/conventional-changelog-writer-v7.0.1/packages/conventional-changelog-writer#finalizecontext
     finalizeContext: (context) => {
       return { ...context, version: `\`ngx-metadata\` v${context.version}` }
     },

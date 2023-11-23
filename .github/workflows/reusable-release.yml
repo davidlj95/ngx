@@ -1,0 +1,50 @@
+name: Release
+on:
+  workflow_call:
+    inputs:
+      build-artifact-name:
+        required: true
+        type: string
+    secrets:
+      npm-token:
+        required: true
+
+# Required by
+# https://github.com/semantic-release/github
+# https://github.com/semantic-release/npm
+permissions:
+  # For GitHub release creation & issues / PR comments
+  contents: write
+  issues: write
+  pull-requests: write
+  # For NPM provenance
+  id-token: write
+
+# Run one after another
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  semantic-release:
+    name: Semantic Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+      - name: Download distribution files
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
+        with:
+          name: ${{ inputs.build-artifact-name }}
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.npm-token }}
+        run: cd .ci && make release

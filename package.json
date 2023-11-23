@@ -19,7 +19,8 @@
     "lint-staged": "lint-staged",
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --verbose --from HEAD~1",
-    "generate-prettier-ignore": "cp .gitignore .prettierignore && cat .part.prettierignore >> .prettierignore"
+    "generate-prettier-ignore": "cp .gitignore .prettierignore && cat .part.prettierignore >> .prettierignore",
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "packageManager": "pnpm@8.10.5",
@@ -50,6 +51,7 @@
     "@types/jasmine": "5.1.4",
     "@typescript-eslint/eslint-plugin": "6.12.0",
     "@typescript-eslint/parser": "6.12.0",
+    "conventional-changelog-conventionalcommits": "7.0.2",
     "eslint": "8.54.0",
     "eslint-config-prettier": "9.0.0",
     "husky": "8.0.3",
@@ -63,6 +65,7 @@
     "ng-mocks": "14.12.1",
     "ng-packagr": "17.0.2",
     "prettier": "3.1.0",
+    "semantic-release": "22.0.8",
     "typescript": "5.2.2"
   }
 }

@@ -35,4 +35,3 @@ jobs:
       issues: write
       pull-requests: write
       id-token: write
-      packages: write

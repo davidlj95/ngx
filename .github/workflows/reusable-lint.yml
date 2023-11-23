@@ -22,3 +22,26 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run linter
         run: cd .ci && make lint
+
+  commit-messages:
+    name: Commit messages
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.ref }}
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Lint last commit
+        if: github.event_name == 'push'
+        run: pnpm run commitlint-last
+      - name: Lint all PR commits
+        if: github.event_name == 'pull_request'
+        run: |
+          pnpm commitlint \
+            --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} \
+            --to ${{ github.event.pull_request.head.sha }} \
+            --verbose

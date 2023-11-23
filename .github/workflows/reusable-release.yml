@@ -1,6 +1,10 @@
 name: Release
 on:
   workflow_call:
+    inputs:
+      build-artifact-name:
+        required: true
+        type: string
     secrets:
       npm-token:
         required: true
@@ -35,6 +39,10 @@ jobs:
         uses: ./.github/actions/setup
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
+      - name: Download distribution files
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
+        with:
+          name: ${{ inputs.build-artifact-name }}
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

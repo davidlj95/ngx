@@ -16,7 +16,9 @@
     "format": "prettier --ignore-unknown --write",
     "format-all": "npm run format -- .",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "commitlint-edit-msg": "commitlint --verbose --edit",
+    "commitlint-last": "commitlint --verbose --from HEAD~1"
   },
   "private": true,
   "packageManager": "pnpm@8.10.5",
@@ -42,6 +44,8 @@
     "@angular-eslint/template-parser": "17.1.0",
     "@angular/cli": "^17.0.2",
     "@angular/compiler-cli": "^17.0.0",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "6.11.0",
     "@typescript-eslint/parser": "6.11.0",

@@ -20,3 +20,14 @@ jobs:
   style:
     name: Style
     uses: ./.github/workflows/reusable-style.yml
+  release:
+    name: Release
+    needs: [build, test, lint]
+    uses: ./.github/workflows/reusable-release.yml
+    secrets:
+      npm-token: ${{ secrets.NPM_TOKEN }}
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write

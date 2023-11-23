@@ -9,5 +9,8 @@
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
-  "repository": "https://github.com/davidlj95/ngx"
+  "repository": "https://github.com/davidlj95/ngx",
+  "publishConfig": {
+    "access": "public"
+  }
 }

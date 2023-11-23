@@ -19,6 +19,8 @@ permissions:
   pull-requests: write
   # For NPM provenance
   id-token: write
+  # For publishing to GitHub Packages
+  packages: write
 
 # Run one after another
 concurrency:
@@ -47,5 +49,5 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.npm-token }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: cd .ci && make release

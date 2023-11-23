@@ -12,9 +12,9 @@
     "esModuleInterop": true,
     "paths": {
       // 👇 Changed to add secondary entry points
-      // "ngx-metadata": ["./dist/ngx-metadata"],
-      "ngx-metadata/*": ["./projects/ngx-metadata/*"],
-      "ngx-metadata": ["./projects/ngx-metadata"]
+      // "ngx-meta": ["./dist/ngx-meta"],
+      "@davidlj95/ngx-meta/*": ["./projects/ngx-meta/*"],
+      "@davidlj95/ngx-meta": ["./projects/ngx-meta"]
     },
     "sourceMap": true,
     "declaration": false,

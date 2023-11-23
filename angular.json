@@ -3,23 +3,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-metadata": {
+    "ngx-meta": {
       "projectType": "library",
-      "root": "projects/ngx-metadata",
-      "sourceRoot": "projects/ngx-metadata",
+      "root": "projects/ngx-meta",
+      "sourceRoot": "projects/ngx-meta",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngx-metadata/ng-package.json"
+            "project": "projects/ngx-meta/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-metadata/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-meta/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-metadata/tsconfig.lib.json"
+              "tsConfig": "projects/ngx-meta/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ngx-metadata/tsconfig.spec.json",
+            "tsConfig": "projects/ngx-meta/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
           }
         },
@@ -35,8 +35,8 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngx-metadata/**/*.ts",
-              "projects/ngx-metadata/**/*.html"
+              "projects/ngx-meta/**/*.ts",
+              "projects/ngx-meta/**/*.html"
             ]
           }
         }

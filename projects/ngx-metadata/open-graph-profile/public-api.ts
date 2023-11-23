@@ -1,5 +1,0 @@
-export { OpenGraphProfileModule as NgxMetadataOpenGraphProfileModule } from './src/open-graph-profile.module'
-export * from './src/routing/default-open-graph-profile-route-data'
-export * from './src/open-graph-profile.service'
-export * from './src/open-graph-profile'
-export * from './src/open-graph-profile-gender'

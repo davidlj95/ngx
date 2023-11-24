@@ -2,6 +2,10 @@
   "name": "@davidlj95/ngx-meta",
   "version": "0.0.0-PLACEHOLDER",
   "license": "MIT",
+  "author": {
+    "name": "David LJ",
+    "url": "https://davidlj95.com"
+  },
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0"

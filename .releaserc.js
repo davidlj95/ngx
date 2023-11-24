@@ -76,9 +76,10 @@ module.exports = {
       // https://github.com/semantic-release/commit-analyzer/blob/v11.1.0/README.md#specific-commit-properties
       // https://github.com/conventional-changelog/conventional-changelog/tree/conventional-commits-parser-v5.0.0/packages/conventional-commits-parser#usage
       // https://github.com/conventional-changelog/conventional-changelog/tree/conventional-changelog-conventionalcommits-v7.0.2/packages/conventional-changelog-conventionalcommits
+      // 👇 Maintenance releases. For instance when updating dependencies
       type: 'chore',
       scope: 'release',
-      subject: '*dependencies*',
+      subject: '*maintenance*',
       release: 'patch',
     },
   ],

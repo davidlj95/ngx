@@ -11,6 +11,7 @@
   "sideEffects": false,
   "repository": "https://github.com/davidlj95/ngx",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }

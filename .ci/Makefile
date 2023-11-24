@@ -26,4 +26,4 @@ format-check:
 	cd .. && pnpm run format-check-all
 
 release:
-	cd .. && pnpm run semantic-release --debug
+	cd .. && pnpm run semantic-release

@@ -23,12 +23,6 @@ module.exports = {
         changelogFile: 'projects/ngx-meta/CHANGELOG.md',
       },
     ],
-    [
-      'semantic-release-github-pullrequest',
-      {
-        assets: ['projects/ngx-meta/CHANGELOG.md'],
-      },
-    ],
   ],
   //👇 Add library name in tag
   tagFormat: 'ngx-meta-v${version}',

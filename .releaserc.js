@@ -17,6 +17,18 @@ module.exports = {
       { pkgRoot: './dist/ngx-meta', tarballDir: 'dist' },
     ],
     ['@semantic-release/github', { assets: 'dist/*.tgz' }],
+    [
+      '@semantic-release/changelog',
+      {
+        changelogFile: 'projects/ngx-meta/CHANGELOG.md',
+      },
+    ],
+    [
+      'semantic-release-github-pullrequest',
+      {
+        assets: ['projects/ngx-meta/CHANGELOG.md'],
+      },
+    ],
   ],
   //👇 Add library name in tag
   tagFormat: 'ngx-meta-v${version}',

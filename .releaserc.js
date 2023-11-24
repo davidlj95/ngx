@@ -70,6 +70,18 @@ module.exports = {
       },
     ],
   },
+  releaseRules: [
+    {
+      // Commit type depends on preset
+      // https://github.com/semantic-release/commit-analyzer/blob/v11.1.0/README.md#specific-commit-properties
+      // https://github.com/conventional-changelog/conventional-changelog/tree/conventional-commits-parser-v5.0.0/packages/conventional-commits-parser#usage
+      // https://github.com/conventional-changelog/conventional-changelog/tree/conventional-changelog-conventionalcommits-v7.0.2/packages/conventional-changelog-conventionalcommits
+      type: 'chore',
+      scope: 'release',
+      subject: '*dependencies*',
+      release: 'patch',
+    },
+  ],
   writerOpts: {
     //👇 Add library name in release notes
     // https://github.com/conventional-changelog/conventional-changelog/tree/conventional-changelog-writer-v7.0.1/packages/conventional-changelog-writer#finalizecontext

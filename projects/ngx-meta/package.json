@@ -8,8 +8,12 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "scripts": {},
   "sideEffects": false,
-  "repository": "https://github.com/davidlj95/ngx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidlj95/ngx.git"
+  },
   "publishConfig": {
     "access": "public",
     "provenance": true

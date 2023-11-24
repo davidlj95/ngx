@@ -12,10 +12,10 @@ module.exports = {
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
     //👇 Publish built version
-    [
-      '@semantic-release/npm',
-      { pkgRoot: './dist/ngx-meta', tarballDir: 'dist' },
-    ],
+    //[
+    //  '@semantic-release/npm',
+    //  { pkgRoot: './dist/ngx-meta', tarballDir: 'dist' },
+    //],
     ['@semantic-release/github', { assets: 'dist/*.tgz' }],
     [
       '@semantic-release/changelog',

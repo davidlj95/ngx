@@ -1,6 +1,7 @@
 {
   "name": "@davidlj95/ngx-meta",
   "version": "0.0.0-PLACEHOLDER",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0"

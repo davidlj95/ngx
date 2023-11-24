@@ -67,7 +67,7 @@
     "ng-packagr": "17.0.2",
     "prettier": "3.1.0",
     "semantic-release": "22.0.8",
-    "semantic-release-github-pullrequest": "1.3.0",
+    "semantic-release-github-pullrequest": "github:davidlj95/semantic-release-github-pullrequest",
     "typescript": "5.2.2"
   }
 }

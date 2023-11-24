@@ -11,16 +11,24 @@ module.exports = {
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
-    //👇 Publish built version
-    //[
-    //  '@semantic-release/npm',
-    //  { pkgRoot: './dist/ngx-meta', tarballDir: 'dist' },
-    //],
+    [
+      '@semantic-release/npm',
+      //👇 Publish built version
+      { pkgRoot: './dist/ngx-meta', tarballDir: 'dist', npmPublish: false },
+    ],
     ['@semantic-release/github', { assets: 'dist/*.tgz' }],
     [
       '@semantic-release/changelog',
       {
         changelogFile: 'projects/ngx-meta/CHANGELOG.md',
+      },
+    ],
+    [
+      '@semantic-release/git',
+      {
+        assets: ['projects/ngx-meta/CHANGELOG.md'],
+        message:
+          'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       },
     ],
   ],

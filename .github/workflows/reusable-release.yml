@@ -6,17 +6,19 @@ on:
         required: true
         type: string
     secrets:
+      # 👇 Not using default GitHub actions token in order to be able to commit
+      #    generated CHANGELOG to main branch. Alternatives:
+      #     - Nothing is pushed: we don't have a CHANGELOG :(
+      #     - PR for CHANGELOG: can't use community plugin to generate a PR :(
+      #       https://github.com/asbiin/semantic-release-github-pullrequest/pull/148
+      github-token:
+        required: true
       npm-token:
         required: true
 
 # Required by
-# https://github.com/semantic-release/github
 # https://github.com/semantic-release/npm
 permissions:
-  # For GitHub release creation & issues / PR comments
-  contents: write
-  issues: write
-  pull-requests: write
   # For NPM provenance
   id-token: write
 
@@ -46,6 +48,10 @@ jobs:
           path: 'dist'
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: 'Semantic Release bot'
+          GIT_AUTHOR_EMAIL: 'semantic-release@example.com'
+          GIT_COMITTER_NAME: 'Semantic Release bot'
+          GIT_COMITTER_EMAIL: 'semantic-release@example.com'
+          GITHUB_TOKEN: ${{ secrets.github-token }}
           NPM_TOKEN: ${{ secrets.npm-token }}
         run: cd .ci && make release

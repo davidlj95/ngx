@@ -12,8 +12,8 @@ module.exports = {
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
     //👇 Publish built version
-    ['@semantic-release/npm', { pkgRoot: './dist/ngx-meta' }],
-    '@semantic-release/github',
+    ['@semantic-release/npm', { pkgRoot: './dist/ngx-meta', tarballDir: true }],
+    ['@semantic-release/github', { assets: 'dist/*.tgz' }],
   ],
   //👇 Add library name in tag
   tagFormat: 'ngx-meta-v${version}',

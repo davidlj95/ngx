@@ -55,9 +55,9 @@ jobs:
       - name: Release
         env:
           GIT_AUTHOR_NAME: 'Semantic Release bot'
-          GIT_AUTHOR_EMAIL: 'semantic-release@example.com'
-          GIT_COMITTER_NAME: 'Semantic Release bot'
-          GIT_COMITTER_EMAIL: 'semantic-release@example.com'
+          GIT_AUTHOR_EMAIL: 'davidlj95@users.noreply.github.com'
+          GIT_COMMITTER_NAME: 'Semantic Release bot'
+          GIT_COMMITTER_EMAIL: 'davidlj95@users.noreply.github.com'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.npm-token }}
         run: cd .ci && make release

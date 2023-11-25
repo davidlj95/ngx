@@ -40,6 +40,9 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           fetch-depth: 0
+          # To set `git` CLI credentials to use with @semantic-release/git
+          # https://github.com/semantic-release/git/issues/196#issuecomment-702839100
+          token: ${{ secrets.github-token }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
@@ -55,6 +58,5 @@ jobs:
           GIT_AUTHOR_EMAIL: 'semantic-release@example.com'
           GIT_COMITTER_NAME: 'Semantic Release bot'
           GIT_COMITTER_EMAIL: 'semantic-release@example.com'
-          GH_TOKEN: ${{ secrets.github-token }}
           NPM_TOKEN: ${{ secrets.npm-token }}
         run: cd .ci && make release

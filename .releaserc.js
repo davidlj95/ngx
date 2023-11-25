@@ -27,8 +27,7 @@ module.exports = {
       '@semantic-release/git',
       {
         assets: ['projects/ngx-meta/CHANGELOG.md'],
-        message:
-          'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+        message: 'chore(release): ngx-meta v${nextRelease.version} [skip ci]',
       },
     ],
   ],

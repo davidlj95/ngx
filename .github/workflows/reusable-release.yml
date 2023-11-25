@@ -19,6 +19,9 @@ on:
 # Required by
 # https://github.com/semantic-release/npm
 permissions:
+  contents: write
+  issues: write
+  pull-requests: write
   # For NPM provenance
   id-token: write
 

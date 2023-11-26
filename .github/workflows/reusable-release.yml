@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+      - name: Installed dependencies integrity check
         run: npm audit signatures
       - name: Download distribution files
         uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
@@ -44,10 +44,13 @@ jobs:
           path: 'dist'
       - name: Release
         env:
-          GIT_AUTHOR_NAME: 'Semantic Release bot'
-          GIT_AUTHOR_EMAIL: 'davidlj95@users.noreply.github.com'
-          GIT_COMMITTER_NAME: 'Semantic Release bot'
-          GIT_COMMITTER_EMAIL: 'davidlj95@users.noreply.github.com'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.npm-token }}
         run: cd .ci && make release
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'chore(release): update CHANGELOG.md'
+          body: 'Adds generated assets from last release(s)'
+          branch: release/update-notes
+          labels: 'semantic-release'

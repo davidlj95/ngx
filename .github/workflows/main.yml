@@ -30,6 +30,7 @@ jobs:
       build-artifact-name: build
     secrets:
       npm-token: ${{ secrets.NPM_TOKEN }}
+      github-token-pr: ${{ secrets.PR_GH_TOKEN }}
     permissions:
       contents: write
       issues: write

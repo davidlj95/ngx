@@ -8,6 +8,12 @@ on:
     secrets:
       npm-token:
         required: true
+      # 👇 Built-in GitHub token can't create Pull Requests
+      # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#preventing-github-actions-from-creating-or-approving-pull-requests
+      # So a special fine-grained PAT is used instead. This way, just this PAT
+      # can be used for those purposes and other actions don't have this perm
+      github-token-pr:
+        required: true
 
 # Required by
 # https://github.com/semantic-release/github
@@ -50,6 +56,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
+          token: ${{ secrets.github-token-pr }}
           commit-message: 'chore(release): update CHANGELOG.md'
           body: 'Adds generated assets from last release(s)'
           branch: release/update-notes

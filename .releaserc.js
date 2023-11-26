@@ -3,9 +3,9 @@
  */
 module.exports = {
   branches: [
-    //👇 Fake "release" branch so that we can release alpha versions in `main`
+    //👇 Fake branch so that we can release alpha versions in `main`
     //   until we can release 1.0.0
-    'release',
+    'semantic-release',
     { name: 'main', prerelease: 'alpha' },
   ],
   plugins: [

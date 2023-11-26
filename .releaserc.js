@@ -23,13 +23,6 @@ module.exports = {
         changelogFile: 'projects/ngx-meta/CHANGELOG.md',
       },
     ],
-    [
-      '@semantic-release/git',
-      {
-        assets: ['projects/ngx-meta/CHANGELOG.md'],
-        message: 'chore(release): ngx-meta v${nextRelease.version} [skip ci]',
-      },
-    ],
   ],
   //👇 Add library name in tag
   tagFormat: 'ngx-meta-v${version}',

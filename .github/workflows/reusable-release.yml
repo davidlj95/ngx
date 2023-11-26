@@ -54,10 +54,16 @@ jobs:
           NPM_TOKEN: ${{ secrets.npm-token }}
         run: cd .ci && make release
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.github-token-pr }}
           commit-message: 'chore(release): update CHANGELOG.md'
+          title: 'chore(release): update generated assets'
           body: 'Adds generated assets from last release(s)'
           branch: release/update-notes
           labels: 'semantic-release'
+      - name: Enable auto-merge
+        run: gh pr merge --auto "${{ steps.cpr.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ secrets.github-token-pr }}

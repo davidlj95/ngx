@@ -5,6 +5,7 @@
 - debug release PR plugin ([e53a922](https://github.com/davidlj95/ngx/commit/e53a9229c65f4c07a2e697fd826c1410bdfba387))
 - **release:** maintenance debugging PR flow ([e246882](https://github.com/davidlj95/ngx/commit/e246882a2222411b76c0c37472d4029928a8e898))
 - **release:** remove @semantic-release/git step ([970d6d5](https://github.com/davidlj95/ngx/commit/970d6d532df9287bb5aa1bdedb3cd0f644b7dc1e))
+- **release:** update CHANGELOG.md ([#27](https://github.com/davidlj95/ngx/issues/27)) ([a895467](https://github.com/davidlj95/ngx/commit/a895467f8592af97a7b1558852d4dbb573b545fe))
 - remove broken semantic-release github PR dep ([6645d45](https://github.com/davidlj95/ngx/commit/6645d45abbf3febe9b50a42bfb7ce58eaa74af53))
 
 ### Build System
@@ -22,9 +23,16 @@
 - **release:** add required privileges to create PRs ([116b8dd](https://github.com/davidlj95/ngx/commit/116b8dd8c23e5f8ac33847915c735622d77b5bb7))
 - **release:** back to GitHub token for auth ([553be44](https://github.com/davidlj95/ngx/commit/553be441987e057fd40e0bf31fc0ab19043c1e9e))
 - **release:** enable created PR auto-merge & fix title ([280a425](https://github.com/davidlj95/ngx/commit/280a4253e373b68d0531055b71cc3f721e1bcd1d))
+- **release:** fix error when no PR is created ([f8f3127](https://github.com/davidlj95/ngx/commit/f8f3127e21e52fd6cad4278bac13d9f7431897a8))
 - **release:** fix gh CLI cmd again (missing flag) ([2295253](https://github.com/davidlj95/ngx/commit/2295253c9659e8dd0af4701f3d16894537e60bb1))
 - **release:** fix gh merge CLI cmd ([a775e33](https://github.com/davidlj95/ngx/commit/a775e33aae4d623c02b62d2184bdd49c780fe828))
 - **release:** use action to publish outputs ([090fc35](https://github.com/davidlj95/ngx/commit/090fc35bd8a09e7fad1f8e2dd4803e899a38e05b))
 - rename gh token env var ([181256f](https://github.com/davidlj95/ngx/commit/181256fb1c0c49addf16668600c40cc97e76df40))
 - revert to previous cache way ([#23](https://github.com/davidlj95/ngx/issues/23)) ([53af7c4](https://github.com/davidlj95/ngx/commit/53af7c480b7e60c822c06eac7fdc6e6ffc2bca53))
 - workaroud for git/github & semantic release ([0b5649a](https://github.com/davidlj95/ngx/commit/0b5649a0a4004ee8b6d1572d9e84ef7f6b7c9331))
+
+## Older alpha releases
+
+Can be viewed through [GitHub Releases](https://github.com/davidlj95/ngx/releases)
+
+No CHANGELOG was published then.

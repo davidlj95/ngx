@@ -64,6 +64,7 @@ jobs:
           branch: release/update-notes
           labels: 'semantic-release'
       - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-operation == 'created'
         run: >
           gh pr merge "${{ steps.cpr.outputs.pull-request-number }}"
           --auto --squash

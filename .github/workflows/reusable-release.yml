@@ -64,6 +64,6 @@ jobs:
           branch: release/update-notes
           labels: 'semantic-release'
       - name: Enable auto-merge
-        run: gh pr merge --auto "${{ steps.cpr.outputs.pull-request-number }}"
+        run: gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --auto
         env:
           GH_TOKEN: ${{ secrets.github-token-pr }}

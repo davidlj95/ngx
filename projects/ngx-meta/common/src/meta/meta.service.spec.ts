@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing'
 
-import { MetaCommandService } from './meta-command.service'
+import { MetaService } from './meta.service'
 import { MetaProperty } from './meta-property'
 import { MockProvider } from 'ng-mocks'
 import { Meta } from '@angular/platform-browser'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 
-describe('MetaCommandService', () => {
+describe('MetaService', () => {
   enableAutoSpy()
 
-  let sut: MetaCommandService
+  let sut: MetaService
   let metaService: Meta
 
   beforeEach(() => {
@@ -65,7 +65,7 @@ describe('MetaCommandService', () => {
 
 function makeSut() {
   TestBed.configureTestingModule({
-    providers: [MetaCommandService, MockProvider(Meta)],
+    providers: [MetaService, MockProvider(Meta)],
   })
-  return TestBed.inject(MetaCommandService)
+  return TestBed.inject(MetaService)
 }

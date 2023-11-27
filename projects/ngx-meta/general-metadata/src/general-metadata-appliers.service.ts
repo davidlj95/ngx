@@ -5,10 +5,7 @@ import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attrib
 import { GeneralMetadataImage } from './general-metadata-image'
 import { GeneralMetadata } from './general-metadata'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
-import {
-  _MetaCommandService,
-  _MetadataAppliers,
-} from '@davidlj95/ngx-meta/common'
+import { _MetadataAppliers, _MetaService } from '@davidlj95/ngx-meta/common'
 
 /**
  * Implements how each metadata is applied to the DOM
@@ -23,7 +20,7 @@ export class GeneralMetadataAppliersService
 
   constructor(
     private titleService: Title,
-    private metaCommandService: _MetaCommandService,
+    private metaService: _MetaService,
     private linkRelCanonicalService: LinkRelCanonicalService,
     private htmlLangAttributeService: HtmlLangAttributeService,
   ) {}
@@ -36,23 +33,23 @@ export class GeneralMetadataAppliersService
   }
 
   description(description: string | undefined | null) {
-    this.metaCommandService.apply(StandardMetaProperty.DESCRIPTION, description)
+    this.metaService.apply(StandardMetaProperty.DESCRIPTION, description)
     this.changes$.emit({ description })
   }
 
   author(author: string | undefined | null) {
-    this.metaCommandService.apply(StandardMetaProperty.AUTHOR, author)
+    this.metaService.apply(StandardMetaProperty.AUTHOR, author)
   }
 
   keywords(keywords: readonly string[] | undefined | null) {
-    this.metaCommandService.apply(
+    this.metaService.apply(
       StandardMetaProperty.KEYWORDS,
       keywords ? keywords.join(',') : keywords,
     )
   }
 
   generator(generator: boolean | undefined | null) {
-    this.metaCommandService.apply(
+    this.metaService.apply(
       StandardMetaProperty.GENERATOR,
       generator === true
         ? `Angular v${VERSION.full}`
@@ -63,7 +60,7 @@ export class GeneralMetadataAppliersService
   }
 
   applicationName(applicationName: string | undefined | null) {
-    this.metaCommandService.apply(
+    this.metaService.apply(
       StandardMetaProperty.APPLICATION_NAME,
       applicationName,
     )

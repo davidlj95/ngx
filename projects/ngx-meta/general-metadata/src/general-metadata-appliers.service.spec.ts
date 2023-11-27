@@ -10,18 +10,18 @@ import { GeneralMetadata } from './general-metadata'
 import { GeneralMetadataImage } from './general-metadata-image'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
-import { _MetaCommandService } from '@davidlj95/ngx-meta/common'
+import { _MetaService } from '@davidlj95/ngx-meta/common'
 
 describe('GeneralMetadataAppliersService', () => {
   enableAutoSpy()
 
   let sut: GeneralMetadataAppliersService
   // noinspection DuplicatedCode
-  let metaCommandService: _MetaCommandService
+  let metaService: _MetaService
 
   beforeEach(() => {
     sut = makeSut()
-    metaCommandService = TestBed.inject(_MetaCommandService)
+    metaService = TestBed.inject(_MetaService)
   })
 
   describe('title', () => {
@@ -80,7 +80,7 @@ describe('GeneralMetadataAppliersService', () => {
     it('should apply meta command with its property and value', () => {
       sut.description(description)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
         StandardMetaProperty.DESCRIPTION,
         description,
       )
@@ -104,7 +104,7 @@ describe('GeneralMetadataAppliersService', () => {
     it('should apply meta command with its property and value', () => {
       sut.author(author)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
         StandardMetaProperty.AUTHOR,
         author,
       )
@@ -117,7 +117,7 @@ describe('GeneralMetadataAppliersService', () => {
     it('should apply meta command with its property and keywords separated by comma', () => {
       sut.keywords(keywords)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
         StandardMetaProperty.KEYWORDS,
         'Lorem,ipsum,lorem',
       )
@@ -131,7 +131,7 @@ describe('GeneralMetadataAppliersService', () => {
       it('should apply meta command with generator property and Angular version', () => {
         sut.generator(generator)
 
-        expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
+        expect(metaService.apply).toHaveBeenCalledOnceWith(
           StandardMetaProperty.GENERATOR,
           `Angular v${VERSION.full}`,
         )
@@ -144,7 +144,7 @@ describe('GeneralMetadataAppliersService', () => {
       it('should apply meta command with generator property and undefined content', () => {
         sut.generator(generator)
 
-        expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
+        expect(metaService.apply).toHaveBeenCalledOnceWith(
           StandardMetaProperty.GENERATOR,
           undefined,
         )
@@ -157,7 +157,7 @@ describe('GeneralMetadataAppliersService', () => {
         it(`should apply meta command with generator property and ${generator} content`, () => {
           sut.generator(generator)
 
-          expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
+          expect(metaService.apply).toHaveBeenCalledOnceWith(
             StandardMetaProperty.GENERATOR,
             generator,
           )
@@ -172,7 +172,7 @@ describe('GeneralMetadataAppliersService', () => {
     it('should apply meta command with its property and content', () => {
       sut.applicationName(applicationName)
 
-      expect(metaCommandService.apply).toHaveBeenCalledWith(
+      expect(metaService.apply).toHaveBeenCalledWith(
         StandardMetaProperty.APPLICATION_NAME,
         applicationName,
       )
@@ -268,7 +268,7 @@ function makeSut() {
     providers: [
       GeneralMetadataAppliersService,
       MockProvider(Title),
-      MockProvider(_MetaCommandService),
+      MockProvider(_MetaService),
       MockProvider(LinkRelCanonicalService),
       MockProvider(HtmlLangAttributeService),
     ],

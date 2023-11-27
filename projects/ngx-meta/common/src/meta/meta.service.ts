@@ -4,7 +4,7 @@ import { Meta } from '@angular/platform-browser'
 import { MetaContent } from './meta-content'
 
 @Injectable()
-export class MetaCommandService {
+export class MetaService {
   constructor(private readonly meta: Meta) {}
 
   apply(property: MetaProperty, content: MetaContent) {

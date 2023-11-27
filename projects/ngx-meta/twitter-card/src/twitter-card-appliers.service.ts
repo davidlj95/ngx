@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core'
 import { TwitterCard } from './twitter-card'
-import { TwitterCardType } from './twitter-card-type'
-import { TwitterCardImage } from './twitter-card-image'
 import { TwitterCardMetaProperty } from './twitter-card-meta-property'
 import { _MetadataAppliers, _MetaService } from '@davidlj95/ngx-meta/common'
 
@@ -11,35 +9,35 @@ export class TwitterCardAppliersService
 {
   constructor(private readonly metaService: _MetaService) {}
 
-  card(card: TwitterCardType | undefined | null): void {
+  card(card: TwitterCard['card']): void {
     this.metaService.apply(TwitterCardMetaProperty.CARD, card)
   }
 
-  site(site: string | undefined | null): void {
+  site(site: TwitterCard['site']): void {
     this.metaService.apply(TwitterCardMetaProperty.SITE, site)
   }
 
-  siteId(siteId: string | undefined | null): void {
+  siteId(siteId: TwitterCard['siteId']): void {
     this.metaService.apply(TwitterCardMetaProperty.SITE_ID, siteId)
   }
 
-  creator(creator: string | undefined | null): void {
+  creator(creator: TwitterCard['creator']): void {
     this.metaService.apply(TwitterCardMetaProperty.CREATOR, creator)
   }
 
-  creatorId(creatorId: string | undefined | null): void {
+  creatorId(creatorId: TwitterCard['creatorId']): void {
     this.metaService.apply(TwitterCardMetaProperty.CREATOR_ID, creatorId)
   }
 
-  description(description: string | undefined | null): void {
+  description(description: TwitterCard['description']): void {
     this.metaService.apply(TwitterCardMetaProperty.DESCRIPTION, description)
   }
 
-  title(title: string | undefined | null): void {
+  title(title: TwitterCard['title']): void {
     this.metaService.apply(TwitterCardMetaProperty.TITLE, title)
   }
 
-  image(image: TwitterCardImage | undefined | null): void {
+  image(image: TwitterCard['image']): void {
     if (image === null) {
       const imageProperties = TwitterCardMetaProperty.images()
       for (const property of imageProperties) {

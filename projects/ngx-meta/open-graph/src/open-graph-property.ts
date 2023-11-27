@@ -27,7 +27,8 @@ export class OpenGraphProperty extends _ComposableMetaCommandProperty {
     super(
       {
         separator: OpenGraphProperty.SEPARATOR,
-        attribute: 'property',
+        keyAttribute: 'property',
+        contentAttribute: 'content',
       },
       ...[OpenGraphProperty.PREFIX, ...names],
     )
@@ -35,6 +36,8 @@ export class OpenGraphProperty extends _ComposableMetaCommandProperty {
   }
 
   public static images(): ReadonlyArray<OpenGraphProperty> {
-    return [...this.ALL].filter(({ name }) => name.startsWith(this.IMAGE.name))
+    return [...this.ALL].filter(({ keyName }) =>
+      keyName.startsWith(this.IMAGE.keyName),
+    )
   }
 }

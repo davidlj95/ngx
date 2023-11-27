@@ -24,13 +24,19 @@ export class TwitterCardMetaProperty extends _ComposableMetaCommandProperty {
 
   constructor(...names: ReadonlyArray<string>) {
     super(
-      { separator: TwitterCardMetaProperty.SEPARATOR, attribute: 'name' },
+      {
+        separator: TwitterCardMetaProperty.SEPARATOR,
+        keyAttribute: 'name',
+        contentAttribute: 'content',
+      },
       ...[TwitterCardMetaProperty.PREFIX, ...names],
     )
     TwitterCardMetaProperty._all.add(this)
   }
 
   public static images() {
-    return [...this.ALL].filter(({ name }) => name.startsWith(this.IMAGE.name))
+    return [...this.ALL].filter(({ keyName }) =>
+      keyName.startsWith(this.IMAGE.keyName),
+    )
   }
 }

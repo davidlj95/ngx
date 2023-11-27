@@ -6,14 +6,20 @@ export class ComposableMetaCommandProperty extends MetaCommandProperty {
   constructor(
     {
       separator,
-      attribute,
+      keyAttribute,
+      contentAttribute,
     }: {
       separator: string
-      attribute: string
+      keyAttribute: string
+      contentAttribute?: string
     },
     ...names: ReadonlyArray<string>
   ) {
-    super({ attribute, name: names.join(separator) })
+    super({
+      keyAttribute,
+      valueAttribute: contentAttribute,
+      keyName: names.join(separator),
+    })
     this.separator = separator
   }
 }

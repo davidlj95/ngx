@@ -1,13 +1,23 @@
 export class MetaCommandProperty {
-  public readonly attribute: string
-  public readonly name: string
+  public readonly keyAttribute: string
+  public readonly keyName: string
+  public readonly valueAttribute: string
 
-  constructor({ attribute, name }: { attribute: string; name: string }) {
-    this.attribute = attribute
-    this.name = name
+  constructor({
+    keyAttribute,
+    keyName,
+    valueAttribute,
+  }: {
+    keyAttribute: string
+    keyName: string
+    valueAttribute?: string
+  }) {
+    this.keyAttribute = keyAttribute
+    this.keyName = keyName
+    this.valueAttribute = valueAttribute ?? 'content'
   }
 
   public get selector(): string {
-    return `${this.attribute}='${this.name}'`
+    return `${this.keyAttribute}='${this.keyName}'`
   }
 }

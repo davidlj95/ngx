@@ -20,8 +20,8 @@ describe('MetaCommandService', () => {
 
   describe('apply', () => {
     const property = new MetaCommandProperty({
-      attribute: 'name',
-      name: 'dummy',
+      keyAttribute: 'name',
+      keyName: 'dummy',
     })
 
     describe('when content is not provided (undefined)', () => {

@@ -14,7 +14,7 @@ export class MetaCommand<P extends MetaCommandProperty> {
           command ${this.property.selector}: content is ${this.content}`)
     }
     return {
-      [this.property.attribute]: this.property.name,
+      [this.property.keyAttribute]: this.property.keyName,
       content: this.content,
     }
   }

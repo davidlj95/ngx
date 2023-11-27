@@ -8,6 +8,6 @@ export class StandardMetaProperty extends _MetaCommandProperty {
   public static APPLICATION_NAME = new this('application-name')
 
   constructor(name: string) {
-    super({ attribute: 'name', name })
+    super({ keyAttribute: 'name', keyName: name, valueAttribute: 'content' })
   }
 }

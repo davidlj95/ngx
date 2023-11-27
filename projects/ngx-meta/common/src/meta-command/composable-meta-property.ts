@@ -1,6 +1,6 @@
-import { MetaCommandProperty } from './meta-command-property'
+import { MetaProperty } from './meta-property'
 
-export class ComposableMetaCommandProperty extends MetaCommandProperty {
+export class ComposableMetaProperty extends MetaProperty {
   public readonly separator: string
 
   constructor(

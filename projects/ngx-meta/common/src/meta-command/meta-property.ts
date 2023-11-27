@@ -1,4 +1,4 @@
-export class MetaCommandProperty {
+export class MetaProperty {
   public readonly keyAttribute: string
   public readonly keyName: string
   public readonly valueAttribute: string

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core'
 import { MetaCommand } from './meta-command'
-import { MetaCommandProperty } from './meta-command-property'
+import { MetaProperty } from './meta-property'
 import { Meta } from '@angular/platform-browser'
 
 @Injectable()
 export class MetaCommandService {
   constructor(private readonly meta: Meta) {}
 
-  public apply(metaCommand: MetaCommand<MetaCommandProperty>) {
+  public apply(metaCommand: MetaCommand<MetaProperty>) {
     switch (metaCommand.content) {
       case undefined:
       case null:

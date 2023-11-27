@@ -1,6 +1,6 @@
-import { _ComposableMetaCommandProperty } from '@davidlj95/ngx-meta/common'
+import { _ComposableMetaProperty } from '@davidlj95/ngx-meta/common'
 
-export class OpenGraphProperty extends _ComposableMetaCommandProperty {
+export class OpenGraphProperty extends _ComposableMetaProperty {
   public static SEPARATOR = ':'
   public static PREFIX = `og`
 

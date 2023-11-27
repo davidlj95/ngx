@@ -1,8 +1,8 @@
 import { MetaDefinition } from '@angular/platform-browser'
 import { MetaCommandContent } from './meta-command-content'
-import { MetaCommandProperty } from './meta-command-property'
+import { MetaProperty } from './meta-property'
 
-export class MetaCommand<P extends MetaCommandProperty> {
+export class MetaCommand<P extends MetaProperty> {
   constructor(
     public readonly property: P,
     public readonly content: MetaCommandContent,

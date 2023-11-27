@@ -1,6 +1,6 @@
-import { _ComposableMetaCommandProperty } from '@davidlj95/ngx-meta/common'
+import { _ComposableMetaProperty } from '@davidlj95/ngx-meta/common'
 
-export class TwitterCardMetaProperty extends _ComposableMetaCommandProperty {
+export class TwitterCardMetaProperty extends _ComposableMetaProperty {
   public static SEPARATOR = ':'
   public static PREFIX = `twitter`
 

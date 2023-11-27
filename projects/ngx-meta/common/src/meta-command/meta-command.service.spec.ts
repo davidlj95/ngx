@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 
 import { MetaCommandService } from './meta-command.service'
-import { MetaCommandProperty } from './meta-command-property'
+import { MetaProperty } from './meta-property'
 import { MetaCommand } from './meta-command'
 import { MockProvider } from 'ng-mocks'
 import { Meta } from '@angular/platform-browser'
@@ -19,7 +19,7 @@ describe('MetaCommandService', () => {
   })
 
   describe('apply', () => {
-    const property = new MetaCommandProperty({
+    const property = new MetaProperty({
       keyAttribute: 'name',
       keyName: 'dummy',
     })

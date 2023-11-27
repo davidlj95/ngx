@@ -1,7 +1,6 @@
 export { CommonModule as NgxMetaCommonModule } from './src/common.module'
 export { ComposableMetaProperty as _ComposableMetaProperty } from './src/meta-command/composable-meta-property'
 export { MetaCommandService as _MetaCommandService } from './src/meta-command/meta-command.service'
-export { MetaCommand as _MetaCommand } from './src/meta-command/meta-command'
 export { MetaContent as _MetaContent } from './src/meta-command/meta-content'
 export { MetaProperty as _MetaProperty } from './src/meta-command/meta-property'
 export { DefaultsService as _DefaultsService } from './src/defaults.service'

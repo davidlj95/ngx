@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core'
-import { MetaCommand } from './meta-command'
 import { MetaProperty } from './meta-property'
 import { Meta } from '@angular/platform-browser'
+import { MetaContent } from './meta-content'
 
 @Injectable()
 export class MetaCommandService {
   constructor(private readonly meta: Meta) {}
 
-  public apply(metaCommand: MetaCommand<MetaProperty>) {
-    switch (metaCommand.content) {
+  newApply(property: MetaProperty, content: MetaContent) {
+    switch (content) {
       case undefined:
       case null:
-        this.meta.removeTag(metaCommand.property.selector)
+        this.meta.removeTag(property.selector)
         return
       default:
-        this.meta.updateTag(metaCommand.definition)
+        this.meta.updateTag({
+          [property.keyAttribute]: property.keyName,
+          [property.contentAttribute]: content,
+        })
     }
   }
 }

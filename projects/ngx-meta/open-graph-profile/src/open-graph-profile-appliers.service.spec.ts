@@ -5,7 +5,7 @@ import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { OpenGraphProfileAppliersService } from './open-graph-profile-appliers.service'
 import { OpenGraphProfileProperty } from './open-graph-profile-property'
 import { OpenGraphProfileGender } from './open-graph-profile-gender'
-import { _MetaCommand, _MetaCommandService } from '@davidlj95/ngx-meta/common'
+import { _MetaCommandService } from '@davidlj95/ngx-meta/common'
 
 describe('OpenGraphProfileAppliersService', () => {
   enableAutoSpy()
@@ -25,8 +25,9 @@ describe('OpenGraphProfileAppliersService', () => {
     it('should apply meta command with first name property and content', () => {
       sut.firstName(firstName)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(OpenGraphProfileProperty.FIRST_NAME, firstName),
+      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+        OpenGraphProfileProperty.FIRST_NAME,
+        firstName,
       )
     })
   })
@@ -37,8 +38,9 @@ describe('OpenGraphProfileAppliersService', () => {
     it('should apply meta command with last name property and content', () => {
       sut.lastName(lastName)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(OpenGraphProfileProperty.LAST_NAME, lastName),
+      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+        OpenGraphProfileProperty.LAST_NAME,
+        lastName,
       )
     })
   })
@@ -49,8 +51,9 @@ describe('OpenGraphProfileAppliersService', () => {
     it('should apply meta command with username property and content', () => {
       sut.username(username)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(OpenGraphProfileProperty.USERNAME, username),
+      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+        OpenGraphProfileProperty.USERNAME,
+        username,
       )
     })
   })
@@ -61,8 +64,9 @@ describe('OpenGraphProfileAppliersService', () => {
     it('should apply meta command with gender property and content', () => {
       sut.gender(gender)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(OpenGraphProfileProperty.GENDER, gender),
+      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+        OpenGraphProfileProperty.GENDER,
+        gender,
       )
     })
   })

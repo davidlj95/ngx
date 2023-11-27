@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing'
 
 import { MetaCommandService } from './meta-command.service'
 import { MetaProperty } from './meta-property'
-import { MetaCommand } from './meta-command'
 import { MockProvider } from 'ng-mocks'
 import { Meta } from '@angular/platform-browser'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
@@ -18,45 +17,47 @@ describe('MetaCommandService', () => {
     metaService = TestBed.inject(Meta)
   })
 
-  describe('apply', () => {
+  describe('newApply', () => {
     const property = new MetaProperty({
-      keyAttribute: 'name',
+      keyAttribute: 'propertyName',
       keyName: 'dummy',
+      contentAttribute: 'propertyContent',
     })
 
     describe('when content is not provided (undefined)', () => {
-      const metaCommand = new MetaCommand(property, undefined)
+      const content = undefined
 
-      it('should remove meta tag', () => {
-        sut.apply(metaCommand)
+      it('should remove meta element', () => {
+        sut.newApply(property, content)
 
         expect(metaService.removeTag).toHaveBeenCalledOnceWith(
-          metaCommand.property.selector,
-        )
-      })
-    })
-
-    describe('when content is provided', () => {
-      const metaCommand = new MetaCommand(property, 'Lorem ipsum lorem')
-
-      it('should update the meta tag', () => {
-        sut.apply(metaCommand)
-
-        expect(metaService.updateTag).toHaveBeenCalledOnceWith(
-          metaCommand.definition,
+          property.selector,
         )
       })
     })
 
     describe('when content is null', () => {
-      const metaCommand = new MetaCommand(property, null)
+      const content = null
 
-      it('should remove the meta tag', () => {
-        sut.apply(metaCommand)
+      it('should remove meta element', () => {
+        sut.newApply(property, content)
 
         expect(metaService.removeTag).toHaveBeenCalledOnceWith(
-          metaCommand.property.selector,
+          property.selector,
         )
+      })
+    })
+
+    describe('when content is provided', () => {
+      const content = 'Lorem ipsum lorem'
+
+      it('should update the meta tag', () => {
+        sut.newApply(property, content)
+
+        expect(metaService.updateTag).toHaveBeenCalledOnceWith({
+          [property.keyAttribute]: property.keyName,
+          [property.contentAttribute]: content,
+        })
       })
     })
   })

@@ -6,7 +6,6 @@ import { GeneralMetadataImage } from './general-metadata-image'
 import { GeneralMetadata } from './general-metadata'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
 import {
-  _MetaCommand,
   _MetaCommandService,
   _MetadataAppliers,
 } from '@davidlj95/ngx-meta/common'
@@ -37,43 +36,39 @@ export class GeneralMetadataAppliersService
   }
 
   description(description: string | undefined | null) {
-    this.metaCommandService.apply(
-      new _MetaCommand(StandardMetaProperty.DESCRIPTION, description),
+    this.metaCommandService.newApply(
+      StandardMetaProperty.DESCRIPTION,
+      description,
     )
     this.changes$.emit({ description })
   }
 
   author(author: string | undefined | null) {
-    this.metaCommandService.apply(
-      new _MetaCommand(StandardMetaProperty.AUTHOR, author),
-    )
+    this.metaCommandService.newApply(StandardMetaProperty.AUTHOR, author)
   }
 
   keywords(keywords: readonly string[] | undefined | null) {
-    this.metaCommandService.apply(
-      new _MetaCommand(
-        StandardMetaProperty.KEYWORDS,
-        keywords ? keywords.join(',') : keywords,
-      ),
+    this.metaCommandService.newApply(
+      StandardMetaProperty.KEYWORDS,
+      keywords ? keywords.join(',') : keywords,
     )
   }
 
   generator(generator: boolean | undefined | null) {
-    this.metaCommandService.apply(
-      new _MetaCommand(
-        StandardMetaProperty.GENERATOR,
-        generator === true
-          ? `Angular v${VERSION.full}`
-          : generator === false
-            ? undefined
-            : generator,
-      ),
+    this.metaCommandService.newApply(
+      StandardMetaProperty.GENERATOR,
+      generator === true
+        ? `Angular v${VERSION.full}`
+        : generator === false
+          ? undefined
+          : generator,
     )
   }
 
   applicationName(applicationName: string | undefined | null) {
-    this.metaCommandService.apply(
-      new _MetaCommand(StandardMetaProperty.APPLICATION_NAME, applicationName),
+    this.metaCommandService.newApply(
+      StandardMetaProperty.APPLICATION_NAME,
+      applicationName,
     )
     this.changes$.emit({ applicationName })
   }

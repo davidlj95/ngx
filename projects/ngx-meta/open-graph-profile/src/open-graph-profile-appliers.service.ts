@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core'
 import { OpenGraphProfile } from './open-graph-profile'
 import { OpenGraphProfileProperty } from './open-graph-profile-property'
 import {
-  _MetaCommand,
   _MetaCommandService,
   _MetadataAppliers,
 } from '@davidlj95/ngx-meta/common'
@@ -14,26 +13,27 @@ export class OpenGraphProfileAppliersService
   constructor(private readonly metaCommandService: _MetaCommandService) {}
 
   firstName(firstName: OpenGraphProfile['firstName']): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProfileProperty.FIRST_NAME, firstName),
+    this.metaCommandService.newApply(
+      OpenGraphProfileProperty.FIRST_NAME,
+      firstName,
     )
   }
 
   lastName(lastName: OpenGraphProfile['lastName']): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProfileProperty.LAST_NAME, lastName),
+    this.metaCommandService.newApply(
+      OpenGraphProfileProperty.LAST_NAME,
+      lastName,
     )
   }
 
   username(username: OpenGraphProfile['username']): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProfileProperty.USERNAME, username),
+    this.metaCommandService.newApply(
+      OpenGraphProfileProperty.USERNAME,
+      username,
     )
   }
 
   gender(gender: OpenGraphProfile['gender']): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProfileProperty.GENDER, gender),
-    )
+    this.metaCommandService.newApply(OpenGraphProfileProperty.GENDER, gender)
   }
 }

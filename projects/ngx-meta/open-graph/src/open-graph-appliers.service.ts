@@ -4,7 +4,6 @@ import { OpenGraphType } from './open-graph-type'
 import { OpenGraphImage } from './open-graph-image'
 import { OpenGraphProperty } from './open-graph-property'
 import {
-  _MetaCommand,
   _MetaCommandService,
   _MetadataAppliers,
 } from '@davidlj95/ngx-meta/common'
@@ -14,83 +13,60 @@ export class OpenGraphAppliersService implements _MetadataAppliers<OpenGraph> {
   constructor(private readonly metaCommandService: _MetaCommandService) {}
 
   title(title: string | undefined | null): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProperty.TITLE, title),
-    )
+    this.metaCommandService.newApply(OpenGraphProperty.TITLE, title)
   }
 
   type(type: OpenGraphType | undefined | null): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProperty.TYPE, type),
-    )
+    this.metaCommandService.newApply(OpenGraphProperty.TYPE, type)
   }
 
   image(image: OpenGraphImage | undefined | null): void {
     if (image === null || image === undefined) {
-      const imageProperties = OpenGraphProperty.images().map(
-        (property) => new _MetaCommand(property, null),
-      )
+      const imageProperties = OpenGraphProperty.images()
       for (const imageProperty of imageProperties) {
-        this.metaCommandService.apply(imageProperty)
+        this.metaCommandService.newApply(imageProperty, null)
       }
       return
     }
 
     const imageUrl = image.url?.toString()
     if (imageUrl !== undefined) {
-      this.metaCommandService.apply(
-        new _MetaCommand(OpenGraphProperty.IMAGE, imageUrl),
-      )
+      this.metaCommandService.newApply(OpenGraphProperty.IMAGE, imageUrl)
     }
 
     const imageAlt = image.alt
     if (imageAlt !== undefined) {
-      this.metaCommandService.apply(
-        new _MetaCommand(OpenGraphProperty.IMAGE_ALT, imageAlt),
-      )
+      this.metaCommandService.newApply(OpenGraphProperty.IMAGE_ALT, imageAlt)
     }
 
-    this.metaCommandService.apply(
-      new _MetaCommand(
-        OpenGraphProperty.IMAGE_SECURE_URL,
-        image.secureUrl?.toString(),
-      ),
+    this.metaCommandService.newApply(
+      OpenGraphProperty.IMAGE_SECURE_URL,
+      image.secureUrl?.toString(),
     )
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProperty.IMAGE_TYPE, image.type),
+    this.metaCommandService.newApply(OpenGraphProperty.IMAGE_TYPE, image.type)
+    this.metaCommandService.newApply(
+      OpenGraphProperty.IMAGE_WIDTH,
+      image.width?.toString(),
     )
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProperty.IMAGE_WIDTH, image.width?.toString()),
-    )
-    this.metaCommandService.apply(
-      new _MetaCommand(
-        OpenGraphProperty.IMAGE_HEIGHT,
-        image.height?.toString(),
-      ),
+    this.metaCommandService.newApply(
+      OpenGraphProperty.IMAGE_HEIGHT,
+      image.height?.toString(),
     )
   }
 
   url(url: URL | string | undefined | null): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProperty.URL, url?.toString()),
-    )
+    this.metaCommandService.newApply(OpenGraphProperty.URL, url?.toString())
   }
 
   description(description: string | undefined | null): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProperty.DESCRIPTION, description),
-    )
+    this.metaCommandService.newApply(OpenGraphProperty.DESCRIPTION, description)
   }
 
   locale(locale: string | undefined | null): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProperty.LOCALE, locale),
-    )
+    this.metaCommandService.newApply(OpenGraphProperty.LOCALE, locale)
   }
 
   siteName(siteName: string | undefined | null): void {
-    this.metaCommandService.apply(
-      new _MetaCommand(OpenGraphProperty.SITE_NAME, siteName),
-    )
+    this.metaCommandService.newApply(OpenGraphProperty.SITE_NAME, siteName)
   }
 }

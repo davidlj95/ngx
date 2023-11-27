@@ -6,18 +6,18 @@ import { TwitterCardType } from './twitter-card-type'
 import { TwitterCardMetaProperty } from './twitter-card-meta-property'
 import { TwitterCardImage } from './twitter-card-image'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
-import { _MetaCommand, _MetaCommandService } from '@davidlj95/ngx-meta/common'
+import { _MetaService } from '@davidlj95/ngx-meta/common'
 
 describe('TwitterCardAppliersService', () => {
   enableAutoSpy()
 
   let sut: TwitterCardAppliersService
   // noinspection DuplicatedCode
-  let metaCommandService: _MetaCommandService
+  let metaService: _MetaService
 
   beforeEach(() => {
     sut = makeSut()
-    metaCommandService = TestBed.inject(_MetaCommandService)
+    metaService = TestBed.inject(_MetaService)
   })
 
   describe('card', () => {
@@ -26,8 +26,9 @@ describe('TwitterCardAppliersService', () => {
     it('should apply meta command with card property and content', () => {
       sut.card(card)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(TwitterCardMetaProperty.CARD, card),
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
+        TwitterCardMetaProperty.CARD,
+        card,
       )
     })
   })
@@ -38,8 +39,9 @@ describe('TwitterCardAppliersService', () => {
     it('should apply meta command with site property and content', () => {
       sut.site(site)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(TwitterCardMetaProperty.SITE, site),
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
+        TwitterCardMetaProperty.SITE,
+        site,
       )
     })
   })
@@ -50,8 +52,9 @@ describe('TwitterCardAppliersService', () => {
     it('should apply meta command with site ID property and content', () => {
       sut.siteId(siteId)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(TwitterCardMetaProperty.SITE_ID, siteId),
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
+        TwitterCardMetaProperty.SITE_ID,
+        siteId,
       )
     })
   })
@@ -62,8 +65,9 @@ describe('TwitterCardAppliersService', () => {
     it('should apply meta command with creator property and content', () => {
       sut.creator(creator)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(TwitterCardMetaProperty.CREATOR, creator),
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
+        TwitterCardMetaProperty.CREATOR,
+        creator,
       )
     })
   })
@@ -74,8 +78,9 @@ describe('TwitterCardAppliersService', () => {
     it('should apply meta command with creator ID property and content', () => {
       sut.creatorId(creatorId)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(TwitterCardMetaProperty.CREATOR_ID, creatorId),
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
+        TwitterCardMetaProperty.CREATOR_ID,
+        creatorId,
       )
     })
   })
@@ -86,8 +91,9 @@ describe('TwitterCardAppliersService', () => {
     it('should apply meta command with description property and content', () => {
       sut.description(description)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(TwitterCardMetaProperty.DESCRIPTION, description),
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
+        TwitterCardMetaProperty.DESCRIPTION,
+        description,
       )
     })
   })
@@ -98,8 +104,9 @@ describe('TwitterCardAppliersService', () => {
     it('should apply meta command with title property and content', () => {
       sut.title(title)
 
-      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
-        new _MetaCommand(TwitterCardMetaProperty.TITLE, title),
+      expect(metaService.apply).toHaveBeenCalledOnceWith(
+        TwitterCardMetaProperty.TITLE,
+        title,
       )
     })
   })
@@ -114,14 +121,16 @@ describe('TwitterCardAppliersService', () => {
       it('should apply all meta commands with properties and contents', () => {
         sut.image(image)
 
-        expect(metaCommandService.apply).toHaveBeenCalledTimes(
+        expect(metaService.apply).toHaveBeenCalledTimes(
           Object.keys(image).length,
         )
-        expect(metaCommandService.apply).toHaveBeenCalledWith(
-          new _MetaCommand(TwitterCardMetaProperty.IMAGE, image.url.toString()),
+        expect(metaService.apply).toHaveBeenCalledWith(
+          TwitterCardMetaProperty.IMAGE,
+          image.url.toString(),
         )
-        expect(metaCommandService.apply).toHaveBeenCalledWith(
-          new _MetaCommand(TwitterCardMetaProperty.IMAGE_ALT, image.alt),
+        expect(metaService.apply).toHaveBeenCalledWith(
+          TwitterCardMetaProperty.IMAGE_ALT,
+          image.alt,
         )
       })
     })
@@ -135,13 +144,9 @@ describe('TwitterCardAppliersService', () => {
 
         sut.image(image)
 
-        expect(metaCommandService.apply).toHaveBeenCalledTimes(
-          imageProperties.length,
-        )
+        expect(metaService.apply).toHaveBeenCalledTimes(imageProperties.length)
         for (const imageProperty of imageProperties) {
-          expect(metaCommandService.apply).toHaveBeenCalledWith(
-            new _MetaCommand(imageProperty, null),
-          )
+          expect(metaService.apply).toHaveBeenCalledWith(imageProperty, null)
         }
       })
     })
@@ -150,7 +155,7 @@ describe('TwitterCardAppliersService', () => {
 
 function makeSut() {
   TestBed.configureTestingModule({
-    providers: [TwitterCardAppliersService, MockProvider(_MetaCommandService)],
+    providers: [TwitterCardAppliersService, MockProvider(_MetaService)],
   })
   return TestBed.inject(TwitterCardAppliersService)
 }

@@ -1,6 +1,6 @@
-import { _ComposableMetaCommandProperty } from '@davidlj95/ngx-meta/common'
+import { _ComposableMetaProperty } from '@davidlj95/ngx-meta/common'
 
-export class TwitterCardMetaProperty extends _ComposableMetaCommandProperty {
+export class TwitterCardMetaProperty extends _ComposableMetaProperty {
   public static SEPARATOR = ':'
   public static PREFIX = `twitter`
 
@@ -24,13 +24,18 @@ export class TwitterCardMetaProperty extends _ComposableMetaCommandProperty {
 
   constructor(...names: ReadonlyArray<string>) {
     super(
-      { separator: TwitterCardMetaProperty.SEPARATOR, attribute: 'name' },
+      {
+        separator: TwitterCardMetaProperty.SEPARATOR,
+        keyAttribute: 'name',
+      },
       ...[TwitterCardMetaProperty.PREFIX, ...names],
     )
     TwitterCardMetaProperty._all.add(this)
   }
 
   public static images() {
-    return [...this.ALL].filter(({ name }) => name.startsWith(this.IMAGE.name))
+    return [...this.ALL].filter(({ keyName }) =>
+      keyName.startsWith(this.IMAGE.keyName),
+    )
   }
 }

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core'
 import { DefaultsService } from './defaults.service'
-import { MetaCommandService } from './meta-command/meta-command.service'
+import { MetaService } from './meta/meta.service'
 
 @NgModule({
-  providers: [MetaCommandService, DefaultsService],
+  providers: [MetaService, DefaultsService],
 })
 export class CommonModule {}

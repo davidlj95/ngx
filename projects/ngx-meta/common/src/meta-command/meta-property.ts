@@ -1,20 +1,20 @@
 export class MetaProperty {
   public readonly keyAttribute: string
   public readonly keyName: string
-  public readonly valueAttribute: string
+  public readonly contentAttribute: string
 
   constructor({
     keyAttribute,
     keyName,
-    valueAttribute,
+    contentAttribute,
   }: {
     keyAttribute: string
     keyName: string
-    valueAttribute?: string
+    contentAttribute?: string
   }) {
     this.keyAttribute = keyAttribute
     this.keyName = keyName
-    this.valueAttribute = valueAttribute ?? 'content'
+    this.contentAttribute = contentAttribute ?? 'content'
   }
 
   public get selector(): string {

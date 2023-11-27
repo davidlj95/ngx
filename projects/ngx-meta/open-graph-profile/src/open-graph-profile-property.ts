@@ -19,7 +19,6 @@ export class OpenGraphProfileProperty extends _ComposableMetaProperty {
       {
         separator: _OpenGraphProperty.SEPARATOR,
         keyAttribute: 'property',
-        contentAttribute: 'content',
       },
       ...[_OpenGraphProperty.PREFIX, OpenGraphProfileProperty.PREFIX, ...names],
     )

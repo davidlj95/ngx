@@ -17,8 +17,8 @@ export class ComposableMetaProperty extends MetaProperty {
   ) {
     super({
       keyAttribute,
-      valueAttribute: contentAttribute,
       keyName: names.join(separator),
+      contentAttribute,
     })
     this.separator = separator
   }

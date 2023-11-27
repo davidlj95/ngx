@@ -27,7 +27,6 @@ export class TwitterCardMetaProperty extends _ComposableMetaProperty {
       {
         separator: TwitterCardMetaProperty.SEPARATOR,
         keyAttribute: 'name',
-        contentAttribute: 'content',
       },
       ...[TwitterCardMetaProperty.PREFIX, ...names],
     )

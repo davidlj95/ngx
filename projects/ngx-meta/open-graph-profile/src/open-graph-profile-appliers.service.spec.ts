@@ -25,7 +25,7 @@ describe('OpenGraphProfileAppliersService', () => {
     it('should apply meta command with first name property and content', () => {
       sut.firstName(firstName)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProfileProperty.FIRST_NAME,
         firstName,
       )
@@ -38,7 +38,7 @@ describe('OpenGraphProfileAppliersService', () => {
     it('should apply meta command with last name property and content', () => {
       sut.lastName(lastName)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProfileProperty.LAST_NAME,
         lastName,
       )
@@ -51,7 +51,7 @@ describe('OpenGraphProfileAppliersService', () => {
     it('should apply meta command with username property and content', () => {
       sut.username(username)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProfileProperty.USERNAME,
         username,
       )
@@ -64,7 +64,7 @@ describe('OpenGraphProfileAppliersService', () => {
     it('should apply meta command with gender property and content', () => {
       sut.gender(gender)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProfileProperty.GENDER,
         gender,
       )

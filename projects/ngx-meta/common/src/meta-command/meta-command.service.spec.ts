@@ -17,7 +17,7 @@ describe('MetaCommandService', () => {
     metaService = TestBed.inject(Meta)
   })
 
-  describe('newApply', () => {
+  describe('apply', () => {
     const property = new MetaProperty({
       keyAttribute: 'propertyName',
       keyName: 'dummy',
@@ -28,7 +28,7 @@ describe('MetaCommandService', () => {
       const content = undefined
 
       it('should remove meta element', () => {
-        sut.newApply(property, content)
+        sut.apply(property, content)
 
         expect(metaService.removeTag).toHaveBeenCalledOnceWith(
           property.selector,
@@ -40,7 +40,7 @@ describe('MetaCommandService', () => {
       const content = null
 
       it('should remove meta element', () => {
-        sut.newApply(property, content)
+        sut.apply(property, content)
 
         expect(metaService.removeTag).toHaveBeenCalledOnceWith(
           property.selector,
@@ -52,7 +52,7 @@ describe('MetaCommandService', () => {
       const content = 'Lorem ipsum lorem'
 
       it('should update the meta tag', () => {
-        sut.newApply(property, content)
+        sut.apply(property, content)
 
         expect(metaService.updateTag).toHaveBeenCalledOnceWith({
           [property.keyAttribute]: property.keyName,

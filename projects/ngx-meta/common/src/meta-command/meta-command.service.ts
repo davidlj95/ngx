@@ -7,7 +7,7 @@ import { MetaContent } from './meta-content'
 export class MetaCommandService {
   constructor(private readonly meta: Meta) {}
 
-  newApply(property: MetaProperty, content: MetaContent) {
+  apply(property: MetaProperty, content: MetaContent) {
     switch (content) {
       case undefined:
       case null:

@@ -26,7 +26,7 @@ describe('OpenGraphAppliersService', () => {
     it('should apply meta command with title property and content', () => {
       sut.title(title)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProperty.TITLE,
         title,
       )
@@ -39,7 +39,7 @@ describe('OpenGraphAppliersService', () => {
     it('should apply meta command with type property and content', () => {
       sut.type(type)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProperty.TYPE,
         type,
       )
@@ -60,26 +60,26 @@ describe('OpenGraphAppliersService', () => {
       it('should apply all meta commands with their properties and content', () => {
         sut.image(image)
 
-        expect(metaCommandService.newApply).toHaveBeenCalledTimes(
+        expect(metaCommandService.apply).toHaveBeenCalledTimes(
           Object.keys(image).length,
         )
-        expect(metaCommandService.newApply).toHaveBeenCalledWith(
+        expect(metaCommandService.apply).toHaveBeenCalledWith(
           OpenGraphProperty.IMAGE,
           image.url?.toString(),
         )
-        expect(metaCommandService.newApply).toHaveBeenCalledWith(
+        expect(metaCommandService.apply).toHaveBeenCalledWith(
           OpenGraphProperty.IMAGE_ALT,
           image.alt,
         )
-        expect(metaCommandService.newApply).toHaveBeenCalledWith(
+        expect(metaCommandService.apply).toHaveBeenCalledWith(
           OpenGraphProperty.IMAGE_TYPE,
           image.type,
         )
-        expect(metaCommandService.newApply).toHaveBeenCalledWith(
+        expect(metaCommandService.apply).toHaveBeenCalledWith(
           OpenGraphProperty.IMAGE_WIDTH,
           image.width?.toString(),
         )
-        expect(metaCommandService.newApply).toHaveBeenCalledWith(
+        expect(metaCommandService.apply).toHaveBeenCalledWith(
           OpenGraphProperty.IMAGE_HEIGHT,
           image.height?.toString(),
         )
@@ -95,11 +95,11 @@ describe('OpenGraphAppliersService', () => {
         const imageProperties = OpenGraphProperty.images()
         expect(imageProperties.length).toBeGreaterThan(0)
 
-        expect(metaCommandService.newApply).toHaveBeenCalledTimes(
+        expect(metaCommandService.apply).toHaveBeenCalledTimes(
           imageProperties.length,
         )
         for (const imageProperty of imageProperties) {
-          expect(metaCommandService.newApply).toHaveBeenCalledWith(
+          expect(metaCommandService.apply).toHaveBeenCalledWith(
             imageProperty,
             image,
           )
@@ -132,7 +132,7 @@ describe('OpenGraphAppliersService', () => {
         )
         expect(imagePropertiesButUrlOrAlt.length).toBeGreaterThan(0)
 
-        expect(metaCommandService.newApply).toHaveBeenCalledTimes(
+        expect(metaCommandService.apply).toHaveBeenCalledTimes(
           imagePropertiesButUrlOrAlt.length,
         )
       })
@@ -145,7 +145,7 @@ describe('OpenGraphAppliersService', () => {
     it('should apply meta command with URL property and content', () => {
       sut.url(url)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProperty.URL,
         url.toString(),
       )
@@ -158,7 +158,7 @@ describe('OpenGraphAppliersService', () => {
     it('should apply meta command with description property and content', () => {
       sut.description(description)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProperty.DESCRIPTION,
         description,
       )
@@ -171,7 +171,7 @@ describe('OpenGraphAppliersService', () => {
     it('should apply meta command with locale property and content', () => {
       sut.locale(locale)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProperty.LOCALE,
         locale,
       )
@@ -184,7 +184,7 @@ describe('OpenGraphAppliersService', () => {
     it('should apply meta command with site name property and content', () => {
       sut.siteName(siteName)
 
-      expect(metaCommandService.newApply).toHaveBeenCalledOnceWith(
+      expect(metaCommandService.apply).toHaveBeenCalledOnceWith(
         OpenGraphProperty.SITE_NAME,
         siteName,
       )

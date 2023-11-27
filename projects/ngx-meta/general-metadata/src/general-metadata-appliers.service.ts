@@ -36,26 +36,23 @@ export class GeneralMetadataAppliersService
   }
 
   description(description: string | undefined | null) {
-    this.metaCommandService.newApply(
-      StandardMetaProperty.DESCRIPTION,
-      description,
-    )
+    this.metaCommandService.apply(StandardMetaProperty.DESCRIPTION, description)
     this.changes$.emit({ description })
   }
 
   author(author: string | undefined | null) {
-    this.metaCommandService.newApply(StandardMetaProperty.AUTHOR, author)
+    this.metaCommandService.apply(StandardMetaProperty.AUTHOR, author)
   }
 
   keywords(keywords: readonly string[] | undefined | null) {
-    this.metaCommandService.newApply(
+    this.metaCommandService.apply(
       StandardMetaProperty.KEYWORDS,
       keywords ? keywords.join(',') : keywords,
     )
   }
 
   generator(generator: boolean | undefined | null) {
-    this.metaCommandService.newApply(
+    this.metaCommandService.apply(
       StandardMetaProperty.GENERATOR,
       generator === true
         ? `Angular v${VERSION.full}`
@@ -66,7 +63,7 @@ export class GeneralMetadataAppliersService
   }
 
   applicationName(applicationName: string | undefined | null) {
-    this.metaCommandService.newApply(
+    this.metaCommandService.apply(
       StandardMetaProperty.APPLICATION_NAME,
       applicationName,
     )

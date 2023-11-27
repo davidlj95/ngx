@@ -13,27 +13,21 @@ export class OpenGraphProfileAppliersService
   constructor(private readonly metaCommandService: _MetaCommandService) {}
 
   firstName(firstName: OpenGraphProfile['firstName']): void {
-    this.metaCommandService.newApply(
+    this.metaCommandService.apply(
       OpenGraphProfileProperty.FIRST_NAME,
       firstName,
     )
   }
 
   lastName(lastName: OpenGraphProfile['lastName']): void {
-    this.metaCommandService.newApply(
-      OpenGraphProfileProperty.LAST_NAME,
-      lastName,
-    )
+    this.metaCommandService.apply(OpenGraphProfileProperty.LAST_NAME, lastName)
   }
 
   username(username: OpenGraphProfile['username']): void {
-    this.metaCommandService.newApply(
-      OpenGraphProfileProperty.USERNAME,
-      username,
-    )
+    this.metaCommandService.apply(OpenGraphProfileProperty.USERNAME, username)
   }
 
   gender(gender: OpenGraphProfile['gender']): void {
-    this.metaCommandService.newApply(OpenGraphProfileProperty.GENDER, gender)
+    this.metaCommandService.apply(OpenGraphProfileProperty.GENDER, gender)
   }
 }

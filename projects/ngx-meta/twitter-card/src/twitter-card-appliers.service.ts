@@ -15,55 +15,49 @@ export class TwitterCardAppliersService
   constructor(private readonly metaCommandService: _MetaCommandService) {}
 
   card(card: TwitterCardType | undefined | null): void {
-    this.metaCommandService.newApply(TwitterCardMetaProperty.CARD, card)
+    this.metaCommandService.apply(TwitterCardMetaProperty.CARD, card)
   }
 
   site(site: string | undefined | null): void {
-    this.metaCommandService.newApply(TwitterCardMetaProperty.SITE, site)
+    this.metaCommandService.apply(TwitterCardMetaProperty.SITE, site)
   }
 
   siteId(siteId: string | undefined | null): void {
-    this.metaCommandService.newApply(TwitterCardMetaProperty.SITE_ID, siteId)
+    this.metaCommandService.apply(TwitterCardMetaProperty.SITE_ID, siteId)
   }
 
   creator(creator: string | undefined | null): void {
-    this.metaCommandService.newApply(TwitterCardMetaProperty.CREATOR, creator)
+    this.metaCommandService.apply(TwitterCardMetaProperty.CREATOR, creator)
   }
 
   creatorId(creatorId: string | undefined | null): void {
-    this.metaCommandService.newApply(
-      TwitterCardMetaProperty.CREATOR_ID,
-      creatorId,
-    )
+    this.metaCommandService.apply(TwitterCardMetaProperty.CREATOR_ID, creatorId)
   }
 
   description(description: string | undefined | null): void {
-    this.metaCommandService.newApply(
+    this.metaCommandService.apply(
       TwitterCardMetaProperty.DESCRIPTION,
       description,
     )
   }
 
   title(title: string | undefined | null): void {
-    this.metaCommandService.newApply(TwitterCardMetaProperty.TITLE, title)
+    this.metaCommandService.apply(TwitterCardMetaProperty.TITLE, title)
   }
 
   image(image: TwitterCardImage | undefined | null): void {
     if (image === null) {
       const imageProperties = TwitterCardMetaProperty.images()
       for (const property of imageProperties) {
-        this.metaCommandService.newApply(property, null)
+        this.metaCommandService.apply(property, null)
       }
       return
     }
 
-    this.metaCommandService.newApply(
+    this.metaCommandService.apply(
       TwitterCardMetaProperty.IMAGE,
       image?.url?.toString(),
     )
-    this.metaCommandService.newApply(
-      TwitterCardMetaProperty.IMAGE_ALT,
-      image?.alt,
-    )
+    this.metaCommandService.apply(TwitterCardMetaProperty.IMAGE_ALT, image?.alt)
   }
 }

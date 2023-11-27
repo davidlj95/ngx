@@ -2,7 +2,6 @@ import { EventEmitter, Injectable, VERSION } from '@angular/core'
 import { Title } from '@angular/platform-browser'
 import { StandardMetaProperty } from './standard-meta-property'
 import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attribute.service'
-import { GeneralMetadataImage } from './general-metadata-image'
 import { GeneralMetadata } from './general-metadata'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
 import { _MetadataAppliers, _MetaService } from '@davidlj95/ngx-meta/common'
@@ -25,30 +24,30 @@ export class GeneralMetadataAppliersService
     private htmlLangAttributeService: HtmlLangAttributeService,
   ) {}
 
-  title(title: string | undefined | null) {
+  title(title: GeneralMetadata['title']) {
     if (title !== undefined && title !== null) {
       this.titleService.setTitle(title)
     }
     this.changes$.emit({ title })
   }
 
-  description(description: string | undefined | null) {
+  description(description: GeneralMetadata['description']) {
     this.metaService.apply(StandardMetaProperty.DESCRIPTION, description)
     this.changes$.emit({ description })
   }
 
-  author(author: string | undefined | null) {
+  author(author: GeneralMetadata['author']) {
     this.metaService.apply(StandardMetaProperty.AUTHOR, author)
   }
 
-  keywords(keywords: readonly string[] | undefined | null) {
+  keywords(keywords: GeneralMetadata['keywords']) {
     this.metaService.apply(
       StandardMetaProperty.KEYWORDS,
       keywords ? keywords.join(',') : keywords,
     )
   }
 
-  generator(generator: boolean | undefined | null) {
+  generator(generator: GeneralMetadata['generator']) {
     this.metaService.apply(
       StandardMetaProperty.GENERATOR,
       generator === true
@@ -59,7 +58,7 @@ export class GeneralMetadataAppliersService
     )
   }
 
-  applicationName(applicationName: string | undefined | null) {
+  applicationName(applicationName: GeneralMetadata['applicationName']) {
     this.metaService.apply(
       StandardMetaProperty.APPLICATION_NAME,
       applicationName,
@@ -67,17 +66,17 @@ export class GeneralMetadataAppliersService
     this.changes$.emit({ applicationName })
   }
 
-  canonicalUrl(canonicalUrl: URL | string | undefined | null) {
+  canonicalUrl(canonicalUrl: GeneralMetadata['canonicalUrl']) {
     this.linkRelCanonicalService.apply(canonicalUrl)
     this.changes$.emit({ canonicalUrl })
   }
 
-  locale(locale: string | undefined | null) {
+  locale(locale: GeneralMetadata['locale']) {
     this.htmlLangAttributeService.apply(locale)
     this.changes$.emit({ locale })
   }
 
-  image(image: GeneralMetadataImage | null | undefined) {
+  image(image: GeneralMetadata['image']) {
     this.changes$.emit({ image })
   }
 }

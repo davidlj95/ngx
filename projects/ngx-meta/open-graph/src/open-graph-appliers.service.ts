@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core'
 import { OpenGraph } from './open-graph'
-import { OpenGraphType } from './open-graph-type'
-import { OpenGraphImage } from './open-graph-image'
 import { OpenGraphProperty } from './open-graph-property'
 import { _MetadataAppliers, _MetaService } from '@davidlj95/ngx-meta/common'
 
@@ -9,15 +7,15 @@ import { _MetadataAppliers, _MetaService } from '@davidlj95/ngx-meta/common'
 export class OpenGraphAppliersService implements _MetadataAppliers<OpenGraph> {
   constructor(private readonly metaService: _MetaService) {}
 
-  title(title: string | undefined | null): void {
+  title(title: OpenGraph['title']): void {
     this.metaService.apply(OpenGraphProperty.TITLE, title)
   }
 
-  type(type: OpenGraphType | undefined | null): void {
+  type(type: OpenGraph['type']): void {
     this.metaService.apply(OpenGraphProperty.TYPE, type)
   }
 
-  image(image: OpenGraphImage | undefined | null): void {
+  image(image: OpenGraph['image']): void {
     if (image === null || image === undefined) {
       const imageProperties = OpenGraphProperty.images()
       for (const imageProperty of imageProperties) {
@@ -51,19 +49,19 @@ export class OpenGraphAppliersService implements _MetadataAppliers<OpenGraph> {
     )
   }
 
-  url(url: URL | string | undefined | null): void {
+  url(url: OpenGraph['url']): void {
     this.metaService.apply(OpenGraphProperty.URL, url?.toString())
   }
 
-  description(description: string | undefined | null): void {
+  description(description: OpenGraph['description']): void {
     this.metaService.apply(OpenGraphProperty.DESCRIPTION, description)
   }
 
-  locale(locale: string | undefined | null): void {
+  locale(locale: OpenGraph['locale']): void {
     this.metaService.apply(OpenGraphProperty.LOCALE, locale)
   }
 
-  siteName(siteName: string | undefined | null): void {
+  siteName(siteName: OpenGraph['siteName']): void {
     this.metaService.apply(OpenGraphProperty.SITE_NAME, siteName)
   }
 }

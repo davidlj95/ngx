@@ -8,7 +8,7 @@ on:
         required: false
         default: ''
       artifact-name:
-        description: Artifact name containing `dist/` files
+        description: Artifact name containing built lib
         type: string
         required: false
 
@@ -40,5 +40,5 @@ jobs:
         uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3
         with:
           name: ${{ inputs.artifact-name }}
-          path: 'dist'
+          path: 'projects/ngx-meta/dist'
           retention-days: 5

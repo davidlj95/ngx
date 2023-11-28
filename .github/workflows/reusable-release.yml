@@ -47,7 +47,7 @@ jobs:
         uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
         with:
           name: ${{ inputs.build-artifact-name }}
-          path: 'dist'
+          path: 'projects/ngx-meta/dist'
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

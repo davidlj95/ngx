@@ -12,7 +12,7 @@ jobs:
     name: Build
     uses: ./.github/workflows/reusable-build.yml
     with:
-      artifact-name: build
+      artifact-name: ngx-meta
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
@@ -27,7 +27,7 @@ jobs:
     needs: [build, test, lint]
     uses: ./.github/workflows/reusable-release.yml
     with:
-      build-artifact-name: build
+      build-artifact-name: ngx-meta
     secrets:
       npm-token: ${{ secrets.NPM_TOKEN }}
       github-token-pr: ${{ secrets.PR_GH_TOKEN }}

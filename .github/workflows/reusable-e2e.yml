@@ -1,0 +1,51 @@
+name: E2E
+on:
+  workflow_call:
+    inputs:
+      build-artifact-name:
+        required: true
+        type: string
+      ref:
+        description: Git reference to checkout. Defaults to @actions/checkout default.
+        type: string
+        required: false
+        default: ''
+
+jobs:
+  e2e:
+    name: E2E tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Download distribution files
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
+        with:
+          name: ${{ inputs.build-artifact-name }}
+          path: 'dist'
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
+        with:
+          cache: 'pnpm'
+          cache-dependency-path: 'projects/ngx-meta/e2e/**/pnpm-lock.yaml'
+          node-version-file: '.node-version'
+      - name: Install Angular 17 e2e app dependencies
+        working-directory: projects/ngx-meta/e2e/a17
+        run: pnpm install --frozen-lockfile
+      - name: Build Angular 17 app
+        working-directory: projects/ngx-meta/e2e/a17
+        run: pnpm build
+      - name: Start Angular 17 e2e app server in the background
+        working-directory: projects/ngx-meta/e2e/a17
+        run: pnpm start &
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          wait-on: 'http://localhost:4200'
+          working-directory: ./projects/ngx-meta/e2e
+          browser: chrome

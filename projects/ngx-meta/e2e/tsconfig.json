@@ -1,0 +1,10 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": ["cypress/**/*.ts"],
+  "compilerOptions": {
+    "sourceMap": false,
+    "types": ["cypress"],
+    // Load JSON fixtures (so we leverage types)
+    "resolveJsonModule": true
+  }
+}

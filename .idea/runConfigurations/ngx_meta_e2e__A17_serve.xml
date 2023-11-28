@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-metadata: lint" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/package.json" />
+  <configuration default="false" name="ngx-meta/e2e: A17 serve" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/package.json" />
     <command value="run" />
     <scripts>
-      <script value="lint:ngx-metadata" />
+      <script value="a17:serve" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

@@ -1,0 +1,10 @@
+{
+  "title": "Foo page",
+  "description": "Lorem ipsum lorem",
+  "author": "Mr Bar",
+  "keywords": ["foo", "bar"],
+  "generator": true,
+  "applicationName": "FooBar app",
+  "canonicalUrl": "https://example.com/foo",
+  "locale": "en"
+}

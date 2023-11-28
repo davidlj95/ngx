@@ -36,8 +36,6 @@ jobs:
       - name: Build libraries
         run: cd .ci && make build
       - name: Upload distribution files
-        # For release on `main` pushes, not needed on PRs
-        if: github.event_name == 'push'
         uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3
         with:
           name: ${{ inputs.artifact-name }}

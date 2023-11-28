@@ -17,15 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
       - name: Download distribution files
         uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
         with:
           name: ${{ inputs.build-artifact-name }}
           path: 'dist'
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
       - name: Setup Node.js
@@ -37,10 +37,10 @@ jobs:
       - name: Install Angular 17 e2e app dependencies
         working-directory: projects/ngx-meta/e2e/a17
         run: pnpm install --frozen-lockfile
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
+      #- name: Setup tmate session
+      #  uses: mxschmitt/action-tmate@v3
+      #  with:
+      #    limit-access-to-actor: true
       - name: Build Angular 17 app
         working-directory: projects/ngx-meta/e2e/a17
         run: pnpm build

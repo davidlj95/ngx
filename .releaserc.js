@@ -20,7 +20,7 @@ module.exports = {
     [
       '@semantic-release/changelog',
       {
-        changelogFile: 'projects/ngx-meta/CHANGELOG.md',
+        changelogFile: 'projects/ngx-meta/src/CHANGELOG.md',
       },
     ],
   ],

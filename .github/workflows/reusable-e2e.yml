@@ -37,6 +37,9 @@ jobs:
       - name: Install Angular 17 e2e app dependencies
         working-directory: projects/ngx-meta/e2e/a17
         run: pnpm install --frozen-lockfile
+      - name: Build Angular 17 app
+        working-directory: projects/ngx-meta/e2e/a17
+        run: pnpm build
       - name: Start server in the background
         working-directory: projects/ngx-meta/e2e/a17
         run: pnpm start &

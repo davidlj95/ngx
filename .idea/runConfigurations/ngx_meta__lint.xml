@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-metadata: build" type="js.build_tools.npm">
+  <configuration default="false" name="ngx-meta: lint" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="build:ngx-metadata" />
+      <script value="lint:ngx-meta" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

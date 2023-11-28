@@ -18,6 +18,7 @@
     "@angular/platform-browser": "17.0.4",
     "@angular/platform-browser-dynamic": "17.0.4",
     "@angular/router": "17.0.4",
+    "@davidlj95/ngx-meta": "link:../../../../dist/ngx-meta",
     "rxjs": "7.8.1",
     "tslib": "2.6.2",
     "zone.js": "0.14.2"

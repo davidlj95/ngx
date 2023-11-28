@@ -29,6 +29,9 @@ dependencies:
   '@angular/router':
     specifier: 17.0.4
     version: 17.0.4(@angular/common@17.0.4)(@angular/core@17.0.4)(@angular/platform-browser@17.0.4)(rxjs@7.8.1)
+  '@davidlj95/ngx-meta':
+    specifier: link:../../../../dist/ngx-meta
+    version: link:../../../../dist/ngx-meta
   rxjs:
     specifier: 7.8.1
     version: 7.8.1

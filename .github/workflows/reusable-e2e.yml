@@ -1,0 +1,35 @@
+name: E2E
+on:
+  workflow_call:
+    inputs:
+      build-artifact-name:
+        required: true
+        type: string
+      ref:
+        description: Git reference to checkout. Defaults to @actions/checkout default.
+        type: string
+        required: false
+        default: ''
+
+jobs:
+  e2e:
+    name: E2E tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download distribution files
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
+        with:
+          name: ${{ inputs.build-artifact-name }}
+          path: 'dist'
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          project: ./projects/ngx-meta/e2e
+          browser: chrome
+          build: cd a17 && pnpm install && pnpm build
+          start: cd a17 && pnpm start

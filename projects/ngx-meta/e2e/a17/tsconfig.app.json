@@ -3,7 +3,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    // To load JSON fixture data
+    "resolveJsonModule": true
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"]

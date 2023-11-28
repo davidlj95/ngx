@@ -37,14 +37,10 @@ jobs:
       - name: Install Angular 17 e2e app dependencies
         working-directory: projects/ngx-meta/e2e/a17
         run: pnpm install --frozen-lockfile
-      #- name: Setup tmate session
-      #  uses: mxschmitt/action-tmate@v3
-      #  with:
-      #    limit-access-to-actor: true
       - name: Build Angular 17 app
         working-directory: projects/ngx-meta/e2e/a17
         run: pnpm build
-      - name: Start server in the background
+      - name: Start Angular 17 e2e app server in the background
         working-directory: projects/ngx-meta/e2e/a17
         run: pnpm start &
       - name: Cypress run

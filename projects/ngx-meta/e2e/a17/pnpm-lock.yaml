@@ -6,72 +6,72 @@ settings:
 
 dependencies:
   '@angular/animations':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(@angular/core@17.0.4)
   '@angular/common':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(@angular/core@17.0.4)(rxjs@7.8.1)
   '@angular/compiler':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(@angular/core@17.0.4)
   '@angular/core':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(rxjs@7.8.1)(zone.js@0.14.2)
   '@angular/forms':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(@angular/common@17.0.4)(@angular/core@17.0.4)(@angular/platform-browser@17.0.4)(rxjs@7.8.1)
   '@angular/platform-browser':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(@angular/animations@17.0.4)(@angular/common@17.0.4)(@angular/core@17.0.4)
   '@angular/platform-browser-dynamic':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(@angular/common@17.0.4)(@angular/compiler@17.0.4)(@angular/core@17.0.4)(@angular/platform-browser@17.0.4)
   '@angular/router':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(@angular/common@17.0.4)(@angular/core@17.0.4)(@angular/platform-browser@17.0.4)(rxjs@7.8.1)
   rxjs:
-    specifier: ~7.8.0
+    specifier: 7.8.1
     version: 7.8.1
   tslib:
-    specifier: ^2.3.0
+    specifier: 2.6.2
     version: 2.6.2
   zone.js:
-    specifier: ~0.14.2
+    specifier: 0.14.2
     version: 0.14.2
 
 devDependencies:
   '@angular-devkit/build-angular':
-    specifier: ^17.0.3
+    specifier: 17.0.3
     version: 17.0.3(@angular/compiler-cli@17.0.4)(karma@6.4.2)(typescript@5.2.2)
   '@angular/cli':
-    specifier: ^17.0.3
+    specifier: 17.0.3
     version: 17.0.3
   '@angular/compiler-cli':
-    specifier: ^17.0.0
+    specifier: 17.0.4
     version: 17.0.4(@angular/compiler@17.0.4)(typescript@5.2.2)
   '@types/jasmine':
-    specifier: ~5.1.0
+    specifier: 5.1.4
     version: 5.1.4
   jasmine-core:
-    specifier: ~5.1.0
+    specifier: 5.1.1
     version: 5.1.1
   karma:
-    specifier: ~6.4.0
+    specifier: 6.4.2
     version: 6.4.2
   karma-chrome-launcher:
-    specifier: ~3.2.0
+    specifier: 3.2.0
     version: 3.2.0
   karma-coverage:
-    specifier: ~2.2.0
+    specifier: 2.2.1
     version: 2.2.1
   karma-jasmine:
-    specifier: ~5.1.0
+    specifier: 5.1.0
     version: 5.1.0(karma@6.4.2)
   karma-jasmine-html-reporter:
-    specifier: ~2.1.0
+    specifier: 2.1.0
     version: 2.1.0(jasmine-core@5.1.1)(karma-jasmine@5.1.0)(karma@6.4.2)
   typescript:
-    specifier: ~5.2.2
+    specifier: 5.2.2
     version: 5.2.2
 
 packages:
@@ -448,7 +448,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.1
       '@babel/code-frame': 7.23.4
-      '@babel/generator': 7.23.0
+      '@babel/generator': 7.23.4
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-module-transforms': 7.23.3(@babel/core@7.23.2)
       '@babel/helpers': 7.23.4
@@ -4381,7 +4381,7 @@ packages:
       depd: 1.1.2
       inherits: 2.0.3
       setprototypeof: 1.1.0
-      statuses: 1.4.0
+      statuses: 1.5.0
     dev: true
 
   /http-errors@2.0.0:

@@ -35,14 +35,14 @@ jobs:
           cache-dependency-path: 'projects/ngx-meta/e2e/**/pnpm-lock.yaml'
           node-version-file: '.node-version'
       - name: Install Angular 17 e2e app dependencies
-        run: cd projects/ngx-meta/e2e/a17 && pnpm install --frozen-lockfile
-      - name: Show PWD
-        run: pwd
+        working-directory: projects/ngx-meta/e2e/a17
+        run: pnpm install --frozen-lockfile
+      - name: Start server in the background
+        working-directory: projects/ngx-meta/e2e/a17
+        run: pnpm start &
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
+          wait-on: 'http://localhost:4200'
           working-directory: ./projects/ngx-meta/e2e
-          project: ./a17
           browser: chrome
-          build: pnpm build
-          start: pnpm start

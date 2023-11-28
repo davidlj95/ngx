@@ -48,6 +48,7 @@
     "cache": {
       "environment": "all"
     },
+    "packageManager": "pnpm",
     "schematicCollections": ["@angular-eslint/schematics"]
   }
 }

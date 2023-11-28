@@ -11,11 +11,19 @@ on:
         required: false
         default: ''
 
+env:
+  E2E_DIR: projects/ngx-meta/e2e
+
 jobs:
   e2e:
     name: E2E tests
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    strategy:
+      matrix:
+        version: [17]
+    env:
+      E2E_APP_DIR: ${{ env.E2E_DIR }}/a${{ matrix.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -32,20 +40,22 @@ jobs:
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
         with:
           cache: 'pnpm'
-          cache-dependency-path: 'projects/ngx-meta/e2e/**/pnpm-lock.yaml'
+          cache-dependency-path: |
+            ${{ env.E2E_DIR }}/pnpm-lock.yaml
+            ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
           node-version-file: '.node-version'
-      - name: Install Angular 17 e2e app dependencies
-        working-directory: projects/ngx-meta/e2e/a17
+      - name: Install Angular v${{ matrix.version }} E2E app dependencies
+        working-directory: ${{ env.E2E_APP_DIR }}
         run: pnpm install --frozen-lockfile
-      - name: Build Angular 17 app
-        working-directory: projects/ngx-meta/e2e/a17
+      - name: Build Angular v${{ matrix.version }} E2E app
+        working-directory: ${{ env.E2E_APP_DIR }}
         run: pnpm build
-      - name: Start Angular 17 e2e app server in the background
-        working-directory: projects/ngx-meta/e2e/a17
+      - name: Start Angular v${{ matrix.version }} E2E app server
+        working-directory: ${{ env.E2E_APP_DIR }}
         run: pnpm start &
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           wait-on: 'http://localhost:4200'
-          working-directory: ./projects/ngx-meta/e2e
+          working-directory: ${{ env.E2E_APP_DIR }}
           browser: chrome

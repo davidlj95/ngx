@@ -14,7 +14,7 @@ Run `ng build ngx-meta` to build the project. The build artifacts will be stored
 
 ## Publishing
 
-After building your library with `ng build ngx-meta`, go to the dist folder `cd dist/ngx-meta` and run `npm publish`.
+After building your library with `ng build ngx-meta`, go to the dist folder `cd ../dist/ngx-meta` and run `npm publish`.
 
 ## Running unit tests
 

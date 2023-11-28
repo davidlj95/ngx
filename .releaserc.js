@@ -14,9 +14,13 @@ module.exports = {
     [
       '@semantic-release/npm',
       //👇 Publish built version
-      { pkgRoot: './dist/ngx-meta', tarballDir: 'dist', npmPublish: false },
+      {
+        pkgRoot: './projects/ngx-meta/dist',
+        tarballDir: './projects/ngx-meta/dist',
+        npmPublish: false,
+      },
     ],
-    ['@semantic-release/github', { assets: 'dist/*.tgz' }],
+    ['@semantic-release/github', { assets: './projects/ngx-meta/dist/*.tgz' }],
     [
       '@semantic-release/changelog',
       {

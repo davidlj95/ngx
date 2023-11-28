@@ -22,9 +22,15 @@ jobs:
   style:
     name: Style
     uses: ./.github/workflows/reusable-style.yml
+  e2e:
+    needs: [build, test, lint]
+    name: E2E
+    uses: ./.github/workflows/reusable-e2e.yml
+    with:
+      build-artifact-name: ngx-meta
   release:
     name: Release
-    needs: [build, test, lint]
+    needs: [e2e]
     uses: ./.github/workflows/reusable-release.yml
     with:
       build-artifact-name: ngx-meta

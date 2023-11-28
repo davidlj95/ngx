@@ -44,6 +44,15 @@ jobs:
             ${{ env.E2E_DIR }}/pnpm-lock.yaml
             ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
           node-version-file: '.node-version'
+      - name: Cache Angular build
+        uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3
+        env:
+          cache-name: ngx-meta-e2e-angular-v${{ matrix.version }}
+        with:
+          path: ${{ env.E2E_APP_DIR }}/.angular/cache
+          key: ${{ env.cache-name }}-${{ inputs.ref != '' && inputs.ref || github.ref }}
+          restore-keys: |
+            ${{ env.cache-name }}
       - name: Install Angular v${{ matrix.version }} E2E app dependencies
         working-directory: ${{ env.E2E_APP_DIR }}
         run: pnpm install --frozen-lockfile

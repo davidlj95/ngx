@@ -1,7 +1,7 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  // 👇 Defined in https://github.com/renovatebot/renovate/blob/37.0.2/lib/config/presets/internal/config.ts
-  extends: ['config:js-lib', 'config:best-practices'],
+  // 👇 Defined in https://github.com/renovatebot/renovate/blob/37.71.1/lib/config/presets/internal/config.ts
+  extends: ['config:best-practices'],
   prHourlyLimit: 0,
   prConcurrentLimit: 5,
   schedule: [
@@ -14,6 +14,15 @@
   timezone: 'Europe/Madrid',
   labels: ['dependencies'],
   packageRules: [
+    // Library for main, app for E2E apps
+    {
+      matchFileNames: ['package.json'],
+      extends: ['config:js-lib'],
+    },
+    {
+      matchFileNames: ['projects/ngx-meta/e2e/**/*'],
+      extends: ['config:js-app'],
+    },
     // Semantic commit messages & PR titles. Mocks @dependabot ones:
     // build(deps) for production dependencies, build(deps-dev) for dev dependencies (see below)
     // ℹ️ If placing this 👇 commit type and scope default in root config doesn't work. Most probably the config
@@ -44,7 +53,11 @@
       matchCategories: ['node'],
       addLabels: ['node'],
     },
-    // Auto-merge minor/patch production ones & dev dependencies
+    // Auto-merge minor/patch production ones, dev dependencies, E2E deps
+    {
+      matchFileNames: ['projects/ngx-meta/e2e/**/package.json'],
+      automerge: true,
+    },
     {
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       automerge: true,
@@ -61,10 +74,18 @@
     },
     {
       matchPackageNames: ['typescript'],
+      matchFileNames: [
+        'package.json',
+        'projects/ngx-meta/e2e/a17/package.json',
+      ],
       allowedVersions: '>=4.9.3 <5.3.0',
     },
     {
       matchPackageNames: ['rxjs'],
+      matchFileNames: [
+        'package.json',
+        'projects/ngx-meta/e2e/a17/package.json',
+      ],
       allowedVersions: '^6.5.3 || ^7.4.0',
     },
   ],

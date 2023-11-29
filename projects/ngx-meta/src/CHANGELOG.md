@@ -1,3 +1,26 @@
+## [`ngx-meta` v1.0.0-alpha.7](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.6...ngx-meta-v1.0.0-alpha.7) (2023-11-29)
+
+### Bug Fixes
+
+- open graph listener as provider + root guards ([#47](https://github.com/davidlj95/ngx/issues/47)) ([dd90573](https://github.com/davidlj95/ngx/commit/dd90573dfc8c73b758731066166deeef790d5f09))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#43](https://github.com/davidlj95/ngx/issues/43)) ([8cb4763](https://github.com/davidlj95/ngx/commit/8cb47634eb8dbec726a17d2c8000f308bfb20dd0))
+
+### Tests
+
+- **e2e:** add common routes fixture ([#45](https://github.com/davidlj95/ngx/issues/45)) ([4211f12](https://github.com/davidlj95/ngx/commit/4211f1267d915e5ed00563a016684e7e89245272))
+- **e2e:** rename general metadata json fixture ([#44](https://github.com/davidlj95/ngx/issues/44)) ([47bd795](https://github.com/davidlj95/ngx/commit/47bd795e32279923de0b3f311622c28dda94d4b8))
+
+### Build System
+
+- improve a17 e2e app dx ([#42](https://github.com/davidlj95/ngx/issues/42)) ([42d3c1c](https://github.com/davidlj95/ngx/commit/42d3c1c0f0b1e5f7d8daa0291d9ae909f49efd81))
+
+### Continuous (Integration|Deployment)
+
+- **e2e:** remove e2e apps Angular cache ([#46](https://github.com/davidlj95/ngx/issues/46)) ([a799ac4](https://github.com/davidlj95/ngx/commit/a799ac457d2c2f07633afb77b400fbd0c3985603))
+
 ## [`ngx-meta` v1.0.0-alpha.6](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.5...ngx-meta-v1.0.0-alpha.6) (2023-11-29)
 
 ### Bug Fixes

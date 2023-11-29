@@ -13,10 +13,8 @@ import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical
 import { _MetadataRouteStrategy } from '@davidlj95/ngx-meta/routing'
 import { _makeForRootGuard } from '@davidlj95/ngx-meta/common'
 
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
-  'GeneralMetadata',
-  GeneralMetadataAppliersService,
-)
+const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] =
+  _makeForRootGuard('GeneralMetadata')
 
 @NgModule({
   providers: [

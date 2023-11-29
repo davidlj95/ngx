@@ -11,16 +11,15 @@ import { OPEN_GRAPH_DEFAULTS_TOKEN } from './open-graph-defaults-token'
 import { _MetadataRouteStrategy } from '@davidlj95/ngx-meta/routing'
 import { _makeForRootGuard } from '@davidlj95/ngx-meta/common'
 
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
-  'OpenGraphModule',
-  OpenGraphGeneralMetadataListenerService,
-)
+const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] =
+  _makeForRootGuard('OpenGraphModule')
 
 @NgModule({
   providers: [
     OpenGraphService,
     OpenGraphApplierService,
     OpenGraphAppliersService,
+    OpenGraphGeneralMetadataListenerService,
   ],
 })
 export class OpenGraphModule {
@@ -38,7 +37,6 @@ export class OpenGraphModule {
     return {
       ngModule: OpenGraphModule,
       providers: [
-        OpenGraphGeneralMetadataListenerService,
         {
           provide: OPEN_GRAPH_DEFAULTS_TOKEN,
           useValue: defaults,

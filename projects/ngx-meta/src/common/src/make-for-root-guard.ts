@@ -39,6 +39,9 @@ export const makeForRootGuard = (
   const injectionToken = new InjectionToken<void>(
     `${moduleName} forRoot() guard`,
   )
+  if (depsToGuard.length === 0) {
+    depsToGuard.push(injectionToken)
+  }
   const provider: FactoryProvider = {
     provide: injectionToken,
     useFactory: (...depsToGuard: unknown[]) => {

@@ -1,0 +1,9 @@
+{
+  "image": {
+    "secureUrl": "https://example.com/foo.png",
+    "type": "image/png",
+    "width": 256,
+    "height": 256
+  },
+  "type": "website"
+}

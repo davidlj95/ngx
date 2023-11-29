@@ -6,5 +6,9 @@
   "generator": true,
   "applicationName": "FooBar app",
   "canonicalUrl": "https://example.com/foo",
-  "locale": "en"
+  "locale": "en",
+  "image": {
+    "url": "https://example.com/foo.png",
+    "alt": "Alternative text describing the image"
+  }
 }

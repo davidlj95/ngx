@@ -1,8 +1,9 @@
 import generalMetadata from '../fixtures/general-metadata.json'
+import { META_SET_BY_SERVICES } from '../fixtures/routes'
 
 describe('Meta set by services', () => {
   before(() => {
-    cy.visit('meta-set-by-services')
+    cy.visit(META_SET_BY_SERVICES)
   })
 
   it('sets all general metadata', () => {

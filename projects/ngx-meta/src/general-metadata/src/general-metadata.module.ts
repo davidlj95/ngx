@@ -22,6 +22,7 @@ const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
   providers: [
     GeneralMetadataService,
     GeneralMetadataApplierService,
+    GeneralMetadataAppliersService,
     GeneralMetadataRouteDataService,
     LinkRelCanonicalService,
     HtmlLangAttributeService,
@@ -38,7 +39,6 @@ export class GeneralMetadataModule {
       ngModule: GeneralMetadataModule,
       providers: [
         FOR_ROOT_GUARD_PROVIDER,
-        GeneralMetadataAppliersService,
         {
           provide: GENERAL_METADATA_DEFAULTS_TOKEN,
           useValue: defaults,

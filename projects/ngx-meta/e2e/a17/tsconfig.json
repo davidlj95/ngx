@@ -18,7 +18,15 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": ["ES2022", "dom"]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      // 👇 Only needed to avoid IDE getting confused given lib is installed
+      //    from local path and not from NPM.
+      //    Seems it doesn't follow symlinks 🤷
+      //    You don't need this in a regular app where lib is installed from
+      //    NPM registry
+      "@davidlj95/ngx-meta/*": ["../../dist/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

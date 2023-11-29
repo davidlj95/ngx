@@ -3,7 +3,7 @@ import {
   GeneralMetadataService,
   NgxMetaGeneralModule,
 } from '@davidlj95/ngx-meta/general-metadata'
-import generalMetaSetByService from '../../../../cypress/fixtures/general-meta-set-by-service.json'
+import generalMetadata from '../../../../cypress/fixtures/general-metadata.json'
 import { JsonPipe } from '@angular/common'
 import { NgxMetaCommonModule } from '@davidlj95/ngx-meta/common'
 
@@ -15,13 +15,13 @@ import { NgxMetaCommonModule } from '@davidlj95/ngx-meta/common'
   imports: [JsonPipe, NgxMetaCommonModule, NgxMetaGeneralModule],
 })
 export class MetaSetByServicesComponent implements OnInit {
-  protected readonly generalMetaSetByService = generalMetaSetByService
+  protected readonly generalMetadata = generalMetadata
 
   constructor(
     private readonly generalMetadataService: GeneralMetadataService,
   ) {}
 
   ngOnInit(): void {
-    this.generalMetadataService.apply(generalMetaSetByService)
+    this.generalMetadataService.apply(generalMetadata)
   }
 }

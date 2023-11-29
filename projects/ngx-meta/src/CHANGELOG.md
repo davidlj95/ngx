@@ -1,3 +1,40 @@
+## [`ngx-meta` v1.0.0-alpha.6](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.5...ngx-meta-v1.0.0-alpha.6) (2023-11-29)
+
+### Bug Fixes
+
+- move general md appliers to providers ([#41](https://github.com/davidlj95/ngx/issues/41)) ([08b5f04](https://github.com/davidlj95/ngx/commit/08b5f04fd65d07b3f19abd0ebbb935dd19bddf58))
+
+### Miscellaneous Chores
+
+- **release:** update generated assets ([#28](https://github.com/davidlj95/ngx/issues/28)) ([4699911](https://github.com/davidlj95/ngx/commit/4699911aa90df75e28e1b2729d6be72754fdf925))
+
+### Code Refactoring
+
+- generate dist in project dir ([#38](https://github.com/davidlj95/ngx/issues/38)) ([6aa4649](https://github.com/davidlj95/ngx/commit/6aa4649faef7de75405bafdc690a64e728702aad))
+- link appliers with API types ([#32](https://github.com/davidlj95/ngx/issues/32)) ([9bfbdf7](https://github.com/davidlj95/ngx/commit/9bfbdf7c4e61d1170b196e53aef65cfcb5039d0f))
+- move lib src into separate dir ([#33](https://github.com/davidlj95/ngx/issues/33)) ([146f929](https://github.com/davidlj95/ngx/commit/146f929ec6b56939d843c574f9f931c77d4b4ca2))
+- remove meta command ([#31](https://github.com/davidlj95/ngx/issues/31)) ([db42eb0](https://github.com/davidlj95/ngx/commit/db42eb0197e2bfd3be851661f7e3d193e0681400))
+
+### Tests
+
+- add Angular v17 app ([#34](https://github.com/davidlj95/ngx/issues/34)) ([525c738](https://github.com/davidlj95/ngx/commit/525c73894a449f420edaecfbabcb15324a45a552))
+- add Cypress with first test ([#36](https://github.com/davidlj95/ngx/issues/36)) ([2f8aac6](https://github.com/davidlj95/ngx/commit/2f8aac64d9ebdeb6bff4cafc248f7fc6672d920f))
+
+### Build System
+
+- **angular:** set pnpm as package manager ([723c18d](https://github.com/davidlj95/ngx/commit/723c18d2816122364ecb870cd2f14c0a2640a2a1))
+- **deps-dev:** update pnpm to v8.11.0 ([6f1a7be](https://github.com/davidlj95/ngx/commit/6f1a7be9ba294ce6ed42351845bbacb1504fed0b))
+- **deps:** pin dependencies ([#37](https://github.com/davidlj95/ngx/issues/37)) ([66a5328](https://github.com/davidlj95/ngx/commit/66a5328e78312fcf5effa50dc8d489bb2bbc8cef))
+- **deps:** pin peter-evans/create-pull-request action to 1534078 ([#29](https://github.com/davidlj95/ngx/issues/29)) ([d32cd06](https://github.com/davidlj95/ngx/commit/d32cd06855ba6ec274760ab7f8656e5966d41f97))
+- fix ngx-meta dist path ([25b57eb](https://github.com/davidlj95/ngx/commit/25b57eb9b075bf06c50f4963aa5813d898c57839))
+- fix wrong dist after refactor ([7202eff](https://github.com/davidlj95/ngx/commit/7202eff5c87ba2ad8a4f2bc0877200ee54e7849e))
+
+### Continuous (Integration|Deployment)
+
+- **e2e:** add Angular e2e apps cache ([#40](https://github.com/davidlj95/ngx/issues/40)) ([669cb0e](https://github.com/davidlj95/ngx/commit/669cb0ec294c351bbaa603cbe74fb478db878025))
+- **e2e:** add matrix to run for multiple versions ([#39](https://github.com/davidlj95/ngx/issues/39)) ([4e4834a](https://github.com/davidlj95/ngx/commit/4e4834acecbfce79b00daecfbe7fed265e259c02))
+- **main:** add e2e to main workflow ([9871f89](https://github.com/davidlj95/ngx/commit/9871f89245435c886d3d54f94f87fb06a56407f7))
+
 ## [`ngx-meta` v1.0.0-alpha.5](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.4...ngx-meta-v1.0.0-alpha.5) (2023-11-26)
 
 ### Miscellaneous Chores

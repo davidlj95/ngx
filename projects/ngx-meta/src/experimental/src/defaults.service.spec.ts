@@ -7,6 +7,7 @@ import { Provider } from '@angular/core'
 import { MetadataValueGetter } from './metadata-value-getter'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { makeMetadataDefinition } from './__tests__/make-metadata-definition'
+import { MetadataValues } from './metadata-values'
 
 describe('DefaultsService', () => {
   enableAutoSpy()
@@ -95,7 +96,7 @@ describe('DefaultsService', () => {
   })
 })
 
-function makeSut(opts: { defaults?: object } = {}) {
+function makeSut(opts: { defaults?: MetadataValues } = {}) {
   const providers: Provider[] = [
     DefaultsService,
     MockProviders(MetadataValueGetter),

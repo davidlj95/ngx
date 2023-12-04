@@ -5,6 +5,7 @@ import { MetadataSetter } from './metadata-setter'
 import { MetadataValueGetter } from './metadata-value-getter'
 import { NgModuleWithProviders } from 'ng-mocks'
 import { DEFAULTS_TOKEN } from './defaults-token'
+import { MetadataValues } from './metadata-values'
 
 @NgModule({
   providers: [
@@ -15,7 +16,7 @@ import { DEFAULTS_TOKEN } from './defaults-token'
   ],
 })
 export class CoreModule {
-  static withDefaults(defaults: object): NgModuleWithProviders {
+  static withDefaults(defaults: MetadataValues): NgModuleWithProviders {
     return {
       ngModule: CoreModule,
       providers: [{ provide: DEFAULTS_TOKEN, useValue: defaults }],

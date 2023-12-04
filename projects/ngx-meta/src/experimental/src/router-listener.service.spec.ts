@@ -52,7 +52,7 @@ describe('RouterListenerService', () => {
         events$.emit(makeNavigationEvent(EventType.ActivationEnd))
 
         expect(strategy.resolve).not.toHaveBeenCalled()
-        expect(strategy.apply).not.toHaveBeenCalled()
+        expect(strategy.set).not.toHaveBeenCalled()
       })
     })
 
@@ -95,7 +95,7 @@ describe('RouterListenerService', () => {
           expect(strategy.resolve).toHaveBeenCalledOnceWith(
             activatedRoute.snapshot,
           )
-          expect(strategy.apply).toHaveBeenCalledOnceWith(metadata)
+          expect(strategy.set).toHaveBeenCalledOnceWith(metadata)
         })
       })
 
@@ -118,12 +118,12 @@ describe('RouterListenerService', () => {
         expect(strategyOne.resolve).toHaveBeenCalledOnceWith(
           activatedRoute.snapshot,
         )
-        expect(strategyOne.apply).toHaveBeenCalledOnceWith(strategyOneData)
+        expect(strategyOne.set).toHaveBeenCalledOnceWith(strategyOneData)
         expect(strategyTwo.resolve).toHaveBeenCalledOnceWith(
           activatedRoute.snapshot,
         )
-        expect(strategyTwo.apply).toHaveBeenCalledOnceWith(strategyTwoData)
-        expect(strategyOne.apply).toHaveBeenCalledBefore(strategyTwo.apply)
+        expect(strategyTwo.set).toHaveBeenCalledOnceWith(strategyTwoData)
+        expect(strategyOne.set).toHaveBeenCalledBefore(strategyTwo.set)
       })
     })
   })

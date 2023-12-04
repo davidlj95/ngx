@@ -19,6 +19,6 @@ export class MetadataSetter {
     const effectiveValue = [value, globalValue, defaultValue].find(
       (v) => v !== undefined,
     )
-    metadata.set(effectiveValue !== undefined ? effectiveValue : null)
+    metadata.set(effectiveValue)
   }
 }

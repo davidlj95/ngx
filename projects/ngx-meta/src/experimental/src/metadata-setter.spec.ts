@@ -121,13 +121,13 @@ describe('MetadataSetter', () => {
     })
 
     describe('when no value exists', () => {
-      it('should call setter with null', () => {
+      it('should call setter with undefined', () => {
         const metadata = makeMetadata()
         const sut = makeSut()
 
         sut.set(metadata, {})
 
-        expect(metadata.set).toHaveBeenCalledOnceWith(null)
+        expect(metadata.set).toHaveBeenCalledOnceWith(undefined)
       })
     })
   })

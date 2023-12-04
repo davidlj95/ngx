@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core'
 import { Metadata } from './metadata'
 import { MetadataSetter } from './metadata-setter'
+import { MetadataValues } from './metadata-values'
 
 @Injectable()
 export class MetadataService {
@@ -10,7 +11,7 @@ export class MetadataService {
     private readonly metadataSetter: MetadataSetter,
   ) {}
 
-  public set(values: object = {}): void {
+  public set(values: MetadataValues = {}): void {
     this.metadata.forEach((metadata) =>
       this.metadataSetter.set(metadata, values),
     )

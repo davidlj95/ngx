@@ -1,7 +1,8 @@
 import { MetadataDefinition } from './metadata-definition'
 import { MetadataValues } from './metadata-values'
+import { MaybeUndefined } from './maybe-undefined'
 
-export class MetadataValueGetter {
+export class MetadataValueFromValues {
   get<T>(
     definition: MetadataDefinition,
     values: MetadataValues,
@@ -14,6 +15,9 @@ export class MetadataValueGetter {
       }
       value = (value as MetadataValues)[key]
     }
-    return value !== undefined ? (value as T) : undefined
+    if (value !== undefined || !definition.globalName) {
+      return value as MaybeUndefined<T>
+    }
+    return values[definition.globalName] as MaybeUndefined<T>
   }
 }

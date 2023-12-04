@@ -4,19 +4,18 @@ import { DefaultsService } from './defaults.service'
 import { MockProvider, MockProviders } from 'ng-mocks'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { Provider } from '@angular/core'
-import { MetadataValueGetter } from './metadata-value-getter'
+import { MetadataValueFromValues } from './metadata-value-from-values'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { makeMetadataDefinition } from './__tests__/make-metadata-definition'
 import { MetadataValues } from './metadata-values'
 
 describe('DefaultsService', () => {
   enableAutoSpy()
-  const value = 'value'
 
   describe('get', () => {
-    describe('when no defaults available', () => {
-      const definition = makeMetadataDefinition()
+    const definition = makeMetadataDefinition()
 
+    describe('when no defaults available', () => {
       describe('like when defaults not injected', () => {
         it('should return undefined', () => {
           const sut = makeSut()
@@ -34,63 +33,38 @@ describe('DefaultsService', () => {
           expect(sut.get(definition)).toBeUndefined()
         })
       })
-    })
-    describe('when defaults available', () => {
-      const defaults = {}
 
-      describe('when global is defined', () => {
-        const globalName = 'globalName'
-        const definition = makeMetadataDefinition({
-          globalName,
-        })
-        const defaults = { [globalName]: value }
+      describe('like when non defined defaults', () => {
+        const defaults = undefined
 
-        it('should return global default value', () => {
+        it('should return undefined', () => {
           const sut = makeSut({ defaults })
 
-          expect(sut.get(definition)).toEqual(value)
+          expect(sut.get(definition)).toBeUndefined()
         })
       })
+    })
 
-      describe('when default is defined', () => {
-        const definition = makeMetadataDefinition()
-        let sut: DefaultsService
-        let valueGetter: jasmine.SpyObj<MetadataValueGetter>
+    describe('when defaults available', () => {
+      const defaults = { foo: 'bar' }
+      let sut: DefaultsService
 
-        beforeEach(() => {
-          sut = makeSut({ defaults })
-          valueGetter = TestBed.inject(
-            MetadataValueGetter,
-          ) as jasmine.SpyObj<MetadataValueGetter>
-          valueGetter.get.and.returnValue(value)
-        })
-
-        it('should return default value using value getter', () => {
-          expect(sut.get(definition)).toEqual(value)
-          expect(valueGetter.get).toHaveBeenCalledOnceWith(definition, defaults)
-        })
+      beforeEach(() => {
+        sut = makeSut({ defaults })
       })
 
-      describe('when both global and default are defined', () => {
-        const globalName = 'globalName'
-        const definition = makeMetadataDefinition({
-          globalName,
-        })
-        const defaults = { [globalName]: 'default global value' }
-        let sut: DefaultsService
-        let valueGetter: jasmine.SpyObj<MetadataValueGetter>
+      it('should return default value using collaborator', () => {
+        const value = 'value'
+        const valueFromValues = TestBed.inject(
+          MetadataValueFromValues,
+        ) as jasmine.SpyObj<MetadataValueFromValues>
+        valueFromValues.get.and.returnValue(value)
 
-        beforeEach(() => {
-          sut = makeSut({ defaults })
-          valueGetter = TestBed.inject(
-            MetadataValueGetter,
-          ) as jasmine.SpyObj<MetadataValueGetter>
-          valueGetter.get.and.returnValue(value)
-        })
-
-        it('should return default', () => {
-          expect(sut.get(definition)).toEqual(value)
-        })
+        expect(sut.get(definition)).toEqual(value)
+        expect(valueFromValues.get).toHaveBeenCalledOnceWith(
+          definition,
+          defaults,
+        )
       })
     })
   })
@@ -99,7 +73,7 @@ describe('DefaultsService', () => {
 function makeSut(opts: { defaults?: MetadataValues } = {}) {
   const providers: Provider[] = [
     DefaultsService,
-    MockProviders(MetadataValueGetter),
+    MockProviders(MetadataValueFromValues),
   ]
   if (opts.defaults) {
     providers.push(MockProvider(DEFAULTS_TOKEN, opts.defaults, 'useValue'))

@@ -1,5 +1,5 @@
 import { Inject, Injectable, Optional } from '@angular/core'
-import { MetadataValueGetter } from './metadata-value-getter'
+import { MetadataValueFromValues } from './metadata-value-from-values'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { MetadataDefinition } from './metadata-definition'
 import { MetadataValues } from './metadata-values'
@@ -9,8 +9,8 @@ export class DefaultsService {
   constructor(
     @Optional()
     @Inject(DEFAULTS_TOKEN)
-    private readonly defaults: MetadataValues,
-    private readonly valueGetter: MetadataValueGetter,
+    private readonly defaults: MetadataValues | null,
+    private readonly valueGetter: MetadataValueFromValues,
   ) {}
 
   get<T>(definition: MetadataDefinition): T | undefined {

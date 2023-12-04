@@ -2,11 +2,19 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core'
 import { provideRouter } from '@angular/router'
 
 import { routes } from './app.routes'
-import { CoreModule } from '@davidlj95/ngx-meta/experimental'
+import {
+  CoreModule,
+  RoutingModule,
+  StandardModule,
+} from '@davidlj95/ngx-meta/experimental'
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(CoreModule.withDefaults({})),
+    importProvidersFrom(
+      CoreModule.withDefaults({}),
+      StandardModule,
+      RoutingModule.forRoot(),
+    ),
   ],
 }

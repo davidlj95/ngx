@@ -11,5 +11,10 @@ export const routes: Routes = [
   {
     path: 'experimental',
     component: ExperimentalComponent,
+    data: {
+      meta: {
+        title: 'Experimental title set by route',
+      },
+    },
   },
 ]

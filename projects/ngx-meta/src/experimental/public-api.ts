@@ -1,6 +1,7 @@
 export * from './src/core.module'
 export * from './src/global-meta'
 export * from './src/metadata.service'
+export * from './src/routing.module'
 export * from './src/standard.module'
 export * from './src/standard-meta'
 export * from './src/standard-metadata-values'

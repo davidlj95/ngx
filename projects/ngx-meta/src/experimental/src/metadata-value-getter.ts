@@ -1,15 +1,19 @@
 import { MetadataDefinition } from './metadata-definition'
+import { MetadataValues } from './metadata-values'
 
 export class MetadataValueGetter {
-  get<T>(definition: MetadataDefinition, values: object): T | undefined {
+  get<T>(
+    definition: MetadataDefinition,
+    values: MetadataValues,
+  ): T | undefined {
     const keys = [...definition.scope.split('.'), definition.name]
-    let value: any = values
+    let value: unknown = values
     for (const key of keys) {
       if (value === undefined || value === null) {
         break
       }
-      value = value[key]
+      value = (value as MetadataValues)[key]
     }
-    return value
+    return value !== undefined ? (value as T) : undefined
   }
 }

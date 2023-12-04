@@ -2,11 +2,14 @@ import { Inject, Injectable, Optional } from '@angular/core'
 import { MetadataValueGetter } from './metadata-value-getter'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { MetadataDefinition } from './metadata-definition'
+import { MetadataValues } from './metadata-values'
 
 @Injectable()
 export class DefaultsService {
   constructor(
-    @Optional() @Inject(DEFAULTS_TOKEN) private readonly defaults: any,
+    @Optional()
+    @Inject(DEFAULTS_TOKEN)
+    private readonly defaults: MetadataValues,
     private readonly valueGetter: MetadataValueGetter,
   ) {}
 
@@ -18,6 +21,8 @@ export class DefaultsService {
       ? this.defaults[definition.globalName]
       : undefined
     const defaultValue = this.valueGetter.get(definition, this.defaults)
-    return defaultValue !== undefined ? defaultValue : globalDefaultValue
+    const effectiveValue =
+      defaultValue !== undefined ? defaultValue : globalDefaultValue
+    return effectiveValue !== undefined ? (effectiveValue as T) : undefined
   }
 }

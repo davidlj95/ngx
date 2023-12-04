@@ -3,6 +3,7 @@ import { RouterListenerService } from './router-listener.service'
 import { _makeForRootGuard } from '@davidlj95/ngx-meta/common'
 import { MetadataRouteStrategy } from './metadata-route-strategy'
 import { CurrentRouteDataMetadataStrategy } from './current-route-data-metadata-strategy'
+import { RouteMetadataValues } from './route-metadata-values'
 
 const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
   'MetadataRoutingModule',
@@ -10,7 +11,7 @@ const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
 )
 
 @NgModule({
-  providers: [CurrentRouteDataMetadataStrategy],
+  providers: [CurrentRouteDataMetadataStrategy, RouteMetadataValues],
 })
 export class RoutingModule {
   constructor(

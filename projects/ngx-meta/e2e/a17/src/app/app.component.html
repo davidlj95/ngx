@@ -357,4 +357,15 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<h2>Routes</h2>
+<nav>
+  <ul>
+    <li *ngFor="let navItem of navItems">
+      <a [routerLink]="navItem.url">
+        {{ navItem.name }}
+      </a>
+    </li>
+  </ul>
+</nav>
+
 <router-outlet></router-outlet>

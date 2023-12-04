@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: ExperimentalComponent,
     data: {
       meta: {
-        title: 'Experimental title set by route',
+        description: 'Experimental description set by route',
       },
     },
   },

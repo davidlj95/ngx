@@ -1,120 +1,125 @@
-import { MetadataDefinition } from './metadata-definition'
 import { TestBed } from '@angular/core/testing'
 import { MetadataValueFromValues } from './metadata-value-from-values'
 import { MetadataValues } from './metadata-values'
+import { makeMetadataDefinition } from './__tests__/make-metadata-definition'
+import { MetadataDefinition } from './metadata-definition'
 
 describe('MetadataValueFromValues', () => {
+  let sut: MetadataValueFromValues
+
+  beforeEach(() => {
+    sut = makeSut()
+  })
+
   describe('get', () => {
     const scope = 'scope'
     const name = 'name'
     const value = 'value'
 
-    function globalMayBeRetrieved(values: MetadataValues) {
+    function testGlobalMayBeRetrieved(
+      metadataDefinition: MetadataDefinition,
+      values: MetadataValues,
+    ) {
       describe('when global is not defined', () => {
-        const metadataDefinition: MetadataDefinition = {
-          scope,
-          name,
-        }
-
         it('should return undefined', () => {
-          const sut = makeSut()
-
           expect(sut.get(metadataDefinition, values)).toBeUndefined()
         })
       })
 
       describe('when global is defined', () => {
         const globalName = 'globalName'
+        const metadataDefinitionWithGlobal = makeMetadataDefinition({
+          ...metadataDefinition,
+          globalName,
+        })
 
         describe('but global value does not exist', () => {
-          const metadataDefinition: MetadataDefinition = {
-            scope,
-            name,
-            globalName,
-          }
-
           it('should return undefined', () => {
-            const sut = makeSut()
-
-            expect(sut.get(metadataDefinition, values)).toBeUndefined()
+            expect(
+              sut.get(metadataDefinitionWithGlobal, values),
+            ).toBeUndefined()
           })
         })
         describe('and global value exists', () => {
-          const metadataDefinition: MetadataDefinition = {
-            scope,
-            name,
-            globalName,
-          }
-
           const valuesWithGlobal = { [globalName]: value, ...values }
 
           it('should return global value', () => {
-            const sut = makeSut()
-
-            expect(sut.get(metadataDefinition, valuesWithGlobal)).toEqual(value)
+            expect(
+              sut.get(metadataDefinitionWithGlobal, valuesWithGlobal),
+            ).toEqual(value)
           })
         })
       })
     }
 
     describe('when specific value is not set', () => {
+      describe('like when values are undefined', () => {
+        const values = undefined
+
+        it('should return undefined', () => {
+          expect(sut.get(makeMetadataDefinition(), values)).toBeUndefined()
+        })
+      })
       describe('like when scope does not exist', () => {
+        const metadataDefinition = makeMetadataDefinition({
+          scope,
+        })
         const values = {}
 
-        globalMayBeRetrieved(values)
+        testGlobalMayBeRetrieved(metadataDefinition, values)
       })
 
       describe('like when scope is defined but property name does not exist', () => {
+        const metadataDefinition = makeMetadataDefinition({
+          scope,
+          name,
+        })
         const values = {
           [scope]: {},
         }
-        globalMayBeRetrieved(values)
+        testGlobalMayBeRetrieved(metadataDefinition, values)
       })
 
       describe('like when scope is null', () => {
-        const metadataDefinition: MetadataDefinition = {
+        const metadataDefinition = makeMetadataDefinition({
           scope,
-          name,
-        }
+        })
 
         const values = { [scope]: null }
 
         it('should return null', () => {
-          const sut = makeSut()
-
           expect(sut.get(metadataDefinition, values)).toBeNull()
         })
       })
 
       describe('like when scope value is null and there is sub scope', () => {
-        const metadataDefinition: MetadataDefinition = {
+        const metadataDefinition = makeMetadataDefinition({
           scope: `${scope}.subScope`,
           name,
-        }
+        })
 
         const values = { [scope]: null }
 
         it('should return null', () => {
-          const sut = makeSut()
-
           expect(sut.get(metadataDefinition, values)).toBeNull()
         })
       })
 
       describe('like when scope is not an object', () => {
+        const metadataDefinition = makeMetadataDefinition({ scope })
         const values = {
           [scope]: 42,
         }
-        globalMayBeRetrieved(values)
+        testGlobalMayBeRetrieved(metadataDefinition, values)
       })
     })
 
     describe('when specific value is defined', () => {
       describe('like when scope does not contain sub scopes', () => {
-        const metadataDefinition: MetadataDefinition = {
+        const metadataDefinition = makeMetadataDefinition({
           scope,
           name,
-        }
+        })
 
         const values = {
           [scope]: {
@@ -123,18 +128,16 @@ describe('MetadataValueFromValues', () => {
         }
 
         it('should return value using scope and name as keys', () => {
-          const sut = makeSut()
-
           expect(sut.get(metadataDefinition, values)).toEqual(value)
         })
       })
 
       describe('like when scope contains sub scopes', () => {
         const subScope = 'subScope'
-        const metadataDefinition: MetadataDefinition = {
+        const metadataDefinition = makeMetadataDefinition({
           scope: `${scope}.${subScope}`,
           name,
-        }
+        })
 
         const values = {
           [scope]: {
@@ -145,8 +148,6 @@ describe('MetadataValueFromValues', () => {
         }
 
         it('should return value using sub scope, scope and name as keys', () => {
-          const sut = makeSut()
-
           expect(sut.get(metadataDefinition, values)).toEqual(value)
         })
       })

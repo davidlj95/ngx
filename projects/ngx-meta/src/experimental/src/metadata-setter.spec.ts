@@ -7,12 +7,16 @@ import { MockProviders } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataValueFromValues } from './metadata-value-from-values'
 import { Metadata } from './metadata'
+import { RouteMetadataValues } from './route-metadata-values'
+import { MetadataDefinition } from './metadata-definition'
+import { MetadataValues } from './metadata-values'
 
 describe('MetadataSetter', () => {
   enableAutoSpy()
   let sut: MetadataSetter
   let dummyMetadata: Metadata<unknown>
   let valueFromValues: jasmine.SpyObj<MetadataValueFromValues>
+  let routeMetadataValues: jasmine.SpyObj<RouteMetadataValues>
   let defaultsService: jasmine.SpyObj<DefaultsService>
 
   beforeEach(() => {
@@ -21,6 +25,9 @@ describe('MetadataSetter', () => {
     valueFromValues = TestBed.inject(
       MetadataValueFromValues,
     ) as jasmine.SpyObj<MetadataValueFromValues>
+    routeMetadataValues = TestBed.inject(
+      RouteMetadataValues,
+    ) as jasmine.SpyObj<RouteMetadataValues>
     defaultsService = TestBed.inject(
       DefaultsService,
     ) as jasmine.SpyObj<DefaultsService>
@@ -30,6 +37,7 @@ describe('MetadataSetter', () => {
     const dummyValues = { foo: 'bar' }
     const value = 'value'
     const defaultValue = 'defaultValue'
+    const routeValues = { route: 'values' }
 
     describe('when value exists for the metadata', () => {
       beforeEach(() => {
@@ -40,9 +48,34 @@ describe('MetadataSetter', () => {
         sut.set(dummyMetadata, dummyValues)
 
         expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
-        expect(valueFromValues.get).toHaveBeenCalledOnceWith(
+        expect(valueFromValues.get).toHaveBeenCalledWith(
           dummyMetadata.definition,
           dummyValues,
+        )
+      })
+    })
+
+    describe('when route metadata values exist', () => {
+      beforeEach(() => {
+        routeMetadataValues.get.and.returnValue(routeValues)
+        valueFromValues.get.and.callFake(
+          <T>(def: MetadataDefinition, values: MetadataValues) => {
+            if (values !== routeValues) {
+              return undefined
+            }
+            return value as T
+          },
+        )
+      })
+
+      it('should call setter with value obtained from there', () => {
+        sut.set(dummyMetadata, dummyValues)
+
+        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
+        expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
+        expect(valueFromValues.get).toHaveBeenCalledWith(
+          dummyMetadata.definition,
+          routeValues,
         )
       })
     })
@@ -65,6 +98,33 @@ describe('MetadataSetter', () => {
     describe('when value and default value exist', () => {
       beforeEach(() => {
         defaultsService.get.and.returnValue(defaultValue)
+        valueFromValues.get.and.returnValue(value)
+      })
+
+      it('should call setter with value', () => {
+        sut.set(dummyMetadata, dummyValues)
+
+        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
+      })
+    })
+
+    describe('when value and route value exist', () => {
+      const routeValue = 'routeValue'
+
+      beforeEach(() => {
+        routeMetadataValues.get.and.returnValue(routeValues)
+        valueFromValues.get.and.callFake(
+          <T>(def: MetadataDefinition, values: MetadataValues) => {
+            switch (values) {
+              case routeValues:
+                return routeValue as T
+              case values:
+                return value as T
+              default:
+                throw new Error('Unexpected values, cannot mock')
+            }
+          },
+        )
         valueFromValues.get.and.returnValue(value)
       })
 
@@ -102,7 +162,11 @@ function makeSut() {
   TestBed.configureTestingModule({
     providers: [
       MetadataSetter,
-      MockProviders(MetadataValueFromValues, DefaultsService),
+      MockProviders(
+        MetadataValueFromValues,
+        RouteMetadataValues,
+        DefaultsService,
+      ),
     ],
   })
   return TestBed.inject(MetadataSetter)

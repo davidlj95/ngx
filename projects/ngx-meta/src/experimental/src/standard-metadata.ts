@@ -1,5 +1,6 @@
 import { ScopedMetadata } from './scoped-metadata'
 import { StandardMetadataValues } from './standard-metadata-values'
+import { GlobalMeta } from './global-meta'
 
 export const SCOPE = 'standard'
 
@@ -11,7 +12,7 @@ export abstract class StandardMetadata<
     globalName,
   }: {
     name: K
-    globalName?: string
+    globalName?: keyof GlobalMeta
   }) {
     super({ name, scope: SCOPE, globalName })
   }

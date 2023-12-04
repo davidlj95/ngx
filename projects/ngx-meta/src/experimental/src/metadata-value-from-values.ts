@@ -5,8 +5,12 @@ import { MaybeUndefined } from './maybe-undefined'
 export class MetadataValueFromValues {
   get<T>(
     definition: MetadataDefinition,
-    values: MetadataValues,
+    values?: MetadataValues,
   ): T | undefined {
+    if (values === undefined) {
+      return
+    }
+
     const keys = [...definition.scope.split('.'), definition.name]
     let value: unknown = values
     for (const key of keys) {

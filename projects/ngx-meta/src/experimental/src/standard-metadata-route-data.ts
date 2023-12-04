@@ -1,6 +1,6 @@
 import { StandardMetadataValues } from './standard-metadata-values'
 import { SCOPE } from './standard-metadata'
 
-export interface StandardMeta {
+export interface StandardMetadataRouteData {
   [SCOPE]: StandardMetadataValues
 }

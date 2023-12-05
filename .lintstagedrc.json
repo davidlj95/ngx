@@ -1,5 +1,4 @@
 {
   "*": ["pnpm run format"],
-  "projects/**/*.ts": ["pnpm run ng-lint-staged"],
-  "projects/**/*.html": ["pnpm run ng-lint-staged"]
+  "projects/ngx-meta/src/**/*.ts": ["pnpm run ng-lint-staged"]
 }

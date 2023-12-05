@@ -1,3 +1,5 @@
 {
-  "*": ["pnpm run format", "ng-lint-staged lint --fix --"]
+  "*": ["pnpm run format"],
+  "projects/**/*.ts": ["pnpm run ng-lint-staged"],
+  "projects/**/*.html": ["pnpm run ng-lint-staged"]
 }

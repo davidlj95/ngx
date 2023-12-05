@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ngx-meta/e2e/a17: serve" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/package.json" />
+    <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/a17/package.json" />
     <command value="run" />
     <scripts>
-      <script value="a17:serve" />
+      <script value="start" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

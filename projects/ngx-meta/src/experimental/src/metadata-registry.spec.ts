@@ -53,7 +53,7 @@ function makeSut(
     providers: [
       //👇 Mocking sut to ensure injected metadata calls registry function
       MetadataRegistry,
-      ...(!!opts.metadata
+      ...(opts.metadata
         ? opts.metadata.map((metadata) =>
             MockProvider(Metadata, metadata, 'useValue', true),
           )

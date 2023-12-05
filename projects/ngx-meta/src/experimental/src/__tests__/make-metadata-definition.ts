@@ -1,17 +1,11 @@
 import { MetadataDefinition } from '../metadata-definition'
 
-export function makeMetadataDefinition({
-  name,
-  scope,
-  globalName,
-}: {
-  name?: string
-  scope?: string
-  globalName?: string
-} = {}): MetadataDefinition {
-  return {
-    name: name ?? 'dummy name',
-    scope: scope ?? 'dummy scope',
-    globalName,
-  }
+export function makeMetadataDefinition(
+  opts: Partial<ConstructorParameters<typeof MetadataDefinition>[0]> = {},
+): MetadataDefinition {
+  return new MetadataDefinition({
+    name: opts.name ?? 'dummy name',
+    scope: opts.scope ?? 'dummy scope',
+    globalName: opts.globalName,
+  })
 }

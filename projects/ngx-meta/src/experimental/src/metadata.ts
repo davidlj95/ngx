@@ -1,6 +1,10 @@
 import { MetadataDefinition } from './metadata-definition'
 
-export abstract class Metadata<T> {
-  abstract readonly definition: MetadataDefinition
-  abstract set(value: T | null): void
+export abstract class Metadata<
+  Value,
+  Name extends string = string,
+  GlobalName extends string = string,
+> {
+  abstract readonly definition: MetadataDefinition<Name, GlobalName>
+  abstract set(value: Value | null): void
 }

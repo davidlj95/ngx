@@ -1,4 +1,4 @@
-export interface GlobalMeta {
+export interface GlobalMetadata {
   title?: string
   description?: string
 }

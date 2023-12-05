@@ -1,23 +1,23 @@
-import { Inject, Injectable, Optional } from '@angular/core'
-import { Metadata } from './metadata'
+import { Injectable, Optional } from '@angular/core'
 import { MetadataSetter } from './metadata-setter'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
+import { MetadataRegistry } from './metadata-registry'
 
 @Injectable()
 export class MetadataService {
   constructor(
-    @Optional()
-    @Inject(Metadata)
-    private readonly metadata: ReadonlyArray<Metadata<unknown>> | null,
-    private readonly metadataSetter: MetadataSetter,
+    private readonly registry: MetadataRegistry,
+    private readonly setter: MetadataSetter,
     @Optional()
     private readonly routeMetadataValues: RouteMetadataValues | null,
   ) {}
 
   public set(values: MetadataValues = {}): void {
-    const metadata = this.metadata ?? []
-    metadata.forEach((metadata) => this.metadataSetter.set(metadata, values))
+    const allMetadata = this.registry.getAll()
+    for (const metadata of allMetadata) {
+      this.setter.set(metadata, values)
+    }
     this.routeMetadataValues?.set(values)
   }
 }

@@ -1,5 +1,5 @@
 export * from './src/core.module'
-export * from './src/global-meta'
+export * from './src/global-metadata'
 export * from './src/metadata.service'
 export * from './src/routing.module'
 export * from './src/standard.module'

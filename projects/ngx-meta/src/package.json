@@ -13,7 +13,13 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "ng build ngx-meta",
+    "test": "ng test ngx-meta",
+    "lint": "ng lint ngx-meta",
+    "tsc:lib": "tsc -p tsconfig.lib.json --listEmittedFiles",
+    "tsc:spec": "tsc -p tsconfig.spec.json --listEmittedFiles"
+  },
   "sideEffects": false,
   "repository": {
     "type": "git",

@@ -11,7 +11,7 @@ export class MetadataValueFromValues {
       return
     }
 
-    const keys = [...definition.scope.split('.'), definition.name]
+    const keys = [...definition.jsonPath]
     let value: unknown = values
     for (const key of keys) {
       if (value === undefined || value === null) {

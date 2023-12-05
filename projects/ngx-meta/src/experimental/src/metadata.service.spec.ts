@@ -1,26 +1,37 @@
 import { TestBed } from '@angular/core/testing'
 import { MetadataService } from './metadata.service'
-import { Metadata } from './metadata'
-import { MockProvider, MockProviders } from 'ng-mocks'
+import { MockProviders } from 'ng-mocks'
 import { makeMetadata } from './__tests__/make-metadata'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataSetter } from './metadata-setter'
 import { RouteMetadataValues } from './route-metadata-values'
+import { MetadataRegistry } from './metadata-registry'
 
 describe('MetadataService', () => {
   enableAutoSpy()
+  let sut: MetadataService
+  let metadataRegistry: jasmine.SpyObj<MetadataRegistry>
+
+  beforeEach(() => {
+    sut = makeSut()
+    metadataRegistry = TestBed.inject(
+      MetadataRegistry,
+    ) as jasmine.SpyObj<MetadataRegistry>
+  })
 
   describe('set', () => {
+    const firstMetadata = makeMetadata({ name: 'first' })
+    const secondMetadata = makeMetadata({ name: 'second' })
     const dummyValues = {}
 
+    beforeEach(() => {
+      metadataRegistry.getAll.and.returnValue([firstMetadata, secondMetadata])
+    })
+
     it('should set each metadata using the setter', () => {
-      const firstMetadata = makeMetadata({ name: 'first' })
-      const secondMetadata = makeMetadata({ name: 'second' })
-      const sut = makeSut({ properties: [firstMetadata, secondMetadata] })
       const metadataSetter = TestBed.inject(
         MetadataSetter,
       ) as unknown as jasmine.SpyObj<MetadataSetter>
-
       sut.set(dummyValues)
 
       expect(metadataSetter.set).toHaveBeenCalledTimes(2)
@@ -32,10 +43,10 @@ describe('MetadataService', () => {
         secondMetadata,
         dummyValues,
       )
+      expect(metadataRegistry.getAll).toHaveBeenCalledOnceWith()
     })
 
     it('should set values for current url when finished', () => {
-      const sut = makeSut()
       const routeMetadataValues = TestBed.inject(
         RouteMetadataValues,
       ) as jasmine.SpyObj<RouteMetadataValues>
@@ -47,16 +58,11 @@ describe('MetadataService', () => {
   })
 })
 
-function makeSut(opts: { properties?: ReadonlyArray<Metadata<unknown>> } = {}) {
-  const metadataProviders =
-    opts.properties?.map((metadata) =>
-      MockProvider(Metadata, metadata, 'useValue', true),
-    ) ?? []
+function makeSut() {
   TestBed.configureTestingModule({
     providers: [
       MetadataService,
-      ...metadataProviders,
-      MockProviders(MetadataSetter, RouteMetadataValues),
+      MockProviders(MetadataRegistry, MetadataSetter, RouteMetadataValues),
     ],
   })
   return TestBed.inject(MetadataService)

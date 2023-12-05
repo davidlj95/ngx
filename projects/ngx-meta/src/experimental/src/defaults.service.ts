@@ -10,7 +10,7 @@ export class DefaultsService {
     @Optional()
     @Inject(DEFAULTS_TOKEN)
     private readonly defaults: MetadataValues | null,
-    private readonly valueGetter: MetadataValueFromValues,
+    private readonly valueFromValues: MetadataValueFromValues,
   ) {}
 
   get<T>(definition: MetadataDefinition): T | undefined {
@@ -20,7 +20,7 @@ export class DefaultsService {
     const globalDefaultValue = definition.globalName
       ? this.defaults[definition.globalName]
       : undefined
-    const defaultValue = this.valueGetter.get(definition, this.defaults)
+    const defaultValue = this.valueFromValues.get(definition, this.defaults)
     const effectiveValue =
       defaultValue !== undefined ? defaultValue : globalDefaultValue
     return effectiveValue !== undefined ? (effectiveValue as T) : undefined

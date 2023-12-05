@@ -2,7 +2,8 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../out-tsc/spec",
+    //👇 Changed to output to an ignored directory
+    "outDir": "../out/spec",
     "types": ["jasmine"]
   },
   "include": ["**/*.spec.ts", "**/*.d.ts", "**/__tests__/*.ts"]

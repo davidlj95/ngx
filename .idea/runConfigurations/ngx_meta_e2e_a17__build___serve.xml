@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/e2e: A17 build &amp; serve" type="js.build_tools.npm">
+  <configuration default="false" name="ngx-meta/e2e/a17: build &amp; serve" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/package.json" />
     <command value="run" />
     <scripts>
@@ -9,7 +9,7 @@
     <envs />
     <method v="2">
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="ngx-meta: build" run_configuration_type="js.build_tools.npm" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="ngx-meta/e2e: A17 cache clean" run_configuration_type="js.build_tools.npm" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="ngx-meta/e2e/a17: cache clean" run_configuration_type="js.build_tools.npm" />
     </method>
   </configuration>
 </component>

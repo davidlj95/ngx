@@ -5,6 +5,7 @@ import { MetadataSetter } from './metadata-setter'
 import { MetadataValueFromValues } from './metadata-value-from-values'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { MetadataValues } from './metadata-values'
+import { MetadataRegistry } from './metadata-registry'
 
 @NgModule({
   providers: [
@@ -12,6 +13,7 @@ import { MetadataValues } from './metadata-values'
     MetadataService,
     MetadataSetter,
     MetadataValueFromValues,
+    MetadataRegistry,
   ],
 })
 export class CoreModule {

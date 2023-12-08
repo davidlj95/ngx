@@ -2,6 +2,13 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
 
+# ALPHA VERSION: APIs may change at any time
+
+> ⚠️ Current version is still in alpha, APIs may change at any time
+> Indeed I'm doing some refactors on the APIs, so they'll actually change
+> A beta version will be published once they're more stable
+> When it's finally stable, 1.0.0 version will be published
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project ngx-meta` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-meta`.

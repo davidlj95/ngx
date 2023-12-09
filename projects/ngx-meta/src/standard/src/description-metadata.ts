@@ -14,6 +14,6 @@ export class DescriptionMetadata extends StandardMetadata<'description'> {
   }
 
   set(value: StandardMetadataValues['description']): void {
-    this.metaService.apply(new StandardMetaProperty('description'), value)
+    this.metaService.set(new StandardMetaProperty('description'), value)
   }
 }

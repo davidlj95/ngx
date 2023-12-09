@@ -11,9 +11,6 @@ export class KeywordsMetadata extends StandardMetadata<'keywords'> {
   }
 
   set(value: StandardMetadataValues['keywords']): void {
-    this.metaService.apply(
-      new StandardMetaProperty('keywords'),
-      value?.join(','),
-    )
+    this.metaService.set(new StandardMetaProperty('keywords'), value?.join(','))
   }
 }

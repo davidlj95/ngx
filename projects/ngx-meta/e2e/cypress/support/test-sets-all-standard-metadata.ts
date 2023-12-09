@@ -23,6 +23,7 @@ export function testSetsAllStandardMetadata() {
       cy.get('link[rel="canonical"]')
         .should('have.attr', 'href')
         .and('eq', metadata.canonicalUrl)
+      cy.get('html').should('have.attr', 'lang').and('eq', metadata.locale)
     })
   })
 }

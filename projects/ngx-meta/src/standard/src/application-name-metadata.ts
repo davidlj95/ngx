@@ -11,6 +11,6 @@ export class ApplicationNameMetadata extends StandardMetadata<'applicationName'>
   }
 
   set(value: StandardMetadataValues['applicationName']): void {
-    this.metaService.apply(new StandardMetaProperty('application-name'), value)
+    this.metaService.set(new StandardMetaProperty('application-name'), value)
   }
 }

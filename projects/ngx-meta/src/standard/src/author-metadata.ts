@@ -11,6 +11,6 @@ export class AuthorMetadata extends StandardMetadata<'author'> {
   }
 
   set(value: StandardMetadataValues['author']): void {
-    this.metaService.apply(new StandardMetaProperty('author'), value)
+    this.metaService.set(new StandardMetaProperty('author'), value)
   }
 }

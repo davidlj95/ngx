@@ -13,7 +13,7 @@ export class GeneratorMetadata extends StandardMetadata<'generator'> {
   }
 
   set(value: StandardMetadataValues['generator']): void {
-    this.metaService.apply(
+    this.metaService.set(
       new StandardMetaProperty('generator'),
       value === true ? this.angularVersion : value,
     )

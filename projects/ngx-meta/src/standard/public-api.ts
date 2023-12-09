@@ -1,4 +1,5 @@
 export { StandardModule as NgxMetaStandardModule } from './src/standard.module'
+export * from './src/html-lang-attribute/html-lang-attribute.service'
 export * from './src/link-rel-canonical/link-rel-canonical.service'
 export * from './src/application-name-metadata'
 export * from './src/author-metadata'

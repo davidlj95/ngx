@@ -28,7 +28,7 @@ describe('MetaService', () => {
       const content = undefined
 
       it('should remove meta element', () => {
-        sut.apply(property, content)
+        sut.set(property, content)
 
         expect(metaService.removeTag).toHaveBeenCalledOnceWith(
           property.selector,
@@ -40,7 +40,7 @@ describe('MetaService', () => {
       const content = null
 
       it('should remove meta element', () => {
-        sut.apply(property, content)
+        sut.set(property, content)
 
         expect(metaService.removeTag).toHaveBeenCalledOnceWith(
           property.selector,
@@ -52,7 +52,7 @@ describe('MetaService', () => {
       const content = 'Lorem ipsum lorem'
 
       it('should update the meta tag', () => {
-        sut.apply(property, content)
+        sut.set(property, content)
 
         expect(metaService.updateTag).toHaveBeenCalledOnceWith({
           [property.keyAttribute]: property.keyName,

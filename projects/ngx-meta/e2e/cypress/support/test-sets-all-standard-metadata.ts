@@ -15,8 +15,11 @@ export function testSetsAllStandardMetadata() {
         .and('eq', metadata.standard.keywords.join(','))
       cy.getMeta('generator')
         .shouldHaveContent()
-        .should('match', /^Angular v/)
+        .and('match', /^Angular v/)
       //👆 v1 cause we E2E test v15+
+      cy.getMeta('application-name')
+        .shouldHaveContent()
+        .and('eq', metadata.applicationName)
     })
   })
 }

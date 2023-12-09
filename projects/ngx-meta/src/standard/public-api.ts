@@ -1,1 +1,7 @@
 export { StandardModule as NgxMetaStandardModule } from './src/standard.module'
+export { ApplicationNameMetadata } from './src/application-name-metadata'
+export { AuthorMetadata } from './src/author-metadata'
+export { DescriptionMetadata } from './src/description-metadata'
+export { GeneratorMetadata } from './src/generator-metadata'
+export { KeywordsMetadata } from './src/keywords-metadata'
+export { TitleMetadata } from './src/title-metadata'

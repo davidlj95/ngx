@@ -5,6 +5,7 @@ import { DescriptionMetadata } from './description-metadata'
 import { AuthorMetadata } from './author-metadata'
 import { KeywordsMetadata } from './keywords-metadata'
 import { GeneratorMetadata } from './generator-metadata'
+import { ApplicationNameMetadata } from './application-name-metadata'
 
 @NgModule({
   imports: [NgxMetaCoreModule],
@@ -32,6 +33,11 @@ import { GeneratorMetadata } from './generator-metadata'
     {
       provide: Metadata,
       useClass: GeneratorMetadata,
+      multi: true,
+    },
+    {
+      provide: Metadata,
+      useClass: ApplicationNameMetadata,
       multi: true,
     },
   ],

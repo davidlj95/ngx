@@ -14,10 +14,10 @@ import openGraphSpecific from '../../../../cypress/fixtures/open-graph-specific.
 import { JsonPipe } from '@angular/common'
 
 @Component({
-  selector: 'app-meta-set-by-services',
+  selector: 'app-meta-set-by-service',
   standalone: true,
-  templateUrl: './meta-set-by-services.component.html',
-  styleUrl: './meta-set-by-services.component.css',
+  templateUrl: './meta-set-by-service.component.html',
+  styleUrl: './meta-set-by-service.component.css',
   imports: [
     JsonPipe,
     NgxMetaCommonModule,
@@ -25,7 +25,7 @@ import { JsonPipe } from '@angular/common'
     NgxMetaOpenGraphModule,
   ],
 })
-export class MetaSetByServicesComponent implements OnInit {
+export class MetaSetByServiceComponent implements OnInit {
   protected readonly generalMetadata = generalMetadata
   protected readonly openGraphSpecifics = openGraphSpecific
 

@@ -1,10 +1,10 @@
 import generalMetadata from '../fixtures/general-metadata.json'
 import openGraphSpecific from '../fixtures/open-graph-specific.json'
-import { META_SET_BY_SERVICES } from '../fixtures/routes'
+import { ROUTES } from '../fixtures/routes'
 
-describe('Meta set by services', () => {
+describe('Meta set by service', () => {
   beforeEach(() => {
-    cy.visit(META_SET_BY_SERVICES)
+    cy.visit(ROUTES.metaSetByService.path)
   })
 
   it('sets all general metadata', () => {

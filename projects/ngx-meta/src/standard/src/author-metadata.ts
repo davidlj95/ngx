@@ -5,15 +5,12 @@ import { MetaService } from '@davidlj95/ngx-meta/core'
 import { StandardMetaProperty } from './standard-meta-property'
 
 @Injectable()
-export class DescriptionMetadata extends StandardMetadata<'description'> {
+export class AuthorMetadata extends StandardMetadata<'author'> {
   constructor(private readonly metaService: MetaService) {
-    super({
-      name: 'description',
-      globalName: 'description',
-    })
+    super({ name: 'author' })
   }
 
-  set(value: StandardMetadataValues['description']): void {
-    this.metaService.apply(new StandardMetaProperty('description'), value)
+  set(value: StandardMetadataValues['author']): void {
+    this.metaService.apply(new StandardMetaProperty('author'), value)
   }
 }

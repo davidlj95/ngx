@@ -6,10 +6,12 @@ import { MetadataValueFromValues } from './metadata-value-from-values'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { MetadataValues } from './metadata-values'
 import { MetadataRegistry } from './metadata-registry'
+import { MetaService } from './meta.service'
 
 @NgModule({
   providers: [
     DefaultsService,
+    MetaService,
     MetadataService,
     MetadataSetter,
     MetadataValueFromValues,

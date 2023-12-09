@@ -6,6 +6,7 @@ import {
 } from './get-current-snapshot-from-root-snapshot'
 import { MetadataRouteStrategy } from './metadata-route-strategy'
 import { MetadataService, MetadataValues } from '@davidlj95/ngx-meta/core'
+import { RouteDataMetadata } from './route-data-metadata'
 
 @Injectable()
 export class CurrentRouteDataMetadataStrategy
@@ -28,4 +29,5 @@ export class CurrentRouteDataMetadataStrategy
     this.metadataService.set(metadata)
   }
 }
-export const ROUTING_KEY = 'meta'
+
+const ROUTING_KEY: keyof RouteDataMetadata = 'meta'

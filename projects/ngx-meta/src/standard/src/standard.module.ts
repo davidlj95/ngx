@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { Metadata, NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
 import { TitleMetadata } from './title-metadata'
 import { DescriptionMetadata } from './description-metadata'
+import { AuthorMetadata } from './author-metadata'
 
 @NgModule({
   imports: [NgxMetaCoreModule],
@@ -14,6 +15,11 @@ import { DescriptionMetadata } from './description-metadata'
     {
       provide: Metadata,
       useClass: DescriptionMetadata,
+      multi: true,
+    },
+    {
+      provide: Metadata,
+      useClass: AuthorMetadata,
       multi: true,
     },
   ],

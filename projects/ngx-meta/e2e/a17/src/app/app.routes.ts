@@ -1,21 +1,20 @@
 import { Routes } from '@angular/router'
-import { MetaSetByServicesComponent } from './meta-set-by-services/meta-set-by-services.component'
-import { META_SET_BY_SERVICES } from '../../../cypress/fixtures/routes'
-import { ExperimentalComponent } from './experimental/experimental.component'
+import { MetaSetByServiceComponent } from './meta-set-by-service/meta-set-by-service.component'
+import { ROUTES } from '../../../cypress/fixtures/routes'
+import { MetaSetByRouteComponent } from './meta-set-by-route/meta-set-by-route.component'
+import { RouteDataMetadata } from '@davidlj95/ngx-meta/routing'
+import routeMetadata from '../../../cypress/fixtures/route-metadata.json'
+
+const routeMeta: RouteDataMetadata = routeMetadata
 
 export const routes: Routes = [
   {
-    path: META_SET_BY_SERVICES,
-    component: MetaSetByServicesComponent,
+    path: ROUTES.metaSetByService.path,
+    component: MetaSetByServiceComponent,
   },
   {
-    path: 'experimental',
-    component: ExperimentalComponent,
-    data: {
-      meta: {
-        title: 'Experimental title set by route',
-        description: 'Experimental description set by route',
-      },
-    },
+    path: ROUTES.metaSetByRoute.path,
+    component: MetaSetByRouteComponent,
+    data: routeMeta,
   },
 ]

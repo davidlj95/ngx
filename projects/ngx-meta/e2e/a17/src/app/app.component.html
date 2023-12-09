@@ -361,11 +361,11 @@
 <nav>
   <ul>
     <li *ngFor="let navItem of navItems">
-      <a [routerLink]="navItem.url">
-        {{ navItem.name }}
+      <a [routerLink]="navItem.path" [id]="navItem.linkId">
+        {{ navItem.displayName }}
       </a>
     </li>
   </ul>
 </nav>
-
+<h2>Component</h2>
 <router-outlet></router-outlet>

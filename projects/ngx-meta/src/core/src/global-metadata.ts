@@ -1,4 +1,4 @@
 export interface GlobalMetadata {
   title?: string
-  description?: string
+  description?: string | null
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterLink, RouterOutlet } from '@angular/router'
+import { ROUTES } from '../../../cypress/fixtures/routes'
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,8 @@ import { RouterLink, RouterOutlet } from '@angular/router'
 })
 export class AppComponent {
   title = 'a17'
-  protected readonly navItems = [
-    { url: '/', name: 'Root' },
-    { url: 'experimental', name: 'Experimental' },
-  ]
+  protected readonly navItems = Object.values(ROUTES).map((route) => ({
+    ...route,
+    path: `/${route.path}`,
+  }))
 }

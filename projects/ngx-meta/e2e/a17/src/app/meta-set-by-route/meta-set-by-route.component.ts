@@ -11,6 +11,7 @@ import { JsonPipe } from '@angular/common'
 })
 export class MetaSetByRouteComponent {
   protected readonly routeData: unknown
+
   constructor(readonly activatedRoute: ActivatedRoute) {
     this.routeData = activatedRoute.snapshot.data
   }

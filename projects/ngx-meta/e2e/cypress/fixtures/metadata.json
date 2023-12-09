@@ -1,0 +1,25 @@
+{
+  "title": "Foo page",
+  "description": "Lorem ipsum lorem",
+  "applicationName": "FooBar app",
+  "canonicalUrl": "https://example.com/foo",
+  "locale": "en",
+  "image": {
+    "url": "https://example.com/foo.png",
+    "alt": "Alternative text describing the image"
+  },
+  "standard": {
+    "author": "Mr Bar",
+    "keywords": ["foo", "bar"],
+    "generator": true
+  },
+  "openGraph": {
+    "image": {
+      "secureUrl": "https://example.com/foo.png",
+      "type": "image/png",
+      "width": 256,
+      "height": 256
+    },
+    "type": "website"
+  }
+}

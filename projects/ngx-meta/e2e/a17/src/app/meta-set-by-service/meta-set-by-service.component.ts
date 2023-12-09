@@ -1,16 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { NgxMetaCommonModule } from '@davidlj95/ngx-meta/common'
-import {
-  GeneralMetadataService,
-  NgxMetaGeneralModule,
-} from '@davidlj95/ngx-meta/general-metadata'
-import generalMetadata from '../../../../cypress/fixtures/general-metadata.json'
-import {
-  NgxMetaOpenGraphModule,
-  OpenGraphAppliersService,
-  OpenGraphType,
-} from '@davidlj95/ngx-meta/open-graph'
-import openGraphSpecific from '../../../../cypress/fixtures/open-graph-specific.json'
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import METADATA from '../../../../cypress/fixtures/metadata.json'
+import { MetadataService } from '@davidlj95/ngx-meta/core'
 import { JsonPipe } from '@angular/common'
 
 @Component({
@@ -18,25 +8,20 @@ import { JsonPipe } from '@angular/common'
   standalone: true,
   templateUrl: './meta-set-by-service.component.html',
   styleUrl: './meta-set-by-service.component.css',
-  imports: [
-    JsonPipe,
-    NgxMetaCommonModule,
-    NgxMetaGeneralModule,
-    NgxMetaOpenGraphModule,
-  ],
+  imports: [JsonPipe],
 })
-export class MetaSetByServiceComponent implements OnInit {
-  protected readonly generalMetadata = generalMetadata
-  protected readonly openGraphSpecifics = openGraphSpecific
+export class MetaSetByServiceComponent implements OnInit, OnDestroy {
+  protected readonly metadata = METADATA
 
-  constructor(
-    private readonly generalMetadataService: GeneralMetadataService,
-    private readonly openGraphAppliersService: OpenGraphAppliersService,
-  ) {}
+  constructor(private readonly metadataService: MetadataService) {}
 
   ngOnInit(): void {
-    this.generalMetadataService.apply(generalMetadata)
-    this.openGraphAppliersService.type(openGraphSpecific.type as OpenGraphType)
-    this.openGraphAppliersService.image(openGraphSpecific.image)
+    this.metadataService.set(this.metadata)
+  }
+
+  ngOnDestroy(): void {
+    //👇 Clear metadata when changing page
+    //   If you have enabled the routing module, this is not needed
+    this.metadataService.set()
   }
 }

@@ -4,6 +4,6 @@ import {
   MetadataValues,
 } from '@davidlj95/ngx-meta/core'
 
-export type RouteDataMetadata = _FlatType<{
+export type MetadataRouteData = _FlatType<{
   meta: GlobalMetadata | MetadataValues
 }>

@@ -6,6 +6,8 @@ import { AuthorMetadata } from './author-metadata'
 import { KeywordsMetadata } from './keywords-metadata'
 import { GeneratorMetadata } from './generator-metadata'
 import { ApplicationNameMetadata } from './application-name-metadata'
+import { CanonicalUrlMetadata } from './canonical-url-metadata'
+import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
 
 @NgModule({
   imports: [NgxMetaCoreModule],
@@ -40,6 +42,12 @@ import { ApplicationNameMetadata } from './application-name-metadata'
       useClass: ApplicationNameMetadata,
       multi: true,
     },
+    {
+      provide: Metadata,
+      useClass: CanonicalUrlMetadata,
+      multi: true,
+    },
+    LinkRelCanonicalService,
   ],
 })
 export class StandardModule {}

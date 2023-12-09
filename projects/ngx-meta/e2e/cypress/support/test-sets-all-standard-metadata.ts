@@ -20,6 +20,9 @@ export function testSetsAllStandardMetadata() {
       cy.getMeta('application-name')
         .shouldHaveContent()
         .and('eq', metadata.applicationName)
+      cy.get('link[rel="canonical"]')
+        .should('have.attr', 'href')
+        .and('eq', metadata.canonicalUrl)
     })
   })
 }

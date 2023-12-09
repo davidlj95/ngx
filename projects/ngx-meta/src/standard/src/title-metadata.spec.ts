@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Title } from '@angular/platform-browser'
 
-describe('TitleMetadata', () => {
+describe('Title metadata', () => {
   enableAutoSpy()
   let sut: TitleMetadata
   let titleService: jasmine.SpyObj<Title>

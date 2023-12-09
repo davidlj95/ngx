@@ -16,5 +16,7 @@ describe('Meta set by route', () => {
     cy.getMeta('author').should('not.exist')
     cy.getMeta('keywords').should('not.exist')
     cy.getMeta('generator').should('not.exist')
+    cy.getMeta('application-name').should('not.exist')
+    cy.get('link[rel="canonical"]').should('not.exist')
   })
 })

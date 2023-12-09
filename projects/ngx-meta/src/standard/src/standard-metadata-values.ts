@@ -54,7 +54,7 @@ export interface StandardMetadataValues {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name#:~:text=application%2Dname
    * @see https://html.spec.whatwg.org/multipage/semantics.html#meta-application-name
    */
-  readonly applicationName?: string | null
+  readonly applicationName?: GlobalMetadata['applicationName']
 
   /**
    * Sets the `<link rel='canonical'>` HTML element
@@ -63,7 +63,7 @@ export interface StandardMetadataValues {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#canonical
    * @see https://html.spec.whatwg.org/multipage/links.html#link-type-canonical
    */
-  readonly canonicalUrl?: URL | string | null
+  readonly canonicalUrl?: GlobalMetadata['canonicalUrl']
 
   /**
    * Sets the `lang` attribute to the `<html>` element
@@ -75,5 +75,5 @@ export interface StandardMetadataValues {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang
    * @see https://html.spec.whatwg.org/multipage/dom.html#attr-lang
    */
-  readonly locale?: string | null
+  readonly locale?: GlobalMetadata['locale']
 }

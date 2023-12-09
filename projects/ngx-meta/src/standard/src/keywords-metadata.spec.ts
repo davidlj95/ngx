@@ -22,7 +22,7 @@ describe('Keywords metadata', () => {
 
       sut.set([firstKeyword, secondKeyword, thirdKeyword])
 
-      expect(metaService.apply).toHaveBeenCalledOnceWith(
+      expect(metaService.set).toHaveBeenCalledOnceWith(
         jasmine.anything(),
         `${firstKeyword},${secondKeyword},${thirdKeyword}`,
       )

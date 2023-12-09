@@ -19,7 +19,7 @@ describe('Generator metadata', () => {
     it('when not provided should call meta service with nothing value', () => {
       sut.set(undefined)
 
-      expect(metaService.apply).toHaveBeenCalledOnceWith(
+      expect(metaService.set).toHaveBeenCalledOnceWith(
         jasmine.anything(),
         undefined,
       )
@@ -27,15 +27,12 @@ describe('Generator metadata', () => {
     it('when null should call meta service with null value', () => {
       sut.set(null)
 
-      expect(metaService.apply).toHaveBeenCalledOnceWith(
-        jasmine.anything(),
-        null,
-      )
+      expect(metaService.set).toHaveBeenCalledOnceWith(jasmine.anything(), null)
     })
     it('when true should call meta service with Angular version as value', () => {
       sut.set(true)
 
-      expect(metaService.apply).toHaveBeenCalledOnceWith(
+      expect(metaService.set).toHaveBeenCalledOnceWith(
         jasmine.anything(),
         `Angular v${VERSION.full}`,
       )

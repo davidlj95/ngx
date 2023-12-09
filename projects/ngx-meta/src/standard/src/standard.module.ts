@@ -3,6 +3,7 @@ import { Metadata, NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
 import { TitleMetadata } from './title-metadata'
 import { DescriptionMetadata } from './description-metadata'
 import { AuthorMetadata } from './author-metadata'
+import { KeywordsMetadata } from './keywords-metadata'
 
 @NgModule({
   imports: [NgxMetaCoreModule],
@@ -20,6 +21,11 @@ import { AuthorMetadata } from './author-metadata'
     {
       provide: Metadata,
       useClass: AuthorMetadata,
+      multi: true,
+    },
+    {
+      provide: Metadata,
+      useClass: KeywordsMetadata,
       multi: true,
     },
   ],

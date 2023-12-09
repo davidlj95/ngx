@@ -10,6 +10,9 @@ export function testSetsAllStandardMetadata() {
       cy.getMeta('author')
         .shouldHaveContent()
         .and('eq', metadata.standard.author)
+      cy.getMeta('keywords')
+        .shouldHaveContent()
+        .and('eq', metadata.standard.keywords.join(','))
     })
   })
 }

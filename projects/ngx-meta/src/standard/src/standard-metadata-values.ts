@@ -5,7 +5,7 @@ export interface StandardMetadataValues {
    * Sets the `<title>` HTML element
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
-   * @see https://html.spec.whatwg.org/multipage/dom.html#the-title-attribute
+   * @see https://html.spec.whatwg.org/multipage/semantics.html#the-title-element
    */
   readonly title?: GlobalMetadata['title']
 

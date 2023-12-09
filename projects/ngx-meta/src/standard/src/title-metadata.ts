@@ -10,11 +10,6 @@ export class TitleMetadata extends StandardMetadata<'title'> {
   }
 
   set(value: StandardMetadataValues['title']): void {
-    if (!value) {
-      console.log('Not setting title')
-      return
-    }
-    console.log(`Setting title to ${value}`)
-    this.titleService.setTitle(value.toString())
+    this.titleService.setTitle(value ?? '')
   }
 }

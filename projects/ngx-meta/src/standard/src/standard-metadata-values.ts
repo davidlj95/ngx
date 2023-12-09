@@ -41,7 +41,7 @@ export interface StandardMetadataValues {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name#:~:text=generator
    * @see https://html.spec.whatwg.org/multipage/semantics.html#meta-generator
    */
-  readonly generator?: boolean | null
+  readonly generator?: true | null
 
   /**
    * Sets the `<meta name='application-name'> HTML element

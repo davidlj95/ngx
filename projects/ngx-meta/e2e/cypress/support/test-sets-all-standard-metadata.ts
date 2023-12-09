@@ -13,6 +13,10 @@ export function testSetsAllStandardMetadata() {
       cy.getMeta('keywords')
         .shouldHaveContent()
         .and('eq', metadata.standard.keywords.join(','))
+      cy.getMeta('generator')
+        .shouldHaveContent()
+        .should('match', /^Angular v/)
+      //👆 v1 cause we E2E test v15+
     })
   })
 }

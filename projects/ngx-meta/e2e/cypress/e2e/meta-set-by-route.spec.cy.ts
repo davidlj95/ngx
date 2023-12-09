@@ -14,5 +14,7 @@ describe('Meta set by route', () => {
     cy.location('pathname').should('eq', ROUTES.root.path)
     cy.getMeta('description').should('not.exist')
     cy.getMeta('author').should('not.exist')
+    cy.getMeta('keywords').should('not.exist')
+    cy.getMeta('generator').should('not.exist')
   })
 })

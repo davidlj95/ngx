@@ -1,5 +1,0 @@
-export { GeneralMetadataModule as NgxMetaGeneralModule } from './src/general-metadata.module'
-export * from './src/general-metadata.service'
-export { GeneralMetadataAppliersService as _GeneralMetadataAppliersService } from './src/general-metadata-appliers.service'
-export * from './src/general-metadata'
-export * from './src/general-metadata-image'

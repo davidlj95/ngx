@@ -1,6 +1,5 @@
-import { ScopedMetadata } from './scoped-metadata'
+import { GlobalMetadata, ScopedMetadata } from '@davidlj95/ngx-meta/core'
 import { StandardMetadataValues } from './standard-metadata-values'
-import { GlobalMetadata } from './global-metadata'
 
 export const SCOPE = 'standard'
 

@@ -5,7 +5,7 @@ import { MetadataRouteStrategy } from './metadata-route-strategy'
 
 @Injectable()
 export class RouterListenerService implements OnDestroy {
-  // Replace by `takeUntilDestroyed`
+  // Replace by `takeUntilDestroyed` when stable
   // https://angular.io/api/core/rxjs-interop/takeUntilDestroyed
   private subscription?: Subscription
 
@@ -37,7 +37,7 @@ export class RouterListenerService implements OnDestroy {
             : [this.metadataRouteStrategies]
           for (const strategy of strategies) {
             const data = strategy.resolve(this.activatedRoute.snapshot)
-            strategy.apply(data)
+            strategy.set(data)
           }
         },
       })

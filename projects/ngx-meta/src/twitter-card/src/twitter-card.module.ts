@@ -3,12 +3,9 @@ import { TwitterCardService } from './twitter-card.service'
 import { TwitterCardApplierService } from './twitter-card-applier.service'
 import { TwitterCardAppliersService } from './twitter-card-appliers.service'
 import { TwitterCardGeneralMetadataListenerService } from './twitter-card-general-metadata-listener.service'
-import { TwitterCardRouteStrategy } from './routing/twitter-card-route-strategy'
-import { DefaultTwitterCardRouteStrategy } from './routing/default-twitter-card-route-strategy'
 import { TwitterCard } from './twitter-card'
 import { TWITTER_CARD_DEFAULTS } from './twitter-card-defaults'
 import { TWITTER_CARD_DEFAULTS_TOKEN } from './twitter-card-defaults-token'
-import { _MetadataRouteStrategy } from '@davidlj95/ngx-meta/routing'
 import { _makeForRootGuard } from '@davidlj95/ngx-meta/common'
 
 const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
@@ -42,15 +39,6 @@ export class TwitterCardModule {
         {
           provide: TWITTER_CARD_DEFAULTS_TOKEN,
           useValue: defaults,
-        },
-        {
-          provide: TwitterCardRouteStrategy,
-          useClass: DefaultTwitterCardRouteStrategy,
-        },
-        {
-          provide: _MetadataRouteStrategy,
-          useExisting: TwitterCardRouteStrategy,
-          multi: true,
         },
         FOR_ROOT_GUARD_PROVIDER,
       ],

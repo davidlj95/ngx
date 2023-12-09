@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core'
-import { Metadata } from './metadata'
+import { Metadata, NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
 import { TitleMetadata } from './title-metadata'
 import { DescriptionMetadata } from './description-metadata'
-import { CoreModule } from './core.module'
 
 @NgModule({
-  imports: [CoreModule],
+  imports: [NgxMetaCoreModule],
   providers: [
     {
       provide: Metadata,

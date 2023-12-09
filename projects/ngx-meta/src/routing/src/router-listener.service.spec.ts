@@ -52,7 +52,7 @@ describe('RouterListenerService', () => {
         events$.emit(makeNavigationEvent(EventType.ActivationEnd))
 
         expect(strategy.resolve).not.toHaveBeenCalled()
-        expect(strategy.apply).not.toHaveBeenCalled()
+        expect(strategy.set).not.toHaveBeenCalled()
       })
     })
 
@@ -77,7 +77,7 @@ describe('RouterListenerService', () => {
       })
 
       describe('when a single strategy is found', () => {
-        it('should call strategy resolve and apply', () => {
+        it('should call strategy resolve and set', () => {
           const metadata = { key: 'value' }
           const strategy = makeStrategy('single', metadata)
           const events$ = new EventEmitter()
@@ -95,11 +95,11 @@ describe('RouterListenerService', () => {
           expect(strategy.resolve).toHaveBeenCalledOnceWith(
             activatedRoute.snapshot,
           )
-          expect(strategy.apply).toHaveBeenCalledOnceWith(metadata)
+          expect(strategy.set).toHaveBeenCalledOnceWith(metadata)
         })
       })
 
-      it('should call all strategies resolve and apply in order', () => {
+      it('should call all strategies resolve and set in order', () => {
         const events$ = new EventEmitter()
         const strategyOneData = { key: 'one' }
         const strategyOne = makeStrategy('one', strategyOneData)
@@ -118,12 +118,12 @@ describe('RouterListenerService', () => {
         expect(strategyOne.resolve).toHaveBeenCalledOnceWith(
           activatedRoute.snapshot,
         )
-        expect(strategyOne.apply).toHaveBeenCalledOnceWith(strategyOneData)
+        expect(strategyOne.set).toHaveBeenCalledOnceWith(strategyOneData)
         expect(strategyTwo.resolve).toHaveBeenCalledOnceWith(
           activatedRoute.snapshot,
         )
-        expect(strategyTwo.apply).toHaveBeenCalledOnceWith(strategyTwoData)
-        expect(strategyOne.apply).toHaveBeenCalledBefore(strategyTwo.apply)
+        expect(strategyTwo.set).toHaveBeenCalledOnceWith(strategyTwoData)
+        expect(strategyOne.set).toHaveBeenCalledBefore(strategyTwo.set)
       })
     })
   })
@@ -189,7 +189,7 @@ function makeStrategy(
 ): jasmine.SpyObj<MetadataRouteStrategy<unknown>> {
   return MockService(MetadataRouteStrategy, {
     resolve: jasmine.createSpy(`${name} resolve`).and.returnValue(resolvedData),
-    apply: jasmine.createSpy(`${name} apply`),
+    set: jasmine.createSpy(`${name} apply`),
   }) as jasmine.SpyObj<MetadataRouteStrategy<unknown>>
 }
 

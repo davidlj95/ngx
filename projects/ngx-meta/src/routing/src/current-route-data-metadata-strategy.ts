@@ -4,30 +4,28 @@ import {
   GET_CURRENT_SNAPSHOT_FROM_ROOT_SNAPSHOT_TOKEN,
   GetCurrentSnapshotFromRootSnapshot,
 } from './get-current-snapshot-from-root-snapshot'
+import { MetadataRouteStrategy } from './metadata-route-strategy'
+import { MetadataService, MetadataValues } from '@davidlj95/ngx-meta/core'
 
 @Injectable()
-export class CurrentRouteDataKeyPathMetadataStrategy {
+export class CurrentRouteDataMetadataStrategy
+  implements MetadataRouteStrategy<MetadataValues>
+{
   constructor(
     @Inject(GET_CURRENT_SNAPSHOT_FROM_ROOT_SNAPSHOT_TOKEN)
     private readonly getCurrentSnapshotFromRootSnapshot: GetCurrentSnapshotFromRootSnapshot,
+    private readonly metadataService: MetadataService,
   ) {}
 
   resolve<T extends object>(
     routeSnapshot: ActivatedRouteSnapshot,
-    keyPath: string,
   ): T | undefined {
     const currentRoute = this.getCurrentSnapshotFromRootSnapshot(routeSnapshot)
-    const keys = [ROUTING_KEY, ...keyPath.split(ROUTING_KEY_SEPARATOR)]
-    let object = currentRoute.data
-    for (const key of keys) {
-      if (object === undefined) {
-        return
-      }
-      object = object[key]
-    }
-    return object as T
+    return currentRoute.data[ROUTING_KEY]
+  }
+
+  set(metadata: MetadataValues | undefined): void {
+    this.metadataService.set(metadata)
   }
 }
-
-export const ROUTING_KEY_SEPARATOR = '.'
 export const ROUTING_KEY = 'meta'

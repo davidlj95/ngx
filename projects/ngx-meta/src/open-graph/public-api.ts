@@ -1,6 +1,4 @@
 export { OpenGraphModule as NgxMetaOpenGraphModule } from './src/open-graph.module'
-export * from './src/routing/default-open-graph-route-data'
-export { ROUTING_KEY as _OPEN_GRAPH_ROUTING_KEY } from './src/routing/default-open-graph-route-strategy'
 export * from './src/open-graph.service'
 export * from './src/open-graph'
 export * from './src/open-graph-applier.service'

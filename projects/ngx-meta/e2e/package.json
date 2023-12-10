@@ -7,7 +7,7 @@
     "a17:serve": "cd a17 && pnpm start",
     "cypress:open": "cypress open"
   },
-  "packageManager": "pnpm@8.11.0",
+  "packageManager": "pnpm@8.12.0",
   "private": true,
   "devDependencies": {
     "cypress": "13.6.1",

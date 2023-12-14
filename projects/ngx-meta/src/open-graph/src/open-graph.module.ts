@@ -1,57 +1,23 @@
-import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core'
-import { OpenGraphService } from './open-graph.service'
-import { OpenGraphApplierService } from './open-graph-applier.service'
-import { OpenGraphAppliersService } from './open-graph-appliers.service'
-import { DefaultOpenGraphRouteStrategy } from './routing/default-open-graph-route-strategy'
-import { OpenGraphGeneralMetadataListenerService } from './open-graph-general-metadata-listener.service'
-import { OpenGraphRouteStrategy } from './routing/open-graph-route-strategy'
-import { OPEN_GRAPH_DEFAULTS } from './open-graph-defaults'
-import { OpenGraph } from './open-graph'
-import { OPEN_GRAPH_DEFAULTS_TOKEN } from './open-graph-defaults-token'
-import { _MetadataRouteStrategy } from '@davidlj95/ngx-meta/routing'
-import { _makeForRootGuard } from '@davidlj95/ngx-meta/common'
-
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] =
-  _makeForRootGuard('OpenGraphModule')
+import { NgModule } from '@angular/core'
+import { NgxMetaCoreModule, provideMetadata } from '@davidlj95/ngx-meta/core'
+import { TitleOpenGraphMetadata } from './title-open-graph-metadata'
+import { TypeOpenGraphMetadata } from './type-open-graph-metadata'
+import { ImageOpenGraphMetadata } from './image-open-graph-metadata'
+import { UrlOpenGraphMetadata } from './url-open-graph-metadata'
+import { DescriptionOpenGraphMetadata } from './description-open-graph-metadata'
+import { LocaleOpenGraphMetadata } from './locale-open-graph-metadata'
+import { SiteNameOpenGraphMetadata } from './site-name-open-graph-metadata'
 
 @NgModule({
+  imports: [NgxMetaCoreModule],
   providers: [
-    OpenGraphService,
-    OpenGraphApplierService,
-    OpenGraphAppliersService,
-    OpenGraphGeneralMetadataListenerService,
+    provideMetadata(TitleOpenGraphMetadata),
+    provideMetadata(TypeOpenGraphMetadata),
+    provideMetadata(ImageOpenGraphMetadata),
+    provideMetadata(UrlOpenGraphMetadata),
+    provideMetadata(DescriptionOpenGraphMetadata),
+    provideMetadata(LocaleOpenGraphMetadata),
+    provideMetadata(SiteNameOpenGraphMetadata),
   ],
 })
-export class OpenGraphModule {
-  constructor(
-    openGraphGeneralMetadataListenerService: OpenGraphGeneralMetadataListenerService,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    @Optional() @Inject(FOR_ROOT_GUARD_TOKEN) guard: unknown,
-  ) {
-    openGraphGeneralMetadataListenerService.listen()
-  }
-
-  static forRoot(
-    defaults: OpenGraph = OPEN_GRAPH_DEFAULTS,
-  ): ModuleWithProviders<OpenGraphModule> {
-    return {
-      ngModule: OpenGraphModule,
-      providers: [
-        {
-          provide: OPEN_GRAPH_DEFAULTS_TOKEN,
-          useValue: defaults,
-        },
-        {
-          provide: OpenGraphRouteStrategy,
-          useClass: DefaultOpenGraphRouteStrategy,
-        },
-        {
-          provide: _MetadataRouteStrategy,
-          useExisting: OpenGraphRouteStrategy,
-          multi: true,
-        },
-        FOR_ROOT_GUARD_PROVIDER,
-      ],
-    }
-  }
-}
+export class OpenGraphModule {}

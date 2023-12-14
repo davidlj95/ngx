@@ -2,11 +2,13 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../out-tsc/lib",
+    //👇 Changed to output to an ignored directory
+    "outDir": "../out",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
     "types": []
   },
-  "exclude": ["**/*.spec.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["**/*.spec.ts", "**/__tests__/*.ts"]
 }

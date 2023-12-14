@@ -1,59 +1,21 @@
-import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core'
-import { TwitterCardService } from './twitter-card.service'
-import { TwitterCardApplierService } from './twitter-card-applier.service'
-import { TwitterCardAppliersService } from './twitter-card-appliers.service'
-import { TwitterCardGeneralMetadataListenerService } from './twitter-card-general-metadata-listener.service'
-import { TwitterCardRouteStrategy } from './routing/twitter-card-route-strategy'
-import { DefaultTwitterCardRouteStrategy } from './routing/default-twitter-card-route-strategy'
-import { TwitterCard } from './twitter-card'
-import { TWITTER_CARD_DEFAULTS } from './twitter-card-defaults'
-import { TWITTER_CARD_DEFAULTS_TOKEN } from './twitter-card-defaults-token'
-import { _MetadataRouteStrategy } from '@davidlj95/ngx-meta/routing'
-import { _makeForRootGuard } from '@davidlj95/ngx-meta/common'
-
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
-  'TwitterCardModule',
-  TwitterCardGeneralMetadataListenerService,
-)
+import { NgModule } from '@angular/core'
+import { NgxMetaCoreModule, provideMetadata } from '@davidlj95/ngx-meta/core'
+import { CardTwitterCardMetadata } from './card-twitter-card-metadata'
+import { SiteTwitterCardMetadata } from './site-twitter-card-metadata'
+import { CreatorTwitterCardMetadata } from './creator-twitter-card-metadata'
+import { DescriptionTwitterCardMetadata } from './description-twitter-card-metadata'
+import { TitleTwitterCardMetadata } from './title-twitter-card-metadata'
+import { ImageTwitterCardMetadata } from './image-twitter-card-metadata'
 
 @NgModule({
+  imports: [NgxMetaCoreModule],
   providers: [
-    TwitterCardService,
-    TwitterCardApplierService,
-    TwitterCardAppliersService,
+    provideMetadata(CardTwitterCardMetadata),
+    provideMetadata(SiteTwitterCardMetadata),
+    provideMetadata(CreatorTwitterCardMetadata),
+    provideMetadata(DescriptionTwitterCardMetadata),
+    provideMetadata(TitleTwitterCardMetadata),
+    provideMetadata(ImageTwitterCardMetadata),
   ],
 })
-export class TwitterCardModule {
-  constructor(
-    twitterCardGeneralMetadataListenerService: TwitterCardGeneralMetadataListenerService,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    @Optional() @Inject(FOR_ROOT_GUARD_TOKEN) guard: unknown,
-  ) {
-    twitterCardGeneralMetadataListenerService.listen()
-  }
-
-  static forRoot(
-    defaults: TwitterCard = TWITTER_CARD_DEFAULTS,
-  ): ModuleWithProviders<TwitterCardModule> {
-    return {
-      ngModule: TwitterCardModule,
-      providers: [
-        TwitterCardGeneralMetadataListenerService,
-        {
-          provide: TWITTER_CARD_DEFAULTS_TOKEN,
-          useValue: defaults,
-        },
-        {
-          provide: TwitterCardRouteStrategy,
-          useClass: DefaultTwitterCardRouteStrategy,
-        },
-        {
-          provide: _MetadataRouteStrategy,
-          useExisting: TwitterCardRouteStrategy,
-          multi: true,
-        },
-        FOR_ROOT_GUARD_PROVIDER,
-      ],
-    }
-  }
-}
+export class TwitterCardModule {}

@@ -4,3 +4,4 @@ export * from './src/twitter-card-image'
 export * from './src/twitter-card-type'
 // Specific metadata
 export * from './src/card-twitter-card-metadata'
+export * from './src/site-twitter-card-metadata'

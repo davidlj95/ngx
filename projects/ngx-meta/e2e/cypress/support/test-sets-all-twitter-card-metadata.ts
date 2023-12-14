@@ -6,6 +6,12 @@ export function testSetsAllTwitterCardMetadata() {
       cy.getMetaWithProperty('twitter:card')
         .shouldHaveContent()
         .and('eq', metadata.twitterCard.card)
+      cy.getMetaWithProperty('twitter:site')
+        .shouldHaveContent()
+        .and('eq', metadata.twitterCard.site.username)
+      cy.getMetaWithProperty('twitter:site:id')
+        .shouldHaveContent()
+        .and('eq', metadata.twitterCard.site.id)
     })
   })
 }

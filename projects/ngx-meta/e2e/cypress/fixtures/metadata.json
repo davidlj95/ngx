@@ -29,6 +29,10 @@
     }
   },
   "twitterCard": {
-    "card": "summary"
+    "card": "summary",
+    "site": {
+      "id": "16542877",
+      "username": "example"
+    }
   }
 }

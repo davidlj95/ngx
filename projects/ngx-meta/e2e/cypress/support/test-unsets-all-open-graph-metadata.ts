@@ -9,5 +9,6 @@ export function testUnsetsAllOpenGraphMetadata() {
     cy.getMetaWithProperty('og:image:width').should('not.exist')
     cy.getMetaWithProperty('og:image:height').should('not.exist')
     cy.getMetaWithProperty('og:url').should('not.exist')
+    cy.getMetaWithProperty('og:description').should('not.exist')
   })
 }

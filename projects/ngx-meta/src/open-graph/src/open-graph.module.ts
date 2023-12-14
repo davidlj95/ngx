@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core'
 import { Metadata, NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
-import { TitleMetadata } from './title-metadata'
+import { TitleOpenGraphMetadata } from './title-open-graph-metadata'
 
 @NgModule({
   imports: [NgxMetaCoreModule],
   providers: [
     {
       provide: Metadata,
-      useClass: TitleMetadata,
+      useClass: TitleOpenGraphMetadata,
       multi: true,
     },
   ],

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core'
 import { Metadata, NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
-import { TitleMetadata } from './title-metadata'
-import { DescriptionMetadata } from './description-metadata'
-import { AuthorMetadata } from './author-metadata'
-import { KeywordsMetadata } from './keywords-metadata'
-import { GeneratorMetadata } from './generator-metadata'
-import { ApplicationNameMetadata } from './application-name-metadata'
-import { CanonicalUrlMetadata } from './canonical-url-metadata'
+import { TitleStandardMetadata } from './title-standard-metadata.service'
+import { DescriptionStandardMetadata } from './description-standard-metadata.service'
+import { AuthorStandardMetadata } from './author-standard-metadata.service'
+import { KeywordsStandardMetadata } from './keywords-standard-metadata.service'
+import { GeneratorStandardMetadata } from './generator-standard-metadata.service'
+import { ApplicationNameStandardMetadata } from './application-name-standard-metadata.service'
+import { CanonicalUrlStandardMetadata } from './canonical-url-standard-metadata.service'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
-import { LocaleMetadata } from './locale-metadata'
+import { LocaleStandardMetadata } from './locale-standard-metadata.service'
 import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attribute.service'
 
 @NgModule({
@@ -16,43 +16,43 @@ import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attrib
   providers: [
     {
       provide: Metadata,
-      useClass: TitleMetadata,
+      useClass: TitleStandardMetadata,
       multi: true,
     },
     {
       provide: Metadata,
-      useClass: DescriptionMetadata,
+      useClass: DescriptionStandardMetadata,
       multi: true,
     },
     {
       provide: Metadata,
-      useClass: AuthorMetadata,
+      useClass: AuthorStandardMetadata,
       multi: true,
     },
     {
       provide: Metadata,
-      useClass: KeywordsMetadata,
+      useClass: KeywordsStandardMetadata,
       multi: true,
     },
     {
       provide: Metadata,
-      useClass: GeneratorMetadata,
+      useClass: GeneratorStandardMetadata,
       multi: true,
     },
     {
       provide: Metadata,
-      useClass: ApplicationNameMetadata,
+      useClass: ApplicationNameStandardMetadata,
       multi: true,
     },
     {
       provide: Metadata,
-      useClass: CanonicalUrlMetadata,
+      useClass: CanonicalUrlStandardMetadata,
       multi: true,
     },
     LinkRelCanonicalService,
     {
       provide: Metadata,
-      useClass: LocaleMetadata,
+      useClass: LocaleStandardMetadata,
       multi: true,
     },
     HtmlLangAttributeService,

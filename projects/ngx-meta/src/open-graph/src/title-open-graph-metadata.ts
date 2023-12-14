@@ -5,7 +5,7 @@ import { MetaService } from '@davidlj95/ngx-meta/core'
 import { OpenGraphMetaProperty } from './open-graph-meta-property'
 
 @Injectable()
-export class TitleMetadata extends OpenGraphMetadata<'title'> {
+export class TitleOpenGraphMetadata extends OpenGraphMetadata<'title'> {
   constructor(private readonly metaService: MetaService) {
     super({ name: 'title', globalName: 'title' })
   }

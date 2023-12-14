@@ -5,7 +5,7 @@ import { MetaService } from '@davidlj95/ngx-meta/core'
 import { StandardMetaProperty } from './standard-meta-property'
 
 @Injectable()
-export class ApplicationNameMetadata extends StandardMetadata<'applicationName'> {
+export class ApplicationNameStandardMetadata extends StandardMetadata<'applicationName'> {
   constructor(private readonly metaService: MetaService) {
     super({ name: 'applicationName', globalName: 'applicationName' })
   }

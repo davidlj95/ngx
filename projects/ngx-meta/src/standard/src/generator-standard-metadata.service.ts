@@ -5,7 +5,7 @@ import { MetaService } from '@davidlj95/ngx-meta/core'
 import { StandardMetaProperty } from './standard-meta-property'
 
 @Injectable()
-export class GeneratorMetadata extends StandardMetadata<'generator'> {
+export class GeneratorStandardMetadata extends StandardMetadata<'generator'> {
   private readonly angularVersion = `Angular v${VERSION.full}`
 
   constructor(private readonly metaService: MetaService) {

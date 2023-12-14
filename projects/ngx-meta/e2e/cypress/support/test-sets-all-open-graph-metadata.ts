@@ -6,6 +6,9 @@ export function testSetsAllOpenGraphMetadata() {
       cy.getMetaWithProperty('og:title')
         .shouldHaveContent()
         .and('eq', metadata.title)
+      cy.getMetaWithProperty('og:type')
+        .shouldHaveContent()
+        .and('eq', metadata.openGraph.type)
     })
   })
 }

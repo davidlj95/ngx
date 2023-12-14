@@ -4,7 +4,7 @@ import { StandardMetadata } from './standard-metadata'
 import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attribute.service'
 
 @Injectable()
-export class LocaleMetadata extends StandardMetadata<'locale'> {
+export class LocaleStandardMetadata extends StandardMetadata<'locale'> {
   constructor(
     private readonly htmlLangAttributeService: HtmlLangAttributeService,
   ) {

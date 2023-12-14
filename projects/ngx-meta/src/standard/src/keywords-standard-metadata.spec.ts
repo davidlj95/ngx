@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { KeywordsMetadata } from './keywords-metadata'
+import { KeywordsStandardMetadata } from './keywords-standard-metadata.service'
 import { MetaService } from '../../core'
 
-describe('Keywords metadata', () => {
+describe('Keywords standard metadata', () => {
   enableAutoSpy()
-  let sut: KeywordsMetadata
+  let sut: KeywordsStandardMetadata
   let metaService: jasmine.SpyObj<MetaService>
 
   beforeEach(() => {
@@ -30,9 +30,9 @@ describe('Keywords metadata', () => {
   })
 })
 
-function makeSut(): KeywordsMetadata {
+function makeSut(): KeywordsStandardMetadata {
   TestBed.configureTestingModule({
-    providers: [KeywordsMetadata, MockProvider(MetaService)],
+    providers: [KeywordsStandardMetadata, MockProvider(MetaService)],
   })
-  return TestBed.inject(KeywordsMetadata)
+  return TestBed.inject(KeywordsStandardMetadata)
 }

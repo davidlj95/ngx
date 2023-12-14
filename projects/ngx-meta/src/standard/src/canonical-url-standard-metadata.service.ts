@@ -4,7 +4,7 @@ import { StandardMetadataValues } from './standard-metadata-values'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
 
 @Injectable()
-export class CanonicalUrlMetadata extends StandardMetadata<'canonicalUrl'> {
+export class CanonicalUrlStandardMetadata extends StandardMetadata<'canonicalUrl'> {
   constructor(
     private readonly linkRelCanonicalService: LinkRelCanonicalService,
   ) {

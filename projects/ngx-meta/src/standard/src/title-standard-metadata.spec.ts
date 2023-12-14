@@ -1,12 +1,12 @@
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { TitleMetadata } from './title-metadata'
+import { TitleStandardMetadata } from './title-standard-metadata.service'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Title } from '@angular/platform-browser'
 
-describe('Title metadata', () => {
+describe('Title standard metadata', () => {
   enableAutoSpy()
-  let sut: TitleMetadata
+  let sut: TitleStandardMetadata
   let titleService: jasmine.SpyObj<Title>
 
   beforeEach(() => {
@@ -39,9 +39,9 @@ describe('Title metadata', () => {
   })
 })
 
-function makeSut(): TitleMetadata {
+function makeSut(): TitleStandardMetadata {
   TestBed.configureTestingModule({
-    providers: [TitleMetadata, MockProvider(Title)],
+    providers: [TitleStandardMetadata, MockProvider(Title)],
   })
-  return TestBed.inject(TitleMetadata)
+  return TestBed.inject(TitleStandardMetadata)
 }

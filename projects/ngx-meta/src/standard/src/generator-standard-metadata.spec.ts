@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetaService } from '../../core'
-import { GeneratorMetadata } from './generator-metadata'
+import { GeneratorStandardMetadata } from './generator-standard-metadata.service'
 import { VERSION } from '@angular/core'
 
-describe('Generator metadata', () => {
+describe('Generator standard metadata', () => {
   enableAutoSpy()
-  let sut: GeneratorMetadata
+  let sut: GeneratorStandardMetadata
   let metaService: jasmine.SpyObj<MetaService>
 
   beforeEach(() => {
@@ -40,9 +40,9 @@ describe('Generator metadata', () => {
   })
 })
 
-function makeSut(): GeneratorMetadata {
+function makeSut(): GeneratorStandardMetadata {
   TestBed.configureTestingModule({
-    providers: [GeneratorMetadata, MockProvider(MetaService)],
+    providers: [GeneratorStandardMetadata, MockProvider(MetaService)],
   })
-  return TestBed.inject(GeneratorMetadata)
+  return TestBed.inject(GeneratorStandardMetadata)
 }

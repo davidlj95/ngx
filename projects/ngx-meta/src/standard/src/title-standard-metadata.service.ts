@@ -4,7 +4,7 @@ import { StandardMetadataValues } from './standard-metadata-values'
 import { StandardMetadata } from './standard-metadata'
 
 @Injectable()
-export class TitleMetadata extends StandardMetadata<'title'> {
+export class TitleStandardMetadata extends StandardMetadata<'title'> {
   constructor(private readonly titleService: Title) {
     super({ name: 'title', globalName: 'title' })
   }

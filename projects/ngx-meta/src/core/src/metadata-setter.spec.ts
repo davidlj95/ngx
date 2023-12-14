@@ -36,6 +36,10 @@ describe('MetadataSetter', () => {
   describe('set', () => {
     const dummyValues = { foo: 'bar' }
     const value = 'value'
+    const valueObject = {
+      value: 'value',
+      prop: 'value',
+    }
     const defaultValue = 'defaultValue'
     const routeValues = { route: 'values' }
 
@@ -109,29 +113,62 @@ describe('MetadataSetter', () => {
     })
 
     describe('when value and route value exist', () => {
-      const routeValue = 'routeValue'
+      describe('when value is an object', () => {
+        const routeValueObject = {
+          routeValue: 'routeValue',
+          prop: 'routeValue',
+        }
 
-      beforeEach(() => {
-        routeMetadataValues.get.and.returnValue(routeValues)
-        valueFromValues.get.and.callFake(
-          <T>(def: MetadataDefinition, values: MetadataValues) => {
-            switch (values) {
-              case routeValues:
-                return routeValue as T
-              case values:
-                return value as T
-              default:
-                throw new Error('Unexpected values, cannot mock')
-            }
-          },
-        )
-        valueFromValues.get.and.returnValue(value)
+        beforeEach(() => {
+          routeMetadataValues.get.and.returnValue(routeValues)
+          valueFromValues.get.and.callFake(
+            <T>(def: MetadataDefinition, values: MetadataValues) => {
+              switch (values) {
+                case routeValues:
+                  return routeValueObject as T
+                case values:
+                  return valueObject as T
+                default:
+                  throw new Error('Unexpected values, cannot mock')
+              }
+            },
+          )
+        })
+
+        it('should merge the object, value having more priority', () => {
+          sut.set(dummyMetadata, dummyValues)
+
+          expect(dummyMetadata.set).toHaveBeenCalledOnceWith({
+            ...routeValueObject,
+            ...valueObject,
+          })
+        })
       })
 
-      it('should call setter with value', () => {
-        sut.set(dummyMetadata, dummyValues)
+      describe('when value is not an object', () => {
+        const routeValue = 'routeValue'
 
-        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
+        beforeEach(() => {
+          routeMetadataValues.get.and.returnValue(routeValues)
+          valueFromValues.get.and.callFake(
+            <T>(def: MetadataDefinition, values: MetadataValues) => {
+              switch (values) {
+                case routeValues:
+                  return routeValue as T
+                case values:
+                  return value as T
+                default:
+                  throw new Error('Unexpected values, cannot mock')
+              }
+            },
+          )
+        })
+
+        it('should call setter with value', () => {
+          sut.set(dummyMetadata, dummyValues)
+
+          expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
+        })
       })
     })
 

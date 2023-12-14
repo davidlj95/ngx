@@ -4,6 +4,7 @@ import { DefaultsService } from './defaults.service'
 import { MetadataValueFromValues } from './metadata-value-from-values'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
+import { isObject } from './is-object'
 
 @Injectable()
 export class MetadataSetter {
@@ -21,9 +22,10 @@ export class MetadataSetter {
       this.routeMetadataValues?.get(),
     )
     const defaultValue = this.defaultsService.get(metadata.definition)
-    const effectiveValue = [value, routeValue, defaultValue].find(
-      (v) => v !== undefined,
-    )
+    const effectiveValue =
+      isObject(value) && (isObject(routeValue) || isObject(defaultValue))
+        ? { ...(defaultValue as object), ...(routeValue as object), ...value }
+        : [value, routeValue, defaultValue].find((v) => v !== undefined)
     metadata.set(effectiveValue)
   }
 }

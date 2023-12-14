@@ -23,7 +23,8 @@
     "type": "website",
     "profile": {
       "firstName": "Foo",
-      "lastName": "Bar"
+      "lastName": "Bar",
+      "username": "foobar"
     }
   }
 }

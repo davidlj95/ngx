@@ -4,3 +4,4 @@ export * from './src/open-graph-profile-metadata-values'
 // Specific metadata
 export * from './src/first-name-open-graph-profile-metadata'
 export * from './src/last-name-open-graph-profile-metadata'
+export * from './src/username-open-graph-profile-metadata'

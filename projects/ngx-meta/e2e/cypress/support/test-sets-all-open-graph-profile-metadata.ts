@@ -9,6 +9,9 @@ export function testSetsAllOpenGraphProfileMetadata() {
       cy.getMetaWithProperty('og:profile:last_name')
         .shouldHaveContent()
         .and('eq', metadata.openGraph.profile.lastName)
+      cy.getMetaWithProperty('og:profile:username')
+        .shouldHaveContent()
+        .and('eq', metadata.openGraph.profile.username)
     })
   })
 }

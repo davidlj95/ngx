@@ -5,11 +5,11 @@ export class ComposableMetaProperty extends MetaProperty {
 
   constructor(
     {
-      separator,
+      separator = ':',
       keyAttribute,
       contentAttribute,
     }: {
-      separator: string
+      separator?: string
       keyAttribute: string
       contentAttribute?: string
     },

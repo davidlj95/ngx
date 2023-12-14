@@ -42,6 +42,13 @@ Cypress.Commands.add<'getMeta'>('getMeta', (name) => {
   cy.get(`meta[name="${name}"]`)
 })
 
+Cypress.Commands.add<'getMetaWithProperty'>(
+  'getMetaWithProperty',
+  (property) => {
+    cy.get(`meta[property="${property}"]`)
+  },
+)
+
 Cypress.Commands.add<'shouldHaveContent', Chainable<HTMLMetaElement>>(
   'shouldHaveContent',
   { prevSubject: true },
@@ -58,6 +65,7 @@ declare global {
   namespace Cypress {
     interface Chainable<Subject> {
       getMeta(name: string): Chainable<HTMLMetaElement>
+      getMetaWithProperty(property: string): Chainable<HTMLMetaElement>
       shouldHaveContent(): Chainable<Subject>
     }
   }

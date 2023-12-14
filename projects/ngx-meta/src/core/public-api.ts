@@ -1,4 +1,5 @@
 export { CoreModule as NgxMetaCoreModule } from './src/core.module'
+export * from './src/composable-meta-property'
 export * from './src/global-metadata'
 export * from './src/global-metadata-image'
 export { makeForRootGuard as _makeForRootGuard } from './src/make-for-root-guard'

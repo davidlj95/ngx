@@ -1,5 +1,6 @@
 import { ROUTES } from '../fixtures/routes'
 import { testSetsAllStandardMetadata } from '../support/test-sets-all-standard-metadata'
+import { testSetsAllOpenGraphMetadata } from '../support/test-sets-all-open-graph-metadata'
 
 describe('Meta set by service', () => {
   beforeEach(() => {
@@ -7,12 +8,5 @@ describe('Meta set by service', () => {
   })
 
   testSetsAllStandardMetadata()
-  // it('sets all general metadata', () => {
-  //     cy.get('link[rel="canonical"]')
-  //       .should('have.attr', 'href')
-  //       .and('contain', meta.canonicalUrl)
-  //     cy.get('html')
-  //       .should('have.attr', 'lang')
-  //       .and('eq', meta.locale)
-  // })
+  testSetsAllOpenGraphMetadata()
 })

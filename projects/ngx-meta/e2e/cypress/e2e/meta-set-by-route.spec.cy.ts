@@ -1,5 +1,8 @@
 import { ROUTES } from '../fixtures/routes'
 import { testSetsAllStandardMetadata } from '../support/test-sets-all-standard-metadata'
+import { testSetsAllOpenGraphMetadata } from '../support/test-sets-all-open-graph-metadata'
+import { testUnsetsAllStandardMetadata } from '../support/test-unsets-all-standard-metadata'
+import { testUnsetsAllOpenGraphMetadata } from '../support/test-unsets-all-open-graph-metadata'
 
 describe('Meta set by route', () => {
   beforeEach(() => {
@@ -7,17 +10,16 @@ describe('Meta set by route', () => {
   })
 
   testSetsAllStandardMetadata()
+  testSetsAllOpenGraphMetadata()
 
-  it('removes all metadata when going to another route', () => {
-    const selector = `#${ROUTES.root.linkId}`
-    cy.get(selector).click()
-    cy.location('pathname').should('eq', ROUTES.root.path)
-    cy.getMeta('description').should('not.exist')
-    cy.getMeta('author').should('not.exist')
-    cy.getMeta('keywords').should('not.exist')
-    cy.getMeta('generator').should('not.exist')
-    cy.getMeta('application-name').should('not.exist')
-    cy.get('link[rel="canonical"]').should('not.exist')
-    cy.get('html').should('not.have.attr', 'lang')
+  describe('when going to another route', () => {
+    beforeEach(() => {
+      const selector = `#${ROUTES.root.linkId}`
+      cy.get(selector).click()
+      cy.location('pathname').should('eq', ROUTES.root.path)
+    })
+
+    testUnsetsAllStandardMetadata()
+    testUnsetsAllOpenGraphMetadata()
   })
 })

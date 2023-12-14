@@ -10,7 +10,7 @@ import { OpenGraphImage } from './open-graph-image'
  * @see https://developers.facebook.com/tools/debug/
  * @see https://opengraph.dev/
  */
-export interface OpenGraph {
+export interface OpenGraphMetadataValues {
   /**
    * Basic metadata.
    *

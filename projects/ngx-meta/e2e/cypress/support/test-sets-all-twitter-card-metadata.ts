@@ -21,6 +21,9 @@ export function testSetsAllTwitterCardMetadata() {
       cy.getMetaWithProperty('twitter:description')
         .shouldHaveContent()
         .and('eq', metadata.description)
+      cy.getMetaWithProperty('twitter:title')
+        .shouldHaveContent()
+        .and('eq', metadata.title)
     })
   })
 }

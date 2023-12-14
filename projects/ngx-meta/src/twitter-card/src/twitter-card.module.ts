@@ -4,6 +4,7 @@ import { CardTwitterCardMetadata } from './card-twitter-card-metadata'
 import { SiteTwitterCardMetadata } from './site-twitter-card-metadata'
 import { CreatorTwitterCardMetadata } from './creator-twitter-card-metadata'
 import { DescriptionTwitterCardMetadata } from './description-twitter-card-metadata'
+import { TitleTwitterCardMetadata } from './title-twitter-card-metadata'
 
 @NgModule({
   providers: [
@@ -11,6 +12,7 @@ import { DescriptionTwitterCardMetadata } from './description-twitter-card-metad
     provideMetadata(SiteTwitterCardMetadata),
     provideMetadata(CreatorTwitterCardMetadata),
     provideMetadata(DescriptionTwitterCardMetadata),
+    provideMetadata(TitleTwitterCardMetadata),
   ],
 })
 export class TwitterCardModule {}

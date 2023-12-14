@@ -6,5 +6,6 @@ export function testUnsetsAllTwitterCardMetadata() {
     cy.getMetaWithProperty('twitter:creator').should('not.exist')
     cy.getMetaWithProperty('twitter:creator:id').should('not.exist')
     cy.getMetaWithProperty('twitter:description').should('not.exist')
+    cy.getMetaWithProperty('twitter:title').should('not.exist')
   })
 }

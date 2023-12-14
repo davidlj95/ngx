@@ -24,6 +24,12 @@ export function testSetsAllTwitterCardMetadata() {
       cy.getMetaWithProperty('twitter:title')
         .shouldHaveContent()
         .and('eq', metadata.title)
+      cy.getMetaWithProperty('twitter:image')
+        .shouldHaveContent()
+        .and('eq', metadata.image.url)
+      cy.getMetaWithProperty('twitter:image:alt')
+        .shouldHaveContent()
+        .and('eq', metadata.image.alt)
     })
   })
 }

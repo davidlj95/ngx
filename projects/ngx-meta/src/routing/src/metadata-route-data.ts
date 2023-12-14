@@ -1,9 +1,5 @@
-import {
-  _FlatType,
-  GlobalMetadata,
-  MetadataValues,
-} from '@davidlj95/ngx-meta/core'
+import { GlobalMetadata, MetadataValues } from '@davidlj95/ngx-meta/core'
 
-export type MetadataRouteData = _FlatType<{
+export interface MetadataRouteData {
   meta: GlobalMetadata | MetadataValues
-}>
+}

@@ -1,5 +1,4 @@
 export { CoreModule as NgxMetaCoreModule } from './src/core.module'
-export { FlatType as _FlatType } from './src/flat-type'
 export * from './src/global-metadata'
 export * from './src/global-metadata-image'
 export { makeForRootGuard as _makeForRootGuard } from './src/make-for-root-guard'

@@ -1,3 +1,44 @@
+## [`ngx-meta` v1.0.0-alpha.9](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.8...ngx-meta-v1.0.0-alpha.9) (2023-12-14)
+
+### Documentation
+
+- update README.md with alpha notice ([a548354](https://github.com/davidlj95/ngx/commit/a548354de28d400e6d27ed90525225a6c27f8705))
+
+### Miscellaneous Chores
+
+- **release:** maintenance release ([111a699](https://github.com/davidlj95/ngx/commit/111a6999931712f06318d96a1350d81af5ed7238))
+
+### Code Refactoring
+
+- metadata-centric approach ([#53](https://github.com/davidlj95/ngx/issues/53)) ([f48c524](https://github.com/davidlj95/ngx/commit/f48c524d436a1278c7d91686f0aa1bb3c1616b81))
+
+### Tests
+
+- **e2e:** add Open Graph services test ([#50](https://github.com/davidlj95/ngx/issues/50)) ([ec38f5b](https://github.com/davidlj95/ngx/commit/ec38f5be35a9e17989331bd3a8c24a893c0e4843))
+
+### Build System
+
+- **deps-dev:** update angular-cli monorepo to v17.0.5 ([fac171b](https://github.com/davidlj95/ngx/commit/fac171b28ed9409b7e76ad752eaa2f3729e3bd37))
+- **deps-dev:** update angular-cli monorepo to v17.0.6 ([071e794](https://github.com/davidlj95/ngx/commit/071e794a765ff31fb3a8239bf2113bc55b2dec75))
+- **deps-dev:** update angular-cli monorepo to v17.0.7 ([d917670](https://github.com/davidlj95/ngx/commit/d9176705f0e1e8281e1a4c1752f531bfbbdeb0ea))
+- **deps-dev:** update angular-eslint monorepo to v17.1.1 ([e5d0c1f](https://github.com/davidlj95/ngx/commit/e5d0c1fba0009e0e8a83b7891d4c4be8babde851))
+- **deps-dev:** update dependency cypress to v13.6.1 ([d3334de](https://github.com/davidlj95/ngx/commit/d3334de45a0bb2a616785fd5fa4ba16d5730a556))
+- **deps-dev:** update dependency eslint to v8.55.0 ([eb4e27b](https://github.com/davidlj95/ngx/commit/eb4e27b2dd162a348f1ed8903b3615354a991846))
+- **deps-dev:** update dependency eslint-config-prettier to v9.1.0 ([6217c64](https://github.com/davidlj95/ngx/commit/6217c6437d3632f5d0179478648510981465b232))
+- **deps-dev:** update dependency lint-staged to v15.2.0 ([96dba5c](https://github.com/davidlj95/ngx/commit/96dba5c89b6e8fe1423bad7e7d2aeec5f717b7ad))
+- **deps-dev:** update dependency prettier to v3.1.1 ([a3bee87](https://github.com/davidlj95/ngx/commit/a3bee87ea33a168a96c65bc0d408b6308681331f))
+- **deps-dev:** update dependency semantic-release to v22.0.10 ([2f38afa](https://github.com/davidlj95/ngx/commit/2f38afa3a5eaebf75c14b8a0500c21569f711952))
+- **deps-dev:** update dependency semantic-release to v22.0.12 ([e9b1bed](https://github.com/davidlj95/ngx/commit/e9b1bed41a09987124f022f9ad278f01aac6db3a))
+- **deps-dev:** update dependency typescript to v5.3.3 ([c48ec78](https://github.com/davidlj95/ngx/commit/c48ec78ee219d3855d9a75100c48f3ba9686a962))
+- **deps-dev:** update pnpm to v8.12.0 ([69a0102](https://github.com/davidlj95/ngx/commit/69a01029378f5aa095794a2f8e5789cfffdd1846))
+- **deps-dev:** update pnpm to v8.12.1 ([85ad806](https://github.com/davidlj95/ngx/commit/85ad8066c96e82b1dd818953503a2c05e6f49b38))
+- **deps-dev:** update typescript-eslint monorepo to v6.13.1 ([e106faf](https://github.com/davidlj95/ngx/commit/e106fafbe3e8c04948ee49c0932590da0b0727d7))
+- **deps-dev:** update typescript-eslint monorepo to v6.13.2 ([0f6b109](https://github.com/davidlj95/ngx/commit/0f6b10928a39cb37c4dd068c72ad4af3cf5d15c1))
+- **deps-dev:** update typescript-eslint monorepo to v6.14.0 ([3740ad2](https://github.com/davidlj95/ngx/commit/3740ad254b3d23777a82a963fd3ae9057bff4fc3))
+- **deps:** regenerate lockfile + ng update ([91dd432](https://github.com/davidlj95/ngx/commit/91dd4326ddf4eeb3c8666aa894b431d666b4b7ee))
+- **deps:** update angular monorepo to v17.0.5 ([0e485be](https://github.com/davidlj95/ngx/commit/0e485beed758056d3e7e16d385f3f57567eee0eb))
+- **deps:** update angular monorepo to v17.0.6 ([56e26cf](https://github.com/davidlj95/ngx/commit/56e26cfe06bfd21db2a2125e303e07bd0d4df7af))
+
 ## [`ngx-meta` v1.0.0-alpha.7](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.6...ngx-meta-v1.0.0-alpha.7) (2023-11-29)
 
 ### Bug Fixes

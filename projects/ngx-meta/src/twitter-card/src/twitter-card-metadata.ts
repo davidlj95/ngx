@@ -39,13 +39,6 @@ export class TwitterCardMetadata {
   readonly creator?: TwitterCardCreator
 
   /**
-   * Twitter user ID of content creator
-   *
-   * Used with `summary`, `summary_large_image` cards
-   */
-  readonly creatorId?: string | null
-
-  /**
    * Description of content (maximum 200 characters)
    *
    * Used with `summary`, `summary_large_image`, `player` cards

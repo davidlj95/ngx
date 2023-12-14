@@ -18,6 +18,9 @@ export function testSetsAllTwitterCardMetadata() {
       cy.getMetaWithProperty('twitter:creator:id')
         .shouldHaveContent()
         .and('eq', metadata.twitterCard.creator.id)
+      cy.getMetaWithProperty('twitter:description')
+        .shouldHaveContent()
+        .and('eq', metadata.description)
     })
   })
 }

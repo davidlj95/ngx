@@ -27,6 +27,9 @@ export function testSetsAllOpenGraphMetadata() {
       cy.getMetaWithProperty('og:image:height')
         .shouldHaveContent()
         .and('eq', metadata.openGraph.image.height.toString())
+      cy.getMetaWithProperty('og:url')
+        .shouldHaveContent()
+        .and('eq', metadata.canonicalUrl)
     })
   })
 }

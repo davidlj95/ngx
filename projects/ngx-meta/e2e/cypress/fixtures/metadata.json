@@ -22,7 +22,8 @@
     },
     "type": "website",
     "profile": {
-      "firstName": "Foo"
+      "firstName": "Foo",
+      "lastName": "Bar"
     }
   }
 }

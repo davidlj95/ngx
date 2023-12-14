@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { provideMetadata } from '@davidlj95/ngx-meta/core'
+import { NgxMetaCoreModule, provideMetadata } from '@davidlj95/ngx-meta/core'
 import { CardTwitterCardMetadata } from './card-twitter-card-metadata'
 import { SiteTwitterCardMetadata } from './site-twitter-card-metadata'
 import { CreatorTwitterCardMetadata } from './creator-twitter-card-metadata'
@@ -8,6 +8,7 @@ import { TitleTwitterCardMetadata } from './title-twitter-card-metadata'
 import { ImageTwitterCardMetadata } from './image-twitter-card-metadata'
 
 @NgModule({
+  imports: [NgxMetaCoreModule],
   providers: [
     provideMetadata(CardTwitterCardMetadata),
     provideMetadata(SiteTwitterCardMetadata),

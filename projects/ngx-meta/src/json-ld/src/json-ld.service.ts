@@ -1,9 +1,8 @@
 import { Inject, Injectable } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
-import { _MetadataApplier } from '@davidlj95/ngx-meta/common'
 
 @Injectable()
-export class JsonLdService implements _MetadataApplier<object> {
+export class JsonLdService {
   private readonly SCRIPT_TYPE = 'application/ld+json'
 
   constructor(@Inject(DOCUMENT) private readonly document: Document) {}

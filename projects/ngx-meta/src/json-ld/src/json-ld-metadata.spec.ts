@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing'
 
-import { JsonLdService } from './json-ld.service'
+import { JsonLdMetadata } from './json-ld-metadata'
 import { JsonLdScriptHarness } from './__tests__/json-ld-script-harness'
 import { DOCUMENT } from '@angular/common'
 
-describe('JsonLdService', () => {
-  let sut: JsonLdService
+describe('JSON LD metadata', () => {
+  let sut: JsonLdMetadata
   let jsonLdScriptHarness: JsonLdScriptHarness
 
   beforeEach(() => {
@@ -28,16 +28,10 @@ describe('JsonLdService', () => {
           jsonLdScriptHarness.create(existingJsonLd)
         })
 
-        it('should not create nor update existing element', () => {
-          expect(jsonLdScriptHarness.getAll()).toHaveSize(1)
+        it('should remove it', () => {
+          sut.set(jsonLd)
 
-          sut.apply(jsonLd)
-
-          const jsonLdScriptElements = jsonLdScriptHarness.getAll()
-          expect(jsonLdScriptElements).toHaveSize(1)
-          expect(
-            jsonLdScriptHarness.getJsonLdFromElement(jsonLdScriptElements[0]),
-          ).toEqual(existingJsonLd)
+          expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
         })
       })
 
@@ -45,7 +39,7 @@ describe('JsonLdService', () => {
         it('should not create it', () => {
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
 
-          sut.apply(jsonLd)
+          sut.set(jsonLd)
 
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
         })
@@ -65,7 +59,7 @@ describe('JsonLdService', () => {
         it('should update it', () => {
           expect(jsonLdScriptHarness.getAll()).toHaveSize(1)
 
-          sut.apply(jsonLd)
+          sut.set(jsonLd)
 
           const jsonLdScriptElements = jsonLdScriptHarness.getAll()
           expect(jsonLdScriptElements).toHaveSize(1)
@@ -79,7 +73,7 @@ describe('JsonLdService', () => {
         it('should create it', () => {
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
 
-          sut.apply(jsonLd)
+          sut.set(jsonLd)
 
           const jsonLdScriptElements = jsonLdScriptHarness.getAll()
           expect(jsonLdScriptElements).toHaveSize(1)
@@ -95,7 +89,7 @@ describe('JsonLdService', () => {
 
       describe('when JSON LD script element does not exist', () => {
         it('should do nothing', () => {
-          sut.apply(jsonLd)
+          sut.set(jsonLd)
 
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
         })
@@ -107,7 +101,7 @@ describe('JsonLdService', () => {
         })
 
         it('should remove it', () => {
-          sut.apply(jsonLd)
+          sut.set(jsonLd)
 
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
         })
@@ -117,6 +111,6 @@ describe('JsonLdService', () => {
 })
 
 function makeSut() {
-  TestBed.configureTestingModule({ providers: [JsonLdService] })
-  return TestBed.inject(JsonLdService)
+  TestBed.configureTestingModule({ providers: [JsonLdMetadata] })
+  return TestBed.inject(JsonLdMetadata)
 }

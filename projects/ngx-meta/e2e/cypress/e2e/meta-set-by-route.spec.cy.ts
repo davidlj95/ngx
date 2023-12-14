@@ -7,6 +7,8 @@ import { testSetsAllOpenGraphProfileMetadata } from '../support/test-sets-all-op
 import { testUnsetsAllOpenGraphProfileMetadata } from '../support/test-unsets-all-open-graph-profile-metadata'
 import { testSetsAllTwitterCardMetadata } from '../support/test-sets-all-twitter-card-metadata'
 import { testUnsetsAllTwitterCardMetadata } from '../support/test-unsets-all-twitter-card-metadata'
+import { testSetsJsonLd } from '../support/test-sets-json-ld'
+import { testUnsetsJsonLd } from '../support/test-unsets-json-ld'
 
 describe('Meta set by route', () => {
   beforeEach(() => {
@@ -17,6 +19,7 @@ describe('Meta set by route', () => {
   testSetsAllOpenGraphMetadata()
   testSetsAllOpenGraphProfileMetadata()
   testSetsAllTwitterCardMetadata()
+  testSetsJsonLd()
 
   describe('when going to another route', () => {
     beforeEach(() => {
@@ -29,5 +32,6 @@ describe('Meta set by route', () => {
     testUnsetsAllOpenGraphMetadata()
     testUnsetsAllOpenGraphProfileMetadata()
     testUnsetsAllTwitterCardMetadata()
+    testUnsetsJsonLd()
   })
 })

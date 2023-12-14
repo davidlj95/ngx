@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core'
-import { JsonLdService } from './json-ld.service'
+import { JsonLdMetadata } from './json-ld-metadata'
+import { provideMetadata } from '@davidlj95/ngx-meta/core'
 
 @NgModule({
-  providers: [JsonLdService],
+  providers: [provideMetadata(JsonLdMetadata)],
 })
 export class JsonLdModule {}

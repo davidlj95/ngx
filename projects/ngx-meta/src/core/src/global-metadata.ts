@@ -69,4 +69,11 @@ export interface GlobalMetadata {
    * image if you want to customize those too.
    */
   readonly image?: GlobalMetadataImage | null
+
+  /**
+   * JSON-LD object to set in the page
+   *
+   * Needs JSON-LD module to be imported
+   */
+  readonly jsonLd?: object | null
 }

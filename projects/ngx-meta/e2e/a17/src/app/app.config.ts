@@ -7,6 +7,7 @@ import { NgxMetaStandardModule } from '@davidlj95/ngx-meta/standard'
 import { NgxMetaOpenGraphModule } from '@davidlj95/ngx-meta/open-graph'
 import { NgxMetaOpenGraphProfileModule } from '@davidlj95/ngx-meta/open-graph-profile'
 import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
+import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
       NgxMetaOpenGraphModule,
       NgxMetaOpenGraphProfileModule,
       NgxMetaTwitterCardModule,
+      NgxMetaJsonLdModule,
     ),
   ],
 }

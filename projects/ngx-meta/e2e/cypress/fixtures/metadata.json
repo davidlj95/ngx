@@ -38,5 +38,17 @@
       "id": "16542877",
       "username": "example"
     }
+  },
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "author": {
+      "@type": "Person",
+      "name": "Mr. Foo Bar",
+      "url": "https://example.com/foo"
+    },
+    "name": "Foo bar",
+    "headline": "Foo bar at your service",
+    "url": "https://example.com/foo"
   }
 }

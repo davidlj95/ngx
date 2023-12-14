@@ -6,6 +6,7 @@ import { ImageOpenGraphMetadata } from './image-open-graph-metadata'
 import { UrlOpenGraphMetadata } from './url-open-graph-metadata'
 import { DescriptionOpenGraphMetadata } from './description-open-graph-metadata'
 import { LocaleOpenGraphMetadata } from './locale-open-graph-metadata'
+import { SiteNameOpenGraphMetadata } from './site-name-open-graph-metadata'
 
 @NgModule({
   imports: [NgxMetaCoreModule],
@@ -16,6 +17,7 @@ import { LocaleOpenGraphMetadata } from './locale-open-graph-metadata'
     provideMetadata(UrlOpenGraphMetadata),
     provideMetadata(DescriptionOpenGraphMetadata),
     provideMetadata(LocaleOpenGraphMetadata),
+    provideMetadata(SiteNameOpenGraphMetadata),
   ],
 })
 export class OpenGraphModule {}

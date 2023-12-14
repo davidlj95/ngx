@@ -36,6 +36,9 @@ export function testSetsAllOpenGraphMetadata() {
       cy.getMetaWithProperty('og:locale')
         .shouldHaveContent()
         .and('eq', metadata.locale)
+      cy.getMetaWithProperty('og:site_name')
+        .shouldHaveContent()
+        .and('eq', metadata.applicationName)
     })
   })
 }

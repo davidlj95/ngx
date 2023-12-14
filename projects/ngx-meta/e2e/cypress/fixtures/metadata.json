@@ -24,7 +24,8 @@
     "profile": {
       "firstName": "Foo",
       "lastName": "Bar",
-      "username": "foobar"
+      "username": "foobar",
+      "gender": "male"
     }
   }
 }

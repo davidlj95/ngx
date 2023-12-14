@@ -17,7 +17,7 @@ module.exports = {
       {
         pkgRoot: './projects/ngx-meta/dist',
         tarballDir: './projects/ngx-meta/dist',
-        npmPublish: false,
+        npmPublish: true,
       },
     ],
     ['@semantic-release/github', { assets: './projects/ngx-meta/dist/*.tgz' }],

@@ -1,6 +1,7 @@
 import { TwitterCardType } from './twitter-card-type'
 import { TwitterCardImage } from './twitter-card-image'
 import { TwitterCardSite } from './twitter-card-site'
+import { TwitterCardCreator } from './twitter-card-creator-id'
 
 /**
  * Specifies metadata to create Twitter cards
@@ -22,7 +23,7 @@ export class TwitterCardMetadata {
   /**
    * Username or ID of the author of the website
    *
-   * Used with `summary`, `summary_large_image`, `app`, `player cards`
+   * Used with `summary`, `summary_large_image`, `app`, `player` cards
    *
    * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite,
    * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter
@@ -30,11 +31,12 @@ export class TwitterCardMetadata {
   readonly site?: TwitterCardSite
 
   /**
-   * `@username` of content creator
+   * Username or ID of the content creator
    *
-   * Used with `summary_large_image` cards
+   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator
+   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter
    */
-  readonly creator?: string | null
+  readonly creator?: TwitterCardCreator
 
   /**
    * Twitter user ID of content creator

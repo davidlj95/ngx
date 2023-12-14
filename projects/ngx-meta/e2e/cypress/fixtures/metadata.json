@@ -31,6 +31,10 @@
   "twitterCard": {
     "card": "summary",
     "site": {
+      "id": "1058429077051174912",
+      "username": "acme"
+    },
+    "creator": {
       "id": "16542877",
       "username": "example"
     }

@@ -1,5 +1,5 @@
-import { OpenGraphMetadataValues } from './open-graph-metadata-values'
+import { OpenGraphMetadata } from './open-graph-metadata'
 
 export interface OpenGraphMetadataRouteData {
-  openGraph: OpenGraphMetadataValues
+  openGraph: OpenGraphMetadata
 }

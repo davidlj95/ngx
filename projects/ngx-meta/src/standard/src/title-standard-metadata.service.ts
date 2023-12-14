@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core'
 import { Title } from '@angular/platform-browser'
-import { StandardMetadataValues } from './standard-metadata-values'
 import { StandardMetadata } from './standard-metadata'
+import { BaseStandardMetadata } from './base-standard-metadata'
 
 @Injectable()
-export class TitleStandardMetadata extends StandardMetadata<'title'> {
+export class TitleStandardMetadata extends BaseStandardMetadata<'title'> {
   constructor(private readonly titleService: Title) {
     super({ name: 'title', globalName: 'title' })
   }
 
-  set(value: StandardMetadataValues['title']): void {
+  set(value: StandardMetadata['title']): void {
     if (value === undefined || value === null) {
       return
     }

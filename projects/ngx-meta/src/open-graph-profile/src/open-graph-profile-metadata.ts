@@ -1,21 +1,39 @@
-import { GlobalMetadata, ScopedMetadata } from '@davidlj95/ngx-meta/core'
-import { OpenGraphProfileMetadataValues } from './open-graph-profile-metadata-values'
-import { OpenGraphProfileMetadataRouteData } from './open-graph-profile-metadata-route-data'
+import { OpenGraphProfileGender } from './open-graph-profile-gender'
 
-export const OG_SCOPE: keyof OpenGraphProfileMetadataRouteData = 'openGraph'
-export const PROFILE_SCOPE: keyof OpenGraphProfileMetadataRouteData['openGraph'] =
-  'profile'
+/**
+ * Open Graph profile metadata for this page
+ *
+ * @see https://ogp.me/#type_profile
+ */
+export interface OpenGraphProfileMetadata {
+  /**
+   * A name normally given to an individual by a parent or self-chosen.
+   *
+   * @see https://ogp.me/#type_profile:~:text=profile%3Afirst_name%20%2D%20string
+   */
+  readonly firstName?: string | null
 
-export abstract class OpenGraphProfileMetadata<
-  K extends keyof OpenGraphProfileMetadataValues,
-> extends ScopedMetadata<OpenGraphProfileMetadataValues, K> {
-  protected constructor({
-    name,
-    globalName,
-  }: {
-    name: K
-    globalName?: keyof GlobalMetadata
-  }) {
-    super({ name, scope: `${OG_SCOPE}.${PROFILE_SCOPE}`, globalName })
-  }
+  /**
+   * A name inherited from a family or marriage and by which the individual is commonly known.
+   *
+   * @see https://ogp.me/#type_profile:~:text=profile%3Alast_name%20%2D%20string
+   */
+  readonly lastName?: string | null
+
+  /**
+   * A short unique string to identify them.
+   *
+   * @see https://ogp.me/#type_profile:~:text=profile%3Ausername%20%2D%20string
+   */
+  readonly username?: string | null
+
+  /**
+   * Their gender.
+   *
+   * Allowing a string here, so you can specify another gender than the ones
+   * specified by standard (male, female)
+   *
+   * @see https://ogp.me/#type_profile:~:text=profile%3Agender%20%2D%20enum
+   */
+  readonly gender?: OpenGraphProfileGender | string | null
 }

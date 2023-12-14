@@ -1,10 +1,10 @@
+import { BaseOpenGraphMetadata } from './base-open-graph-metadata'
 import { OpenGraphMetadata } from './open-graph-metadata'
-import { OpenGraphMetadataValues } from './open-graph-metadata-values'
 import { Injectable } from '@angular/core'
 import { MetaService } from '@davidlj95/ngx-meta/core'
 import { OpenGraphMetaProperty } from './open-graph-meta-property'
 
-const NO_IMAGE_VALUE: OpenGraphMetadataValues['image'] = {
+const NO_IMAGE_VALUE: OpenGraphMetadata['image'] = {
   url: undefined,
   alt: undefined,
   secureUrl: null,
@@ -14,14 +14,14 @@ const NO_IMAGE_VALUE: OpenGraphMetadataValues['image'] = {
 }
 
 @Injectable()
-export class ImageOpenGraphMetadata extends OpenGraphMetadata<'image'> {
+export class ImageOpenGraphMetadata extends BaseOpenGraphMetadata<'image'> {
   constructor(private readonly metaService: MetaService) {
     super({ name: 'image', globalName: 'image' })
   }
 
-  set(value: OpenGraphMetadataValues['image']): void {
+  set(value: OpenGraphMetadata['image']): void {
     const imageUrl = value?.url?.toString()
-    const effectiveValue: OpenGraphMetadataValues['image'] =
+    const effectiveValue: OpenGraphMetadata['image'] =
       imageUrl !== undefined && imageUrl !== null ? value : NO_IMAGE_VALUE
     this.metaService.set(new OpenGraphMetaProperty('image'), imageUrl)
     this.metaService.set(

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core'
-import { StandardMetadataValues } from './standard-metadata-values'
 import { StandardMetadata } from './standard-metadata'
+import { BaseStandardMetadata } from './base-standard-metadata'
 import { MetaService } from '@davidlj95/ngx-meta/core'
 import { StandardMetaProperty } from './standard-meta-property'
 
 @Injectable()
-export class ApplicationNameStandardMetadata extends StandardMetadata<'applicationName'> {
+export class ApplicationNameStandardMetadata extends BaseStandardMetadata<'applicationName'> {
   constructor(private readonly metaService: MetaService) {
     super({ name: 'applicationName', globalName: 'applicationName' })
   }
 
-  set(value: StandardMetadataValues['applicationName']): void {
+  set(value: StandardMetadata['applicationName']): void {
     this.metaService.set(new StandardMetaProperty('application-name'), value)
   }
 }

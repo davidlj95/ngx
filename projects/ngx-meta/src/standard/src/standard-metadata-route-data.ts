@@ -1,5 +1,5 @@
-import { StandardMetadataValues } from './standard-metadata-values'
+import { StandardMetadata } from './standard-metadata'
 
 export interface StandardMetadataRouteData {
-  standard: StandardMetadataValues
+  standard: StandardMetadata
 }

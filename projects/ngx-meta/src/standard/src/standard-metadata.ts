@@ -1,7 +1,8 @@
 import { GlobalMetadata, ScopedMetadata } from '@davidlj95/ngx-meta/core'
 import { StandardMetadataValues } from './standard-metadata-values'
+import { StandardMetadataRouteData } from './standard-metadata-route-data'
 
-export const SCOPE = 'standard'
+export const SCOPE: keyof StandardMetadataRouteData = 'standard'
 
 export abstract class StandardMetadata<
   K extends keyof StandardMetadataValues,

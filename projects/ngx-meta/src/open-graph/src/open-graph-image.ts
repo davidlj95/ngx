@@ -2,7 +2,7 @@ export interface OpenGraphImage {
   /**
    * An image URL which should represent your object within the graph
    *
-   * Can be unset to use image from general metadata
+   * Can be unset to use image from global metadata
    *
    * @see https://ogp.me/#structured:~:text=og%3Aimage%3Aurl
    */
@@ -12,7 +12,7 @@ export interface OpenGraphImage {
    * A description of what is in the image (not a caption). If the page
    * specifies an `og:image` it should specify `og:image:alt`.
    *
-   * Can be unset to use image from general metadata
+   * Can be unset to use image from global metadata
    *
    * @see https://ogp.me/#structured:~:text=og%3Aimage%3Aalt
    */

@@ -13,6 +13,7 @@ describe('MetadataValueFromValues', () => {
 
   describe('get', () => {
     const scope = 'scope'
+    const globalName = 'globalName'
     const name = 'name'
     const value = 'value'
 
@@ -27,7 +28,6 @@ describe('MetadataValueFromValues', () => {
       })
 
       describe('when global is defined', () => {
-        const globalName = 'globalName'
         const metadataDefinitionWithGlobal = makeMetadataDefinition({
           ...metadataDefinition,
           globalName,
@@ -149,6 +149,32 @@ describe('MetadataValueFromValues', () => {
 
         it('should return value using sub scope, scope and name as keys', () => {
           expect(sut.get(metadataDefinition, values)).toEqual(value)
+        })
+      })
+      describe('and it is and object, and a global object exists too', () => {
+        const valueObject = { value: 'value', prop: 'value' }
+        const globalValueObject = {
+          globalValue: 'globalValue',
+          prop: 'globalValue',
+        }
+        const metadataDefinition = makeMetadataDefinition({
+          scope,
+          name,
+          globalName,
+        })
+
+        const values = {
+          [globalName]: globalValueObject,
+          [scope]: {
+            [name]: valueObject,
+          },
+        }
+
+        it('should merge both objects, with specific value taking priority', () => {
+          expect(sut.get(metadataDefinition, values)).toEqual({
+            ...globalValueObject,
+            ...valueObject,
+          })
         })
       })
     })

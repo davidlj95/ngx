@@ -1,6 +1,7 @@
 import { MetadataDefinition } from './metadata-definition'
 import { MetadataValues } from './metadata-values'
 import { MaybeUndefined } from './maybe-undefined'
+import { isObject } from './is-object'
 
 export class MetadataValueFromValues {
   get<T>(
@@ -19,9 +20,19 @@ export class MetadataValueFromValues {
       }
       value = (value as MetadataValues)[key]
     }
-    if (value !== undefined || definition.globalName === undefined) {
+    const globalValue =
+      definition.globalName !== undefined
+        ? values[definition.globalName]
+        : undefined
+    if (value !== undefined && !globalValue) {
       return value as MaybeUndefined<T>
     }
-    return values[definition.globalName] as MaybeUndefined<T>
+    if (isObject(value) && isObject(globalValue)) {
+      return {
+        ...globalValue,
+        ...value,
+      } as T
+    }
+    return globalValue as MaybeUndefined<T>
   }
 }

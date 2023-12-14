@@ -10,6 +10,9 @@ export class TitleMetadata extends StandardMetadata<'title'> {
   }
 
   set(value: StandardMetadataValues['title']): void {
+    if (value === undefined || value === null) {
+      return
+    }
     this.titleService.setTitle(value ?? '')
   }
 }

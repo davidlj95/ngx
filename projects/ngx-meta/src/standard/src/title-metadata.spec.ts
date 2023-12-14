@@ -15,10 +15,10 @@ describe('Title metadata', () => {
   })
 
   describe('set', () => {
-    it('when title is not provided should set empty title', () => {
+    it('when title is not provided should not update title', () => {
       sut.set(undefined)
 
-      expect(titleService.setTitle).toHaveBeenCalledOnceWith('')
+      expect(titleService.setTitle).not.toHaveBeenCalled()
     })
 
     it('when title is empty should update title', () => {

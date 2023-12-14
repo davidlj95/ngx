@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { Metadata, NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
+import { NgxMetaCoreModule, provideMetadata } from '@davidlj95/ngx-meta/core'
 import { TitleStandardMetadata } from './title-standard-metadata.service'
 import { DescriptionStandardMetadata } from './description-standard-metadata.service'
 import { AuthorStandardMetadata } from './author-standard-metadata.service'
@@ -14,47 +14,15 @@ import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attrib
 @NgModule({
   imports: [NgxMetaCoreModule],
   providers: [
-    {
-      provide: Metadata,
-      useClass: TitleStandardMetadata,
-      multi: true,
-    },
-    {
-      provide: Metadata,
-      useClass: DescriptionStandardMetadata,
-      multi: true,
-    },
-    {
-      provide: Metadata,
-      useClass: AuthorStandardMetadata,
-      multi: true,
-    },
-    {
-      provide: Metadata,
-      useClass: KeywordsStandardMetadata,
-      multi: true,
-    },
-    {
-      provide: Metadata,
-      useClass: GeneratorStandardMetadata,
-      multi: true,
-    },
-    {
-      provide: Metadata,
-      useClass: ApplicationNameStandardMetadata,
-      multi: true,
-    },
-    {
-      provide: Metadata,
-      useClass: CanonicalUrlStandardMetadata,
-      multi: true,
-    },
+    provideMetadata(TitleStandardMetadata),
+    provideMetadata(DescriptionStandardMetadata),
+    provideMetadata(AuthorStandardMetadata),
+    provideMetadata(KeywordsStandardMetadata),
+    provideMetadata(GeneratorStandardMetadata),
+    provideMetadata(ApplicationNameStandardMetadata),
+    provideMetadata(CanonicalUrlStandardMetadata),
     LinkRelCanonicalService,
-    {
-      provide: Metadata,
-      useClass: LocaleStandardMetadata,
-      multi: true,
-    },
+    provideMetadata(LocaleStandardMetadata),
     HtmlLangAttributeService,
   ],
 })

@@ -2,7 +2,7 @@ import { GlobalMetadata, ScopedMetadata } from '@davidlj95/ngx-meta/core'
 import { TwitterCardMetadata } from './twitter-card-metadata'
 import { TwitterCardMetadataRouteData } from './twitter-card-metadata-route-data'
 
-export const SCOPE: keyof TwitterCardMetadataRouteData = 'twitterCard'
+export const SCOPE: keyof TwitterCardMetadataRouteData['meta'] = 'twitterCard'
 
 export abstract class BaseTwitterCardMetadata<
   K extends keyof TwitterCardMetadata,

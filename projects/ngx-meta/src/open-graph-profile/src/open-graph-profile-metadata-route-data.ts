@@ -1,12 +1,11 @@
 import { OpenGraphProfileMetadata } from './open-graph-profile-metadata'
-import {
-  OpenGraphMetadata,
-  OpenGraphMetadataRouteData,
-} from '@davidlj95/ngx-meta/open-graph'
+import { OpenGraphMetadataRouteData } from '@davidlj95/ngx-meta/open-graph'
 
 export interface OpenGraphProfileMetadataRouteData
   extends OpenGraphMetadataRouteData {
-  openGraph: OpenGraphMetadata & {
-    profile: OpenGraphProfileMetadata
+  meta: {
+    openGraph: OpenGraphMetadataRouteData['meta']['openGraph'] & {
+      profile: OpenGraphProfileMetadata
+    }
   }
 }

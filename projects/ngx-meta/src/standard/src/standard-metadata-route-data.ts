@@ -1,5 +1,7 @@
-import { StandardMetadata } from './standard-metadata'
+import { MetadataRouteData } from '@davidlj95/ngx-meta/routing'
 
-export interface StandardMetadataRouteData {
-  standard: StandardMetadata
+export interface StandardMetadataRouteData extends MetadataRouteData {
+  meta: {
+    standard: StandardMetadataRouteData
+  }
 }

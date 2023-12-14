@@ -5,7 +5,7 @@ import { OpenGraphProfileGender } from './open-graph-profile-gender'
  *
  * @see https://ogp.me/#type_profile
  */
-export interface OpenGraphProfile {
+export interface OpenGraphProfileMetadataValues {
   /**
    * A name normally given to an individual by a parent or self-chosen.
    *

@@ -3,6 +3,8 @@ import { testSetsAllStandardMetadata } from '../support/test-sets-all-standard-m
 import { testSetsAllOpenGraphMetadata } from '../support/test-sets-all-open-graph-metadata'
 import { testUnsetsAllStandardMetadata } from '../support/test-unsets-all-standard-metadata'
 import { testUnsetsAllOpenGraphMetadata } from '../support/test-unsets-all-open-graph-metadata'
+import { testSetsAllOpenGraphProfileMetadata } from '../support/test-sets-all-open-graph-profile-metadata'
+import { testUnsetsAllOpenGraphProfileMetadata } from '../support/test-unsets-all-open-graph-profile-metadata'
 
 describe('Meta set by route', () => {
   beforeEach(() => {
@@ -11,6 +13,7 @@ describe('Meta set by route', () => {
 
   testSetsAllStandardMetadata()
   testSetsAllOpenGraphMetadata()
+  testSetsAllOpenGraphProfileMetadata()
 
   describe('when going to another route', () => {
     beforeEach(() => {
@@ -21,5 +24,6 @@ describe('Meta set by route', () => {
 
     testUnsetsAllStandardMetadata()
     testUnsetsAllOpenGraphMetadata()
+    testUnsetsAllOpenGraphProfileMetadata()
   })
 })

@@ -20,6 +20,9 @@
       "width": 256,
       "height": 256
     },
-    "type": "website"
+    "type": "website",
+    "profile": {
+      "firstName": "Foo"
+    }
   }
 }

@@ -8,7 +8,7 @@ import { TwitterCardImage } from './twitter-card-image'
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
  */
-export class TwitterCard {
+export class TwitterCardMetadata {
   /**
    * The card type
    *

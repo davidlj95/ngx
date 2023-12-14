@@ -5,6 +5,8 @@ import { testUnsetsAllStandardMetadata } from '../support/test-unsets-all-standa
 import { testUnsetsAllOpenGraphMetadata } from '../support/test-unsets-all-open-graph-metadata'
 import { testSetsAllOpenGraphProfileMetadata } from '../support/test-sets-all-open-graph-profile-metadata'
 import { testUnsetsAllOpenGraphProfileMetadata } from '../support/test-unsets-all-open-graph-profile-metadata'
+import { testSetsAllTwitterCardMetadata } from '../support/test-sets-all-twitter-card-metadata'
+import { testUnsetsAllTwitterCardMetadata } from '../support/test-unsets-all-twitter-card-metadata'
 
 describe('Meta set by route', () => {
   beforeEach(() => {
@@ -14,6 +16,7 @@ describe('Meta set by route', () => {
   testSetsAllStandardMetadata()
   testSetsAllOpenGraphMetadata()
   testSetsAllOpenGraphProfileMetadata()
+  testSetsAllTwitterCardMetadata()
 
   describe('when going to another route', () => {
     beforeEach(() => {
@@ -25,5 +28,6 @@ describe('Meta set by route', () => {
     testUnsetsAllStandardMetadata()
     testUnsetsAllOpenGraphMetadata()
     testUnsetsAllOpenGraphProfileMetadata()
+    testUnsetsAllTwitterCardMetadata()
   })
 })

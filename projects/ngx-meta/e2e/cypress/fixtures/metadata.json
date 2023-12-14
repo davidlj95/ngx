@@ -27,5 +27,8 @@
       "username": "foobar",
       "gender": "male"
     }
+  },
+  "twitterCard": {
+    "card": "summary"
   }
 }

@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ngx-meta/e2e/a16: install" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/a16/package.json" />
+    <command value="install" />
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

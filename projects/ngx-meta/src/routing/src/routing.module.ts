@@ -5,7 +5,7 @@ import { MetadataRouteStrategy } from './metadata-route-strategy'
 import { CurrentRouteDataMetadataStrategy } from './current-route-data-metadata-strategy'
 
 const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
-  'MetadataRoutingModule',
+  'NgxMetaRoutingModule',
   RouterListenerService,
 )
 

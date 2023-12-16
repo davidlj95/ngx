@@ -68,8 +68,17 @@
     },
     // Angular v17.0.x compatibilities
     // https://angular.io/guide/versions
+    // https://update.angular.io/?v=16.0-17.0 (zone.js)
     {
-      matchPackageNames: ['node'],
+      matchPackagePrefixes: ['@angular', '@angular-devkit'],
+      matchFileNames: [
+        'package.json',
+        'projects/ngx-meta/e2e/a17/package.json',
+      ],
+      allowedVersions: '^17',
+    },
+    {
+      matchPackageNames: ['node', '@types/node'],
       allowedVersions: '^18.13.0 || ^20.9.0',
     },
     {
@@ -88,8 +97,23 @@
       ],
       allowedVersions: '^6.5.3 || ^7.4.0',
     },
+    {
+      matchPackageNames: ['zone.js'],
+      matchFileNames: [
+        'package.json',
+        'projects/ngx-meta/e2e/a17/package.json',
+      ],
+      allowedVersions: '0.14.x',
+    },
     // Angular v16.1.x || v16.2.x compatibilities
     // https://angular.io/guide/versions
+    // https://update.angular.io/?v=15.0-16.0 (zone.js)
+    {
+      matchPackagePrefixes: ['@angular', '@angular-devkit'],
+      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      allowedVersions: '^16',
+    },
+    //👇 N/A. Just to have this info somewhere near
     {
       matchPackageNames: ['node', '@types/node'],
       matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
@@ -104,6 +128,11 @@
       matchPackageNames: ['rxjs'],
       matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
       allowedVersions: '^6.5.3 || ^7.4.0',
+    },
+    {
+      matchPackageNames: ['zone.js'],
+      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      allowedVersions: '0.13.x',
     },
   ],
 }

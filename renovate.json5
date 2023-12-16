@@ -66,7 +66,7 @@
       matchDepTypes: ['devDependencies'],
       automerge: true,
     },
-    // Angular v17 compatibilities
+    // Angular v17.0.x compatibilities
     // https://angular.io/guide/versions
     {
       matchPackageNames: ['node'],
@@ -86,6 +86,23 @@
         'package.json',
         'projects/ngx-meta/e2e/a17/package.json',
       ],
+      allowedVersions: '^6.5.3 || ^7.4.0',
+    },
+    // Angular v16.1.x || v16.2.x compatibilities
+    // https://angular.io/guide/versions
+    {
+      matchPackageNames: ['node', '@types/node'],
+      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      allowedVersions: '^16.14.0 || ^18.10.0',
+    },
+    {
+      matchPackageNames: ['typescript'],
+      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      allowedVersions: '>=4.9.3 <5.2.0',
+    },
+    {
+      matchPackageNames: ['rxjs'],
+      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
       allowedVersions: '^6.5.3 || ^7.4.0',
     },
   ],

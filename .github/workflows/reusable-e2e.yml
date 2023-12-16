@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [16, 17]
+        version: [15, 16, 17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
     steps:

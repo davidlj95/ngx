@@ -6,7 +6,7 @@
     <cypress-options value="-q" />
     <envs />
     <scope-kind value="TEST_FILE" />
-    <test-file value="$PROJECT_DIR$/projects/ngx-meta/e2e/cypress/e2e/meta-set-by-services.spec.cy.ts" />
+    <test-file value="$PROJECT_DIR$/projects/ngx-meta/e2e/cypress/e2e/meta-set-by-service.spec.cy.ts" />
     <method v="2" />
   </configuration>
 </component>

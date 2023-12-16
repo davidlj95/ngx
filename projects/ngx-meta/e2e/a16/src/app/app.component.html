@@ -383,4 +383,15 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<h2>Routes</h2>
+<nav>
+  <ul>
+    <li *ngFor="let navItem of navItems">
+      <a [routerLink]="navItem.path" [id]="navItem.linkId">
+        {{ navItem.displayName }}
+      </a>
+    </li>
+  </ul>
+</nav>
+<h2>Component</h2>
 <router-outlet></router-outlet>

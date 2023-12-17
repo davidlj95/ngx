@@ -1,3 +1,26 @@
+## [`ngx-meta` v1.0.0-alpha.10](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.9...ngx-meta-v1.0.0-alpha.10) (2023-12-17)
+
+### Miscellaneous Chores
+
+- **release:** new alpha release ([b97e519](https://github.com/davidlj95/ngx/commit/b97e519471f9bf5d0f2a852b38103ff8a81d211b))
+- **release:** update CHANGELOG.md ([#72](https://github.com/davidlj95/ngx/issues/72)) ([5491ef1](https://github.com/davidlj95/ngx/commit/5491ef1980e8e5295aea0120f63179a33746b4a2))
+- rename guard module name ([#84](https://github.com/davidlj95/ngx/issues/84)) ([d60dc54](https://github.com/davidlj95/ngx/commit/d60dc54815c46a80c1a3d47567e5c51ac03afd5e))
+
+### Tests
+
+- **e2e:** add Angular v15 e2e app ([#88](https://github.com/davidlj95/ngx/issues/88)) ([37f9ce5](https://github.com/davidlj95/ngx/commit/37f9ce527c1404295b0e851cb4e936a4bee56a9a))
+- **e2e:** add Angular v16 e2e app ([#85](https://github.com/davidlj95/ngx/issues/85)) ([11baf33](https://github.com/davidlj95/ngx/commit/11baf33f688f886ac9c48e269adf07c8c8811cf8)), closes [#64](https://github.com/davidlj95/ngx/issues/64)
+- **e2e:** remove test deps from Angular e2e apps ([#86](https://github.com/davidlj95/ngx/issues/86)) ([2beb79b](https://github.com/davidlj95/ngx/commit/2beb79b21676b2848ba8f33b5df22cc6ca4b6700))
+
+### Build System
+
+- **deps-dev:** update actions/download-artifact action to v4 ([#82](https://github.com/davidlj95/ngx/issues/82)) ([df49610](https://github.com/davidlj95/ngx/commit/df496104b5f07e02b1dd92de64371a1971dffa64))
+- **deps-dev:** update pnpm to v8.12.1 ([#81](https://github.com/davidlj95/ngx/issues/81)) ([1e1a4a0](https://github.com/davidlj95/ngx/commit/1e1a4a0b75723c3133323416ecb7d2865aa24d8a))
+- **deps:** pin dependencies ([3115fca](https://github.com/davidlj95/ngx/commit/3115fca0cefeea4fd210b7f0f031b8e394270d18))
+- **deps:** update to Angular v17.0.7 ([ebf23d3](https://github.com/davidlj95/ngx/commit/ebf23d3478c774b782bc9188b210d187832d2776))
+- fix tsc configs + unused file ([#78](https://github.com/davidlj95/ngx/issues/78)) ([6e82248](https://github.com/davidlj95/ngx/commit/6e822482e4cb154cad3152321e10f1020c2cc5d9))
+- **ide:** add Cypress run config ngx-meta/route ([ff38c5c](https://github.com/davidlj95/ngx/commit/ff38c5ca097d5f794178b0a401ac800aecf0a2c0))
+
 ## [`ngx-meta` v1.0.0-alpha.9](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.8...ngx-meta-v1.0.0-alpha.9) (2023-12-14)
 
 ### Documentation

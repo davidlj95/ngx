@@ -34,11 +34,20 @@ describe('RouterListenerService', () => {
     })
 
     describe('when already listening', () => {
-      it('should throw error and not subscribe again', () => {
-        const sut = makeSut()
+      let sut: RouterListenerService
+      beforeEach(() => {
+        sut = makeSut()
+        sut.listen()
+      })
+
+      it('should not subscribe again', () => {
+        // Hacking private access ;P
+        const subscription = sut['subscription']
+        expect(subscription).toBeDefined()
+
         sut.listen()
 
-        expect(() => sut.listen()).toThrowError()
+        expect(sut['subscription']).toBe(subscription)
       })
     })
 

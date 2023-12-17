@@ -92,6 +92,11 @@ module.exports = {
       subject: '*maintenance*',
       release: 'patch',
     },
+    // Trigger an alpha release
+    {
+      body: '*ALPHA RELEASE*',
+      release: 'patch',
+    },
   ],
   writerOpts: {
     //👇 Add library name in release notes

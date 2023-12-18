@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.11](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.10...ngx-meta-v1.0.0-alpha.11) (2023-12-18)
+
+### Features
+
+- different dev/pro behaviour for warnings ([#94](https://github.com/davidlj95/ngx/issues/94)) ([0ec07b3](https://github.com/davidlj95/ngx/commit/0ec07b3f81fd97fc152e3dfafe11544df60fbf45))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#89](https://github.com/davidlj95/ngx/issues/89)) ([af56d87](https://github.com/davidlj95/ngx/commit/af56d87bef54752ce9f3ca265a5855e9909174d4))
+
 ## [`ngx-meta` v1.0.0-alpha.10](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.9...ngx-meta-v1.0.0-alpha.10) (2023-12-17)
 
 ### Miscellaneous Chores

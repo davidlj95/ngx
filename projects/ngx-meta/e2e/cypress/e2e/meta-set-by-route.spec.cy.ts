@@ -9,10 +9,18 @@ import { testSetsAllTwitterCardMetadata } from '../support/test-sets-all-twitter
 import { testUnsetsAllTwitterCardMetadata } from '../support/test-unsets-all-twitter-card-metadata'
 import { testSetsJsonLd } from '../support/test-sets-json-ld'
 import { testUnsetsJsonLd } from '../support/test-unsets-json-ld'
+import {
+  spyOnConsole,
+  testNoConsoleLogsAreEmitted,
+} from '../support/no-console-logs-are-emitted'
 
 describe('Meta set by route', () => {
   beforeEach(() => {
-    cy.visit(ROUTES.metaSetByRoute.path)
+    cy.visit(ROUTES.metaSetByRoute.path, {
+      onBeforeLoad(win: Cypress.AUTWindow) {
+        spyOnConsole(win)
+      },
+    })
   })
 
   testSetsAllStandardMetadata()
@@ -20,6 +28,7 @@ describe('Meta set by route', () => {
   testSetsAllOpenGraphProfileMetadata()
   testSetsAllTwitterCardMetadata()
   testSetsJsonLd()
+  testNoConsoleLogsAreEmitted()
 
   describe('when going to another route', () => {
     beforeEach(() => {
@@ -33,5 +42,6 @@ describe('Meta set by route', () => {
     testUnsetsAllOpenGraphProfileMetadata()
     testUnsetsAllTwitterCardMetadata()
     testUnsetsJsonLd()
+    testNoConsoleLogsAreEmitted()
   })
 })

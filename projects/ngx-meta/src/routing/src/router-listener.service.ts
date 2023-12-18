@@ -1,10 +1,4 @@
-import {
-  Inject,
-  Injectable,
-  isDevMode,
-  OnDestroy,
-  Optional,
-} from '@angular/core'
+import { Inject, Injectable, OnDestroy, Optional } from '@angular/core'
 import { ActivatedRoute, EventType, Router } from '@angular/router'
 import { filter, Subscription } from 'rxjs'
 import { MetadataRouteStrategy } from './metadata-route-strategy'
@@ -26,11 +20,11 @@ export class RouterListenerService implements OnDestroy {
   ) {}
 
   public listen() {
-    if (this.subscription) {
-      if (isDevMode()) {
+    if (this.isListening) {
+      if (ngDevMode) {
         console.warn(
-          'NgxMeta router listener was listened twice. ' +
-            'Ensure the NgxMetaRoutingModule is not imported twice',
+          'NgxMetaRoutingModule was set to listen for route changes ' +
+            'twice. Ensure the NgxMetaRoutingModule is not imported twice',
         )
       }
       return
@@ -41,12 +35,12 @@ export class RouterListenerService implements OnDestroy {
       .subscribe({
         next: () => {
           if (!this.metadataRouteStrategies) {
-            if (isDevMode()) {
+            if (ngDevMode) {
               console.warn(
-                'NgxMeta router tried to set metadata for this route, ' +
-                  'but no metadata route strategies were found. ' +
-                  'Provide one MetadataRouteStrategy to resolves metadata ' +
-                  'from a route to fix this.',
+                '`NgxMetaRoutingModule` tried to set metadata for this ' +
+                  'route but no metadata route strategies were found. ' +
+                  'Provide at least one `MetadataRouteStrategy` to resolve ' +
+                  'and apply metadata from a route to fix this.',
               )
             }
             return
@@ -60,6 +54,10 @@ export class RouterListenerService implements OnDestroy {
           }
         },
       })
+  }
+
+  public get isListening(): boolean {
+    return !!this.subscription
   }
 
   ngOnDestroy(): void {

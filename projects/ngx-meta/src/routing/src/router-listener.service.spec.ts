@@ -16,124 +16,132 @@ import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 describe('RouterListenerService', () => {
   enableAutoSpy()
 
-  describe('listen', () => {
-    describe('when not listening yet', () => {
-      // Though as probably injected in root module, may never be destroyed 🤷‍
-      it('should subscribe to router events and unsubscribe when destroyed', () => {
-        const events$ = new EventEmitter()
-        const sut = makeSut({ events$ })
+  describe('when not listening yet', () => {
+    // Though as probably injected in root module, may never be destroyed 🤷‍
+    it('should subscribe to router events and unsubscribe when destroyed', () => {
+      const events$ = new EventEmitter()
+      const sut = makeSut({ events$ })
 
-        sut.listen()
+      sut.listen()
 
-        expect(events$.observed).toBeTrue()
+      expect(events$.observed).toBeTrue()
 
-        TestBed.resetTestingModule()
+      TestBed.resetTestingModule()
 
-        expect(events$.observed).toBeFalse()
-      })
+      expect(events$.observed).toBeFalse()
     })
 
-    describe('when already listening', () => {
-      let sut: RouterListenerService
-      beforeEach(() => {
-        sut = makeSut()
-        sut.listen()
-      })
+    it('should report is not listening', () => {
+      const sut = makeSut()
 
-      it('should not subscribe again', () => {
-        // Hacking private access ;P
-        const subscription = sut['subscription']
-        expect(subscription).toBeDefined()
+      expect(sut.isListening).toBeFalse()
+    })
+  })
 
-        sut.listen()
+  describe('when already listening', () => {
+    let sut: RouterListenerService
 
-        expect(sut['subscription']).toBe(subscription)
-      })
+    beforeEach(() => {
+      sut = makeSut()
+      sut.listen()
     })
 
-    describe('when a non-end navigation event is triggered', () => {
-      it('should not call any metadata strategy method', () => {
-        const events$ = new EventEmitter()
-        const strategy = makeStrategy()
-        const sut = makeSut({ events$, strategy })
-        sut.listen()
-
-        events$.emit(makeNavigationEvent(EventType.ActivationEnd))
-
-        expect(strategy.resolve).not.toHaveBeenCalled()
-        expect(strategy.set).not.toHaveBeenCalled()
-      })
+    it('should report is listening', () => {
+      expect(sut.isListening).toBeTrue()
     })
 
-    describe('when a navigation end event is triggered', () => {
-      describe('when no strategies found', () => {
-        it('should log it to console', () => {
-          const consoleWarn = spyOn(console, 'warn')
-          const events$ = new EventEmitter()
-          const sut = makeSut({
-            events$,
-            strategies: [],
-          })
+    it('should not subscribe again', () => {
+      const subscription = sut['subscription']
+      expect(subscription).toBeDefined()
 
-          sut.listen()
+      sut.listen()
 
-          events$.emit(makeNavigationEvent(EventType.NavigationEnd))
+      expect(sut['subscription']).toBe(subscription)
+    })
+  })
 
-          expect(consoleWarn).toHaveBeenCalledOnceWith(
-            jasmine.stringContaining('strategies'),
-          )
-        })
-      })
+  describe('when a non-end navigation event is triggered', () => {
+    it('should not call any metadata strategy method', () => {
+      const events$ = new EventEmitter()
+      const strategy = makeStrategy()
+      const sut = makeSut({ events$, strategy })
+      sut.listen()
 
-      describe('when a single strategy is found', () => {
-        it('should call strategy resolve and set', () => {
-          const metadata = { key: 'value' }
-          const strategy = makeStrategy('single', metadata)
-          const events$ = new EventEmitter()
-          const activatedRoute = MockService(ActivatedRoute)
-          const sut = makeSut({
-            events$,
-            strategy,
-            activatedRoute,
-          })
+      events$.emit(makeNavigationEvent(EventType.ActivationEnd))
 
-          sut.listen()
+      expect(strategy.resolve).not.toHaveBeenCalled()
+      expect(strategy.set).not.toHaveBeenCalled()
+    })
+  })
 
-          events$.emit(makeNavigationEvent(EventType.NavigationEnd))
-
-          expect(strategy.resolve).toHaveBeenCalledOnceWith(
-            activatedRoute.snapshot,
-          )
-          expect(strategy.set).toHaveBeenCalledOnceWith(metadata)
-        })
-      })
-
-      it('should call all strategies resolve and set in order', () => {
+  describe('when a navigation end event is triggered', () => {
+    describe('when no strategies found', () => {
+      it('should log it to console', () => {
+        const consoleWarn = spyOn(console, 'warn')
         const events$ = new EventEmitter()
-        const strategyOneData = { key: 'one' }
-        const strategyOne = makeStrategy('one', strategyOneData)
-        const strategyTwoData = { key: 'two' }
-        const strategyTwo = makeStrategy('two', strategyTwoData)
-        const activatedRoute = MockService(ActivatedRoute)
         const sut = makeSut({
           events$,
-          strategies: [strategyOne, strategyTwo],
-          activatedRoute,
+          strategies: [],
         })
+
         sut.listen()
 
         events$.emit(makeNavigationEvent(EventType.NavigationEnd))
 
-        expect(strategyOne.resolve).toHaveBeenCalledOnceWith(
-          activatedRoute.snapshot,
+        expect(consoleWarn).toHaveBeenCalledOnceWith(
+          jasmine.stringContaining('strategies'),
         )
-        expect(strategyOne.set).toHaveBeenCalledOnceWith(strategyOneData)
-        expect(strategyTwo.resolve).toHaveBeenCalledOnceWith(
-          activatedRoute.snapshot,
-        )
-        expect(strategyTwo.set).toHaveBeenCalledOnceWith(strategyTwoData)
-        expect(strategyOne.set).toHaveBeenCalledBefore(strategyTwo.set)
       })
+    })
+
+    describe('when a single strategy is found', () => {
+      it('should call strategy resolve and set', () => {
+        const metadata = { key: 'value' }
+        const strategy = makeStrategy('single', metadata)
+        const events$ = new EventEmitter()
+        const activatedRoute = MockService(ActivatedRoute)
+        const sut = makeSut({
+          events$,
+          strategy,
+          activatedRoute,
+        })
+
+        sut.listen()
+
+        events$.emit(makeNavigationEvent(EventType.NavigationEnd))
+
+        expect(strategy.resolve).toHaveBeenCalledOnceWith(
+          activatedRoute.snapshot,
+        )
+        expect(strategy.set).toHaveBeenCalledOnceWith(metadata)
+      })
+    })
+
+    it('should call all strategies resolve and set in order', () => {
+      const events$ = new EventEmitter()
+      const strategyOneData = { key: 'one' }
+      const strategyOne = makeStrategy('one', strategyOneData)
+      const strategyTwoData = { key: 'two' }
+      const strategyTwo = makeStrategy('two', strategyTwoData)
+      const activatedRoute = MockService(ActivatedRoute)
+      const sut = makeSut({
+        events$,
+        strategies: [strategyOne, strategyTwo],
+        activatedRoute,
+      })
+      sut.listen()
+
+      events$.emit(makeNavigationEvent(EventType.NavigationEnd))
+
+      expect(strategyOne.resolve).toHaveBeenCalledOnceWith(
+        activatedRoute.snapshot,
+      )
+      expect(strategyOne.set).toHaveBeenCalledOnceWith(strategyOneData)
+      expect(strategyTwo.resolve).toHaveBeenCalledOnceWith(
+        activatedRoute.snapshot,
+      )
+      expect(strategyTwo.set).toHaveBeenCalledOnceWith(strategyTwoData)
+      expect(strategyOne.set).toHaveBeenCalledBefore(strategyTwo.set)
     })
   })
 })

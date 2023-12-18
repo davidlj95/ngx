@@ -15,6 +15,6 @@ export class DescriptionTwitterCardMetadata extends BaseTwitterCardMetadata<
   }
 
   set(value: TwitterCardMetadata[typeof KEY]): void {
-    this.metaService.set(new TwitterCardMetaProperty(KEY, KEY), value)
+    this.metaService.set(new TwitterCardMetaProperty(KEY), value)
   }
 }

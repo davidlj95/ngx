@@ -15,6 +15,6 @@ export class ApplicationNameStandardMetadata extends BaseStandardMetadata<
   }
 
   set(value: StandardMetadata[typeof KEY]): void {
-    this.metaService.set(new StandardMetaProperty(KEY), value)
+    this.metaService.set(new StandardMetaProperty('application-name'), value)
   }
 }

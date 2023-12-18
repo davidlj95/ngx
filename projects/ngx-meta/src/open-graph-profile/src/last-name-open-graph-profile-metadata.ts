@@ -5,6 +5,7 @@ import { OpenGraphProfileMetadata } from './open-graph-profile-metadata'
 import { OpenGraphProfileMetaProperty } from './open-graph-profile-meta-property'
 
 const KEY = 'lastName'
+
 @Injectable()
 export class LastNameOpenGraphProfileMetadata extends BaseOpenGraphProfileMetadata<
   typeof KEY

@@ -4,16 +4,17 @@ import { BaseStandardMetadata } from './base-standard-metadata'
 import { MetaService } from '@davidlj95/ngx-meta/core'
 import { StandardMetaProperty } from './standard-meta-property'
 
+const KEY = 'description'
+
 @Injectable()
-export class DescriptionStandardMetadata extends BaseStandardMetadata<'description'> {
+export class DescriptionStandardMetadata extends BaseStandardMetadata<
+  typeof KEY
+> {
   constructor(private readonly metaService: MetaService) {
-    super({
-      name: 'description',
-      globalName: 'description',
-    })
+    super(KEY, KEY)
   }
 
-  set(value: StandardMetadata['description']): void {
-    this.metaService.set(new StandardMetaProperty('description'), value)
+  set(value: StandardMetadata[typeof KEY]): void {
+    this.metaService.set(new StandardMetaProperty(KEY), value)
   }
 }

@@ -4,13 +4,17 @@ import { BaseOpenGraphProfileMetadata } from './base-open-graph-profile-metadata
 import { OpenGraphProfileMetadata } from './open-graph-profile-metadata'
 import { OpenGraphProfileMetaProperty } from './open-graph-profile-meta-property'
 
+const KEY = 'firstName'
+
 @Injectable()
-export class FirstNameOpenGraphProfileMetadata extends BaseOpenGraphProfileMetadata<'firstName'> {
+export class FirstNameOpenGraphProfileMetadata extends BaseOpenGraphProfileMetadata<
+  typeof KEY
+> {
   constructor(private readonly metaService: MetaService) {
-    super({ name: 'firstName' })
+    super(KEY)
   }
 
-  set(value: OpenGraphProfileMetadata['firstName']): void {
+  set(value: OpenGraphProfileMetadata[typeof KEY]): void {
     this.metaService.set(
       new OpenGraphProfileMetaProperty('first_name'),
       value?.toString(),

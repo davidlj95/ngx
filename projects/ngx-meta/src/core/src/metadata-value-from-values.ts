@@ -21,9 +21,7 @@ export class MetadataValueFromValues {
       value = (value as MetadataValues)[key]
     }
     const globalValue =
-      definition.globalName !== undefined
-        ? values[definition.globalName]
-        : undefined
+      definition.global !== undefined ? values[definition.global] : undefined
     if (value !== undefined && !globalValue) {
       return value as MaybeUndefined<T>
     }

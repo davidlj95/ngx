@@ -1,8 +1,9 @@
 import { TestBed } from '@angular/core/testing'
 import { MetadataValueFromValues } from './metadata-value-from-values'
 import { MetadataValues } from './metadata-values'
-import { makeMetadataDefinition } from './__tests__/make-metadata-definition'
 import { MetadataDefinition } from './metadata-definition'
+import { makeScopedMetadataDefinition } from './__tests__/make-scoped-metadata-definition'
+import { makeGlobalMetadataDefinition } from './__tests__/make-global-metadata-definition'
 
 describe('MetadataValueFromValues', () => {
   let sut: MetadataValueFromValues
@@ -13,7 +14,7 @@ describe('MetadataValueFromValues', () => {
 
   describe('get', () => {
     const scope = 'scope'
-    const globalName = 'globalName'
+    const global = 'global'
     const name = 'name'
     const value = 'value'
 
@@ -28,9 +29,9 @@ describe('MetadataValueFromValues', () => {
       })
 
       describe('when global is defined', () => {
-        const metadataDefinitionWithGlobal = makeMetadataDefinition({
+        const metadataDefinitionWithGlobal = makeScopedMetadataDefinition({
           ...metadataDefinition,
-          globalName,
+          global,
         })
 
         describe('but global value does not exist', () => {
@@ -41,7 +42,7 @@ describe('MetadataValueFromValues', () => {
           })
         })
         describe('and global value exists', () => {
-          const valuesWithGlobal = { [globalName]: value, ...values }
+          const valuesWithGlobal = { [global]: value, ...values }
 
           it('should return global value', () => {
             expect(
@@ -57,11 +58,13 @@ describe('MetadataValueFromValues', () => {
         const values = undefined
 
         it('should return undefined', () => {
-          expect(sut.get(makeMetadataDefinition(), values)).toBeUndefined()
+          expect(
+            sut.get(makeGlobalMetadataDefinition(), values),
+          ).toBeUndefined()
         })
       })
       describe('like when scope does not exist', () => {
-        const metadataDefinition = makeMetadataDefinition({
+        const metadataDefinition = makeScopedMetadataDefinition({
           scope,
         })
         const values = {}
@@ -70,7 +73,7 @@ describe('MetadataValueFromValues', () => {
       })
 
       describe('like when scope is defined but property name does not exist', () => {
-        const metadataDefinition = makeMetadataDefinition({
+        const metadataDefinition = makeScopedMetadataDefinition({
           scope,
           name,
         })
@@ -81,7 +84,7 @@ describe('MetadataValueFromValues', () => {
       })
 
       describe('like when scope is null', () => {
-        const metadataDefinition = makeMetadataDefinition({
+        const metadataDefinition = makeScopedMetadataDefinition({
           scope,
         })
 
@@ -93,7 +96,7 @@ describe('MetadataValueFromValues', () => {
       })
 
       describe('like when scope value is null and there is sub scope', () => {
-        const metadataDefinition = makeMetadataDefinition({
+        const metadataDefinition = makeScopedMetadataDefinition({
           scope: `${scope}.subScope`,
           name,
         })
@@ -106,7 +109,7 @@ describe('MetadataValueFromValues', () => {
       })
 
       describe('like when scope is not an object', () => {
-        const metadataDefinition = makeMetadataDefinition({ scope })
+        const metadataDefinition = makeScopedMetadataDefinition({ scope })
         const values = {
           [scope]: 42,
         }
@@ -116,7 +119,7 @@ describe('MetadataValueFromValues', () => {
 
     describe('when specific value is defined', () => {
       describe('like when scope does not contain sub scopes', () => {
-        const metadataDefinition = makeMetadataDefinition({
+        const metadataDefinition = makeScopedMetadataDefinition({
           scope,
           name,
         })
@@ -134,7 +137,7 @@ describe('MetadataValueFromValues', () => {
 
       describe('like when scope contains sub scopes', () => {
         const subScope = 'subScope'
-        const metadataDefinition = makeMetadataDefinition({
+        const metadataDefinition = makeScopedMetadataDefinition({
           scope: `${scope}.${subScope}`,
           name,
         })
@@ -157,14 +160,14 @@ describe('MetadataValueFromValues', () => {
           globalValue: 'globalValue',
           prop: 'globalValue',
         }
-        const metadataDefinition = makeMetadataDefinition({
+        const metadataDefinition = makeScopedMetadataDefinition({
           scope,
           name,
-          globalName,
+          global,
         })
 
         const values = {
-          [globalName]: globalValueObject,
+          [global]: globalValueObject,
           [scope]: {
             [name]: valueObject,
           },

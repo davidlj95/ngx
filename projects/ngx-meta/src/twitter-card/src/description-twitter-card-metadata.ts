@@ -4,13 +4,17 @@ import { BaseTwitterCardMetadata } from './base-twitter-card-metadata'
 import { TwitterCardMetadata } from './twitter-card-metadata'
 import { TwitterCardMetaProperty } from './twitter-card-meta-property'
 
+const KEY = 'description'
+
 @Injectable()
-export class DescriptionTwitterCardMetadata extends BaseTwitterCardMetadata<'description'> {
+export class DescriptionTwitterCardMetadata extends BaseTwitterCardMetadata<
+  typeof KEY
+> {
   constructor(private readonly metaService: MetaService) {
-    super({ name: 'description', globalName: 'description' })
+    super(KEY, KEY)
   }
 
-  set(value: TwitterCardMetadata['description']): void {
-    this.metaService.set(new TwitterCardMetaProperty('description'), value)
+  set(value: TwitterCardMetadata[typeof KEY]): void {
+    this.metaService.set(new TwitterCardMetaProperty(KEY), value)
   }
 }

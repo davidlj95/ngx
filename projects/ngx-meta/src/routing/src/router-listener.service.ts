@@ -14,9 +14,7 @@ export class RouterListenerService implements OnDestroy {
     private readonly activatedRoute: ActivatedRoute,
     @Optional()
     @Inject(MetadataRouteStrategy)
-    private readonly metadataRouteStrategies: ReadonlyArray<
-      MetadataRouteStrategy<unknown>
-    >,
+    private readonly metadataRouteStrategies: ReadonlyArray<MetadataRouteStrategy>,
   ) {}
 
   public listen() {
@@ -39,8 +37,9 @@ export class RouterListenerService implements OnDestroy {
               console.warn(
                 '`NgxMetaRoutingModule` tried to set metadata for this ' +
                   'route but no metadata route strategies were found. ' +
-                  'Provide at least one `MetadataRouteStrategy` to resolve ' +
-                  'and apply metadata from a route to fix this.',
+                  'Provide at least one `MetadataRouteStrategy` to be able ' +
+                  'to resolve metadata from a route and set it in order to ' +
+                  'fix this.',
               )
             }
             return

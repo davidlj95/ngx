@@ -1,7 +1,12 @@
 import { ActivatedRouteSnapshot } from '@angular/router'
+import { MetadataValues } from '@davidlj95/ngx-meta/core'
 
-export abstract class MetadataRouteStrategy<T> {
-  public abstract resolve(routeSnapshot: ActivatedRouteSnapshot): T | undefined
+export abstract class MetadataRouteStrategy<
+  Metadata extends MetadataValues = MetadataValues,
+> {
+  public abstract resolve(
+    routeSnapshot: ActivatedRouteSnapshot,
+  ): Metadata | undefined
 
-  public abstract set(metadata: T | undefined): void
+  public abstract set(metadata: Metadata | undefined): void
 }

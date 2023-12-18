@@ -1,30 +1,18 @@
 import { Inject, Injectable } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
-import {
-  BaseMetadata,
-  GlobalMetadata,
-  MetadataDefinition,
-} from '@davidlj95/ngx-meta/core'
+import { BaseGlobalMetadata, GlobalMetadata } from '@davidlj95/ngx-meta/core'
+
+const KEY = 'jsonLd'
 
 @Injectable()
-export class JsonLdMetadata extends BaseMetadata<
-  object,
-  'object',
-  keyof GlobalMetadata
-> {
+export class JsonLdMetadata extends BaseGlobalMetadata<typeof KEY> {
   private readonly SCRIPT_TYPE = 'application/ld+json'
 
   constructor(@Inject(DOCUMENT) private readonly document: Document) {
-    super(
-      new MetadataDefinition({
-        name: 'object',
-        scope: 'jsonLd',
-        globalName: 'jsonLd',
-      }),
-    )
+    super(KEY)
   }
 
-  set(jsonLd: GlobalMetadata['jsonLd']) {
+  set(jsonLd: GlobalMetadata[typeof KEY]) {
     const existingScriptElement = this.getElement()
     if (existingScriptElement) {
       this.document.head.removeChild(existingScriptElement)

@@ -5,9 +5,8 @@ import { Metadata } from './metadata'
 import { MockProvider } from 'ng-mocks'
 
 describe('MetadataRegistry', () => {
-  const name = 'name'
-  const scope = 'scope'
-  const dummyMetadata = makeMetadata({ name, scope })
+  const dummyId = 'dummyId'
+  const dummyMetadata = makeMetadata({ id: dummyId })
 
   it('should register metadata from DI system', () => {
     const sut = makeSut({ metadata: [dummyMetadata] })
@@ -29,8 +28,7 @@ describe('MetadataRegistry', () => {
 
   it('should not register twice the same metadata', () => {
     const sameDummyMetadata = makeMetadata({
-      name,
-      scope,
+      id: dummyId,
       spyName: 'duplicated metadata set',
     })
     const sut = makeSut()

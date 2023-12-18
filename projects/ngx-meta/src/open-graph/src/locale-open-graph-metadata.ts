@@ -4,13 +4,15 @@ import { Injectable } from '@angular/core'
 import { MetaService } from '@davidlj95/ngx-meta/core'
 import { OpenGraphMetaProperty } from './open-graph-meta-property'
 
+const KEY = 'locale'
+
 @Injectable()
-export class LocaleOpenGraphMetadata extends BaseOpenGraphMetadata<'locale'> {
+export class LocaleOpenGraphMetadata extends BaseOpenGraphMetadata<typeof KEY> {
   constructor(private readonly metaService: MetaService) {
-    super({ name: 'locale', globalName: 'locale' })
+    super(KEY, KEY)
   }
 
-  set(value: OpenGraphMetadata['locale']): void {
-    this.metaService.set(new OpenGraphMetaProperty('locale'), value?.toString())
+  set(value: OpenGraphMetadata[typeof KEY]): void {
+    this.metaService.set(new OpenGraphMetaProperty(KEY), value?.toString())
   }
 }

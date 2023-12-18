@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core'
 import { MetaService } from '@davidlj95/ngx-meta/core'
 import { OpenGraphMetaProperty } from './open-graph-meta-property'
 
-const NO_IMAGE_VALUE: OpenGraphMetadata['image'] = {
+const KEY = 'image'
+const NO_IMAGE_VALUE: OpenGraphMetadata[typeof KEY] = {
   url: undefined,
   alt: undefined,
   secureUrl: null,
@@ -14,34 +15,34 @@ const NO_IMAGE_VALUE: OpenGraphMetadata['image'] = {
 }
 
 @Injectable()
-export class ImageOpenGraphMetadata extends BaseOpenGraphMetadata<'image'> {
+export class ImageOpenGraphMetadata extends BaseOpenGraphMetadata<typeof KEY> {
   constructor(private readonly metaService: MetaService) {
-    super({ name: 'image', globalName: 'image' })
+    super(KEY, KEY)
   }
 
-  set(value: OpenGraphMetadata['image']): void {
+  set(value: OpenGraphMetadata[typeof KEY]): void {
     const imageUrl = value?.url?.toString()
-    const effectiveValue: OpenGraphMetadata['image'] =
+    const effectiveValue: OpenGraphMetadata[typeof KEY] =
       imageUrl !== undefined && imageUrl !== null ? value : NO_IMAGE_VALUE
-    this.metaService.set(new OpenGraphMetaProperty('image'), imageUrl)
+    this.metaService.set(new OpenGraphMetaProperty(KEY), imageUrl)
     this.metaService.set(
-      new OpenGraphMetaProperty('image', 'alt'),
+      new OpenGraphMetaProperty(KEY, 'alt'),
       effectiveValue?.alt,
     )
     this.metaService.set(
-      new OpenGraphMetaProperty('image', 'secure_url'),
+      new OpenGraphMetaProperty(KEY, 'secure_url'),
       effectiveValue?.secureUrl?.toString(),
     )
     this.metaService.set(
-      new OpenGraphMetaProperty('image', 'type'),
+      new OpenGraphMetaProperty(KEY, 'type'),
       effectiveValue?.type,
     )
     this.metaService.set(
-      new OpenGraphMetaProperty('image', 'width'),
+      new OpenGraphMetaProperty(KEY, 'width'),
       effectiveValue?.width?.toString(),
     )
     this.metaService.set(
-      new OpenGraphMetaProperty('image', 'height'),
+      new OpenGraphMetaProperty(KEY, 'height'),
       effectiveValue?.height?.toString(),
     )
   }

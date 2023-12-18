@@ -4,13 +4,15 @@ import { Injectable } from '@angular/core'
 import { MetaService } from '@davidlj95/ngx-meta/core'
 import { OpenGraphMetaProperty } from './open-graph-meta-property'
 
+const KEY = 'url'
+
 @Injectable()
-export class UrlOpenGraphMetadata extends BaseOpenGraphMetadata<'url'> {
+export class UrlOpenGraphMetadata extends BaseOpenGraphMetadata<typeof KEY> {
   constructor(private readonly metaService: MetaService) {
-    super({ name: 'url', globalName: 'canonicalUrl' })
+    super(KEY, 'canonicalUrl')
   }
 
-  set(value: OpenGraphMetadata['url']): void {
-    this.metaService.set(new OpenGraphMetaProperty('url'), value?.toString())
+  set(value: OpenGraphMetadata[typeof KEY]): void {
+    this.metaService.set(new OpenGraphMetaProperty(KEY), value?.toString())
   }
 }

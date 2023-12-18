@@ -3,11 +3,10 @@ import { MetadataDefinition } from './metadata-definition'
 
 export abstract class BaseMetadata<
   Value,
-  Name extends string = string,
-  GlobalName extends string = string,
-> extends Metadata<Value, Name, GlobalName> {
+  Global extends string = string,
+> extends Metadata<Value, Global> {
   protected constructor(
-    public readonly definition: MetadataDefinition<Name, GlobalName>,
+    public readonly definition: MetadataDefinition<Global>,
   ) {
     super()
   }

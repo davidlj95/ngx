@@ -20,8 +20,8 @@ describe('MetadataService', () => {
   })
 
   describe('set', () => {
-    const firstMetadata = makeMetadata({ name: 'first' })
-    const secondMetadata = makeMetadata({ name: 'second' })
+    const firstMetadata = makeMetadata({ id: 'first' })
+    const secondMetadata = makeMetadata({ id: 'second' })
     const dummyValues = {}
 
     beforeEach(() => {

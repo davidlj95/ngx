@@ -17,7 +17,7 @@ describe('MetaService', () => {
     metaService = TestBed.inject(Meta)
   })
 
-  describe('apply', () => {
+  describe('set', () => {
     const property = new MetaProperty({
       keyAttribute: 'propertyName',
       keyName: 'dummy',

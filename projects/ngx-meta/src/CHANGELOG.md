@@ -1,3 +1,22 @@
+## [`ngx-meta` v1.0.0-alpha.13](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.12...ngx-meta-v1.0.0-alpha.13) (2023-12-18)
+
+### Miscellaneous Chores
+
+- **release:** new release to see bundle size ([407b703](https://github.com/davidlj95/ngx/commit/407b703b024aa2488a763a40ab22d02f2936b96c))
+- **release:** update CHANGELOG.md ([#99](https://github.com/davidlj95/ngx/issues/99)) ([ab98ecf](https://github.com/davidlj95/ngx/commit/ab98ecfc231cc95d5b9e72ab8744641285d61e47))
+
+### Code Refactoring
+
+- split scope from base metadata definition ([#102](https://github.com/davidlj95/ngx/issues/102)) ([3077f89](https://github.com/davidlj95/ngx/commit/3077f89d045cf10ec0599d63c9c0aa64c438aef9))
+
+### Tests
+
+- **e2e:** ensure no console logs are emitted ([#100](https://github.com/davidlj95/ngx/issues/100)) ([4cde2ed](https://github.com/davidlj95/ngx/commit/4cde2ed50fdbe04a8a85b30db7045ecf261c789f))
+
+### Build System
+
+- **git:** ignore cypress generated files ([#101](https://github.com/davidlj95/ngx/issues/101)) ([f1c8c21](https://github.com/davidlj95/ngx/commit/f1c8c21a7005be100e2a6d4911ef8b8f51d4996d))
+
 ## [`ngx-meta` v1.0.0-alpha.12](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.11...ngx-meta-v1.0.0-alpha.12) (2023-12-18)
 
 ### Performance Improvements

@@ -23,7 +23,7 @@ describe('HtmlLangAttributeService', () => {
     expect(sut).toBeTruthy()
   })
 
-  describe('apply', () => {
+  describe('set', () => {
     describe('when locale is not provided', () => {
       const locale = undefined
 

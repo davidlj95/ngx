@@ -219,7 +219,7 @@ function makeStrategy(
 ): jasmine.SpyObj<MetadataRouteStrategy> {
   return MockService(MetadataRouteStrategy, {
     resolve: jasmine.createSpy(`${name} resolve`).and.returnValue(resolvedData),
-    set: jasmine.createSpy(`${name} apply`),
+    set: jasmine.createSpy(`${name} set`),
   }) as jasmine.SpyObj<MetadataRouteStrategy>
 }
 

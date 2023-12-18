@@ -1,6 +1,6 @@
 import {
+  BaseScopedMetadata,
   GlobalMetadataKey,
-  ScopedMetadata,
   StringKeyOf,
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraphMetadataRouteData } from './open-graph-metadata-route-data'
@@ -10,7 +10,7 @@ export const SCOPE: keyof OpenGraphMetadataRouteData['meta'] = 'openGraph'
 
 export abstract class BaseOpenGraphMetadata<
   ScopeKey extends StringKeyOf<OpenGraphMetadata>,
-> extends ScopedMetadata<OpenGraphMetadata, ScopeKey> {
+> extends BaseScopedMetadata<OpenGraphMetadata, ScopeKey> {
   protected constructor(name: ScopeKey, global?: GlobalMetadataKey) {
     super(SCOPE, name, global)
   }

@@ -1,6 +1,6 @@
 import {
+  BaseScopedMetadata,
   GlobalMetadataKey,
-  ScopedMetadata,
   StringKeyOf,
 } from '@davidlj95/ngx-meta/core'
 import { TwitterCardMetadata } from './twitter-card-metadata'
@@ -10,7 +10,7 @@ export const SCOPE: keyof TwitterCardMetadataRouteData['meta'] = 'twitterCard'
 
 export abstract class BaseTwitterCardMetadata<
   ScopeKey extends StringKeyOf<TwitterCardMetadata>,
-> extends ScopedMetadata<TwitterCardMetadata, ScopeKey> {
+> extends BaseScopedMetadata<TwitterCardMetadata, ScopeKey> {
   protected constructor(name: ScopeKey, global?: GlobalMetadataKey) {
     super(SCOPE, name, global)
   }

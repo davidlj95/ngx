@@ -1,6 +1,6 @@
 import {
+  BaseScopedMetadata,
   GlobalMetadataKey,
-  ScopedMetadata,
   StringKeyOf,
 } from '@davidlj95/ngx-meta/core'
 import { StandardMetadata } from './standard-metadata'
@@ -10,7 +10,7 @@ export const SCOPE: keyof StandardMetadataRouteData['meta'] = 'standard'
 
 export abstract class BaseStandardMetadata<
   ScopeKey extends StringKeyOf<StandardMetadata>,
-> extends ScopedMetadata<StandardMetadata, ScopeKey> {
+> extends BaseScopedMetadata<StandardMetadata, ScopeKey> {
   protected constructor(name: ScopeKey, global?: GlobalMetadataKey) {
     super(SCOPE, name, global)
   }

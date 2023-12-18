@@ -1,6 +1,6 @@
 import {
+  BaseScopedMetadata,
   GlobalMetadataKey,
-  ScopedMetadata,
   StringKeyOf,
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraphProfileMetadata } from './open-graph-profile-metadata'
@@ -13,7 +13,7 @@ export const PROFILE_SCOPE: keyof OpenGraphProfileMetadataRouteData['meta']['ope
 
 export abstract class BaseOpenGraphProfileMetadata<
   ScopeKey extends StringKeyOf<OpenGraphProfileMetadata>,
-> extends ScopedMetadata<OpenGraphProfileMetadata, ScopeKey> {
+> extends BaseScopedMetadata<OpenGraphProfileMetadata, ScopeKey> {
   protected constructor(name: ScopeKey, global?: GlobalMetadataKey) {
     super(`${OG_SCOPE}.${PROFILE_SCOPE}`, name, global)
   }

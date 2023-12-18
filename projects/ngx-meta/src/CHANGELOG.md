@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.12](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.11...ngx-meta-v1.0.0-alpha.12) (2023-12-18)
+
+### Performance Improvements
+
+- use ngDevMode instead of isDevMode ([#96](https://github.com/davidlj95/ngx/issues/96)) ([26cad28](https://github.com/davidlj95/ngx/commit/26cad288fa1bd429fa520aac551cf7fcce2f14d3))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#95](https://github.com/davidlj95/ngx/issues/95)) ([ba46b38](https://github.com/davidlj95/ngx/commit/ba46b38721cdae4dce8fc5848545095a2d1faa31))
+
 ## [`ngx-meta` v1.0.0-alpha.11](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.10...ngx-meta-v1.0.0-alpha.11) (2023-12-18)
 
 ### Features

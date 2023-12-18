@@ -3,25 +3,16 @@ import { DOCUMENT } from '@angular/common'
 import {
   BaseMetadata,
   GlobalMetadata,
-  MetadataDefinition,
+  GlobalMetadataDefinition,
+  GlobalMetadataKey,
 } from '@davidlj95/ngx-meta/core'
 
 @Injectable()
-export class JsonLdMetadata extends BaseMetadata<
-  object,
-  'object',
-  keyof GlobalMetadata
-> {
+export class JsonLdMetadata extends BaseMetadata<object> {
   private readonly SCRIPT_TYPE = 'application/ld+json'
 
   constructor(@Inject(DOCUMENT) private readonly document: Document) {
-    super(
-      new MetadataDefinition({
-        name: 'object',
-        scope: 'jsonLd',
-        globalName: 'jsonLd',
-      }),
-    )
+    super(new GlobalMetadataDefinition<GlobalMetadataKey>('jsonLd'))
   }
 
   set(jsonLd: GlobalMetadata['jsonLd']) {

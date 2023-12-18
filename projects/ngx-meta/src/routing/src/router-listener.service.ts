@@ -14,9 +14,7 @@ export class RouterListenerService implements OnDestroy {
     private readonly activatedRoute: ActivatedRoute,
     @Optional()
     @Inject(MetadataRouteStrategy)
-    private readonly metadataRouteStrategies: ReadonlyArray<
-      MetadataRouteStrategy<unknown>
-    >,
+    private readonly metadataRouteStrategies: ReadonlyArray<MetadataRouteStrategy>,
   ) {}
 
   public listen() {

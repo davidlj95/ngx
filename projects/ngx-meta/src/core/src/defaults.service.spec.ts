@@ -6,21 +6,21 @@ import { DEFAULTS_TOKEN } from './defaults-token'
 import { Provider } from '@angular/core'
 import { MetadataValueFromValues } from './metadata-value-from-values'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { makeMetadataDefinition } from './__tests__/make-metadata-definition'
 import { MetadataValues } from './metadata-values'
+import { makeGlobalMetadataDefinition } from './__tests__/make-global-metadata-definition'
 
 describe('DefaultsService', () => {
   enableAutoSpy()
 
   describe('get', () => {
-    const definition = makeMetadataDefinition()
+    const dummyDefinition = makeGlobalMetadataDefinition()
 
     describe('when no defaults available', () => {
       describe('like when defaults not injected', () => {
         it('should return undefined', () => {
           const sut = makeSut()
 
-          expect(sut.get(definition)).toBeUndefined()
+          expect(sut.get(dummyDefinition)).toBeUndefined()
         })
       })
 
@@ -30,7 +30,7 @@ describe('DefaultsService', () => {
         it('should return undefined', () => {
           const sut = makeSut({ defaults })
 
-          expect(sut.get(definition)).toBeUndefined()
+          expect(sut.get(dummyDefinition)).toBeUndefined()
         })
       })
 
@@ -40,7 +40,7 @@ describe('DefaultsService', () => {
         it('should return undefined', () => {
           const sut = makeSut({ defaults })
 
-          expect(sut.get(definition)).toBeUndefined()
+          expect(sut.get(dummyDefinition)).toBeUndefined()
         })
       })
     })
@@ -60,9 +60,9 @@ describe('DefaultsService', () => {
         ) as jasmine.SpyObj<MetadataValueFromValues>
         valueFromValues.get.and.returnValue(value)
 
-        expect(sut.get(definition)).toEqual(value)
+        expect(sut.get(dummyDefinition)).toEqual(value)
         expect(valueFromValues.get).toHaveBeenCalledOnceWith(
-          definition,
+          dummyDefinition,
           defaults,
         )
       })

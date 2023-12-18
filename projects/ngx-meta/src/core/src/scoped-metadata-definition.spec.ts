@@ -1,12 +1,12 @@
-import { MetadataDefinition } from './metadata-definition'
+import { ScopedMetadataDefinition } from './scoped-metadata-definition'
 
-describe('MetadataDefinition', () => {
+describe('ScopedMetadataDefinition', () => {
   const scope = 'scope'
   const name = 'name'
 
   describe('id', () => {
     it('should return scope and name joined by a dot', () => {
-      const sut = new MetadataDefinition({ name, scope })
+      const sut = new ScopedMetadataDefinition(scope, name)
 
       expect(sut.id).toEqual(`${scope}.${name}`)
     })
@@ -17,10 +17,10 @@ describe('MetadataDefinition', () => {
       const outerScope = 'outerScope'
       const midScope = 'midScope'
       const innerScope = 'innerScope'
-      const sut = new MetadataDefinition({
+      const sut = new ScopedMetadataDefinition(
+        `${outerScope}.${midScope}.${innerScope}`,
         name,
-        scope: `${outerScope}.${midScope}.${innerScope}`,
-      })
+      )
 
       expect(sut.jsonPath).toEqual([outerScope, midScope, innerScope, name])
     })

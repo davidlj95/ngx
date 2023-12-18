@@ -1,28 +1,18 @@
-import { MetadataDefinition } from './metadata-definition'
 import { StringKeyOf } from './string-key-of'
 import { GlobalMetadataKey } from './global-metadata-key'
 import { BaseMetadata } from './base-metadata'
+import { ScopedMetadataDefinition } from './scoped-metadata-definition'
 
 export abstract class ScopedMetadata<
   ScopeValues,
   ScopeKey extends StringKeyOf<ScopeValues>,
-  GlobalName extends string = GlobalMetadataKey,
-> extends BaseMetadata<ScopeValues[ScopeKey], ScopeKey, GlobalName> {
-  protected constructor({
-    name,
-    scope,
-    globalName,
-  }: {
-    name: ScopeKey
-    scope: string
-    globalName?: GlobalName
-  }) {
-    super(
-      new MetadataDefinition({
-        name,
-        scope,
-        globalName,
-      }),
-    )
+  Global extends string = GlobalMetadataKey,
+> extends BaseMetadata<ScopeValues[ScopeKey], Global> {
+  protected constructor(
+    ...args: ConstructorParameters<
+      typeof ScopedMetadataDefinition<string, ScopeKey, Global>
+    >
+  ) {
+    super(new ScopedMetadataDefinition(...args))
   }
 }

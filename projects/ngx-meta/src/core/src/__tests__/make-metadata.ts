@@ -1,14 +1,16 @@
 import { Metadata } from '../metadata'
-import { makeMetadataDefinition } from './make-metadata-definition'
+import { makeGlobalMetadataDefinition } from './make-global-metadata-definition'
 
-export function makeMetadata<T>(
-  opts: Parameters<typeof makeMetadataDefinition>[0] & {
+export function makeMetadata<T, Id extends string>(
+  opts: {
+    id?: Id
     spyName?: string
   } = {},
 ) {
+  const id = opts.id ?? 'dummy'
   const metadata: Metadata<T> = {
-    definition: makeMetadataDefinition(opts),
-    set: jasmine.createSpy(opts.spyName ?? opts.name),
+    definition: makeGlobalMetadataDefinition(id),
+    set: jasmine.createSpy(opts.spyName ?? id),
   }
   return metadata
 }

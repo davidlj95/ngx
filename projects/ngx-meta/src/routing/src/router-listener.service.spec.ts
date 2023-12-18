@@ -12,6 +12,7 @@ import {
 import { EventEmitter, Provider } from '@angular/core'
 import { MetadataRouteStrategy } from './metadata-route-strategy'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
+import { Subscription } from 'rxjs'
 
 describe('RouterListenerService', () => {
   enableAutoSpy()
@@ -50,13 +51,25 @@ describe('RouterListenerService', () => {
       expect(sut.isListening).toBeTrue()
     })
 
-    it('should not subscribe again', () => {
-      const subscription = sut['subscription']
-      expect(subscription).toBeDefined()
+    describe('when listening again', () => {
+      let existingSubscription: Subscription
 
-      sut.listen()
+      beforeEach(() => {
+        existingSubscription = sut['subscription']!
+        expect(existingSubscription).toBeDefined()
+        spyOn(console, 'warn').and.stub()
+        sut.listen()
+      })
 
-      expect(sut['subscription']).toBe(subscription)
+      it('should not subscribe again', () => {
+        expect(sut['subscription']).toBe(existingSubscription)
+      })
+
+      it('should warn about it', () => {
+        expect(console.warn).toHaveBeenCalledOnceWith(
+          jasmine.stringContaining('NgxMetaRouting'),
+        )
+      })
     })
   })
 
@@ -149,8 +162,8 @@ describe('RouterListenerService', () => {
 function makeSut(
   opts: {
     events$?: EventEmitter<NavigationEvent>
-    strategies?: ReadonlyArray<MetadataRouteStrategy<unknown>>
-    strategy?: MetadataRouteStrategy<unknown>
+    strategies?: ReadonlyArray<MetadataRouteStrategy>
+    strategy?: MetadataRouteStrategy
     activatedRoute?: ActivatedRoute
   } = {},
 ): RouterListenerService {
@@ -203,11 +216,11 @@ function makeSut(
 function makeStrategy(
   name: string = 'default',
   resolvedData: unknown = { dummy: 'metadata' },
-): jasmine.SpyObj<MetadataRouteStrategy<unknown>> {
+): jasmine.SpyObj<MetadataRouteStrategy> {
   return MockService(MetadataRouteStrategy, {
     resolve: jasmine.createSpy(`${name} resolve`).and.returnValue(resolvedData),
     set: jasmine.createSpy(`${name} apply`),
-  }) as jasmine.SpyObj<MetadataRouteStrategy<unknown>>
+  }) as jasmine.SpyObj<MetadataRouteStrategy>
 }
 
 function makeNavigationEvent(type: EventType): NavigationEvent {

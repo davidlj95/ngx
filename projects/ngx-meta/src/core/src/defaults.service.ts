@@ -17,8 +17,8 @@ export class DefaultsService {
     if (!this.defaults) {
       return
     }
-    const globalDefaultValue = definition.globalName
-      ? this.defaults[definition.globalName]
+    const globalDefaultValue = definition.global
+      ? this.defaults[definition.global]
       : undefined
     const defaultValue = this.valueFromValues.get(definition, this.defaults)
     const effectiveValue =

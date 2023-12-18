@@ -7,7 +7,8 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "typeRoots": ["./types"],
+    "types": ["angular"]
   },
   "include": ["**/*.ts"],
   "exclude": ["**/*.spec.ts", "**/__tests__/*.ts"]

@@ -1,24 +1,22 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core'
+import { ApplicationConfig } from '@angular/core'
 import { provideRouter } from '@angular/router'
 
 import { routes } from './app.routes'
-import { NgxMetaRoutingModule } from '@davidlj95/ngx-meta/routing'
-import { NgxMetaStandardModule } from '@davidlj95/ngx-meta/standard'
-import { NgxMetaOpenGraphModule } from '@davidlj95/ngx-meta/open-graph'
-import { NgxMetaOpenGraphProfileModule } from '@davidlj95/ngx-meta/open-graph-profile'
-import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
-import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
+import { provideNgxMetaRouting } from '@davidlj95/ngx-meta/routing'
+import { provideNgxMetaStandardMetadata } from '@davidlj95/ngx-meta/standard'
+import { provideNgxMetaOpenGraphMetadata } from '@davidlj95/ngx-meta/open-graph'
+import { provideNgxMetaOpenGraphProfileMetadata } from '@davidlj95/ngx-meta/open-graph-profile'
+import { provideNgxMetaTwitterCardMetadata } from '@davidlj95/ngx-meta/twitter-card'
+import { provideNgxMetaJsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(
-      NgxMetaRoutingModule.forRoot(),
-      NgxMetaStandardModule,
-      NgxMetaOpenGraphModule,
-      NgxMetaOpenGraphProfileModule,
-      NgxMetaTwitterCardModule,
-      NgxMetaJsonLdModule,
-    ),
+    provideNgxMetaRouting(),
+    provideNgxMetaStandardMetadata(),
+    provideNgxMetaOpenGraphMetadata(),
+    provideNgxMetaOpenGraphProfileMetadata(),
+    provideNgxMetaTwitterCardMetadata(),
+    provideNgxMetaJsonLdMetadata(),
   ],
 }

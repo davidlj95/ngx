@@ -1,4 +1,5 @@
 export { TwitterCardModule as NgxMetaTwitterCardModule } from './src/twitter-card.module'
+export { provideTwitterCard as provideNgxMetaTwitterCardMetadata } from './src/provide-twitter-card'
 export * from './src/twitter-card-creator'
 export * from './src/twitter-card-creator-id'
 export * from './src/twitter-card-creator-username'

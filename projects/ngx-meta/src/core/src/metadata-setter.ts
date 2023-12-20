@@ -6,7 +6,7 @@ import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
 import { isObject } from './is-object'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MetadataSetter {
   constructor(
     private readonly valueFromValues: MetadataValueFromValues,

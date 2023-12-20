@@ -18,5 +18,6 @@ export const GET_CURRENT_SNAPSHOT_FROM_ROOT_SNAPSHOT_TOKEN =
     'Current route snapshot helper',
     {
       factory: () => getCurrentSnapshotFromRootSnapshot,
+      providedIn: 'root',
     },
   )

@@ -4,7 +4,7 @@ import { DEFAULTS_TOKEN } from './defaults-token'
 import { MetadataDefinition } from './metadata-definition'
 import { MetadataValues } from './metadata-values'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DefaultsService {
   constructor(
     @Optional()

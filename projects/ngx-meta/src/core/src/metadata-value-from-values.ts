@@ -2,7 +2,9 @@ import { MetadataDefinition } from './metadata-definition'
 import { MetadataValues } from './metadata-values'
 import { MaybeUndefined } from './maybe-undefined'
 import { isObject } from './is-object'
+import { Injectable } from '@angular/core'
 
+@Injectable({ providedIn: 'root' })
 export class MetadataValueFromValues {
   get<T>(
     definition: MetadataDefinition,

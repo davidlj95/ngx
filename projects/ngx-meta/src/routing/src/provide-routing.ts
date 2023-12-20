@@ -8,7 +8,6 @@ import { MetadataRouteStrategy } from './metadata-route-strategy'
 import { RouterListenerService } from './router-listener.service'
 
 export const ROUTING_PROVIDERS: Provider[] = [
-  CurrentRouteDataMetadataStrategy,
   {
     provide: MetadataRouteStrategy,
     useExisting: CurrentRouteDataMetadataStrategy,

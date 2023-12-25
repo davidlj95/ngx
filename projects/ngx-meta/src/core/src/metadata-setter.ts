@@ -1,4 +1,4 @@
-import { Injectable, Optional } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { Metadata } from './metadata'
 import { DefaultsService } from './defaults.service'
 import { MetadataValueFromValues } from './metadata-value-from-values'
@@ -10,8 +10,7 @@ import { isObject } from './is-object'
 export class MetadataSetter {
   constructor(
     private readonly valueFromValues: MetadataValueFromValues,
-    @Optional()
-    private readonly routeMetadataValues: RouteMetadataValues | null,
+    private readonly routeMetadataValues: RouteMetadataValues,
     private readonly defaultsService: DefaultsService,
   ) {}
 
@@ -19,7 +18,7 @@ export class MetadataSetter {
     const value = this.valueFromValues.get(metadata.definition, values)
     const routeValue = this.valueFromValues.get(
       metadata.definition,
-      this.routeMetadataValues?.get(),
+      this.routeMetadataValues.get(),
     )
     const defaultValue = this.defaultsService.get(metadata.definition)
     const effectiveValue =

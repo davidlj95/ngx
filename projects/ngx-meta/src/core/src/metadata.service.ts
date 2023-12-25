@@ -1,4 +1,4 @@
-import { Injectable, Optional } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { MetadataSetter } from './metadata-setter'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
@@ -9,8 +9,7 @@ export class MetadataService {
   constructor(
     private readonly registry: MetadataRegistry,
     private readonly setter: MetadataSetter,
-    @Optional()
-    private readonly routeMetadataValues: RouteMetadataValues | null,
+    private readonly routeMetadataValues: RouteMetadataValues,
   ) {}
 
   public set(values: MetadataValues = {}): void {
@@ -18,6 +17,6 @@ export class MetadataService {
     for (const metadata of allMetadata) {
       this.setter.set(metadata, values)
     }
-    this.routeMetadataValues?.set(values)
+    this.routeMetadataValues.set(values)
   }
 }

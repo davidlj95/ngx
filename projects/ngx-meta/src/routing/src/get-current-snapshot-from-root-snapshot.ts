@@ -15,7 +15,7 @@ export type GetCurrentSnapshotFromRootSnapshot =
 
 export const GET_CURRENT_SNAPSHOT_FROM_ROOT_SNAPSHOT_TOKEN =
   new InjectionToken<GetCurrentSnapshotFromRootSnapshot>(
-    'Current route snapshot helper',
+    ngDevMode ? 'Current route snapshot helper' : 'NgxMetaGCSFRS',
     {
       factory: () => getCurrentSnapshotFromRootSnapshot,
       providedIn: 'root',

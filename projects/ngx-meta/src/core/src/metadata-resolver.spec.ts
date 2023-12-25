@@ -1,26 +1,26 @@
 import { TestBed } from '@angular/core/testing'
 
-import { MetadataSetter } from './metadata-setter'
-import { makeMetadata } from './__tests__/make-metadata'
+import { MetadataResolver } from './metadata-resolver'
 import { DefaultsService } from './defaults.service'
 import { MockProviders } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataValueFromValues } from './metadata-value-from-values'
-import { Metadata } from './metadata'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataDefinition } from './metadata-definition'
 import { MetadataValues } from './metadata-values'
+import { makeGlobalMetadataDefinition } from './__tests__/make-global-metadata-definition'
+import { MaybeUndefined } from './maybe-undefined'
 
-describe('MetadataSetter', () => {
+describe('MetadataResolver', () => {
   enableAutoSpy()
-  let sut: MetadataSetter
-  let dummyMetadata: Metadata<unknown>
+  let sut: MetadataResolver
+  let dummyMetadataDefinition: MetadataDefinition
   let valueFromValues: jasmine.SpyObj<MetadataValueFromValues>
   let routeMetadataValues: jasmine.SpyObj<RouteMetadataValues>
   let defaultsService: jasmine.SpyObj<DefaultsService>
 
   beforeEach(() => {
-    dummyMetadata = makeMetadata()
+    dummyMetadataDefinition = makeGlobalMetadataDefinition()
     sut = makeSut()
     valueFromValues = TestBed.inject(
       MetadataValueFromValues,
@@ -33,7 +33,14 @@ describe('MetadataSetter', () => {
     ) as jasmine.SpyObj<DefaultsService>
   })
 
-  describe('set', () => {
+  function mockValueFromValues(returnMap: Map<MetadataValues, unknown>) {
+    valueFromValues.get.and.callFake(
+      <T>(def: MetadataDefinition, values: MetadataValues) =>
+        returnMap.get(values) as MaybeUndefined<T>,
+    )
+  }
+
+  describe('get', () => {
     const dummyValues = { foo: 'bar' }
     const value = 'value'
     const valueObject = {
@@ -43,73 +50,68 @@ describe('MetadataSetter', () => {
     const defaultValues = { default: 'values' }
     const routeValues = { route: 'values' }
 
-    describe('when value exists for the metadata', () => {
+    describe('when value exists in provided values', () => {
       beforeEach(() => {
-        valueFromValues.get.and.returnValue(value)
+        mockValueFromValues(new Map([[dummyValues, value]]))
       })
 
-      it('should call setter with its value', () => {
-        sut.set(dummyMetadata, dummyValues)
+      it('should resolve value using values', () => {
+        sut.get(dummyMetadataDefinition, dummyValues)
 
-        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
         expect(valueFromValues.get).toHaveBeenCalledWith(
-          dummyMetadata.definition,
+          dummyMetadataDefinition,
           dummyValues,
         )
+      })
+
+      it('should return its value', () => {
+        expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
       })
     })
 
     describe('when route metadata values exist', () => {
       beforeEach(() => {
         routeMetadataValues.get.and.returnValue(routeValues)
-        valueFromValues.get.and.callFake(
-          <T>(def: MetadataDefinition, values: MetadataValues) => {
-            if (values !== routeValues) {
-              return undefined
-            }
-            return value as T
-          },
+        mockValueFromValues(new Map([[routeValues, value]]))
+      })
+
+      it('should resolve value using route metadata values', () => {
+        sut.get(dummyMetadataDefinition, dummyValues)
+
+        expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
+        expect(valueFromValues.get).toHaveBeenCalledWith(
+          dummyMetadataDefinition,
+          routeValues,
         )
       })
 
-      it('should call setter with value obtained from there', () => {
-        sut.set(dummyMetadata, dummyValues)
-
-        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
-        expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
-        expect(valueFromValues.get).toHaveBeenCalledWith(
-          dummyMetadata.definition,
-          routeValues,
-        )
+      it('should return value obtained from route metadata values', () => {
+        expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
       })
     })
 
     describe('when defaults exist', () => {
       beforeEach(() => {
         defaultsService.get.and.returnValue(defaultValues)
-        valueFromValues.get.and.callFake(
-          <T>(def: MetadataDefinition, values: MetadataValues) => {
-            if (values !== defaultValues) {
-              return undefined
-            }
-            return value as T
-          },
-        )
+        mockValueFromValues(new Map([[defaultValues, value]]))
       })
 
-      it('should call setter with value obtained from there', () => {
-        sut.set(dummyMetadata, dummyValues)
+      it('should resolve value using default values', () => {
+        sut.get(dummyMetadataDefinition, dummyValues)
 
-        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
         expect(defaultsService.get).toHaveBeenCalledOnceWith()
         expect(valueFromValues.get).toHaveBeenCalledWith(
-          dummyMetadata.definition,
+          dummyMetadataDefinition,
           defaultValues,
         )
       })
+
+      it('should return value obtained from defaults', () => {
+        expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
+      })
     })
 
-    describe('when value and route value exist', () => {
+    describe('when value exists in values and route values', () => {
       describe('when value is an object', () => {
         const routeValueObject = {
           routeValue: 'routeValue',
@@ -118,24 +120,16 @@ describe('MetadataSetter', () => {
 
         beforeEach(() => {
           routeMetadataValues.get.and.returnValue(routeValues)
-          valueFromValues.get.and.callFake(
-            <T>(def: MetadataDefinition, values: MetadataValues) => {
-              switch (values) {
-                case routeValues:
-                  return routeValueObject as T
-                case values:
-                  return valueObject as T
-                default:
-                  throw new Error('Unexpected values, cannot mock')
-              }
-            },
+          mockValueFromValues(
+            new Map<MetadataValues, unknown>([
+              [routeValues, routeValueObject],
+              [dummyValues, valueObject],
+            ]),
           )
         })
 
-        it('should merge the object, value having more priority', () => {
-          sut.set(dummyMetadata, dummyValues)
-
-          expect(dummyMetadata.set).toHaveBeenCalledOnceWith({
+        it('should return the merged object, with value props having more priority', () => {
+          expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual({
             ...routeValueObject,
             ...valueObject,
           })
@@ -161,19 +155,15 @@ describe('MetadataSetter', () => {
           )
         })
 
-        it('should call setter with value', () => {
-          sut.set(dummyMetadata, dummyValues)
-
-          expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
+        it('should return value from values', () => {
+          expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
         })
       })
     })
 
     describe('when neither value, route value or default value exists', () => {
-      it('should call setter with undefined', () => {
-        sut.set(dummyMetadata, dummyValues)
-
-        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(undefined)
+      it('should return nothing', () => {
+        expect(sut.get(dummyMetadataDefinition, dummyValues)).toBeUndefined()
       })
     })
   })
@@ -182,7 +172,7 @@ describe('MetadataSetter', () => {
 function makeSut() {
   TestBed.configureTestingModule({
     providers: [
-      MetadataSetter,
+      MetadataResolver,
       MockProviders(
         MetadataValueFromValues,
         RouteMetadataValues,
@@ -190,5 +180,5 @@ function makeSut() {
       ),
     ],
   })
-  return TestBed.inject(MetadataSetter)
+  return TestBed.inject(MetadataResolver)
 }

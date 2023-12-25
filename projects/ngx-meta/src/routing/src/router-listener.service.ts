@@ -3,7 +3,7 @@ import { ActivatedRoute, EventType, Router } from '@angular/router'
 import { filter, Subscription } from 'rxjs'
 import { MetadataRouteStrategy } from './metadata-route-strategy'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RouterListenerService implements OnDestroy {
   // Replace by `takeUntilDestroyed` when stable
   // https://angular.io/api/core/rxjs-interop/takeUntilDestroyed

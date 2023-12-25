@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { MetadataValues } from './metadata-values'
 import { Router } from '@angular/router'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RouteMetadataValues {
   private url?: string
   private values: MetadataValues = {}

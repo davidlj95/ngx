@@ -1,11 +1,17 @@
-export { CoreModule as NgxMetaCoreModule } from './src/core.module'
+export {
+  CoreModule as NgxMetaCoreModule,
+  CoreModuleForRootOptions as NgxMetaCoreModuleForRootOptions,
+} from './src/core.module'
+export {
+  provideCore as provideNgxMetaCore,
+  withDefaults as withNgxMetaDefaults,
+} from './src/provide-core'
 export * from './src/base-global-metadata'
 export * from './src/base-scoped-metadata'
 export * from './src/composable-meta-property'
 export * from './src/global-metadata'
 export * from './src/global-metadata-image'
 export * from './src/global-metadata-key'
-export { makeForRootGuard as _makeForRootGuard } from './src/make-for-root-guard'
 export * from './src/meta-content'
 export * from './src/meta-property'
 export * from './src/meta.service'

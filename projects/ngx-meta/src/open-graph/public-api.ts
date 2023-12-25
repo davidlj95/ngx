@@ -1,4 +1,5 @@
 export { OpenGraphModule as NgxMetaOpenGraphModule } from './src/open-graph.module'
+export { provideOpenGraph as provideNgxMetaOpenGraphMetadata } from './src/provide-open-graph'
 export * from './src/open-graph-image'
 export * from './src/open-graph-meta-property'
 export * from './src/open-graph-metadata-route-data'

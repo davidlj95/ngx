@@ -3,7 +3,7 @@ import { MetaProperty } from './meta-property'
 import { Meta } from '@angular/platform-browser'
 import { MetaContent } from './meta-content'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MetaService {
   constructor(private readonly meta: Meta) {}
 

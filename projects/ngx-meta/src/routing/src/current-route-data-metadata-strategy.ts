@@ -8,7 +8,7 @@ import { MetadataRouteStrategy } from './metadata-route-strategy'
 import { MetadataService, MetadataValues } from '@davidlj95/ngx-meta/core'
 import { MetadataRouteData } from './metadata-route-data'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CurrentRouteDataMetadataStrategy
   implements MetadataRouteStrategy<MetadataValues>
 {

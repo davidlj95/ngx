@@ -1,38 +1,15 @@
-import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core'
-import { RouterListenerService } from './router-listener.service'
-import { _makeForRootGuard, NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
-import { MetadataRouteStrategy } from './metadata-route-strategy'
-import { CurrentRouteDataMetadataStrategy } from './current-route-data-metadata-strategy'
+import { ModuleWithProviders, NgModule } from '@angular/core'
+import {
+  DEFAULT_METADATA_STRATEGY_PROVIDER,
+  ROUTING_INITIALIZER,
+} from './provide-routing'
 
-const [FOR_ROOT_GUARD_TOKEN, FOR_ROOT_GUARD_PROVIDER] = _makeForRootGuard(
-  'NgxMetaRoutingModule',
-  RouterListenerService,
-)
-
-@NgModule({
-  providers: [CurrentRouteDataMetadataStrategy],
-  imports: [NgxMetaCoreModule],
-})
+@NgModule()
 export class RoutingModule {
-  constructor(
-    routerListener: RouterListenerService,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    @Optional() @Inject(FOR_ROOT_GUARD_TOKEN) guard: unknown,
-  ) {
-    routerListener.listen()
-  }
-
-  public static forRoot(): ModuleWithProviders<RoutingModule> {
+  static forRoot(): ModuleWithProviders<RoutingModule> {
     return {
       ngModule: RoutingModule,
-      providers: [
-        RouterListenerService,
-        FOR_ROOT_GUARD_PROVIDER,
-        {
-          provide: MetadataRouteStrategy,
-          useExisting: CurrentRouteDataMetadataStrategy,
-        },
-      ],
+      providers: [DEFAULT_METADATA_STRATEGY_PROVIDER, ROUTING_INITIALIZER],
     }
   }
 }

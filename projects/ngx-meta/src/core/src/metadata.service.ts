@@ -4,7 +4,7 @@ import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataRegistry } from './metadata-registry'
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MetadataService {
   constructor(
     private readonly registry: MetadataRegistry,

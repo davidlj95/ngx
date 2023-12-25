@@ -40,7 +40,7 @@ describe('MetadataSetter', () => {
       value: 'value',
       prop: 'value',
     }
-    const defaultValue = 'defaultValue'
+    const defaultValues = { default: 'values' }
     const routeValues = { route: 'values' }
 
     describe('when value exists for the metadata', () => {
@@ -84,31 +84,28 @@ describe('MetadataSetter', () => {
       })
     })
 
-    describe('when default exists', () => {
+    describe('when defaults exist', () => {
       beforeEach(() => {
-        defaultsService.get.and.returnValue(value)
-      })
-
-      it('should call setter with default value', () => {
-        sut.set(dummyMetadata, dummyValues)
-
-        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
-        expect(defaultsService.get).toHaveBeenCalledOnceWith(
-          dummyMetadata.definition,
+        defaultsService.get.and.returnValue(defaultValues)
+        valueFromValues.get.and.callFake(
+          <T>(def: MetadataDefinition, values: MetadataValues) => {
+            if (values !== defaultValues) {
+              return undefined
+            }
+            return value as T
+          },
         )
       })
-    })
 
-    describe('when value and default value exist', () => {
-      beforeEach(() => {
-        defaultsService.get.and.returnValue(defaultValue)
-        valueFromValues.get.and.returnValue(value)
-      })
-
-      it('should call setter with value', () => {
+      it('should call setter with value obtained from there', () => {
         sut.set(dummyMetadata, dummyValues)
 
         expect(dummyMetadata.set).toHaveBeenCalledOnceWith(value)
+        expect(defaultsService.get).toHaveBeenCalledOnceWith()
+        expect(valueFromValues.get).toHaveBeenCalledWith(
+          dummyMetadata.definition,
+          defaultValues,
+        )
       })
     })
 
@@ -172,20 +169,7 @@ describe('MetadataSetter', () => {
       })
     })
 
-    describe('when value is null and default exists', () => {
-      beforeEach(() => {
-        valueFromValues.get.and.returnValue(null)
-        defaultsService.get.and.returnValue(defaultValue)
-      })
-
-      it('should call setter with null', () => {
-        sut.set(dummyMetadata, dummyValues)
-
-        expect(dummyMetadata.set).toHaveBeenCalledOnceWith(null)
-      })
-    })
-
-    describe('when neither value or default value exists', () => {
+    describe('when neither value, route value or default value exists', () => {
       it('should call setter with undefined', () => {
         sut.set(dummyMetadata, dummyValues)
 

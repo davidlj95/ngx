@@ -20,7 +20,10 @@ export class MetadataSetter {
       metadata.definition,
       this.routeMetadataValues.get(),
     )
-    const defaultValue = this.defaultsService.get(metadata.definition)
+    const defaultValue = this.valueFromValues.get(
+      metadata.definition,
+      this.defaultsService.get(),
+    )
     const effectiveValue =
       isObject(value) && (isObject(routeValue) || isObject(defaultValue))
         ? { ...(defaultValue as object), ...(routeValue as object), ...value }

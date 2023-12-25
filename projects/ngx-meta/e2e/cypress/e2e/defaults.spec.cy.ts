@@ -14,9 +14,11 @@ describe('Defaults', () => {
     })
   })
 
-  it('should set default title', () => {
+  it('should set default author', () => {
     cy.fixture('defaults.json').then((defaults: typeof DEFAULTS) => {
-      cy.title().should('eq', defaults.title)
+      cy.getMeta('author')
+        .shouldHaveContent()
+        .and('eq', defaults.standard.author)
     })
   })
 

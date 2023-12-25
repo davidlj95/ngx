@@ -1,7 +1,10 @@
-export { CoreModule as NgxMetaCoreModule } from './src/core.module'
+export {
+  CoreModule as NgxMetaCoreModule,
+  CoreModuleForRootOptions as NgxMetaCoreModuleForRootOptions,
+} from './src/core.module'
 export {
   provideCore as provideNgxMetaCore,
-  withDefaults,
+  withDefaults as withNgxMetaDefaults,
 } from './src/provide-core'
 export * from './src/base-global-metadata'
 export * from './src/base-scoped-metadata'

@@ -26,7 +26,7 @@ import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
     NgForOf,
     RouterOutlet,
     JsonPipe,
-    NgxMetaRoutingModule,
+    NgxMetaRoutingModule.forRoot(),
     NgxMetaStandardModule,
     NgxMetaOpenGraphModule,
     NgxMetaOpenGraphProfileModule,

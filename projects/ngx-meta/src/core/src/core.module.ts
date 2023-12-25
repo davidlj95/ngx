@@ -4,12 +4,20 @@ import { withDefaults } from './provide-core'
 
 @NgModule()
 export class CoreModule {
-  static withDefaults(
-    defaults: MetadataValues,
+  static forRoot(
+    options: CoreModuleForRootOptions = {},
   ): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
-      providers: withDefaults(defaults)._providers,
+      providers: [
+        ...(options.defaults !== undefined
+          ? withDefaults(options.defaults)._providers
+          : []),
+      ],
     }
   }
+}
+
+export interface CoreModuleForRootOptions {
+  defaults?: MetadataValues
 }

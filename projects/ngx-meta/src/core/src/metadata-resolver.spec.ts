@@ -4,7 +4,7 @@ import { MetadataResolver } from './metadata-resolver'
 import { DefaultsService } from './defaults.service'
 import { MockProviders } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { MetadataValueFromValues } from './metadata-value-from-values'
+import { MetadataJsonResolver } from './metadata-json-resolver'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataDefinition } from './metadata-definition'
 import { MetadataValues } from './metadata-values'
@@ -15,16 +15,16 @@ describe('MetadataResolver', () => {
   enableAutoSpy()
   let sut: MetadataResolver
   let dummyMetadataDefinition: MetadataDefinition
-  let valueFromValues: jasmine.SpyObj<MetadataValueFromValues>
+  let jsonResolver: jasmine.SpyObj<MetadataJsonResolver>
   let routeMetadataValues: jasmine.SpyObj<RouteMetadataValues>
   let defaultsService: jasmine.SpyObj<DefaultsService>
 
   beforeEach(() => {
     dummyMetadataDefinition = makeGlobalMetadataDefinition()
     sut = makeSut()
-    valueFromValues = TestBed.inject(
-      MetadataValueFromValues,
-    ) as jasmine.SpyObj<MetadataValueFromValues>
+    jsonResolver = TestBed.inject(
+      MetadataJsonResolver,
+    ) as jasmine.SpyObj<MetadataJsonResolver>
     routeMetadataValues = TestBed.inject(
       RouteMetadataValues,
     ) as jasmine.SpyObj<RouteMetadataValues>
@@ -33,8 +33,8 @@ describe('MetadataResolver', () => {
     ) as jasmine.SpyObj<DefaultsService>
   })
 
-  function mockValueFromValues(returnMap: Map<MetadataValues, unknown>) {
-    valueFromValues.get.and.callFake(
+  function mockJsonResolver(returnMap: Map<MetadataValues, unknown>) {
+    jsonResolver.get.and.callFake(
       <T>(def: MetadataDefinition, values: MetadataValues) =>
         returnMap.get(values) as MaybeUndefined<T>,
     )
@@ -52,13 +52,13 @@ describe('MetadataResolver', () => {
 
     describe('when value exists in provided values', () => {
       beforeEach(() => {
-        mockValueFromValues(new Map([[dummyValues, value]]))
+        mockJsonResolver(new Map([[dummyValues, value]]))
       })
 
       it('should resolve value using values', () => {
         sut.get(dummyMetadataDefinition, dummyValues)
 
-        expect(valueFromValues.get).toHaveBeenCalledWith(
+        expect(jsonResolver.get).toHaveBeenCalledWith(
           dummyMetadataDefinition,
           dummyValues,
         )
@@ -72,14 +72,14 @@ describe('MetadataResolver', () => {
     describe('when route metadata values exist', () => {
       beforeEach(() => {
         routeMetadataValues.get.and.returnValue(routeValues)
-        mockValueFromValues(new Map([[routeValues, value]]))
+        mockJsonResolver(new Map([[routeValues, value]]))
       })
 
       it('should resolve value using route metadata values', () => {
         sut.get(dummyMetadataDefinition, dummyValues)
 
         expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
-        expect(valueFromValues.get).toHaveBeenCalledWith(
+        expect(jsonResolver.get).toHaveBeenCalledWith(
           dummyMetadataDefinition,
           routeValues,
         )
@@ -93,14 +93,14 @@ describe('MetadataResolver', () => {
     describe('when defaults exist', () => {
       beforeEach(() => {
         defaultsService.get.and.returnValue(defaultValues)
-        mockValueFromValues(new Map([[defaultValues, value]]))
+        mockJsonResolver(new Map([[defaultValues, value]]))
       })
 
       it('should resolve value using default values', () => {
         sut.get(dummyMetadataDefinition, dummyValues)
 
         expect(defaultsService.get).toHaveBeenCalledOnceWith()
-        expect(valueFromValues.get).toHaveBeenCalledWith(
+        expect(jsonResolver.get).toHaveBeenCalledWith(
           dummyMetadataDefinition,
           defaultValues,
         )
@@ -111,7 +111,7 @@ describe('MetadataResolver', () => {
       })
     })
 
-    describe('when value exists in values and route values', () => {
+    describe('when value exists in values object and route values', () => {
       describe('when value is an object', () => {
         const routeValueObject = {
           routeValue: 'routeValue',
@@ -120,7 +120,7 @@ describe('MetadataResolver', () => {
 
         beforeEach(() => {
           routeMetadataValues.get.and.returnValue(routeValues)
-          mockValueFromValues(
+          mockJsonResolver(
             new Map<MetadataValues, unknown>([
               [routeValues, routeValueObject],
               [dummyValues, valueObject],
@@ -141,7 +141,7 @@ describe('MetadataResolver', () => {
 
         beforeEach(() => {
           routeMetadataValues.get.and.returnValue(routeValues)
-          valueFromValues.get.and.callFake(
+          jsonResolver.get.and.callFake(
             <T>(def: MetadataDefinition, values: MetadataValues) => {
               switch (values) {
                 case routeValues:
@@ -155,7 +155,7 @@ describe('MetadataResolver', () => {
           )
         })
 
-        it('should return value from values', () => {
+        it('should return value from values object', () => {
           expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
         })
       })
@@ -173,11 +173,7 @@ function makeSut() {
   TestBed.configureTestingModule({
     providers: [
       MetadataResolver,
-      MockProviders(
-        MetadataValueFromValues,
-        RouteMetadataValues,
-        DefaultsService,
-      ),
+      MockProviders(MetadataJsonResolver, RouteMetadataValues, DefaultsService),
     ],
   })
   return TestBed.inject(MetadataResolver)

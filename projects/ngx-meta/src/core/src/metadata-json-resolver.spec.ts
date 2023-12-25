@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing'
-import { MetadataValueFromValues } from './metadata-value-from-values'
+import { MetadataJsonResolver } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
 import { MetadataDefinition } from './metadata-definition'
 import { makeScopedMetadataDefinition } from './__tests__/make-scoped-metadata-definition'
 import { makeGlobalMetadataDefinition } from './__tests__/make-global-metadata-definition'
 
-describe('MetadataValueFromValues', () => {
-  let sut: MetadataValueFromValues
+describe('MetadataJsonResolver', () => {
+  let sut: MetadataJsonResolver
 
   beforeEach(() => {
     sut = makeSut()
@@ -185,6 +185,6 @@ describe('MetadataValueFromValues', () => {
 })
 
 function makeSut() {
-  TestBed.configureTestingModule({ providers: [MetadataValueFromValues] })
-  return TestBed.inject(MetadataValueFromValues)
+  TestBed.configureTestingModule({ providers: [MetadataJsonResolver] })
+  return TestBed.inject(MetadataJsonResolver)
 }

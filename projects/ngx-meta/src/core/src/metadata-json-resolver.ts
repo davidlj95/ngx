@@ -5,7 +5,7 @@ import { isObject } from './is-object'
 import { Injectable } from '@angular/core'
 
 @Injectable({ providedIn: 'root' })
-export class MetadataValueFromValues {
+export class MetadataJsonResolver {
   get<T>(
     definition: MetadataDefinition,
     values?: MetadataValues,

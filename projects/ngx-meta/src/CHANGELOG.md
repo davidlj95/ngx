@@ -1,3 +1,22 @@
+## [`ngx-meta` v1.0.0-alpha.14](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.13...ngx-meta-v1.0.0-alpha.14) (2023-12-25)
+
+### Features
+
+- add provideX standalone APIs ([#110](https://github.com/davidlj95/ngx/issues/110)) ([57e27ba](https://github.com/davidlj95/ngx/commit/57e27ba73f00161cadd73ea28ca75c7e8a4eb11e))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#103](https://github.com/davidlj95/ngx/issues/103)) ([b93711e](https://github.com/davidlj95/ngx/commit/b93711e417a64a2f0bb1b823d90e66fcd80b81d3))
+
+### Build System
+
+- **deps-dev:** update actions/download-artifact digest to f44cd7b ([68a32f1](https://github.com/davidlj95/ngx/commit/68a32f12d9a1bdd04718d75ef38eda8aeb8e976f))
+- **deps-dev:** update actions/setup-node digest to b39b52d ([687d791](https://github.com/davidlj95/ngx/commit/687d7917131599a5f8e3b4442620b7e23836072a))
+- **deps-dev:** update dependency eslint to v8.56.0 ([cdac02c](https://github.com/davidlj95/ngx/commit/cdac02c225b158e52cb8991177ec141b2c9dbe59))
+- **deps-dev:** update dependency ng-packagr to v17.0.3 ([53c3be1](https://github.com/davidlj95/ngx/commit/53c3be180d8da7612a5236cb2bd30dc32997d9a0))
+- **deps-dev:** update typescript-eslint monorepo to v6.15.0 ([1d49205](https://github.com/davidlj95/ngx/commit/1d49205cb3ac3d725b2e43a29d66e5672f5831d3))
+- **deps:** pin dependencies ([a0684ba](https://github.com/davidlj95/ngx/commit/a0684baf9cf5f9d1e9dbcfaf0ad2937ba3c1d16e))
+
 ## [`ngx-meta` v1.0.0-alpha.13](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.12...ngx-meta-v1.0.0-alpha.13) (2023-12-18)
 
 ### Miscellaneous Chores

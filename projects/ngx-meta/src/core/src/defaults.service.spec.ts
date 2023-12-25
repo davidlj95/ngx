@@ -4,7 +4,7 @@ import { DefaultsService } from './defaults.service'
 import { MockProvider, MockProviders } from 'ng-mocks'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { Provider } from '@angular/core'
-import { MetadataValueFromValues } from './metadata-value-from-values'
+import { MetadataJsonResolver } from './metadata-json-resolver'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataValues } from './metadata-values'
 
@@ -47,7 +47,7 @@ describe('DefaultsService', () => {
 function makeSut(opts: { defaults?: MetadataValues } = {}) {
   const providers: Provider[] = [
     DefaultsService,
-    MockProviders(MetadataValueFromValues),
+    MockProviders(MetadataJsonResolver),
   ]
   if (opts.defaults) {
     providers.push(MockProvider(DEFAULTS_TOKEN, opts.defaults, 'useValue'))

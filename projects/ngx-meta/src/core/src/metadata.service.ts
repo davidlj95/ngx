@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { MetadataSetter } from './metadata-setter'
+import { MetadataResolver } from './metadata-resolver'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataRegistry } from './metadata-registry'
@@ -8,15 +8,15 @@ import { MetadataRegistry } from './metadata-registry'
 export class MetadataService {
   constructor(
     private readonly registry: MetadataRegistry,
-    private readonly setter: MetadataSetter,
-    private readonly routeMetadataValues: RouteMetadataValues,
+    private readonly resolver: MetadataResolver,
+    private readonly routeValues: RouteMetadataValues,
   ) {}
 
   public set(values: MetadataValues = {}): void {
     const allMetadata = this.registry.getAll()
     for (const metadata of allMetadata) {
-      this.setter.set(metadata, values)
+      metadata.set(this.resolver.get(metadata.definition, values))
     }
-    this.routeMetadataValues.set(values)
+    this.routeValues.set(values)
   }
 }

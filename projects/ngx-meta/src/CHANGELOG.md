@@ -1,3 +1,27 @@
+## [`ngx-meta` v1.0.0-alpha.15](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.14...ngx-meta-v1.0.0-alpha.15) (2023-12-25)
+
+### Performance Improvements
+
+- shorter token descriptions for prod ([#119](https://github.com/davidlj95/ngx/issues/119)) ([034d10b](https://github.com/davidlj95/ngx/commit/034d10b0f477e711e236d14f1639b586baddb75d))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#113](https://github.com/davidlj95/ngx/issues/113)) ([50cfce4](https://github.com/davidlj95/ngx/commit/50cfce4ba2669689ab9bcf74c0368a7dffb33371))
+- remove unneeded optional injectable on route values ([#115](https://github.com/davidlj95/ngx/issues/115)) ([e463500](https://github.com/davidlj95/ngx/commit/e4635001817d217202a376502f7d745492eb8782))
+- remove unneeded optional injectable route values ([#116](https://github.com/davidlj95/ngx/issues/116)) ([d8d6f3a](https://github.com/davidlj95/ngx/commit/d8d6f3ac10d6bf6c176462dd447ae1a58be0c6b9))
+
+### Code Refactoring
+
+- decouple value resolve from defaults service ([#117](https://github.com/davidlj95/ngx/issues/117)) ([983d8c4](https://github.com/davidlj95/ngx/commit/983d8c494892510b07d20dced9fa33c7bbdfc8fc))
+
+### Tests
+
+- **e2e:** add test to ensure defaults work ([#114](https://github.com/davidlj95/ngx/issues/114)) ([4a026a0](https://github.com/davidlj95/ngx/commit/4a026a031d793672c836c5442a286041734a2e42))
+
+### Build System
+
+- **deps:** update Angular versions ([#118](https://github.com/davidlj95/ngx/issues/118)) ([45157e1](https://github.com/davidlj95/ngx/commit/45157e1a522426a54b32ff5b3115b621097a7708))
+
 ## [`ngx-meta` v1.0.0-alpha.14](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.13...ngx-meta-v1.0.0-alpha.14) (2023-12-25)
 
 ### Features

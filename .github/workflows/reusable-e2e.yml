@@ -16,7 +16,7 @@ env:
 
 #👇 Needed for PR bundle size comment only
 #permissions:
-#  issues: write
+#  pull_requests: write
 
 jobs:
   e2e:

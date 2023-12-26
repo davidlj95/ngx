@@ -10,7 +10,7 @@
     "cache:clean": "ng cache clean"
   },
   "private": true,
-  "packageManager": "pnpm@8.12.1",
+  "packageManager": "pnpm@8.13.1",
   "dependencies": {
     "@angular/animations": "15.2.10",
     "@angular/common": "15.2.10",

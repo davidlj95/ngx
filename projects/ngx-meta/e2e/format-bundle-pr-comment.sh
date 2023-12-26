@@ -62,6 +62,7 @@ while IFS= read -r line; do
   size=$(echo "$line" | cut -f2)
   beautified_file="$(
     echo "$file" |
+    sed 's|webpack:///||' |
     sed 's|node_modules/@davidlj95/||' |
     sed 's|/fesm2022/davidlj95-ngx-meta||'
   )"

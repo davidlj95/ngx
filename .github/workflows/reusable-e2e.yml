@@ -66,7 +66,7 @@ jobs:
       - name: Analyze main bundle size
         if: matrix.version == '17' && github.event_name == 'pull_request'
         working-directory: ${{ env.E2E_APP_DIR }}
-        run: pnpm run bundle-pr-comment
+        run: pnpm run bundle-pr-comment --git-ref ${{ github.event.pull_request.head.sha }}
       - name: Find bundle size PR comment
         if: matrix.version == '17' && github.event_name == 'pull_request'
         uses: peter-evans/find-comment@v2

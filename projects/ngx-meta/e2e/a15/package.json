@@ -23,7 +23,7 @@
     "@davidlj95/ngx-meta": "link:../../dist",
     "rxjs": "7.8.1",
     "tslib": "2.6.2",
-    "zone.js": "0.12.0"
+    "zone.js": "0.13.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "15.2.10",

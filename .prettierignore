@@ -383,8 +383,10 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows,cypressio
+/projects/ngx-meta/e2e/**/*pr-comment.md
 # Manual edits
 # - Comment `.idea` in Angular to include IDE configs
 # - Add **/ to Cypress paths, to include cypress living anywhere else from root
+# - Add GitHub PR comment about bundle size markdowns
 # Extra .prettierignore rules (apart from .gitignore ones)
 pnpm-lock.yaml

@@ -14,6 +14,10 @@ on:
 env:
   E2E_DIR: projects/ngx-meta/e2e
 
+#👇 Needed for PR bundle size comment only
+#permissions:
+#  pull_requests: write
+
 jobs:
   e2e:
     name: E2E tests - Angular v${{ matrix.version }}
@@ -59,3 +63,24 @@ jobs:
           wait-on: 'http://localhost:4200'
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
+      - name: Analyze main bundle size
+        if: github.event_name == 'pull_request'
+        working-directory: ${{ env.E2E_APP_DIR }}
+        run: pnpm run bundle-pr-comment --git-ref ${{ github.event.pull_request.head.sha }}
+      - name: Find bundle size PR comment
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          # Keep in sync with PR comment formatter
+          body-includes: '### 📦 Bundle size (Angular v${{ matrix.version }})'
+      - name: Update bundle size PR comment
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: ${{ env.E2E_APP_DIR }}/bundle-size-pr-comment.md
+          edit-mode: replace

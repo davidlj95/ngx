@@ -5,9 +5,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:source-map": "ng build --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "cache:clean": "ng cache clean"
+    "cache:clean": "ng cache clean",
+    "analyze-main-bundle": "pnpm run build:source-map && pnpm run source-map-explorer",
+    "source-map-explorer": "source-map-explorer dist/a15/main*.js",
+    "bundle-pr-comment": "pnpm run build:source-map && pnpm run source-map-explorer --tsv | ../format-bundle-pr-comment.sh -h 'Angular v15' -f bundle-size-pr-comment.md"
   },
   "private": true,
   "packageManager": "pnpm@8.13.1",
@@ -29,6 +33,7 @@
     "@angular-devkit/build-angular": "15.2.10",
     "@angular/cli": "15.2.10",
     "@angular/compiler-cli": "15.2.10",
+    "source-map-explorer": "2.5.3",
     "typescript": "4.9.5"
   }
 }

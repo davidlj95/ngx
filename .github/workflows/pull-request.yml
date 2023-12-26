@@ -25,5 +25,4 @@ jobs:
     with:
       build-artifact-name: ngx-meta
     permissions:
-      pull-requests: write
       issues: write

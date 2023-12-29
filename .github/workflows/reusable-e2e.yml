@@ -69,7 +69,7 @@ jobs:
         run: pnpm run bundle-pr-comment --git-ref ${{ github.event.pull_request.head.sha }}
       - name: Find bundle size PR comment
         if: github.event_name == 'pull_request'
-        uses: peter-evans/find-comment@v2
+        uses: peter-evans/find-comment@a54c31d7fa095754bfef525c0c8e5e5674c4b4b1 # v2
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -78,7 +78,7 @@ jobs:
           body-includes: '### 📦 Bundle size (Angular v${{ matrix.version }})'
       - name: Update bundle size PR comment
         if: github.event_name == 'pull_request'
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@23ff15729ef2fc348714a3bb66d2f655ca9066f2 # v3
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}

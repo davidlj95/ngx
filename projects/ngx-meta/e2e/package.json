@@ -5,7 +5,7 @@
   "scripts": {
     "cypress:open": "cypress open"
   },
-  "packageManager": "pnpm@8.13.1",
+  "packageManager": "pnpm@8.14.0",
   "private": true,
   "devDependencies": {
     "cypress": "13.6.2",

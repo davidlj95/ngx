@@ -14,7 +14,7 @@
     "bundle-pr-comment": "pnpm run build:source-map && pnpm run source-map-explorer --tsv | ../format-bundle-pr-comment.sh -h 'Angular v15' -f bundle-size-pr-comment.md"
   },
   "private": true,
-  "packageManager": "pnpm@8.13.1",
+  "packageManager": "pnpm@8.14.0",
   "dependencies": {
     "@angular/animations": "15.2.10",
     "@angular/common": "15.2.10",

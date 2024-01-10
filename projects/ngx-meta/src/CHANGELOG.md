@@ -1,3 +1,38 @@
+## [`ngx-meta` v1.0.0-alpha.16](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.15...ngx-meta-v1.0.0-alpha.16) (2024-01-10)
+
+### Features
+
+- add Angular router as peer dep ([#141](https://github.com/davidlj95/ngx/issues/141)) ([65e1e30](https://github.com/davidlj95/ngx/commit/65e1e30cc554a8a606aaf37e0479c0aa314e8295))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#120](https://github.com/davidlj95/ngx/issues/120)) ([cf04115](https://github.com/davidlj95/ngx/commit/cf0411553cefbd7f1399476724d7862c3a10aaec))
+
+### Code Refactoring
+
+- rename value from values -> json resolver ([#122](https://github.com/davidlj95/ngx/issues/122)) ([8866c92](https://github.com/davidlj95/ngx/commit/8866c92f3f3440b26e36eda0a3d8896851586efa))
+- setter into resolver ([#121](https://github.com/davidlj95/ngx/issues/121)) ([4fa478b](https://github.com/davidlj95/ngx/commit/4fa478bc0d03eaf1b2b7eeea3002f1a81e8adeb4))
+
+### Tests
+
+- **e2e:** report bundle size on PR comments ([#126](https://github.com/davidlj95/ngx/issues/126)) ([5a95bb5](https://github.com/davidlj95/ngx/commit/5a95bb51f980225c695464f1157bc43aa9a10ecf))
+
+### Build System
+
+- **deps-dev:** bump follow-redirects from 1.15.3 to 1.15.4 ([#140](https://github.com/davidlj95/ngx/issues/140)) ([b8381b2](https://github.com/davidlj95/ngx/commit/b8381b2f0004c364b5ab15e3a6c3d2f979377986))
+- **deps-dev:** update angular-cli monorepo to v17.0.9 ([8076728](https://github.com/davidlj95/ngx/commit/8076728cf96bfe46dea479a7e06f7ce591157a45))
+- **deps-dev:** update angular-eslint monorepo to v17.2.0 ([e870b40](https://github.com/davidlj95/ngx/commit/e870b4025c41f38bfe895d4c525dcbac17e7959c))
+- **deps-dev:** update commitlint monorepo to v18.4.4 ([84b0c77](https://github.com/davidlj95/ngx/commit/84b0c7760e759ddc114cd0eb4a42ca2bcb4d8e51))
+- **deps-dev:** update dependency cypress to v13.6.2 ([1c5a2bd](https://github.com/davidlj95/ngx/commit/1c5a2bdf4242f01a34fc69f9aff9f580d5297129))
+- **deps-dev:** update pnpm to v8.13.1 ([7c6e41c](https://github.com/davidlj95/ngx/commit/7c6e41cd20332198c1079f567c8fa8ced859dafc))
+- **deps-dev:** update pnpm to v8.14.0 ([84ef02a](https://github.com/davidlj95/ngx/commit/84ef02a8850602d828963e079bf569ee6eed93d4))
+- **deps-dev:** update typescript-eslint monorepo to v6.16.0 ([ab6d7e1](https://github.com/davidlj95/ngx/commit/ab6d7e18cb14e1e86ae33fa54d69ccb30bf213e7))
+- **deps-dev:** update typescript-eslint monorepo to v6.17.0 ([bbfdab3](https://github.com/davidlj95/ngx/commit/bbfdab335cfef3c077e0a6ba0c48fe662f77ab92))
+- **deps-dev:** update typescript-eslint monorepo to v6.18.0 ([1f0a0eb](https://github.com/davidlj95/ngx/commit/1f0a0eb8e3519b98ac749ae3f396cbb57c6b2671))
+- **deps-dev:** update typescript-eslint monorepo to v6.18.1 ([22a088a](https://github.com/davidlj95/ngx/commit/22a088aef2900e3a7d955c18545f3989669b7ef1))
+- **deps:** pin dependencies ([#127](https://github.com/davidlj95/ngx/issues/127)) ([38d044a](https://github.com/davidlj95/ngx/commit/38d044a281c54666fa815fb98ae526ab54b4a6a8))
+- **deps:** update dependency zone.js to v0.13.3 ([00a1277](https://github.com/davidlj95/ngx/commit/00a1277edb6b96ae86ae2531fc3858a18b79f519))
+
 ## [`ngx-meta` v1.0.0-alpha.15](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.14...ngx-meta-v1.0.0-alpha.15) (2023-12-25)
 
 ### Performance Improvements

@@ -8,7 +8,13 @@
   },
   "peerDependencies": {
     "@angular/common": "^17 || ^16 || ^15",
-    "@angular/core": "^17 || ^16 || ^15"
+    "@angular/core": "^17 || ^16 || ^15",
+    "@angular/router": "^17 || ^16 || ^15"
+  },
+  "peerDependenciesMeta": {
+    "@angular/router": {
+      "optional": true
+    }
   },
   "dependencies": {
     "tslib": "^2.3.0"

@@ -8,12 +8,14 @@ input_file=""
 header=""
 output_file=""
 git_ref=""
+hidden_info=""
 
 # Function to display usage information
 display_usage() {
   cat <<BLOCK
 Usage: $0 -h|--header HEADER -i|--input-file SME_JSON_FILE
        -o|--output-file OUTPUT_FILE [-r|--git-ref GIT_REF]
+       [--hidden-info INFO]
 
        SME stands for Source Map Explorer
 BLOCK
@@ -39,6 +41,10 @@ while [ "$#" -gt 0 ]; do
     shift
     git_ref="$1"
     ;;
+  --hidden-info)
+    shift
+    hidden_info="$1"
+    ;;
   *)
     display_usage
     ;;
@@ -58,7 +64,7 @@ if ! [ -r "$input_file" ]; then
 fi
 
 # Ensure jq is available
-if ! command -v jq > /dev/null 2>&1; then
+if ! command -v jq >/dev/null 2>&1; then
   echo "❌ jq is not installed"
   exit 1
 fi
@@ -66,6 +72,9 @@ fi
 # 👇 Keep in sync with CI comment finder
 echo "### 📦 Bundle size ($header)" >"$output_file"
 {
+  if [ -n "$hidden_info" ]; then
+    echo "<!-- $hidden_info -->"
+  fi
   if [ -n "$git_ref" ]; then
     echo "Git ref: $git_ref"
   fi

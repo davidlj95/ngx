@@ -11,7 +11,7 @@
     "cache:clean": "ng cache clean",
     "analyze-main-bundle": "pnpm run build:source-map && pnpm run source-map-explorer",
     "source-map-explorer": "source-map-explorer dist/a15/main*.js",
-    "bundle-pr-comment": "pnpm run build:source-map && pnpm run source-map-explorer --tsv | ../format-bundle-pr-comment.sh -h 'Angular v15' -f bundle-size-pr-comment.md"
+    "bundle-pr-comment": "pnpm run source-map-explorer --tsv | ../format-bundle-pr-comment.sh -h 'Angular v15' -f bundle-size-pr-comment.md"
   },
   "private": true,
   "packageManager": "pnpm@8.14.0",

@@ -13,7 +13,7 @@ on:
 
 env:
   E2E_DIR: projects/ngx-meta/e2e
-  BUNDLE_ARTIFACT_NAME_PREFIX: main-bundle-a
+  SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX: ngx-meta-source-map-explorer-a
 
 #👇 Needed for PR bundle size comment only
 #permissions:
@@ -29,6 +29,9 @@ jobs:
         version: [15, 16, 17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
+    defaults:
+      run:
+        working-directory: ${{ env.E2E_APP_DIR }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -50,13 +53,10 @@ jobs:
             ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
           node-version-file: '.node-version'
       - name: Install Angular v${{ matrix.version }} E2E app dependencies
-        working-directory: ${{ env.E2E_APP_DIR }}
         run: pnpm install --frozen-lockfile
       - name: Build Angular v${{ matrix.version }} E2E app
-        working-directory: ${{ env.E2E_APP_DIR }}
         run: pnpm build:source-map # with source map for bundle size job!
       - name: Start Angular v${{ matrix.version }} E2E app server
-        working-directory: ${{ env.E2E_APP_DIR }}
         run: pnpm start &
       - name: Cypress run
         uses: cypress-io/github-action@v6
@@ -64,32 +64,31 @@ jobs:
           wait-on: 'http://localhost:4200'
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
-      - name: Upload built app
+      - name: Analyze main bundle with source map explorer
+        run: pnpm run source-map-explorer-json && pnpm run bundle-pr-comment
+      - name: Upload main bundle analysis results
         uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4
         with:
-          name: ${{ env.BUNDLE_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
-          path: ${{ env.E2E_APP_DIR }}/dist
-          retention-days: 5
-  bundle-size:
+          name: ${{ env.SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+          path: |
+            ${{ env.E2E_APP_DIR }}/source-map-explorer.json
+            ${{ env.E2E_APP_DIR }}/bundle-size-pr-comment.md
+          # 👇 So we can download and compare from main
+          retention-days: ${{ github.ref_name == 'main' && 90 || 5 }}
+  bundle-size-pr-comment:
     needs: e2e
     if: github.event_name == 'pull_request'
-    name: Bundle size - Angular v${{ matrix.version }}
+    name: Bundle size PR comment - Angular v${{ matrix.version }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
         version: [15, 16, 17]
-    env:
-      E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
     steps:
-      - name: Download built app
+      - name: Download main bundle analysis results
         uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
         with:
-          name: ${{ env.BUNDLE_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
-          path: ${{ env.E2E_APP_DIR }}/dist
-      - name: Analyze main bundle size
-        working-directory: ${{ env.E2E_APP_DIR }}
-        run: pnpm run bundle-pr-comment --git-ref ${{ github.event.pull_request.head.sha }}
+          name: ${{ env.SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
       - name: Find bundle size PR comment
         uses: peter-evans/find-comment@a54c31d7fa095754bfef525c0c8e5e5674c4b4b1 # v2
         id: fc
@@ -103,5 +102,5 @@ jobs:
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
-          body-path: ${{ env.E2E_APP_DIR }}/bundle-size-pr-comment.md
+          body-path: bundle-size-pr-comment.md
           edit-mode: replace

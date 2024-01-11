@@ -86,6 +86,7 @@ for file in $files; do
       sed 's|node_modules/@davidlj95/||' |
       sed 's|/fesm2022/davidlj95-ngx-meta||'
   )"
-  beautified_size="$(numfmt --to=iec-i --suffix='B' "$bytes_size")"
-  echo "| \`$beautified_file\` | $beautified_size |" >>"$output_file"
+  long_size="$(printf "%d bytes" "$bytes_size")"
+  short_size="$(numfmt --to=iec-i --suffix='B' "$bytes_size")"
+  echo "| \`$beautified_file\` | $short_size ($long_size) |" >>"$output_file"
 done

@@ -14,6 +14,7 @@ on:
 env:
   E2E_DIR: projects/ngx-meta/e2e
   SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX: ngx-meta-source-map-explorer-a
+  BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-a
 
 #👇 Needed for PR bundle size comment only
 #permissions:
@@ -65,7 +66,11 @@ jobs:
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
       - name: Analyze main bundle with source map explorer
-        run: pnpm run source-map-explorer-json && pnpm run bundle-pr-comment
+        run: |
+          pnpm run source-map-explorer-json &&
+          pnpm run bundle-pr-comment \
+            --git-ref '${{ github.event.pull_request.head.sha }}' \
+            --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}'
       - name: Upload main bundle analysis results
         uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4
         with:
@@ -95,8 +100,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
-          # Keep in sync with PR comment formatter
-          body-includes: '### 📦 Bundle size (Angular v${{ matrix.version }})'
+          body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}
       - name: Update bundle size PR comment
         uses: peter-evans/create-or-update-comment@23ff15729ef2fc348714a3bb66d2f655ca9066f2 # v3
         with:

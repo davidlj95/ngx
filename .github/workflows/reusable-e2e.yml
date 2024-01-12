@@ -136,7 +136,7 @@ jobs:
         with:
           script: |
             const smeJson = require('./source-map-explorer.json');
-            const smeJsonString = smeJson.toString();
+            const smeJsonString = JSON.stringify(smeJson);
             return github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,

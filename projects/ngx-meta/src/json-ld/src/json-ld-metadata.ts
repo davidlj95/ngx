@@ -7,6 +7,7 @@ const KEY = 'jsonLd'
 @Injectable()
 export class JsonLdMetadata extends BaseGlobalMetadata<typeof KEY> {
   private readonly SCRIPT_TYPE = 'application/ld+json'
+  private readonly NOT_NEEDED_AT_ALL = 'jibirijibiri'
 
   constructor(@Inject(DOCUMENT) private readonly document: Document) {
     super(KEY)

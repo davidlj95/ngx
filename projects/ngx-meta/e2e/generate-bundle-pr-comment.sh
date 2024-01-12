@@ -134,7 +134,9 @@ for file in $files; do
     base_size="$(format_size_column "$base_bytes_size")"
     diff_bytes_size="$((input_bytes_size - base_bytes_size))"
     diff_size="$(format_size_column "$diff_bytes_size")"
-    diff_percent="$(echo "scale=4; $diff_bytes_size/$base_bytes_size*100" | bc)"
+    # Operate with precision, but output 2 decimals only
+    # https://askubuntu.com/a/217575/605666#comment1744264_217575
+    diff_percent="$(echo "res=$diff_bytes_size/$base_bytes_size*100; scale=2; res/1" | bc -l)"
     diff=""
     if [ "$diff_percent" != "0" ]; then
       diff="$diff_percent%: $diff_size"

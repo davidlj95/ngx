@@ -141,13 +141,17 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               name: '${{ env.CHECK_RUN_NAME }}',
-              // Temporary until we don't test in a PR
               // head_sha: context.sha,
+              // In case you're testing this in a PR, you'll want the head SHA
+              // otherwise, `context.sha` refers to the GitHub PR merge branch
+              // which is a detail hidden away from users. Uncomment 👇
               head_sha: '${{ github.event.pull_request.head.sha }}',
               conclusion: 'neutral',
               output: {
                 title: 'Bundle size - Angular v${{ matrix.version }}',
-                summary: 'Sizes of the library modules when packed inside a main bundle of an Angular v${{ matrix.version }} app. In bytes. Thanks to source-map-explorer :)',
+                summary: 'Sizes of the library modules when packed inside a ' +
+                         'main bundle of an Angular v${{ matrix.version }} ' +
+                         'app. In bytes. Thanks to `source-map-explorer` :)',
                 text: smeJsonString,
               }
             })

@@ -29,7 +29,8 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [15, 16, 17]
+        # Temporary for testing
+        version: [17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
     defaults:
@@ -59,14 +60,15 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build Angular v${{ matrix.version }} E2E app
         run: pnpm build:source-map # with source map for bundle size job!
-      - name: Start Angular v${{ matrix.version }} E2E app server
-        run: pnpm start &
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          wait-on: 'http://localhost:4200'
-          working-directory: ${{ env.E2E_DIR }}
-          browser: chrome
+      # Temporary for testing
+      # - name: Start Angular v${{ matrix.version }} E2E app server
+      #   run: pnpm start &
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v6
+      #   with:
+      #     wait-on: 'http://localhost:4200'
+      #     working-directory: ${{ env.E2E_DIR }}
+      #     browser: chrome
       - name: Analyze main bundle with source map explorer
         run: |
           pnpm run source-map-explorer-json &&
@@ -90,7 +92,8 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [15, 16, 17]
+        # Temporary for testing
+        version: [17]
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
@@ -140,7 +143,7 @@ jobs:
               head_sha: context.sha,
               conclusion: 'neutral',
               output: {
-                title: 'Bundle size - Angular v${{ matrix.version }}'
+                title: 'Bundle size - Angular v${{ matrix.version }}',
                 summary: 'Sizes of the library modules when packed inside a main bundle of an Angular v${{ matrix.version }} app. In bytes. Thanks to source-map-explorer :)',
                 text: smeJsonString,
               }

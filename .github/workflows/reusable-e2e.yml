@@ -135,7 +135,7 @@ jobs:
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
-          body-path: bundle-size-pr-comment.md
+          body-path: ${{ env.E2E_APP_DIR }}/bundle-size-pr-comment.md
           edit-mode: replace
   bundle-size-store:
     needs: e2e

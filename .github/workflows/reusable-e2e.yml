@@ -90,7 +90,6 @@ jobs:
         version: [17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
-      CHECK_RUN_NAME: ${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}
     defaults:
       run:
         working-directory: ${{ env.E2E_APP_DIR }}
@@ -107,7 +106,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: 'heads/main',
-              check_name: '${{ env.CHECK_RUN_NAME }}',
+              check_name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}',
               per_page: 1,
             })
             console.log(checkRun)
@@ -131,7 +130,7 @@ jobs:
       #    issue-number: ${{ github.event.pull_request.number }}
       #    body-path: bundle-size-pr-comment.md
       #    edit-mode: replace
-  bundle-size-check:
+  bundle-size-store:
     needs: e2e
     if: github.event_name == 'push'
     name: Bundle size store - Angular v${{ matrix.version }}
@@ -140,8 +139,6 @@ jobs:
     strategy:
       matrix:
         version: [15, 16, 17]
-    env:
-      CHECK_RUN_NAME: ${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
@@ -156,7 +153,7 @@ jobs:
             return github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              name: '${{ env.CHECK_RUN_NAME }}',
+              name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}',
               head_sha: context.sha,
               // In case you're testing this in a PR, you'll want the head SHA
               // otherwise, `context.sha` refers to the GitHub PR merge branch

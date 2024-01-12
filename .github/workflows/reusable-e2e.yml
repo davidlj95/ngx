@@ -119,7 +119,7 @@ jobs:
             fs.writeFileSync('./source-map-explorer.json', smeJsonString)
       - name: Generate PR comment content
         run: |
-          npm run bundle-pr-comment \
+          npm run bundle-pr-comment -- \
             --git-ref '${{ github.event.pull_request.head.sha }}' \
             --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
             --base-file '../../../../source-map-explorer.json'

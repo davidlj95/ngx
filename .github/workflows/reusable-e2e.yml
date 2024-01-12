@@ -122,7 +122,8 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [15, 16, 17]
+        # Temporary for testing
+        version: [17]
     env:
       CHECK_RUN_NAME: ngx-meta-bundle-size-a${{ matrix.version }}
     steps:
@@ -134,8 +135,9 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const smeJson = require('source-map-explorer.json');
-            const smeJsonString = smeJson.toString();
+            const fs = require('fs');
+            const smeJson = fs.readFileSync('source-map-explorer.json', 'utf8');
+            const smeJsonString = JSON.parse(smeJson).toString();
             return github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,

@@ -115,7 +115,9 @@ jobs:
             fs.writeFileSync('./source-map-explorer.json', smeJsonString)
       - name: Generate PR comment content
         run: |
-          npm run bundle-pr-comment \
+          ../generate-bundle-pr-comment.sh -h 'Angular v${{ matrix.version }}' \
+            --input-file source-map-explorer.json \
+            --output-file bundle-size-pr-comment.md \
             --git-ref '${{ github.event.pull_request.head.sha }}' \
             --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
             --base-file '../../../../source-map-explorer.json'

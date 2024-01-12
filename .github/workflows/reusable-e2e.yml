@@ -30,7 +30,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [17]
+        version: [15, 16, 17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
     defaults:
@@ -60,15 +60,14 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build Angular v${{ matrix.version }} E2E app
         run: pnpm build:source-map # with source map for bundle size job!
-      # Temp for testing
-      #- name: Start Angular v${{ matrix.version }} E2E app server
-      #  run: pnpm start &
-      #- name: Cypress run
-      #  uses: cypress-io/github-action@v6
-      #  with:
-      #    wait-on: 'http://localhost:4200'
-      #    working-directory: ${{ env.E2E_DIR }}
-      #    browser: chrome
+      - name: Start Angular v${{ matrix.version }} E2E app server
+        run: pnpm start &
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          wait-on: 'http://localhost:4200'
+          working-directory: ${{ env.E2E_DIR }}
+          browser: chrome
       - name: Analyze main bundle with source map explorer
         run: pnpm run source-map-explorer-json
       - name: Upload main bundle analysis results
@@ -86,7 +85,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [17]
+        version: [15, 16, 17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
     defaults:

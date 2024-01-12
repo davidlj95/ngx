@@ -112,7 +112,8 @@ jobs:
           edit-mode: replace
   bundle-size-check:
     needs: e2e
-    if: github.event_name == 'push'
+    # Temporary for testing
+    # if: github.event_name == 'push'
     name: Bundle size store - Angular v${{ matrix.version }}
     runs-on: ubuntu-latest
     timeout-minutes: 5

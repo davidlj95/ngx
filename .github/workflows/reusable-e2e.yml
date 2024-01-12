@@ -70,8 +70,7 @@ jobs:
       #    working-directory: ${{ env.E2E_DIR }}
       #    browser: chrome
       - name: Analyze main bundle with source map explorer
-        run: |
-          pnpm run source-map-explorer-json &&
+        run: pnpm run source-map-explorer-json
       - name: Upload main bundle analysis results
         uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4
         with:

@@ -109,27 +109,29 @@ jobs:
               per_page: 1,
             })
             const checkRun = checkRunResponse.data.check_runs[0]
-            console.log(checkRun)
-      #- name: Generate PR comment content
-      #  run: |
-      #    npm run bundle-pr-comment \
-      #      --git-ref '${{ github.event.pull_request.head.sha }}' \
-      #      --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
-      #      --base-file '${{ }}'
-      #- name: Find bundle size PR comment
-      #  uses: peter-evans/find-comment@a54c31d7fa095754bfef525c0c8e5e5674c4b4b1 # v2
-      #  id: fc
-      #  with:
-      #    issue-number: ${{ github.event.pull_request.number }}
-      #    comment-author: 'github-actions[bot]'
-      #    body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}
-      #- name: Update bundle size PR comment
-      #  uses: peter-evans/create-or-update-comment@23ff15729ef2fc348714a3bb66d2f655ca9066f2 # v3
-      #  with:
-      #    comment-id: ${{ steps.fc.outputs.comment-id }}
-      #    issue-number: ${{ github.event.pull_request.number }}
-      #    body-path: bundle-size-pr-comment.md
-      #    edit-mode: replace
+            const smeJsonString = checkRun.output.text
+            const fs = require('fs')
+            fs.writeFileSync('./source-map-explorer.json', smeJsonString)
+      - name: Generate PR comment content
+        run: |
+          npm run bundle-pr-comment \
+            --git-ref '${{ github.event.pull_request.head.sha }}' \
+            --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
+            --base-file '../../../../source-map-explorer.json'
+      - name: Find bundle size PR comment
+        uses: peter-evans/find-comment@a54c31d7fa095754bfef525c0c8e5e5674c4b4b1 # v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}
+      - name: Update bundle size PR comment
+        uses: peter-evans/create-or-update-comment@23ff15729ef2fc348714a3bb66d2f655ca9066f2 # v3
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: bundle-size-pr-comment.md
+          edit-mode: replace
   bundle-size-store:
     needs: e2e
     if: github.event_name == 'push'

@@ -134,7 +134,7 @@ for file in $files; do
     base_size="$(format_size_column "$base_bytes_size")"
     diff_bytes_size="$((input_bytes_size - base_bytes_size))"
     diff_size="$(format_size_column "$diff_bytes_size")"
-    diff_percent="$(echo "scale=2; $diff_bytes_size/$base_bytes_size*100" | bc)"
+    diff_percent="$(echo "scale=4; $diff_bytes_size/$base_bytes_size*100" | bc)"
     diff=""
     if [ "$diff_percent" != "0" ]; then
       diff="$diff_percent%: $diff_size"

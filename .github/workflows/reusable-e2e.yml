@@ -15,6 +15,7 @@ env:
   E2E_DIR: projects/ngx-meta/e2e
   SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX: ngx-meta-source-map-explorer-a
   BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-a
+  BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX: ngx-meta-bundle-size-a
 
 #permissions:
 #  👇 Needed for PR bundle size comment only
@@ -68,20 +69,14 @@ jobs:
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
       - name: Analyze main bundle with source map explorer
-        run: |
-          pnpm run source-map-explorer-json &&
-          pnpm run bundle-pr-comment \
-            --git-ref '${{ github.event.pull_request.head.sha }}' \
-            --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}'
+        run: pnpm run source-map-explorer-json
       - name: Upload main bundle analysis results
         uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4
         with:
           name: ${{ env.SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
           path: |
             ${{ env.E2E_APP_DIR }}/source-map-explorer.json
-            ${{ env.E2E_APP_DIR }}/bundle-size-pr-comment.md
-          # 👇 So we can download and compare from main
-          retention-days: ${{ github.ref_name == 'main' && 90 || 5 }}
+          retention-days: 5
   bundle-size-pr-comment:
     needs: e2e
     if: github.event_name == 'pull_request'
@@ -91,11 +86,42 @@ jobs:
     strategy:
       matrix:
         version: [15, 16, 17]
+    env:
+      E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
+    defaults:
+      run:
+        working-directory: ${{ env.E2E_APP_DIR }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
       - name: Download main bundle analysis results
         uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
         with:
           name: ${{ env.SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+          path: ${{ env.E2E_APP_DIR }}
+      - name: Fetch main bundle analysis results from 'main' branch
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const checkRunResponse = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'heads/main',
+              check_name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}',
+              per_page: 1,
+            })
+            const checkRun = checkRunResponse.data.check_runs[0]
+            const smeJsonString = checkRun.output.text
+            const fs = require('fs')
+            fs.writeFileSync('./source-map-explorer.json', smeJsonString)
+      - name: Generate PR comment content
+        run: |
+          npm run bundle-pr-comment -- \
+            --git-ref '${{ github.event.pull_request.head.sha }}' \
+            --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
+            --base-file '../../../../source-map-explorer.json'
       - name: Find bundle size PR comment
         uses: peter-evans/find-comment@a54c31d7fa095754bfef525c0c8e5e5674c4b4b1 # v2
         id: fc
@@ -108,9 +134,9 @@ jobs:
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
-          body-path: bundle-size-pr-comment.md
+          body-path: ${{ env.E2E_APP_DIR }}/bundle-size-pr-comment.md
           edit-mode: replace
-  bundle-size-check:
+  bundle-size-store:
     needs: e2e
     if: github.event_name == 'push'
     name: Bundle size store - Angular v${{ matrix.version }}
@@ -119,8 +145,6 @@ jobs:
     strategy:
       matrix:
         version: [15, 16, 17]
-    env:
-      CHECK_RUN_NAME: ngx-meta-bundle-size-a${{ matrix.version }}
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
@@ -135,7 +159,7 @@ jobs:
             return github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              name: '${{ env.CHECK_RUN_NAME }}',
+              name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}',
               head_sha: context.sha,
               // In case you're testing this in a PR, you'll want the head SHA
               // otherwise, `context.sha` refers to the GitHub PR merge branch

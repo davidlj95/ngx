@@ -101,13 +101,14 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const checkRun = await github.rest.checks.listForRef({
+            const checkRunResponse = await github.rest.checks.listForRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: 'heads/main',
               check_name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}',
               per_page: 1,
             })
+            const checkRun = checkRunResponse.data.check_runs[0]
             console.log(checkRun)
       #- name: Generate PR comment content
       #  run: |

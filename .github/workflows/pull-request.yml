@@ -26,3 +26,5 @@ jobs:
       build-artifact-name: ngx-meta
     permissions:
       pull-requests: write
+      # Temporary! Just to check now
+      checks: write

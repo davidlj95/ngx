@@ -23,7 +23,8 @@
     "commitlint-last": "commitlint --verbose --from HEAD~1",
     "generate-prettier-ignore": "cp .gitignore .prettierignore && cat .part.prettierignore >> .prettierignore",
     "semantic-release": "semantic-release",
-    "ng-lint-staged": "ng-lint-staged lint --max-warnings 0 --fix --"
+    "ng-lint-staged": "ng-lint-staged lint --max-warnings 0 --fix --",
+    "cache-clean": "ng cache clean"
   },
   "private": true,
   "packageManager": "pnpm@8.14.0",

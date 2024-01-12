@@ -9,10 +9,9 @@ jobs:
     uses: ./.github/workflows/reusable-build.yml
     with:
       artifact-name: ngx-meta
-  # Temporary for testing
-  #test:
-  #  name: Test
-  #  uses: ./.github/workflows/reusable-test.yml
+  test:
+    name: Test
+    uses: ./.github/workflows/reusable-test.yml
   lint:
     name: Lint
     uses: ./.github/workflows/reusable-lint.yml
@@ -20,12 +19,10 @@ jobs:
     name: Style
     uses: ./.github/workflows/reusable-style.yml
   e2e:
-    needs: [build, lint]
+    needs: [build, test, lint]
     name: E2E
     uses: ./.github/workflows/reusable-e2e.yml
     with:
       build-artifact-name: ngx-meta
     permissions:
       pull-requests: write
-      # Temporary! Just to check now
-      checks: write

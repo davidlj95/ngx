@@ -29,8 +29,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        # Temporary for testing
-        version: [17]
+        version: [15, 16, 17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
     defaults:
@@ -60,15 +59,14 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build Angular v${{ matrix.version }} E2E app
         run: pnpm build:source-map # with source map for bundle size job!
-      # Temporary for testing
-      # - name: Start Angular v${{ matrix.version }} E2E app server
-      #   run: pnpm start &
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v6
-      #   with:
-      #     wait-on: 'http://localhost:4200'
-      #     working-directory: ${{ env.E2E_DIR }}
-      #     browser: chrome
+      - name: Start Angular v${{ matrix.version }} E2E app server
+        run: pnpm start &
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          wait-on: 'http://localhost:4200'
+          working-directory: ${{ env.E2E_DIR }}
+          browser: chrome
       - name: Analyze main bundle with source map explorer
         run: |
           pnpm run source-map-explorer-json &&
@@ -92,8 +90,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        # Temporary for testing
-        version: [17]
+        version: [15, 16, 17]
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
@@ -115,15 +112,13 @@ jobs:
           edit-mode: replace
   bundle-size-check:
     needs: e2e
-    # Temporary for testing
-    # if: github.event_name == 'push'
+    if: github.event_name == 'push'
     name: Bundle size store - Angular v${{ matrix.version }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        # Temporary for testing
-        version: [17]
+        version: [15, 16, 17]
     env:
       CHECK_RUN_NAME: ngx-meta-bundle-size-a${{ matrix.version }}
     steps:
@@ -141,11 +136,11 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               name: '${{ env.CHECK_RUN_NAME }}',
-              // head_sha: context.sha,
+              head_sha: context.sha,
               // In case you're testing this in a PR, you'll want the head SHA
               // otherwise, `context.sha` refers to the GitHub PR merge branch
               // which is a detail hidden away from users. Uncomment 👇
-              head_sha: '${{ github.event.pull_request.head.sha }}',
+              // head_sha: '${{ github.event.pull_request.head.sha }}',
               conclusion: 'neutral',
               output: {
                 title: 'Bundle size - Angular v${{ matrix.version }}',

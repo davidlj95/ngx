@@ -97,6 +97,7 @@ jobs:
         uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
         with:
           name: ${{ env.SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+          path: ${{ env.E2E_APP_DIR }}
       - name: Fetch main bundle analysis results from 'main' branch
         uses: actions/github-script@v7
         with:

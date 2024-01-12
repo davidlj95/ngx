@@ -4,6 +4,7 @@
 # used
 
 # Initialize variables
+base_file=""
 input_file=""
 header=""
 output_file=""
@@ -14,8 +15,8 @@ hidden_info=""
 display_usage() {
   cat <<BLOCK
 Usage: $0 -h|--header HEADER -i|--input-file SME_JSON_FILE
-       -o|--output-file OUTPUT_FILE [-r|--git-ref GIT_REF]
-       [--hidden-info INFO]
+       -b|--base-file SME_JSON_FILE -o|--output-file OUTPUT_FILE
+       [-r|--git-ref GIT_REF] [--hidden-info INFO]
 
        SME stands for Source Map Explorer
 BLOCK
@@ -28,6 +29,10 @@ while [ "$#" -gt 0 ]; do
   -h | --header)
     shift
     header="$1"
+    ;;
+  -b | --base-file)
+    shift
+    base_file="$1"
     ;;
   -i | --input-file)
     shift
@@ -69,6 +74,10 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
+base_file() {
+  test -r "$base_file"
+}
+
 # 👇 Keep in sync with CI comment finder
 echo "### 📦 Bundle size ($header)" >"$output_file"
 {
@@ -79,23 +88,59 @@ echo "### 📦 Bundle size ($header)" >"$output_file"
     echo "Git ref: $git_ref"
   fi
   echo ""
-  echo "| Module file | Size |"
-  echo "| --: | :-- |"
+  printf "| Module file | Size |"
+  if base_file; then
+    echo " Base size | Difference"
+  else
+    echo ""
+  fi
+  printf "| --- | --- |"
+  if base_file; then
+    echo " --- | --- |"
+  else
+    echo ""
+  fi
 } >>"$output_file"
 
-# Process each line from stdin
+# Process input file
 lib_files="$(jq '.results[0].files
   | with_entries(select(.key|contains("ngx-meta")))' "$input_file")"
 files="$(echo "$lib_files" | jq -r 'keys[]')"
+
+# Format
+format_size_column() {
+  bytes="$1"
+  absolute_bytes="$(echo "$bytes" | tr -d "-")"
+  long_size="$(printf "%d bytes" "$bytes")"
+  short_size_absolute="$(numfmt --to=iec-i --suffix='B' "$absolute_bytes")"
+  short_size="$short_size_absolute"
+  if [ "$absolute_bytes" != "$bytes" ]; then
+    short_size="-$short_size_absolute"
+  fi
+  echo "$long_size ($short_size)"
+}
+
 for file in $files; do
-  bytes_size=$(echo "$lib_files" | jq -r ".[\"$file\"].size")
   beautified_file="$(
     echo "$file" |
       sed 's|webpack:///||' |
       sed 's|node_modules/@davidlj95/||' |
       sed 's|/fesm2022/davidlj95-ngx-meta||'
   )"
-  long_size="$(printf "%d bytes" "$bytes_size")"
-  short_size="$(numfmt --to=iec-i --suffix='B' "$bytes_size")"
-  echo "| \`$beautified_file\` | $short_size ($long_size) |" >>"$output_file"
-done
+  input_bytes_size=$(echo "$lib_files" | jq -r ".[\"$file\"].size")
+  printf "| \`%s\` | %s |" "$beautified_file" "$(format_size_column "$input_bytes_size")"
+  if base_file; then
+    base_bytes_size="$(jq -r ".results[0].files[\"$file\"].size" "$base_file")"
+    base_size="$(format_size_column "$base_bytes_size")"
+    diff_bytes_size="$((input_bytes_size - base_bytes_size))"
+    diff_size="$(format_size_column "$diff_bytes_size")"
+    diff_percent="$(echo "scale=2; $diff_bytes_size/$base_bytes_size*100" | bc)"
+    diff=""
+    if [ "$diff_percent" != "0" ]; then
+      diff="$diff_percent%: $diff_size"
+    fi
+    echo " $base_size | $diff |"
+  else
+    echo ""
+  fi
+done >>"$output_file"

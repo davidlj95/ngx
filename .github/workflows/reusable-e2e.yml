@@ -16,9 +16,11 @@ env:
   SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX: ngx-meta-source-map-explorer-a
   BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-a
 
-#👇 Needed for PR bundle size comment only
 #permissions:
+#  👇 Needed for PR bundle size comment only
 #  pull_requests: write
+#  👇 Needed for main bundle size check store only
+#  checks: write
 
 jobs:
   e2e:
@@ -108,3 +110,43 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body-path: bundle-size-pr-comment.md
           edit-mode: replace
+  bundle-size-check:
+    needs: e2e
+    if: github.event_name == 'push'
+    name: Bundle size store - Angular v${{ matrix.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        version: [15, 16, 17]
+    env:
+      CHECK_RUN_NAME: ngx-meta-bundle-size-a${{ matrix.version }}
+    steps:
+      - name: Download main bundle analysis results
+        uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
+        with:
+          name: ${{ env.SOURCE_MAP_EXPLORER_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+      - name: Create check run
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const smeJson = require('./source-map-explorer.json');
+            const smeJsonString = JSON.stringify(smeJson);
+            return github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: '${{ env.CHECK_RUN_NAME }}',
+              head_sha: context.sha,
+              // In case you're testing this in a PR, you'll want the head SHA
+              // otherwise, `context.sha` refers to the GitHub PR merge branch
+              // which is a detail hidden away from users. Uncomment 👇
+              // head_sha: '${{ github.event.pull_request.head.sha }}',
+              conclusion: 'neutral',
+              output: {
+                title: 'Bundle size - Angular v${{ matrix.version }}',
+                summary: 'Sizes of the library modules when packed inside a ' +
+                         'main bundle of an Angular v${{ matrix.version }} ' +
+                         'app. In bytes. Thanks to `source-map-explorer` :)',
+                text: smeJsonString,
+              }
+            })

@@ -93,6 +93,10 @@ jobs:
       run:
         working-directory: ${{ env.E2E_APP_DIR }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
       - name: Download main bundle analysis results
         uses: actions/download-artifact@f44cd7b40bfd40b6aa1cc1b9b5b7bf03d3c67110 # v4
         with:
@@ -115,9 +119,7 @@ jobs:
             fs.writeFileSync('./source-map-explorer.json', smeJsonString)
       - name: Generate PR comment content
         run: |
-          ../generate-bundle-pr-comment.sh -h 'Angular v${{ matrix.version }}' \
-            --input-file source-map-explorer.json \
-            --output-file bundle-size-pr-comment.md \
+          npm run bundle-pr-comment \
             --git-ref '${{ github.event.pull_request.head.sha }}' \
             --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
             --base-file '../../../../source-map-explorer.json'

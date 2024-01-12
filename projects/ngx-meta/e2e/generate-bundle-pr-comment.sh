@@ -111,10 +111,6 @@ files="$(echo "$lib_files" | jq -r 'keys[]')"
 format_size_column() {
   bytes="$1"
   absolute_bytes="$(echo "$bytes" | tr -d "-")"
-  if [ "$bytes" -eq "0" ]; then
-    echo ""
-    return
-  fi
   long_size="$(printf "%d bytes" "$bytes")"
   short_size_absolute="$(numfmt --to=iec-i --suffix='B' "$absolute_bytes")"
   short_size="$short_size_absolute"

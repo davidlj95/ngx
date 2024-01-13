@@ -1,12 +1,14 @@
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { TitleStandardMetadata } from './title-standard-metadata.service'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Title } from '@angular/platform-browser'
+import { MetadataSetter } from '../../core'
+import { Standard } from './standard'
+import { STANDARD_TITLE_METADATA_SETTER_FACTORY } from './standard-title-metadata-provider'
 
-describe('Title standard metadata', () => {
+describe('Standard title metadata provider', () => {
   enableAutoSpy()
-  let sut: TitleStandardMetadata
+  let sut: MetadataSetter<Standard['title']>
   let titleService: jasmine.SpyObj<Title>
 
   beforeEach(() => {
@@ -16,7 +18,7 @@ describe('Title standard metadata', () => {
 
   describe('set', () => {
     it('when title is not provided should not update title', () => {
-      sut.set(undefined)
+      sut(undefined)
 
       expect(titleService.setTitle).not.toHaveBeenCalled()
     })
@@ -24,7 +26,7 @@ describe('Title standard metadata', () => {
     it('when title is empty should update title', () => {
       const pageTitle = ''
 
-      sut.set(pageTitle)
+      sut(pageTitle)
 
       expect(titleService.setTitle).toHaveBeenCalledOnceWith(pageTitle)
     })
@@ -32,16 +34,16 @@ describe('Title standard metadata', () => {
     it('when title is provided should update title', () => {
       const pageTitle = 'Page title'
 
-      sut.set(pageTitle)
+      sut(pageTitle)
 
       expect(titleService.setTitle).toHaveBeenCalledOnceWith(pageTitle)
     })
   })
 })
 
-function makeSut(): TitleStandardMetadata {
+function makeSut(): MetadataSetter<Standard['title']> {
   TestBed.configureTestingModule({
-    providers: [TitleStandardMetadata, MockProvider(Title)],
+    providers: [MockProvider(Title)],
   })
-  return TestBed.inject(TitleStandardMetadata)
+  return STANDARD_TITLE_METADATA_SETTER_FACTORY(TestBed.inject(Title))
 }

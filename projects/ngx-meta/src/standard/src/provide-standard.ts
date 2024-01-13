@@ -1,27 +1,26 @@
 import { Provider } from '@angular/core'
-import { provideMetadata } from '@davidlj95/ngx-meta/core'
-import { TitleStandardMetadata } from './title-standard-metadata.service'
-import { DescriptionStandardMetadata } from './description-standard-metadata.service'
-import { AuthorStandardMetadata } from './author-standard-metadata.service'
-import { KeywordsStandardMetadata } from './keywords-standard-metadata.service'
-import { GeneratorStandardMetadata } from './generator-standard-metadata.service'
-import { ApplicationNameStandardMetadata } from './application-name-standard-metadata.service'
-import { CanonicalUrlStandardMetadata } from './canonical-url-standard-metadata.service'
 import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
-import { LocaleStandardMetadata } from './locale-standard-metadata.service'
 import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attribute.service'
+import { STANDARD_TITLE_METADATA_PROVIDER } from './standard-title-metadata-provider'
+import { STANDARD_DESCRIPTION_METADATA_PROVIDER } from './standard-description-metadata-provider'
+import { STANDARD_AUTHOR_METADATA_PROVIDER } from './standard-author-metadata-provider'
+import { STANDARD_KEYWORDS_METADATA_PROVIDER } from './standard-keywords-metadata-provider'
+import { STANDARD_GENERATOR_METADATA_PROVIDER } from './standard-generator-metadata-provider'
+import { STANDARD_APPLICATION_NAME_METADATA_PROVIDER } from './standard-application-name-metadata-provider'
+import { STANDARD_CANONICAL_URL_METADATA_PROVIDER } from './standard-canonical-url-metadata-provider'
+import { STANDARD_LOCALE_METADATA_PROVIDER } from './standard-locale-metadata-provider'
 
 export function provideStandard(): Provider[] {
   return [
-    provideMetadata(TitleStandardMetadata),
-    provideMetadata(DescriptionStandardMetadata),
-    provideMetadata(AuthorStandardMetadata),
-    provideMetadata(KeywordsStandardMetadata),
-    provideMetadata(GeneratorStandardMetadata),
-    provideMetadata(ApplicationNameStandardMetadata),
-    provideMetadata(CanonicalUrlStandardMetadata),
+    STANDARD_TITLE_METADATA_PROVIDER,
+    STANDARD_DESCRIPTION_METADATA_PROVIDER,
+    STANDARD_AUTHOR_METADATA_PROVIDER,
+    STANDARD_KEYWORDS_METADATA_PROVIDER,
+    STANDARD_GENERATOR_METADATA_PROVIDER,
+    STANDARD_APPLICATION_NAME_METADATA_PROVIDER,
+    STANDARD_CANONICAL_URL_METADATA_PROVIDER,
     LinkRelCanonicalService,
-    provideMetadata(LocaleStandardMetadata),
+    STANDARD_LOCALE_METADATA_PROVIDER,
     HtmlLangAttributeService,
   ]
 }

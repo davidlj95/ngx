@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { MetaService } from '../../core'
-import { GeneratorStandardMetadata } from './generator-standard-metadata.service'
+import { MetadataSetter, MetaService } from '../../core'
 import { VERSION } from '@angular/core'
+import { Standard } from './standard'
+import { STANDARD_GENERATOR_METADATA_SETTER_FACTORY } from './standard-generator-metadata-provider'
 
-describe('Generator standard metadata', () => {
+describe('Standard generator metadata provider', () => {
   enableAutoSpy()
-  let sut: GeneratorStandardMetadata
+  let sut: MetadataSetter<Standard['generator']>
   let metaService: jasmine.SpyObj<MetaService>
 
   beforeEach(() => {
@@ -17,7 +18,7 @@ describe('Generator standard metadata', () => {
 
   describe('set', () => {
     it('when not provided should call meta service with nothing value', () => {
-      sut.set(undefined)
+      sut(undefined)
 
       expect(metaService.set).toHaveBeenCalledOnceWith(
         jasmine.anything(),
@@ -25,12 +26,12 @@ describe('Generator standard metadata', () => {
       )
     })
     it('when null should call meta service with null value', () => {
-      sut.set(null)
+      sut(null)
 
       expect(metaService.set).toHaveBeenCalledOnceWith(jasmine.anything(), null)
     })
     it('when true should call meta service with Angular version as value', () => {
-      sut.set(true)
+      sut(true)
 
       expect(metaService.set).toHaveBeenCalledOnceWith(
         jasmine.anything(),
@@ -40,9 +41,9 @@ describe('Generator standard metadata', () => {
   })
 })
 
-function makeSut(): GeneratorStandardMetadata {
+function makeSut(): MetadataSetter<Standard['generator']> {
   TestBed.configureTestingModule({
-    providers: [GeneratorStandardMetadata, MockProvider(MetaService)],
+    providers: [MockProvider(MetaService)],
   })
-  return TestBed.inject(GeneratorStandardMetadata)
+  return STANDARD_GENERATOR_METADATA_SETTER_FACTORY(TestBed.inject(MetaService))
 }

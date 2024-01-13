@@ -1,15 +1,14 @@
 import { Provider } from '@angular/core'
-import { provideMetadata } from '@davidlj95/ngx-meta/core'
-import { FirstNameOpenGraphProfileMetadata } from './first-name-open-graph-profile-metadata'
-import { LastNameOpenGraphProfileMetadata } from './last-name-open-graph-profile-metadata'
-import { UsernameOpenGraphProfileMetadata } from './username-open-graph-profile-metadata'
-import { GenderOpenGraphProfileMetadata } from './gender-open-graph-profile-metadata'
+import { OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER } from './open-graph-profile-first-name-metadata-provider'
+import { OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER } from './open-graph-profile-last-name-metadata-provider'
+import { OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER } from './open-graph-profile-username-metadata-provider'
+import { OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER } from './open-graph-profile-gender-metadata-provider'
 
 export function provideOpenGraphProfile(): Provider[] {
   return [
-    provideMetadata(FirstNameOpenGraphProfileMetadata),
-    provideMetadata(LastNameOpenGraphProfileMetadata),
-    provideMetadata(UsernameOpenGraphProfileMetadata),
-    provideMetadata(GenderOpenGraphProfileMetadata),
+    OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER,
+    OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER,
+    OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER,
+    OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER,
   ]
 }

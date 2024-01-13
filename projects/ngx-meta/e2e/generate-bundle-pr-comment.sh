@@ -74,7 +74,11 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 1
 fi
 
-base_file() {
+base_file_provided() {
+  test -n "$base_file"
+}
+
+base_file_exists() {
   test -r "$base_file"
 }
 
@@ -89,13 +93,13 @@ echo "### 📦 Bundle size ($header)" >"$output_file"
   fi
   echo ""
   printf "| Module file | Size |"
-  if base_file; then
+  if base_file_provided; then
     echo " Base size | Difference"
   else
     echo ""
   fi
   printf "| --- | --- |"
-  if base_file; then
+  if base_file_provided; then
     echo " --- | --- |"
   else
     echo ""
@@ -129,20 +133,30 @@ for file in $files; do
   )"
   input_bytes_size=$(echo "$lib_files" | jq -r ".[\"$file\"].size")
   printf "| \`%s\` | %s |" "$beautified_file" "$(format_size_column "$input_bytes_size")"
-  if base_file; then
-    base_bytes_size="$(jq -r ".results[0].files[\"$file\"].size" "$base_file")"
-    base_size="$(format_size_column "$base_bytes_size")"
-    diff_bytes_size="$((input_bytes_size - base_bytes_size))"
-    diff_size="$(format_size_column "$diff_bytes_size")"
-    # Operate with precision, but output 2 decimals only
-    # https://askubuntu.com/a/217575/605666#comment1744264_217575
-    diff_percent="$(echo "res=$diff_bytes_size/$base_bytes_size*100; scale=2; res/1" | bc -l)"
-    diff=""
-    if [ "$diff_percent" != "0" ]; then
-      diff="$diff_percent%: $diff_size"
+  if base_file_provided; then
+    if base_file_exists; then
+      base_bytes_size="$(jq -r ".results[0].files[\"$file\"].size" "$base_file")"
+      base_size="$(format_size_column "$base_bytes_size")"
+      diff_bytes_size="$((input_bytes_size - base_bytes_size))"
+      diff_size="$(format_size_column "$diff_bytes_size")"
+      # Operate with precision, but output 2 decimals only
+      # https://askubuntu.com/a/217575/605666#comment1744264_217575
+      diff_percent="$(echo "res=$diff_bytes_size/$base_bytes_size*100; scale=2; res/1" | bc -l)"
+      diff="No change"
+      if [ "$diff_percent" != "0" ]; then
+        diff="$diff_percent%: $diff_size"
+      fi
+      echo " $base_size | $diff |"
+    else
+      echo " Not available | Not available |"
     fi
-    echo " $base_size | $diff |"
   else
     echo ""
   fi
 done >>"$output_file"
+
+if base_file_provided && ! base_file_exists; then
+    echo ""
+    printf "Base size data is not available yet. "
+    echo "Try again when the CI/CD has finished running on main branch"
+fi >> "$output_file"

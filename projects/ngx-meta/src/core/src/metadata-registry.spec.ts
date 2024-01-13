@@ -1,12 +1,12 @@
 import { MetadataRegistry } from './metadata-registry'
 import { TestBed } from '@angular/core/testing'
-import { makeMetadata } from './__tests__/make-metadata'
-import { Metadata } from './metadata'
+import { makeMetadataProvider } from './__tests__/make-metadata-provider'
+import { MetadataProvider } from './metadata-provider'
 import { MockProvider } from 'ng-mocks'
 
 describe('MetadataRegistry', () => {
   const dummyId = 'dummyId'
-  const dummyMetadata = makeMetadata({ id: dummyId })
+  const dummyMetadata = makeMetadataProvider({ id: dummyId })
 
   it('should register metadata from DI system', () => {
     const sut = makeSut({ metadata: [dummyMetadata] })
@@ -27,7 +27,7 @@ describe('MetadataRegistry', () => {
   })
 
   it('should not register twice the same metadata', () => {
-    const sameDummyMetadata = makeMetadata({
+    const sameDummyMetadata = makeMetadataProvider({
       id: dummyId,
       spyName: 'duplicated metadata set',
     })
@@ -44,7 +44,7 @@ describe('MetadataRegistry', () => {
 
 function makeSut(
   opts: {
-    metadata?: ReadonlyArray<Metadata<unknown>>
+    metadata?: ReadonlyArray<MetadataProvider<unknown>>
   } = {},
 ) {
   TestBed.configureTestingModule({
@@ -53,7 +53,7 @@ function makeSut(
       MetadataRegistry,
       ...(opts.metadata
         ? opts.metadata.map((metadata) =>
-            MockProvider(Metadata, metadata, 'useValue', true),
+            MockProvider(MetadataProvider, metadata, 'useValue', true),
           )
         : []),
     ],

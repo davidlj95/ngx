@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common'
 import {
   GlobalMetadata,
-  GlobalMetadataDefinition,
+  makeGlobalMetadata,
   MetadataSetterFactory,
   provideMetadataFactory,
 } from '@davidlj95/ngx-meta/core'
@@ -30,7 +30,7 @@ export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
 }
 
 export const JSON_LD_METADATA_PROVIDER = provideMetadataFactory(
-  new GlobalMetadataDefinition('jsonLd'),
+  makeGlobalMetadata('jsonLd'),
   JSON_LD_METADATA_SETTER_FACTORY,
   [DOCUMENT],
 )

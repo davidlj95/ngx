@@ -4,7 +4,7 @@ import { MetadataJsonResolver } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
 import { isObject } from './is-object'
-import { MetadataDefinition } from './metadata-definition'
+import { Metadata } from './metadata'
 import { MaybeUndefined } from './maybe-undefined'
 
 @Injectable({ providedIn: 'root' })
@@ -15,10 +15,7 @@ export class MetadataResolver {
     private readonly defaultsService: DefaultsService,
   ) {}
 
-  get<T>(
-    metadataDefinition: MetadataDefinition,
-    values: MetadataValues,
-  ): T | undefined {
+  get<T>(metadataDefinition: Metadata, values: MetadataValues): T | undefined {
     const value = this.jsonResolver.get(metadataDefinition, values)
     const routeValue = this.jsonResolver.get(
       metadataDefinition,

@@ -1,6 +1,6 @@
-import { Metadata } from './metadata'
+import { MetadataProvider } from './metadata-provider'
 import { FactoryProvider } from '@angular/core'
-import { MetadataDefinition } from './metadata-definition'
+import { Metadata } from './metadata'
 import { MetadataSetter } from './metadata-setter'
 
 export type MetadataSetterFactory<T> = (
@@ -8,22 +8,22 @@ export type MetadataSetterFactory<T> = (
 ) => MetadataSetter<T>
 
 const makeMetadata = <T>(
-  definition: MetadataDefinition,
+  definition: Metadata,
   set: MetadataSetter<T>,
-): Metadata<T> => {
+): MetadataProvider<T> => {
   return {
-    definition,
+    metadata: definition,
     set,
   }
 }
 
 export function provideMetadataFactory<T>(
-  definition: MetadataDefinition,
+  definition: Metadata,
   setterFactory: MetadataSetterFactory<T>,
   deps?: FactoryProvider['deps'],
 ): FactoryProvider {
   return {
-    provide: Metadata,
+    provide: MetadataProvider,
     multi: true,
     useFactory: (...deps: unknown[]) =>
       makeMetadata(definition, setterFactory(...deps)),

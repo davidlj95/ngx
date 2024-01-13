@@ -6,21 +6,21 @@ import { MockProviders } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataJsonResolver } from './metadata-json-resolver'
 import { RouteMetadataValues } from './route-metadata-values'
-import { MetadataDefinition } from './metadata-definition'
+import { Metadata } from './metadata'
 import { MetadataValues } from './metadata-values'
-import { makeGlobalMetadataDefinition } from './__tests__/make-global-metadata-definition'
 import { MaybeUndefined } from './maybe-undefined'
+import { makeGlobalMetadata } from './make-global-metadata'
 
 describe('MetadataResolver', () => {
   enableAutoSpy()
   let sut: MetadataResolver
-  let dummyMetadataDefinition: MetadataDefinition
+  let dummyMetadataDefinition: Metadata
   let jsonResolver: jasmine.SpyObj<MetadataJsonResolver>
   let routeMetadataValues: jasmine.SpyObj<RouteMetadataValues>
   let defaultsService: jasmine.SpyObj<DefaultsService>
 
   beforeEach(() => {
-    dummyMetadataDefinition = makeGlobalMetadataDefinition()
+    dummyMetadataDefinition = makeGlobalMetadata('dummy')
     sut = makeSut()
     jsonResolver = TestBed.inject(
       MetadataJsonResolver,
@@ -35,7 +35,7 @@ describe('MetadataResolver', () => {
 
   function mockJsonResolver(returnMap: Map<MetadataValues, unknown>) {
     jsonResolver.get.and.callFake(
-      <T>(def: MetadataDefinition, values: MetadataValues) =>
+      <T>(def: Metadata, values: MetadataValues) =>
         returnMap.get(values) as MaybeUndefined<T>,
     )
   }
@@ -142,7 +142,7 @@ describe('MetadataResolver', () => {
         beforeEach(() => {
           routeMetadataValues.get.and.returnValue(routeValues)
           jsonResolver.get.and.callFake(
-            <T>(def: MetadataDefinition, values: MetadataValues) => {
+            <T>(def: Metadata, values: MetadataValues) => {
               switch (values) {
                 case routeValues:
                   return routeValue as T

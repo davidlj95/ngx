@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing'
 import { MetadataService } from './metadata.service'
 import { MockProviders } from 'ng-mocks'
-import { makeMetadata } from './__tests__/make-metadata'
+import { makeMetadataProvider } from './__tests__/make-metadata-provider'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataResolver } from './metadata-resolver'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataRegistry } from './metadata-registry'
 import { MaybeUndefined } from './maybe-undefined'
-import { MetadataDefinition } from './metadata-definition'
+import { Metadata } from './metadata'
 
 describe('MetadataService', () => {
   enableAutoSpy()
@@ -22,8 +22,8 @@ describe('MetadataService', () => {
   })
 
   describe('set', () => {
-    const firstMetadata = makeMetadata({ id: 'first' })
-    const secondMetadata = makeMetadata({ id: 'second' })
+    const firstMetadata = makeMetadataProvider({ id: 'first' })
+    const secondMetadata = makeMetadataProvider({ id: 'second' })
     const dummyValues = {}
 
     beforeEach(() => {
@@ -36,14 +36,14 @@ describe('MetadataService', () => {
       ) as unknown as jasmine.SpyObj<MetadataResolver>
       const dummyFirstMetadataValue = 'firstMetadataValue'
       const dummySecondMetadataValue = 'secondMetadataValue'
-      resolver.get.and.callFake(<T>(definition: MetadataDefinition) => {
+      resolver.get.and.callFake(<T>(definition: Metadata) => {
         switch (definition) {
-          case firstMetadata.definition:
+          case firstMetadata.metadata:
             return dummyFirstMetadataValue as MaybeUndefined<T>
-          case secondMetadata.definition:
+          case secondMetadata.metadata:
             return dummySecondMetadataValue as MaybeUndefined<T>
           default:
-            throw new Error('Unexpected metadata definition')
+            throw new Error('Unexpected metadata')
         }
       })
       sut.set(dummyValues)
@@ -51,12 +51,12 @@ describe('MetadataService', () => {
       expect(metadataRegistry.getAll).toHaveBeenCalledOnceWith()
       expect(resolver.get).toHaveBeenCalledTimes(2)
       expect(resolver.get).toHaveBeenCalledWith(
-        firstMetadata.definition,
+        firstMetadata.metadata,
         dummyValues,
       )
       expect(firstMetadata.set).toHaveBeenCalledWith(dummyFirstMetadataValue)
       expect(resolver.get).toHaveBeenCalledWith(
-        secondMetadata.definition,
+        secondMetadata.metadata,
         dummyValues,
       )
       expect(secondMetadata.set).toHaveBeenCalledWith(dummySecondMetadataValue)

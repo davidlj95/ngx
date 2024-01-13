@@ -1,21 +1,20 @@
 import { Provider } from '@angular/core'
-import { provideMetadata } from '@davidlj95/ngx-meta/core'
-import { TitleOpenGraphMetadata } from './title-open-graph-metadata'
-import { TypeOpenGraphMetadata } from './type-open-graph-metadata'
-import { ImageOpenGraphMetadata } from './image-open-graph-metadata'
-import { UrlOpenGraphMetadata } from './url-open-graph-metadata'
-import { DescriptionOpenGraphMetadata } from './description-open-graph-metadata'
-import { LocaleOpenGraphMetadata } from './locale-open-graph-metadata'
-import { SiteNameOpenGraphMetadata } from './site-name-open-graph-metadata'
+import { OPEN_GRAPH_TITLE_METADATA_PROVIDER } from './open-graph-title-metadata-provider'
+import { OPEN_GRAPH_TYPE_METADATA_PROVIDER } from './open-graph-type-metadata-provider'
+import { OPEN_GRAPH_IMAGE_METADATA_PROVIDER } from './open-graph-image-metadata-provider'
+import { OPEN_GRAPH_URL_METADATA_PROVIDER } from './open-graph-url-metadata-provider'
+import { OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER } from './open-graph-description-metadata-provider'
+import { OPEN_GRAPH_LOCALE_METADATA_PROVIDER } from './open-graph-locale-metadata-provider'
+import { OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER } from './open-graph-site-name-metadata-provider'
 
 export function provideOpenGraph(): Provider[] {
   return [
-    provideMetadata(TitleOpenGraphMetadata),
-    provideMetadata(TypeOpenGraphMetadata),
-    provideMetadata(ImageOpenGraphMetadata),
-    provideMetadata(UrlOpenGraphMetadata),
-    provideMetadata(DescriptionOpenGraphMetadata),
-    provideMetadata(LocaleOpenGraphMetadata),
-    provideMetadata(SiteNameOpenGraphMetadata),
+    OPEN_GRAPH_TITLE_METADATA_PROVIDER,
+    OPEN_GRAPH_TYPE_METADATA_PROVIDER,
+    OPEN_GRAPH_IMAGE_METADATA_PROVIDER,
+    OPEN_GRAPH_URL_METADATA_PROVIDER,
+    OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER,
+    OPEN_GRAPH_LOCALE_METADATA_PROVIDER,
+    OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER,
   ]
 }

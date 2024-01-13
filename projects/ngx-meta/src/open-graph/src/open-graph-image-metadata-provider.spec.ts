@@ -1,13 +1,14 @@
-import { ImageOpenGraphMetadata } from './image-open-graph-metadata'
 import { TestBed } from '@angular/core/testing'
 import { MockProviders } from 'ng-mocks'
-import { MetaService } from '@davidlj95/ngx-meta/core'
+import { MetadataSetter, MetaService } from '@davidlj95/ngx-meta/core'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { OpenGraphImage } from './open-graph-image'
+import { OpenGraph } from './open-graph'
+import { OPEN_GRAPH_IMAGE_SETTER_FACTORY } from './open-graph-image-metadata-provider'
 
-describe('Image Open Graph metadata', () => {
+describe('Open Graph image metadata', () => {
   enableAutoSpy()
-  let sut: ImageOpenGraphMetadata
+  let sut: MetadataSetter<OpenGraph['image']>
   let metaService: jasmine.SpyObj<MetaService>
 
   beforeEach(() => {
@@ -27,7 +28,7 @@ describe('Image Open Graph metadata', () => {
   describe('set', () => {
     describe('when url is provided', () => {
       it('should set all meta properties', () => {
-        sut.set(image)
+        sut(image)
 
         const props = Object.keys(image).length
         expect(metaService.set).toHaveBeenCalledTimes(props)
@@ -59,7 +60,7 @@ describe('Image Open Graph metadata', () => {
     })
     describe('when no url is defined', () => {
       it('should remove all meta properties', () => {
-        sut.set({ ...image, url: undefined })
+        sut({ ...image, url: undefined })
 
         const props = Object.keys(image).length
         expect(metaService.set).toHaveBeenCalledTimes(props)
@@ -71,9 +72,9 @@ describe('Image Open Graph metadata', () => {
   })
 })
 
-function makeSut(): ImageOpenGraphMetadata {
+function makeSut(): MetadataSetter<OpenGraph['image']> {
   TestBed.configureTestingModule({
-    providers: [ImageOpenGraphMetadata, MockProviders(MetaService)],
+    providers: [MockProviders(MetaService)],
   })
-  return TestBed.inject(ImageOpenGraphMetadata)
+  return OPEN_GRAPH_IMAGE_SETTER_FACTORY(TestBed.inject(MetaService))
 }

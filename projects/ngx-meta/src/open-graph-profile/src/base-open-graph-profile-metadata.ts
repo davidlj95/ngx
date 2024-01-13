@@ -5,9 +5,8 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraphProfileMetadata } from './open-graph-profile-metadata'
 import { OpenGraphProfileMetadataRouteData } from './open-graph-profile-metadata-route-data'
-import { OpenGraphMetadataRouteData } from '@davidlj95/ngx-meta/open-graph'
 
-export const OG_SCOPE: keyof OpenGraphMetadataRouteData['meta'] = 'openGraph'
+export const OG_SCOPE = 'openGraph'
 export const PROFILE_SCOPE: keyof OpenGraphProfileMetadataRouteData['meta']['openGraph'] =
   'profile'
 

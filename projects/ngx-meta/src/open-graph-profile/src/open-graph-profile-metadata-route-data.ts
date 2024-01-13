@@ -1,10 +1,10 @@
 import { OpenGraphProfileMetadata } from './open-graph-profile-metadata'
-import { OpenGraphMetadataRouteData } from '@davidlj95/ngx-meta/open-graph'
+import { MetadataRouteData } from '@davidlj95/ngx-meta/routing'
+import { OpenGraph } from '@davidlj95/ngx-meta/open-graph'
 
-export interface OpenGraphProfileMetadataRouteData
-  extends OpenGraphMetadataRouteData {
+export interface OpenGraphProfileMetadataRouteData extends MetadataRouteData {
   meta: {
-    openGraph: OpenGraphMetadataRouteData['meta']['openGraph'] & {
+    openGraph: OpenGraph & {
       profile: OpenGraphProfileMetadata
     }
   }

@@ -1,7 +1,6 @@
 import { Provider } from '@angular/core'
-import { provideMetadata } from '@davidlj95/ngx-meta/core'
-import { JsonLdMetadata } from './json-ld-metadata'
+import { JSON_LD_METADATA_PROVIDER } from './json-ld-metadata-provider'
 
 export function provideJsonLd(): Provider[] {
-  return [provideMetadata(JsonLdMetadata)]
+  return [JSON_LD_METADATA_PROVIDER]
 }

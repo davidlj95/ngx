@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.19](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.18...ngx-meta-v1.0.0-alpha.19) (2024-01-13)
+
+### Performance Improvements
+
+- reduce standard module bundle size ([#157](https://github.com/davidlj95/ngx/issues/157)) ([6d1692c](https://github.com/davidlj95/ngx/commit/6d1692c0b39a4c83f227e20eaa714faed8254581))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#158](https://github.com/davidlj95/ngx/issues/158)) ([5cb7131](https://github.com/davidlj95/ngx/commit/5cb7131b2e6a082ead0ba3941a46c92643fc704c))
+
 ## [`ngx-meta` v1.0.0-alpha.18](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.17...ngx-meta-v1.0.0-alpha.18) (2024-01-13)
 
 ### Performance Improvements

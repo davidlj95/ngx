@@ -1,3 +1,32 @@
+## [`ngx-meta` v1.0.0-alpha.17](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.16...ngx-meta-v1.0.0-alpha.17) (2024-01-13)
+
+### Performance Improvements
+
+- reduce Open Graph module bundle size ([#150](https://github.com/davidlj95/ngx/issues/150)) ([dff2686](https://github.com/davidlj95/ngx/commit/dff268668d70df401ff743290b0a9a1702ce483b))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#142](https://github.com/davidlj95/ngx/issues/142)) ([8a79fb4](https://github.com/davidlj95/ngx/commit/8a79fb471dbe63dbb409d62881d8a8085a34e8f2))
+
+### Build System
+
+- add option to show base bundle size & diff ([#146](https://github.com/davidlj95/ngx/issues/146)) ([f7a4e4c](https://github.com/davidlj95/ngx/commit/f7a4e4c61375040d9c89a9cbc3e16c9ec71ee339))
+- **deps-dev:** bump follow-redirects in /projects/ngx-meta/e2e/a15 ([#139](https://github.com/davidlj95/ngx/issues/139)) ([88ebdeb](https://github.com/davidlj95/ngx/commit/88ebdeba2a85a000fca9da0cfec7c75f4a9a42d2))
+- **deps-dev:** bump follow-redirects in /projects/ngx-meta/e2e/a16 ([#137](https://github.com/davidlj95/ngx/issues/137)) ([22b1da7](https://github.com/davidlj95/ngx/commit/22b1da70124aca432cb9154f172480ab222917c6))
+- **deps-dev:** bump follow-redirects in /projects/ngx-meta/e2e/a17 ([#138](https://github.com/davidlj95/ngx/issues/138)) ([eab7583](https://github.com/davidlj95/ngx/commit/eab75839c146cad043606f2bcb9df1f6b6e9021f))
+- **ide:** launch tests in headless browser ([#149](https://github.com/davidlj95/ngx/issues/149)) ([274e894](https://github.com/davidlj95/ngx/commit/274e8942991d394fd95b553d99e301809d5293fe))
+
+### Continuous (Integration|Deployment)
+
+- add precision to bundle size diff PR comment ([#151](https://github.com/davidlj95/ngx/issues/151)) ([6589afc](https://github.com/davidlj95/ngx/commit/6589afcc18133c4bd57364ecfc5c9b8f110e75cc))
+- add ref back + update comment by id ([#145](https://github.com/davidlj95/ngx/issues/145)) ([e36b740](https://github.com/davidlj95/ngx/commit/e36b7400720cabeff033a79652c469e77599f707))
+- handle base bundle size not available case ([#153](https://github.com/davidlj95/ngx/issues/153)) ([15b4541](https://github.com/davidlj95/ngx/commit/15b4541a0ac795f7622c37d7c02340aef82321fd))
+- properly fix diff percent scale ([#152](https://github.com/davidlj95/ngx/issues/152)) ([0cf197d](https://github.com/davidlj95/ngx/commit/0cf197dc9285cf12cc308420f6bf233f7d72c413))
+- show bundle size diff in PRs ([#148](https://github.com/davidlj95/ngx/issues/148)) ([f77450a](https://github.com/davidlj95/ngx/commit/f77450aee4ae5ec0cdd5c5daae2bd366bcc8c2e1))
+- split bundle size in separate job ([#143](https://github.com/davidlj95/ngx/issues/143)) ([4e7a198](https://github.com/davidlj95/ngx/commit/4e7a19874c08843e271989bca4ed4d0e38b7a363))
+- store bundle size info ([#144](https://github.com/davidlj95/ngx/issues/144)) ([04bfe0a](https://github.com/davidlj95/ngx/commit/04bfe0ad3a330befd485f5c2fc916a0b00336140))
+- store bundle size info as GitHub check run ([#147](https://github.com/davidlj95/ngx/issues/147)) ([e041eec](https://github.com/davidlj95/ngx/commit/e041eec0d9a5613e1322f6c484a930778e480315))
+
 ## [`ngx-meta` v1.0.0-alpha.16](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.15...ngx-meta-v1.0.0-alpha.16) (2024-01-10)
 
 ### Features

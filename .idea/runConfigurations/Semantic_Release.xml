@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Semantic Release" type="NodeJSConfigurationType" node-parameters="--env-file .env" path-to-js-file="node_modules/.pnpm/semantic-release@22.0.8_typescript@5.2.2/node_modules/semantic-release/bin/semantic-release.js" working-dir="$PROJECT_DIR$">
-    <method v="2" />
-  </configuration>
-</component>

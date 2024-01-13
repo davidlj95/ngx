@@ -1,3 +1,17 @@
+## [`ngx-meta` v1.0.0-alpha.18](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.17...ngx-meta-v1.0.0-alpha.18) (2024-01-13)
+
+### Performance Improvements
+
+- reduce Twitter Card module bundle size ([#155](https://github.com/davidlj95/ngx/issues/155)) ([c59da29](https://github.com/davidlj95/ngx/commit/c59da29f28b4f516faad1e0df25a7dbdf046e4ff))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#154](https://github.com/davidlj95/ngx/issues/154)) ([7a3f111](https://github.com/davidlj95/ngx/commit/7a3f111822fc3ada5c36704a68a1f150fc0b92ea))
+
+### Build System
+
+- **ide:** remove semantic release run config ([#156](https://github.com/davidlj95/ngx/issues/156)) ([856a7c9](https://github.com/davidlj95/ngx/commit/856a7c92d1a8b32c14969608ff16a71686c17fd8))
+
 ## [`ngx-meta` v1.0.0-alpha.17](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.16...ngx-meta-v1.0.0-alpha.17) (2024-01-13)
 
 ### Performance Improvements

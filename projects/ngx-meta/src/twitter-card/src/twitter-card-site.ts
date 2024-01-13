@@ -1,6 +1,3 @@
-import { TwitterCardSiteId } from './twitter-card-site-id'
-import { TwitterCardSiteUsername } from './twitter-card-site-username'
-
 /**
  * Username or ID of the author of the website
  *
@@ -13,3 +10,25 @@ export type TwitterCardSite =
   | TwitterCardSiteId
   | TwitterCardSiteUsername
   | (TwitterCardSiteId & TwitterCardSiteUsername)
+
+/**
+ * Same as `twitter:site`, but the user’s Twitter ID.
+ * Either `twitter:site` or `twitter:site:id` is required.
+ *
+ * Used with `summary`, `summary_large_image`, `player` cards
+ *
+ * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter
+ */
+export interface TwitterCardSiteId {
+  id: string | null
+}
+
+/**
+ * `@username` of website.
+ * Either `twitter:site` or `twitter:site:id` is required.
+ *
+ * Used with `summary`, `summary_large_image`, `app`, `player` cards
+ */
+export interface TwitterCardSiteUsername {
+  username: string | null
+}

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
-import { StandardMetadata } from '../standard-metadata'
+import { Standard } from '../standard'
 
 /**
  * Manages the <link rel='canonical'> HTML meta tag
@@ -12,7 +12,7 @@ import { StandardMetadata } from '../standard-metadata'
 export class LinkRelCanonicalService {
   constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 
-  set(url: StandardMetadata['canonicalUrl']) {
+  set(url: Standard['canonicalUrl']) {
     const existingLinkElement = this.getElement()
     if (existingLinkElement) {
       this.document.head.removeChild(existingLinkElement)

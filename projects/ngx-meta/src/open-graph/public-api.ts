@@ -5,7 +5,7 @@ export * from './src/open-graph-image'
 export * from './src/open-graph-meta-property'
 export * from './src/open-graph-metadata'
 export * from './src/open-graph-type'
-// Providers
+// Specific providers
 export * from './src/open-graph-title-metadata-provider'
 export * from './src/open-graph-type-metadata-provider'
 export * from './src/open-graph-image-metadata-provider'

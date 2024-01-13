@@ -1,3 +1,14 @@
+## [`ngx-meta` v1.0.0-alpha.20](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.19...ngx-meta-v1.0.0-alpha.20) (2024-01-13)
+
+### Performance Improvements
+
+- reduce JSON LD module bundle size ([#161](https://github.com/davidlj95/ngx/issues/161)) ([1b8df27](https://github.com/davidlj95/ngx/commit/1b8df27f32ec5da0a29160a053b2361d0551c199))
+- reduce Open Graph profile module bundle size ([#160](https://github.com/davidlj95/ngx/issues/160)) ([be3acf9](https://github.com/davidlj95/ngx/commit/be3acf9945a66250481afa6d44a5b34ceb2c5b39))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#159](https://github.com/davidlj95/ngx/issues/159)) ([d0bab3b](https://github.com/davidlj95/ngx/commit/d0bab3b4960a8f344a6a1f9c3777869087a118d9))
+
 ## [`ngx-meta` v1.0.0-alpha.19](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.18...ngx-meta-v1.0.0-alpha.19) (2024-01-13)
 
 ### Performance Improvements

@@ -156,6 +156,7 @@ for file in $files; do
 done >>"$output_file"
 
 if base_file_provided && ! base_file_exists; then
+    echo ""
     printf "Base size data is not available yet. "
     echo "Try again when the CI/CD has finished running on main branch"
 fi >> "$output_file"

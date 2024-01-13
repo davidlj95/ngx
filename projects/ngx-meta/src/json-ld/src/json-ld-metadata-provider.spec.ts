@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing'
 
-import { JsonLdMetadata } from './json-ld-metadata'
 import { JsonLdScriptHarness } from './__tests__/json-ld-script-harness'
 import { DOCUMENT } from '@angular/common'
+import { GlobalMetadata, MetadataSetter } from '../../core'
+import { JSON_LD_METADATA_SETTER_FACTORY } from './json-ld-metadata-provider'
 
-describe('JSON LD metadata', () => {
-  let sut: JsonLdMetadata
+describe('JSON LD metadata provider', () => {
+  let sut: MetadataSetter<GlobalMetadata['jsonLd']>
   let jsonLdScriptHarness: JsonLdScriptHarness
 
   beforeEach(() => {
@@ -29,7 +30,7 @@ describe('JSON LD metadata', () => {
         })
 
         it('should remove it', () => {
-          sut.set(jsonLd)
+          sut(jsonLd)
 
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
         })
@@ -39,7 +40,7 @@ describe('JSON LD metadata', () => {
         it('should not create it', () => {
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
 
-          sut.set(jsonLd)
+          sut(jsonLd)
 
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
         })
@@ -59,7 +60,7 @@ describe('JSON LD metadata', () => {
         it('should update it', () => {
           expect(jsonLdScriptHarness.getAll()).toHaveSize(1)
 
-          sut.set(jsonLd)
+          sut(jsonLd)
 
           const jsonLdScriptElements = jsonLdScriptHarness.getAll()
           expect(jsonLdScriptElements).toHaveSize(1)
@@ -73,7 +74,7 @@ describe('JSON LD metadata', () => {
         it('should create it', () => {
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
 
-          sut.set(jsonLd)
+          sut(jsonLd)
 
           const jsonLdScriptElements = jsonLdScriptHarness.getAll()
           expect(jsonLdScriptElements).toHaveSize(1)
@@ -89,7 +90,7 @@ describe('JSON LD metadata', () => {
 
       describe('when JSON LD script element does not exist', () => {
         it('should do nothing', () => {
-          sut.set(jsonLd)
+          sut(jsonLd)
 
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
         })
@@ -101,7 +102,7 @@ describe('JSON LD metadata', () => {
         })
 
         it('should remove it', () => {
-          sut.set(jsonLd)
+          sut(jsonLd)
 
           expect(jsonLdScriptHarness.getAll()).toHaveSize(0)
         })
@@ -110,7 +111,7 @@ describe('JSON LD metadata', () => {
   })
 })
 
-function makeSut() {
-  TestBed.configureTestingModule({ providers: [JsonLdMetadata] })
-  return TestBed.inject(JsonLdMetadata)
+function makeSut(): MetadataSetter<GlobalMetadata['jsonLd']> {
+  TestBed.configureTestingModule({})
+  return JSON_LD_METADATA_SETTER_FACTORY(TestBed.inject(DOCUMENT))
 }

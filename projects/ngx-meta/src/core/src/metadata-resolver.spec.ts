@@ -6,21 +6,21 @@ import { MockProviders } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataJsonResolver } from './metadata-json-resolver'
 import { RouteMetadataValues } from './route-metadata-values'
-import { MetadataDefinition } from './metadata-definition'
+import { Metadata } from './metadata'
 import { MetadataValues } from './metadata-values'
-import { makeGlobalMetadataDefinition } from './__tests__/make-global-metadata-definition'
 import { MaybeUndefined } from './maybe-undefined'
+import { makeGlobalMetadata } from './make-global-metadata'
 
 describe('MetadataResolver', () => {
   enableAutoSpy()
   let sut: MetadataResolver
-  let dummyMetadataDefinition: MetadataDefinition
+  let dummyMetadata: Metadata
   let jsonResolver: jasmine.SpyObj<MetadataJsonResolver>
   let routeMetadataValues: jasmine.SpyObj<RouteMetadataValues>
   let defaultsService: jasmine.SpyObj<DefaultsService>
 
   beforeEach(() => {
-    dummyMetadataDefinition = makeGlobalMetadataDefinition()
+    dummyMetadata = makeGlobalMetadata('dummy')
     sut = makeSut()
     jsonResolver = TestBed.inject(
       MetadataJsonResolver,
@@ -35,7 +35,7 @@ describe('MetadataResolver', () => {
 
   function mockJsonResolver(returnMap: Map<MetadataValues, unknown>) {
     jsonResolver.get.and.callFake(
-      <T>(def: MetadataDefinition, values: MetadataValues) =>
+      <T>(metadata: Metadata, values: MetadataValues) =>
         returnMap.get(values) as MaybeUndefined<T>,
     )
   }
@@ -56,16 +56,16 @@ describe('MetadataResolver', () => {
       })
 
       it('should resolve value using values', () => {
-        sut.get(dummyMetadataDefinition, dummyValues)
+        sut.get(dummyMetadata, dummyValues)
 
         expect(jsonResolver.get).toHaveBeenCalledWith(
-          dummyMetadataDefinition,
+          dummyMetadata,
           dummyValues,
         )
       })
 
       it('should return its value', () => {
-        expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
+        expect(sut.get(dummyMetadata, dummyValues)).toEqual(value)
       })
     })
 
@@ -76,17 +76,17 @@ describe('MetadataResolver', () => {
       })
 
       it('should resolve value using route metadata values', () => {
-        sut.get(dummyMetadataDefinition, dummyValues)
+        sut.get(dummyMetadata, dummyValues)
 
         expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
         expect(jsonResolver.get).toHaveBeenCalledWith(
-          dummyMetadataDefinition,
+          dummyMetadata,
           routeValues,
         )
       })
 
       it('should return value obtained from route metadata values', () => {
-        expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
+        expect(sut.get(dummyMetadata, dummyValues)).toEqual(value)
       })
     })
 
@@ -97,17 +97,17 @@ describe('MetadataResolver', () => {
       })
 
       it('should resolve value using default values', () => {
-        sut.get(dummyMetadataDefinition, dummyValues)
+        sut.get(dummyMetadata, dummyValues)
 
         expect(defaultsService.get).toHaveBeenCalledOnceWith()
         expect(jsonResolver.get).toHaveBeenCalledWith(
-          dummyMetadataDefinition,
+          dummyMetadata,
           defaultValues,
         )
       })
 
       it('should return value obtained from defaults', () => {
-        expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
+        expect(sut.get(dummyMetadata, dummyValues)).toEqual(value)
       })
     })
 
@@ -129,7 +129,7 @@ describe('MetadataResolver', () => {
         })
 
         it('should return the merged object, with value props having more priority', () => {
-          expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual({
+          expect(sut.get(dummyMetadata, dummyValues)).toEqual({
             ...routeValueObject,
             ...valueObject,
           })
@@ -141,29 +141,23 @@ describe('MetadataResolver', () => {
 
         beforeEach(() => {
           routeMetadataValues.get.and.returnValue(routeValues)
-          jsonResolver.get.and.callFake(
-            <T>(def: MetadataDefinition, values: MetadataValues) => {
-              switch (values) {
-                case routeValues:
-                  return routeValue as T
-                case values:
-                  return value as T
-                default:
-                  throw new Error('Unexpected values, cannot mock')
-              }
-            },
+          mockJsonResolver(
+            new Map<MetadataValues, unknown>([
+              [routeValues, routeValue],
+              [dummyValues, value],
+            ]),
           )
         })
 
         it('should return value from values object', () => {
-          expect(sut.get(dummyMetadataDefinition, dummyValues)).toEqual(value)
+          expect(sut.get(dummyMetadata, dummyValues)).toEqual(value)
         })
       })
     })
 
     describe('when neither value, route value or default value exists', () => {
       it('should return nothing', () => {
-        expect(sut.get(dummyMetadataDefinition, dummyValues)).toBeUndefined()
+        expect(sut.get(dummyMetadata, dummyValues)).toBeUndefined()
       })
     })
   })

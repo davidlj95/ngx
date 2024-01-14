@@ -1,26 +1,28 @@
 import { Inject, Injectable, Optional } from '@angular/core'
-import { Metadata } from './metadata'
+import { MetadataProvider } from './metadata-provider'
 
 @Injectable({ providedIn: 'root' })
 export class MetadataRegistry {
-  private readonly byId = new Map<string, Metadata<unknown>>()
+  private readonly byId = new Map<string, MetadataProvider<unknown>>()
 
   constructor(
     @Optional()
-    @Inject(Metadata)
-    private readonly injectedMetadata: ReadonlyArray<Metadata<unknown>> | null,
+    @Inject(MetadataProvider)
+    private readonly injectedProviders: ReadonlyArray<
+      MetadataProvider<unknown>
+    > | null,
   ) {
-    this.injectedMetadata?.forEach((metadata) => this.register(metadata))
+    this.injectedProviders?.forEach((metadata) => this.register(metadata))
   }
 
-  register(metadata: Metadata<unknown>) {
-    if (this.byId.has(metadata.definition.id)) {
+  register(provider: MetadataProvider<unknown>) {
+    if (this.byId.has(provider.metadata.id)) {
       return
     }
-    this.byId.set(metadata.definition.id, metadata)
+    this.byId.set(provider.metadata.id, provider)
   }
 
-  getAll(): Iterable<Metadata<unknown>> {
+  getAll(): Iterable<MetadataProvider<unknown>> {
     return this.byId.values()
   }
 }

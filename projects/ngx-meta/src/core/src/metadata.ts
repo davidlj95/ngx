@@ -1,6 +1,5 @@
-import { MetadataDefinition } from './metadata-definition'
-
-export abstract class Metadata<Value, Global extends string = string> {
-  abstract readonly definition: MetadataDefinition<Global>
-  abstract set(value: Value | null): void
+export interface Metadata<Global extends string = string> {
+  readonly id: string
+  readonly jsonPath: ReadonlyArray<string>
+  readonly global?: Global
 }

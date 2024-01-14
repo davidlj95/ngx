@@ -15,7 +15,7 @@ export class MetadataService {
   public set(values: MetadataValues = {}): void {
     const allMetadata = this.registry.getAll()
     for (const metadata of allMetadata) {
-      metadata.set(this.resolver.get(metadata.definition, values))
+      metadata.set(this.resolver.get(metadata.metadata, values))
     }
     this.routeValues.set(values)
   }

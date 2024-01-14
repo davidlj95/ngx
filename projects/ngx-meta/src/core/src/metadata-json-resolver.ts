@@ -1,4 +1,4 @@
-import { MetadataDefinition } from './metadata-definition'
+import { Metadata } from './metadata'
 import { MetadataValues } from './metadata-values'
 import { MaybeUndefined } from './maybe-undefined'
 import { isObject } from './is-object'
@@ -6,10 +6,7 @@ import { Injectable } from '@angular/core'
 
 @Injectable({ providedIn: 'root' })
 export class MetadataJsonResolver {
-  get<T>(
-    definition: MetadataDefinition,
-    values?: MetadataValues,
-  ): T | undefined {
+  get<T>(definition: Metadata, values?: MetadataValues): T | undefined {
     if (values === undefined) {
       return
     }

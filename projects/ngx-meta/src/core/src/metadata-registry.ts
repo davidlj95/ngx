@@ -8,18 +8,18 @@ export class MetadataRegistry {
   constructor(
     @Optional()
     @Inject(MetadataProvider)
-    private readonly injectedMetadata: ReadonlyArray<
+    private readonly injectedProviders: ReadonlyArray<
       MetadataProvider<unknown>
     > | null,
   ) {
-    this.injectedMetadata?.forEach((metadata) => this.register(metadata))
+    this.injectedProviders?.forEach((metadata) => this.register(metadata))
   }
 
-  register(metadata: MetadataProvider<unknown>) {
-    if (this.byId.has(metadata.metadata.id)) {
+  register(provider: MetadataProvider<unknown>) {
+    if (this.byId.has(provider.metadata.id)) {
       return
     }
-    this.byId.set(metadata.metadata.id, metadata)
+    this.byId.set(provider.metadata.id, provider)
   }
 
   getAll(): Iterable<MetadataProvider<unknown>> {

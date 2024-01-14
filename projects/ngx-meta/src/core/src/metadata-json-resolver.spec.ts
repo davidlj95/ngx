@@ -55,7 +55,7 @@ describe('MetadataJsonResolver', () => {
         })
       })
       describe('like when key does not exist', () => {
-        const metadata = makeMetadata([key])
+        const metadata = makeMetadata([key, subKey])
         const values = {}
 
         testGlobalMayBeRetrieved(metadata, values)
@@ -70,16 +70,7 @@ describe('MetadataJsonResolver', () => {
       })
 
       describe('like when key is null', () => {
-        const metadata = makeMetadata([key])
-        const values = { [key]: null }
-
-        it('should return null', () => {
-          expect(sut.get(metadata, values)).toBeNull()
-        })
-      })
-
-      describe('like when key is null and there is sub key', () => {
-        const metadata = makeMetadata([key, subKey, 'dummy'])
+        const metadata = makeMetadata([key, subKey])
         const values = { [key]: null }
 
         it('should return null', () => {

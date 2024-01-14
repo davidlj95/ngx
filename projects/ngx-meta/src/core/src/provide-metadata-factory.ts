@@ -7,15 +7,13 @@ export type MetadataSetterFactory<T> = (
   ...deps: Exclude<FactoryProvider['deps'], undefined>
 ) => MetadataSetter<T>
 
-const makeMetadata = <T>(
-  definition: Metadata,
+const makeMetadataProvider = <T>(
+  metadata: Metadata,
   set: MetadataSetter<T>,
-): MetadataProvider<T> => {
-  return {
-    metadata: definition,
-    set,
-  }
-}
+): MetadataProvider<T> => ({
+  metadata,
+  set,
+})
 
 export function provideMetadataFactory<T>(
   definition: Metadata,
@@ -26,7 +24,7 @@ export function provideMetadataFactory<T>(
     provide: MetadataProvider,
     multi: true,
     useFactory: (...deps: unknown[]) =>
-      makeMetadata(definition, setterFactory(...deps)),
+      makeMetadataProvider(definition, setterFactory(...deps)),
     deps,
   }
 }

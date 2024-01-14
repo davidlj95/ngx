@@ -22,12 +22,15 @@ describe('MetadataService', () => {
   })
 
   describe('set', () => {
-    const firstMetadata = makeMetadataProvider({ id: 'first' })
-    const secondMetadata = makeMetadataProvider({ id: 'second' })
+    const firstMetadataProvider = makeMetadataProvider({ id: 'first' })
+    const secondMetadataProvider = makeMetadataProvider({ id: 'second' })
     const dummyValues = {}
 
     beforeEach(() => {
-      metadataRegistry.getAll.and.returnValue([firstMetadata, secondMetadata])
+      metadataRegistry.getAll.and.returnValue([
+        firstMetadataProvider,
+        secondMetadataProvider,
+      ])
     })
 
     it('should set each metadata using resolved values', () => {
@@ -38,9 +41,9 @@ describe('MetadataService', () => {
       const dummySecondMetadataValue = 'secondMetadataValue'
       resolver.get.and.callFake(<T>(definition: Metadata) => {
         switch (definition) {
-          case firstMetadata.metadata:
+          case firstMetadataProvider.metadata:
             return dummyFirstMetadataValue as MaybeUndefined<T>
-          case secondMetadata.metadata:
+          case secondMetadataProvider.metadata:
             return dummySecondMetadataValue as MaybeUndefined<T>
           default:
             throw new Error('Unexpected metadata')
@@ -51,15 +54,19 @@ describe('MetadataService', () => {
       expect(metadataRegistry.getAll).toHaveBeenCalledOnceWith()
       expect(resolver.get).toHaveBeenCalledTimes(2)
       expect(resolver.get).toHaveBeenCalledWith(
-        firstMetadata.metadata,
+        firstMetadataProvider.metadata,
         dummyValues,
       )
-      expect(firstMetadata.set).toHaveBeenCalledWith(dummyFirstMetadataValue)
+      expect(firstMetadataProvider.set).toHaveBeenCalledWith(
+        dummyFirstMetadataValue,
+      )
       expect(resolver.get).toHaveBeenCalledWith(
-        secondMetadata.metadata,
+        secondMetadataProvider.metadata,
         dummyValues,
       )
-      expect(secondMetadata.set).toHaveBeenCalledWith(dummySecondMetadataValue)
+      expect(secondMetadataProvider.set).toHaveBeenCalledWith(
+        dummySecondMetadataValue,
+      )
     })
 
     it('should set values for route when finished', () => {

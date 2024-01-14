@@ -15,14 +15,14 @@ export class MetadataResolver {
     private readonly defaultsService: DefaultsService,
   ) {}
 
-  get<T>(metadataDefinition: Metadata, values: MetadataValues): T | undefined {
-    const value = this.jsonResolver.get(metadataDefinition, values)
+  get<T>(metadata: Metadata, values: MetadataValues): T | undefined {
+    const value = this.jsonResolver.get(metadata, values)
     const routeValue = this.jsonResolver.get(
-      metadataDefinition,
+      metadata,
       this.routeMetadataValues.get(),
     )
     const defaultValue = this.jsonResolver.get(
-      metadataDefinition,
+      metadata,
       this.defaultsService.get(),
     )
     const effectiveValue =

@@ -6,53 +6,53 @@ import { MockProvider } from 'ng-mocks'
 
 describe('MetadataRegistry', () => {
   const dummyId = 'dummyId'
-  const dummyMetadata = makeMetadataProvider({ id: dummyId })
+  const dummyMetadataProvider = makeMetadataProvider({ id: dummyId })
 
   it('should register metadata from DI system', () => {
-    const sut = makeSut({ metadata: [dummyMetadata] })
+    const sut = makeSut({ metadataProviders: [dummyMetadataProvider] })
 
     const allMetadata = [...sut.getAll()]
     expect(allMetadata).toHaveSize(1)
-    expect(allMetadata).toEqual([dummyMetadata])
+    expect(allMetadata).toEqual([dummyMetadataProvider])
   })
 
   it('should register the given metadata', () => {
     const sut = makeSut()
 
-    sut.register(dummyMetadata)
+    sut.register(dummyMetadataProvider)
 
     const allMetadata = [...sut.getAll()]
     expect(allMetadata).toHaveSize(1)
-    expect(allMetadata).toEqual([dummyMetadata])
+    expect(allMetadata).toEqual([dummyMetadataProvider])
   })
 
   it('should not register twice the same metadata', () => {
-    const sameDummyMetadata = makeMetadataProvider({
+    const sameDummyMetadataProvider = makeMetadataProvider({
       id: dummyId,
       spyName: 'duplicated metadata set',
     })
     const sut = makeSut()
 
-    sut.register(dummyMetadata)
-    sut.register(sameDummyMetadata)
+    sut.register(dummyMetadataProvider)
+    sut.register(sameDummyMetadataProvider)
 
     const allMetadata = [...sut.getAll()]
     expect(allMetadata).toHaveSize(1)
-    expect(allMetadata).toEqual([dummyMetadata])
+    expect(allMetadata).toEqual([dummyMetadataProvider])
   })
 })
 
 function makeSut(
   opts: {
-    metadata?: ReadonlyArray<MetadataProvider<unknown>>
+    metadataProviders?: ReadonlyArray<MetadataProvider<unknown>>
   } = {},
 ) {
   TestBed.configureTestingModule({
     providers: [
       //👇 Mocking sut to ensure injected metadata calls registry function
       MetadataRegistry,
-      ...(opts.metadata
-        ? opts.metadata.map((metadata) =>
+      ...(opts.metadataProviders
+        ? opts.metadataProviders.map((metadata) =>
             MockProvider(MetadataProvider, metadata, 'useValue', true),
           )
         : []),

@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.21](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.20...ngx-meta-v1.0.0-alpha.21) (2024-01-14)
+
+### Performance Improvements
+
+- remove metadata definition class ([#163](https://github.com/davidlj95/ngx/issues/163)) ([cf310f6](https://github.com/davidlj95/ngx/commit/cf310f667f07f6da2d31f33ad99a8d28f7bbcec7))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#162](https://github.com/davidlj95/ngx/issues/162)) ([a9d7412](https://github.com/davidlj95/ngx/commit/a9d7412f69c7762ffc05cb754463d6298d588f20))
+
 ## [`ngx-meta` v1.0.0-alpha.20](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.19...ngx-meta-v1.0.0-alpha.20) (2024-01-13)
 
 ### Performance Improvements

@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.27](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.26...ngx-meta-v1.0.0-alpha.27) (2024-01-15)
+
+### Performance Improvements
+
+- add global consts to reduce dup strings ([#176](https://github.com/davidlj95/ngx/issues/176)) ([3fee59b](https://github.com/davidlj95/ngx/commit/3fee59b49a81a5c97ee54a2cdc24c0936f8dcb33))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#177](https://github.com/davidlj95/ngx/issues/177)) ([8e75ec0](https://github.com/davidlj95/ngx/commit/8e75ec0670c3f12f512e6d4cb6f2e0ecbc72642f))
+
 ## [`ngx-meta` v1.0.0-alpha.26](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.25...ngx-meta-v1.0.0-alpha.26) (2024-01-15)
 
 ### Performance Improvements

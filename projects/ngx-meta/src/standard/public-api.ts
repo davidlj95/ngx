@@ -1,7 +1,6 @@
 export { StandardModule as NgxMetaStandardModule } from './src/standard.module'
 export { provideStandard as provideNgxMetaStandardMetadata } from './src/provide-standard'
 export * from './src/html-lang-attribute/html-lang-attribute.service'
-export * from './src/link-rel-canonical/link-rel-canonical.service'
 export * from './src/standard-metadata'
 // Specific providers
 export * from './src/standard-title-metadata-provider'

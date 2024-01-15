@@ -1,5 +1,4 @@
 import { Provider } from '@angular/core'
-import { LinkRelCanonicalService } from './link-rel-canonical/link-rel-canonical.service'
 import { HtmlLangAttributeService } from './html-lang-attribute/html-lang-attribute.service'
 import { STANDARD_TITLE_METADATA_PROVIDER } from './standard-title-metadata-provider'
 import { STANDARD_DESCRIPTION_METADATA_PROVIDER } from './standard-description-metadata-provider'
@@ -19,7 +18,6 @@ export function provideStandard(): Provider[] {
     STANDARD_GENERATOR_METADATA_PROVIDER,
     STANDARD_APPLICATION_NAME_METADATA_PROVIDER,
     STANDARD_CANONICAL_URL_METADATA_PROVIDER,
-    LinkRelCanonicalService,
     STANDARD_LOCALE_METADATA_PROVIDER,
     HtmlLangAttributeService,
   ]

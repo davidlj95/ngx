@@ -1,6 +1,8 @@
 import { DOCUMENT } from '@angular/common'
 import {
   GlobalMetadata,
+  HEAD_ELEMENT_UPSERT_OR_REMOVE,
+  HeadElementUpsertOrRemove,
   makeGlobalMetadata,
   MetadataSetterFactory,
   provideMetadataFactory,
@@ -11,26 +13,20 @@ const SCRIPT_TYPE = 'application/ld+json'
 
 export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   GlobalMetadata[typeof KEY]
-> = (document: Document) => (jsonLd) => {
-  const existingScriptElement = document.head.querySelector(
-    `script[type='${SCRIPT_TYPE}']`,
-  )
-  if (existingScriptElement) {
-    document.head.removeChild(existingScriptElement)
+> =
+  (headElementUpsertOrRemove: HeadElementUpsertOrRemove, doc: Document) =>
+  (jsonLd) => {
+    let scriptElement: HTMLScriptElement | undefined
+    if (jsonLd !== null && jsonLd !== undefined) {
+      scriptElement = doc.createElement('script')
+      scriptElement.setAttribute('type', SCRIPT_TYPE)
+      scriptElement.innerHTML = JSON.stringify(jsonLd)
+    }
+    headElementUpsertOrRemove(`script[type='${SCRIPT_TYPE}']`, scriptElement)
   }
-
-  if (jsonLd === null || jsonLd === undefined) {
-    return
-  }
-
-  const scriptElement = document.createElement('script')
-  scriptElement.setAttribute('type', SCRIPT_TYPE)
-  scriptElement.innerHTML = JSON.stringify(jsonLd)
-  document.head.appendChild(scriptElement)
-}
 
 export const JSON_LD_METADATA_PROVIDER = provideMetadataFactory(
   makeGlobalMetadata('jsonLd'),
   JSON_LD_METADATA_SETTER_FACTORY,
-  [DOCUMENT],
+  [HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
 )

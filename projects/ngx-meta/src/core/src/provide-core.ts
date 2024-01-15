@@ -5,11 +5,13 @@ import {
 } from '@angular/core'
 import { MetadataValues } from './metadata-values'
 import { DEFAULTS_TOKEN } from './defaults-token'
+import { HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER } from './head-element-upsert-or-remove'
 
 export function provideCore(
   ...features: ReadonlyArray<CoreFeature>
 ): EnvironmentProviders {
   return makeEnvironmentProviders([
+    HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER,
     ...features.map((feature) => feature._providers),
   ])
 }

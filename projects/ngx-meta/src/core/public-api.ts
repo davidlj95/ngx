@@ -9,6 +9,7 @@ export {
 export * from './src/global-metadata'
 export * from './src/global-metadata-image'
 export * from './src/global-metadata-key'
+export * from './src/head-element-upsert-or-remove'
 export * from './src/make-composed-meta-property'
 export * from './src/make-global-metadata'
 export * from './src/make-metadata'

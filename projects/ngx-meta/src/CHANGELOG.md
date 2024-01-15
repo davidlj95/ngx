@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.28](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.27...ngx-meta-v1.0.0-alpha.28) (2024-01-15)
+
+### Performance Improvements
+
+- inline html lang attr service ([#179](https://github.com/davidlj95/ngx/issues/179)) ([9b1bd95](https://github.com/davidlj95/ngx/commit/9b1bd95caea01fbecdc72b4da7a74647f0b5e5c6))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#178](https://github.com/davidlj95/ngx/issues/178)) ([846117c](https://github.com/davidlj95/ngx/commit/846117c0dbede11a4c2cd856a832107342c15d6d))
+
 ## [`ngx-meta` v1.0.0-alpha.27](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.26...ngx-meta-v1.0.0-alpha.27) (2024-01-15)
 
 ### Performance Improvements

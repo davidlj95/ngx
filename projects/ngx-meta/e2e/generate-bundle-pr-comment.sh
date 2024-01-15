@@ -170,11 +170,11 @@ NO_BASE_EXISTS_MSG="Not available"
     fi
   done
 
-  printf "| **Total** | %s |" "$(format_size_column "$total_input_bytes_size")"
+  printf "| **Total** | **%s** |" "$(format_size_column "$total_input_bytes_size")"
   if base_file_provided; then
     if base_file_exists; then
-      echo " $(format_size_column "$total_base_bytes_size") |" \
-        " $(format_diff_column "$total_diff_bytes_size" "$total_base_bytes_size") |"
+      printf " **%s** |" "$(format_size_column "$total_base_bytes_size")"
+      echo " **$(format_diff_column "$total_diff_bytes_size" "$total_base_bytes_size")** |"
     else
       echo " Not available | Not available |"
     fi

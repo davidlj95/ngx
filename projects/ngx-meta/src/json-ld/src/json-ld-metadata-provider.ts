@@ -1,18 +1,18 @@
 import { DOCUMENT } from '@angular/common'
 import {
-  GlobalMetadata,
   HEAD_ELEMENT_UPSERT_OR_REMOVE,
   HeadElementUpsertOrRemove,
-  makeGlobalMetadata,
+  makeMetadata,
   MetadataSetterFactory,
   provideMetadataFactory,
 } from '@davidlj95/ngx-meta/core'
+import { JsonLdMetadata } from './json-ld-metadata'
 
-const KEY: keyof GlobalMetadata = 'jsonLd'
+const KEY: keyof JsonLdMetadata = 'jsonLd'
 const SCRIPT_TYPE = 'application/ld+json'
 
 export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
-  GlobalMetadata[typeof KEY]
+  JsonLdMetadata[typeof KEY]
 > =
   (headElementUpsertOrRemove: HeadElementUpsertOrRemove, doc: Document) =>
   (jsonLd) => {
@@ -26,7 +26,7 @@ export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   }
 
 export const JSON_LD_METADATA_PROVIDER = provideMetadataFactory(
-  makeGlobalMetadata('jsonLd'),
+  makeMetadata([KEY]),
   JSON_LD_METADATA_SETTER_FACTORY,
   [HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
 )

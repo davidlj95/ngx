@@ -1,6 +1,5 @@
 import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
-import { OpenGraph } from './open-graph'
+import { GLOBAL_LOCALE } from '@davidlj95/ngx-meta/core'
 
-const key: keyof OpenGraph = 'locale'
 export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER =
-  makeOpenGraphMetadataProvider(key, { g: key })
+  makeOpenGraphMetadataProvider(GLOBAL_LOCALE, { g: GLOBAL_LOCALE })

@@ -1,12 +1,10 @@
 import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
 import { Standard } from './standard'
 import { Title } from '@angular/platform-browser'
-import { MetadataSetterFactory } from '@davidlj95/ngx-meta/core'
-
-const KEY: keyof Standard = 'title'
+import { GLOBAL_TITLE, MetadataSetterFactory } from '@davidlj95/ngx-meta/core'
 
 export const STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
-  Standard[typeof KEY]
+  Standard[typeof GLOBAL_TITLE]
 > = (titleService: Title) => (value) => {
   if (value === undefined || value === null) {
     return
@@ -15,6 +13,6 @@ export const STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
 }
 
 export const STANDARD_TITLE_METADATA_PROVIDER = makeStandardMetadataProvider(
-  KEY,
-  { g: KEY, s: STANDARD_TITLE_METADATA_SETTER_FACTORY, d: [Title] },
+  GLOBAL_TITLE,
+  { g: GLOBAL_TITLE, s: STANDARD_TITLE_METADATA_SETTER_FACTORY, d: [Title] },
 )

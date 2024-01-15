@@ -1,9 +1,7 @@
 import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
-import { OpenGraph } from './open-graph'
-
-const KEY: keyof OpenGraph = 'title'
+import { GLOBAL_TITLE } from '@davidlj95/ngx-meta/core'
 
 export const OPEN_GRAPH_TITLE_METADATA_PROVIDER = makeOpenGraphMetadataProvider(
-  KEY,
-  { g: KEY },
+  GLOBAL_TITLE,
+  { g: GLOBAL_TITLE },
 )

@@ -1,4 +1,5 @@
 import { GlobalMetadataImage } from './global-metadata-image'
+import { GlobalMetadataKey } from './global-metadata-key'
 
 export interface GlobalMetadata {
   /**
@@ -69,11 +70,13 @@ export interface GlobalMetadata {
    * image if you want to customize those too.
    */
   readonly image?: GlobalMetadataImage | null
-
-  /**
-   * JSON-LD object to set in the page
-   *
-   * Needs JSON-LD module to be imported
-   */
-  readonly jsonLd?: object | null
 }
+
+export const GLOBAL_TITLE = 'title' satisfies GlobalMetadataKey
+export const GLOBAL_DESCRIPTION = 'description' satisfies GlobalMetadataKey
+export const GLOBAL_APPLICATION_NAME =
+  'applicationName' satisfies GlobalMetadataKey
+
+export const GLOBAL_CANONICAL_URL = 'canonicalUrl' satisfies GlobalMetadataKey
+export const GLOBAL_LOCALE = 'locale' satisfies GlobalMetadataKey
+export const GLOBAL_IMAGE = 'image' satisfies GlobalMetadataKey

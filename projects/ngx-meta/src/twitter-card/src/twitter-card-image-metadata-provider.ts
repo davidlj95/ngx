@@ -1,14 +1,18 @@
 import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
-import { TwitterCard } from './twitter-card'
 import { makeTwitterCardMetaProperty } from './make-twitter-card-meta-property'
-
-const KEY: keyof TwitterCard = 'image'
+import { GLOBAL_IMAGE } from '@davidlj95/ngx-meta/core'
 
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER =
-  makeTwitterCardMetadataProvider(KEY, {
-    g: KEY,
+  makeTwitterCardMetadataProvider(GLOBAL_IMAGE, {
+    g: GLOBAL_IMAGE,
     s: (metaService) => (value) => {
-      metaService.set(makeTwitterCardMetaProperty(KEY), value?.url?.toString())
-      metaService.set(makeTwitterCardMetaProperty(KEY, 'alt'), value?.alt)
+      metaService.set(
+        makeTwitterCardMetaProperty(GLOBAL_IMAGE),
+        value?.url?.toString(),
+      )
+      metaService.set(
+        makeTwitterCardMetaProperty(GLOBAL_IMAGE, 'alt'),
+        value?.alt,
+      )
     },
   })

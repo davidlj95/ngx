@@ -31,5 +31,5 @@ export const makeStandardMetadataProvider = <Key extends StringKeyOf<Standard>>(
     opts.s ??
       ((metaService) => (value: Standard[typeof key]) =>
         metaService.set(makeStandardMetaProperty(opts.n ?? key), value)),
-    [opts.d ?? MetaService],
+    opts.d ?? [MetaService],
   )

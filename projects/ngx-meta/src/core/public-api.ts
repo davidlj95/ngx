@@ -6,10 +6,10 @@ export {
   provideCore as provideNgxMetaCore,
   withDefaults as withNgxMetaDefaults,
 } from './src/provide-core'
-export * from './src/composable-meta-property'
 export * from './src/global-metadata'
 export * from './src/global-metadata-image'
 export * from './src/global-metadata-key'
+export * from './src/make-composed-meta-property'
 export * from './src/make-global-metadata'
 export * from './src/make-metadata'
 export * from './src/meta-content'

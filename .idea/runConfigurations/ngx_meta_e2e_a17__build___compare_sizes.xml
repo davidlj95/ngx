@@ -1,0 +1,34 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ngx-meta/e2e/a17: build &amp; compare sizes" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/a17/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="bundle-pr-comment" />
+    </scripts>
+    <arguments value="--base-file source-map-explorer-base.json" />
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build (all)" run_configuration_type="js.build_tools.npm" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="ngx-meta/e2e/a17: cache clean" run_configuration_type="js.build_tools.npm" />
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/a17/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="build:source-map" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/a17/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="source-map-explorer-json" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+    </method>
+  </configuration>
+</component>

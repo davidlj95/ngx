@@ -1,10 +1,10 @@
 import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
 import { TwitterCard } from './twitter-card'
-import { TwitterCardMetaProperty } from './twitter-card-meta-property'
 import {
   TwitterCardCreatorId,
   TwitterCardCreatorUsername,
 } from './twitter-card-creator'
+import { makeTwitterCardMetaProperty } from './make-twitter-card-meta-property'
 
 const KEY: keyof TwitterCard = 'creator'
 
@@ -12,11 +12,11 @@ export const TWITTER_CARD_CREATOR_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(KEY, {
     s: (metaService) => (value) => {
       metaService.set(
-        new TwitterCardMetaProperty(KEY),
+        makeTwitterCardMetaProperty(KEY),
         (value as TwitterCardCreatorUsername | undefined)?.username,
       )
       metaService.set(
-        new TwitterCardMetaProperty(KEY, 'id'),
+        makeTwitterCardMetaProperty(KEY, 'id'),
         (value as TwitterCardCreatorId | undefined)?.id,
       )
     },

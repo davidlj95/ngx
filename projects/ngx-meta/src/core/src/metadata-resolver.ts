@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core'
-import { DefaultsService } from './defaults.service'
+import { Inject, Injectable, Optional } from '@angular/core'
 import { MetadataJsonResolver } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
+import { DEFAULTS_TOKEN } from './defaults-token'
 import { isObject } from './is-object'
 import { Metadata } from './metadata'
 import { MaybeUndefined } from './maybe-undefined'
@@ -12,7 +12,9 @@ export class MetadataResolver {
   constructor(
     private readonly jsonResolver: MetadataJsonResolver,
     private readonly routeMetadataValues: RouteMetadataValues,
-    private readonly defaultsService: DefaultsService,
+    @Optional()
+    @Inject(DEFAULTS_TOKEN)
+    private readonly defaults: MetadataValues | null,
   ) {}
 
   get<T>(metadata: Metadata, values: MetadataValues): T | undefined {
@@ -21,10 +23,7 @@ export class MetadataResolver {
       metadata,
       this.routeMetadataValues.get(),
     )
-    const defaultValue = this.jsonResolver.get(
-      metadata,
-      this.defaultsService.get(),
-    )
+    const defaultValue = this.jsonResolver.get(metadata, this.defaults ?? {})
     const effectiveValue =
       isObject(value) && (isObject(routeValue) || isObject(defaultValue))
         ? { ...(defaultValue as object), ...(routeValue as object), ...value }

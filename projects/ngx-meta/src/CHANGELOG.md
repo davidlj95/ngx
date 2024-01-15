@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.22](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.21...ngx-meta-v1.0.0-alpha.22) (2024-01-15)
+
+### Performance Improvements
+
+- reduce core module bundle size: meta prop ([#165](https://github.com/davidlj95/ngx/issues/165)) ([d777433](https://github.com/davidlj95/ngx/commit/d7774333db67cf0a1da03db6eef3b363e855a2b8))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#164](https://github.com/davidlj95/ngx/issues/164)) ([8c3a1de](https://github.com/davidlj95/ngx/commit/8c3a1de10eb1ce6236968d724fc4aaf310b269a9))
+
 ## [`ngx-meta` v1.0.0-alpha.21](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.20...ngx-meta-v1.0.0-alpha.21) (2024-01-14)
 
 ### Performance Improvements

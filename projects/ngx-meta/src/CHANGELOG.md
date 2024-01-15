@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.24](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.23...ngx-meta-v1.0.0-alpha.24) (2024-01-15)
+
+### Performance Improvements
+
+- remove defaults serv to reduce core mod size ([#170](https://github.com/davidlj95/ngx/issues/170)) ([ba47952](https://github.com/davidlj95/ngx/commit/ba4795296bc32b163e43629d819049e7a4f0f822))
+
+### Build System
+
+- **ide:** add run config to locally compare bundle size ([#168](https://github.com/davidlj95/ngx/issues/168)) ([4474fc8](https://github.com/davidlj95/ngx/commit/4474fc8754f0f58d3f8a4afa98cda164aa4b91d9))
+
 ## [`ngx-meta` v1.0.0-alpha.22](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.21...ngx-meta-v1.0.0-alpha.22) (2024-01-15)
 
 ### Performance Improvements

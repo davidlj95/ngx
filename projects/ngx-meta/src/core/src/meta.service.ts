@@ -15,8 +15,8 @@ export class MetaService {
         return
       default:
         this.meta.updateTag({
-          [property.keyAttribute]: property.keyName,
-          [property.contentAttribute]: content,
+          [property.keyAttr]: property.keyName,
+          [property.valAttr]: content,
         })
     }
   }

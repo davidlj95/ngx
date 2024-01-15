@@ -1,23 +1,27 @@
 export class MetaProperty {
-  public readonly keyAttribute: string
+  public readonly keyAttr: string
   public readonly keyName: string
-  public readonly contentAttribute: string
+  public readonly valAttr: string
 
   constructor({
-    keyAttribute,
+    keyAttr,
     keyName,
-    contentAttribute,
+    valAttr,
   }: {
-    keyAttribute?: string
+    keyAttr?: string
     keyName: string
-    contentAttribute?: string
+    valAttr?: string
   }) {
-    this.keyAttribute = keyAttribute ?? 'name'
+    this.keyAttr = keyAttr ?? KEY_ATTRIBUTE_NAME
     this.keyName = keyName
-    this.contentAttribute = contentAttribute ?? 'content'
+    this.valAttr = valAttr ?? VAL_ATTRIBUTE_CONTENT
   }
 
   public get selector(): string {
-    return `${this.keyAttribute}='${this.keyName}'`
+    return `${this.keyAttr}='${this.keyName}'`
   }
 }
+
+export const KEY_ATTRIBUTE_NAME = 'name'
+export const KEY_ATTRIBUTE_PROPERTY = 'property'
+export const VAL_ATTRIBUTE_CONTENT = 'content'

@@ -19,9 +19,9 @@ describe('MetaService', () => {
 
   describe('set', () => {
     const property = new MetaProperty({
-      keyAttribute: 'propertyName',
+      keyAttr: 'propertyName',
       keyName: 'dummy',
-      contentAttribute: 'propertyContent',
+      valAttr: 'propertyContent',
     })
 
     describe('when content is not provided (undefined)', () => {
@@ -55,8 +55,8 @@ describe('MetaService', () => {
         sut.set(property, content)
 
         expect(metaService.updateTag).toHaveBeenCalledOnceWith({
-          [property.keyAttribute]: property.keyName,
-          [property.contentAttribute]: content,
+          [property.keyAttr]: property.keyName,
+          [property.valAttr]: content,
         })
       })
     })

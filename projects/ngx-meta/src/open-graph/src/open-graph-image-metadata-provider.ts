@@ -1,7 +1,7 @@
 import { OpenGraph } from './open-graph'
 import { MetaService } from '@davidlj95/ngx-meta/core'
-import { OpenGraphMetaProperty } from './open-graph-meta-property'
 import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
+import { makeOpenGraphMetaProperty } from './make-open-graph-meta-property'
 
 const KEY: keyof OpenGraph = 'image'
 const NO_KEY_VALUE: OpenGraph[typeof KEY] = {
@@ -18,22 +18,22 @@ export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
     const imageUrl = value?.url?.toString()
     const effectiveValue: OpenGraph[typeof KEY] =
       imageUrl !== undefined && imageUrl !== null ? value : NO_KEY_VALUE
-    metaService.set(new OpenGraphMetaProperty(KEY), imageUrl)
-    metaService.set(new OpenGraphMetaProperty(KEY, 'alt'), effectiveValue?.alt)
+    metaService.set(makeOpenGraphMetaProperty(KEY), imageUrl)
+    metaService.set(makeOpenGraphMetaProperty(KEY, 'alt'), effectiveValue?.alt)
     metaService.set(
-      new OpenGraphMetaProperty(KEY, 'secure_url'),
+      makeOpenGraphMetaProperty(KEY, 'secure_url'),
       effectiveValue?.secureUrl?.toString(),
     )
     metaService.set(
-      new OpenGraphMetaProperty(KEY, 'type'),
+      makeOpenGraphMetaProperty(KEY, 'type'),
       effectiveValue?.type,
     )
     metaService.set(
-      new OpenGraphMetaProperty(KEY, 'width'),
+      makeOpenGraphMetaProperty(KEY, 'width'),
       effectiveValue?.width?.toString(),
     )
     metaService.set(
-      new OpenGraphMetaProperty(KEY, 'height'),
+      makeOpenGraphMetaProperty(KEY, 'height'),
       effectiveValue?.height?.toString(),
     )
   }

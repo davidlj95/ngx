@@ -6,19 +6,19 @@ export class ComposableMetaProperty extends MetaProperty {
   constructor(
     {
       separator = ':',
-      keyAttribute,
-      contentAttribute,
+      keyAttr,
+      valAttr,
     }: {
       separator?: string
-      keyAttribute: string
-      contentAttribute?: string
+      keyAttr: string
+      valAttr?: string
     },
     ...names: ReadonlyArray<string>
   ) {
     super({
-      keyAttribute,
+      keyAttr: keyAttr,
       keyName: names.join(separator),
-      contentAttribute,
+      valAttr: valAttr,
     })
     this.separator = separator
   }

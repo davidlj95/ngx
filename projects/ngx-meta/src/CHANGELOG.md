@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.25](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.24...ngx-meta-v1.0.0-alpha.25) (2024-01-15)
+
+### Performance Improvements
+
+- reduce routing module bundle size ([#172](https://github.com/davidlj95/ngx/issues/172)) ([fd4c892](https://github.com/davidlj95/ngx/commit/fd4c892dc39537ea8cda20e21e967688a0bf772a))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#171](https://github.com/davidlj95/ngx/issues/171)) ([c314cc2](https://github.com/davidlj95/ngx/commit/c314cc24152d0d7567e24e3c74311759af076994))
+
 ## [`ngx-meta` v1.0.0-alpha.24](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.23...ngx-meta-v1.0.0-alpha.24) (2024-01-15)
 
 ### Performance Improvements

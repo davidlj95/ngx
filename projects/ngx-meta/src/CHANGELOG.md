@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.29](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.28...ngx-meta-v1.0.0-alpha.29) (2024-01-15)
+
+### Performance Improvements
+
+- reduce strategy surface and make it a fn ([#181](https://github.com/davidlj95/ngx/issues/181)) ([1e569ed](https://github.com/davidlj95/ngx/commit/1e569ed3582e44a99e683ededcc08fcb2f5579ba))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#180](https://github.com/davidlj95/ngx/issues/180)) ([a6d7cbe](https://github.com/davidlj95/ngx/commit/a6d7cbec17ea36dae3738d703eff52fe5f54c113))
+
 ## [`ngx-meta` v1.0.0-alpha.28](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.27...ngx-meta-v1.0.0-alpha.28) (2024-01-15)
 
 ### Performance Improvements

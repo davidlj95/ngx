@@ -1,3 +1,17 @@
+## [`ngx-meta` v1.0.0-alpha.26](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.25...ngx-meta-v1.0.0-alpha.26) (2024-01-15)
+
+### Performance Improvements
+
+- add dry helper to upsert / remove head els ([#175](https://github.com/davidlj95/ngx/issues/175)) ([e38b204](https://github.com/davidlj95/ngx/commit/e38b20476bd1fc8dcab7bf00a6ff35b73970e511))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#173](https://github.com/davidlj95/ngx/issues/173)) ([bab7ecd](https://github.com/davidlj95/ngx/commit/bab7ecdc6e7efe86f304c254953ce5e73071e1a2))
+
+### Continuous (Integration|Deployment)
+
+- add total to bundle size tracking comment ([#174](https://github.com/davidlj95/ngx/issues/174)) ([8603d0f](https://github.com/davidlj95/ngx/commit/8603d0f279022601e6eb3907be2771e61ac73df9))
+
 ## [`ngx-meta` v1.0.0-alpha.25](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.24...ngx-meta-v1.0.0-alpha.25) (2024-01-15)
 
 ### Performance Improvements

@@ -31,12 +31,6 @@ describe('RouterListenerService', () => {
 
       expect(events$.observed).toBeFalse()
     })
-
-    it('should report is not listening', () => {
-      const sut = makeSut()
-
-      expect(sut.isListening).toBeFalse()
-    })
   })
 
   describe('when already listening', () => {
@@ -47,22 +41,18 @@ describe('RouterListenerService', () => {
       sut.listen()
     })
 
-    it('should report is listening', () => {
-      expect(sut.isListening).toBeTrue()
-    })
-
     describe('when listening again', () => {
       let existingSubscription: Subscription
 
       beforeEach(() => {
-        existingSubscription = sut['subscription']!
+        existingSubscription = sut['sub']!
         expect(existingSubscription).toBeDefined()
         spyOn(console, 'warn').and.stub()
         sut.listen()
       })
 
       it('should not subscribe again', () => {
-        expect(sut['subscription']).toBe(existingSubscription)
+        expect(sut['sub']).toBe(existingSubscription)
       })
 
       it('should warn about it', () => {
@@ -92,22 +82,19 @@ describe('RouterListenerService', () => {
       it('should log it to console', () => {
         const consoleWarn = spyOn(console, 'warn')
         const events$ = new EventEmitter()
-        const sut = makeSut({
-          events$,
-          strategies: [],
-        })
+        const sut = makeSut({ events$ })
 
         sut.listen()
 
         events$.emit(makeNavigationEvent(EventType.NavigationEnd))
 
         expect(consoleWarn).toHaveBeenCalledOnceWith(
-          jasmine.stringContaining('strategies'),
+          jasmine.stringContaining('strategy'),
         )
       })
     })
 
-    describe('when a single strategy is found', () => {
+    describe('when a strategy is provided', () => {
       it('should call strategy resolve and set', () => {
         const metadata = { key: 'value' }
         const strategy = makeStrategy('single', metadata)
@@ -129,40 +116,12 @@ describe('RouterListenerService', () => {
         expect(strategy.set).toHaveBeenCalledOnceWith(metadata)
       })
     })
-
-    it('should call all strategies resolve and set in order', () => {
-      const events$ = new EventEmitter()
-      const strategyOneData = { key: 'one' }
-      const strategyOne = makeStrategy('one', strategyOneData)
-      const strategyTwoData = { key: 'two' }
-      const strategyTwo = makeStrategy('two', strategyTwoData)
-      const activatedRoute = MockService(ActivatedRoute)
-      const sut = makeSut({
-        events$,
-        strategies: [strategyOne, strategyTwo],
-        activatedRoute,
-      })
-      sut.listen()
-
-      events$.emit(makeNavigationEvent(EventType.NavigationEnd))
-
-      expect(strategyOne.resolve).toHaveBeenCalledOnceWith(
-        activatedRoute.snapshot,
-      )
-      expect(strategyOne.set).toHaveBeenCalledOnceWith(strategyOneData)
-      expect(strategyTwo.resolve).toHaveBeenCalledOnceWith(
-        activatedRoute.snapshot,
-      )
-      expect(strategyTwo.set).toHaveBeenCalledOnceWith(strategyTwoData)
-      expect(strategyOne.set).toHaveBeenCalledBefore(strategyTwo.set)
-    })
   })
 })
 
 function makeSut(
   opts: {
     events$?: EventEmitter<NavigationEvent>
-    strategies?: ReadonlyArray<MetadataRouteStrategy>
     strategy?: MetadataRouteStrategy
     activatedRoute?: ActivatedRoute
   } = {},
@@ -180,29 +139,9 @@ function makeSut(
     MockProvider(ActivatedRoute, activatedRoute, 'useValue'),
   ]
 
-  if (opts.strategies) {
-    // multiple providers (or none if empty array)
-    for (const strategy of opts.strategies) {
-      providers.push(
-        MockProvider(MetadataRouteStrategy, strategy, 'useValue', true),
-      )
-    }
-  }
   if (opts.strategy) {
-    // one provider only
     providers.push(
       MockProvider(MetadataRouteStrategy, opts.strategy, 'useValue'),
-    )
-  }
-  if (opts.strategies === undefined && opts.strategy === undefined) {
-    // default: one of many providers
-    providers.push(
-      MockProvider(
-        MetadataRouteStrategy,
-        MockService(MetadataRouteStrategy),
-        'useValue',
-        true,
-      ),
     )
   }
 

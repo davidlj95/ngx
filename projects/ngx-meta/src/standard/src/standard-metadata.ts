@@ -1,3 +1,5 @@
+import { Standard } from './standard'
+
 export interface StandardMetadata {
-  standard: StandardMetadata
+  standard: Standard
 }

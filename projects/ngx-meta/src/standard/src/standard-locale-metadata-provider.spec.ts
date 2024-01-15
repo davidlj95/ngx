@@ -1,11 +1,13 @@
 import { TestBed } from '@angular/core/testing'
 
-import { HtmlLangAttributeService } from './html-lang-attribute.service'
 import { DOCUMENT } from '@angular/common'
 import { HtmlLangAttributeHarness } from './__tests__/html-lang-attribute-harness'
+import { MetadataSetter } from '../../core'
+import { Standard } from './standard'
+import { STANDARD_LOCALE_METADATA_SETTER_FACTORY } from './standard-locale-metadata-provider'
 
-describe('HtmlLangAttributeService', () => {
-  let sut: HtmlLangAttributeService
+describe('Standard locale metadata provider', () => {
+  let sut: MetadataSetter<Standard['locale']>
   let htmlLangAttributeHarness: HtmlLangAttributeHarness
 
   beforeEach(() => {
@@ -31,7 +33,7 @@ describe('HtmlLangAttributeService', () => {
         htmlLangAttributeHarness.set('es')
         expect(htmlLangAttributeHarness.get()).toBeTruthy()
 
-        sut.set(locale)
+        sut(locale)
 
         expect(htmlLangAttributeHarness.get()).toBeNull()
       })
@@ -41,7 +43,7 @@ describe('HtmlLangAttributeService', () => {
       const locale = 'es-ES'
 
       it('should update HTML element lang attribute', () => {
-        sut.set(locale)
+        sut(locale)
 
         const htmlTagLangAttribute = htmlLangAttributeHarness.get()
         expect(htmlTagLangAttribute).not.toBeNull()
@@ -56,7 +58,7 @@ describe('HtmlLangAttributeService', () => {
         htmlLangAttributeHarness.set('es')
         expect(htmlLangAttributeHarness.get()).toBeTruthy()
 
-        sut.set(locale)
+        sut(locale)
 
         expect(htmlLangAttributeHarness.get()).toBeNull()
       })
@@ -64,7 +66,7 @@ describe('HtmlLangAttributeService', () => {
   })
 })
 
-function makeSut() {
-  TestBed.configureTestingModule({ providers: [HtmlLangAttributeService] })
-  return TestBed.inject(HtmlLangAttributeService)
+function makeSut(): MetadataSetter<Standard['locale']> {
+  TestBed.configureTestingModule({})
+  return STANDARD_LOCALE_METADATA_SETTER_FACTORY(TestBed.inject(DOCUMENT))
 }

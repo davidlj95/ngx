@@ -2,15 +2,11 @@ import {
   ENVIRONMENT_INITIALIZER,
   EnvironmentProviders,
   Provider,
+  ValueProvider,
 } from '@angular/core'
-import { CurrentRouteDataMetadataStrategy } from './current-route-data-metadata-strategy'
-import { MetadataRouteStrategy } from './metadata-route-strategy'
 import { RouterListenerService } from './router-listener.service'
-
-export const DEFAULT_METADATA_STRATEGY_PROVIDER: Provider = {
-  provide: MetadataRouteStrategy,
-  useExisting: CurrentRouteDataMetadataStrategy,
-}
+import { CURRENT_ROUTE_DATA_METADATA_ROUTE_STRATEGY } from './current-route-data-metadata-strategy'
+import { METADATA_ROUTE_STRATEGY } from './metadata-route-strategy'
 
 export const ROUTING_INITIALIZER: Provider = {
   provide: ENVIRONMENT_INITIALIZER,
@@ -23,6 +19,15 @@ export const ROUTING_INITIALIZER: Provider = {
   deps: [RouterListenerService],
 }
 
-export function provideRouting(): EnvironmentProviders | Provider[] {
-  return [DEFAULT_METADATA_STRATEGY_PROVIDER, ROUTING_INITIALIZER]
+export const DEFAULT_METADATA_ROUTE_STRATEGY: ValueProvider = {
+  provide: METADATA_ROUTE_STRATEGY,
+  useValue: CURRENT_ROUTE_DATA_METADATA_ROUTE_STRATEGY,
 }
+
+export const ROUTING_PROVIDERS = [
+  DEFAULT_METADATA_ROUTE_STRATEGY,
+  ROUTING_INITIALIZER,
+]
+
+export const provideRouting = (): EnvironmentProviders | Provider[] =>
+  ROUTING_PROVIDERS

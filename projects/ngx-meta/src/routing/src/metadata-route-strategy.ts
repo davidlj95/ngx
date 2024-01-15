@@ -1,12 +1,10 @@
+import { InjectionToken } from '@angular/core'
 import { ActivatedRouteSnapshot } from '@angular/router'
-import { MetadataValues } from '@davidlj95/ngx-meta/core'
 
-export abstract class MetadataRouteStrategy<
-  Metadata extends MetadataValues = MetadataValues,
-> {
-  public abstract resolve(
-    routeSnapshot: ActivatedRouteSnapshot,
-  ): Metadata | undefined
+export type MetadataRouteStrategy = <T>(
+  activatedRouteSnapshot: ActivatedRouteSnapshot,
+) => T | undefined
 
-  public abstract set(metadata: Metadata | undefined): void
-}
+export const METADATA_ROUTE_STRATEGY = new InjectionToken(
+  ngDevMode ? 'NgxMeta Metadata Route Strategy' : 'NgxMetaMRS',
+)

@@ -10,9 +10,13 @@ import {
   RouterEvent,
 } from '@angular/router'
 import { EventEmitter, Provider } from '@angular/core'
-import { MetadataRouteStrategy } from './metadata-route-strategy'
+import {
+  METADATA_ROUTE_STRATEGY,
+  MetadataRouteStrategy,
+} from './metadata-route-strategy'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 import { Subscription } from 'rxjs'
+import { MetadataService } from '../../core'
 
 describe('RouterListenerService', () => {
   enableAutoSpy()
@@ -66,14 +70,17 @@ describe('RouterListenerService', () => {
   describe('when a non-end navigation event is triggered', () => {
     it('should not call any metadata strategy method', () => {
       const events$ = new EventEmitter()
-      const strategy = makeStrategy()
+      const strategy = jasmine.createSpy()
       const sut = makeSut({ events$, strategy })
+      const metadataService = TestBed.inject(
+        MetadataService,
+      ) as unknown as jasmine.SpyObj<MetadataService>
       sut.listen()
 
       events$.emit(makeNavigationEvent(EventType.ActivationEnd))
 
-      expect(strategy.resolve).not.toHaveBeenCalled()
-      expect(strategy.set).not.toHaveBeenCalled()
+      expect(strategy).not.toHaveBeenCalled()
+      expect(metadataService.set).not.toHaveBeenCalled()
     })
   })
 
@@ -95,9 +102,9 @@ describe('RouterListenerService', () => {
     })
 
     describe('when a strategy is provided', () => {
-      it('should call strategy resolve and set', () => {
+      it('should call strategy resolve and set that metadata', () => {
         const metadata = { key: 'value' }
-        const strategy = makeStrategy('single', metadata)
+        const strategy = jasmine.createSpy().and.returnValue(metadata)
         const events$ = new EventEmitter()
         const activatedRoute = MockService(ActivatedRoute)
         const sut = makeSut({
@@ -105,15 +112,17 @@ describe('RouterListenerService', () => {
           strategy,
           activatedRoute,
         })
+        const metadataService = TestBed.inject(
+          MetadataService,
+        ) as unknown as jasmine.SpyObj<MetadataService>
 
         sut.listen()
 
         events$.emit(makeNavigationEvent(EventType.NavigationEnd))
 
-        expect(strategy.resolve).toHaveBeenCalledOnceWith(
-          activatedRoute.snapshot,
-        )
-        expect(strategy.set).toHaveBeenCalledOnceWith(metadata)
+        expect(strategy).toHaveBeenCalledOnceWith(activatedRoute.snapshot)
+        expect()
+        expect(metadataService.set).toHaveBeenCalledOnceWith(metadata)
       })
     })
   })
@@ -137,11 +146,12 @@ function makeSut(
     RouterListenerService,
     MockProvider(Router, { events: events$ } as Partial<Router>, 'useValue'),
     MockProvider(ActivatedRoute, activatedRoute, 'useValue'),
+    MockProvider(MetadataService),
   ]
 
   if (opts.strategy) {
     providers.push(
-      MockProvider(MetadataRouteStrategy, opts.strategy, 'useValue'),
+      MockProvider(METADATA_ROUTE_STRATEGY, opts.strategy, 'useValue'),
     )
   }
 
@@ -150,16 +160,6 @@ function makeSut(
   })
 
   return TestBed.inject(RouterListenerService)
-}
-
-function makeStrategy(
-  name: string = 'default',
-  resolvedData: unknown = { dummy: 'metadata' },
-): jasmine.SpyObj<MetadataRouteStrategy> {
-  return MockService(MetadataRouteStrategy, {
-    resolve: jasmine.createSpy(`${name} resolve`).and.returnValue(resolvedData),
-    set: jasmine.createSpy(`${name} set`),
-  }) as jasmine.SpyObj<MetadataRouteStrategy>
 }
 
 function makeNavigationEvent(type: EventType): NavigationEvent {

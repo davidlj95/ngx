@@ -1,3 +1,27 @@
+## [`ngx-meta` v1.0.0-alpha.30](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.29...ngx-meta-v1.0.0-alpha.30) (2024-01-17)
+
+### Performance Improvements
+
+- use const instead of enums to min bundle size ([#192](https://github.com/davidlj95/ngx/issues/192)) ([a3a7679](https://github.com/davidlj95/ngx/commit/a3a7679e50213ef0d44cb8e14caace885d042a23))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#182](https://github.com/davidlj95/ngx/issues/182)) ([17313d1](https://github.com/davidlj95/ngx/commit/17313d1bb8540b6cee037e81c94b449f74b6c6a2))
+
+### Tests
+
+- **e2e:** add route and service scenario ([#191](https://github.com/davidlj95/ngx/issues/191)) ([7acb112](https://github.com/davidlj95/ngx/commit/7acb112e53232acdeb3209a225c3c99ac7ec46c0))
+
+### Build System
+
+- **deps-dev:** update actions/cache digest to e12d46a ([792c28f](https://github.com/davidlj95/ngx/commit/792c28f3cbeacc9439dd24514ab0eb8cf5740cdb))
+- **deps-dev:** update actions/download-artifact digest to 6b208ae ([bf8da2b](https://github.com/davidlj95/ngx/commit/bf8da2bc62a127858b4ccd4c63b3824acda31309))
+- **deps-dev:** update actions/upload-artifact digest to 1eb3cb2 ([0630a31](https://github.com/davidlj95/ngx/commit/0630a319427f14c605414c05f864adecd02b87a4))
+- **deps-dev:** update dependency node to v20.11.0 ([c1d17c5](https://github.com/davidlj95/ngx/commit/c1d17c572d09038f7486863122db3d77cf48f9fe))
+- **deps-dev:** update pnpm to v8.14.1 ([#185](https://github.com/davidlj95/ngx/issues/185)) ([e386712](https://github.com/davidlj95/ngx/commit/e38671293445c44958320eca142e52c5065b6317))
+- **deps-dev:** update typescript-eslint monorepo to v6.19.0 ([4dda276](https://github.com/davidlj95/ngx/commit/4dda276bd799d4c99c94a33813fd845d354624eb))
+- **deps:** pin actions/github-script action to 60a0d83 ([#186](https://github.com/davidlj95/ngx/issues/186)) ([e047ac8](https://github.com/davidlj95/ngx/commit/e047ac8af691d53a3a837ed65a9d50e455096505))
+
 ## [`ngx-meta` v1.0.0-alpha.29](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.28...ngx-meta-v1.0.0-alpha.29) (2024-01-15)
 
 ### Performance Improvements

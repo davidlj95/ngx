@@ -7,7 +7,6 @@ import { JsonPipe } from '@angular/common'
   selector: 'app-meta-set-by-service',
   standalone: true,
   templateUrl: './meta-set-by-service.component.html',
-  styleUrl: './meta-set-by-service.component.css',
   imports: [JsonPipe],
 })
 export class MetaSetByServiceComponent implements OnInit, OnDestroy {

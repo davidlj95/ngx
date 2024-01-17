@@ -5,7 +5,6 @@ import { MetadataService } from '@davidlj95/ngx-meta/core'
 @Component({
   selector: 'app-meta-set-by-service',
   templateUrl: './meta-set-by-service.component.html',
-  styleUrls: ['./meta-set-by-service.component.css'],
 })
 export class MetaSetByServiceComponent implements OnInit, OnDestroy {
   protected readonly metadata = METADATA

@@ -1,8 +1,20 @@
 import METADATA from '../fixtures/metadata.json'
 
-export function testSetsAllOpenGraphProfileMetadata() {
+export function testSetsAllOpenGraphProfileMetadata(
+  openGraphProfileOverrides: object = {},
+) {
   it('should set all Open Graph profile metadata', () => {
-    cy.fixture('metadata.json').then((metadata: typeof METADATA) => {
+    cy.fixture('metadata.json').then((jsonMetadata: typeof METADATA) => {
+      const metadata = {
+        ...jsonMetadata,
+        openGraph: {
+          ...jsonMetadata.openGraph,
+          profile: {
+            ...jsonMetadata.openGraph.profile,
+            ...openGraphProfileOverrides,
+          },
+        },
+      }
       cy.getMetaWithProperty('og:profile:first_name')
         .shouldHaveContent()
         .and('eq', metadata.openGraph.profile.firstName)

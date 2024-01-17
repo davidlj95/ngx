@@ -14,4 +14,9 @@ export const ROUTES = {
     displayName: 'Meta set by route',
     linkId: undefined,
   },
+  metaSetByRouteAndService: {
+    path: 'meta-set-by-route-and-service',
+    displayName: 'Meta set by route and service',
+    linkId: undefined,
+  },
 }

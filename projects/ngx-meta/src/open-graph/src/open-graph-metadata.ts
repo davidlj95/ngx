@@ -1,6 +1,5 @@
 import { OpenGraph } from './open-graph'
-import { MetadataRouteData } from '@davidlj95/ngx-meta/routing'
 
-export interface OpenGraphMetadata extends MetadataRouteData {
+export interface OpenGraphMetadata {
   openGraph: OpenGraph
 }

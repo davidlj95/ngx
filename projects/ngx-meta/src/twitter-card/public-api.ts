@@ -3,6 +3,7 @@ export { provideTwitterCard as provideNgxMetaTwitterCardMetadata } from './src/p
 export * from './src/twitter-card'
 export * from './src/twitter-card-creator'
 export * from './src/twitter-card-image'
+export * from './src/twitter-card-metadata'
 export * from './src/twitter-card-site'
 export * from './src/twitter-card-type'
 // Specific providers

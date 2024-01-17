@@ -7,7 +7,6 @@ import { JsonPipe } from '@angular/common'
   standalone: true,
   imports: [JsonPipe],
   templateUrl: './meta-set-by-route.component.html',
-  styleUrl: './meta-set-by-route.component.css',
 })
 export class MetaSetByRouteComponent {
   protected readonly routeData: unknown

@@ -8,7 +8,6 @@ import { ROUTES } from '../../../cypress/fixtures/routes'
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'a17'

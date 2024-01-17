@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { MetaSetByServiceComponent } from './meta-set-by-service/meta-set-by-service.component'
 import { MetaSetByRouteComponent } from './meta-set-by-route/meta-set-by-route.component'
+import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-service/meta-set-by-route-and-service.component'
 import { JsonPipe, NgForOf } from '@angular/common'
 import { RouterOutlet } from '@angular/router'
 import { NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
@@ -21,6 +22,7 @@ import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
     AppComponent,
     MetaSetByServiceComponent,
     MetaSetByRouteComponent,
+    MetaSetByRouteAndServiceComponent,
   ],
   imports: [
     BrowserModule,

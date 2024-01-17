@@ -125,8 +125,8 @@ devDependencies:
     specifier: 17.0.3
     version: 17.0.3(@angular/compiler-cli@17.0.8)(tslib@2.6.2)(typescript@5.2.2)
   prettier:
-    specifier: 3.1.1
-    version: 3.1.1
+    specifier: 3.2.3
+    version: 3.2.3
   semantic-release:
     specifier: 22.0.12
     version: 22.0.12(typescript@5.2.2)
@@ -8960,8 +8960,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@3.1.1:
-    resolution: {integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==}
+  /prettier@3.2.3:
+    resolution: {integrity: sha512-QNhUTBq+mqt1oH1dTfY3phOKNhcDdJkfttHI6u0kj7M2+c+7fmNKlgh2GhnHiqMcbxJ+a0j2igz/2jfl9QKLuw==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

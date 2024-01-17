@@ -3,15 +3,15 @@ import { MetadataService, MetadataValues } from '@davidlj95/ngx-meta/core'
 import { JsonPipe } from '@angular/common'
 import { ActivatedRoute } from '@angular/router'
 import {
+  OPEN_GRAPH_TYPE_BOOK,
   OpenGraphMetadata,
-  OpenGraphType,
 } from '@davidlj95/ngx-meta/open-graph'
 import {
+  TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE,
   TwitterCardMetadata,
-  TwitterCardType,
 } from '@davidlj95/ngx-meta/twitter-card'
 import {
-  OpenGraphProfileGender,
+  OPEN_GRAPH_PROFILE_GENDER_FEMALE,
   OpenGraphProfileMetadata,
 } from '@davidlj95/ngx-meta/open-graph-profile'
 
@@ -27,15 +27,15 @@ export class MetaSetByRouteAndServiceComponent implements OnInit {
     OpenGraphProfileMetadata &
     TwitterCardMetadata = {
     openGraph: {
-      type: OpenGraphType.Book, // using enums to watch bundle size increase
+      type: OPEN_GRAPH_TYPE_BOOK,
       profile: {
-        gender: OpenGraphProfileGender.Female,
+        gender: OPEN_GRAPH_PROFILE_GENDER_FEMALE,
       },
     },
     twitterCard: {
-      card: TwitterCardType.SummaryLargeImage,
+      card: TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE,
     },
-  }
+  } as const
 
   constructor(
     activatedRoute: ActivatedRoute,

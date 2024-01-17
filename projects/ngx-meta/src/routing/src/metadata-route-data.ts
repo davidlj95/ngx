@@ -1,5 +1,5 @@
-import { GlobalMetadata, MetadataValues } from '@davidlj95/ngx-meta/core'
+import { MetadataValues } from '@davidlj95/ngx-meta/core'
 
-export interface MetadataRouteData {
-  meta: GlobalMetadata & MetadataValues
+export interface MetadataRouteData<M = MetadataValues> {
+  meta: M
 }

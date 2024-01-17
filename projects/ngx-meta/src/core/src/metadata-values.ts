@@ -1,3 +1,1 @@
-export interface MetadataValues {
-  [key: string]: unknown
-}
+export type MetadataValues = object

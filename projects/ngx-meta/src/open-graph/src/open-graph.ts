@@ -1,5 +1,5 @@
-import { OpenGraphType } from './open-graph-type'
 import { OpenGraphImage } from './open-graph-image'
+import { OpenGraphType } from './open-graph-type'
 
 /**
  * Open Graph metadata

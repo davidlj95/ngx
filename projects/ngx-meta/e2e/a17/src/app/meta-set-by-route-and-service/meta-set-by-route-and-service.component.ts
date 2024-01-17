@@ -27,7 +27,7 @@ export class MetaSetByRouteAndServiceComponent implements OnInit {
     OpenGraphProfileMetadata &
     TwitterCardMetadata = {
     openGraph: {
-      type: OpenGraphType.Book,
+      type: OpenGraphType.Book, // using enums to watch bundle size increase
       profile: {
         gender: OpenGraphProfileGender.Female,
       },

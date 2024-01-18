@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 
 import { RouterListenerService } from './router-listener.service'
-import { MockProvider, MockService } from 'ng-mocks'
+import { MockProvider, MockProviders, MockService } from 'ng-mocks'
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -17,6 +17,7 @@ import {
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 import { Subscription } from 'rxjs'
 import { MetadataService } from '../../core'
+import { RouteMetadataValues } from '../../core/src/route-metadata-values'
 
 describe('Router listener service', () => {
   enableAutoSpy()
@@ -102,7 +103,7 @@ describe('Router listener service', () => {
     })
 
     describe('when a strategy is provided', () => {
-      it('should call strategy resolve and set that metadata', () => {
+      it('should call strategy resolve, set that metadata and store it using service', () => {
         const metadata = { key: 'value' }
         const strategy = jasmine.createSpy().and.returnValue(metadata)
         const events$ = new EventEmitter()
@@ -115,14 +116,17 @@ describe('Router listener service', () => {
         const metadataService = TestBed.inject(
           MetadataService,
         ) as unknown as jasmine.SpyObj<MetadataService>
+        const routeMetadataValues = TestBed.inject(
+          RouteMetadataValues,
+        ) as unknown as jasmine.SpyObj<RouteMetadataValues>
 
         sut.listen()
 
         events$.emit(makeNavigationEvent(EventType.NavigationEnd))
 
         expect(strategy).toHaveBeenCalledOnceWith(activatedRoute.snapshot)
-        expect()
         expect(metadataService.set).toHaveBeenCalledOnceWith(metadata)
+        expect(routeMetadataValues.set).toHaveBeenCalledOnceWith(metadata)
       })
     })
   })
@@ -146,7 +150,7 @@ function makeSut(
     RouterListenerService,
     MockProvider(Router, { events: events$ } as Partial<Router>, 'useValue'),
     MockProvider(ActivatedRoute, activatedRoute, 'useValue'),
-    MockProvider(MetadataService),
+    MockProviders(MetadataService, RouteMetadataValues),
   ]
 
   if (opts.strategy) {

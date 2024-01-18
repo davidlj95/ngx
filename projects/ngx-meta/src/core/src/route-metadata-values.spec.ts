@@ -4,13 +4,12 @@ import { RouteMetadataValues } from './route-metadata-values'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MockProviders } from 'ng-mocks'
 import { Router } from '@angular/router'
-import { MetadataValues } from './metadata-values'
 
 describe('RouteMetadataValues', () => {
   enableAutoSpy()
   let sut: RouteMetadataValues
   let router: jasmine.SpyObj<Router>
-  const dummyValues: MetadataValues = { foo: 'bar' }
+  const dummyValues = { foo: 'bar' }
   const url = '/set-url'
 
   beforeEach(() => {

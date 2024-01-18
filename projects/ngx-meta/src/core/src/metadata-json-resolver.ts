@@ -6,21 +6,23 @@ import { Injectable } from '@angular/core'
 
 @Injectable({ providedIn: 'root' })
 export class MetadataJsonResolver {
-  get<T>(definition: Metadata, values?: MetadataValues): T | undefined {
+  get<T>(metadata: Metadata, values?: MetadataValues): T | undefined {
     if (values === undefined) {
       return
     }
 
-    const keys = [...definition.jsonPath]
+    const keys = [...metadata.jsonPath]
     let value: unknown = values
     for (const key of keys) {
       if (value === undefined || value === null) {
         break
       }
-      value = (value as MetadataValues)[key]
+      value = (value as IndexedObject)[key]
     }
     const globalValue =
-      definition.global !== undefined ? values[definition.global] : undefined
+      metadata.global !== undefined
+        ? (values as IndexedObject)[metadata.global]
+        : undefined
     if (value !== undefined && !globalValue) {
       return value as MaybeUndefined<T>
     }
@@ -33,3 +35,5 @@ export class MetadataJsonResolver {
     return globalValue as MaybeUndefined<T>
   }
 }
+
+type IndexedObject = Record<string, unknown>

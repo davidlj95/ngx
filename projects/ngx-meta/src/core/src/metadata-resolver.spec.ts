@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing'
 
-import { MetadataResolver } from './metadata-resolver'
 import { MockProvider, MockProviders } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataJsonResolver } from './metadata-json-resolver'
@@ -11,8 +10,13 @@ import { MaybeUndefined } from './maybe-undefined'
 import { Provider } from '@angular/core'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { makeMetadata } from './make-metadata'
+import {
+  METADATA_RESOLVER,
+  METADATA_RESOLVER_PROVIDER,
+  MetadataResolverType,
+} from './metadata-resolver'
 
-describe('MetadataResolver', () => {
+describe('Metadata resolver', () => {
   enableAutoSpy()
 
   describe('get', () => {
@@ -26,7 +30,7 @@ describe('MetadataResolver', () => {
     const routeValues = { route: 'values' }
     let jsonResolver: jasmine.SpyObj<MetadataJsonResolver>
     let routeMetadataValues: jasmine.SpyObj<RouteMetadataValues>
-    let sut: MetadataResolver
+    let sut: MetadataResolverType
 
     function mockJsonResolver(returnMap: Map<MetadataValues, unknown>) {
       jsonResolver.get.and.callFake(
@@ -51,7 +55,7 @@ describe('MetadataResolver', () => {
       })
 
       it('should resolve value using values', () => {
-        sut.get(dummyMetadata, dummyValues)
+        sut(dummyMetadata, dummyValues)
 
         expect(jsonResolver.get).toHaveBeenCalledWith(
           dummyMetadata,
@@ -60,7 +64,7 @@ describe('MetadataResolver', () => {
       })
 
       it('should return its value', () => {
-        expect(sut.get(dummyMetadata, dummyValues)).toEqual(value)
+        expect(sut(dummyMetadata, dummyValues)).toEqual(value)
       })
     })
 
@@ -73,7 +77,7 @@ describe('MetadataResolver', () => {
       })
 
       it('should resolve value using route metadata values', () => {
-        sut.get(dummyMetadata, dummyValues)
+        sut(dummyMetadata, dummyValues)
 
         expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
         expect(jsonResolver.get).toHaveBeenCalledWith(
@@ -83,7 +87,7 @@ describe('MetadataResolver', () => {
       })
 
       it('should return value obtained from route metadata values', () => {
-        expect(sut.get(dummyMetadata, dummyValues)).toEqual(value)
+        expect(sut(dummyMetadata, dummyValues)).toEqual(value)
       })
     })
 
@@ -96,13 +100,13 @@ describe('MetadataResolver', () => {
       })
 
       it('should resolve value using default values', () => {
-        sut.get(dummyMetadata, dummyValues)
+        sut(dummyMetadata, dummyValues)
 
         expect(jsonResolver.get).toHaveBeenCalledWith(dummyMetadata, defaults)
       })
 
       it('should return value obtained from defaults', () => {
-        expect(sut.get(dummyMetadata, dummyValues)).toEqual(value)
+        expect(sut(dummyMetadata, dummyValues)).toEqual(value)
       })
     })
 
@@ -126,7 +130,7 @@ describe('MetadataResolver', () => {
         })
 
         it('should return the merged object, with value props having more priority', () => {
-          expect(sut.get(dummyMetadata, dummyValues)).toEqual({
+          expect(sut(dummyMetadata, dummyValues)).toEqual({
             ...routeValueObject,
             ...valueObject,
           })
@@ -149,7 +153,7 @@ describe('MetadataResolver', () => {
         })
 
         it('should return value from values object', () => {
-          expect(sut.get(dummyMetadata, dummyValues)).toEqual(value)
+          expect(sut(dummyMetadata, dummyValues)).toEqual(value)
         })
       })
     })
@@ -160,15 +164,17 @@ describe('MetadataResolver', () => {
         injectSpies()
       })
       it('should return nothing', () => {
-        expect(sut.get(dummyMetadata, dummyValues)).toBeUndefined()
+        expect(sut(dummyMetadata, dummyValues)).toBeUndefined()
       })
     })
   })
 })
 
-function makeSut(opts: { defaults?: MetadataValues } = {}) {
+function makeSut(
+  opts: { defaults?: MetadataValues } = {},
+): MetadataResolverType {
   const providers: Provider[] = [
-    MetadataResolver,
+    METADATA_RESOLVER_PROVIDER,
     MockProviders(MetadataJsonResolver, RouteMetadataValues),
   ]
   if (opts.defaults) {
@@ -177,5 +183,5 @@ function makeSut(opts: { defaults?: MetadataValues } = {}) {
   TestBed.configureTestingModule({
     providers,
   })
-  return TestBed.inject(MetadataResolver)
+  return TestBed.inject(METADATA_RESOLVER)
 }

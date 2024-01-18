@@ -1,4 +1,4 @@
-import { Inject, Injectable, Optional } from '@angular/core'
+import { FactoryProvider, InjectionToken, Optional } from '@angular/core'
 import { MetadataJsonResolver } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
@@ -7,23 +7,26 @@ import { isObject } from './is-object'
 import { Metadata } from './metadata'
 import { MaybeUndefined } from './maybe-undefined'
 
-@Injectable({ providedIn: 'root' })
-export class MetadataResolver {
-  constructor(
-    private readonly jsonResolver: MetadataJsonResolver,
-    private readonly routeMetadataValues: RouteMetadataValues,
-    @Optional()
-    @Inject(DEFAULTS_TOKEN)
-    private readonly defaults: MetadataValues | null,
-  ) {}
+export type MetadataResolverType<T = unknown> = (
+  metadata: Metadata,
+  values: MetadataValues,
+) => T | undefined
+export const METADATA_RESOLVER = new InjectionToken<MetadataResolverType>(
+  ngDevMode ? 'NgxMeta Metadata Resolver' : 'NgxMetaMR',
+)
 
-  get<T>(metadata: Metadata, values: MetadataValues): T | undefined {
-    const value = this.jsonResolver.get(metadata, values)
-    const routeValue = this.jsonResolver.get(
-      metadata,
-      this.routeMetadataValues.get(),
-    )
-    const defaultValue = this.jsonResolver.get(metadata, this.defaults ?? {})
+export const METADATA_RESOLVER_FACTORY: <T>(
+  ...deps: Exclude<FactoryProvider['deps'], undefined>
+) => MetadataResolverType<T> =
+  (
+    jsonResolver: MetadataJsonResolver,
+    routeMetadataValues: RouteMetadataValues,
+    defaults: MetadataValues | null,
+  ) =>
+  <T>(metadata: Metadata, values: MetadataValues) => {
+    const value = jsonResolver.get(metadata, values)
+    const routeValue = jsonResolver.get(metadata, routeMetadataValues.get())
+    const defaultValue = jsonResolver.get(metadata, defaults ?? {})
     const effectiveValue =
       isObject(value) && (isObject(routeValue) || isObject(defaultValue))
         ? { ...(defaultValue as object), ...(routeValue as object), ...value }
@@ -31,4 +34,12 @@ export class MetadataResolver {
 
     return effectiveValue as MaybeUndefined<T>
   }
+export const METADATA_RESOLVER_PROVIDER: FactoryProvider = {
+  provide: METADATA_RESOLVER,
+  useFactory: METADATA_RESOLVER_FACTORY,
+  deps: [
+    MetadataJsonResolver,
+    RouteMetadataValues,
+    [DEFAULTS_TOKEN, new Optional()],
+  ],
 }

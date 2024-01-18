@@ -11,7 +11,7 @@ import { Standard } from './standard'
 import { StandardMetadata } from './standard-metadata'
 import { makeStandardMetaProperty } from './make-standard-meta-property'
 
-const KEY: keyof StandardMetadata = 'standard'
+const STANDARD_KEY: keyof StandardMetadata = 'standard'
 
 export const makeStandardMetadataProvider = <Key extends StringKeyOf<Standard>>(
   key: Key,
@@ -27,7 +27,7 @@ export const makeStandardMetadataProvider = <Key extends StringKeyOf<Standard>>(
   } = {},
 ): FactoryProvider =>
   provideMetadataFactory(
-    makeMetadata([KEY, key], opts.g),
+    makeMetadata([STANDARD_KEY, key], opts.g),
     opts.s ??
       ((metaService) => (value: Standard[typeof key]) =>
         metaService.set(makeStandardMetaProperty(opts.n ?? key), value)),

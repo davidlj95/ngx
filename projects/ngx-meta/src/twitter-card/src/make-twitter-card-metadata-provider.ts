@@ -11,7 +11,7 @@ import { TwitterCard } from './twitter-card'
 import { TwitterCardMetadata } from './twitter-card-metadata'
 import { makeTwitterCardMetaProperty } from './make-twitter-card-meta-property'
 
-const KEY: keyof TwitterCardMetadata = 'twitterCard'
+const TWITTER_KEY: keyof TwitterCardMetadata = `twitterCard`
 
 export const makeTwitterCardMetadataProvider = <
   Key extends StringKeyOf<TwitterCard>,
@@ -27,7 +27,7 @@ export const makeTwitterCardMetadataProvider = <
   } = {},
 ): FactoryProvider =>
   provideMetadataFactory(
-    makeMetadata([KEY, key], opts.g),
+    makeMetadata([TWITTER_KEY, key], opts.g),
     opts.s ??
       ((metaService) => (value: TwitterCard[typeof key]) =>
         metaService.set(makeTwitterCardMetaProperty(opts.p ?? key), value)),

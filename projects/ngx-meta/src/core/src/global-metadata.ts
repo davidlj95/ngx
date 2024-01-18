@@ -1,5 +1,4 @@
 import { GlobalMetadataImage } from './global-metadata-image'
-import { GlobalMetadataKey } from './global-metadata-key'
 
 export interface GlobalMetadata {
   /**
@@ -72,11 +71,12 @@ export interface GlobalMetadata {
   readonly image?: GlobalMetadataImage | null
 }
 
-export const GLOBAL_TITLE = 'title' satisfies GlobalMetadataKey
-export const GLOBAL_DESCRIPTION = 'description' satisfies GlobalMetadataKey
+export const GLOBAL_TITLE = 'title' satisfies keyof GlobalMetadata
+export const GLOBAL_DESCRIPTION = 'description' satisfies keyof GlobalMetadata
 export const GLOBAL_APPLICATION_NAME =
-  'applicationName' satisfies GlobalMetadataKey
+  'applicationName' satisfies keyof GlobalMetadata
 
-export const GLOBAL_CANONICAL_URL = 'canonicalUrl' satisfies GlobalMetadataKey
-export const GLOBAL_LOCALE = 'locale' satisfies GlobalMetadataKey
-export const GLOBAL_IMAGE = 'image' satisfies GlobalMetadataKey
+export const GLOBAL_CANONICAL_URL =
+  'canonicalUrl' satisfies keyof GlobalMetadata
+export const GLOBAL_LOCALE = 'locale' satisfies keyof GlobalMetadata
+export const GLOBAL_IMAGE = 'image' satisfies keyof GlobalMetadata

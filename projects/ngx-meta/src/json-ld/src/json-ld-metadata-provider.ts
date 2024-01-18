@@ -8,11 +8,11 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { JsonLdMetadata } from './json-ld-metadata'
 
-const KEY: keyof JsonLdMetadata = 'jsonLd'
+const JSON_LD_KEY: keyof JsonLdMetadata = 'jsonLd'
 const SCRIPT_TYPE = 'application/ld+json'
 
 export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
-  JsonLdMetadata[typeof KEY]
+  JsonLdMetadata[typeof JSON_LD_KEY]
 > =
   (headElementUpsertOrRemove: HeadElementUpsertOrRemove, doc: Document) =>
   (jsonLd) => {
@@ -26,7 +26,7 @@ export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   }
 
 export const JSON_LD_METADATA_PROVIDER = provideMetadataFactory(
-  makeMetadata([KEY]),
+  makeMetadata([JSON_LD_KEY]),
   JSON_LD_METADATA_SETTER_FACTORY,
   [HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
 )

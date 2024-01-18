@@ -4,7 +4,6 @@ import { MockProvider, MockProviders } from 'ng-mocks'
 import { makeMetadataProvider } from './__tests__/make-metadata-provider'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
-import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataRegistry } from './metadata-registry'
 import { Metadata } from './metadata'
 
@@ -67,16 +66,6 @@ describe('Metadata service', () => {
         dummySecondMetadataValue,
       )
     })
-
-    it('should set values for route when finished', () => {
-      const routeMetadataValues = TestBed.inject(
-        RouteMetadataValues,
-      ) as jasmine.SpyObj<RouteMetadataValues>
-
-      sut.set(dummyValues)
-
-      expect(routeMetadataValues.set).toHaveBeenCalledOnceWith(dummyValues)
-    })
   })
 })
 
@@ -84,7 +73,7 @@ function makeSut() {
   TestBed.configureTestingModule({
     providers: [
       MetadataService,
-      MockProviders(MetadataRegistry, RouteMetadataValues),
+      MockProviders(MetadataRegistry),
       MockProvider(METADATA_RESOLVER, jasmine.createSpy('Metadata resolver')),
     ],
   })

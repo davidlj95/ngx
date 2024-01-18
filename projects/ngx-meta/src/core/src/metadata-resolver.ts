@@ -22,12 +22,12 @@ export const METADATA_RESOLVER_FACTORY: (
 ) => MetadataResolver =
   (
     jsonResolver: MetadataJsonResolver,
-    routeMetadataValues: RouteMetadataValues,
+    routeMetadataValues: RouteMetadataValues | null,
     defaults: MetadataValues | null,
   ) =>
   (metadata: Metadata, values: MetadataValues) => {
     const value = jsonResolver(metadata, values)
-    const routeValue = jsonResolver(metadata, routeMetadataValues.get())
+    const routeValue = jsonResolver(metadata, routeMetadataValues?.get())
     const defaultValue = jsonResolver(metadata, defaults ?? {})
     return isObject(value) && (isObject(routeValue) || isObject(defaultValue))
       ? { ...(defaultValue as object), ...(routeValue as object), ...value }
@@ -38,7 +38,7 @@ export const METADATA_RESOLVER_PROVIDER: FactoryProvider = {
   useFactory: METADATA_RESOLVER_FACTORY,
   deps: [
     METADATA_JSON_RESOLVER,
-    RouteMetadataValues,
+    [RouteMetadataValues, new Optional()],
     [DEFAULTS_TOKEN, new Optional()],
   ],
 }

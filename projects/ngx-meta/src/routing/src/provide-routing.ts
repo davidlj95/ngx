@@ -7,6 +7,7 @@ import {
 import { RouterListenerService } from './router-listener.service'
 import { CURRENT_ROUTE_DATA_METADATA_ROUTE_STRATEGY } from './current-route-data-metadata-strategy'
 import { METADATA_ROUTE_STRATEGY } from './metadata-route-strategy'
+import { RouteMetadataValues } from '@davidlj95/ngx-meta/core'
 
 export const ROUTING_INITIALIZER: Provider = {
   provide: ENVIRONMENT_INITIALIZER,
@@ -27,6 +28,7 @@ export const DEFAULT_METADATA_ROUTE_STRATEGY: ValueProvider = {
 export const ROUTING_PROVIDERS = [
   DEFAULT_METADATA_ROUTE_STRATEGY,
   ROUTING_INITIALIZER,
+  RouteMetadataValues,
 ]
 
 export const provideRouting = (): EnvironmentProviders | Provider[] =>

@@ -9,12 +9,9 @@ import {
 import { FactoryProvider } from '@angular/core'
 import { TwitterCard } from './twitter-card'
 import { TwitterCardMetadata } from './twitter-card-metadata'
-import {
-  makeTwitterCardMetaProperty,
-  TWITTER_CARD_PROPERTY_PREFIX,
-} from './make-twitter-card-meta-property'
+import { makeTwitterCardMetaProperty } from './make-twitter-card-meta-property'
 
-const TWITTER_KEY: keyof TwitterCardMetadata = `${TWITTER_CARD_PROPERTY_PREFIX}Card`
+const TWITTER_KEY: keyof TwitterCardMetadata = `twitterCard`
 
 export const makeTwitterCardMetadataProvider = <
   Key extends StringKeyOf<TwitterCard>,

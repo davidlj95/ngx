@@ -6,8 +6,12 @@ import {
 import { MetadataValues } from './metadata-values'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER } from './head-element-upsert-or-remove'
+import { METADATA_RESOLVER_PROVIDER } from './metadata-resolver'
 
-export const CORE_PROVIDERS = [HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER]
+export const CORE_PROVIDERS = [
+  HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER,
+  METADATA_RESOLVER_PROVIDER,
+]
 
 export function provideCore(
   ...features: ReadonlyArray<CoreFeature>

@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing'
 import { MetadataService } from './metadata.service'
-import { MockProviders } from 'ng-mocks'
+import { MockProvider, MockProviders } from 'ng-mocks'
 import { makeMetadataProvider } from './__tests__/make-metadata-provider'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { MetadataResolver } from './metadata-resolver'
+import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataRegistry } from './metadata-registry'
 import { MaybeUndefined } from './maybe-undefined'
@@ -35,11 +35,11 @@ describe('MetadataService', () => {
 
     it('should set each metadata using resolved values', () => {
       const resolver = TestBed.inject(
-        MetadataResolver,
-      ) as unknown as jasmine.SpyObj<MetadataResolver>
+        METADATA_RESOLVER,
+      ) as unknown as jasmine.Spy<MetadataResolver>
       const dummyFirstMetadataValue = 'firstMetadataValue'
       const dummySecondMetadataValue = 'secondMetadataValue'
-      resolver.get.and.callFake(<T>(definition: Metadata) => {
+      resolver.and.callFake(<T>(definition: Metadata) => {
         switch (definition) {
           case firstMetadataProvider.metadata:
             return dummyFirstMetadataValue as MaybeUndefined<T>
@@ -52,15 +52,15 @@ describe('MetadataService', () => {
       sut.set(dummyValues)
 
       expect(metadataRegistry.getAll).toHaveBeenCalledOnceWith()
-      expect(resolver.get).toHaveBeenCalledTimes(2)
-      expect(resolver.get).toHaveBeenCalledWith(
+      expect(resolver).toHaveBeenCalledTimes(2)
+      expect(resolver).toHaveBeenCalledWith(
         firstMetadataProvider.metadata,
         dummyValues,
       )
       expect(firstMetadataProvider.set).toHaveBeenCalledWith(
         dummyFirstMetadataValue,
       )
-      expect(resolver.get).toHaveBeenCalledWith(
+      expect(resolver).toHaveBeenCalledWith(
         secondMetadataProvider.metadata,
         dummyValues,
       )
@@ -85,7 +85,8 @@ function makeSut() {
   TestBed.configureTestingModule({
     providers: [
       MetadataService,
-      MockProviders(MetadataRegistry, MetadataResolver, RouteMetadataValues),
+      MockProviders(MetadataRegistry, RouteMetadataValues),
+      MockProvider(METADATA_RESOLVER, jasmine.createSpy('Metadata resolver')),
     ],
   })
   return TestBed.inject(MetadataService)

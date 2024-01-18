@@ -13,7 +13,7 @@ import { makeMetadata } from './make-metadata'
 import {
   METADATA_RESOLVER,
   METADATA_RESOLVER_PROVIDER,
-  MetadataResolverType,
+  MetadataResolver,
 } from './metadata-resolver'
 
 describe('Metadata resolver', () => {
@@ -30,7 +30,7 @@ describe('Metadata resolver', () => {
     const routeValues = { route: 'values' }
     let jsonResolver: jasmine.SpyObj<MetadataJsonResolver>
     let routeMetadataValues: jasmine.SpyObj<RouteMetadataValues>
-    let sut: MetadataResolverType
+    let sut: MetadataResolver
 
     function mockJsonResolver(returnMap: Map<MetadataValues, unknown>) {
       jsonResolver.get.and.callFake(
@@ -170,9 +170,7 @@ describe('Metadata resolver', () => {
   })
 })
 
-function makeSut(
-  opts: { defaults?: MetadataValues } = {},
-): MetadataResolverType {
+function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
   const providers: Provider[] = [
     METADATA_RESOLVER_PROVIDER,
     MockProviders(MetadataJsonResolver, RouteMetadataValues),

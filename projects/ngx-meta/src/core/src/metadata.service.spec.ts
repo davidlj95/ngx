@@ -3,7 +3,7 @@ import { MetadataService } from './metadata.service'
 import { MockProvider, MockProviders } from 'ng-mocks'
 import { makeMetadataProvider } from './__tests__/make-metadata-provider'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { METADATA_RESOLVER, MetadataResolverType } from './metadata-resolver'
+import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataRegistry } from './metadata-registry'
 import { MaybeUndefined } from './maybe-undefined'
@@ -36,7 +36,7 @@ describe('MetadataService', () => {
     it('should set each metadata using resolved values', () => {
       const resolver = TestBed.inject(
         METADATA_RESOLVER,
-      ) as unknown as jasmine.Spy<MetadataResolverType>
+      ) as unknown as jasmine.Spy<MetadataResolver>
       const dummyFirstMetadataValue = 'firstMetadataValue'
       const dummySecondMetadataValue = 'secondMetadataValue'
       resolver.and.callFake(<T>(definition: Metadata) => {

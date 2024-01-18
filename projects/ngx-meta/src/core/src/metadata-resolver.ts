@@ -7,17 +7,17 @@ import { isObject } from './is-object'
 import { Metadata } from './metadata'
 import { MaybeUndefined } from './maybe-undefined'
 
-export type MetadataResolverType<T = unknown> = (
+export type MetadataResolver<T = unknown> = (
   metadata: Metadata,
   values: MetadataValues,
 ) => T | undefined
-export const METADATA_RESOLVER = new InjectionToken<MetadataResolverType>(
+export const METADATA_RESOLVER = new InjectionToken<MetadataResolver>(
   ngDevMode ? 'NgxMeta Metadata Resolver' : 'NgxMetaMR',
 )
 
 export const METADATA_RESOLVER_FACTORY: <T>(
   ...deps: Exclude<FactoryProvider['deps'], undefined>
-) => MetadataResolverType<T> =
+) => MetadataResolver<T> =
   (
     jsonResolver: MetadataJsonResolver,
     routeMetadataValues: RouteMetadataValues,

@@ -2,13 +2,13 @@ import { Inject, Injectable } from '@angular/core'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataRegistry } from './metadata-registry'
-import { METADATA_RESOLVER, MetadataResolverType } from './metadata-resolver'
+import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 
 @Injectable({ providedIn: 'root' })
 export class MetadataService {
   constructor(
     private readonly registry: MetadataRegistry,
-    @Inject(METADATA_RESOLVER) private readonly resolver: MetadataResolverType,
+    @Inject(METADATA_RESOLVER) private readonly resolver: MetadataResolver,
     private readonly routeValues: RouteMetadataValues,
   ) {}
 

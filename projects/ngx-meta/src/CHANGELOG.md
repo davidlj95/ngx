@@ -1,3 +1,9 @@
+## [`ngx-meta` v1.0.0-alpha.33](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.32...ngx-meta-v1.0.0-alpha.33) (2024-01-18)
+
+### Performance Improvements
+
+- make JSON metadata resolver a fn ([#202](https://github.com/davidlj95/ngx/issues/202)) ([71e6b97](https://github.com/davidlj95/ngx/commit/71e6b97bf264d28927ade160c1ffefe2e663c099))
+
 ## [`ngx-meta` v1.0.0-alpha.31](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.30...ngx-meta-v1.0.0-alpha.31) (2024-01-18)
 
 ### Features

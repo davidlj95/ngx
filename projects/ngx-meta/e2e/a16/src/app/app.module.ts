@@ -12,8 +12,10 @@ import { NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
 import * as DEFAULTS from '../../../cypress/fixtures/defaults.json'
 import { NgxMetaRoutingModule } from '@davidlj95/ngx-meta/routing'
 import { NgxMetaStandardModule } from '@davidlj95/ngx-meta/standard'
-import { NgxMetaOpenGraphModule } from '@davidlj95/ngx-meta/open-graph'
-import { NgxMetaOpenGraphProfileModule } from '@davidlj95/ngx-meta/open-graph-profile'
+import {
+  NgxMetaOpenGraphModule,
+  NgxMetaOpenGraphProfileModule,
+} from '@davidlj95/ngx-meta/open-graph'
 import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
 import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
 

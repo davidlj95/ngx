@@ -1,5 +1,6 @@
 import { OpenGraphImage } from './open-graph-image'
 import { OpenGraphType } from './open-graph-type'
+import { OpenGraphProfile } from './open-graph-profile'
 
 /**
  * Open Graph metadata
@@ -80,4 +81,11 @@ export interface OpenGraph {
    * @see https://ogp.me/#:~:text=og%3Asite_name
    */
   readonly siteName?: string | null
+
+  /**
+   * Open Graph profile metadata for this page
+   *
+   * @see https://ogp.me/#type_profile
+   */
+  readonly profile?: OpenGraphProfile
 }

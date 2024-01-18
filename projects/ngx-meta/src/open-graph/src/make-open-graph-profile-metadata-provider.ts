@@ -6,11 +6,11 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
 import { OpenGraphProfile } from './open-graph-profile'
-import { OpenGraphProfileMetadata } from './open-graph-profile-metadata'
-import { makeOpenGraphProfileMetaProperty } from './make-open-graph-profile-meta-property'
+import { OPEN_GRAPH_KEY } from './make-open-graph-metadata-provider'
+import { makeOpenGraphMetaProperty } from './make-open-graph-meta-property'
+import { OpenGraph } from './open-graph'
 
-const OG_KEY: keyof OpenGraphProfileMetadata = 'openGraph'
-const KEY: keyof OpenGraphProfileMetadata[typeof OG_KEY] = 'profile'
+export const OPEN_GRAPH_PROFILE_KEY: keyof OpenGraph = 'profile'
 
 export const makeOpenGraphProfileMetadataProvider = <
   Key extends StringKeyOf<OpenGraphProfile>,
@@ -22,8 +22,11 @@ export const makeOpenGraphProfileMetadataProvider = <
   } = {},
 ): FactoryProvider =>
   provideMetadataFactory(
-    makeMetadata([OG_KEY, KEY, key]),
+    makeMetadata([OPEN_GRAPH_KEY, OPEN_GRAPH_PROFILE_KEY, key]),
     (metaService) => (value: OpenGraphProfile[typeof key]) =>
-      metaService.set(makeOpenGraphProfileMetaProperty(opts.p ?? key), value),
+      metaService.set(
+        makeOpenGraphMetaProperty(...[OPEN_GRAPH_PROFILE_KEY, opts.p ?? key]),
+        value,
+      ),
     [MetaService],
   )

@@ -9,8 +9,10 @@ import {
 import DEFAULTS from '../../../cypress/fixtures/defaults.json'
 import { provideNgxMetaRouting } from '@davidlj95/ngx-meta/routing'
 import { provideNgxMetaStandardMetadata } from '@davidlj95/ngx-meta/standard'
-import { provideNgxMetaOpenGraphMetadata } from '@davidlj95/ngx-meta/open-graph'
-import { provideNgxMetaOpenGraphProfileMetadata } from '@davidlj95/ngx-meta/open-graph-profile'
+import {
+  provideNgxMetaOpenGraphMetadata,
+  provideNgxMetaOpenGraphProfileMetadata,
+} from '@davidlj95/ngx-meta/open-graph'
 import { provideNgxMetaTwitterCardMetadata } from '@davidlj95/ngx-meta/twitter-card'
 import { provideNgxMetaJsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
 

@@ -107,9 +107,34 @@ echo "### 📦 Bundle size ($header)" >"$output_file"
 } >>"$output_file"
 
 # Process input file
-lib_files="$(jq '.results[0].files
-  | with_entries(select(.key|contains("ngx-meta")))' "$input_file")"
-files="$(echo "$lib_files" | jq -r 'keys[]')"
+get_sizes_from_sme_file() {
+  jq -r \
+    '.results[0].files | with_entries(select(.key|contains("ngx-meta")))' \
+    "$1"
+}
+get_files_from_sizes() {
+  echo "$1" | jq -r 'keys[]'
+}
+get_size_for_file() {
+  sizes="$1"
+  file="$2"
+  size="$(echo "$sizes" | jq -r ".[\"$file\"].size")"
+  if [ "$size" = "null" ]; then
+    echo "0"
+    return
+  fi
+  echo "$size"
+}
+
+input_lib_sizes="$(get_sizes_from_sme_file "$input_file")"
+input_files="$(get_files_from_sizes "$input_lib_sizes")"
+base_lib_sizes=""
+base_files=""
+if base_file_exists; then
+   base_lib_sizes="$(get_sizes_from_sme_file "$base_file")"
+   base_files="$(get_files_from_sizes "$base_lib_sizes")"
+fi
+files="$(printf "%s\n%s" "$input_files" "$base_files" | sort | uniq)"
 
 # Format
 format_size_column() {
@@ -152,12 +177,12 @@ NO_BASE_EXISTS_MSG="Not available"
         sed 's|node_modules/@davidlj95/||' |
         sed 's|/fesm2022/davidlj95-ngx-meta||'
     )"
-    input_bytes_size=$(echo "$lib_files" | jq -r ".[\"$file\"].size")
+    input_bytes_size="$(get_size_for_file "$input_lib_sizes" "$file")"
     total_input_bytes_size="$((total_input_bytes_size + input_bytes_size))"
     printf "| \`%s\` | %s |" "$beautified_file" "$(format_size_column "$input_bytes_size")"
     if base_file_provided; then
       if base_file_exists; then
-        base_bytes_size="$(jq -r ".results[0].files[\"$file\"].size" "$base_file")"
+        base_bytes_size="$(get_size_for_file "$base_lib_sizes" "$file")"
         total_base_bytes_size="$((total_base_bytes_size + base_bytes_size))"
         diff_bytes_size="$((input_bytes_size - base_bytes_size))"
         total_diff_bytes_size="$((total_diff_bytes_size + diff_bytes_size))"

@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.31](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.30...ngx-meta-v1.0.0-alpha.31) (2024-01-18)
+
+### Features
+
+- improve metadata value types ([#194](https://github.com/davidlj95/ngx/issues/194)) ([7b36ef5](https://github.com/davidlj95/ngx/commit/7b36ef54326f0d25d4afe1ee2c38a8bcb587a476))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#193](https://github.com/davidlj95/ngx/issues/193)) ([42eae60](https://github.com/davidlj95/ngx/commit/42eae600d8d5fd9fc7ed91573ba527f387b2cb69))
+
 ## [`ngx-meta` v1.0.0-alpha.30](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.29...ngx-meta-v1.0.0-alpha.30) (2024-01-17)
 
 ### Performance Improvements

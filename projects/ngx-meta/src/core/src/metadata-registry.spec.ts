@@ -4,7 +4,7 @@ import { makeMetadataProvider } from './__tests__/make-metadata-provider'
 import { MetadataProvider } from './metadata-provider'
 import { MockProvider } from 'ng-mocks'
 
-describe('MetadataRegistry', () => {
+describe('Metadata registry', () => {
   const dummyId = 'dummyId'
   const dummyMetadataProvider = makeMetadataProvider({ id: dummyId })
 

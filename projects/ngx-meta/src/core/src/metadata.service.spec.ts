@@ -6,10 +6,9 @@ import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import { RouteMetadataValues } from './route-metadata-values'
 import { MetadataRegistry } from './metadata-registry'
-import { MaybeUndefined } from './maybe-undefined'
 import { Metadata } from './metadata'
 
-describe('MetadataService', () => {
+describe('Metadata service', () => {
   enableAutoSpy()
   let sut: MetadataService
   let metadataRegistry: jasmine.SpyObj<MetadataRegistry>
@@ -39,12 +38,12 @@ describe('MetadataService', () => {
       ) as unknown as jasmine.Spy<MetadataResolver>
       const dummyFirstMetadataValue = 'firstMetadataValue'
       const dummySecondMetadataValue = 'secondMetadataValue'
-      resolver.and.callFake(<T>(definition: Metadata) => {
+      resolver.and.callFake((definition: Metadata) => {
         switch (definition) {
           case firstMetadataProvider.metadata:
-            return dummyFirstMetadataValue as MaybeUndefined<T>
+            return dummyFirstMetadataValue
           case secondMetadataProvider.metadata:
-            return dummySecondMetadataValue as MaybeUndefined<T>
+            return dummySecondMetadataValue
           default:
             throw new Error('Unexpected metadata')
         }

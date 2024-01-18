@@ -1,10 +1,13 @@
 import { TestBed } from '@angular/core/testing'
-import { MetadataJsonResolver } from './metadata-json-resolver'
+import {
+  METADATA_JSON_RESOLVER,
+  MetadataJsonResolver,
+} from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
 import { Metadata } from './metadata'
 import { makeMetadata } from './make-metadata'
 
-describe('MetadataJsonResolver', () => {
+describe('Metadata JSON Resolver', () => {
   let sut: MetadataJsonResolver
 
   beforeEach(() => {
@@ -23,7 +26,7 @@ describe('MetadataJsonResolver', () => {
     ) {
       describe('when global is not defined', () => {
         it('should return undefined', () => {
-          expect(sut.get(metadata, values)).toBeUndefined()
+          expect(sut(metadata, values)).toBeUndefined()
         })
       })
 
@@ -32,14 +35,14 @@ describe('MetadataJsonResolver', () => {
 
         describe('but global value does not exist', () => {
           it('should return undefined', () => {
-            expect(sut.get(metadataWithGlobal, values)).toBeUndefined()
+            expect(sut(metadataWithGlobal, values)).toBeUndefined()
           })
         })
         describe('and global value exists', () => {
           const valuesWithGlobal = { [global]: value, ...values }
 
           it('should return global value', () => {
-            expect(sut.get(metadataWithGlobal, valuesWithGlobal)).toEqual(value)
+            expect(sut(metadataWithGlobal, valuesWithGlobal)).toEqual(value)
           })
         })
       })
@@ -50,7 +53,7 @@ describe('MetadataJsonResolver', () => {
         const values = undefined
 
         it('should return undefined', () => {
-          expect(sut.get(makeMetadata(['dummy']), values)).toBeUndefined()
+          expect(sut(makeMetadata(['dummy']), values)).toBeUndefined()
         })
       })
       describe('like when key does not exist', () => {
@@ -73,7 +76,7 @@ describe('MetadataJsonResolver', () => {
         const values = { [key]: null }
 
         it('should return null', () => {
-          expect(sut.get(metadata, values)).toBeNull()
+          expect(sut(metadata, values)).toBeNull()
         })
       })
 
@@ -97,7 +100,7 @@ describe('MetadataJsonResolver', () => {
         }
 
         it('should return value using key and sub key as path', () => {
-          expect(sut.get(metadata, values)).toEqual(value)
+          expect(sut(metadata, values)).toEqual(value)
         })
       })
 
@@ -116,7 +119,7 @@ describe('MetadataJsonResolver', () => {
         }
 
         it('should merge both objects, with specific value taking priority', () => {
-          expect(sut.get(metadata, values)).toEqual({
+          expect(sut(metadata, values)).toEqual({
             ...globalValueObject,
             ...valueObject,
           })
@@ -126,7 +129,7 @@ describe('MetadataJsonResolver', () => {
   })
 })
 
-function makeSut() {
-  TestBed.configureTestingModule({ providers: [MetadataJsonResolver] })
-  return TestBed.inject(MetadataJsonResolver)
+function makeSut(): MetadataJsonResolver {
+  TestBed.configureTestingModule({})
+  return TestBed.inject(METADATA_JSON_RESOLVER)
 }

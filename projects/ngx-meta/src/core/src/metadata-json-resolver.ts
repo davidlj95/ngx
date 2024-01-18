@@ -1,39 +1,45 @@
 import { Metadata } from './metadata'
 import { MetadataValues } from './metadata-values'
-import { MaybeUndefined } from './maybe-undefined'
 import { isObject } from './is-object'
-import { Injectable } from '@angular/core'
+import { InjectionToken } from '@angular/core'
 
-@Injectable({ providedIn: 'root' })
-export class MetadataJsonResolver {
-  get<T>(metadata: Metadata, values?: MetadataValues): T | undefined {
-    if (values === undefined) {
-      return
-    }
-
-    const keys = [...metadata.jsonPath]
-    let value: unknown = values
-    for (const key of keys) {
-      if (value === undefined || value === null) {
-        break
+export type MetadataJsonResolver = (
+  metadata: Metadata,
+  values?: MetadataValues,
+) => unknown
+export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
+  ngDevMode ? 'NgxMeta JSON Resolver' : 'NgxMetaJR',
+  {
+    providedIn: 'root',
+    factory: (): MetadataJsonResolver => (metadata, values?) => {
+      if (values === undefined) {
+        return
       }
-      value = (value as IndexedObject)[key]
-    }
-    const globalValue =
-      metadata.global !== undefined
-        ? (values as IndexedObject)[metadata.global]
-        : undefined
-    if (value !== undefined && !globalValue) {
-      return value as MaybeUndefined<T>
-    }
-    if (isObject(value) && isObject(globalValue)) {
-      return {
-        ...globalValue,
-        ...value,
-      } as T
-    }
-    return globalValue as MaybeUndefined<T>
-  }
-}
+
+      const keys = [...metadata.jsonPath]
+      let value: unknown = values
+      for (const key of keys) {
+        if (value === undefined || value === null) {
+          break
+        }
+        value = (value as IndexedObject)[key]
+      }
+      const globalValue =
+        metadata.global !== undefined
+          ? (values as IndexedObject)[metadata.global]
+          : undefined
+      if (value !== undefined && !globalValue) {
+        return value
+      }
+      if (isObject(value) && isObject(globalValue)) {
+        return {
+          ...globalValue,
+          ...value,
+        }
+      }
+      return globalValue
+    },
+  },
+)
 
 type IndexedObject = Record<string, unknown>

@@ -1,44 +1,43 @@
 import { FactoryProvider, InjectionToken, Optional } from '@angular/core'
-import { MetadataJsonResolver } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
 import { RouteMetadataValues } from './route-metadata-values'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { isObject } from './is-object'
 import { Metadata } from './metadata'
-import { MaybeUndefined } from './maybe-undefined'
+import {
+  METADATA_JSON_RESOLVER,
+  MetadataJsonResolver,
+} from './metadata-json-resolver'
 
-export type MetadataResolver<T = unknown> = (
+export type MetadataResolver = (
   metadata: Metadata,
   values: MetadataValues,
-) => T | undefined
+) => unknown
 export const METADATA_RESOLVER = new InjectionToken<MetadataResolver>(
   ngDevMode ? 'NgxMeta Metadata Resolver' : 'NgxMetaMR',
 )
 
-export const METADATA_RESOLVER_FACTORY: <T>(
+export const METADATA_RESOLVER_FACTORY: (
   ...deps: Exclude<FactoryProvider['deps'], undefined>
-) => MetadataResolver<T> =
+) => MetadataResolver =
   (
     jsonResolver: MetadataJsonResolver,
     routeMetadataValues: RouteMetadataValues,
     defaults: MetadataValues | null,
   ) =>
-  <T>(metadata: Metadata, values: MetadataValues) => {
-    const value = jsonResolver.get(metadata, values)
-    const routeValue = jsonResolver.get(metadata, routeMetadataValues.get())
-    const defaultValue = jsonResolver.get(metadata, defaults ?? {})
-    const effectiveValue =
-      isObject(value) && (isObject(routeValue) || isObject(defaultValue))
-        ? { ...(defaultValue as object), ...(routeValue as object), ...value }
-        : [value, routeValue, defaultValue].find((v) => v !== undefined)
-
-    return effectiveValue as MaybeUndefined<T>
+  (metadata: Metadata, values: MetadataValues) => {
+    const value = jsonResolver(metadata, values)
+    const routeValue = jsonResolver(metadata, routeMetadataValues.get())
+    const defaultValue = jsonResolver(metadata, defaults ?? {})
+    return isObject(value) && (isObject(routeValue) || isObject(defaultValue))
+      ? { ...(defaultValue as object), ...(routeValue as object), ...value }
+      : [value, routeValue, defaultValue].find((v) => v !== undefined)
   }
 export const METADATA_RESOLVER_PROVIDER: FactoryProvider = {
   provide: METADATA_RESOLVER,
   useFactory: METADATA_RESOLVER_FACTORY,
   deps: [
-    MetadataJsonResolver,
+    METADATA_JSON_RESOLVER,
     RouteMetadataValues,
     [DEFAULTS_TOKEN, new Optional()],
   ],

@@ -6,7 +6,7 @@ import { MockProvider } from 'ng-mocks'
 import { Meta } from '@angular/platform-browser'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 
-describe('MetaService', () => {
+describe('Meta service', () => {
   enableAutoSpy()
 
   let sut: MetaService

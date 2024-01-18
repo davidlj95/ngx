@@ -3,7 +3,6 @@ import { MetadataJsonResolver } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
 import { Metadata } from './metadata'
 import { makeMetadata } from './make-metadata'
-import { makeGlobalMetadata } from './make-global-metadata'
 
 describe('MetadataJsonResolver', () => {
   let sut: MetadataJsonResolver
@@ -51,7 +50,7 @@ describe('MetadataJsonResolver', () => {
         const values = undefined
 
         it('should return undefined', () => {
-          expect(sut.get(makeGlobalMetadata('dummy'), values)).toBeUndefined()
+          expect(sut.get(makeMetadata(['dummy']), values)).toBeUndefined()
         })
       })
       describe('like when key does not exist', () => {

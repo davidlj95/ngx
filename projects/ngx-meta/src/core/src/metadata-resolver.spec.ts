@@ -8,15 +8,15 @@ import { RouteMetadataValues } from './route-metadata-values'
 import { Metadata } from './metadata'
 import { MetadataValues } from './metadata-values'
 import { MaybeUndefined } from './maybe-undefined'
-import { makeGlobalMetadata } from './make-global-metadata'
 import { Provider } from '@angular/core'
 import { DEFAULTS_TOKEN } from './defaults-token'
+import { makeMetadata } from './make-metadata'
 
 describe('MetadataResolver', () => {
   enableAutoSpy()
 
   describe('get', () => {
-    const dummyMetadata = makeGlobalMetadata('dummy')
+    const dummyMetadata = makeMetadata(['dummy'])
     const dummyValues = { foo: 'bar' }
     const value = 'value'
     const valueObject = {

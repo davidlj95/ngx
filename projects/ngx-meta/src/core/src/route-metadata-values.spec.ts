@@ -5,7 +5,7 @@ import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MockProviders } from 'ng-mocks'
 import { Router } from '@angular/router'
 
-describe('RouteMetadataValues', () => {
+describe('Route metadata values', () => {
   enableAutoSpy()
   let sut: RouteMetadataValues
   let router: jasmine.SpyObj<Router>

@@ -18,7 +18,7 @@ import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 import { Subscription } from 'rxjs'
 import { MetadataService } from '../../core'
 
-describe('RouterListenerService', () => {
+describe('Router listener service', () => {
   enableAutoSpy()
 
   describe('when not listening yet', () => {

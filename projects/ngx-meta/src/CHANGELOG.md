@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.34](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.33...ngx-meta-v1.0.0-alpha.34) (2024-01-18)
+
+### Performance Improvements
+
+- is object into arrow function ([#204](https://github.com/davidlj95/ngx/issues/204)) ([7fb5ae1](https://github.com/davidlj95/ngx/commit/7fb5ae14ecee294e1d8819903dd38029b1d3b944))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#203](https://github.com/davidlj95/ngx/issues/203)) ([0c0ad36](https://github.com/davidlj95/ngx/commit/0c0ad36527d6622722f0daa8030f5ebf32e1ab29))
+
 ## [`ngx-meta` v1.0.0-alpha.33](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.32...ngx-meta-v1.0.0-alpha.33) (2024-01-18)
 
 ### Performance Improvements

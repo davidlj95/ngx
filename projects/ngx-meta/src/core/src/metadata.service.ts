@@ -16,4 +16,7 @@ export class MetadataService {
       metadata.set(this.resolver(metadata.metadata, values))
     }
   }
+  public clear(): void {
+    this.set()
+  }
 }

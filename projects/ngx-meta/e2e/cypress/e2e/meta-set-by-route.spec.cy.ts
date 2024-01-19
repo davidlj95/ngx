@@ -32,9 +32,7 @@ describe('Meta set by route', () => {
 
   describe('when going to another route', () => {
     beforeEach(() => {
-      const selector = `#${ROUTES.root.linkId}`
-      cy.get(selector).click()
-      cy.location('pathname').should('eq', ROUTES.root.path)
+      cy.goToRootPage()
     })
 
     testUnsetsAllStandardMetadata()

@@ -37,6 +37,7 @@
 // }
 
 import Chainable = Cypress.Chainable
+import { ROUTES } from '../fixtures/routes'
 
 Cypress.Commands.add<'getMeta'>('getMeta', (name) => {
   cy.get(`meta[name="${name}"]`)
@@ -57,6 +58,12 @@ Cypress.Commands.add<'shouldHaveContent', Chainable<HTMLMetaElement>>(
   },
 )
 
+Cypress.Commands.add<'goToRootPage'>('goToRootPage', () => {
+  const selector = `#${ROUTES.root.linkId}`
+  cy.get(selector).click()
+  cy.location('pathname').should('eq', ROUTES.root.path)
+})
+
 // 👇 Make TypeScript happy (not in Cypress docs though)
 // https://stackoverflow.com/a/59499895/3263250
 export {}
@@ -64,6 +71,7 @@ export {}
 declare global {
   namespace Cypress {
     interface Chainable<Subject> {
+      goToRootPage(): Chainable<void>
       getMeta(name: string): Chainable<HTMLMetaElement>
       getMetaWithProperty(property: string): Chainable<HTMLMetaElement>
       shouldHaveContent(): Chainable<Subject>

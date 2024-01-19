@@ -9,7 +9,7 @@ import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-servi
 import { JsonPipe, NgForOf } from '@angular/common'
 import { RouterOutlet } from '@angular/router'
 import { NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
-import * as DEFAULTS from '../../../cypress/fixtures/defaults.json'
+import * as DEFAULTS_JSON from '../../../cypress/fixtures/defaults.json'
 import { NgxMetaRoutingModule } from '@davidlj95/ngx-meta/routing'
 import { NgxMetaStandardModule } from '@davidlj95/ngx-meta/standard'
 import {
@@ -31,15 +31,14 @@ import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
     AppRoutingModule,
     NgForOf,
     RouterOutlet,
-    NgxMetaCoreModule.forRoot({ defaults: DEFAULTS }),
+    JsonPipe,
+    NgxMetaCoreModule.forRoot({ defaults: DEFAULTS_JSON }),
     NgxMetaRoutingModule.forRoot(),
     NgxMetaStandardModule,
     NgxMetaOpenGraphModule,
     NgxMetaOpenGraphProfileModule,
     NgxMetaTwitterCardModule,
     NgxMetaJsonLdModule,
-    JsonPipe,
-    JsonPipe,
   ],
   providers: [],
   bootstrap: [AppComponent],

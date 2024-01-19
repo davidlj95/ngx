@@ -6,7 +6,7 @@ import {
   provideNgxMetaCore,
   withNgxMetaDefaults,
 } from '@davidlj95/ngx-meta/core'
-import DEFAULTS from '../../../cypress/fixtures/defaults.json'
+import DEFAULTS_JSON from '../../../cypress/fixtures/defaults.json'
 import { provideNgxMetaRouting } from '@davidlj95/ngx-meta/routing'
 import { provideNgxMetaStandardMetadata } from '@davidlj95/ngx-meta/standard'
 import {
@@ -19,7 +19,7 @@ import { provideNgxMetaJsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideNgxMetaCore(withNgxMetaDefaults(DEFAULTS)),
+    provideNgxMetaCore(withNgxMetaDefaults(DEFAULTS_JSON)),
     provideNgxMetaRouting(),
     provideNgxMetaStandardMetadata(),
     provideNgxMetaOpenGraphMetadata(),

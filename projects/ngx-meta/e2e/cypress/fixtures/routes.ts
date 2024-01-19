@@ -19,4 +19,9 @@ export const ROUTES = {
     displayName: 'Meta set by route and service',
     linkId: undefined,
   },
+  metaLateLoaded: {
+    path: 'meta-late-loaded',
+    displayName: 'Meta late loaded',
+    linkId: undefined,
+  },
 }

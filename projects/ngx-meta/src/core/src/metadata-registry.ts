@@ -1,7 +1,7 @@
 import { Inject, Injectable, Optional } from '@angular/core'
 import { MetadataProvider } from './metadata-provider'
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class MetadataRegistry {
   private readonly byId = new Map<string, MetadataProvider<unknown>>()
 

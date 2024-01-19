@@ -6,12 +6,7 @@ import { MetaSetByRouteComponent } from './meta-set-by-route/meta-set-by-route.c
 import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-service/meta-set-by-route-and-service.component'
 import { MetadataRouteData } from '@davidlj95/ngx-meta/routing'
 import * as METADATA_JSON from '../../../cypress/fixtures/metadata.json'
-import { MetaLateLoadedComponent } from './meta-late-loaded/meta-late-loaded.component'
-import { provideNgxMetaMetadataLoader } from '@davidlj95/ngx-meta/core'
-import {
-  LATE_LOADED_METADATA_JSON,
-  provideLateLoadedMetadata,
-} from '../late-loaded-metadata'
+import { MetaLateLoadedModule } from './meta-late-loaded/meta-late-loaded.module'
 
 const metadataRouteData: MetadataRouteData = { meta: METADATA_JSON }
 
@@ -32,9 +27,7 @@ const routes: Routes = [
   },
   {
     path: ROUTES.metaLateLoaded.path,
-    component: MetaLateLoadedComponent,
-    data: { meta: LATE_LOADED_METADATA_JSON },
-    providers: [provideLateLoadedMetadata(), provideNgxMetaMetadataLoader()],
+    loadChildren: () => MetaLateLoadedModule,
   },
 ]
 

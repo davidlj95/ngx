@@ -4,7 +4,7 @@ import {
   MetaService,
   provideMetadataFactory,
 } from '@davidlj95/ngx-meta/core'
-import LATE_LOADED_METADATA_JSON from '../../cypress/fixtures/late-loaded-metadata.json'
+import LATE_LOADED_METADATA_JSON from '../../../../cypress/fixtures/late-loaded-metadata.json'
 
 type LateLoadedMetadata = typeof LATE_LOADED_METADATA_JSON
 

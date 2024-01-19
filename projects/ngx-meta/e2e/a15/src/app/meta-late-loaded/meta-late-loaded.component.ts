@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { provideLateLoadedMetadata } from '../../late-loaded-metadata'
+import { provideLateLoadedMetadata } from './late-loaded-metadata'
 
 @Component({
   selector: 'app-meta-late-loaded',

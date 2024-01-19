@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { JsonPipe } from '@angular/common'
-import { provideLateLoadedMetadata } from '../../late-loaded-metadata'
+import { provideLateLoadedMetadata } from './late-loaded-metadata'
 
 @Component({
   selector: 'app-meta-late-loaded',
@@ -9,7 +9,7 @@ import { provideLateLoadedMetadata } from '../../late-loaded-metadata'
   imports: [JsonPipe],
   templateUrl: './meta-late-loaded.component.html',
 })
-export class MetaLateLoaded {
+export class MetaLateLoadedComponent {
   protected readonly routeData: unknown
   protected readonly providerSource: string
 

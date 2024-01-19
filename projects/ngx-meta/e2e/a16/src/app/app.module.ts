@@ -18,7 +18,6 @@ import {
 } from '@davidlj95/ngx-meta/open-graph'
 import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
 import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
-import { MetaLateLoadedComponent } from './meta-late-loaded/meta-late-loaded.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { MetaLateLoadedComponent } from './meta-late-loaded/meta-late-loaded.com
     MetaSetByServiceComponent,
     MetaSetByRouteComponent,
     MetaSetByRouteAndServiceComponent,
-    MetaLateLoadedComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,17 @@
+## [`ngx-meta` v1.0.0-alpha.35](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.34...ngx-meta-v1.0.0-alpha.35) (2024-01-19)
+
+### Features
+
+- allow to late load metadata providers ([#207](https://github.com/davidlj95/ngx/issues/207)) ([524631a](https://github.com/davidlj95/ngx/commit/524631af73f8981761277326711aedbbf7e9d0b0))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#205](https://github.com/davidlj95/ngx/issues/205)) ([da2d7f3](https://github.com/davidlj95/ngx/commit/da2d7f3771832099be8de4adcf56b35df536680a))
+
+### Code Refactoring
+
+- route metadata values store only route values ([#206](https://github.com/davidlj95/ngx/issues/206)) ([eeb22ee](https://github.com/davidlj95/ngx/commit/eeb22ee0a166e6cda446e7a1f3579a79ec08b80d))
+
 ## [`ngx-meta` v1.0.0-alpha.34](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.33...ngx-meta-v1.0.0-alpha.34) (2024-01-18)
 
 ### Performance Improvements

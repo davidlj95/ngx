@@ -6,6 +6,8 @@ export {
   provideCore as provideNgxMetaCore,
   withDefaults as withNgxMetaDefaults,
 } from './src/provide-core'
+export { provideMetadataLoader as provideNgxMetaMetadataLoader } from './src/provide-metadata-loader'
+export { MetadataLoaderModule as NgxMetaMetadataLoaderModule } from './src/metadata-loader.module'
 export * from './src/global-metadata'
 export * from './src/global-metadata-image'
 export * from './src/head-element-upsert-or-remove'

@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router'
 export class MetaSetByRouteComponent {
   protected readonly routeData: unknown
 
-  constructor(readonly activatedRoute: ActivatedRoute) {
+  constructor(activatedRoute: ActivatedRoute) {
     this.routeData = activatedRoute.snapshot.data
   }
 }

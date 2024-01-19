@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import * as METADATA from '../../../../cypress/fixtures/metadata.json'
+import * as METADATA_JSON from '../../../../cypress/fixtures/metadata.json'
 import { MetadataService } from '@davidlj95/ngx-meta/core'
 
 @Component({
@@ -7,7 +7,7 @@ import { MetadataService } from '@davidlj95/ngx-meta/core'
   templateUrl: './meta-set-by-service.component.html',
 })
 export class MetaSetByServiceComponent implements OnInit, OnDestroy {
-  protected readonly metadata = METADATA
+  protected readonly metadata = METADATA_JSON
 
   constructor(private readonly metadataService: MetadataService) {}
 

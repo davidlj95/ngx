@@ -1,8 +1,8 @@
-import METADATA from '../fixtures/metadata.json'
+import METADATA_JSON from '../fixtures/metadata.json'
 
 export function testSetsAllStandardMetadata() {
   it('should set all standard metadata', () => {
-    cy.fixture('metadata.json').then((metadata: typeof METADATA) => {
+    cy.fixture('metadata.json').then((metadata: typeof METADATA_JSON) => {
       cy.title().should('eq', metadata.title)
       cy.getMeta('description')
         .shouldHaveContent()

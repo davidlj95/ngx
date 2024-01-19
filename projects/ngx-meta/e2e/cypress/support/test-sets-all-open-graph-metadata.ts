@@ -1,8 +1,8 @@
-import METADATA from '../fixtures/metadata.json'
+import METADATA_JSON from '../fixtures/metadata.json'
 
 export function testSetsAllOpenGraphMetadata(openGraphOverrides: object = {}) {
   it('should set all Open Graph metadata', () => {
-    cy.fixture('metadata.json').then((jsonMetadata: typeof METADATA) => {
+    cy.fixture('metadata.json').then((jsonMetadata: typeof METADATA_JSON) => {
       const metadata = {
         ...jsonMetadata,
         openGraph: {

@@ -5,7 +5,8 @@
     "outDir": "./out-tsc/app",
     "types": [],
     // To load JSON fixture data
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"]

@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.36](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.35...ngx-meta-v1.0.0-alpha.36) (2024-01-20)
+
+### Features
+
+- add clear API to metadata service ([#209](https://github.com/davidlj95/ngx/issues/209)) ([006a86d](https://github.com/davidlj95/ngx/commit/006a86dc5dfaa01478e1fbfdc116d6a95f3f5a11))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#208](https://github.com/davidlj95/ngx/issues/208)) ([a2bd686](https://github.com/davidlj95/ngx/commit/a2bd686eb166f701cf00ec64828ba92b1bc7a677))
+
 ## [`ngx-meta` v1.0.0-alpha.35](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.34...ngx-meta-v1.0.0-alpha.35) (2024-01-19)
 
 ### Features

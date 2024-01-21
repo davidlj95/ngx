@@ -1,5 +1,4 @@
 import {
-  makeMetadata,
   MetaProperty,
   MetaService,
   provideMetadataFactory,
@@ -10,10 +9,6 @@ type LateLoadedMetadata = typeof LATE_LOADED_METADATA_JSON
 
 export const provideLateLoadedMetadata = () =>
   provideMetadataFactory<string | undefined>(
-    makeMetadata([
-      'lateLoadedMetadata' satisfies keyof LateLoadedMetadata,
-      'content' satisfies keyof LateLoadedMetadata['lateLoadedMetadata'],
-    ]),
     (metaService: MetaService) => (value) => {
       metaService.set(
         new MetaProperty({
@@ -22,7 +17,13 @@ export const provideLateLoadedMetadata = () =>
         value,
       )
     },
-    [MetaService],
+    {
+      d: [MetaService],
+      jP: [
+        'lateLoadedMetadata' satisfies keyof LateLoadedMetadata,
+        'content' satisfies keyof LateLoadedMetadata['lateLoadedMetadata'],
+      ],
+    },
   )
 
 export { LATE_LOADED_METADATA_JSON }

@@ -2,7 +2,6 @@ import { DOCUMENT } from '@angular/common'
 import {
   HEAD_ELEMENT_UPSERT_OR_REMOVE,
   HeadElementUpsertOrRemove,
-  makeMetadata,
   MetadataSetterFactory,
   provideMetadataFactory,
 } from '@davidlj95/ngx-meta/core'
@@ -26,7 +25,9 @@ export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   }
 
 export const JSON_LD_METADATA_PROVIDER = provideMetadataFactory(
-  makeMetadata([JSON_LD_KEY]),
   JSON_LD_METADATA_SETTER_FACTORY,
-  [HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
+  {
+    d: [HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
+    jP: [JSON_LD_KEY],
+  },
 )

@@ -4,8 +4,10 @@ import {
   MetadataJsonResolver,
 } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
-import { Metadata } from './metadata'
-import { makeMetadata } from './make-metadata'
+import {
+  makeMetadataResolverOptions,
+  MetadataResolverOptions,
+} from './metadata-provider'
 
 describe('Metadata JSON Resolver', () => {
   let sut: MetadataJsonResolver
@@ -21,28 +23,33 @@ describe('Metadata JSON Resolver', () => {
     const value = 'value'
 
     function testGlobalMayBeRetrieved(
-      metadata: Metadata,
       values: MetadataValues,
+      resolverOptions: MetadataResolverOptions,
     ) {
       describe('when global is not defined', () => {
         it('should return undefined', () => {
-          expect(sut(metadata, values)).toBeUndefined()
+          expect(sut(values, resolverOptions)).toBeUndefined()
         })
       })
 
       describe('when global is defined', () => {
-        const metadataWithGlobal = makeMetadata(metadata.jsonPath, global)
+        const resolverOptionsWithGlobal: MetadataResolverOptions = {
+          ...resolverOptions,
+          global,
+        }
 
         describe('but global value does not exist', () => {
           it('should return undefined', () => {
-            expect(sut(metadataWithGlobal, values)).toBeUndefined()
+            expect(sut(values, resolverOptionsWithGlobal)).toBeUndefined()
           })
         })
         describe('and global value exists', () => {
           const valuesWithGlobal = { [global]: value, ...values }
 
           it('should return global value', () => {
-            expect(sut(metadataWithGlobal, valuesWithGlobal)).toEqual(value)
+            expect(sut(valuesWithGlobal, resolverOptionsWithGlobal)).toEqual(
+              value,
+            )
           })
         })
       })
@@ -53,54 +60,57 @@ describe('Metadata JSON Resolver', () => {
         const values = undefined
 
         it('should return undefined', () => {
-          expect(sut(makeMetadata(['dummy']), values)).toBeUndefined()
+          expect(
+            sut(values, makeMetadataResolverOptions(['dummy'])),
+          ).toBeUndefined()
         })
       })
       describe('like when key does not exist', () => {
-        const metadata = makeMetadata([key, subKey])
         const values = {}
+        const resolverOptions = makeMetadataResolverOptions([key, subKey])
 
-        testGlobalMayBeRetrieved(metadata, values)
+        testGlobalMayBeRetrieved(values, resolverOptions)
       })
 
       describe('like when key is defined but sub key does not exist', () => {
-        const metadata = makeMetadata([key, subKey])
         const values = {
           [key]: {},
         }
-        testGlobalMayBeRetrieved(metadata, values)
+        const resolverOptions = makeMetadataResolverOptions([key, subKey])
+
+        testGlobalMayBeRetrieved(values, resolverOptions)
       })
 
       describe('like when key is null', () => {
-        const metadata = makeMetadata([key, subKey])
         const values = { [key]: null }
+        const resolverOptions = makeMetadataResolverOptions([key, subKey])
 
         it('should return null', () => {
-          expect(sut(metadata, values)).toBeNull()
+          expect(sut(values, resolverOptions)).toBeNull()
         })
       })
 
       describe('like when value in key is not an object', () => {
-        const metadata = makeMetadata([key, subKey])
         const values = {
           [key]: 42,
         }
-        testGlobalMayBeRetrieved(metadata, values)
+        const resolverOptions = makeMetadataResolverOptions([key, subKey])
+
+        testGlobalMayBeRetrieved(values, resolverOptions)
       })
     })
 
     describe('when specific value is defined', () => {
       describe('like when there is a key and sub key', () => {
-        const metadata = makeMetadata([key, subKey])
-
         const values = {
           [key]: {
             [subKey]: value,
           },
         }
+        const resolverOptions = makeMetadataResolverOptions([key, subKey])
 
         it('should return value using key and sub key as path', () => {
-          expect(sut(metadata, values)).toEqual(value)
+          expect(sut(values, resolverOptions)).toEqual(value)
         })
       })
 
@@ -110,7 +120,10 @@ describe('Metadata JSON Resolver', () => {
           globalValue: 'globalValue',
           prop: 'globalValue',
         }
-        const metadata = makeMetadata([key, subKey], global)
+        const resolverOptions = makeMetadataResolverOptions(
+          [key, subKey],
+          global,
+        )
         const values = {
           [global]: globalValueObject,
           [key]: {
@@ -119,7 +132,7 @@ describe('Metadata JSON Resolver', () => {
         }
 
         it('should merge both objects, with specific value taking priority', () => {
-          expect(sut(metadata, values)).toEqual({
+          expect(sut(values, resolverOptions)).toEqual({
             ...globalValueObject,
             ...valueObject,
           })

@@ -1,22 +1,22 @@
-import { Metadata } from './metadata'
 import { MetadataValues } from './metadata-values'
 import { isObject } from './is-object'
 import { InjectionToken } from '@angular/core'
+import { MetadataResolverOptions } from './metadata-provider'
 
 export type MetadataJsonResolver = (
-  metadata: Metadata,
-  values?: MetadataValues,
+  values: MetadataValues | undefined,
+  resolverOptions: MetadataResolverOptions,
 ) => unknown
 export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
   ngDevMode ? 'NgxMeta JSON Resolver' : 'NgxMetaJR',
   {
     providedIn: 'root',
-    factory: (): MetadataJsonResolver => (metadata, values?) => {
+    factory: (): MetadataJsonResolver => (values, resolverOptions) => {
       if (values === undefined) {
         return
       }
 
-      const keys = [...metadata.jsonPath]
+      const keys = [...resolverOptions.jsonPath]
       let value: unknown = values
       for (const key of keys) {
         if (value === undefined || value === null) {
@@ -25,8 +25,8 @@ export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
         value = (value as IndexedObject)[key]
       }
       const globalValue =
-        metadata.global !== undefined
-          ? (values as IndexedObject)[metadata.global]
+        resolverOptions.global !== undefined
+          ? (values as IndexedObject)[resolverOptions.global]
           : undefined
       if (value !== undefined && !globalValue) {
         return value

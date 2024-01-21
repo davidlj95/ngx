@@ -3,11 +3,9 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider, MockProviders } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { RouteMetadataValues } from './route-metadata-values'
-import { Metadata } from './metadata'
 import { MetadataValues } from './metadata-values'
 import { Provider } from '@angular/core'
 import { DEFAULTS_TOKEN } from './defaults-token'
-import { makeMetadata } from './make-metadata'
 import {
   METADATA_RESOLVER,
   METADATA_RESOLVER_PROVIDER,
@@ -17,12 +15,13 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
+import { makeMetadataResolverOptions } from './metadata-provider'
 
 describe('Metadata resolver', () => {
   enableAutoSpy()
 
   describe('get', () => {
-    const dummyMetadata = makeMetadata(['dummy'])
+    const dummyResolverOptions = makeMetadataResolverOptions(['dummy'])
     const dummyValues = { foo: 'bar' }
     const value = 'value'
     const valueObject = {
@@ -35,7 +34,7 @@ describe('Metadata resolver', () => {
     let sut: MetadataResolver
 
     function mockJsonResolver(returnMap: Map<MetadataValues, unknown>) {
-      jsonResolver.and.callFake((metadata: Metadata, values?: MetadataValues) =>
+      jsonResolver.and.callFake((values) =>
         returnMap.get(values as MetadataValues),
       )
     }
@@ -56,13 +55,16 @@ describe('Metadata resolver', () => {
       })
 
       it('should resolve value using values', () => {
-        sut(dummyMetadata, dummyValues)
+        sut(dummyValues, dummyResolverOptions)
 
-        expect(jsonResolver).toHaveBeenCalledWith(dummyMetadata, dummyValues)
+        expect(jsonResolver).toHaveBeenCalledWith(
+          dummyValues,
+          dummyResolverOptions,
+        )
       })
 
       it('should return its value', () => {
-        expect(sut(dummyMetadata, dummyValues)).toEqual(value)
+        expect(sut(dummyValues, dummyResolverOptions)).toEqual(value)
       })
     })
 
@@ -75,14 +77,17 @@ describe('Metadata resolver', () => {
       })
 
       it('should resolve value using route metadata values', () => {
-        sut(dummyMetadata, dummyValues)
+        sut(dummyValues, dummyResolverOptions)
 
         expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
-        expect(jsonResolver).toHaveBeenCalledWith(dummyMetadata, routeValues)
+        expect(jsonResolver).toHaveBeenCalledWith(
+          routeValues,
+          dummyResolverOptions,
+        )
       })
 
       it('should return value obtained from route metadata values', () => {
-        expect(sut(dummyMetadata, dummyValues)).toEqual(value)
+        expect(sut(dummyValues, dummyResolverOptions)).toEqual(value)
       })
     })
 
@@ -95,13 +100,16 @@ describe('Metadata resolver', () => {
       })
 
       it('should resolve value using default values', () => {
-        sut(dummyMetadata, dummyValues)
+        sut(dummyValues, dummyResolverOptions)
 
-        expect(jsonResolver).toHaveBeenCalledWith(dummyMetadata, defaults)
+        expect(jsonResolver).toHaveBeenCalledWith(
+          defaults,
+          dummyResolverOptions,
+        )
       })
 
       it('should return value obtained from defaults', () => {
-        expect(sut(dummyMetadata, dummyValues)).toEqual(value)
+        expect(sut(dummyValues, dummyResolverOptions)).toEqual(value)
       })
     })
 
@@ -125,7 +133,7 @@ describe('Metadata resolver', () => {
         })
 
         it('should return the merged object, with value props having more priority', () => {
-          expect(sut(dummyMetadata, dummyValues)).toEqual({
+          expect(sut(dummyValues, dummyResolverOptions)).toEqual({
             ...routeValueObject,
             ...valueObject,
           })
@@ -148,7 +156,7 @@ describe('Metadata resolver', () => {
         })
 
         it('should return value from values object', () => {
-          expect(sut(dummyMetadata, dummyValues)).toEqual(value)
+          expect(sut(dummyValues, dummyResolverOptions)).toEqual(value)
         })
       })
     })
@@ -159,7 +167,7 @@ describe('Metadata resolver', () => {
         injectSpies()
       })
       it('should return nothing', () => {
-        expect(sut(dummyMetadata, dummyValues)).toBeUndefined()
+        expect(sut(dummyValues, dummyResolverOptions)).toBeUndefined()
       })
     })
   })

@@ -14,10 +14,10 @@ export class MetadataRegistry {
   }
 
   register(provider: MetadataProvider<unknown>) {
-    if (this.byId.has(provider.metadata.id)) {
+    if (this.byId.has(provider.id)) {
       return
     }
-    this.byId.set(provider.metadata.id, provider)
+    this.byId.set(provider.id, provider)
   }
 
   getAll(): Iterable<MetadataProvider<unknown>> {

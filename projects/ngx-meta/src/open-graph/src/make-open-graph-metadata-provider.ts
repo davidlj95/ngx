@@ -1,6 +1,5 @@
 import {
   GlobalMetadata,
-  makeMetadata,
   MetadataSetterFactory,
   MetaService,
   provideMetadataFactory,
@@ -24,9 +23,12 @@ export const makeOpenGraphMetadataProvider = <Key extends keyof OpenGraph>(
   } = {},
 ): FactoryProvider =>
   provideMetadataFactory(
-    makeMetadata([OPEN_GRAPH_KEY, key], opts.g),
     opts.s ??
       ((metaService) => (value: OpenGraph[typeof key]) =>
         metaService.set(makeOpenGraphMetaProperty(opts.p ?? key), value)),
-    [MetaService],
+    {
+      d: [MetaService],
+      jP: [OPEN_GRAPH_KEY, key],
+      g: opts.g,
+    },
   )

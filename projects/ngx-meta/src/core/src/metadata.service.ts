@@ -13,7 +13,7 @@ export class MetadataService {
   public set(values: MetadataValues = {}): void {
     const allMetadata = this.registry.getAll()
     for (const metadata of allMetadata) {
-      metadata.set(this.resolver(metadata.metadata, values))
+      metadata.set(this.resolver(values, metadata.resolverOptions))
     }
   }
   public clear(): void {

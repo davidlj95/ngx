@@ -1,6 +1,5 @@
 import {
   GlobalMetadata,
-  makeMetadata,
   MetadataSetterFactory,
   MetaService,
   provideMetadataFactory,
@@ -24,9 +23,12 @@ export const makeTwitterCardMetadataProvider = <Key extends keyof TwitterCard>(
   } = {},
 ): FactoryProvider =>
   provideMetadataFactory(
-    makeMetadata([TWITTER_KEY, key], opts.g),
     opts.s ??
       ((metaService) => (value: TwitterCard[typeof key]) =>
         metaService.set(makeTwitterCardMetaProperty(opts.p ?? key), value)),
-    [MetaService],
+    {
+      d: [MetaService],
+      jP: [TWITTER_KEY, key],
+      g: opts.g,
+    },
   )

@@ -1,12 +1,12 @@
 import { MetadataRegistry } from './metadata-registry'
 import { TestBed } from '@angular/core/testing'
-import { makeMetadataProvider } from './__tests__/make-metadata-provider'
+import { makeMetadataProviderSpy } from './__tests__/make-metadata-provider-spy'
 import { MetadataProvider } from './metadata-provider'
 import { MockProvider } from 'ng-mocks'
 
 describe('Metadata registry', () => {
   const dummyId = 'dummyId'
-  const dummyMetadataProvider = makeMetadataProvider({ id: dummyId })
+  const dummyMetadataProvider = makeMetadataProviderSpy({ id: dummyId })
 
   it('should register metadata from DI system', () => {
     const sut = makeSut({ metadataProviders: [dummyMetadataProvider] })
@@ -27,7 +27,7 @@ describe('Metadata registry', () => {
   })
 
   it('should not register twice the same metadata', () => {
-    const sameDummyMetadataProvider = makeMetadataProvider({
+    const sameDummyMetadataProvider = makeMetadataProviderSpy({
       id: dummyId,
       spyName: 'duplicated metadata set',
     })

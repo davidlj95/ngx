@@ -1,6 +1,5 @@
 import {
   GlobalMetadata,
-  makeMetadata,
   MetadataSetterFactory,
   MetaService,
   provideMetadataFactory,
@@ -26,9 +25,12 @@ export const makeStandardMetadataProvider = <Key extends keyof Standard>(
   } = {},
 ): FactoryProvider =>
   provideMetadataFactory(
-    makeMetadata([STANDARD_KEY, key], opts.g),
     opts.s ??
       ((metaService) => (value: Standard[typeof key]) =>
         metaService.set(makeStandardMetaProperty(opts.n ?? key), value)),
-    opts.d ?? [MetaService],
+    {
+      d: opts.d ?? [MetaService],
+      jP: [STANDARD_KEY, key],
+      g: opts.g,
+    },
   )

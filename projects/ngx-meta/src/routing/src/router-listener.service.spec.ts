@@ -16,8 +16,7 @@ import {
 } from './metadata-route-strategy'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 import { Subscription } from 'rxjs'
-import { MetadataService } from '../../core'
-import { RouteMetadataValues } from '../../core/src/route-metadata-values'
+import { MetadataService, RouteMetadataValues } from '@davidlj95/ngx-meta/core'
 
 describe('Router listener service', () => {
   enableAutoSpy()

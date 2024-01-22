@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 import { MetadataService } from './metadata.service'
 import { MockProvider, MockProviders } from 'ng-mocks'
-import { makeMetadataProviderSpy } from './__tests__/make-metadata-provider-spy'
+import { makeMetadataSpy } from './__tests__/make-metadata-spy'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import { MetadataRegistry } from './metadata-registry'
@@ -19,15 +19,12 @@ describe('Metadata service', () => {
   })
 
   describe('set', () => {
-    const firstMetadataProvider = makeMetadataProviderSpy({ id: 'first' })
-    const secondMetadataProvider = makeMetadataProviderSpy({ id: 'second' })
+    const firstMetadata = makeMetadataSpy({ id: 'first' })
+    const secondMetadata = makeMetadataSpy({ id: 'second' })
     const dummyValues = {}
 
     beforeEach(() => {
-      metadataRegistry.getAll.and.returnValue([
-        firstMetadataProvider,
-        secondMetadataProvider,
-      ])
+      metadataRegistry.getAll.and.returnValue([firstMetadata, secondMetadata])
     })
 
     it('should set each metadata using resolved values', () => {
@@ -38,9 +35,9 @@ describe('Metadata service', () => {
       const dummySecondMetadataValue = 'secondMetadataValue'
       resolver.and.callFake((values, resolverOptions) => {
         switch (resolverOptions) {
-          case firstMetadataProvider.resolverOptions:
+          case firstMetadata.resolverOptions:
             return dummyFirstMetadataValue
-          case secondMetadataProvider.resolverOptions:
+          case secondMetadata.resolverOptions:
             return dummySecondMetadataValue
           default:
             throw new Error('Unexpected metadata')
@@ -52,18 +49,14 @@ describe('Metadata service', () => {
       expect(resolver).toHaveBeenCalledTimes(2)
       expect(resolver).toHaveBeenCalledWith(
         dummyValues,
-        firstMetadataProvider.resolverOptions,
+        firstMetadata.resolverOptions,
       )
-      expect(firstMetadataProvider.set).toHaveBeenCalledWith(
-        dummyFirstMetadataValue,
-      )
+      expect(firstMetadata.set).toHaveBeenCalledWith(dummyFirstMetadataValue)
       expect(resolver).toHaveBeenCalledWith(
         dummyValues,
-        secondMetadataProvider.resolverOptions,
+        secondMetadata.resolverOptions,
       )
-      expect(secondMetadataProvider.set).toHaveBeenCalledWith(
-        dummySecondMetadataValue,
-      )
+      expect(secondMetadata.set).toHaveBeenCalledWith(dummySecondMetadataValue)
     })
   })
 })

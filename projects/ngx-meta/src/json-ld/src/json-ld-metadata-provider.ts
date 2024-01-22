@@ -2,8 +2,8 @@ import { DOCUMENT } from '@angular/common'
 import {
   HEAD_ELEMENT_UPSERT_OR_REMOVE,
   HeadElementUpsertOrRemove,
+  makeMetadataProviderFromSetterFactory,
   MetadataSetterFactory,
-  provideMetadataFactory,
 } from '@davidlj95/ngx-meta/core'
 import { JsonLdMetadata } from './json-ld-metadata'
 
@@ -24,7 +24,7 @@ export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
     headElementUpsertOrRemove(`script[type='${SCRIPT_TYPE}']`, scriptElement)
   }
 
-export const JSON_LD_METADATA_PROVIDER = provideMetadataFactory(
+export const JSON_LD_METADATA_PROVIDER = makeMetadataProviderFromSetterFactory(
   JSON_LD_METADATA_SETTER_FACTORY,
   {
     d: [HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],

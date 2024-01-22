@@ -15,7 +15,7 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { makeMetadataResolverOptions } from './metadata-provider'
+import { makeMetadataResolverOptions } from './metadata'
 
 describe('Metadata resolver', () => {
   enableAutoSpy()

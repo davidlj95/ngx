@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { MetadataSetter, MetaService } from '../../core'
+import { MetadataSetter, MetaService } from '@davidlj95/ngx-meta/core'
 import { Standard } from './standard'
 import { STANDARD_KEYWORDS_METADATA_SETTER_FACTORY } from './standard-keywords-metadata-provider'
 
-describe('Standard keywords metadata provider', () => {
+describe('Standard keywords metadata', () => {
   enableAutoSpy()
   let sut: MetadataSetter<Standard['keywords']>
   let metaService: jasmine.SpyObj<MetaService>
@@ -15,7 +15,7 @@ describe('Standard keywords metadata provider', () => {
     metaService = TestBed.inject(MetaService) as jasmine.SpyObj<MetaService>
   })
 
-  describe('set', () => {
+  describe('setter', () => {
     it('when keywords are provided should set them separated by comma', () => {
       const firstKeyword = 'first'
       const secondKeyword = 'second'

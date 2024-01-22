@@ -1,8 +1,8 @@
 import {
   GlobalMetadata,
+  makeMetadataProviderFromSetterFactory,
   MetadataSetterFactory,
   MetaService,
-  provideMetadataFactory,
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
 import { TwitterCard } from './twitter-card'
@@ -22,7 +22,7 @@ export const makeTwitterCardMetadataProvider = <Key extends keyof TwitterCard>(
     s?: MetadataSetterFactory<TwitterCard[typeof key]>
   } = {},
 ): FactoryProvider =>
-  provideMetadataFactory(
+  makeMetadataProviderFromSetterFactory(
     opts.s ??
       ((metaService) => (value: TwitterCard[typeof key]) =>
         metaService.set(makeTwitterCardMetaProperty(opts.p ?? key), value)),

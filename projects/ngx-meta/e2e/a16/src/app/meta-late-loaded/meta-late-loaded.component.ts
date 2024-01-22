@@ -8,10 +8,10 @@ import { provideLateLoadedMetadata } from './late-loaded-metadata'
 })
 export class MetaLateLoadedComponent {
   protected readonly routeData: unknown
-  protected readonly providerSource: string
+  protected readonly providerSourceCode: string
 
   constructor(activatedRoute: ActivatedRoute) {
     this.routeData = activatedRoute.snapshot.data
-    this.providerSource = provideLateLoadedMetadata.toString()
+    this.providerSourceCode = provideLateLoadedMetadata.toString()
   }
 }

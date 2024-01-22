@@ -11,9 +11,9 @@ import {
 } from '@angular/router'
 import { EventEmitter, Provider } from '@angular/core'
 import {
-  METADATA_ROUTE_STRATEGY,
-  MetadataRouteStrategy,
-} from './metadata-route-strategy'
+  NGX_META_ROUTE_STRATEGY,
+  NgxMetaRouteStrategy,
+} from './ngx-meta-route-strategy'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 import { Subscription } from 'rxjs'
 import { MetadataService, RouteMetadataValues } from '@davidlj95/ngx-meta/core'
@@ -134,7 +134,7 @@ describe('Router listener service', () => {
 function makeSut(
   opts: {
     events$?: EventEmitter<NavigationEvent>
-    strategy?: MetadataRouteStrategy
+    strategy?: NgxMetaRouteStrategy
     activatedRoute?: ActivatedRoute
   } = {},
 ): RouterListenerService {
@@ -154,7 +154,7 @@ function makeSut(
 
   if (opts.strategy) {
     providers.push(
-      MockProvider(METADATA_ROUTE_STRATEGY, opts.strategy, 'useValue'),
+      MockProvider(NGX_META_ROUTE_STRATEGY, opts.strategy, 'useValue'),
     )
   }
 

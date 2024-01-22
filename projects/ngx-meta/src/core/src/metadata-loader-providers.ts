@@ -1,10 +1,10 @@
 import { ENVIRONMENT_INITIALIZER, Provider } from '@angular/core'
+import { MetadataRegistry } from './metadata-registry'
 import {
   METADATA_LOADER,
   METADATA_LOADER_PROVIDER,
   MetadataLoader,
 } from './metadata-loader'
-import { MetadataRegistry } from './metadata-registry'
 
 export const METADATA_LOADER_PROVIDERS: Provider[] = [
   MetadataRegistry,
@@ -16,5 +16,3 @@ export const METADATA_LOADER_PROVIDERS: Provider[] = [
     deps: [METADATA_LOADER],
   },
 ]
-
-export const provideMetadataLoader = (): Provider[] => METADATA_LOADER_PROVIDERS

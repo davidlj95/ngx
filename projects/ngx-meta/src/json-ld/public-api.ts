@@ -1,4 +1,5 @@
-export { JsonLdModule as NgxMetaJsonLdModule } from './src/json-ld.module'
-export { provideJsonLd as provideNgxMetaJsonLdMetadata } from './src/provide-json-ld'
-// Specific metadata
+// Main providers
+export * from './src/ngx-meta-json-ld.module'
+export * from './src/provide-ngx-meta-json-ld'
+// Specific providers
 export * from './src/json-ld-metadata-provider'

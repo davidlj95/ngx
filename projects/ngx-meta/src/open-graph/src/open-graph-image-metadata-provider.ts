@@ -1,7 +1,7 @@
 import { OpenGraph } from './open-graph'
-import { GLOBAL_IMAGE, MetaService } from '@davidlj95/ngx-meta/core'
+import { GLOBAL_IMAGE, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
-import { makeOpenGraphMetaProperty } from './make-open-graph-meta-property'
+import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
 
 const NO_KEY_VALUE: OpenGraph[typeof GLOBAL_IMAGE] = {
   url: undefined,
@@ -13,29 +13,30 @@ const NO_KEY_VALUE: OpenGraph[typeof GLOBAL_IMAGE] = {
 }
 
 export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
-  (metaService: MetaService) => (value: OpenGraph[typeof GLOBAL_IMAGE]) => {
+  (metaService: NgxMetaMetaService) =>
+  (value: OpenGraph[typeof GLOBAL_IMAGE]) => {
     const imageUrl = value?.url?.toString()
     const effectiveValue: OpenGraph[typeof GLOBAL_IMAGE] =
       imageUrl !== undefined && imageUrl !== null ? value : NO_KEY_VALUE
-    metaService.set(makeOpenGraphMetaProperty(GLOBAL_IMAGE), imageUrl)
+    metaService.set(makeOpenGraphMetaDefinition(GLOBAL_IMAGE), imageUrl)
     metaService.set(
-      makeOpenGraphMetaProperty(GLOBAL_IMAGE, 'alt'),
+      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'alt'),
       effectiveValue?.alt,
     )
     metaService.set(
-      makeOpenGraphMetaProperty(GLOBAL_IMAGE, 'secure_url'),
+      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'secure_url'),
       effectiveValue?.secureUrl?.toString(),
     )
     metaService.set(
-      makeOpenGraphMetaProperty(GLOBAL_IMAGE, 'type'),
+      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'type'),
       effectiveValue?.type,
     )
     metaService.set(
-      makeOpenGraphMetaProperty(GLOBAL_IMAGE, 'width'),
+      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'width'),
       effectiveValue?.width?.toString(),
     )
     metaService.set(
-      makeOpenGraphMetaProperty(GLOBAL_IMAGE, 'height'),
+      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'height'),
       effectiveValue?.height?.toString(),
     )
   }

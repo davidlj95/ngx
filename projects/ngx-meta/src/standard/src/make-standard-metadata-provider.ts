@@ -2,12 +2,12 @@ import {
   GlobalMetadata,
   makeMetadataProviderFromSetterFactory,
   MetadataSetterFactory,
-  MetaService,
+  NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
 import { Standard } from './standard'
 import { StandardMetadata } from './standard-metadata'
-import { makeStandardMetaProperty } from './make-standard-meta-property'
+import { makeStandardMetaDefinition } from './make-standard-meta-definition'
 
 const STANDARD_KEY: keyof StandardMetadata = 'standard'
 
@@ -19,17 +19,20 @@ export const makeStandardMetadataProvider = <Key extends keyof Standard>(
     // Global key. Defaults to nothing
     g?: keyof GlobalMetadata
     // Setter factory. Defaults to setting the meta name to the given value.
-    s?: MetadataSetterFactory<Standard[typeof key]>
+    s?: MetadataSetterFactory<Standard[Key]>
     // Deps for the setter factory
     d?: FactoryProvider['deps']
   } = {},
 ): FactoryProvider =>
   makeMetadataProviderFromSetterFactory(
     opts.s ??
-      ((metaService) => (value: Standard[typeof key]) =>
-        metaService.set(makeStandardMetaProperty(opts.n ?? key), value)),
+      ((metaService: NgxMetaMetaService) => (value: Standard[Key]) =>
+        metaService.set(
+          makeStandardMetaDefinition(opts.n ?? key),
+          value as string,
+        )),
     {
-      d: opts.d ?? [MetaService],
+      d: opts.d ?? [NgxMetaMetaService],
       jP: [STANDARD_KEY, key],
       g: opts.g,
     },

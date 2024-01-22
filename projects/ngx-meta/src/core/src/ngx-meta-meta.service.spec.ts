@@ -1,24 +1,24 @@
 import { TestBed } from '@angular/core/testing'
 
-import { MetaService } from './meta.service'
-import { MetaProperty } from './meta-property'
+import { NgxMetaMetaService } from './ngx-meta-meta.service'
 import { MockProvider } from 'ng-mocks'
 import { Meta } from '@angular/platform-browser'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
+import { makeKeyValMetaDefinition } from './make-key-val-meta-definition'
 
-describe('Meta service', () => {
+describe('NgxMeta meta service', () => {
   enableAutoSpy()
 
-  let sut: MetaService
-  let metaService: Meta
+  let sut: NgxMetaMetaService
+  let meta: Meta
 
   beforeEach(() => {
     sut = makeSut()
-    metaService = TestBed.inject(Meta)
+    meta = TestBed.inject(Meta)
   })
 
   describe('set', () => {
-    const property = new MetaProperty({
+    const metaDefinition = makeKeyValMetaDefinition({
       keyAttr: 'propertyName',
       keyName: 'dummy',
       valAttr: 'propertyContent',
@@ -28,11 +28,9 @@ describe('Meta service', () => {
       const content = undefined
 
       it('should remove meta element', () => {
-        sut.set(property, content)
+        sut.set(metaDefinition, content)
 
-        expect(metaService.removeTag).toHaveBeenCalledOnceWith(
-          property.selector,
-        )
+        expect(meta.removeTag).toHaveBeenCalledOnceWith(metaDefinition.selector)
       })
     })
 
@@ -40,11 +38,9 @@ describe('Meta service', () => {
       const content = null
 
       it('should remove meta element', () => {
-        sut.set(property, content)
+        sut.set(metaDefinition, content)
 
-        expect(metaService.removeTag).toHaveBeenCalledOnceWith(
-          property.selector,
-        )
+        expect(meta.removeTag).toHaveBeenCalledOnceWith(metaDefinition.selector)
       })
     })
 
@@ -52,12 +48,11 @@ describe('Meta service', () => {
       const content = 'Lorem ipsum lorem'
 
       it('should update the meta tag', () => {
-        sut.set(property, content)
+        sut.set(metaDefinition, content)
 
-        expect(metaService.updateTag).toHaveBeenCalledOnceWith({
-          [property.keyAttr]: property.keyName,
-          [property.valAttr]: content,
-        })
+        expect(meta.updateTag).toHaveBeenCalledOnceWith(
+          metaDefinition.withContent(content),
+        )
       })
     })
   })
@@ -65,7 +60,7 @@ describe('Meta service', () => {
 
 function makeSut() {
   TestBed.configureTestingModule({
-    providers: [MetaService, MockProvider(Meta)],
+    providers: [NgxMetaMetaService, MockProvider(Meta)],
   })
-  return TestBed.inject(MetaService)
+  return TestBed.inject(NgxMetaMetaService)
 }

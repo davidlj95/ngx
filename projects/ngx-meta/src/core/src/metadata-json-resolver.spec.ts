@@ -7,7 +7,7 @@ import { MetadataValues } from './metadata-values'
 import {
   makeMetadataResolverOptions,
   MetadataResolverOptions,
-} from './metadata-provider'
+} from './metadata'
 
 describe('Metadata JSON Resolver', () => {
   let sut: MetadataJsonResolver

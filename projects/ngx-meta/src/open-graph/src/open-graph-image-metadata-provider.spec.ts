@@ -6,7 +6,7 @@ import { OpenGraphImage } from './open-graph-image'
 import { OpenGraph } from './open-graph'
 import { OPEN_GRAPH_IMAGE_SETTER_FACTORY } from './open-graph-image-metadata-provider'
 
-describe('Open Graph image metadata provider', () => {
+describe('Open Graph image metadata', () => {
   enableAutoSpy()
   let sut: MetadataSetter<OpenGraph['image']>
   let metaService: jasmine.SpyObj<MetaService>
@@ -25,7 +25,7 @@ describe('Open Graph image metadata provider', () => {
     height: 875,
   } satisfies OpenGraphImage
 
-  describe('set', () => {
+  describe('setter', () => {
     describe('when url is provided', () => {
       it('should set all meta properties', () => {
         sut(image)

@@ -1,4 +1,7 @@
-import { MetaService, provideMetadataFactory } from '@davidlj95/ngx-meta/core'
+import {
+  makeMetadataProviderFromSetterFactory,
+  MetaService,
+} from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
 import { OpenGraphProfile } from './open-graph-profile'
 import { OPEN_GRAPH_KEY } from './make-open-graph-metadata-provider'
@@ -16,7 +19,7 @@ export const makeOpenGraphProfileMetadataProvider = <
     p?: string
   } = {},
 ): FactoryProvider =>
-  provideMetadataFactory(
+  makeMetadataProviderFromSetterFactory(
     (metaService) => (value: OpenGraphProfile[typeof key]) =>
       metaService.set(
         makeOpenGraphMetaProperty(...[OPEN_GRAPH_PROFILE_KEY, opts.p ?? key]),

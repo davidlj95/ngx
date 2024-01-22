@@ -1,7 +1,7 @@
 import { MetadataValues } from './metadata-values'
 import { isObject } from './is-object'
 import { InjectionToken } from '@angular/core'
-import { MetadataResolverOptions } from './metadata-provider'
+import { MetadataResolverOptions } from './metadata'
 
 export type MetadataJsonResolver = (
   values: MetadataValues | undefined,

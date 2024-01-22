@@ -1,8 +1,8 @@
 import {
   GlobalMetadata,
+  makeMetadataProviderFromSetterFactory,
   MetadataSetterFactory,
   MetaService,
-  provideMetadataFactory,
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraph } from './open-graph'
 import { FactoryProvider } from '@angular/core'
@@ -22,7 +22,7 @@ export const makeOpenGraphMetadataProvider = <Key extends keyof OpenGraph>(
     s?: MetadataSetterFactory<OpenGraph[typeof key]>
   } = {},
 ): FactoryProvider =>
-  provideMetadataFactory(
+  makeMetadataProviderFromSetterFactory(
     opts.s ??
       ((metaService) => (value: OpenGraph[typeof key]) =>
         metaService.set(makeOpenGraphMetaProperty(opts.p ?? key), value)),

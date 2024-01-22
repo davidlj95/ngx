@@ -2,11 +2,11 @@ import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Title } from '@angular/platform-browser'
-import { MetadataSetter } from '../../core'
+import { MetadataSetter } from '@davidlj95/ngx-meta/core'
 import { Standard } from './standard'
 import { STANDARD_TITLE_METADATA_SETTER_FACTORY } from './standard-title-metadata-provider'
 
-describe('Standard title metadata provider', () => {
+describe('Standard title metadata', () => {
   enableAutoSpy()
   let sut: MetadataSetter<Standard['title']>
   let titleService: jasmine.SpyObj<Title>
@@ -16,7 +16,7 @@ describe('Standard title metadata provider', () => {
     titleService = TestBed.inject(Title) as jasmine.SpyObj<Title>
   })
 
-  describe('set', () => {
+  describe('setter', () => {
     it('when title is not provided should not update title', () => {
       sut(undefined)
 

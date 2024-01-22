@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { MetadataSetter, MetaService } from '../../core'
+import { MetadataSetter, MetaService } from '@davidlj95/ngx-meta/core'
 import { VERSION } from '@angular/core'
 import { Standard } from './standard'
 import { STANDARD_GENERATOR_METADATA_SETTER_FACTORY } from './standard-generator-metadata-provider'
 
-describe('Standard generator metadata provider', () => {
+describe('Standard generator metadata', () => {
   enableAutoSpy()
   let sut: MetadataSetter<Standard['generator']>
   let metaService: jasmine.SpyObj<MetaService>
@@ -16,7 +16,7 @@ describe('Standard generator metadata provider', () => {
     metaService = TestBed.inject(MetaService) as jasmine.SpyObj<MetaService>
   })
 
-  describe('set', () => {
+  describe('setter', () => {
     it('when not provided should call meta service with nothing value', () => {
       sut(undefined)
 

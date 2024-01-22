@@ -7,7 +7,7 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { MetadataResolverOptions } from './metadata-provider'
+import { MetadataResolverOptions } from './metadata'
 
 export type MetadataResolver = (
   values: MetadataValues,

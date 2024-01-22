@@ -1,16 +1,16 @@
 import {
-  makeMetadataProvider,
+  makeMetadata,
   makeMetadataResolverOptions,
-  MetadataProvider,
+  Metadata,
   MetadataSetter,
-} from './metadata-provider'
+} from './metadata'
 import { FactoryProvider } from '@angular/core'
 
 export type MetadataSetterFactory<T> = (
   ...deps: Exclude<FactoryProvider['deps'], undefined>
 ) => MetadataSetter<T>
 
-export const provideMetadataFactory = <T>(
+export const makeMetadataProviderFromSetterFactory = <T>(
   setterFactory: MetadataSetterFactory<T>,
   opts: {
     // Dependencies to provide to setter factory
@@ -25,10 +25,10 @@ export const provideMetadataFactory = <T>(
 ): FactoryProvider => {
   const deps = opts.d ?? []
   return {
-    provide: MetadataProvider,
+    provide: Metadata,
     multi: true,
     useFactory: (...deps: unknown[]) =>
-      makeMetadataProvider(
+      makeMetadata(
         opts.id ?? opts.jP.join('.'),
         makeMetadataResolverOptions(opts.jP, opts.g),
         setterFactory(...deps),

@@ -4,17 +4,17 @@ export interface MetadataResolverOptions {
   readonly global?: string
 }
 
-export abstract class MetadataProvider<Value> {
+export abstract class Metadata<Value = unknown> {
   abstract readonly id: string
   abstract readonly resolverOptions: MetadataResolverOptions
   abstract readonly set: MetadataSetter<Value>
 }
 
-export const makeMetadataProvider = <T>(
-  id: MetadataProvider<T>['id'],
-  resolverOptions: MetadataProvider<T>['resolverOptions'],
-  set: MetadataProvider<T>['set'],
-): MetadataProvider<T> => ({
+export const makeMetadata = <T>(
+  id: Metadata<T>['id'],
+  resolverOptions: Metadata<T>['resolverOptions'],
+  set: Metadata<T>['set'],
+): Metadata<T> => ({
   id,
   resolverOptions,
   set,

@@ -4,7 +4,7 @@ import { MetadataRegistry } from './metadata-registry'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 
 @Injectable({ providedIn: 'root' })
-export class MetadataService {
+export class NgxMetaService {
   constructor(
     private readonly registry: MetadataRegistry,
     @Inject(METADATA_RESOLVER) private readonly resolver: MetadataResolver,

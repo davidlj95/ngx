@@ -2,11 +2,11 @@ Metadata of this page has been set by providing route data:
 
 <pre>{{ routeData | json }}</pre>
 
-And then overridden using <code>NgxMeta</code>'s <code>MetadataService</code>
-service on page's component initialisation
+And then overridden using <code>NgxMeta</code>'s <code>NgxMetaService</code>
+on page's component initialisation
 
 <pre>
-metadataService.set({{ overriddenMetadata | json }})
+ngxMetaService.set({{ overriddenMetadata | json }})
 </pre>
 
 Check the <code>&lt;head&gt;</code> HTML element of this page to see the results

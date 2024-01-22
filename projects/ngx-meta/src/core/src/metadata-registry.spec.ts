@@ -2,7 +2,7 @@ import { MetadataRegistry } from './metadata-registry'
 import { TestBed } from '@angular/core/testing'
 import { makeMetadataSpy } from './__tests__/make-metadata-spy'
 import { MockProvider } from 'ng-mocks'
-import { Metadata } from './metadata'
+import { NgxMetaMetadata } from './ngx-meta-metadata'
 
 describe('Metadata registry', () => {
   const dummyMetadata = makeMetadataSpy()
@@ -40,14 +40,14 @@ describe('Metadata registry', () => {
 
 function makeSut(
   opts: {
-    metadata?: ReadonlyArray<Metadata>
+    metadata?: ReadonlyArray<NgxMetaMetadata>
   } = {},
 ) {
   TestBed.configureTestingModule({
     providers: [
       MetadataRegistry,
       ...(opts.metadata ?? []).map((metadata) =>
-        MockProvider(Metadata, metadata, 'useValue', true),
+        MockProvider(NgxMetaMetadata, metadata, 'useValue', true),
       ),
     ],
   })

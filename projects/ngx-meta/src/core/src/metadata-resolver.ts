@@ -1,13 +1,13 @@
 import { FactoryProvider, InjectionToken, Optional } from '@angular/core'
 import { MetadataValues } from './metadata-values'
-import { _RouteMetadataValues } from './route-metadata-values'
+import { _NgxMetaRouteValuesService } from './ngx-meta-route-values.service'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { isObject } from './is-object'
 import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { MetadataResolverOptions } from './metadata'
+import { MetadataResolverOptions } from './ngx-meta-metadata'
 
 export type MetadataResolver = (
   values: MetadataValues,
@@ -22,7 +22,7 @@ export const METADATA_RESOLVER_FACTORY: (
 ) => MetadataResolver =
   (
     jsonResolver: MetadataJsonResolver,
-    routeMetadataValues: _RouteMetadataValues | null,
+    routeMetadataValues: _NgxMetaRouteValuesService | null,
     defaults: MetadataValues | null,
   ) =>
   (values, resolverOptions) => {
@@ -38,7 +38,7 @@ export const METADATA_RESOLVER_PROVIDER: FactoryProvider = {
   useFactory: METADATA_RESOLVER_FACTORY,
   deps: [
     METADATA_JSON_RESOLVER,
-    [_RouteMetadataValues, new Optional()],
+    [_NgxMetaRouteValuesService, new Optional()],
     [DEFAULTS_TOKEN, new Optional()],
   ],
 }

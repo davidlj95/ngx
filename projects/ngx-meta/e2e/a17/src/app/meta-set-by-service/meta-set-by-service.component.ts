@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import METADATA_JSON from '../../../../cypress/fixtures/metadata.json'
-import { MetadataService } from '@davidlj95/ngx-meta/core'
+import { NgxMetaService } from '@davidlj95/ngx-meta/core'
 import { JsonPipe } from '@angular/common'
 
 @Component({
@@ -12,15 +12,15 @@ import { JsonPipe } from '@angular/common'
 export class MetaSetByServiceComponent implements OnInit, OnDestroy {
   protected readonly metadata = METADATA_JSON
 
-  constructor(private readonly metadataService: MetadataService) {}
+  constructor(private readonly ngxMetaService: NgxMetaService) {}
 
   ngOnInit(): void {
-    this.metadataService.set(this.metadata)
+    this.ngxMetaService.set(this.metadata)
   }
 
   ngOnDestroy(): void {
     //👇 Clear metadata when changing page
     //   If you have enabled the routing module, this is not needed
-    this.metadataService.clear()
+    this.ngxMetaService.clear()
   }
 }

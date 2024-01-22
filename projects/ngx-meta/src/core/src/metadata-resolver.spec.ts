@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing'
 
 import { MockProvider, MockProviders } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
-import { _RouteMetadataValues } from './route-metadata-values'
+import { _NgxMetaRouteValuesService } from './ngx-meta-route-values.service'
 import { MetadataValues } from './metadata-values'
 import { Provider } from '@angular/core'
 import { DEFAULTS_TOKEN } from './defaults-token'
@@ -15,7 +15,7 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { _makeMetadataResolverOptions } from './metadata'
+import { _makeMetadataResolverOptions } from './ngx-meta-metadata'
 
 describe('Metadata resolver', () => {
   enableAutoSpy()
@@ -30,7 +30,7 @@ describe('Metadata resolver', () => {
     }
     const routeValues = { route: 'values' }
     let jsonResolver: jasmine.Spy<MetadataJsonResolver>
-    let routeMetadataValues: jasmine.SpyObj<_RouteMetadataValues>
+    let routeMetadataValues: jasmine.SpyObj<_NgxMetaRouteValuesService>
     let sut: MetadataResolver
 
     function mockJsonResolver(returnMap: Map<MetadataValues, unknown>) {
@@ -43,8 +43,8 @@ describe('Metadata resolver', () => {
         METADATA_JSON_RESOLVER,
       ) as jasmine.Spy<MetadataJsonResolver>
       routeMetadataValues = TestBed.inject(
-        _RouteMetadataValues,
-      ) as jasmine.SpyObj<_RouteMetadataValues>
+        _NgxMetaRouteValuesService,
+      ) as jasmine.SpyObj<_NgxMetaRouteValuesService>
     }
 
     describe('when value exists in provided values', () => {
@@ -176,7 +176,7 @@ describe('Metadata resolver', () => {
 function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
   const providers: Provider[] = [
     METADATA_RESOLVER_PROVIDER,
-    MockProviders(_RouteMetadataValues),
+    MockProviders(_NgxMetaRouteValuesService),
     MockProvider(
       METADATA_JSON_RESOLVER,
       jasmine.createSpy('Metadata JSON resolver'),

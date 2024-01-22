@@ -5,10 +5,13 @@ import {
   NGX_META_ROUTE_STRATEGY,
   NgxMetaRouteStrategy,
 } from './ngx-meta-route-strategy'
-import { _RouteMetadataValues, MetadataService } from '@davidlj95/ngx-meta/core'
+import {
+  _NgxMetaRouteValuesService,
+  NgxMetaService,
+} from '@davidlj95/ngx-meta/core'
 
 @Injectable({ providedIn: 'root' })
-export class RouterListenerService implements OnDestroy {
+export class NgxMetaRouterListenerService implements OnDestroy {
   // Replace by `takeUntilDestroyed` when stable
   // https://angular.io/api/core/rxjs-interop/takeUntilDestroyed
   private sub?: Subscription
@@ -19,8 +22,8 @@ export class RouterListenerService implements OnDestroy {
     @Optional()
     @Inject(NGX_META_ROUTE_STRATEGY)
     private readonly strategy: NgxMetaRouteStrategy | null,
-    private readonly metadataService: MetadataService,
-    private readonly routeMetadataValues: _RouteMetadataValues,
+    private readonly ngxMetaService: NgxMetaService,
+    private readonly routeMetadataValues: _NgxMetaRouteValuesService,
   ) {}
 
   public listen() {
@@ -51,7 +54,7 @@ export class RouterListenerService implements OnDestroy {
             return
           }
           const values = this.strategy(this.activatedRoute.snapshot)
-          this.metadataService.set(values)
+          this.ngxMetaService.set(values)
           this.routeMetadataValues.set(values)
         },
       })

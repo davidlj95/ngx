@@ -4,6 +4,9 @@
 build:
 	cd .. && pnpm run build
 
+tsc:
+	cd .. && pnpm run ngx-meta:tsc
+
 install:
 	# Despite it's enabled by default on CI. This allows to mock CI locally
 	# https://pnpm.io/cli/install#--frozen-lockfile

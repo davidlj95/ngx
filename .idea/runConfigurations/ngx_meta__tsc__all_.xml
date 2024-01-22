@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta: tsc (spec)" type="js.build_tools.npm">
+  <configuration default="false" name="ngx-meta: tsc (all)" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="ngx-meta:tsc:spec" />
+      <script value="ngx-meta:tsc" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

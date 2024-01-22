@@ -1,3 +1,5 @@
-export { RoutingModule as NgxMetaRoutingModule } from './src/routing.module'
-export { provideRouting as provideNgxMetaRouting } from './src/provide-routing'
-export * from './src/metadata-route-data'
+// Main providers
+export * from './src/ngx-meta-routing.module'
+export * from './src/provide-ngx-meta-routing'
+// Others
+export * from './src/ngx-meta-route-data'

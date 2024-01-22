@@ -2,9 +2,9 @@ import { Inject, Injectable, OnDestroy, Optional } from '@angular/core'
 import { ActivatedRoute, EventType, Router } from '@angular/router'
 import { filter, Subscription } from 'rxjs'
 import {
-  METADATA_ROUTE_STRATEGY,
-  MetadataRouteStrategy,
-} from './metadata-route-strategy'
+  NGX_META_ROUTE_STRATEGY,
+  NgxMetaRouteStrategy,
+} from './ngx-meta-route-strategy'
 import { MetadataService, RouteMetadataValues } from '@davidlj95/ngx-meta/core'
 
 @Injectable({ providedIn: 'root' })
@@ -17,8 +17,8 @@ export class RouterListenerService implements OnDestroy {
     private readonly router: Router,
     private readonly activatedRoute: ActivatedRoute,
     @Optional()
-    @Inject(METADATA_ROUTE_STRATEGY)
-    private readonly strategy: MetadataRouteStrategy | null,
+    @Inject(NGX_META_ROUTE_STRATEGY)
+    private readonly strategy: NgxMetaRouteStrategy | null,
     private readonly metadataService: MetadataService,
     private readonly routeMetadataValues: RouteMetadataValues,
   ) {}

@@ -1,5 +1,8 @@
-export { StandardModule as NgxMetaStandardModule } from './src/standard.module'
-export { provideStandard as provideNgxMetaStandardMetadata } from './src/provide-standard'
+// Main providers
+export * from './src/ngx-meta-standard.module'
+export * from './src/provide-ngx-meta-standard'
+// Others
+export * from './src/standard'
 export * from './src/standard-metadata'
 // Specific providers
 export * from './src/standard-title-metadata-provider'

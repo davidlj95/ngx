@@ -8,23 +8,23 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import DEFAULTS_JSON from '../../../cypress/fixtures/defaults.json'
 import { provideNgxMetaRouting } from '@davidlj95/ngx-meta/routing'
-import { provideNgxMetaStandardMetadata } from '@davidlj95/ngx-meta/standard'
+import { provideNgxMetaStandard } from '@davidlj95/ngx-meta/standard'
 import {
-  provideNgxMetaOpenGraphMetadata,
-  provideNgxMetaOpenGraphProfileMetadata,
+  provideNgxMetaOpenGraph,
+  provideNgxMetaOpenGraphProfile,
 } from '@davidlj95/ngx-meta/open-graph'
-import { provideNgxMetaTwitterCardMetadata } from '@davidlj95/ngx-meta/twitter-card'
-import { provideNgxMetaJsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
+import { provideNgxMetaTwitterCard } from '@davidlj95/ngx-meta/twitter-card'
+import { provideNgxMetaJsonLd } from '@davidlj95/ngx-meta/json-ld'
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideNgxMetaCore(withNgxMetaDefaults(DEFAULTS_JSON)),
     provideNgxMetaRouting(),
-    provideNgxMetaStandardMetadata(),
-    provideNgxMetaOpenGraphMetadata(),
-    provideNgxMetaOpenGraphProfileMetadata(),
-    provideNgxMetaTwitterCardMetadata(),
-    provideNgxMetaJsonLdMetadata(),
+    provideNgxMetaStandard(),
+    provideNgxMetaOpenGraph(),
+    provideNgxMetaOpenGraphProfile(),
+    provideNgxMetaTwitterCard(),
+    provideNgxMetaJsonLd(),
   ],
 }

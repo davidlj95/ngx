@@ -1,8 +1,9 @@
-export { OpenGraphModule as NgxMetaOpenGraphModule } from './src/open-graph.module'
-export { OpenGraphProfileModule as NgxMetaOpenGraphProfileModule } from './src/open-graph-profile.module'
-export { provideOpenGraph as provideNgxMetaOpenGraphMetadata } from './src/provide-open-graph'
-export { provideOpenGraphProfile as provideNgxMetaOpenGraphProfileMetadata } from './src/provide-open-graph-profile'
-export * from './src/make-open-graph-meta-property'
+// Main providers
+export * from './src/ngx-meta-open-graph.module'
+export * from './src/ngx-meta-open-graph-profile.module'
+export * from './src/provide-ngx-meta-open-graph'
+export * from './src/provide-ngx-meta-open-graph-profile'
+// Others
 export * from './src/open-graph'
 export * from './src/open-graph-image'
 export * from './src/open-graph-metadata'

@@ -1,15 +1,15 @@
 import { MockService } from 'ng-mocks'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import {
-  CURRENT_ROUTE_DATA_METADATA_ROUTE_STRATEGY,
+  CURRENT_ROUTE_DATA_ROUTE_STRATEGY,
   ROUTING_KEY,
-} from './current-route-data-metadata-strategy'
+} from './current-route-data-strategy'
 
-describe('Current route data metadata strategy', () => {
-  const sut = CURRENT_ROUTE_DATA_METADATA_ROUTE_STRATEGY
+describe('Current route data strategy', () => {
+  const sut = CURRENT_ROUTE_DATA_ROUTE_STRATEGY
 
   describe('resolve', () => {
-    it('returns current route snapshot (last child)', () => {
+    it('returns current route snapshot metadata key', () => {
       const dummyRouteMetadata = { title: 'dummy' }
       const rootSnapshot = MockService(ActivatedRouteSnapshot, {
         firstChild: {

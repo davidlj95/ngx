@@ -2,11 +2,10 @@ import { InjectionToken } from '@angular/core'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { MetadataValues } from '@davidlj95/ngx-meta/core'
 
-export type MetadataRouteStrategy = (
+export type NgxMetaRouteStrategy = (
   activatedRouteSnapshot: ActivatedRouteSnapshot,
 ) => MetadataValues | undefined
 
-export const METADATA_ROUTE_STRATEGY =
-  new InjectionToken<MetadataRouteStrategy>(
-    ngDevMode ? 'NgxMeta Metadata Route Strategy' : 'NgxMetaMRS',
-  )
+export const NGX_META_ROUTE_STRATEGY = new InjectionToken<NgxMetaRouteStrategy>(
+  ngDevMode ? 'NgxMeta Route Strategy' : 'NgxMetaRS',
+)

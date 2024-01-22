@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing'
 
-import { RouteMetadataValues } from './route-metadata-values'
+import { _RouteMetadataValues } from './route-metadata-values'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MockProviders } from 'ng-mocks'
 import { Router } from '@angular/router'
 
 describe('Route metadata values', () => {
   enableAutoSpy()
-  let sut: RouteMetadataValues
+  let sut: _RouteMetadataValues
   let router: jasmine.SpyObj<Router>
   const dummyValues = { foo: 'bar' }
   const url = '/set-url'
@@ -56,7 +56,7 @@ describe('Route metadata values', () => {
 
 function makeSut() {
   TestBed.configureTestingModule({
-    providers: [RouteMetadataValues, MockProviders(Router)],
+    providers: [_RouteMetadataValues, MockProviders(Router)],
   })
-  return TestBed.inject(RouteMetadataValues)
+  return TestBed.inject(_RouteMetadataValues)
 }

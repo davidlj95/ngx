@@ -4,7 +4,7 @@ import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 import { VERSION } from '@angular/core'
 import { Standard } from './standard'
-import { STANDARD_GENERATOR_METADATA_SETTER_FACTORY } from './standard-generator-metadata-provider'
+import { __STANDARD_GENERATOR_METADATA_SETTER_FACTORY } from './standard-generator-metadata-provider'
 
 describe('Standard generator metadata', () => {
   enableAutoSpy()
@@ -47,7 +47,7 @@ function makeSut(): MetadataSetter<Standard['generator']> {
   TestBed.configureTestingModule({
     providers: [MockProvider(NgxMetaMetaService)],
   })
-  return STANDARD_GENERATOR_METADATA_SETTER_FACTORY(
+  return __STANDARD_GENERATOR_METADATA_SETTER_FACTORY(
     TestBed.inject(NgxMetaMetaService),
   )
 }

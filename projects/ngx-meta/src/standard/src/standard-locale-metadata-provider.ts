@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common'
 import { Standard } from './standard'
 
 const ATTRIBUTE_NAME = 'lang'
-export const STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
+export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof GLOBAL_LOCALE]
 > = (doc: Document) => (locale) => {
   const htmlElement = doc.documentElement
@@ -19,7 +19,7 @@ export const STANDARD_LOCALE_METADATA_PROVIDER = makeStandardMetadataProvider(
   GLOBAL_LOCALE,
   {
     g: GLOBAL_LOCALE,
-    s: STANDARD_LOCALE_METADATA_SETTER_FACTORY,
+    s: __STANDARD_LOCALE_METADATA_SETTER_FACTORY,
     d: [DOCUMENT],
   },
 )

@@ -18,8 +18,7 @@ export const makeComposedKeyValMetaDefinition = (
   makeKeyValMetaDefinition({
     ...opts,
     keyName: names.join(
-      opts.separator ??
-        NGX_META_COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR,
+      opts.separator ?? _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR,
     ),
   })
-export const NGX_META_COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ':'
+export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ':'

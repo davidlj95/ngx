@@ -5,7 +5,7 @@ import {
 } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
 import {
-  makeMetadataResolverOptions,
+  _makeMetadataResolverOptions,
   MetadataResolverOptions,
 } from './metadata'
 
@@ -61,13 +61,13 @@ describe('Metadata JSON Resolver', () => {
 
         it('should return undefined', () => {
           expect(
-            sut(values, makeMetadataResolverOptions(['dummy'])),
+            sut(values, _makeMetadataResolverOptions(['dummy'])),
           ).toBeUndefined()
         })
       })
       describe('like when key does not exist', () => {
         const values = {}
-        const resolverOptions = makeMetadataResolverOptions([key, subKey])
+        const resolverOptions = _makeMetadataResolverOptions([key, subKey])
 
         testGlobalMayBeRetrieved(values, resolverOptions)
       })
@@ -76,14 +76,14 @@ describe('Metadata JSON Resolver', () => {
         const values = {
           [key]: {},
         }
-        const resolverOptions = makeMetadataResolverOptions([key, subKey])
+        const resolverOptions = _makeMetadataResolverOptions([key, subKey])
 
         testGlobalMayBeRetrieved(values, resolverOptions)
       })
 
       describe('like when key is null', () => {
         const values = { [key]: null }
-        const resolverOptions = makeMetadataResolverOptions([key, subKey])
+        const resolverOptions = _makeMetadataResolverOptions([key, subKey])
 
         it('should return null', () => {
           expect(sut(values, resolverOptions)).toBeNull()
@@ -94,7 +94,7 @@ describe('Metadata JSON Resolver', () => {
         const values = {
           [key]: 42,
         }
-        const resolverOptions = makeMetadataResolverOptions([key, subKey])
+        const resolverOptions = _makeMetadataResolverOptions([key, subKey])
 
         testGlobalMayBeRetrieved(values, resolverOptions)
       })
@@ -107,7 +107,7 @@ describe('Metadata JSON Resolver', () => {
             [subKey]: value,
           },
         }
-        const resolverOptions = makeMetadataResolverOptions([key, subKey])
+        const resolverOptions = _makeMetadataResolverOptions([key, subKey])
 
         it('should return value using key and sub key as path', () => {
           expect(sut(values, resolverOptions)).toEqual(value)
@@ -120,7 +120,7 @@ describe('Metadata JSON Resolver', () => {
           globalValue: 'globalValue',
           prop: 'globalValue',
         }
-        const resolverOptions = makeMetadataResolverOptions(
+        const resolverOptions = _makeMetadataResolverOptions(
           [key, subKey],
           global,
         )

@@ -12,7 +12,7 @@ const NO_KEY_VALUE: OpenGraph[typeof GLOBAL_IMAGE] = {
   height: null,
 }
 
-export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
+export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY =
   (metaService: NgxMetaMetaService) =>
   (value: OpenGraph[typeof GLOBAL_IMAGE]) => {
     const imageUrl = value?.url?.toString()
@@ -42,5 +42,5 @@ export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
   }
 export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = makeOpenGraphMetadataProvider(
   GLOBAL_IMAGE,
-  { s: OPEN_GRAPH_IMAGE_SETTER_FACTORY, g: GLOBAL_IMAGE },
+  { s: __OPEN_GRAPH_IMAGE_SETTER_FACTORY, g: GLOBAL_IMAGE },
 )

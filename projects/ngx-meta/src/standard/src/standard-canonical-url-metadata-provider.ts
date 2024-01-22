@@ -1,8 +1,8 @@
 import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
 import {
+  _HEAD_ELEMENT_UPSERT_OR_REMOVE,
+  _HeadElementUpsertOrRemove,
   GLOBAL_CANONICAL_URL,
-  HEAD_ELEMENT_UPSERT_OR_REMOVE,
-  HeadElementUpsertOrRemove,
 } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
 
@@ -15,7 +15,7 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
   makeStandardMetadataProvider(GLOBAL_CANONICAL_URL, {
     g: GLOBAL_CANONICAL_URL,
     s:
-      (headElementUpsertOrRemove: HeadElementUpsertOrRemove, doc: Document) =>
+      (headElementUpsertOrRemove: _HeadElementUpsertOrRemove, doc: Document) =>
       (value) => {
         let linkElement: HTMLLinkElement | undefined
         if (value !== null && value !== undefined) {
@@ -25,5 +25,5 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
         }
         headElementUpsertOrRemove(SELECTOR, linkElement)
       },
-    d: [HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
+    d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
   })

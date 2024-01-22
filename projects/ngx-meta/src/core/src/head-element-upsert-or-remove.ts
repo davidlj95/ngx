@@ -1,7 +1,7 @@
 import { FactoryProvider, InjectionToken } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 
-export const HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY =
+export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY =
   (doc: Document) =>
   (selector: string, element: HTMLElement | null | undefined) => {
     const existingScriptElement = doc.head.querySelector(selector)
@@ -15,17 +15,17 @@ export const HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY =
     doc.head.appendChild(element)
   }
 
-export type HeadElementUpsertOrRemove = (
+export type _HeadElementUpsertOrRemove = (
   selector: string,
   element: HTMLElement | null | undefined,
 ) => void
 
-export const HEAD_ELEMENT_UPSERT_OR_REMOVE =
-  new InjectionToken<HeadElementUpsertOrRemove>(
-    ngDevMode ? 'Head element upsert or remove' : 'NgxMetaHUOR',
+export const _HEAD_ELEMENT_UPSERT_OR_REMOVE =
+  new InjectionToken<_HeadElementUpsertOrRemove>(
+    ngDevMode ? 'NgxMeta head element upsert or remove util' : 'NgxMetaHEUOR',
   )
-export const HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER: FactoryProvider = {
-  provide: HEAD_ELEMENT_UPSERT_OR_REMOVE,
-  useFactory: HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY,
+export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER: FactoryProvider = {
+  provide: _HEAD_ELEMENT_UPSERT_OR_REMOVE,
+  useFactory: __HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY,
   deps: [DOCUMENT],
 }

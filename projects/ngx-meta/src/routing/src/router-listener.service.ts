@@ -5,7 +5,7 @@ import {
   NGX_META_ROUTE_STRATEGY,
   NgxMetaRouteStrategy,
 } from './ngx-meta-route-strategy'
-import { MetadataService, RouteMetadataValues } from '@davidlj95/ngx-meta/core'
+import { _RouteMetadataValues, MetadataService } from '@davidlj95/ngx-meta/core'
 
 @Injectable({ providedIn: 'root' })
 export class RouterListenerService implements OnDestroy {
@@ -20,7 +20,7 @@ export class RouterListenerService implements OnDestroy {
     @Inject(NGX_META_ROUTE_STRATEGY)
     private readonly strategy: NgxMetaRouteStrategy | null,
     private readonly metadataService: MetadataService,
-    private readonly routeMetadataValues: RouteMetadataValues,
+    private readonly routeMetadataValues: _RouteMetadataValues,
   ) {}
 
   public listen() {

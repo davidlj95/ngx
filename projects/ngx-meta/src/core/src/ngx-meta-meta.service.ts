@@ -16,8 +16,8 @@ export class NgxMetaMetaService {
     }
   }
 }
-export type NgxMetaMetaContent = string | undefined | null
 export interface NgxMetaMetaDefinition {
   readonly withContent: (content: string) => MetaDefinition
   readonly selector: string
 }
+export type NgxMetaMetaContent = string | undefined | null

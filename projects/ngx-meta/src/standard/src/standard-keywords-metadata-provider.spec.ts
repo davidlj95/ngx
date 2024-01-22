@@ -3,7 +3,7 @@ import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 import { Standard } from './standard'
-import { STANDARD_KEYWORDS_METADATA_SETTER_FACTORY } from './standard-keywords-metadata-provider'
+import { __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY } from './standard-keywords-metadata-provider'
 
 describe('Standard keywords metadata', () => {
   enableAutoSpy()
@@ -37,7 +37,7 @@ function makeSut(): MetadataSetter<Standard['keywords']> {
   TestBed.configureTestingModule({
     providers: [MockProvider(NgxMetaMetaService)],
   })
-  return STANDARD_KEYWORDS_METADATA_SETTER_FACTORY(
+  return __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY(
     TestBed.inject(NgxMetaMetaService),
   )
 }

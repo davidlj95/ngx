@@ -1,6 +1,6 @@
 import {
-  makeMetadata,
-  makeMetadataResolverOptions,
+  _makeMetadata,
+  _makeMetadataResolverOptions,
   Metadata,
   MetadataSetter,
 } from './metadata'
@@ -28,9 +28,9 @@ export const makeMetadataProviderFromSetterFactory = <T>(
     provide: Metadata,
     multi: true,
     useFactory: (...deps: unknown[]) =>
-      makeMetadata(
+      _makeMetadata(
         opts.id ?? opts.jP.join('.'),
-        makeMetadataResolverOptions(opts.jP, opts.g),
+        _makeMetadataResolverOptions(opts.jP, opts.g),
         setterFactory(...deps),
       ),
     deps,

@@ -6,7 +6,9 @@ import { CORE_PROVIDERS } from './core-providers'
 @NgModule()
 export class NgxMetaCoreModule {
   static forRoot(
-    options: NgxMetaCoreModuleForRootOptions = {},
+    options: {
+      defaults?: MetadataValues
+    } = {},
   ): ModuleWithProviders<NgxMetaCoreModule> {
     return {
       ngModule: NgxMetaCoreModule,
@@ -18,8 +20,4 @@ export class NgxMetaCoreModule {
       ],
     }
   }
-}
-
-export interface NgxMetaCoreModuleForRootOptions {
-  defaults?: MetadataValues
 }

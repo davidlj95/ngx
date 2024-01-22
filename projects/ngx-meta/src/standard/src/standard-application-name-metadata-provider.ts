@@ -1,7 +1,8 @@
 import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
-import { Standard } from './standard'
-
-const KEY: keyof Standard = 'applicationName'
+import { GLOBAL_APPLICATION_NAME } from '@davidlj95/ngx-meta/core'
 
 export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER =
-  makeStandardMetadataProvider(KEY, { g: KEY, n: 'application-name' })
+  makeStandardMetadataProvider(GLOBAL_APPLICATION_NAME, {
+    g: GLOBAL_APPLICATION_NAME,
+    n: 'application-name',
+  })

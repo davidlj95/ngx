@@ -1,16 +1,17 @@
-export type MetadataSetter<T> = (value: T) => void
-export interface MetadataResolverOptions {
-  readonly jsonPath: ReadonlyArray<string>
-  readonly global?: string
-}
-
 export abstract class Metadata<Value = unknown> {
   abstract readonly id: string
   abstract readonly resolverOptions: MetadataResolverOptions
   abstract readonly set: MetadataSetter<Value>
 }
 
-export const makeMetadata = <T>(
+export interface MetadataResolverOptions {
+  readonly jsonPath: ReadonlyArray<string>
+  readonly global?: string
+}
+
+export type MetadataSetter<T> = (value: T) => void
+
+export const _makeMetadata = <T>(
   id: Metadata<T>['id'],
   resolverOptions: Metadata<T>['resolverOptions'],
   set: Metadata<T>['set'],
@@ -20,7 +21,7 @@ export const makeMetadata = <T>(
   set,
 })
 
-export const makeMetadataResolverOptions = (
+export const _makeMetadataResolverOptions = (
   jsonPath: MetadataResolverOptions['jsonPath'],
   global?: MetadataResolverOptions['global'],
 ): MetadataResolverOptions => ({ jsonPath, global })

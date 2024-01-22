@@ -5,13 +5,13 @@ export const makeKeyValMetaDefinition = (opts: {
   keyName: string
   valAttr?: string
 }): NgxMetaMetaDefinition => {
-  const keyAttr = opts.keyAttr ?? KEY_ATTRIBUTE_NAME
-  const valAttr = opts.valAttr ?? VAL_ATTRIBUTE_CONTENT
+  const keyAttr = opts.keyAttr ?? _KEY_ATTRIBUTE_NAME
+  const valAttr = opts.valAttr ?? _VAL_ATTRIBUTE_CONTENT
   return {
     withContent: (value) => ({ [keyAttr]: opts.keyName, [valAttr]: value }),
     selector: `${keyAttr}='${opts.keyName}'`,
   }
 }
-export const KEY_ATTRIBUTE_NAME = 'name'
-export const KEY_ATTRIBUTE_PROPERTY = 'property'
-export const VAL_ATTRIBUTE_CONTENT = 'content'
+export const _KEY_ATTRIBUTE_NAME = 'name'
+export const _KEY_ATTRIBUTE_PROPERTY = 'property'
+export const _VAL_ATTRIBUTE_CONTENT = 'content'

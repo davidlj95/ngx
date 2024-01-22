@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common'
 import { HtmlLangAttributeHarness } from './__tests__/html-lang-attribute-harness'
 import { MetadataSetter } from '@davidlj95/ngx-meta/core'
 import { Standard } from './standard'
-import { STANDARD_LOCALE_METADATA_SETTER_FACTORY } from './standard-locale-metadata-provider'
+import { __STANDARD_LOCALE_METADATA_SETTER_FACTORY } from './standard-locale-metadata-provider'
 
 describe('Standard locale metadata', () => {
   let sut: MetadataSetter<Standard['locale']>
@@ -64,5 +64,5 @@ describe('Standard locale metadata', () => {
 
 function makeSut(): MetadataSetter<Standard['locale']> {
   TestBed.configureTestingModule({})
-  return STANDARD_LOCALE_METADATA_SETTER_FACTORY(TestBed.inject(DOCUMENT))
+  return __STANDARD_LOCALE_METADATA_SETTER_FACTORY(TestBed.inject(DOCUMENT))
 }

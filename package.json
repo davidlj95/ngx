@@ -11,6 +11,7 @@
     "ngx-meta:build": "ng build ngx-meta",
     "ngx-meta:test": "ng test ngx-meta",
     "ngx-meta:lint": "ng lint ngx-meta",
+    "ngx-meta:tsc": "pnpm run '/ngx-meta:tsc:.*/'",
     "ngx-meta:tsc:lib": "tsc -p ./projects/ngx-meta/src/tsconfig.lib.json --listEmittedFiles",
     "ngx-meta:tsc:spec": "tsc -p ./projects/ngx-meta/src/tsconfig.spec.json --listEmittedFiles",
     "format-check": "prettier --check",

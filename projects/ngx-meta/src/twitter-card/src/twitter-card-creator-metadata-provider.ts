@@ -4,19 +4,20 @@ import {
   TwitterCardCreatorId,
   TwitterCardCreatorUsername,
 } from './twitter-card-creator'
-import { makeTwitterCardMetaProperty } from './make-twitter-card-meta-property'
+import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
+import { NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 
 const KEY: keyof TwitterCard = 'creator'
 
 export const TWITTER_CARD_CREATOR_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(KEY, {
-    s: (metaService) => (value) => {
+    s: (metaService: NgxMetaMetaService) => (value) => {
       metaService.set(
-        makeTwitterCardMetaProperty(KEY),
+        makeTwitterCardMetaDefinition(KEY),
         (value as TwitterCardCreatorUsername | undefined)?.username,
       )
       metaService.set(
-        makeTwitterCardMetaProperty(KEY, 'id'),
+        makeTwitterCardMetaDefinition(KEY, 'id'),
         (value as TwitterCardCreatorId | undefined)?.id,
       )
     },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { MetadataService } from '@davidlj95/ngx-meta/core'
+import { NgxMetaService } from '@davidlj95/ngx-meta/core'
 import { JsonPipe } from '@angular/common'
 import { ActivatedRoute } from '@angular/router'
 import {
@@ -35,12 +35,12 @@ export class MetaSetByRouteAndServiceComponent implements OnInit {
 
   constructor(
     activatedRoute: ActivatedRoute,
-    private readonly metadataService: MetadataService,
+    private readonly ngxMetaService: NgxMetaService,
   ) {
     this.routeData = activatedRoute.snapshot.data
   }
 
   ngOnInit(): void {
-    this.metadataService.set(this.overriddenMetadata)
+    this.ngxMetaService.set(this.overriddenMetadata)
   }
 }

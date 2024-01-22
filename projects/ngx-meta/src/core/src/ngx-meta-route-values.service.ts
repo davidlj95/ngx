@@ -3,7 +3,7 @@ import { MetadataValues } from './metadata-values'
 import { Router } from '@angular/router'
 
 @Injectable()
-export class _RouteMetadataValues {
+export class _NgxMetaRouteValuesService {
   private url?: string
   private values: MetadataValues = {}
 

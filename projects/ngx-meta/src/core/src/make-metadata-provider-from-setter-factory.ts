@@ -1,9 +1,9 @@
 import {
   _makeMetadata,
   _makeMetadataResolverOptions,
-  Metadata,
   MetadataSetter,
-} from './metadata'
+  NgxMetaMetadata,
+} from './ngx-meta-metadata'
 import { FactoryProvider } from '@angular/core'
 
 export type MetadataSetterFactory<T> = (
@@ -25,7 +25,7 @@ export const makeMetadataProviderFromSetterFactory = <T>(
 ): FactoryProvider => {
   const deps = opts.d ?? []
   return {
-    provide: Metadata,
+    provide: NgxMetaMetadata,
     multi: true,
     useFactory: (...deps: unknown[]) =>
       _makeMetadata(

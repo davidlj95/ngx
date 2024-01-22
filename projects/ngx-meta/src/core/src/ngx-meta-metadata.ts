@@ -1,4 +1,4 @@
-export abstract class Metadata<Value = unknown> {
+export abstract class NgxMetaMetadata<Value = unknown> {
   abstract readonly id: string
   abstract readonly resolverOptions: MetadataResolverOptions
   abstract readonly set: MetadataSetter<Value>
@@ -12,10 +12,10 @@ export interface MetadataResolverOptions {
 export type MetadataSetter<T> = (value: T) => void
 
 export const _makeMetadata = <T>(
-  id: Metadata<T>['id'],
-  resolverOptions: Metadata<T>['resolverOptions'],
-  set: Metadata<T>['set'],
-): Metadata<T> => ({
+  id: NgxMetaMetadata<T>['id'],
+  resolverOptions: NgxMetaMetadata<T>['resolverOptions'],
+  set: NgxMetaMetadata<T>['set'],
+): NgxMetaMetadata<T> => ({
   id,
   resolverOptions,
   set,

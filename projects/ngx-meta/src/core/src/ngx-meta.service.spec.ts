@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing'
-import { MetadataService } from './metadata.service'
+import { NgxMetaService } from './ngx-meta.service'
 import { MockProvider, MockProviders } from 'ng-mocks'
 import { makeMetadataSpy } from './__tests__/make-metadata-spy'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import { MetadataRegistry } from './metadata-registry'
 
-describe('Metadata service', () => {
+describe('NgxMeta service', () => {
   enableAutoSpy()
-  let sut: MetadataService
+  let sut: NgxMetaService
   let metadataRegistry: jasmine.SpyObj<MetadataRegistry>
 
   beforeEach(() => {
@@ -64,10 +64,10 @@ describe('Metadata service', () => {
 function makeSut() {
   TestBed.configureTestingModule({
     providers: [
-      MetadataService,
+      NgxMetaService,
       MockProviders(MetadataRegistry),
       MockProvider(METADATA_RESOLVER, jasmine.createSpy('Metadata resolver')),
     ],
   })
-  return TestBed.inject(MetadataService)
+  return TestBed.inject(NgxMetaService)
 }

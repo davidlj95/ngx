@@ -1,3 +1,19 @@
+## [`ngx-meta` v1.0.0-alpha.38](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.37...ngx-meta-v1.0.0-alpha.38) (2024-01-27)
+
+### Reverts
+
+- Revert "build(deps): update angular monorepo with fix" (#247) ([b0d4ec1](https://github.com/davidlj95/ngx/commit/b0d4ec114819de580b973a222fef4ba43ca2574d)), closes [#247](https://github.com/davidlj95/ngx/issues/247)
+
+### Miscellaneous Chores
+
+- hard code EventType to compile with v17.1 ([781583e](https://github.com/davidlj95/ngx/commit/781583e5cdcd2f10dd104d05b2a9e492ff7f5397))
+- **release:** update CHANGELOG.md ([#245](https://github.com/davidlj95/ngx/issues/245)) ([61718e0](https://github.com/davidlj95/ngx/commit/61718e04bc1877807ee45f29e66faa5aee5dfd32))
+
+### Build System
+
+- **deps:** update angular monorepo ([6afe5d2](https://github.com/davidlj95/ngx/commit/6afe5d25dfa26db17f41a2e5f4adb6889dfcb700))
+- **deps:** update angular monorepo ([29aceb7](https://github.com/davidlj95/ngx/commit/29aceb7e80135147628d47e13424063f06c642d9))
+
 ## [`ngx-meta` v1.0.0-alpha.37](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.36...ngx-meta-v1.0.0-alpha.37) (2024-01-27)
 
 ### Documentation

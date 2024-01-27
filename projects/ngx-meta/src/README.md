@@ -16,8 +16,10 @@
 [![Released with Semantic Release](https://img.shields.io/badge/Released_with-Semantic_Release-e10079?logo=semantic-release&link=https%3A%2F%2Fgithub.com%2Fsemantic-release%2Fsemantic-release)](https://github.com/semantic-release/semantic-release)
 [![Commit hooks with Husky](https://img.shields.io/badge/Commit_hooks_with-Husky%F0%9F%90%B6-1a1a1e?link=https%3A%2F%2Ftypicode.github.io%2Fhusky%2F)](https://typicode.github.io/husky/)
 
-Set your Angular site's metadata: title, `<meta>`s, [Open Graph][og], [Twitter cards][twitter-cards], JSON LD [structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) or your custom ones. Use our service or specify it in each route's data. Compatible with Angular Server Side Rendering (SSR) / Angular Universal. Sounds good? Keep reading 👀
+Set your Angular site's metadata: [`<title>`][title-element], [`<meta>`s][meta-element], [Open Graph][og], [Twitter cards][twitter-cards], JSON LD [structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) and/or your custom ones. Use our service or specify it in each route's data. Compatible with Angular Server Side Rendering (SSR) / Angular Universal. Sounds good? Keep reading & set it up in a flash 🚀
 
+[title-element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+[meta-element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
 [og]: https://ogp.me/
 [twitter-cards]: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
 [structured-data]: https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data

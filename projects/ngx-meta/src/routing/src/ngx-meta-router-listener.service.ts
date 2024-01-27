@@ -10,6 +10,11 @@ import {
   NgxMetaService,
 } from '@davidlj95/ngx-meta/core'
 
+// WTF is this? Well, compatibility reasons 🙃
+// See https://github.com/davidlj95/ngx/pull/246 for the details
+// https://github.com/angular/angular/blob/17.1.1/packages/router/src/events.ts#L32
+export const NAVIGATION_END_EVENT_TYPE: EventType = 1
+
 @Injectable({ providedIn: 'root' })
 export class NgxMetaRouterListenerService implements OnDestroy {
   // Replace by `takeUntilDestroyed` when stable
@@ -38,7 +43,7 @@ export class NgxMetaRouterListenerService implements OnDestroy {
     }
 
     this.sub = this.router.events
-      .pipe(filter(({ type }) => type === EventType.NavigationEnd))
+      .pipe(filter(({ type }) => type === NAVIGATION_END_EVENT_TYPE))
       .subscribe({
         next: () => {
           if (!this.strategy) {

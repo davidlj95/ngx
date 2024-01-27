@@ -1,4 +1,4 @@
-# `@davidlj95/ngx-meta`
+![<ngx-meta/> for Angular](../assets/logo.png)
 
 [![Angular](https://img.shields.io/badge/Works_with-Angular-red?logo=angular&logoColor=white&link=https%3A%2F%2Fangular.dev%2F)](https://angular.dev/)
 [![Compatible with Angular SSR/Universal](https://custom-icon-badges.demolab.com/badge/Compatible_with-Angular_SSR%2FUniversal-blue.svg?logo=angular-universal&link=https%3A%2F%2Fangular.dev%2Fguide%2Fssr)](https://angular.dev/guide/ssr)

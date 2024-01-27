@@ -19,7 +19,7 @@
 [![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovatebot&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
 [![Package manager: pnpm](https://img.shields.io/badge/Package_manager-pnpm-f69220?logo=pnpm&link=https%3A%2F%2Fpnpm.io%2F)](https://pnpm.io/)
 
-Set your Angular site's metadata: [`<title>`][title-element], [`<meta>`s][meta-element], [Open Graph][og], [Twitter cards][twitter-cards], JSON LD [structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) and/or your custom ones. Use our service or specify it in each route's data. Compatible with Angular Server Side Rendering (SSR) / Angular Universal. Sounds good? Keep reading & set it up in a flash 🚀
+Set your Angular site's metadata: [`<title>`][title-element], [`<meta>`s][meta-element], [Open Graph][og], [Twitter cards][twitter-cards], JSON LD [structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) and/or your custom ones. Use the service or specify it in each route's data. Compatible with Angular Server Side Rendering (SSR) / Angular Universal. Sounds good? Keep reading & set it up in a flash 🚀
 
 [title-element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
 [meta-element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta

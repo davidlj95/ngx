@@ -1,5 +1,5 @@
 import { Inject, Injectable, OnDestroy, Optional } from '@angular/core'
-import { ActivatedRoute, EventType, Router } from '@angular/router'
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
 import { filter, Subscription } from 'rxjs'
 import {
   NGX_META_ROUTE_STRATEGY,
@@ -10,10 +10,9 @@ import {
   NgxMetaService,
 } from '@davidlj95/ngx-meta/core'
 
-// WTF is this? Well, compatibility reasons 🙃
+// WTF is this? Why not just import `EventType`? Well, compatibility reasons 🙃
 // See https://github.com/davidlj95/ngx/pull/246 for the details
-// https://github.com/angular/angular/blob/17.1.1/packages/router/src/events.ts#L32
-export const NAVIGATION_END_EVENT_TYPE: EventType = 1
+export const NAVIGATION_END_EVENT_TYPE = new NavigationEnd(0, '', '').type
 
 @Injectable({ providedIn: 'root' })
 export class NgxMetaRouterListenerService implements OnDestroy {

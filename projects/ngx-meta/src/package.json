@@ -1,10 +1,31 @@
 {
   "name": "@davidlj95/ngx-meta",
   "version": "0.0.0-PLACEHOLDER",
+  "description": "Set your Angular site's metadata: `<title>`, `<meta>`s, Open Graph, Twitter cards, JSON LD structured data and/or your custom ones. Use the service or specify it in each route's data. Compatible with Angular Server Side Rendering (SSR) / Angular Universal. Sounds cool? 😎 Keep reading & set it up in a flash 🚀",
+  "keywords": [
+    "angular",
+    "angular2",
+    "meta",
+    "metadata",
+    "tags",
+    "open graph",
+    "twitter card",
+    "json ld",
+    "router",
+    "route",
+    "server side rendering",
+    "ssr",
+    "universal",
+    "angular universal"
+  ],
+  "homepage": "https://github.com/davidlj95/ngx/tree/main/projects/ngx-meta/src#readme",
   "license": "MIT",
   "author": {
     "name": "David LJ",
     "url": "https://davidlj95.com"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
   },
   "peerDependencies": {
     "@angular/common": "^17 || ^16 || ^15",
@@ -16,18 +37,16 @@
       "optional": true
     }
   },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "scripts": {},
-  "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidlj95/ngx.git"
+    "url": "https://github.com/davidlj95/ngx.git",
+    "directory": "projects/ngx-meta/src"
   },
+  "scripts": {},
   "publishConfig": {
     "access": "public",
     "provenance": true,
     "tag": "latest"
-  }
+  },
+  "sideEffects": false
 }

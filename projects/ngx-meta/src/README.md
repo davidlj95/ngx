@@ -37,13 +37,21 @@ Set your Angular site's metadata: [`<title>`][title-element], [`<meta>`s][meta-e
 Why should you use this library and not another? Or set the meta tags yourself?
 
 - **🤝 Compatible with [Angular Server Side Rendering SSR / Angular Universal][angular-ssr]**. Metadata is set using Angular's built-in services to manipulate DOM. So (server/pre) rendered pages will include meta tags.
+
 - **☺️ Straightforward compatibility with [Angular actively supported versions]**. Right now being Angular v15, v16 and v17. Update from an Angular version to another when you're ready. But this library won't be an issue, as latest version will be compatible with all [Angular actively supported versions]. [There are some E2E tests to ensure that indeed][E2E tests]
-- **👥 Supports most of widely used metadata**. Like [`<title>`] [title-element], many [standard `<meta>`s][meta-element], [Open Graph], [Twitter cards] and JSON LD [structured data]. But if you want more...
+
+- **👥 Supports most of widely used metadata**. Like [`<title>`][title-element], many [standard `<meta>`s][meta-element], [Open Graph], [Twitter cards] and JSON LD [structured data]. But if you want more...
+
 - **🛣️ Integrates with Angular's `Router`**. So you can set the metadata of a route in the [route's `data`][route data] and the library will set those metadata values in the page for you.
+
 - **📜 Types & documentation**. Useful Typescript types are provided so you can discover what metadata can you set and what type of data each metadata accepts. Plus documentation so you can leverage as much as possible of the library's power.
+
 - **🧩 Manage your metadata**. Thanks to the module based architecture, you can manage popular metadata using built-in library modules or provide our own. Indeed, you can decide which metadata is managed (including the library modules) to reduce the already...
+
 - **📦 Small bundle size**. Right now it will take **~6-7KiB if using all features** (after [taking some time optimizing][bundle size reduction]). But if you don't use them all, the whole library is designed to be [tree-shakeable][tree shaking] so that's the maximum size this library will take of your app's bundle. To ensure it doesn't grow over time, there's a bot that comments each PR with a [bundle size PR comment] to ensure bundle size doesn't grow unexpectedly.
+
 - **0️⃣ Zero dependencies**\*. So less pain with dependency management
+
 - **❤️ Crafted & maintained**. Library tries to use Angular & software engineering best practices. Like using Angular's dependency injection (providers in standalone apps or modules otherwise), CI/CD pipelines, linters, formatters, unit & E2E tests... [Renovate] helps keeping dependencies to build. TL;DR: made by an Angular dev for an Angular dev
 
 > \*Well, actually, just one: `tslib`. But it's because [Angular Package Format recommends it](https://angular.dev/tools/libraries/angular-package-format#tslib)
@@ -72,9 +80,9 @@ Or just use your package manager's `install` command 🤷
 
 ### 2. Add it to your app
 
-#### For non-standalone, module-based Angular apps
+#### a) For non-standalone, module-based Angular apps
 
-> This is the default for apps generated with Angular CLI versions older than v17
+This is the default for apps generated with Angular CLI before v17
 
 Open your `app.module.ts` file and add at least the core module to the `imports` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing module too. In order to set some standard `<meta>`s, let's add the standard module.
 
@@ -94,9 +102,9 @@ export class AppModule {}
 
 Check out the [Angular v16 app `app.module.ts` file](../e2e/a16/src/app/app.module.ts) for a working example
 
-#### For standalone, module-free Angular apps
+#### b) For standalone, module-free Angular apps
 
-> This is the default for apps generated with Angular CLI version 17 and above
+This is the default for apps generated with Angular CLI v17 and above
 
 Open your `app.config.ts` file and add at least the core provider to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing provider too. In order to set some standard `<meta>`s, let's add the standard provider.
 
@@ -252,3 +260,4 @@ More docs:
   - Comparison amongst existing libraries
 - API reference
 - Docs site
+- (idea): Short YouTube video explaining getting started

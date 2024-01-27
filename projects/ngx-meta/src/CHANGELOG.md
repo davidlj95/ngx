@@ -1,3 +1,55 @@
+## [`ngx-meta` v1.0.0-alpha.37](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.36...ngx-meta-v1.0.0-alpha.37) (2024-01-27)
+
+### Documentation
+
+- init `README.md`s & package.json ([#243](https://github.com/davidlj95/ngx/issues/243)) ([048dccc](https://github.com/davidlj95/ngx/commit/048dccc8637e19b8a19e2567a8386bae7675264d))
+- ngx-meta README.md fixes ([451b402](https://github.com/davidlj95/ngx/commit/451b402ea7a8f02a3026e0ae4d8185c69942472a))
+
+### Style
+
+- format tsconfig with prettier new rules ([f6f8c23](https://github.com/davidlj95/ngx/commit/f6f8c23e3bd0389a1c62bc3fa34d509853020766))
+
+### Miscellaneous Chores
+
+- **release:** add initial docs ([adb1c05](https://github.com/davidlj95/ngx/commit/adb1c05586d124c7fd0a795812ee1f4fa668b905))
+- **release:** update CHANGELOG.md ([#210](https://github.com/davidlj95/ngx/issues/210)) ([41cfd1d](https://github.com/davidlj95/ngx/commit/41cfd1d2b993559e693b165b827ded467d69ed09))
+- review public APIs ([#224](https://github.com/davidlj95/ngx/issues/224)) ([d92ddfb](https://github.com/davidlj95/ngx/commit/d92ddfb1fc2fd60de056e1291b66e6c797b30285))
+
+### Code Refactoring
+
+- add "NgxMeta" prefix in all injectables ([#225](https://github.com/davidlj95/ngx/issues/225)) ([e002891](https://github.com/davidlj95/ngx/commit/e002891d8b2e753d4743704bb5fbff2f519c5dc4))
+- remove "Metadata" class ([#218](https://github.com/davidlj95/ngx/issues/218)) ([0ce167e](https://github.com/davidlj95/ngx/commit/0ce167e7439fe082676158a591ec925bad9cc4b3))
+- remove meta prop and introduce meta def ([#223](https://github.com/davidlj95/ngx/issues/223)) ([c514cae](https://github.com/davidlj95/ngx/commit/c514caefc950d246dd67a3fbc0cb5fc0b1543070))
+- rename files instead of export renames ([#222](https://github.com/davidlj95/ngx/issues/222)) ([d2683c8](https://github.com/davidlj95/ngx/commit/d2683c894004649895eca7be62b92465673d17c7))
+- rename MetadataProvider to just Metadata ([#221](https://github.com/davidlj95/ngx/issues/221)) ([b3d0b1e](https://github.com/davidlj95/ngx/commit/b3d0b1ee9c12e21aef9c451742f2dc7d0b3ff0ec))
+
+### Build System
+
+- **deps-dev:** update actions/cache action to v4 ([#214](https://github.com/davidlj95/ngx/issues/214)) ([eff4cd2](https://github.com/davidlj95/ngx/commit/eff4cd27e86b0ce7c2d1e617642a8600ea4eeabf))
+- **deps-dev:** update actions/upload-artifact digest to 26f96df ([15994a7](https://github.com/davidlj95/ngx/commit/15994a70edbfeee7cc8ef518a834bdeac210cff0))
+- **deps-dev:** update actions/upload-artifact digest to 694cdab ([6d3cf72](https://github.com/davidlj95/ngx/commit/6d3cf72c16ef2dfacf223a2f3e268b3b4e67df0f))
+- **deps-dev:** update angular-cli monorepo ([c80ab8e](https://github.com/davidlj95/ngx/commit/c80ab8e7b0a0556a68b07ba74a6b326a0658db83))
+- **deps-dev:** update angular-cli monorepo to v17.1.0 ([262d992](https://github.com/davidlj95/ngx/commit/262d9926fbb8ecceb9e61b82accf30e05ff14636))
+- **deps-dev:** update angular-eslint monorepo to v17.2.1 ([957ba1e](https://github.com/davidlj95/ngx/commit/957ba1e38ce841d0bb23d43a7430e5ea3d08265d))
+- **deps-dev:** update commitlint monorepo to v18.5.0 ([2d96f6b](https://github.com/davidlj95/ngx/commit/2d96f6be1ded74324675545412090321c8bd1d9a))
+- **deps-dev:** update commitlint monorepo to v18.6.0 ([21995ed](https://github.com/davidlj95/ngx/commit/21995edf573e3bc15b5c6d58b21ad72aff5e1d2b))
+- **deps-dev:** update dependency cypress to v13.6.3 ([a29fd01](https://github.com/davidlj95/ngx/commit/a29fd016ae5c1fc41cab1591e94999b294ebe691))
+- **deps-dev:** update dependency husky to v9 ([#236](https://github.com/davidlj95/ngx/issues/236)) ([fec0a04](https://github.com/davidlj95/ngx/commit/fec0a04960ccc3c3e530d11d8442fbf3b643c24e))
+- **deps-dev:** update dependency husky to v9.0.6 ([b30742a](https://github.com/davidlj95/ngx/commit/b30742a586be643f49039752103387c28e91a886))
+- **deps-dev:** update dependency ng-packagr to v17.1.0 ([20fa474](https://github.com/davidlj95/ngx/commit/20fa474335838bed16434585dd3b2ced419bf376))
+- **deps-dev:** update dependency ng-packagr to v17.1.1 ([91ae55a](https://github.com/davidlj95/ngx/commit/91ae55a98bde2b0d181a353af61dbed2f968d445))
+- **deps-dev:** update dependency ng-packagr to v17.1.2 ([85a8560](https://github.com/davidlj95/ngx/commit/85a856076bf20a0ebdaadd8e13f1d2decac4ba06))
+- **deps-dev:** update dependency prettier to v3.2.4 ([f3719f2](https://github.com/davidlj95/ngx/commit/f3719f2acfd7600d69ee3f6f83902a2005d9728d))
+- **deps-dev:** update dependency semantic-release to v23 ([086a3b3](https://github.com/davidlj95/ngx/commit/086a3b3a22c3c5a2169970f46bd2fc657dacc6fb))
+- **deps-dev:** update peter-evans/create-or-update-comment action to v4 ([#237](https://github.com/davidlj95/ngx/issues/237)) ([3b2aa7a](https://github.com/davidlj95/ngx/commit/3b2aa7a4a8a1f03b141f86315cd12b21f8e2706d))
+- **deps-dev:** update peter-evans/find-comment action to v3 ([#238](https://github.com/davidlj95/ngx/issues/238)) ([9717364](https://github.com/davidlj95/ngx/commit/971736427e6c64e18a509b0fee0836ab82f8345a))
+- **deps-dev:** update pnpm to v8.14.3 ([1c4a49a](https://github.com/davidlj95/ngx/commit/1c4a49ad37b8da43de6161033b339fbb0c08d9a7))
+- **deps-dev:** update typescript-eslint monorepo to v6.19.1 ([1f48f60](https://github.com/davidlj95/ngx/commit/1f48f60888e9d501067dbfb42a78dedd5c002aed))
+
+### Continuous (Integration|Deployment)
+
+- add tsc lint check ([#226](https://github.com/davidlj95/ngx/issues/226)) ([7ba2a23](https://github.com/davidlj95/ngx/commit/7ba2a230a4392d629192e2a10ec44ca95866448f))
+
 ## [`ngx-meta` v1.0.0-alpha.36](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.35...ngx-meta-v1.0.0-alpha.36) (2024-01-20)
 
 ### Features

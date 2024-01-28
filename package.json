@@ -22,7 +22,6 @@
     "lint-staged": "lint-staged",
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --verbose --from HEAD~1",
-    "generate-prettier-ignore": "cp .gitignore .prettierignore && cat .part.prettierignore >> .prettierignore",
     "semantic-release": "semantic-release",
     "ng-lint-staged": "ng-lint-staged lint --max-warnings 0 --fix --",
     "cache-clean": "ng cache clean"

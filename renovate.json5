@@ -134,7 +134,7 @@
       matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
       allowedVersions: '0.13.x',
     },
-    // Angular v15.1.x || v16.2.x compatibilities
+    // Angular v15.1.x || v15.2.x compatibilities
     // https://angular.io/guide/versions
     // https://github.com/angular/angular/blob/15.2.10/packages/core/package.json (zone.js)
     {

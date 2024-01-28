@@ -18,7 +18,7 @@
     "format-check-all": "npm run format-check -- .",
     "format": "prettier --ignore-unknown --write",
     "format-all": "npm run format -- .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "lint-staged": "lint-staged",
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --verbose --from HEAD~1",

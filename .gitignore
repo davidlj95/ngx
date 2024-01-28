@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows,cypressio
-# Edit at https://www.toptal.com/developers/gitignore?templates=angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows,cypressio
+# Created by https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows
+# Edit at https://www.toptal.com/developers/gitignore?templates=angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows
 
 ### Angular ###
 ## Angular ##
@@ -32,16 +32,6 @@ e2e/*.map
 
 # System Files
 .DS_Store/
-
-### CypressIO ###
-# gitignore template for the CypressIO, browser test framework
-# website: https://www.cypress.io/
-
-**/cypress/downloads/*
-**/cypress/results/*
-**/cypress/reports/*
-**/cypress/screenshots/*
-**/cypress/videos/*
 
 ### Linux ###
 *~
@@ -382,10 +372,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows,cypressio
-/projects/ngx-meta/e2e/**/*pr-comment.md
-/projects/ngx-meta/e2e/**/source-map-explorer*.json
+# End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows
 # Manual edits
 # - Comment `.idea` in Angular to include IDE configs
-# - Add **/ to Cypress paths, to include cypress living anywhere else from root
-# - Add GitHub PR comment about bundle size markdowns

@@ -44,3 +44,12 @@ jobs:
       issues: write
       pull-requests: write
       id-token: write
+  docs:
+    name: Docs
+    needs: [e2e]
+    uses: ./.github/workflows/reusable-docs.yml
+    secrets:
+      cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    permissions:
+      deployments: write

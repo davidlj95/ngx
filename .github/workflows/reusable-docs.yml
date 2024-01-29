@@ -21,6 +21,7 @@ permissions:
 
 jobs:
   docs:
+    name: Docs build & deploy
     defaults:
       run:
         working-directory: '${{ env.DOCS_DIR }}'

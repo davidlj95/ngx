@@ -20,6 +20,11 @@ permissions:
   deployments: write
 
 jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Echo context'
+        run: 'echo ${{ toJSON(github) }}'
   docs:
     defaults:
       run:

@@ -1,12 +1,12 @@
 site_name: ngx-meta docs
 site_url: https://ngx-meta.pages.dev
 repo_url: https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/src
-site_description: |
+site_description: >
   Set your Angular site's metadata: `<title>`, `<meta>`s, Open Graph,
   Twitter cards, JSON LD structured data and/or your custom ones.
   Use the service or specify it in each route's data.
   Compatible with Angular Server Side Rendering (SSR) / Angular Universal.
-  Sounds cool? 😎 Keep reading & set it up in a flash 🚀'
+  Sounds cool? 😎 Keep reading & set it up in a flash 🚀
 site_author: davidlj95
 copyright: MIT License
 theme:

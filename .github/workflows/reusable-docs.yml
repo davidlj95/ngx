@@ -1,0 +1,62 @@
+name: Docs
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: Git reference to checkout. Defaults to @actions/checkout default.
+        type: string
+        required: false
+        default: ''
+    secrets:
+      cloudflare-account-id:
+        required: true
+      cloudflare-api-token:
+        required: true
+
+env:
+  DOCS_DIR: projects/ngx-meta/docs
+
+permissions:
+  deployments: write
+
+jobs:
+  docs:
+    defaults:
+      run:
+        working-directory: '${{ env.DOCS_DIR }}'
+    runs-on: ubuntu-latest
+    if: |
+      github.ref_name == 'main' ||
+      (
+        github.event_name == 'pull_request' &&
+        contains(github.event.pull_request.labels.*.name, 'preview docs')
+      )
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Install poetry # pipx comes built-in in GitHub runner
+        run: pipx install poetry
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: '${{ env.DOCS_DIR }}/.python-version'
+          cache: 'poetry'
+          cache-dependency-path: '${{ env.DOCS_DIR }}/poetry.lock'
+      - name: Install deps
+        run: make install
+      - name: Build
+        run: make build
+      - name: Publish
+        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # 1
+        with:
+          accountId: ${{ secrets.cloudflare-account-id }}
+          apiToken: ${{ secrets.cloudflare-api-token }}
+          # Somehow if this is not set, it deploys to production when building on a PR
+          # https://github.com/cloudflare/pages-action/issues/97
+          branch: ${{ github.head_ref || github.ref_name }}
+          projectName: 'ngx-meta'
+          directory: 'site'
+          workingDirectory: '${{ env.DOCS_DIR }}'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

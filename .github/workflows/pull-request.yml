@@ -26,3 +26,11 @@ jobs:
       build-artifact-name: ngx-meta
     permissions:
       pull-requests: write
+  docs:
+    name: Docs
+    uses: ./.github/workflows/reusable-docs.yml
+    secrets:
+      cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    permissions:
+      deployments: write

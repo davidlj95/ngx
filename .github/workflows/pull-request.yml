@@ -4,25 +4,31 @@ on:
   pull_request:
 
 jobs:
-  build:
-    name: Build
-    uses: ./.github/workflows/reusable-build.yml
-    with:
-      artifact-name: ngx-meta
-  test:
-    name: Test
-    uses: ./.github/workflows/reusable-test.yml
-  lint:
-    name: Lint
-    uses: ./.github/workflows/reusable-lint.yml
-  style:
-    name: Style
-    uses: ./.github/workflows/reusable-style.yml
-  e2e:
-    needs: [build, test, lint]
-    name: E2E
-    uses: ./.github/workflows/reusable-e2e.yml
-    with:
-      build-artifact-name: ngx-meta
-    permissions:
-      pull-requests: write
+  #build:
+  #  name: Build
+  #  uses: ./.github/workflows/reusable-build.yml
+  #  with:
+  #    artifact-name: ngx-meta
+  #test:
+  #  name: Test
+  #  uses: ./.github/workflows/reusable-test.yml
+  #lint:
+  #  name: Lint
+  #  uses: ./.github/workflows/reusable-lint.yml
+  #style:
+  #  name: Style
+  #  uses: ./.github/workflows/reusable-style.yml
+  #e2e:
+  #  needs: [build, test, lint]
+  #  name: E2E
+  #  uses: ./.github/workflows/reusable-e2e.yml
+  #  with:
+  #    build-artifact-name: ngx-meta
+  #  permissions:
+  #    pull-requests: write
+  docs:
+    name: Docs
+    uses: ./.github/workflows/reusable-docs.yml
+    secrets:
+      cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}

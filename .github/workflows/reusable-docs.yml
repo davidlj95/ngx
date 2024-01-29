@@ -16,6 +16,9 @@ on:
 env:
   DOCS_DIR: projects/ngx-meta/docs
 
+permissions:
+  deployments: write
+
 jobs:
   docs:
     defaults:

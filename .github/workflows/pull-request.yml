@@ -32,3 +32,5 @@ jobs:
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    permissions:
+      deployments: write

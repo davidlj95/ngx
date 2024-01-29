@@ -1,6 +1,6 @@
 site_name: ngx-meta docs
 site_url: https://ngx-meta.pages.dev
-repo_url: https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/src
+repo_url: https://github.com/davidlj95/ngx
 site_description: >
   Set your Angular site's metadata: `<meta>`s, Open Graph, Twitter cards,
   JSON LD structured data & more. Use a service and/or route's data.

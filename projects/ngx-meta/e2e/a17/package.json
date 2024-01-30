@@ -15,7 +15,7 @@
     "bundle-pr-comment": "../generate-bundle-pr-comment.sh -h 'Angular v17' -i source-map-explorer.json -o bundle-size-pr-comment.md"
   },
   "private": true,
-  "packageManager": "pnpm@8.15.0",
+  "packageManager": "pnpm@8.15.1",
   "dependencies": {
     "@angular/animations": "17.1.1",
     "@angular/common": "17.1.1",

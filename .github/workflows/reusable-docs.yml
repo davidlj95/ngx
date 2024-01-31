@@ -40,7 +40,7 @@ jobs:
       - name: Install poetry # pipx comes built-in in GitHub runner
         run: pipx install poetry
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c #v5
         with:
           python-version-file: '${{ env.DOCS_DIR }}/.python-version'
           cache: 'poetry'

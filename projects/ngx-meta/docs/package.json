@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "@davidlj95/ngx-meta docs",
   "scripts": {
-    "copy-fonts": "mkdir -p content/fonts && cp -r node_modules/@fontsource* content/fonts && find content/fonts -name '*.md' -delete"
+    "// explanation for 👇": "cp -L is required. In GitHub Actions, symlinks are used and cp'ed symlinks are invalid",
+    "// failed run": "https://github.com/davidlj95/ngx/actions/runs/7741714508/job/21109249970",
+    "copy-fonts": "mkdir -p content/fonts && cp -Lr node_modules/@fontsource* content/fonts && find content/fonts -name '*.md' -delete"
   },
   "devDependencies": {
     "@fontsource-variable/inter-tight": "5.0.19",

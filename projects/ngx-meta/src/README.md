@@ -19,13 +19,14 @@
 [![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovatebot&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
 [![Package manager: pnpm](https://img.shields.io/badge/Package_manager-pnpm-f69220?logo=pnpm&link=https%3A%2F%2Fpnpm.io%2F)](https://pnpm.io/)
 
-Set your Angular site's metadata: [`<meta>`s][meta-element], [Open Graph], [Twitter cards], JSON LD [structured data] & more.
+Set your Angular site's metadata: [standard meta tags], [Open Graph],
+[Twitter cards], JSON-LD [structured data] & more.
+Supports [SSR][angular-ssr] (and Angular Universal).
 Use a service and/or route's data.
-Works with [Angular SSR / Universal][angular-ssr].
-Set it up now in a flash 🚀
+Set it up in a flash! 🚀
 
 [title-element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
-[meta-element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+[standard meta tags]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name
 [Open Graph]: https://ogp.me/
 [Twitter cards]: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
 [structured data]: https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
@@ -43,7 +44,7 @@ Why should you use this library and not another? Or set the meta tags yourself?
 
 - **☺️ Straightforward compatibility with [Angular actively supported versions]**. Right now being Angular v15, v16 and v17. Update from an Angular version to another when you're ready. But this library won't be an issue, as latest version will be compatible with all [Angular actively supported versions]. [There are some E2E tests to ensure that indeed][E2E tests]
 
-- **👥 Supports most of widely used metadata**. Like [`<title>`][title-element], many [standard `<meta>`s][meta-element], [Open Graph], [Twitter cards] and JSON LD [structured data]. But if you want more...
+- **👥 Supports most of widely used metadata**. Like [`<title>`][title-element], many [standard `<meta>`s][standard meta tags], [Open Graph], [Twitter cards] and JSON LD [structured data]. But if you want more...
 
 - **🛣️ Integrates with Angular's `Router`**. So you can set the metadata of a route in the [route's `data`][route data] and the library will set those metadata values in the page for you.
 
@@ -243,7 +244,7 @@ By convention, each metadata module provides at least (where `X` is name of modu
 
 Currently, the library provides the following modules to help you set the page metadata:
 
-- **Standard**: sets the standard metadata of a site. This means: [`<title>` element][title-element] and many [standard `<meta>`s defined in the HTML spec][meta-element]
+- **Standard**: sets the standard metadata of a site. This means: [`<title>` element][title-element] and many [standard `<meta>`s defined in the HTML specs][standard meta tags]
 - **Open Graph**: to set [Open Graph] properties. Useful to generate [social cards]. They were initially for link previews inside Facebook, but many other platforms parse that metadata too. Like WhatsApp, Telegram, Twitter/X, ...
 - **Twitter Card**: to set [Twitter cards] properties. Useful to generate [social cards] in Twitter / X. Though, if you use Open Graph, [Twitter will read Open Graph properties][twitter-card-markup]. So maybe you just need Open Graph metadata after all. Unless you want some specific properties that can't be defined with Open Graph.
 - **JSON LD**: in order to add [structured data], sets a `<script type='application/ld+json'>` in the `<head>` of the HTML page with the JSON object you provide.

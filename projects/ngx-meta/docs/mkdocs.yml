@@ -1,13 +1,92 @@
-site_name: ngx-meta docs
+site_name: '@davidlj95/ngx-meta'
 site_url: https://ngx-meta.pages.dev
 repo_url: https://github.com/davidlj95/ngx
 site_description: >
-  Set your Angular site's metadata: `<meta>`s, Open Graph, Twitter cards,
-  JSON LD structured data & more. Use a service and/or route's data.
-  Works with Angular SSR / Universal. Set it up now in a flash 🚀
+  Set your Angular site's metadata: standard meta tags, Open Graph,
+  Twitter cards, JSON-LD structured data & more.
+  Supports SSR (and Angular Universal).
+  Use a service and/or route's data.
+  Set it up in a flash! 🚀
 site_author: davidlj95
 copyright: MIT License
-theme:
-  name: material
 docs_dir: content
 site_dir: site
+edit_uri: https://github.com/davidlj95/ngx/edit/main/projects/ngx-meta/docs/content/
+# From here below, all for Material for mkdocs
+repo_name: davidlj95/ngx
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font: false
+  language: en
+  icon:
+    logo: material/code-tags
+    repo: fontawesome/brands/github
+  favicon: images/favicon.png
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - toc.integrate
+    - toc.follow
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
+    - content.action.view
+    - content.tooltips
+    - content.tabs.link
+extra_css:
+  - fonts/@fontsource-variable/inter-tight/index.css
+  - fonts/@fontsource/dm-mono/index.css
+  - stylesheets/extra.css
+plugins:
+  - privacy
+  - search
+  - social:
+      cards_layout_options:
+        font_family: Inter Tight
+  - git-revision-date-localized:
+      type: timeago
+extra:
+  social:
+    - name: ngx-meta on GitHub
+      icon: fontawesome/brands/github
+      link: https://github.com/davidlj95/ngx
+    - name: ngx-meta on NPM
+      icon: fontawesome/brands/npm
+      link: https://www.npmjs.com/package/@davidlj95/ngx-meta
+markdown_extensions:
+  - pymdownx.highlight
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - abbr
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - footnotes
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+watch:
+  - includes

@@ -1,0 +1,29 @@
+:root {
+  /** Fonts **/
+  --md-text-font: 'Inter Tight Variable', sans-serif;
+  --md-code-font: 'DM Mono', monospace;
+  /** Colors **/
+  --md-primary-fg-color: #5c44e4ff;
+  --md-primary-fg-color--light: #5c44e4ff;
+  --md-primary-fg-color--dark: #5c44e4ff;
+  --md-accent-fg-color: #635aa6ff;
+  --md-accent-fg-color--transparent: #635aa61a;
+}
+
+.md-typeset h1,
+.md-typeset h2 {
+  font-weight: 500;
+}
+
+.md-typeset h1 {
+  font-size: 2.25em;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h2 {
+  font-size: 2em;
+}
+
+.md-typeset {
+  font-weight: 400;
+}

@@ -1,0 +1,23 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+devDependencies:
+  '@fontsource-variable/inter-tight':
+    specifier: 5.0.19
+    version: 5.0.19
+  '@fontsource/dm-mono':
+    specifier: 5.0.18
+    version: 5.0.18
+
+packages:
+
+  /@fontsource-variable/inter-tight@5.0.19:
+    resolution: {integrity: sha512-lynPgkEstP6NhW9ji4PeMh37D3cPP1G9uogVNYpNZTnwm4rBz2H7/d+b71l3m0f2LRKRcjENEaDlPatGgZvPhA==}
+    dev: true
+
+  /@fontsource/dm-mono@5.0.18:
+    resolution: {integrity: sha512-cKIxxlXfKiE/IhoiemJoZZFL8KshcVQv/DSjlQoTTNjZ0Lhko2WCIGNSdtskcE8J8miaTaz062StG/eKaftLKA==}
+    dev: true

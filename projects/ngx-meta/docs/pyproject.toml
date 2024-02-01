@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ngx-meta-docs"
 version = "0.0.0"
-description = "ngx-meta-docs"
+description = "@davidlj95/ngx-meta NPM/JS library docs"
 authors = ["David LJ <mail@davidlj95.com>"]
 license = "MIT"
 readme = "README.md"
@@ -10,7 +10,8 @@ readme = "README.md"
 python = ">= 3.11"
 
 [tool.poetry.group.dev.dependencies]
-mkdocs-material = "9.5.6"
+mkdocs-material = {extras = ["imaging"], version = "^9.5.6"}
+mkdocs-git-revision-date-localized-plugin = "^1.2.2"
 
 [build-system]
 requires = ["poetry-core"]

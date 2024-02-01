@@ -1,7 +1,7 @@
 {
   "name": "@davidlj95/ngx-meta",
   "version": "0.0.0-PLACEHOLDER",
-  "description": "Set your Angular site's metadata: standard meta tags, Open Graph, Twitter cards, JSON-LD structured data & more. Supports SSR (and Angular Universal). Use a service and/or route's data. Set it up in a flash! 🚀",
+  "description": "Set your Angular site's metadata: standard meta tags, Open Graph, Twitter cards, JSON-LD structured data and more. Supports SSR (and Angular Universal). Use a service. Use routes' data. Set it up in a flash! 🚀",
   "keywords": [
     "angular",
     "angular2",

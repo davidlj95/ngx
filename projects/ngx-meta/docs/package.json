@@ -1,0 +1,12 @@
+{
+  "name": "@davidlj95/ngx-meta-docs",
+  "version": "0.0.0",
+  "description": "@davidlj95/ngx-meta docs",
+  "scripts": {
+    "copy-fonts": "mkdir -p content/fonts && cp -r node_modules/@fontsource* content/fonts && find content/fonts -name '*.md' -delete"
+  },
+  "devDependencies": {
+    "@fontsource-variable/inter-tight": "5.0.19",
+    "@fontsource/dm-mono": "5.0.18"
+  }
+}

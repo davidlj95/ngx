@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ngx-meta/docs: serve" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile">
-    <makefile filename="$PROJECT_DIR$/projects/ngx-meta/docs/Makefile" target="install" workingDirectory="" arguments="">
+    <makefile filename="$PROJECT_DIR$/projects/ngx-meta/docs/Makefile" target="serve" workingDirectory="" arguments="">
       <envs />
     </makefile>
     <method v="2" />

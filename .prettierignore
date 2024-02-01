@@ -2,3 +2,6 @@ pnpm-lock.yaml
 # Ignored given local .gitignore files
 Pipfile.lock
 bundle-size-pr-comment.md
+projects/ngx-meta/docs/site
+projects/ngx-meta/docs/.venv
+projects/ngx-meta/docs/content/fonts/**

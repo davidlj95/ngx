@@ -1,0 +1,21 @@
+:root {
+  --md-text-font: 'Inter Tight Variable', sans-serif;
+  --md-code-font: 'DM Mono', monospace;
+}
+
+.md-typeset h1,
+.md-typeset h2 {
+  font-weight: 500;
+}
+
+.md-typeset h1 {
+  font-size: 2.25em;
+}
+
+.md-typeset h2 {
+  font-size: 2em;
+}
+
+.md-typeset {
+  font-weight: 400;
+}

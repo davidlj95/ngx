@@ -1,13 +1,6 @@
-# Welcome to MkDocs
+# Hello World! 👋
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-- `mkdocs new [dir-name]` - Create a new project.
-- `mkdocs serve` - Start the live-reloading docs server.
-- `mkdocs build` - Build the documentation site.
-- `mkdocs -h` - Print help message and exit.
+Angular SSR
 
 ## Project layout
 
@@ -15,3 +8,51 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
     docs/
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
+
+```typescript
+const foo = 'bar'
+```
+
+!!! note "Sample admonition"
+Lorem ipsum lorem
+`typescript
+    const foo = 'bar'
+    `
+???+ note "Sample collapsible"
+Lorem ipsum
+
+Some statement that is super cool[^1]
+
+[^1]: But has a "but"
+
+=== "Standalone app (v17+)"
+
+    ```typescript
+    const APP = 'standalone'
+    ```
+
+=== "Module-based app (before v17)"
+
+    ```typescript
+    const APP = 'module-based'
+    ```
+
+Bla bla bla
+
+=== "Standalone app (v17+)"
+
+    ```typescript
+    const BLA = 'standalone'
+    ```
+
+=== "Module-based app (before v17)"
+
+    ```typescript
+    const BLA = 'module-based'
+    ```
+
+And some data
+
+| Key | Value |
+| --- | ----- |
+| foo | bar   |

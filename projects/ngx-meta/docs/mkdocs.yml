@@ -3,9 +3,9 @@ site_url: https://ngx-meta.pages.dev
 repo_url: https://github.com/davidlj95/ngx
 site_description: >
   Set your Angular site's metadata: standard meta tags, Open Graph,
-  Twitter cards, JSON-LD structured data & more.
+  Twitter cards, JSON-LD structured data and more.
   Supports SSR (and Angular Universal).
-  Use a service and/or route's data.
+  Use a service. Use routes' data.
   Set it up in a flash! 🚀
 site_author: davidlj95
 copyright: MIT License

@@ -20,9 +20,9 @@
 [![Package manager: pnpm](https://img.shields.io/badge/Package_manager-pnpm-f69220?logo=pnpm&link=https%3A%2F%2Fpnpm.io%2F)](https://pnpm.io/)
 
 Set your Angular site's metadata: [standard meta tags], [Open Graph],
-[Twitter cards], JSON-LD [structured data] & more.
-Supports [SSR][angular-ssr] (and Angular Universal).
-Use a service and/or route's data.
+[Twitter cards], JSON-LD [structured data] and more.
+Supports SSR (and Angular Universal).
+Use a service. Use routes' data.
 Set it up in a flash! 🚀
 
 [title-element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title

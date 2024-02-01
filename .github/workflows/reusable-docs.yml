@@ -64,6 +64,10 @@ jobs:
           path: '${{ env.DOCS_DIR }}/.cache'
           restore-keys: |
             mkdocs-material-
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - name: Build
         run: make build
       - name: Publish

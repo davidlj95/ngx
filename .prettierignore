@@ -5,3 +5,5 @@ bundle-size-pr-comment.md
 projects/ngx-meta/docs/site
 projects/ngx-meta/docs/.venv
 projects/ngx-meta/docs/content/fonts/**
+#👇 Thinks that *[] syntax is not correct
+projects/ngx-meta/docs/includes/abbreviations.md

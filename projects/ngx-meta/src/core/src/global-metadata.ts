@@ -60,7 +60,7 @@ export interface GlobalMetadata {
   /**
    * Image metadata for this page
    *
-   * If present, will use it as image for Open Graph and/or Twitter cards, even
+   * If present, will use it as image for Open Graph and/or Twitter Cards, even
    * if the `image` property for those is not set
    *
    * Does nothing if neither Open Graph nor Twitter card modules are present

@@ -4,10 +4,13 @@
   --md-code-font: 'DM Mono', monospace;
   /** Colors **/
   --md-primary-fg-color: #5c44e4ff;
-  --md-primary-fg-color--light: #5c44e4ff;
-  --md-primary-fg-color--dark: #5c44e4ff;
   --md-accent-fg-color: #635aa6ff;
   --md-accent-fg-color--transparent: #635aa61a;
+}
+
+[data-md-color-scheme='slate'] {
+  --md-primary-fg-color: #6f5ae2ff;
+  --md-hue: 249;
 }
 
 .md-typeset h1,
@@ -26,4 +29,13 @@
 
 .md-typeset {
   font-weight: 400;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: 1em;
+}
+
+.md-tooltip--inline .md-tooltip__inner {
+  font-size: 0.75rem;
 }

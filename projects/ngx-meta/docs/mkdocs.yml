@@ -3,7 +3,7 @@ site_url: https://ngx-meta.pages.dev
 repo_url: https://github.com/davidlj95/ngx
 site_description: >
   Set your Angular site's metadata: standard meta tags, Open Graph,
-  Twitter cards, JSON-LD structured data and more.
+  Twitter Cards, JSON-LD structured data and more.
   Supports SSR (and Angular Universal).
   Use a service. Use routes' data.
   Set it up in a flash! 🚀
@@ -12,6 +12,17 @@ copyright: MIT License
 docs_dir: content
 site_dir: site
 edit_uri: https://github.com/davidlj95/ngx/edit/main/projects/ngx-meta/docs/content/
+nav:
+  - index.md
+  - features.md
+  - get-started.md
+  - Built-in modules:
+      - Built-in modules: built-in-modules/index.md
+      - built-in-modules/standard.md
+      - built-in-modules/open-graph.md
+      - built-in-modules/twitter-cards.md
+      - built-in-modules/json-ld.md
+  - changelog.md
 # From here below, all for Material for mkdocs
 repo_name: davidlj95/ngx
 theme:
@@ -42,7 +53,9 @@ theme:
   features:
     - navigation.instant
     - navigation.instant.progress
+    - navigation.footer
     - navigation.tracking
+    - navigation.indexes
     - toc.integrate
     - toc.follow
     - navigation.top
@@ -58,7 +71,8 @@ extra_css:
   - fonts/@fontsource/dm-mono/index.css
   - stylesheets/extra.css
 plugins:
-  - privacy
+  # Until we can ignore disabling badges
+  #- privacy
   - search
   - social:
       cards_layout_options:
@@ -75,6 +89,7 @@ extra:
       link: https://www.npmjs.com/package/@davidlj95/ngx-meta
 markdown_extensions:
   - pymdownx.highlight
+  - pymdownx.inlinehilite
   - admonition
   - pymdownx.details
   - pymdownx.superfences
@@ -82,6 +97,7 @@ markdown_extensions:
   - pymdownx.snippets:
       auto_append:
         - includes/abbreviations.md
+        - includes/common-links.md
   - footnotes
   - pymdownx.tabbed:
       alternate_style: true

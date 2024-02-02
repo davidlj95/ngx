@@ -4,7 +4,7 @@ import { TwitterCardSite } from './twitter-card-site'
 import { TwitterCardCreator } from './twitter-card-creator'
 
 /**
- * Specifies metadata to create Twitter cards
+ * Specifies metadata to create Twitter Cards
  *
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image

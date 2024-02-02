@@ -167,7 +167,7 @@ const metadataValues: GlobalMetadata & StandardMetadata = {
 }
 ```
 
-The `!#html <title>` element will contain `Standard title`. But other modules will use `Global title`.
+The `#!html <title>` element will contain `Standard title`. But other modules will use `Global title`.
 
 By convention, each metadata module provides at least (where `X` is name of module):
 

@@ -6,9 +6,9 @@
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter
  */
 export type TwitterCardCreator =
-  | TwitterCardCreatorId
-  | TwitterCardCreatorUsername
-  | (TwitterCardCreatorId & TwitterCardCreatorUsername)
+  | TwitterCardsCreatorId
+  | TwitterCardsCreatorUsername
+  | (TwitterCardsCreatorId & TwitterCardsCreatorUsername)
 
 /**
  * Username or ID of the content creator
@@ -16,7 +16,7 @@ export type TwitterCardCreator =
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator
  */
-export interface TwitterCardCreatorId {
+export interface TwitterCardsCreatorId {
   id: string | null
 }
 
@@ -27,6 +27,6 @@ export interface TwitterCardCreatorId {
  *
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator
  */
-export interface TwitterCardCreatorUsername {
+export interface TwitterCardsCreatorUsername {
   username: string | null
 }

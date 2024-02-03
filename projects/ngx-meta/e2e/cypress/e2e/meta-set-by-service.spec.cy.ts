@@ -2,7 +2,7 @@ import { ROUTES } from '../fixtures/routes'
 import { testSetsAllStandardMetadata } from '../support/test-sets-all-standard-metadata'
 import { testSetsAllOpenGraphMetadata } from '../support/test-sets-all-open-graph-metadata'
 import { testSetsAllOpenGraphProfileMetadata } from '../support/test-sets-all-open-graph-profile-metadata'
-import { testSetsAllTwitterCardMetadata } from '../support/test-sets-all-twitter-card-metadata'
+import { testSetsAllTwitterCardsMetadata } from '../support/test-sets-all-twitter-cards-metadata'
 import { testSetsJsonLd } from '../support/test-sets-json-ld'
 import {
   spyOnConsole,
@@ -22,6 +22,6 @@ describe('Meta set by service', () => {
   testSetsAllStandardMetadata()
   testSetsAllOpenGraphMetadata()
   testSetsAllOpenGraphProfileMetadata()
-  testSetsAllTwitterCardMetadata()
+  testSetsAllTwitterCardsMetadata()
   testSetsJsonLd()
 })

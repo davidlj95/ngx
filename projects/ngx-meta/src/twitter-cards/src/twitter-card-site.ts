@@ -7,9 +7,9 @@
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter
  */
 export type TwitterCardSite =
-  | TwitterCardSiteId
-  | TwitterCardSiteUsername
-  | (TwitterCardSiteId & TwitterCardSiteUsername)
+  | TwitterCardsSiteId
+  | TwitterCardsSiteUsername
+  | (TwitterCardsSiteId & TwitterCardsSiteUsername)
 
 /**
  * Same as `twitter:site`, but the user’s Twitter ID.
@@ -19,7 +19,7 @@ export type TwitterCardSite =
  *
  * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter
  */
-export interface TwitterCardSiteId {
+export interface TwitterCardsSiteId {
   id: string | null
 }
 
@@ -29,6 +29,6 @@ export interface TwitterCardSiteId {
  *
  * Used with `summary`, `summary_large_image`, `app`, `player` cards
  */
-export interface TwitterCardSiteUsername {
+export interface TwitterCardsSiteUsername {
   username: string | null
 }

@@ -3,7 +3,7 @@ import {
   makeComposedKeyValMetaDefinition,
 } from '@davidlj95/ngx-meta/core'
 
-export const makeTwitterCardMetaDefinition = (...names: string[]) =>
+export const makeTwitterCardsMetaDefinition = (...names: string[]) =>
   makeComposedKeyValMetaDefinition({ keyAttr: _KEY_ATTRIBUTE_PROPERTY }, [
     'twitter',
     ...names,

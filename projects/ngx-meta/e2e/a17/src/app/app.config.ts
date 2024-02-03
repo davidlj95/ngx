@@ -13,7 +13,7 @@ import {
   provideNgxMetaOpenGraph,
   provideNgxMetaOpenGraphProfile,
 } from '@davidlj95/ngx-meta/open-graph'
-import { provideNgxMetaTwitterCard } from '@davidlj95/ngx-meta/twitter-card'
+import { provideNgxMetaTwitterCards } from '@davidlj95/ngx-meta/twitter-cards'
 import { provideNgxMetaJsonLd } from '@davidlj95/ngx-meta/json-ld'
 
 export const appConfig: ApplicationConfig = {
@@ -24,7 +24,7 @@ export const appConfig: ApplicationConfig = {
     provideNgxMetaStandard(),
     provideNgxMetaOpenGraph(),
     provideNgxMetaOpenGraphProfile(),
-    provideNgxMetaTwitterCard(),
+    provideNgxMetaTwitterCards(),
     provideNgxMetaJsonLd(),
   ],
 }

@@ -1,9 +1,9 @@
 import METADATA_JSON from '../fixtures/metadata.json'
 
-export function testSetsAllTwitterCardMetadata(
+export function testSetsAllTwitterCardsMetadata(
   twitterCardOverrides: object = {},
 ) {
-  it('should set all Twitter card metadata', () => {
+  it('should set all Twitter Cards metadata', () => {
     cy.fixture('metadata.json').then((jsonMetadata: typeof METADATA_JSON) => {
       const metadata = {
         ...jsonMetadata,

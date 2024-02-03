@@ -5,8 +5,8 @@ import { testUnsetsAllStandardMetadata } from '../support/test-unsets-all-standa
 import { testUnsetsAllOpenGraphMetadata } from '../support/test-unsets-all-open-graph-metadata'
 import { testSetsAllOpenGraphProfileMetadata } from '../support/test-sets-all-open-graph-profile-metadata'
 import { testUnsetsAllOpenGraphProfileMetadata } from '../support/test-unsets-all-open-graph-profile-metadata'
-import { testSetsAllTwitterCardMetadata } from '../support/test-sets-all-twitter-card-metadata'
-import { testUnsetsAllTwitterCardMetadata } from '../support/test-unsets-all-twitter-card-metadata'
+import { testSetsAllTwitterCardsMetadata } from '../support/test-sets-all-twitter-cards-metadata'
+import { testUnsetsAllTwitterCardsMetadata } from '../support/test-unsets-all-twitter-cards-metadata'
 import { testSetsJsonLd } from '../support/test-sets-json-ld'
 import { testUnsetsJsonLd } from '../support/test-unsets-json-ld'
 import {
@@ -26,7 +26,7 @@ describe('Meta set by route', () => {
   testSetsAllStandardMetadata()
   testSetsAllOpenGraphMetadata()
   testSetsAllOpenGraphProfileMetadata()
-  testSetsAllTwitterCardMetadata()
+  testSetsAllTwitterCardsMetadata()
   testSetsJsonLd()
   testNoConsoleLogsAreEmitted()
 
@@ -38,7 +38,7 @@ describe('Meta set by route', () => {
     testUnsetsAllStandardMetadata()
     testUnsetsAllOpenGraphMetadata()
     testUnsetsAllOpenGraphProfileMetadata()
-    testUnsetsAllTwitterCardMetadata()
+    testUnsetsAllTwitterCardsMetadata()
     testUnsetsJsonLd()
     testNoConsoleLogsAreEmitted()
   })

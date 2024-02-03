@@ -6,15 +6,15 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
 import { TwitterCard } from './twitter-card'
-import { TwitterCardMetadata } from './twitter-card-metadata'
-import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
+import { TwitterCardsMetadata } from './twitter-cards-metadata'
+import { makeTwitterCardsMetaDefinition } from './make-twitter-cards-meta-definition'
 
-const TWITTER_KEY: keyof TwitterCardMetadata = `twitterCard`
+const TWITTER_CARDS_KEY: keyof TwitterCardsMetadata = `twitterCard`
 
-export const makeTwitterCardMetadataProvider = <Key extends keyof TwitterCard>(
+export const makeTwitterCardsMetadataProvider = <Key extends keyof TwitterCard>(
   key: Key,
   opts: {
-    // Twitter card property name. Defaults to key
+    // Twitter Card property name. Defaults to key
     p?: string
     // Global key. Defaults to nothing
     g?: keyof GlobalMetadata
@@ -26,12 +26,12 @@ export const makeTwitterCardMetadataProvider = <Key extends keyof TwitterCard>(
     opts.s ??
       ((metaService: NgxMetaMetaService) => (value: TwitterCard[Key]) =>
         metaService.set(
-          makeTwitterCardMetaDefinition(opts.p ?? key),
+          makeTwitterCardsMetaDefinition(opts.p ?? key),
           value as string,
         )),
     {
       d: [NgxMetaMetaService],
-      jP: [TWITTER_KEY, key],
+      jP: [TWITTER_CARDS_KEY, key],
       g: opts.g,
     },
   )

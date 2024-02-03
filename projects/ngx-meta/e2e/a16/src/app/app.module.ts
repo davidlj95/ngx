@@ -16,7 +16,7 @@ import {
   NgxMetaOpenGraphModule,
   NgxMetaOpenGraphProfileModule,
 } from '@davidlj95/ngx-meta/open-graph'
-import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
+import { NgxMetaTwitterCardsModule } from '@davidlj95/ngx-meta/twitter-cards'
 import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
 
 @NgModule({
@@ -37,7 +37,7 @@ import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
     NgxMetaStandardModule,
     NgxMetaOpenGraphModule,
     NgxMetaOpenGraphProfileModule,
-    NgxMetaTwitterCardModule,
+    NgxMetaTwitterCardsModule,
     NgxMetaJsonLdModule,
   ],
   providers: [],

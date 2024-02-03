@@ -1,5 +1,5 @@
 import { TwitterCard } from './twitter-card'
 
-export interface TwitterCardMetadata {
+export interface TwitterCardsMetadata {
   twitterCard: TwitterCard
 }

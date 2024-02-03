@@ -8,23 +8,23 @@ Some [Twitter Cards tags fallback to Open Graph equivalent properties if they ca
 
 ## Setup
 
-Depending on what metadata you need to set, add one of more of the Twitter Card modules / providers.
+Depending on what metadata you need to set, add one of more of the Twitter Cards modules / providers.
 
 ### Main
 
 To set the Twitter Card type or the basic _summary_ or _summary large_ cards, you can use the main Twitter Cards module
 
 === "For non-standalone, module-based apps"
-Add `NgxMetaTwitterCardModule` to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
+Add `NgxMetaTwitterCardsModule` to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
 
 === "For standalone, module-free apps"
-Add `provideNgxMetaTwitterCard()` to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
+Add `provideNgxMetaTwitterCards()` to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
 
 ## Types
 
 Following Typescript types provide you with all implemented metadata:
 
-- `TwitterCardMetadata`
+- `TwitterCardsMetadata`
 
 ## Resources
 

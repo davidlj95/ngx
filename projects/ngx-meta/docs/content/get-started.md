@@ -136,7 +136,7 @@ That's it, you should see the `#!html <title>` and `#!html <meta name='descripti
 
 As with the service case, [Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Later it will be explained what's that `GlobalMetadata` type
 
-Check out the [Angular v17 app `app.routes.ts` file](../e2e/a17/src/app/app.routes.ts) for a full routes file example
+Check out the [Angular v17 example app] [`app.routes.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/a17/src/app/app.routes.ts) for a full routes file example
 
 ## 🗺️ 4. Explore [all metadata you can set](https://www.youtube.com/watch?v=1kzb6uf0U0k)
 
@@ -174,6 +174,6 @@ By convention, each metadata module provides at least (where `X` is name of modu
 - An `NgxMetaXModule` or `provideNgxMetaX` module or provider. To add it to the app (see step 2)
 - An `XMetadata` type with all metadata it can set.
 
-What modules are there and what metadata they provide? Checkout next section about [built-in modules](./built-in-modules)!
+What modules are there and what metadata they provide? Checkout next section about [built-in modules](./built-in-modules/index.md)!
 
 [^1]: The library doesn't include any schematics for now

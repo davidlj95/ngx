@@ -1,7 +1,7 @@
 ![<ngx-meta/> for Angular](../docs/content/images/logo.png)
 
 [![Angular](https://img.shields.io/badge/Works_with-Angular-red?logo=angular&logoColor=white&link=https%3A%2F%2Fangular.dev%2F)](https://angular.dev/)
-[![Compatible with Angular SSR/Universal](https://custom-icon-badges.demolab.com/badge/Compatible_with-Angular_SSR%2FUniversal-blue.svg?logo=angular-universal&link=https%3A%2F%2Fangular.dev%2Fguide%2Fssr)](https://angular.dev/guide/ssr)
+[![Supports Angular SSR/Universal](https://custom-icon-badges.demolab.com/badge/Supports-Angular_SSR%2FUniversal-blue.svg?logo=angular-universal&link=https%3A%2F%2Fangular.dev%2Fguide%2Fssr)](https://angular.dev/guide/ssr)
 [![NPM Version](https://img.shields.io/npm/v/%40davidlj95%2Fngx-meta?logo=npm&label=Latest%20version&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40davidlj95%2Fngx-meta)](https://www.npmjs.com/package/@davidlj95/ngx-meta)
 [![NPM Downloads](https://img.shields.io/npm/dt/%40davidlj95%2Fngx-meta?logo=npm&label=NPM%20downloads&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40davidlj95%2Fngx-meta)](https://www.npmjs.com/package/@davidlj95/ngx-meta)
 [![NPM License](https://img.shields.io/npm/l/%40davidlj95%2Fngx-meta?logo=npm&label=License&link=https%3A%2F%2Fgithub.com%2Fdavidlj95%2Fngx%2Fblob%2Fmain%2Fprojects%2Fngx-meta%2Fsrc%2FLICENSE)](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/src/LICENSE)

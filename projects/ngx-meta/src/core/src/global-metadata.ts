@@ -5,7 +5,7 @@ export interface GlobalMetadata {
    * Sets
    *  - Standard `<title>` HTML element
    *  - Open Graph title (if Open Graph module present)
-   *  - Twitter card title (if Twitter card module present)
+   *  - Twitter Card title (if Twitter card module present)
    */
   readonly title?: string
 
@@ -13,11 +13,11 @@ export interface GlobalMetadata {
    * Sets
    *  - Standard `<meta name='description'>` HTML element
    *  - Open Graph description (if Open Graph module present)
-   *  - Twitter card description (if Twitter card module present)
+   *  - Twitter Card description (if Twitter card module present)
    *
    * Recommendations:
    *  - Open Graph: 1 or 2 sentences for Open Graph
-   *  - Twitter card: 200 characters for Twitter card
+   *  - Twitter Card: 200 characters for Twitter card
    *
    * See specific details in each module
    */
@@ -63,7 +63,7 @@ export interface GlobalMetadata {
    * If present, will use it as image for Open Graph and/or Twitter Cards, even
    * if the `image` property for those is not set
    *
-   * Does nothing if neither Open Graph nor Twitter card modules are present
+   * Does nothing if neither Open Graph nor Twitter Cards modules are present
    *
    * Open Graph allows for more attributes for the image. Specify Open Graph
    * image if you want to customize those too.

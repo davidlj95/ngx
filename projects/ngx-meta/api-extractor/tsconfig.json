@@ -1,0 +1,13 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../src/tsconfig.lib.json",
+  "compilerOptions": {
+    "paths": {
+      // 👇 Needed to avoid ae-wrong-input-file-type importing `.ts` files
+      // Due to imports from "@davidlj95/xxx" being mapped to ts files in
+      // root repo's `tsconfig.json`
+      "@davidlj95/ngx-meta/*": ["../out/*"],
+      "@davidlj95/ngx-meta": ["../out"],
+    },
+  },
+}

@@ -36,7 +36,7 @@ export interface Standard {
   /**
    * Includes Angular version used to generate the page
    *
-   * Sets the `<meta name='generator'> HTML tag
+   * Sets the `#!html <meta name='generator'>` HTML tag
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name#:~:text=generator
    * @see https://html.spec.whatwg.org/multipage/semantics.html#meta-generator
@@ -44,7 +44,7 @@ export interface Standard {
   readonly generator?: true | null
 
   /**
-   * Sets the `<meta name='application-name'> HTML element
+   * Sets the `#!html <meta name='application-name'>` HTML element
    *
    * Recommendations:
    * - From MDN: simple web pages shouldn't define an application name

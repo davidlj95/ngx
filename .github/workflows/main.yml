@@ -24,6 +24,7 @@ jobs:
     name: Style
     uses: ./.github/workflows/reusable-style.yml
   api-extractor:
+    needs: [build]
     name: API Extractor
     uses: ./.github/workflows/reusable-api-extractor.yml
     with:

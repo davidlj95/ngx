@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta:api-extractor:local" type="js.build_tools.npm" nameIsGenerated="true">
+  <configuration default="false" name="ngx-meta: API Documenter" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="ngx-meta:api-extractor:local" />
+      <script value="ngx-meta:api-documenter" />
     </scripts>
     <node-interpreter value="project" />
     <envs />

@@ -7,7 +7,7 @@
       // Due to imports from "@davidlj95/xxx" being mapped to ts files in
       // root repo's `tsconfig.json`
       "@davidlj95/ngx-meta/*": ["../out/*"],
-      "@davidlj95/ngx-meta": ["../out"],
-    },
-  },
+      "@davidlj95/ngx-meta": ["../out"]
+    }
+  }
 }

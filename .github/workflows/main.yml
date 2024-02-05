@@ -28,7 +28,7 @@ jobs:
     name: E2E
     uses: ./.github/workflows/reusable-e2e.yml
     with:
-      dist-artifact-name: ngx-meta
+      dist-artifact-name: ngx-meta-dist
     permissions:
       checks: write
   release:

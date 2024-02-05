@@ -42,3 +42,23 @@ jobs:
           name: ${{ inputs.artifact-name }}
           path: 'projects/ngx-meta/dist'
           retention-days: 5
+  tsc:
+    name: TypeScript compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Run tsc
+        run: cd .ci && make tsc
+      - name: Upload compiled JS files
+        if: ${{ inputs.artifact-name != '' }}
+        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 # v4
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: 'projects/ngx-meta/out'
+          retention-days: 5

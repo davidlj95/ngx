@@ -1,0 +1,4 @@
+# API Extractor temp dir
+temp/
+# JSON docs file
+*.api.json

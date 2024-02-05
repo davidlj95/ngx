@@ -1,6 +1,9 @@
 import { FactoryProvider, InjectionToken } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 
+/**
+ * @internal
+ */
 export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY =
   (doc: Document) =>
   (selector: string, element: HTMLElement | null | undefined) => {
@@ -24,6 +27,9 @@ export const _HEAD_ELEMENT_UPSERT_OR_REMOVE =
   new InjectionToken<_HeadElementUpsertOrRemove>(
     ngDevMode ? 'NgxMeta head element upsert or remove util' : 'NgxMetaHEUOR',
   )
+/**
+ * @internal
+ */
 export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER: FactoryProvider = {
   provide: _HEAD_ELEMENT_UPSERT_OR_REMOVE,
   useFactory: __HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY,

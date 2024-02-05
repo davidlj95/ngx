@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="ngx-meta SVG Inkscape assets" pattern="file:projects/ngx-meta/docs/content/images/*.svg" />
+</component>

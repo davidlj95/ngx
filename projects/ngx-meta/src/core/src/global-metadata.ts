@@ -1,5 +1,10 @@
 import { GlobalMetadataImage } from './global-metadata-image'
 
+/**
+ * Diggity daggity doo
+ *
+ * @public
+ */
 export interface GlobalMetadata {
   /**
    * Sets
@@ -25,7 +30,7 @@ export interface GlobalMetadata {
 
   /**
    * Sets
-   *  - Standard `<meta name='application-name'> HTML element
+   *  - Standard `<meta name='application-name'>` HTML element
    *  - Open Graph site name (if Open Graph module present)
    *
    * Recommendations:

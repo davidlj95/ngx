@@ -8,11 +8,11 @@ on:
         required: false
         default: ''
       dist-artifact-name:
-        description: Artifact name containing built lib
+        description: Artifact name containing lib dist files
         type: string
         required: false
       tsc-artifact-name:
-        description: Artifact name containing built lib
+        description: Artifact name containing lib tsc output files
         type: string
         required: false
 

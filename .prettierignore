@@ -5,5 +5,8 @@ bundle-size-pr-comment.md
 projects/ngx-meta/docs/site
 projects/ngx-meta/docs/.venv
 projects/ngx-meta/docs/content/fonts/**
-#👇 Thinks that *[] syntax is not correct
+#👇 Prettier doesn't understand the *[] syntax
 projects/ngx-meta/docs/includes/abbreviations.md
+#👇 Auto-generated
+projects/ngx-meta/api-extractor/*.api.md
+projects/ngx-meta/api-extractor/temp/

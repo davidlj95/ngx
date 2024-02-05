@@ -30,3 +30,9 @@ format-check:
 
 release:
 	cd .. && pnpm run semantic-release
+
+api-extractor:
+	cd .. && pnpm run ngx-meta:api-extractor
+
+api-documenter:
+	cd .. && pnpm run ngx-meta:api-documenter

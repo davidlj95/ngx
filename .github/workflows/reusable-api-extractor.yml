@@ -1,0 +1,73 @@
+name: API Extractor
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: Git reference to checkout. Defaults to @actions/checkout default.
+        type: string
+        required: false
+        default: ''
+      tsc-artifact-name:
+        description: Artifact name containing built lib
+        type: string
+        required: false
+      api-docs-artifact-name:
+        description: Artifact name containing markdown docs output
+        type: string
+        required: false
+
+env:
+  API_EXTRACTOR_ARTIFACT_NAME: ngx-meta-api-extractor
+
+jobs:
+  api-extractor:
+    name: API Extractor (report and JSON docs)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Download tsc output files
+        uses: actions/download-artifact@6b208ae046db98c579e8a3aa621ab581ff575935 # v4
+        with:
+          name: ${{ inputs.tsc-artifact-name }}
+          path: 'projects/ngx-meta/out'
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Run API Extractor in production mode
+        run: cd .ci && make api-extractor
+      - name: Upload API Extractor JSON docs
+        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 # v4
+        with:
+          name: ${{ env.API_EXTRACTOR_ARTIFACT_NAME }}
+          path: 'projects/ngx-meta/api-extractor/*.api.json'
+          retention-days: 5
+
+  api-documenter:
+    needs: [api-extractor]
+    name: API Documenter (markdown API Ref docs)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Download API Extractor JSON docs
+        uses: actions/download-artifact@6b208ae046db98c579e8a3aa621ab581ff575935 # v4
+        with:
+          name: ${{ env.API_EXTRACTOR_ARTIFACT_NAME }}
+          path: 'projects/ngx-meta/api-extractor'
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Run API Documenter
+        run: cd .ci && make api-documenter
+      - name: Upload API Documenter generated markdown docs
+        if: ${{ inputs.api-docs-artifact-name != '' }}
+        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 # v4
+        with:
+          name: ${{ inputs.api-docs-artifact-name }}
+          path: 'projects/ngx-meta/docs/content/api'
+          retention-days: 5

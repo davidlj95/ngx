@@ -23,6 +23,12 @@ jobs:
   style:
     name: Style
     uses: ./.github/workflows/reusable-style.yml
+  api-extractor:
+    name: API Extractor
+    uses: ./.github/workflows/reusable-api-extractor.yml
+    with:
+      tsc-artifact-name: ngx-meta-tsc
+      api-extractor-artifact-name: ngx-meta-api-extractor
   e2e:
     needs: [build, test, lint]
     name: E2E

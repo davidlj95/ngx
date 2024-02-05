@@ -163,6 +163,21 @@
       <scope name="SVG Inkscape assets" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
       <scope name="ngx-meta Angular main HTMLs" level="TEXT ATTRIBUTES" enabled="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
     </inspection_tool>
+    <inspection_tool class="ES6ClassMemberInitializationOrder" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="ES6DestructuringVariablesMerge" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="ES6PreferShortImport" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="ES6RedundantNestingInTemplateLiteral" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="ES6ShorthandObjectProperty" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
     <inspection_tool class="HtmlDeprecatedAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="SVG Inkscape assets" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
       <scope name="ngx-meta Angular main HTMLs" level="TEXT ATTRIBUTES" enabled="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
@@ -296,6 +311,92 @@
       <scope name="SVG Inkscape assets" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
       <scope name="ngx-meta Angular main HTMLs" level="TEXT ATTRIBUTES" enabled="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
     </inspection_tool>
+    <inspection_tool class="JSAccessibilityCheck" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSAnnotator" enabled="true" level="ERROR" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSCheckFunctionSignatures" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSClosureCompilerSyntax" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSCommentMatchesSignature" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSDeprecatedSymbols" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSDuplicatedDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSFileReferences" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSJQueryEfficiency" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSJoinVariableDeclarationAndAssignment" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSLastCommaInArrayLiteral" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSLastCommaInObjectLiteral" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSMethodCanBeStatic" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSMismatchedCollectionQueryUpdate" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES">
+        <option name="queries" value="trace,write,forEach,length,size" />
+        <option name="updates" value="pop,push,shift,splice,unshift,add,insert,remove,reverse,copyWithin,fill,sort" />
+      </scope>
+      <option name="queries" value="trace,write,forEach,length,size" />
+      <option name="updates" value="pop,push,shift,splice,unshift,add,insert,remove,reverse,copyWithin,fill,sort" />
+    </inspection_tool>
+    <inspection_tool class="JSNonStrictModeUsed" enabled="true" level="WARNING" enabled_by_default="false">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSPrimitiveTypeWrapperUsage" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSReferencingMutableVariableFromClosure" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSUndeclaredVariable" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSUnfilteredForInLoop" enabled="true" level="WARNING" enabled_by_default="false">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSUnnecessarySemicolon" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSUnresolvedExtXType" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSUnresolvedLibraryURL" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSUnresolvedReference" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSValidateJSDoc" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSValidateTypes" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSXSyntaxUsed" enabled="true" level="ERROR" enabled_by_default="false">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="JSXUnresolvedComponent" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    </inspection_tool>
     <inspection_tool class="RequiredAttributes" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="SVG Inkscape assets" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES">
         <option name="myAdditionalRequiredHtmlAttributes" value="" />
@@ -308,6 +409,9 @@
     <inspection_tool class="Stylelint" enabled="true" level="ERROR" enabled_by_default="false">
       <scope name="SVG Inkscape assets" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
       <scope name="ngx-meta Angular main HTMLs" level="TEXT ATTRIBUTES" enabled="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
+    </inspection_tool>
+    <inspection_tool class="WebpackConfigHighlighting" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
     </inspection_tool>
     <inspection_tool class="XmlDefaultAttributeValue" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="SVG Inkscape assets" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />

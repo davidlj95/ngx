@@ -1,5 +1,0 @@
-# API extractor generated "tsdoc-metadata.json"
-# Not sure why it's needed, probably by other libs using this lib and API
-# extractor. But seems needs to be published but not Git-tracked
-# Didn't find any updated packages publishing this file though 🤔
-tsdoc-metadata.json

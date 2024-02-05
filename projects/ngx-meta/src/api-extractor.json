@@ -1,11 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-  "projectFolder": "../src",
+  // 👇 It's not used to lookup for package.json. Instead, package.json is looked up for starting from where
+  //    this config file is located. Travelling parents until a package.json is found. So config file must be here (or
+  //    in a subdirectory.
+  //    https://github.com/microsoft/rushstack/blob/%40microsoft/api-extractor_v7.39.4/apps/api-extractor/src/api/ExtractorConfig.ts#L490-L492
+  "projectFolder": ".",
   "mainEntryPointFilePath": "<projectFolder>/../out/all-entry-points.d.ts",
   "bundledPackages": [],
   "newlineKind": "lf",
   "compiler": {
-    "tsconfigFilePath": "<projectFolder>/../api-extractor/tsconfig.json"
+    "tsconfigFilePath": "<projectFolder>/../api-extractor/tsconfig.api-extractor.json"
   },
   "apiReport": {
     "enabled": true,
@@ -29,7 +33,15 @@
     // https://github.com/microsoft/rushstack/issues/3557
     "enabled": false
   },
-  "tsdocMetadata": {},
+  "tsdocMetadata": {
+    // API extractor generates a "tsdoc-metadata.json"
+    // Not sure why it's needed (didn't find any docs online about this file)
+    // Maybe by other libs using this lib and API Extractor together.
+    // Generated file says you must publish it but not track it in Git
+    // Didn't find any updated packages publishing this file though 🤔
+    // So not publishing it until needed to keep pipeline as simple as possible
+    "enabled": false
+  },
   "messages": {
     "compilerMessageReporting": {
       "default": {

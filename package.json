@@ -14,7 +14,7 @@
     "ngx-meta:tsc": "pnpm run '/ngx-meta:tsc:.*/'",
     "ngx-meta:tsc:lib": "tsc -p ./projects/ngx-meta/src/tsconfig.lib.json --listEmittedFiles",
     "ngx-meta:tsc:spec": "tsc -p ./projects/ngx-meta/src/tsconfig.spec.json --listEmittedFiles",
-    "ngx-meta:api-extractor": "api-extractor run -c ./projects/ngx-meta/api-extractor/api-extractor.json",
+    "ngx-meta:api-extractor": "api-extractor run -c ./projects/ngx-meta/src/api-extractor.json",
     "ngx-meta:api-extractor:local": "pnpm run ngx-meta:api-extractor --local",
     "format-check": "prettier --check",
     "format-check-all": "npm run format-check -- .",

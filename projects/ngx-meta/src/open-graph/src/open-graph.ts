@@ -85,6 +85,8 @@ export interface OpenGraph {
   /**
    * Open Graph profile metadata for this page
    *
+   * <b>Requires Open Graph Profile module / provider to work</b>
+   *
    * @see https://ogp.me/#type_profile
    */
   readonly profile?: OpenGraphProfile

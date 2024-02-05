@@ -22,7 +22,9 @@ nav:
       - built-in-modules/open-graph.md
       - built-in-modules/twitter-cards.md
       - built-in-modules/json-ld.md
+  - API Reference: api/ngx-meta.md
   - changelog.md
+not_in_nav: api/*.md
 # From here below, all for Material for mkdocs
 repo_name: davidlj95/ngx
 theme:

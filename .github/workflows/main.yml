@@ -54,8 +54,10 @@ jobs:
       id-token: write
   docs:
     name: Docs
-    needs: [e2e]
+    needs: [release, api-extractor]
     uses: ./.github/workflows/reusable-docs.yml
+    with:
+      api-docs-artifact-name: ngx-meta-api-docs
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}

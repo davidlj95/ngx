@@ -7,6 +7,10 @@ on:
         type: string
         required: false
         default: ''
+    api-docs-artifact-name:
+      description: Artifact name containing API reference markdown docs
+      type: string
+      required: false
     secrets:
       cloudflare-account-id:
         required: true
@@ -37,6 +41,11 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           ref: ${{ inputs.ref }}
+      - name: Download API reference docs
+        uses: actions/download-artifact@6b208ae046db98c579e8a3aa621ab581ff575935 # v4
+        with:
+          name: ${{ inputs.api-docs-artifact-name }}
+          path: 'projects/ngx-meta/docs/content/api'
       - name: Install poetry # pipx comes built-in in GitHub runner
         run: pipx install poetry
       - name: Setup Python

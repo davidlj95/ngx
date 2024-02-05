@@ -2,7 +2,7 @@ name: Release
 on:
   workflow_call:
     inputs:
-      build-artifact-name:
+      dist-artifact-name:
         required: true
         type: string
     secrets:
@@ -46,7 +46,7 @@ jobs:
       - name: Download distribution files
         uses: actions/download-artifact@6b208ae046db98c579e8a3aa621ab581ff575935 # v4
         with:
-          name: ${{ inputs.build-artifact-name }}
+          name: ${{ inputs.dist-artifact-name }}
           path: 'projects/ngx-meta/dist'
       - name: Release
         env:

@@ -5,6 +5,6 @@
     "sourceMap": false,
     "types": ["cypress"],
     // Load JSON fixtures (so we leverage types)
-    "resolveJsonModule": true,
-  },
+    "resolveJsonModule": true
+  }
 }

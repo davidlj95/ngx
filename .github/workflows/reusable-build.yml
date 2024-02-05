@@ -7,7 +7,11 @@ on:
         type: string
         required: false
         default: ''
-      artifact-name:
+      dist-artifact-name:
+        description: Artifact name containing built lib
+        type: string
+        required: false
+      tsc-artifact-name:
         description: Artifact name containing built lib
         type: string
         required: false
@@ -36,10 +40,10 @@ jobs:
       - name: Build libraries
         run: cd .ci && make build
       - name: Upload distribution files
-        if: ${{ inputs.artifact-name != '' }}
+        if: ${{ inputs.dist-artifact-name != '' }}
         uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 # v4
         with:
-          name: ${{ inputs.artifact-name }}
+          name: ${{ inputs.dist-artifact-name }}
           path: 'projects/ngx-meta/dist'
           retention-days: 5
   tsc:
@@ -56,9 +60,9 @@ jobs:
       - name: Run tsc
         run: cd .ci && make tsc
       - name: Upload compiled JS files
-        if: ${{ inputs.artifact-name != '' }}
+        if: ${{ inputs.tsc-artifact-name != '' }}
         uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 # v4
         with:
-          name: ${{ inputs.artifact-name }}
+          name: ${{ inputs.tsc-artifact-name }}
           path: 'projects/ngx-meta/out'
           retention-days: 5

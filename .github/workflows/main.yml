@@ -12,7 +12,8 @@ jobs:
     name: Build
     uses: ./.github/workflows/reusable-build.yml
     with:
-      artifact-name: ngx-meta
+      dist-artifact-name: ngx-meta-dist
+      tsc-artifact-name: ngx-meta-tsc
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
@@ -27,7 +28,7 @@ jobs:
     name: E2E
     uses: ./.github/workflows/reusable-e2e.yml
     with:
-      build-artifact-name: ngx-meta
+      dist-artifact-name: ngx-meta
     permissions:
       checks: write
   release:
@@ -35,7 +36,7 @@ jobs:
     needs: [e2e]
     uses: ./.github/workflows/reusable-release.yml
     with:
-      build-artifact-name: ngx-meta
+      dist-artifact-name: ngx-meta-dist
     secrets:
       npm-token: ${{ secrets.NPM_TOKEN }}
       github-token-pr: ${{ secrets.PR_GH_TOKEN }}

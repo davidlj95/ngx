@@ -7,10 +7,10 @@ on:
         type: string
         required: false
         default: ''
-    api-docs-artifact-name:
-      description: Artifact name containing API reference markdown docs
-      type: string
-      required: false
+      api-docs-artifact-name:
+        description: Artifact name containing API reference markdown docs
+        type: string
+        required: false
     secrets:
       cloudflare-account-id:
         required: true

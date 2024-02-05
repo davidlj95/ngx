@@ -1,77 +1,76 @@
 import { GlobalMetadataImage } from './global-metadata-image'
 
 /**
- * Diggity daggity doo
+ * Specifies metadata that will be used by more than one module
  *
  * @public
  */
 export interface GlobalMetadata {
   /**
-   * Sets
-   *  - Standard `<title>` HTML element
-   *  - Open Graph title (if Open Graph module present)
-   *  - Twitter Card title (if Twitter card module present)
+   * Sets title for:
+   *
+   *  - {@link Standard.title} (needs standard module)
+   *
+   *  - {@link OpenGraph.title} (needs Open Graph module)
+   *
+   *  - {@link TwitterCard.title} (needs Twitter Cards module)
    */
   readonly title?: string
 
   /**
-   * Sets
-   *  - Standard `<meta name='description'>` HTML element
-   *  - Open Graph description (if Open Graph module present)
-   *  - Twitter Card description (if Twitter card module present)
+   * Sets description for:
    *
-   * Recommendations:
-   *  - Open Graph: 1 or 2 sentences for Open Graph
-   *  - Twitter Card: 200 characters for Twitter card
+   *  - {@link Standard.description} (needs standard module)
    *
-   * See specific details in each module
+   *  - {@link OpenGraph.description} (needs Open Graph module)
+   *
+   *  - {@link TwitterCard.description} (needs Twitter Cards module)
    */
   readonly description?: string | null
 
   /**
-   * Sets
-   *  - Standard `<meta name='application-name'>` HTML element
-   *  - Open Graph site name (if Open Graph module present)
+   * Sets application name for:
    *
-   * Recommendations:
-   *  - Standard: must not be used if the page is not a web application
+   *  - {@link Standard.applicationName} (needs standard module)
+   *
+   *  - {@link OpenGraph.siteName} (needs Open Graph module)
    */
   readonly applicationName?: string | null
 
   /**
-   * Sets
-   *  - Standard `<link rel='canonical'>` HTML element
-   *  - Open Graph URL (if Open Graph module present)
+   * Sets canonical URL for:
    *
-   * Recommendations:
-   *  - Standard: check standard doc links
+   *  - {@link Standard.canonicalUrl} (needs standard module)
+   *
+   *  - {@link OpenGraph.url} (needs Open Graph module)
    */
   readonly canonicalUrl?: URL | string | null
 
   /**
-   * Language & localization of this page
+   * Sets localization of this page
    *
    * Value must be a valid language tag complying with BCP 47
-   * For instance: "es" or "es-ES"
+   * For instance: "`es`" or "`es-ES`"
    *
-   * Sets the
-   *  - Standard `lang` attribute to the `<html>` element
-   *  - Open Graph locale (if Open Graph module present)
+   * For:
    *
-   * @see https://datatracker.ietf.org/doc/html/rfc5646 (BCP 47)
+   *  - {@link Standard.locale} (needs standard module)
+   *
+   *  - {@link OpenGraph.locale} (needs Open Graph module)
+   *
+   * @see {@link https://datatracker.ietf.org/doc/html/rfc5646 | RFC 5646/BCP 47}
    */
   readonly locale?: string | null
 
   /**
-   * Image metadata for this page
+   * Sets image (will be used for link previews / social cards) for
    *
-   * If present, will use it as image for Open Graph and/or Twitter Cards, even
-   * if the `image` property for those is not set
+   * - {@link OpenGraph.image} (needs standard module)
    *
-   * Does nothing if neither Open Graph nor Twitter Cards modules are present
+   * - {@link TwitterCard.image} (needs Twitter Cards module)
    *
-   * Open Graph allows for more attributes for the image. Specify Open Graph
-   * image if you want to customize those too.
+   * Open Graph allows for more attributes for the image.
+   * Specify {@link OpenGraph.image} if you want to customize those too.
    */
   readonly image?: GlobalMetadataImage | null
 }

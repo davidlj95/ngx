@@ -84,13 +84,13 @@ export class CoolPageComponent implements OnInit {
 
 That's it, you should see the `#!html <title>` and `#!html <meta name="description">` set in that page with the values you provided ✨
 
-[Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Later we'll get into what's that `GlobalMetadata` type
+[Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Later we'll get into what's that [`GlobalMetadata`](./api/ngx-meta.globalmetadata.md) type
 
 Check out the [Angular v17 example app]'s [`meta-set-by-service.component.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/a17/src/app/meta-set-by-service/meta-set-by-service.component.ts) for a full component file example
 
 !!! info "Metadata set by service won't be cleared by default"
 
-    Metadata set (in the example, `#!html <title>` and `#!html <meta name="description">`) will stay when the route changes if the routing module / provider hasn't been added. If you want those metadata values to get removed when changing route without adding the routing module / provider, you can add a call to the service on the `ngOnDestroy` hook:
+    Metadata set (in the example, `#!html <title>` and `#!html <meta name="description">`) will stay when the route changes if the routing module / provider hasn't been added. If you want those metadata values to get removed when changing route without adding the routing module / provider, you can add a call to the service on the [`ngOnDestroy`](https://angular.dev/guide/components/lifecycle#ngondestroy) hook:
 
     ```typescript
     @Component({
@@ -134,7 +134,7 @@ export const routes: Routes = [
 
 That's it, you should see the `#!html <title>` and `#!html <meta name='description'>` set in the `cool-page` page with the values you provided ✨
 
-As with the service case, [Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Later it will be explained what's that `GlobalMetadata` type
+As with the service case, [Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Later it will be explained what's that [`GlobalMetadata`](./api/ngx-meta.globalmetadata.md) type
 
 Check out the [Angular v17 example app] [`app.routes.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/a17/src/app/app.routes.ts) for a full routes file example
 
@@ -144,17 +144,17 @@ A forth step? You lied to me 😢 Well you had some metadata in your site at end
 
 Now, do you wonder what metadata can you set? Typescript types can help you.
 
-Following the example, inspect `GlobalMetadata` and `StandardMetadata` types to see all values you can set.
+Following the example, inspect [`GlobalMetadata`](./api/ngx-meta.globalmetadata.md) and [`StandardMetadata`](./api/ngx-meta.standardmetadata.md) types to see all values you can set.
 
 ### Global metadata
 
-`GlobalMetadata` defines metadata values that will be used by several modules. For instance, the `title` will be used by standard module to set the page's `#!html <title>`. But it will also be used by [Open Graph] module (if added) to set the `#!html <meta property='og:title'>` element.
+[`GlobalMetadata`](./api/ngx-meta.globalmetadata.md) defines metadata values that will be used by several modules. For instance, the `title` will be used by standard module to set the page's `#!html <title>`. But it will also be used by [Open Graph] module (if added) to set the `#!html <meta property='og:title'>` element.
 
 ### Module metadata
 
-`StandardMetadata` defines metadata values that will be used only by the standard module. That's why all values should be placed under the `standard` key.
+[`StandardMetadata`](./api/ngx-meta.standardmetadata.md) defines metadata values that will be used only by the standard module. That's why all values should be placed under the `standard` key.
 
-You can inspect what metadata can be set using that module. And which of those can be set as global ones so they're also shared with other modules. If you specify a module value and a global value, specific will take preference.
+You can inspect what metadata can be set using that module. And which of those can be set as global ones, so they're also shared with other modules. If you specify a module value and a global value, specific will take preference.
 
 For instance if setting those values (either using service or route data):
 

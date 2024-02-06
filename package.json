@@ -55,7 +55,7 @@
     "@angular/compiler-cli": "17.1.1",
     "@commitlint/cli": "18.6.0",
     "@commitlint/config-conventional": "18.6.0",
-    "@microsoft/api-documenter": "7.23.20",
+    "@microsoft/api-documenter": "7.23.21",
     "@microsoft/api-extractor": "7.39.5",
     "@semantic-release/changelog": "6.0.3",
     "@types/jasmine": "5.1.4",

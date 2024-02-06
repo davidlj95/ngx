@@ -55,7 +55,7 @@ jobs:
           cache: 'poetry'
           cache-dependency-path: '${{ env.DOCS_DIR }}/poetry.lock'
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2
       - name: Setup Node.js
         uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4
         with:
@@ -67,7 +67,7 @@ jobs:
       - name: Generate cache id for Mkdocs build
         run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
       - name: Cache Mkdocs build
-        uses: actions/cache@v4
+        uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
           path: '${{ env.DOCS_DIR }}/.cache'

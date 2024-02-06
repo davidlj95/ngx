@@ -47,7 +47,7 @@ jobs:
           name: ${{ inputs.dist-artifact-name }}
           path: 'projects/ngx-meta/dist'
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2
       - name: Setup Node.js
         uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4
         with:
@@ -63,7 +63,7 @@ jobs:
       - name: Start Angular v${{ matrix.version }} E2E app server
         run: pnpm start &
       - name: Cypress run
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@1b70233146622b69e789ccdd4f9452adc638d25a # v6
         with:
           wait-on: 'http://localhost:4200'
           working-directory: ${{ env.E2E_DIR }}

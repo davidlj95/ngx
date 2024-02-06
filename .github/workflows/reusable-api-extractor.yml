@@ -39,7 +39,7 @@ jobs:
       - name: Run API Extractor in production mode
         run: cd .ci && make api-extractor
       - name: Upload API Extractor JSON docs
-        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 # v4
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:
           name: ${{ env.API_EXTRACTOR_ARTIFACT_NAME }}
           path: 'projects/ngx-meta/api-extractor/*.api.json'
@@ -66,7 +66,7 @@ jobs:
         run: cd .ci && make api-documenter
       - name: Upload API Documenter generated markdown docs
         if: ${{ inputs.api-docs-artifact-name != '' }}
-        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 # v4
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:
           name: ${{ inputs.api-docs-artifact-name }}
           path: 'projects/ngx-meta/docs/content/api'

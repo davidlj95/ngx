@@ -30,7 +30,7 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
       - name: Download tsc output files
-        uses: actions/download-artifact@6b208ae046db98c579e8a3aa621ab581ff575935 # v4
+        uses: actions/download-artifact@eaceaf801fd36c7dee90939fad912460b18a1ffe # v4
         with:
           name: ${{ inputs.tsc-artifact-name }}
           path: 'projects/ngx-meta/out'
@@ -56,7 +56,7 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
       - name: Download API Extractor JSON docs
-        uses: actions/download-artifact@6b208ae046db98c579e8a3aa621ab581ff575935 # v4
+        uses: actions/download-artifact@eaceaf801fd36c7dee90939fad912460b18a1ffe # v4
         with:
           name: ${{ env.API_EXTRACTOR_ARTIFACT_NAME }}
           path: 'projects/ngx-meta/api-extractor'

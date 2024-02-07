@@ -4,11 +4,10 @@ import { TwitterCardSite } from './twitter-card-site'
 import { TwitterCardCreator } from './twitter-card-creator'
 
 /**
- * Specifies metadata to create Twitter Cards
+ * {@link https://ngx-meta.pages.dev/built-in-modules/twitter-cards/ | Twitter Cards module}
+ * metadata values that can be set
  *
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+ * @public
  */
 export interface TwitterCard {
   /**
@@ -16,7 +15,10 @@ export interface TwitterCard {
    *
    * Used with all cards
    *
-   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acard,
+   * Checkout {@link TwitterCardType} type for a list of constants you can use
+   * to specify the card's type
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acard, | Property specs}
    */
   readonly card?: TwitterCardType | null
 
@@ -25,23 +27,29 @@ export interface TwitterCard {
    *
    * Used with `summary`, `summary_large_image`, `app`, `player` cards
    *
-   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite,
-   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite, | Property specs (username) }
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter | Property specs (ID) }
    */
   readonly site?: TwitterCardSite
 
   /**
    * Username or ID of the content creator
    *
-   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator
-   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator | Property specs (username) }
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter | Property specs (id) }
    */
   readonly creator?: TwitterCardCreator
 
   /**
    * Description of content (maximum 200 characters)
    *
+   * Can be set with {@link GlobalMetadata.description}
+   *
    * Used with `summary`, `summary_large_image`, `player` cards
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=n/a-,twitter%3Adescription,-Description%20of%20content | Property specs}
    */
   readonly description?: string | null
 
@@ -49,11 +57,19 @@ export interface TwitterCard {
    * Title of content (max 70 characters)
    *
    * Used with `summary`, `summary_large_image`, `player` cards
+   *
+   * Can be set with {@link GlobalMetadata.title}
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=og%3Adescription-,twitter%3Atitle,-Title%20of%20content | Property specs}
    */
   readonly title?: string | null
 
   /**
    * Image for the card
+   *
+   * Can be set with {@link GlobalMetadata.image}
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=og%3Atitle-,twitter%3Aimage,-URL%20of%20image | Property specs}
    */
   readonly image?: TwitterCardImage | null
 }

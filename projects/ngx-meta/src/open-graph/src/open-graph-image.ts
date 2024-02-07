@@ -1,3 +1,7 @@
+/**
+ * See {@link OpenGraph.image}
+ * @public
+ */
 export interface OpenGraphImage {
   /**
    * An image URL which should represent your object within the graph

@@ -1,3 +1,7 @@
+/**
+ * See {@link TwitterCard.image}
+ * @public
+ */
 export interface TwitterCardImage {
   /**
    * URL of image to use in the card. Images must be less than 5MB in size.
@@ -6,6 +10,8 @@ export interface TwitterCardImage {
    * SVG is not supported.
    *
    * Used with `summary`, `summary_large_image`, `player` cards
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=og%3Atitle-,twitter%3Aimage,-URL%20of%20image | Property specs}
    */
   readonly url: string | URL
 
@@ -14,6 +20,8 @@ export interface TwitterCardImage {
    * to users who are visually impaired. Maximum 420 characters.
    *
    * Used with `summary`, `summary_large_image`, `player` cards
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=og%3Atitle-,twitter%3Aimage,-URL%20of%20image | Property specs}
    */
   readonly alt: string
 }

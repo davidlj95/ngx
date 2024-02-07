@@ -3,13 +3,10 @@ import { OpenGraphType } from './open-graph-type'
 import { OpenGraphProfile } from './open-graph-profile'
 
 /**
- * Open Graph metadata
+ * {@link https://ngx-meta.pages.dev/built-in-modules/open-graph/ | Open Graph module}
+ * metadata values that can be set
  *
- * When sharing page via social media, allows to customize preview cards
- *
- * @see https://ogp.me/
- * @see https://developers.facebook.com/tools/debug/
- * @see https://opengraph.dev/
+ * @public
  */
 export interface OpenGraph {
   /**
@@ -18,28 +15,39 @@ export interface OpenGraph {
    * The title of your object as it should appear within the graph, e.g.,
    * "The Rock".
    *
-   * @see https://ogp.me/#:~:text=og%3Atitle
+   * Can be set with {@link GlobalMetadata.title}
+   *
+   * - {@link https://ogp.me/#:~:text=og%3Atitle | Property specs}
    */
   readonly title?: string | null
 
   /**
    * Basic metadata.
    *
-   * The type of your object, e.g., "video.movie". Depending on the type you
+   * The type of your object, e.g., "`video.movie`". Depending on the type you
    * specify, other properties may also be required.
    *
-   * @see https://ogp.me/#:~:text=og%3Atypes
-   * @see https://ogp.me/#types
+   * See {@link OpenGraphType} for a list of `const`s you can use to specify
+   * the type, so you don't have to write them yourself.
+   *
+   * - {@link https://ogp.me/#:~:text=og%3Atypes | Property specs}
+   *
+   * - {@link https://ogp.me/#types | Available object types in spec}
    */
   readonly type?: OpenGraphType | null
 
   /**
    * Basic metadata.
    *
-   * An image URL which should represent your object within the graph.
+   * An image which should represent your object within the graph.
    *
-   * @see https://ogp.me/#:~:text=og%3Aimage
-   * @see https://ogp.me/#structured:~:text=The%20og%3Aimage
+   * Can be partially set with {@link GlobalMetadata.image}
+   *
+   * @remarks
+   *
+   * - {@link https://ogp.me/#:~:text=og%3Aimage | Property specs}
+   *
+   * - {@link https://ogp.me/#structured:~:text=The%20og%3Aimage | Structured property specs}
    */
   readonly image?: OpenGraphImage | null
 
@@ -49,7 +57,9 @@ export interface OpenGraph {
    * The canonical URL of your object that will be used as its permanent ID in
    * the graph, e.g., "https://www.imdb.com/title/tt0117500/".
    *
-   * @see https://ogp.me/#:~:text=og%3Aurl
+   * Can be set with {@link GlobalMetadata.canonicalUrl}
+   *
+   * - {@link https://ogp.me/#:~:text=og%3Aurl | Property specs}
    */
   readonly url?: URL | string | null
 
@@ -58,17 +68,21 @@ export interface OpenGraph {
    *
    * A one to two sentence description of your object.
    *
-   * @see https://ogp.me/#:~:text=og%3Adescription
+   * Can be set with {@link GlobalMetadata.description}
+   *
+   * - {@link https://ogp.me/#:~:text=og%3Adescription | Property specs}
    */
   readonly description?: string | null
 
   /**
    * Optional metadata.
    *
-   * The locale these tags are marked up in. Of the format language_TERRITORY.
-   * Default is en_US.
+   * The locale these tags are marked up in. Of the format `language_TERRITORY`.
+   * If missing, assumed to be `en_US` as per Open Graph specs
    *
-   * @see https://ogp.me/#:~:text=og%3Alocale
+   * Can be set with {@link GlobalMetadata.locale}
+   *
+   * - {@link https://ogp.me/#:~:text=og%3Alocale | Property specs}
    */
   readonly locale?: string | null
 
@@ -78,7 +92,9 @@ export interface OpenGraph {
    * If your object is part of a larger website, the name which should be
    * displayed for the overall site. e.g., "IMDb".
    *
-   * @see https://ogp.me/#:~:text=og%3Asite_name
+   * Can be set with {@link GlobalMetadata.applicationName}
+   *
+   * - {@link https://ogp.me/#:~:text=og%3Asite_name | Property specs}
    */
   readonly siteName?: string | null
 
@@ -87,7 +103,7 @@ export interface OpenGraph {
    *
    * <b>Requires Open Graph Profile module / provider to work</b>
    *
-   * @see https://ogp.me/#type_profile
+   * - {@link https://ogp.me/#type_profile | Open Graph profile specs}
    */
   readonly profile?: OpenGraphProfile
 }

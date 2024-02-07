@@ -1,5 +1,11 @@
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
 
+/**
+ * {@link https://ngx-meta.pages.dev/built-in-modules/standard/ | Standard module}
+ * metadata values that can be set
+ *
+ * @public
+ */
 export interface Standard {
   /**
    * Sets the `<title>` HTML element

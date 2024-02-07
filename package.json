@@ -76,7 +76,7 @@
     "ng-mocks": "14.12.1",
     "ng-packagr": "17.1.2",
     "prettier": "3.2.5",
-    "semantic-release": "23.0.0",
+    "semantic-release": "23.0.1",
     "typescript": "5.2.2"
   }
 }

@@ -12,6 +12,15 @@ export const makeKeyValMetaDefinition = (opts: {
     selector: `${keyAttr}='${opts.keyName}'`,
   }
 }
+/**
+ * @internal
+ */
 export const _KEY_ATTRIBUTE_NAME = 'name'
+/**
+ * @internal
+ */
 export const _KEY_ATTRIBUTE_PROPERTY = 'property'
+/**
+ * @internal
+ */
 export const _VAL_ATTRIBUTE_CONTENT = 'content'

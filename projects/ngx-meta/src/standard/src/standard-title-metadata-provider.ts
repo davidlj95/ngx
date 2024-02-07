@@ -3,6 +3,9 @@ import { Standard } from './standard'
 import { Title } from '@angular/platform-browser'
 import { GLOBAL_TITLE, MetadataSetterFactory } from '@davidlj95/ngx-meta/core'
 
+/**
+ * @internal
+ */
 export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof GLOBAL_TITLE]
 > = (titleService: Title) => (value) => {

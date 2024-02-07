@@ -10,6 +10,9 @@ import { JsonLdMetadata } from './json-ld-metadata'
 const JSON_LD_KEY: keyof JsonLdMetadata = 'jsonLd'
 const SCRIPT_TYPE = 'application/ld+json'
 
+/**
+ * @internal
+ */
 export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   JsonLdMetadata[typeof JSON_LD_KEY]
 > =

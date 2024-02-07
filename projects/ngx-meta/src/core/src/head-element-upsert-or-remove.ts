@@ -18,11 +18,17 @@ export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY =
     doc.head.appendChild(element)
   }
 
+/**
+ * @internal
+ */
 export type _HeadElementUpsertOrRemove = (
   selector: string,
   element: HTMLElement | null | undefined,
 ) => void
 
+/**
+ * @internal
+ */
 export const _HEAD_ELEMENT_UPSERT_OR_REMOVE =
   new InjectionToken<_HeadElementUpsertOrRemove>(
     ngDevMode ? 'NgxMeta head element upsert or remove util' : 'NgxMetaHEUOR',

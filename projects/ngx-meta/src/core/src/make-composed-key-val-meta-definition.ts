@@ -21,4 +21,8 @@ export const makeComposedKeyValMetaDefinition = (
       opts.separator ?? _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR,
     ),
   })
+
+/**
+ * @internal
+ */
 export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ':'

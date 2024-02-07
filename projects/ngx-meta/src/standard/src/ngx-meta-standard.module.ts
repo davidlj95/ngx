@@ -1,6 +1,14 @@
 import { NgModule } from '@angular/core'
 import { provideNgxMetaStandard } from './provide-ngx-meta-standard'
 
+/**
+ * Adds {@link https://ngx-meta.pages.dev/built-in-modules/standard/ | standard module}
+ * metadata setters
+ *
+ * For standalone apps, use {@link provideNgxMetaStandard} instead
+ *
+ * @public
+ */
 @NgModule({
   providers: [...provideNgxMetaStandard()],
 })

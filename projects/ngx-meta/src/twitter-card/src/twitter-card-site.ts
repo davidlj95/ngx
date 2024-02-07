@@ -1,34 +1,48 @@
 /**
- * Username or ID of the author of the website
- *
- * Used with `summary`, `summary_large_image`, `app`, `player` cards
- *
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite,
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter
+ * See {@link TwitterCard.site}
+ * @public
  */
 export type TwitterCardSite =
-  | TwitterCardSiteId
   | TwitterCardSiteUsername
-  | (TwitterCardSiteId & TwitterCardSiteUsername)
+  | TwitterCardSiteId
+  | (TwitterCardSiteUsername & TwitterCardSiteId)
 
 /**
- * Same as `twitter:site`, but the user’s Twitter ID.
- * Either `twitter:site` or `twitter:site:id` is required.
- *
- * Used with `summary`, `summary_large_image`, `player` cards
- *
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter
+ * See {@link TwitterCard.site}
+ * @public
  */
-export interface TwitterCardSiteId {
-  id: string | null
+export interface TwitterCardSiteUsername {
+  /**
+   * `@username` of website.
+   *
+   * Either {@link TwitterCardSiteUsername} or {@link TwitterCardSiteId} is required.
+   *
+   * Used with `summary`, `summary_large_image`, `app`, `player` cards
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite, | Property specs }
+   *
+   * @public
+   */
+  username: string | null
 }
 
 /**
- * `@username` of website.
- * Either `twitter:site` or `twitter:site:id` is required.
- *
- * Used with `summary`, `summary_large_image`, `app`, `player` cards
+ * See {@link TwitterCard.site}
+ * @public
  */
-export interface TwitterCardSiteUsername {
-  username: string | null
+export interface TwitterCardSiteId {
+  /**
+   * Same as {@link TwitterCardSiteUsername}, but the user’s Twitter ID.
+   *
+   * Either {@link TwitterCardSiteUsername} or {@link TwitterCardSiteId} is required.
+   *
+   * Used with `summary`, `summary_large_image`, `player` cards
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter | Property specs (ID) }
+   *
+   * - {@link https://twiteridfinder.com/ | Find your Twitter ID}
+   *
+   * @public
+   */
+  id: string | null
 }

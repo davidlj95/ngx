@@ -30,7 +30,9 @@ describe('NgxMeta meta service', () => {
       it('should remove meta element', () => {
         sut.set(metaDefinition, content)
 
-        expect(meta.removeTag).toHaveBeenCalledOnceWith(metaDefinition.selector)
+        expect(meta.removeTag).toHaveBeenCalledOnceWith(
+          metaDefinition.attrSelector,
+        )
       })
     })
 
@@ -40,7 +42,9 @@ describe('NgxMeta meta service', () => {
       it('should remove meta element', () => {
         sut.set(metaDefinition, content)
 
-        expect(meta.removeTag).toHaveBeenCalledOnceWith(metaDefinition.selector)
+        expect(meta.removeTag).toHaveBeenCalledOnceWith(
+          metaDefinition.attrSelector,
+        )
       })
     })
 

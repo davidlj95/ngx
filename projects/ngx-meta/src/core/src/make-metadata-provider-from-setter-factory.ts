@@ -6,6 +6,12 @@ import {
 } from './ngx-meta-metadata'
 import { FactoryProvider } from '@angular/core'
 
+/**
+ * Utility type for a function that returns a {@link MetadataSetter}
+ * provided some dependencies (which should be able to be injectable)
+ *
+ * @public
+ */
 export type MetadataSetterFactory<T> = (
   ...deps: Exclude<FactoryProvider['deps'], undefined>
 ) => MetadataSetter<T>

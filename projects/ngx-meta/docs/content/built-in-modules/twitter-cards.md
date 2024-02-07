@@ -29,4 +29,6 @@ Following Typescript types provide you with all implemented metadata:
 ## Resources
 
 - [Twitter Cards specification][Twitter Cards]
+- [Getting started with Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started)
+- [Summary card with large image](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image)
 - [Twitter Cards validator](https://cards-dev.twitter.com/validator)

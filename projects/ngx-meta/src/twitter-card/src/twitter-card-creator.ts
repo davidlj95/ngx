@@ -1,32 +1,40 @@
 /**
- * Twitter user ID of content creator
- *
- * Used with `summary`, `summary_large_image` cards
- *
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter
+ * See {@link TwitterCard.creator}
+ * @public
  */
 export type TwitterCardCreator =
-  | TwitterCardCreatorId
   | TwitterCardCreatorUsername
-  | (TwitterCardCreatorId & TwitterCardCreatorUsername)
+  | TwitterCardCreatorId
+  | (TwitterCardCreatorUsername & TwitterCardCreatorId)
 
 /**
- * Username or ID of the content creator
- *
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator
+ * See {@link TwitterCard.creator}
+ * @public
  */
-export interface TwitterCardCreatorId {
-  id: string | null
+export interface TwitterCardCreatorUsername {
+  /**
+   * `@username` of content creator
+   *
+   * Used with `summary_large_image` cards
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator | Property specs}
+   */
+  username: string | null
 }
 
 /**
- * `@username` of content creator
- *
- * Used with `summary_large_image` cards
- *
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator
+ * See {@link TwitterCard.creator}
+ * @public
  */
-export interface TwitterCardCreatorUsername {
-  username: string | null
+export interface TwitterCardCreatorId {
+  /**
+   * Twitter user ID of content creator
+   *
+   * Used with `summary`, `summary_large_image` cards
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter | Property specs }
+   *
+   * - {@link https://twiteridfinder.com/ | Find your Twitter ID}
+   */
+  id: string | null
 }

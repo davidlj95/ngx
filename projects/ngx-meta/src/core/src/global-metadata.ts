@@ -63,7 +63,8 @@ export interface GlobalMetadata {
   readonly locale?: string | null
 
   /**
-   * Sets image (will be used for link previews / social cards) for
+   * Specifies image metadata (will be used for link previews / social cards)
+   * to be used for more than one module. Like:
    *
    * - {@link OpenGraph.image} (needs standard module)
    *

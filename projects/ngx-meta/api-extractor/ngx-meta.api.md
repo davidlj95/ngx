@@ -108,7 +108,7 @@ const JSON_LD_KEY: keyof JsonLdMetadata;
 // @public (undocumented)
 export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export interface JsonLdMetadata {
     readonly jsonLd?: object | null;
 }
@@ -173,7 +173,7 @@ class MetadataRegistry {
 // @public (undocumented)
 type MetadataResolver = (values: MetadataValues, resolverOptions: MetadataResolverOptions) => unknown;
 
-// @public (undocumented)
+// @public
 export interface MetadataResolverOptions {
     // (undocumented)
     readonly global?: string;
@@ -181,71 +181,64 @@ export interface MetadataResolverOptions {
     readonly jsonPath: ReadonlyArray<string>;
 }
 
-// @public (undocumented)
+// @public
 export type MetadataSetter<T> = (value: T) => void;
 
-// @public (undocumented)
+// @public
 export type MetadataSetterFactory<T> = (...deps: Exclude<FactoryProvider['deps'], undefined>) => MetadataSetter<T>;
 
-// @public (undocumented)
+// @public
 export type MetadataValues = object;
 
-// @public (undocumented)
+// @public
 export class NgxMetaCoreModule {
-    // (undocumented)
     static forRoot(options?: {
         defaults?: MetadataValues;
     }): ModuleWithProviders<NgxMetaCoreModule>;
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaJsonLdModule {
 }
 
-// @public (undocumented)
+// @public
 export type NgxMetaMetaContent = string | undefined | null;
 
-// @public (undocumented)
+// @public
 export abstract class NgxMetaMetadata<Value = unknown> {
-    // (undocumented)
     abstract readonly id: string;
-    // (undocumented)
     abstract readonly resolverOptions: MetadataResolverOptions;
-    // (undocumented)
     abstract readonly set: MetadataSetter<Value>;
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaMetadataLoaderModule {
 }
 
-// @public (undocumented)
+// @public
 export interface NgxMetaMetaDefinition {
-    // (undocumented)
-    readonly selector: string;
-    // (undocumented)
+    readonly attrSelector: string;
     readonly withContent: (content: string) => MetaDefinition;
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaMetaService {
     constructor(meta: Meta);
-    // (undocumented)
     set(definition: NgxMetaMetaDefinition, content: NgxMetaMetaContent): void;
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaOpenGraphModule {
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaOpenGraphProfileModule {
 }
 
-// @public (undocumented)
-export interface NgxMetaRouteData<M = MetadataValues> {
+// @public
+export interface NgxMetaRouteData<Metadata = MetadataValues> {
     // (undocumented)
-    meta: M;
+    meta: Metadata;
 }
 
 // @internal (undocumented)
@@ -257,28 +250,26 @@ export class _NgxMetaRouteValuesService {
     set(values: MetadataValues | undefined): void;
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaRoutingModule {
     // (undocumented)
     static forRoot(): ModuleWithProviders<NgxMetaRoutingModule>;
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaService {
     // Warning: (ae-forgotten-export) The symbol "MetadataRegistry" needs to be exported by the entry point all-entry-points.d.ts
     // Warning: (ae-forgotten-export) The symbol "MetadataResolver" needs to be exported by the entry point all-entry-points.d.ts
     constructor(registry: MetadataRegistry, resolver: MetadataResolver);
-    // (undocumented)
     clear(): void;
-    // (undocumented)
     set(values?: MetadataValues): void;
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaStandardModule {
 }
 
-// @public (undocumented)
+// @public
 export class NgxMetaTwitterCardModule {
 }
 
@@ -294,10 +285,10 @@ export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: FactoryProvider;
 // @public (undocumented)
 export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_GENDER_MALE = "male";
 
 // @public (undocumented)
@@ -315,43 +306,43 @@ export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: FactoryProvider;
 // @public (undocumented)
 export const OPEN_GRAPH_TITLE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_ARTICLE = "article";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_BOOK = "book";
 
 // @public (undocumented)
 export const OPEN_GRAPH_TYPE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_MUSIC_ALBUM = "music.album";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_MUSIC_PLAYLIST = "music.playlist";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_MUSIC_RADIO_STATION = "music.radio_station";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_MUSIC_SONG = "music.song";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_PROFILE = "profile";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_VIDEO_EPISODE = "video.episode";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_VIDEO_MOVIE = "video.movie";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_VIDEO_OTHER = "video.other";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_VIDEO_TV_SHOW = "video.tv_show";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_WEBSITE = "website";
 
 // @public (undocumented)
@@ -369,7 +360,7 @@ export interface OpenGraph {
     readonly url?: URL | string | null;
 }
 
-// @public (undocumented)
+// @public
 export interface OpenGraphImage {
     readonly alt?: string;
     readonly height?: number | null;
@@ -379,9 +370,8 @@ export interface OpenGraphImage {
     readonly width?: number | null;
 }
 
-// @public (undocumented)
+// @public
 export interface OpenGraphMetadata {
-    // (undocumented)
     openGraph: OpenGraph;
 }
 
@@ -393,10 +383,10 @@ export interface OpenGraphProfile {
     readonly username?: string | null;
 }
 
-// @public (undocumented)
+// @public
 export type OpenGraphProfileGender = typeof OPEN_GRAPH_PROFILE_GENDER_FEMALE | typeof OPEN_GRAPH_PROFILE_GENDER_MALE;
 
-// @public (undocumented)
+// @public
 export type OpenGraphType = typeof OPEN_GRAPH_TYPE_MUSIC_SONG | typeof OPEN_GRAPH_TYPE_MUSIC_ALBUM | typeof OPEN_GRAPH_TYPE_MUSIC_PLAYLIST | typeof OPEN_GRAPH_TYPE_MUSIC_RADIO_STATION | typeof OPEN_GRAPH_TYPE_VIDEO_MOVIE | typeof OPEN_GRAPH_TYPE_VIDEO_EPISODE | typeof OPEN_GRAPH_TYPE_VIDEO_TV_SHOW | typeof OPEN_GRAPH_TYPE_VIDEO_OTHER | typeof OPEN_GRAPH_TYPE_ARTICLE | typeof OPEN_GRAPH_TYPE_BOOK | typeof OPEN_GRAPH_TYPE_PROFILE | typeof OPEN_GRAPH_TYPE_WEBSITE;
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeature" needs to be exported by the entry point all-entry-points.d.ts
@@ -425,7 +415,7 @@ export const provideNgxMetaStandard: () => Provider[];
 // @public (undocumented)
 export const provideNgxMetaTwitterCard: () => Provider[];
 
-// @public (undocumented)
+// @public
 export interface Standard {
     readonly applicationName?: GlobalMetadata['applicationName'];
     readonly author?: string | null;
@@ -461,9 +451,8 @@ export const STANDARD_LOCALE_METADATA_PROVIDER: FactoryProvider;
 // @public (undocumented)
 export const STANDARD_TITLE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export interface StandardMetadata {
-    // (undocumented)
     standard: Standard;
 }
 
@@ -485,16 +474,16 @@ export const TWITTER_CARD_SITE_METADATA_PROVIDER: FactoryProvider;
 // @public (undocumented)
 export const TWITTER_CARD_TITLE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_TYPE_APP = "app";
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_TYPE_PLAYER = "player";
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_TYPE_SUMMARY = "summary";
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE = "summary_large_image";
 
 // @public
@@ -508,48 +497,44 @@ export interface TwitterCard {
 }
 
 // @public
-export type TwitterCardCreator = TwitterCardCreatorId | TwitterCardCreatorUsername | (TwitterCardCreatorId & TwitterCardCreatorUsername);
+export type TwitterCardCreator = TwitterCardCreatorUsername | TwitterCardCreatorId | (TwitterCardCreatorUsername & TwitterCardCreatorId);
 
 // @public
 export interface TwitterCardCreatorId {
-    // (undocumented)
     id: string | null;
 }
 
 // @public
 export interface TwitterCardCreatorUsername {
-    // (undocumented)
     username: string | null;
 }
 
-// @public (undocumented)
+// @public
 export interface TwitterCardImage {
     readonly alt: string;
     readonly url: string | URL;
 }
 
-// @public (undocumented)
+// @public
 export interface TwitterCardMetadata {
     // (undocumented)
     twitterCard: TwitterCard;
 }
 
 // @public
-export type TwitterCardSite = TwitterCardSiteId | TwitterCardSiteUsername | (TwitterCardSiteId & TwitterCardSiteUsername);
+export type TwitterCardSite = TwitterCardSiteUsername | TwitterCardSiteId | (TwitterCardSiteUsername & TwitterCardSiteId);
 
 // @public
 export interface TwitterCardSiteId {
-    // (undocumented)
     id: string | null;
 }
 
 // @public
 export interface TwitterCardSiteUsername {
-    // (undocumented)
     username: string | null;
 }
 
-// @public (undocumented)
+// @public
 export type TwitterCardType = typeof TWITTER_CARD_TYPE_SUMMARY | typeof TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE | typeof TWITTER_CARD_TYPE_APP | typeof TWITTER_CARD_TYPE_PLAYER;
 
 // @internal (undocumented)

@@ -1,21 +1,14 @@
 /**
- * Defines an image to be used in metadata. Specifically, as:
- *  - Open Graph image
- *  - Twitter Card image
- *
- * @see https://ogp.me/#structured:~:text=The-,og%3Aimage
- * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
+ * {@inheritDoc GlobalMetadata.image}
+ * @public
  */
 export interface GlobalMetadataImage {
   /**
-   * URL of the image
+   * URL of the image. Used for:
    *
-   * Used for:
-   *  - Open Graph `og:image`/`og:image:url`
-   *  - Twitter Card `twitter:image`
+   *  - {@link OpenGraphImage.url}
    *
-   * @see https://ogp.me/#structured:~:text=og%3Aimage%3Aurl
-   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image#:~:text=twitter%3Aimage,-A%20URL%20to
+   *  - {@link TwitterCardImage.url}
    */
   readonly url: string | URL
 
@@ -24,11 +17,10 @@ export interface GlobalMetadataImage {
    * visually impaired.
    *
    * Used for:
-   *  - Open Graph `og:image:alt`
-   *  - Twitter Card `twitter:image:alt`
    *
-   * @see https://ogp.me/#structured:~:text=og%3Aimage%3Aalt
-   * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image#:~:text=twitter%3Aimage%3Aalt,-A%20text%20description
+   *  - {@link OpenGraphImage.alt}
+   *
+   *  - {@link TwitterCardImage.alt}
    */
   readonly alt: string
 }

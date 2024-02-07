@@ -9,7 +9,7 @@ export const makeKeyValMetaDefinition = (opts: {
   const valAttr = opts.valAttr ?? _VAL_ATTRIBUTE_CONTENT
   return {
     withContent: (value) => ({ [keyAttr]: opts.keyName, [valAttr]: value }),
-    selector: `${keyAttr}='${opts.keyName}'`,
+    attrSelector: `${keyAttr}='${opts.keyName}'`,
   }
 }
 /**

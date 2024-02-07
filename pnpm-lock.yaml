@@ -74,8 +74,8 @@ devDependencies:
     specifier: 7.23.21
     version: 7.23.21(@types/node@20.9.4)
   '@microsoft/api-extractor':
-    specifier: 7.39.5
-    version: 7.39.5(@types/node@20.9.4)
+    specifier: 7.40.0
+    version: 7.40.0(@types/node@20.9.4)
   '@semantic-release/changelog':
     specifier: 6.0.3
     version: 6.0.3(semantic-release@23.0.1)
@@ -2387,8 +2387,8 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.39.5(@types/node@20.9.4):
-    resolution: {integrity: sha512-EvKAUU5XlWpvJwnTieQyd+EKJwMVkUwSrt1lDTJ6J9rMQ1WUlLl85U5UaifZ3meaDBek5euVmdLvuPkfahTJzA==}
+  /@microsoft/api-extractor@7.40.0(@types/node@20.9.4):
+    resolution: {integrity: sha512-U4yTHabfut6WuYUnSM2+FWUsNIJ+w8ZfQGqZWLjH5I/MZvCyDBFyPDIhZAnndd4Vd3pwl4eSBpeMDe8etkCxpA==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.8(@types/node@20.9.4)

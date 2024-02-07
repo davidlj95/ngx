@@ -4,6 +4,10 @@ import { DOCUMENT } from '@angular/common'
 import { Standard } from './standard'
 
 const ATTRIBUTE_NAME = 'lang'
+
+/**
+ * @internal
+ */
 export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof GLOBAL_LOCALE]
 > = (doc: Document) => (locale) => {

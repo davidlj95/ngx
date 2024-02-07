@@ -11,6 +11,9 @@ export interface MetadataResolverOptions {
 
 export type MetadataSetter<T> = (value: T) => void
 
+/**
+ * @internal
+ */
 export const _makeMetadata = <T>(
   id: NgxMetaMetadata<T>['id'],
   resolverOptions: NgxMetaMetadata<T>['resolverOptions'],
@@ -21,6 +24,9 @@ export const _makeMetadata = <T>(
   set,
 })
 
+/**
+ * @internal
+ */
 export const _makeMetadataResolverOptions = (
   jsonPath: MetadataResolverOptions['jsonPath'],
   global?: MetadataResolverOptions['global'],

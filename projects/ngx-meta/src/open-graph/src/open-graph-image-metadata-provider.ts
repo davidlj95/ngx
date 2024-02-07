@@ -12,6 +12,9 @@ const NO_KEY_VALUE: OpenGraph[typeof GLOBAL_IMAGE] = {
   height: null,
 }
 
+/**
+ * @internal
+ */
 export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY =
   (metaService: NgxMetaMetaService) =>
   (value: OpenGraph[typeof GLOBAL_IMAGE]) => {

@@ -21,29 +21,29 @@ export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER: FactoryProvider;
 
 // Warning: (ae-forgotten-export) The symbol "JSON_LD_KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
-// @public (undocumented)
+// @internal (undocumented)
 export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof JSON_LD_KEY]>;
 
-// @public (undocumented)
+// @internal (undocumented)
 export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (value: OpenGraph[typeof GLOBAL_IMAGE]) => void;
 
 // Warning: (ae-forgotten-export) The symbol "KEY_2" needs to be exported by the entry point all-entry-points.d.ts
 //
-// @public (undocumented)
+// @internal (undocumented)
 export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_2]>;
 
 // Warning: (ae-forgotten-export) The symbol "KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
-// @public (undocumented)
+// @internal (undocumented)
 export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY]>;
 
-// @public (undocumented)
+// @internal (undocumented)
 export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof GLOBAL_LOCALE]>;
 
-// @public (undocumented)
+// @internal (undocumented)
 export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof GLOBAL_TITLE]>;
 
-// @public (undocumented)
+// @internal (undocumented)
 export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ":";
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
@@ -96,10 +96,10 @@ export interface GlobalMetadataImage {
     readonly url: string | URL;
 }
 
-// @public (undocumented)
+// @internal (undocumented)
 export const _HEAD_ELEMENT_UPSERT_OR_REMOVE: InjectionToken<_HeadElementUpsertOrRemove>;
 
-// @public (undocumented)
+// @internal (undocumented)
 export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement | null | undefined) => void;
 
 // @public (undocumented)
@@ -119,10 +119,10 @@ const KEY: keyof Standard;
 // @public (undocumented)
 const KEY_2: keyof Standard;
 
-// @public (undocumented)
+// @internal (undocumented)
 export const _KEY_ATTRIBUTE_NAME = "name";
 
-// @public (undocumented)
+// @internal (undocumented)
 export const _KEY_ATTRIBUTE_PROPERTY = "property";
 
 // Warning: (ae-forgotten-export) The symbol "MakeComposedKeyValMetaDefinitionOpts" needs to be exported by the entry point all-entry-points.d.ts
@@ -147,7 +147,7 @@ export const makeKeyValMetaDefinition: (opts: {
 // @public (undocumented)
 type MakeKeyValMetaDefinitionOpts = Parameters<typeof makeKeyValMetaDefinition>[0];
 
-// @public (undocumented)
+// @internal (undocumented)
 export const _makeMetadata: <T>(id: string, resolverOptions: MetadataResolverOptions, set: MetadataSetter<T>) => NgxMetaMetadata<T>;
 
 // @public (undocumented)
@@ -158,7 +158,7 @@ export const makeMetadataProviderFromSetterFactory: <T>(setterFactory: MetadataS
     g?: string;
 }) => FactoryProvider;
 
-// @public (undocumented)
+// @internal (undocumented)
 export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global']) => MetadataResolverOptions;
 
 // @public (undocumented)
@@ -248,7 +248,7 @@ export interface NgxMetaRouteData<M = MetadataValues> {
     meta: M;
 }
 
-// @public (undocumented)
+// @internal (undocumented)
 export class _NgxMetaRouteValuesService {
     constructor(router: Router);
     // (undocumented)
@@ -498,7 +498,7 @@ export const TWITTER_CARD_TYPE_SUMMARY = "summary";
 export const TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE = "summary_large_image";
 
 // @public
-export class TwitterCard {
+export interface TwitterCard {
     readonly card?: TwitterCardType | null;
     readonly creator?: TwitterCardCreator;
     readonly description?: string | null;
@@ -552,7 +552,7 @@ export interface TwitterCardSiteUsername {
 // @public (undocumented)
 export type TwitterCardType = typeof TWITTER_CARD_TYPE_SUMMARY | typeof TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE | typeof TWITTER_CARD_TYPE_APP | typeof TWITTER_CARD_TYPE_PLAYER;
 
-// @public (undocumented)
+// @internal (undocumented)
 export const _VAL_ATTRIBUTE_CONTENT = "content";
 
 // @public (undocumented)

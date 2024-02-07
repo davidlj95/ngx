@@ -9,6 +9,9 @@ import { makeStandardMetaDefinition } from './make-standard-meta-definition'
 
 const KEY: keyof Standard = 'generator'
 
+/**
+ * @internal
+ */
 export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof KEY]
 > = (metaService: NgxMetaMetaService) => (value) =>

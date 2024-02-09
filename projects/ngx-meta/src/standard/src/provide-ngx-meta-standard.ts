@@ -8,6 +8,14 @@ import { STANDARD_APPLICATION_NAME_METADATA_PROVIDER } from './standard-applicat
 import { STANDARD_CANONICAL_URL_METADATA_PROVIDER } from './standard-canonical-url-metadata-provider'
 import { STANDARD_LOCALE_METADATA_PROVIDER } from './standard-locale-metadata-provider'
 
+/**
+ * Adds {@link https://ngx-meta.pages.dev/built-in-modules/standard/ | standard module}
+ * metadata setters
+ *
+ * For module-based apps, use {@link NgxMetaStandardModule} instead
+ *
+ * @public
+ */
 export const provideNgxMetaStandard = (): Provider[] => [
   STANDARD_TITLE_METADATA_PROVIDER,
   STANDARD_DESCRIPTION_METADATA_PROVIDER,

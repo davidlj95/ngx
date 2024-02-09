@@ -35,6 +35,9 @@ export class NgxMetaMetaService {
  * Models a `<meta>` element which {@link NgxMetaMetaService} can upsert with
  * a given value (or remove if value is not provided or `null`)
  *
+ * Can be created with {@link makeKeyValMetaDefinition} and {@link makeComposedKeyValMetaDefinition}
+ * factory functions.
+ *
  * @remarks
  *
  * Inspired by Angular's {@link https://angular.dev/api/platform-browser/MetaDefinition | MetaDefinition}.

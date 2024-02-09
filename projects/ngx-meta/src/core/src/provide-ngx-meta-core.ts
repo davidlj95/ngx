@@ -7,6 +7,26 @@ import { MetadataValues } from './metadata-values'
 import { DEFAULTS_TOKEN } from './defaults-token'
 import { CORE_PROVIDERS } from './core-providers'
 
+/**
+ * Adds core services of the library to the application.
+ *
+ * For module-based apps, use {@link NgxMetaCoreModule.forRoot} instead
+ *
+ * Allows specifying some default metadata values. Keep reading.
+ *
+ * @example
+ * To specify some default metadata values, use {@link withNgxMetaDefaults}
+ *
+ * ```typescript
+ * provideNgxMetaCore(
+ *   withNgxMetaDefaults({title: 'Default title'})
+ * )
+ * ```
+ *
+ * @param features - Features to configure the core with. Currently just {@link withNgxMetaDefaults} available
+ *
+ * @public
+ */
 export const provideNgxMetaCore = (
   ...features: ReadonlyArray<CoreFeature>
 ): EnvironmentProviders =>
@@ -36,6 +56,15 @@ const coreFeature = <FeatureKind extends CoreFeatureKind>(
   _providers: providers,
 })
 
+/**
+ * Allows to configure default metadata values.
+ *
+ * Use it as part of {@link provideNgxMetaCore}
+ *
+ * For module-based apps, checkout {@link NgxMetaCoreModule.forRoot}
+ *
+ * @param defaults - Default metadata values to use
+ */
 export const withNgxMetaDefaults = (
   defaults: MetadataValues,
 ): CoreFeature<CoreFeatureKind.Defaults> =>

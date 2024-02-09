@@ -16,6 +16,28 @@ export type MetadataSetterFactory<T> = (
   ...deps: Exclude<FactoryProvider['deps'], undefined>
 ) => MetadataSetter<T>
 
+/**
+ * Creates an Angular's {@link https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory | Factory provider}
+ * that provides an {@link NgxMetaMetadata}
+ *
+ * @remarks
+ *
+ * Factory providers are used for built-in modules instead of Angular services.
+ * Reason is that code created by `@Injectable` decorator takes many bytes,
+ * whereas a call to this function creating a factory provider takes few.
+ *
+ * See {@link https://github.com/davidlj95/ngx/issues/112}
+ *
+ * @param setterFactory - Function that creates a {@link NgxMetaMetadata} given some dependencies. See {@link MetadataSetterFactory}
+ * @param opts - Options to create the factory.
+ *               `d` is the list of dependencies to inject. Defaults to no dependencies
+ *               `id` is the {@link NgxMetaMetadata.id} to use.
+ *               Defaults to resolver options `jsonPath` joined by dots.
+ *               `jP` is the `jsonPath` that will be used for the {@link MetadataResolverOptions.jsonPath}
+ *               `g` is the `global` that will be used for the {@link MetadataResolverOptions.global}
+ *
+ * @public
+ */
 export const makeMetadataProviderFromSetterFactory = <T>(
   setterFactory: MetadataSetterFactory<T>,
   opts: {

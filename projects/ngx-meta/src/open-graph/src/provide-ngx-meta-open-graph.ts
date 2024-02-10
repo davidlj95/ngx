@@ -7,6 +7,14 @@ import { OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER } from './open-graph-descripti
 import { OPEN_GRAPH_LOCALE_METADATA_PROVIDER } from './open-graph-locale-metadata-provider'
 import { OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER } from './open-graph-site-name-metadata-provider'
 
+/**
+ * Adds {@link https://ngx-meta.pages.dev/built-in-modules/open-graph/ | Open Graph module}
+ * basic & optional metadata setters
+ *
+ * For module-based apps, use {@link NgxMetaOpenGraphModule} instead
+ *
+ * @public
+ */
 export const provideNgxMetaOpenGraph = (): Provider[] => [
   OPEN_GRAPH_TITLE_METADATA_PROVIDER,
   OPEN_GRAPH_TYPE_METADATA_PROVIDER,

@@ -125,32 +125,24 @@ export const _KEY_ATTRIBUTE_NAME = "name";
 // @internal (undocumented)
 export const _KEY_ATTRIBUTE_PROPERTY = "property";
 
-// Warning: (ae-forgotten-export) The symbol "MakeComposedKeyValMetaDefinitionOpts" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @public (undocumented)
-export const makeComposedKeyValMetaDefinition: (opts: MakeComposedKeyValMetaDefinitionOpts, names: ReadonlyArray<string>) => NgxMetaMetaDefinition;
-
-// Warning: (ae-forgotten-export) The symbol "MakeKeyValMetaDefinitionOpts" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @public (undocumented)
-type MakeComposedKeyValMetaDefinitionOpts = Omit<MakeKeyValMetaDefinitionOpts, 'keyName'> & {
+// @public
+export const makeComposedKeyValMetaDefinition: (options: {
+    keyAttr?: string;
+    valAttr?: string;
     separator?: string;
-};
+}, names: ReadonlyArray<string>) => NgxMetaMetaDefinition;
 
-// @public (undocumented)
+// @public
 export const makeKeyValMetaDefinition: (opts: {
     keyAttr?: string;
     keyName: string;
     valAttr?: string;
 }) => NgxMetaMetaDefinition;
 
-// @public (undocumented)
-type MakeKeyValMetaDefinitionOpts = Parameters<typeof makeKeyValMetaDefinition>[0];
-
 // @internal (undocumented)
 export const _makeMetadata: <T>(id: string, resolverOptions: MetadataResolverOptions, set: MetadataSetter<T>) => NgxMetaMetadata<T>;
 
-// @public (undocumented)
+// @public
 export const makeMetadataProviderFromSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: {
     d?: FactoryProvider['deps'];
     id?: string;
@@ -391,28 +383,28 @@ export type OpenGraphType = typeof OPEN_GRAPH_TYPE_MUSIC_SONG | typeof OPEN_GRAP
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeature" needs to be exported by the entry point all-entry-points.d.ts
 //
-// @public (undocumented)
+// @public
 export const provideNgxMetaCore: (...features: ReadonlyArray<CoreFeature>) => EnvironmentProviders;
 
-// @public (undocumented)
+// @public
 export const provideNgxMetaJsonLd: () => Provider[];
 
-// @public (undocumented)
+// @public
 export const provideNgxMetaMetadataLoader: () => Provider[];
 
-// @public (undocumented)
+// @public
 export const provideNgxMetaOpenGraph: () => Provider[];
 
-// @public (undocumented)
+// @public
 export const provideNgxMetaOpenGraphProfile: () => Provider[];
 
-// @public (undocumented)
+// @public
 export const provideNgxMetaRouting: () => EnvironmentProviders | Provider[];
 
-// @public (undocumented)
+// @public
 export const provideNgxMetaStandard: () => Provider[];
 
-// @public (undocumented)
+// @public
 export const provideNgxMetaTwitterCard: () => Provider[];
 
 // @public
@@ -540,7 +532,7 @@ export type TwitterCardType = typeof TWITTER_CARD_TYPE_SUMMARY | typeof TWITTER_
 // @internal (undocumented)
 export const _VAL_ATTRIBUTE_CONTENT = "content";
 
-// @public (undocumented)
+// @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
 
 // (No @packageDocumentation comment for this package)

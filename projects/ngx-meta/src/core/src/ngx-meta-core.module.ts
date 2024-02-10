@@ -7,14 +7,23 @@ import { CORE_PROVIDERS } from './core-providers'
  * Adds core providers of `ngx-meta` to the application.
  * Must use {@link NgxMetaCoreModule.forRoot} method.
  *
+ * For standalone apps, use {@link provideNgxMetaCore} instead
+ *
  * @public
  */
 @NgModule()
 export class NgxMetaCoreModule {
   /**
-   * Provides the core `ngx-meta` providers
+   * Provides the core library services
    *
    * Allows specifying some default metadata values
+   *
+   * @example
+   *
+   * You can set some defaults using the `options` argument
+   * ```typescript
+   * NgxMetaCoreModule.forRoot({defaults: {title: 'Default title'}})
+   * ```
    *
    * @param options - Allows providing some default metadata values using `defaults`
    */

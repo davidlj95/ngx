@@ -6,6 +6,14 @@ import { TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER } from './twitter-card-descr
 import { TWITTER_CARD_TITLE_METADATA_PROVIDER } from './twitter-card-title-metadata-provider'
 import { TWITTER_CARD_IMAGE_METADATA_PROVIDER } from './twitter-card-image-metadata-provider'
 
+/**
+ * Adds {@link https://ngx-meta.pages.dev/built-in-modules/twitter-cards/ | Twitter Cards module}
+ * metadata setters
+ *
+ * For module-based apps, use {@link NgxMetaTwitterCardModule} instead
+ *
+ * @public
+ */
 export const provideNgxMetaTwitterCard = (): Provider[] => [
   TWITTER_CARD_CARD_METADATA_PROVIDER,
   TWITTER_CARD_SITE_METADATA_PROVIDER,

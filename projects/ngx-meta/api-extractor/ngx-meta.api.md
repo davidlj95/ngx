@@ -259,16 +259,16 @@ export class NgxMetaStandardModule {
 export class NgxMetaTwitterCardModule {
 }
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -277,19 +277,19 @@ export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_MALE = "male";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TITLE_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -298,7 +298,7 @@ export const OPEN_GRAPH_TYPE_ARTICLE = "article";
 // @public
 export const OPEN_GRAPH_TYPE_BOOK = "book";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -331,7 +331,7 @@ export const OPEN_GRAPH_TYPE_VIDEO_TV_SHOW = "video.tv_show";
 // @public
 export const OPEN_GRAPH_TYPE_WEBSITE = "website";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_URL_METADATA_PROVIDER: FactoryProvider;
 
 // @public

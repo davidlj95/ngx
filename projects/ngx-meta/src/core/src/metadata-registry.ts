@@ -1,6 +1,9 @@
 import { Inject, Injectable, Optional } from '@angular/core'
 import { NgxMetaMetadata } from './ngx-meta-metadata'
 
+/**
+ * @internal
+ */
 @Injectable()
 export class MetadataRegistry {
   private readonly byId = new Map<string, NgxMetaMetadata>()

@@ -21,6 +21,8 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta.service'
  *               value and the key name.
  *               `keyAttr` defaults to `name`
  *               `valAttr` defaults to `content`
+ *
+ * @public
  */
 export const makeKeyValMetaDefinition = (opts: {
   keyAttr?: string

@@ -79,11 +79,11 @@ export interface GlobalMetadata {
 /**
  * @internal
  */
-export const GLOBAL_TITLE = 'title' satisfies keyof GlobalMetadata
+export const _GLOBAL_TITLE = 'title' satisfies keyof GlobalMetadata
 /**
  * @internal
  */
-export const GLOBAL_DESCRIPTION = 'description' satisfies keyof GlobalMetadata
+export const _GLOBAL_DESCRIPTION = 'description' satisfies keyof GlobalMetadata
 /**
  * @internal
  */

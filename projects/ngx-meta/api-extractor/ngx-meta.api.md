@@ -41,7 +41,7 @@ export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<
 export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_LOCALE]>;
 
 // @internal (undocumented)
-export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof GLOBAL_TITLE]>;
+export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
 
 // @internal (undocumented)
 export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ":";
@@ -68,10 +68,8 @@ export const _GLOBAL_APPLICATION_NAME = "applicationName";
 // @internal (undocumented)
 export const _GLOBAL_CANONICAL_URL = "canonicalUrl";
 
-// Warning: (ae-internal-missing-underscore) The name "GLOBAL_DESCRIPTION" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export const GLOBAL_DESCRIPTION = "description";
+export const _GLOBAL_DESCRIPTION = "description";
 
 // @internal (undocumented)
 export const _GLOBAL_IMAGE = "image";
@@ -79,10 +77,8 @@ export const _GLOBAL_IMAGE = "image";
 // @internal (undocumented)
 export const _GLOBAL_LOCALE = "locale";
 
-// Warning: (ae-internal-missing-underscore) The name "GLOBAL_TITLE" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
-export const GLOBAL_TITLE = "title";
+export const _GLOBAL_TITLE = "title";
 
 // @public
 export interface GlobalMetadata {

@@ -1,9 +1,9 @@
 import { OpenGraph } from './open-graph'
-import { GLOBAL_IMAGE, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import { _GLOBAL_IMAGE, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
 import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
 
-const NO_KEY_VALUE: OpenGraph[typeof GLOBAL_IMAGE] = {
+const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
   url: undefined,
   alt: undefined,
   secureUrl: null,
@@ -17,33 +17,33 @@ const NO_KEY_VALUE: OpenGraph[typeof GLOBAL_IMAGE] = {
  */
 export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY =
   (metaService: NgxMetaMetaService) =>
-  (value: OpenGraph[typeof GLOBAL_IMAGE]) => {
+  (value: OpenGraph[typeof _GLOBAL_IMAGE]) => {
     const imageUrl = value?.url?.toString()
-    const effectiveValue: OpenGraph[typeof GLOBAL_IMAGE] =
+    const effectiveValue: OpenGraph[typeof _GLOBAL_IMAGE] =
       imageUrl !== undefined && imageUrl !== null ? value : NO_KEY_VALUE
-    metaService.set(makeOpenGraphMetaDefinition(GLOBAL_IMAGE), imageUrl)
+    metaService.set(makeOpenGraphMetaDefinition(_GLOBAL_IMAGE), imageUrl)
     metaService.set(
-      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'alt'),
+      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'alt'),
       effectiveValue?.alt,
     )
     metaService.set(
-      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'secure_url'),
+      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'secure_url'),
       effectiveValue?.secureUrl?.toString(),
     )
     metaService.set(
-      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'type'),
+      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'type'),
       effectiveValue?.type,
     )
     metaService.set(
-      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'width'),
+      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'width'),
       effectiveValue?.width?.toString(),
     )
     metaService.set(
-      makeOpenGraphMetaDefinition(GLOBAL_IMAGE, 'height'),
+      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'height'),
       effectiveValue?.height?.toString(),
     )
   }
 export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = makeOpenGraphMetadataProvider(
-  GLOBAL_IMAGE,
-  { s: __OPEN_GRAPH_IMAGE_SETTER_FACTORY, g: GLOBAL_IMAGE },
+  _GLOBAL_IMAGE,
+  { s: __OPEN_GRAPH_IMAGE_SETTER_FACTORY, g: _GLOBAL_IMAGE },
 )

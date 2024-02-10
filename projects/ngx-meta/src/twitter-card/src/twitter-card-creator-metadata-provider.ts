@@ -9,6 +9,10 @@ import { NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 
 const KEY: keyof TwitterCard = 'creator'
 
+/**
+ * Manages the {@link TwitterCard.creator} metadata
+ * @public
+ */
 export const TWITTER_CARD_CREATOR_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(KEY, {
     s: (metaService: NgxMetaMetaService) => (value) => {

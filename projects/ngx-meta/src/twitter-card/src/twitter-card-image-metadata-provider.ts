@@ -2,6 +2,10 @@ import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-pr
 import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
 import { _GLOBAL_IMAGE } from '@davidlj95/ngx-meta/core'
 
+/**
+ * Manages the {@link TwitterCard.image} metadata
+ * @public
+ */
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(_GLOBAL_IMAGE, {
     g: _GLOBAL_IMAGE,

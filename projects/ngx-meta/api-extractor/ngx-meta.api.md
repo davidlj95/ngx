@@ -448,22 +448,22 @@ export interface StandardMetadata {
     standard: Standard;
 }
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_CARD_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_CREATOR_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_SITE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_TITLE_METADATA_PROVIDER: FactoryProvider;
 
 // @public

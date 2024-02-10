@@ -5,6 +5,10 @@ import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definiti
 
 const KEY: keyof TwitterCard = 'site'
 
+/**
+ * Manages the {@link TwitterCard.site} metadata
+ * @public
+ */
 export const TWITTER_CARD_SITE_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(KEY, {
     s: (metaService) => (value) => {

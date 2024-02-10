@@ -30,6 +30,10 @@ export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
     headElementUpsertOrRemove(`script[type='${SCRIPT_TYPE}']`, scriptElement)
   }
 
+/**
+ * Manages the {@link JsonLdMetadata.jsonLd} metadata
+ * @public
+ */
 export const JSON_LD_METADATA_PROVIDER = makeMetadataProviderFromSetterFactory(
   __JSON_LD_METADATA_SETTER_FACTORY,
   {

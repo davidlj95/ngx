@@ -105,7 +105,7 @@ export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement
 // @internal (undocumented)
 const _JSON_LD_KEY: keyof JsonLdMetadata;
 
-// @public (undocumented)
+// @public
 export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
 
 // @public

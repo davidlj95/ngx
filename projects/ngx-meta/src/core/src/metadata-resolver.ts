@@ -9,6 +9,9 @@ import {
 } from './metadata-json-resolver'
 import { MetadataResolverOptions } from './ngx-meta-metadata'
 
+/**
+ * @internal
+ */
 export type MetadataResolver = (
   values: MetadataValues,
   resolverOptions: MetadataResolverOptions,

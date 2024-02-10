@@ -19,23 +19,23 @@ export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY: (doc: Document) => (select
 // @internal (undocumented)
 export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER: FactoryProvider;
 
-// Warning: (ae-forgotten-export) The symbol "JSON_LD_KEY" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "_JSON_LD_KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof JSON_LD_KEY]>;
+export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof _JSON_LD_KEY]>;
 
 // @internal (undocumented)
 export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (value: OpenGraph[typeof _GLOBAL_IMAGE]) => void;
 
-// Warning: (ae-forgotten-export) The symbol "KEY_2" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "_STANDARD_GENERATOR_KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_2]>;
+export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _STANDARD_GENERATOR_KEY]>;
 
-// Warning: (ae-forgotten-export) The symbol "KEY" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "_STANDARD_KEYWORDS_KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY]>;
+export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _STANDARD_KEYWORDS_KEY]>;
 
 // @internal (undocumented)
 export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_LOCALE]>;
@@ -48,7 +48,7 @@ export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ":";
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
 //
-// @public (undocumented)
+// @internal (undocumented)
 interface CoreFeature<FeatureKind extends CoreFeatureKind = CoreFeatureKind> {
     // (undocumented)
     _kind: FeatureKind;
@@ -56,7 +56,7 @@ interface CoreFeature<FeatureKind extends CoreFeatureKind = CoreFeatureKind> {
     _providers: Provider[];
 }
 
-// @public
+// @internal
 const enum CoreFeatureKind {
     // (undocumented)
     Defaults = 0
@@ -102,8 +102,8 @@ export const _HEAD_ELEMENT_UPSERT_OR_REMOVE: InjectionToken<_HeadElementUpsertOr
 // @internal (undocumented)
 export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement | null | undefined) => void;
 
-// @public (undocumented)
-const JSON_LD_KEY: keyof JsonLdMetadata;
+// @internal (undocumented)
+const _JSON_LD_KEY: keyof JsonLdMetadata;
 
 // @public (undocumented)
 export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
@@ -112,12 +112,6 @@ export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
 export interface JsonLdMetadata {
     readonly jsonLd?: object | null;
 }
-
-// @public (undocumented)
-const KEY: keyof Standard;
-
-// @public (undocumented)
-const KEY_2: keyof Standard;
 
 // @internal (undocumented)
 export const _KEY_ATTRIBUTE_NAME = "name";
@@ -153,7 +147,7 @@ export const makeMetadataProviderFromSetterFactory: <T>(setterFactory: MetadataS
 // @internal (undocumented)
 export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global']) => MetadataResolverOptions;
 
-// @public (undocumented)
+// @internal (undocumented)
 class MetadataRegistry {
     constructor(injectedMetadata: ReadonlyArray<NgxMetaMetadata> | null);
     // (undocumented)
@@ -162,7 +156,7 @@ class MetadataRegistry {
     register(metadata: NgxMetaMetadata): void;
 }
 
-// @public (undocumented)
+// @internal (undocumented)
 type MetadataResolver = (values: MetadataValues, resolverOptions: MetadataResolverOptions) => unknown;
 
 // @public
@@ -431,8 +425,14 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER: FactoryProvider;
 // @public (undocumented)
 export const STANDARD_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 
+// @internal (undocumented)
+const _STANDARD_GENERATOR_KEY: keyof Standard;
+
 // @public (undocumented)
 export const STANDARD_GENERATOR_METADATA_PROVIDER: FactoryProvider;
+
+// @internal (undocumented)
+const _STANDARD_KEYWORDS_KEY: keyof Standard;
 
 // @public (undocumented)
 export const STANDARD_KEYWORDS_METADATA_PROVIDER: FactoryProvider;

@@ -36,13 +36,18 @@ export const provideNgxMetaCore = (
   ])
 
 /**
- * Inspired from Angular router
+ * Inspired from Angular's router
  *
  * https://github.com/angular/angular/blob/17.0.7/packages/router/src/provide_router.ts#L80-L96
+ * @internal
  */
 const enum CoreFeatureKind {
   Defaults,
 }
+
+/**
+ * @internal
+ */
 interface CoreFeature<FeatureKind extends CoreFeatureKind = CoreFeatureKind> {
   _kind: FeatureKind
   _providers: Provider[]
@@ -64,6 +69,8 @@ const coreFeature = <FeatureKind extends CoreFeatureKind>(
  * For module-based apps, checkout {@link NgxMetaCoreModule.forRoot}
  *
  * @param defaults - Default metadata values to use
+ *
+ * @public
  */
 export const withNgxMetaDefaults = (
   defaults: MetadataValues,

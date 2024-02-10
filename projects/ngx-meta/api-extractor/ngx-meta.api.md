@@ -105,7 +105,7 @@ export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement
 // @internal (undocumented)
 const _JSON_LD_KEY: keyof JsonLdMetadata;
 
-// @public (undocumented)
+// @public
 export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -259,16 +259,16 @@ export class NgxMetaStandardModule {
 export class NgxMetaTwitterCardModule {
 }
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -277,19 +277,19 @@ export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_MALE = "male";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TITLE_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -298,7 +298,7 @@ export const OPEN_GRAPH_TYPE_ARTICLE = "article";
 // @public
 export const OPEN_GRAPH_TYPE_BOOK = "book";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_TYPE_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -331,7 +331,7 @@ export const OPEN_GRAPH_TYPE_VIDEO_TV_SHOW = "video.tv_show";
 // @public
 export const OPEN_GRAPH_TYPE_WEBSITE = "website";
 
-// @public (undocumented)
+// @public
 export const OPEN_GRAPH_URL_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -413,34 +413,34 @@ export interface Standard {
     readonly title?: GlobalMetadata['title'];
 }
 
-// @public (undocumented)
+// @public
 export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_AUTHOR_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_CANONICAL_URL_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 
 // @internal (undocumented)
 const _STANDARD_GENERATOR_KEY: keyof Standard;
 
-// @public (undocumented)
+// @public
 export const STANDARD_GENERATOR_METADATA_PROVIDER: FactoryProvider;
 
 // @internal (undocumented)
 const _STANDARD_KEYWORDS_KEY: keyof Standard;
 
-// @public (undocumented)
+// @public
 export const STANDARD_KEYWORDS_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_LOCALE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_TITLE_METADATA_PROVIDER: FactoryProvider;
 
 // @public
@@ -448,22 +448,22 @@ export interface StandardMetadata {
     standard: Standard;
 }
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_CARD_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_CREATOR_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_SITE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const TWITTER_CARD_TITLE_METADATA_PROVIDER: FactoryProvider;
 
 // @public

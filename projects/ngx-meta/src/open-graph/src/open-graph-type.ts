@@ -71,7 +71,7 @@ export const OPEN_GRAPH_TYPE_PROFILE = 'profile'
 export const OPEN_GRAPH_TYPE_WEBSITE = 'website'
 
 /**
- * Types for {@link OpenGraph} `type` property
+ * Types for {@link OpenGraph."type"} property
  *
  * @remarks
  *

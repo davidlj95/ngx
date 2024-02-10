@@ -15,6 +15,10 @@ export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   titleService.setTitle(value ?? '')
 }
 
+/**
+ * Manages the {@link Standard.title} metadata
+ * @public
+ */
 export const STANDARD_TITLE_METADATA_PROVIDER = makeStandardMetadataProvider(
   _GLOBAL_TITLE,
   { g: _GLOBAL_TITLE, s: __STANDARD_TITLE_METADATA_SETTER_FACTORY, d: [Title] },

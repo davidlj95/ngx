@@ -19,6 +19,10 @@ export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   htmlElement.setAttribute(ATTRIBUTE_NAME, locale)
 }
 
+/**
+ * Manages the {@link Standard.locale} metadata
+ * @public
+ */
 export const STANDARD_LOCALE_METADATA_PROVIDER = makeStandardMetadataProvider(
   _GLOBAL_LOCALE,
   {

@@ -413,34 +413,34 @@ export interface Standard {
     readonly title?: GlobalMetadata['title'];
 }
 
-// @public (undocumented)
+// @public
 export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_AUTHOR_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_CANONICAL_URL_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 
 // @internal (undocumented)
 const _STANDARD_GENERATOR_KEY: keyof Standard;
 
-// @public (undocumented)
+// @public
 export const STANDARD_GENERATOR_METADATA_PROVIDER: FactoryProvider;
 
 // @internal (undocumented)
 const _STANDARD_KEYWORDS_KEY: keyof Standard;
 
-// @public (undocumented)
+// @public
 export const STANDARD_KEYWORDS_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_LOCALE_METADATA_PROVIDER: FactoryProvider;
 
-// @public (undocumented)
+// @public
 export const STANDARD_TITLE_METADATA_PROVIDER: FactoryProvider;
 
 // @public

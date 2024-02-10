@@ -22,6 +22,10 @@ export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<
     value?.join(','),
   )
 
+/**
+ * Manages the {@link Standard.keywords} metadata
+ * @public
+ */
 export const STANDARD_KEYWORDS_METADATA_PROVIDER = makeStandardMetadataProvider(
   _STANDARD_KEYWORDS_KEY,
   { s: __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY },

@@ -23,6 +23,10 @@ export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory
     value === true ? `Angular v${VERSION.full}` : value,
   )
 
+/**
+ * Manages the {@link Standard.generator} metadata
+ * @public
+ */
 export const STANDARD_GENERATOR_METADATA_PROVIDER =
   makeStandardMetadataProvider(_STANDARD_GENERATOR_KEY, {
     s: __STANDARD_GENERATOR_METADATA_SETTER_FACTORY,

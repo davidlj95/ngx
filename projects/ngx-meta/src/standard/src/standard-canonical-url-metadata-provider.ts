@@ -11,6 +11,10 @@ const REL_ATTR = 'rel'
 const CANONICAL_VAL = 'canonical'
 const SELECTOR = `${LINK_TAG}[${REL_ATTR}='${CANONICAL_VAL}']`
 
+/**
+ * Manages the {@link Standard.canonicalUrl} metadata
+ * @public
+ */
 export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
   makeStandardMetadataProvider(_GLOBAL_CANONICAL_URL, {
     g: _GLOBAL_CANONICAL_URL,

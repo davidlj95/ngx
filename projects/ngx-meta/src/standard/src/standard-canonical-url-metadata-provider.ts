@@ -1,8 +1,8 @@
 import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
 import {
+  _GLOBAL_CANONICAL_URL,
   _HEAD_ELEMENT_UPSERT_OR_REMOVE,
   _HeadElementUpsertOrRemove,
-  GLOBAL_CANONICAL_URL,
 } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
 
@@ -12,8 +12,8 @@ const CANONICAL_VAL = 'canonical'
 const SELECTOR = `${LINK_TAG}[${REL_ATTR}='${CANONICAL_VAL}']`
 
 export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
-  makeStandardMetadataProvider(GLOBAL_CANONICAL_URL, {
-    g: GLOBAL_CANONICAL_URL,
+  makeStandardMetadataProvider(_GLOBAL_CANONICAL_URL, {
+    g: _GLOBAL_CANONICAL_URL,
     s:
       (headElementUpsertOrRemove: _HeadElementUpsertOrRemove, doc: Document) =>
       (value) => {

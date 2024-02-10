@@ -76,12 +76,29 @@ export interface GlobalMetadata {
   readonly image?: GlobalMetadataImage | null
 }
 
-export const GLOBAL_TITLE = 'title' satisfies keyof GlobalMetadata
-export const GLOBAL_DESCRIPTION = 'description' satisfies keyof GlobalMetadata
-export const GLOBAL_APPLICATION_NAME =
+/**
+ * @internal
+ */
+export const _GLOBAL_TITLE = 'title' satisfies keyof GlobalMetadata
+/**
+ * @internal
+ */
+export const _GLOBAL_DESCRIPTION = 'description' satisfies keyof GlobalMetadata
+/**
+ * @internal
+ */
+export const _GLOBAL_APPLICATION_NAME =
   'applicationName' satisfies keyof GlobalMetadata
-
-export const GLOBAL_CANONICAL_URL =
+/**
+ * @internal
+ */
+export const _GLOBAL_CANONICAL_URL =
   'canonicalUrl' satisfies keyof GlobalMetadata
-export const GLOBAL_LOCALE = 'locale' satisfies keyof GlobalMetadata
-export const GLOBAL_IMAGE = 'image' satisfies keyof GlobalMetadata
+/**
+ * @internal
+ */
+export const _GLOBAL_LOCALE = 'locale' satisfies keyof GlobalMetadata
+/**
+ * @internal
+ */
+export const _GLOBAL_IMAGE = 'image' satisfies keyof GlobalMetadata

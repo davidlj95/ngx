@@ -25,7 +25,7 @@ export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER: FactoryProvider;
 export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof JSON_LD_KEY]>;
 
 // @internal (undocumented)
-export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (value: OpenGraph[typeof GLOBAL_IMAGE]) => void;
+export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (value: OpenGraph[typeof _GLOBAL_IMAGE]) => void;
 
 // Warning: (ae-forgotten-export) The symbol "KEY_2" needs to be exported by the entry point all-entry-points.d.ts
 //
@@ -38,10 +38,10 @@ export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory
 export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY]>;
 
 // @internal (undocumented)
-export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof GLOBAL_LOCALE]>;
+export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_LOCALE]>;
 
 // @internal (undocumented)
-export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof GLOBAL_TITLE]>;
+export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
 
 // @internal (undocumented)
 export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ":";
@@ -62,23 +62,23 @@ const enum CoreFeatureKind {
     Defaults = 0
 }
 
-// @public (undocumented)
-export const GLOBAL_APPLICATION_NAME = "applicationName";
+// @internal (undocumented)
+export const _GLOBAL_APPLICATION_NAME = "applicationName";
 
-// @public (undocumented)
-export const GLOBAL_CANONICAL_URL = "canonicalUrl";
+// @internal (undocumented)
+export const _GLOBAL_CANONICAL_URL = "canonicalUrl";
 
-// @public (undocumented)
-export const GLOBAL_DESCRIPTION = "description";
+// @internal (undocumented)
+export const _GLOBAL_DESCRIPTION = "description";
 
-// @public (undocumented)
-export const GLOBAL_IMAGE = "image";
+// @internal (undocumented)
+export const _GLOBAL_IMAGE = "image";
 
-// @public (undocumented)
-export const GLOBAL_LOCALE = "locale";
+// @internal (undocumented)
+export const _GLOBAL_LOCALE = "locale";
 
-// @public (undocumented)
-export const GLOBAL_TITLE = "title";
+// @internal (undocumented)
+export const _GLOBAL_TITLE = "title";
 
 // @public
 export interface GlobalMetadata {

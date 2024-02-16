@@ -138,42 +138,10 @@ As with the service case, [Typescript's `satisfies` operator][typescript-satisfi
 
 Check out the [Angular v17 example app] [`app.routes.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/a17/src/app/app.routes.ts) for a full routes file example
 
-## 🗺️ 4. Explore [all metadata you can set](https://www.youtube.com/watch?v=1kzb6uf0U0k)
+## 🗺️ Next steps
 
-A forth step? You lied to me 😢 Well you had some metadata in your site at end of step 3 😜
+Do you wonder what metadata can you set? Learn first about [global and module metadata](guides/global-and-module-metadata.md).
 
-Now, do you wonder what metadata can you set? Typescript types can help you.
-
-Following the example, inspect [`GlobalMetadata`](./api/ngx-meta.globalmetadata.md) and [`StandardMetadata`](./api/ngx-meta.standardmetadata.md) types to see all values you can set.
-
-### Global metadata
-
-[`GlobalMetadata`](./api/ngx-meta.globalmetadata.md) defines metadata values that will be used by several modules. For instance, the `title` will be used by standard module to set the page's `#!html <title>`. But it will also be used by [Open Graph] module (if added) to set the `#!html <meta property='og:title'>` element.
-
-### Module metadata
-
-[`StandardMetadata`](./api/ngx-meta.standardmetadata.md) defines metadata values that will be used only by the standard module. That's why all values should be placed under the `standard` key.
-
-You can inspect what metadata can be set using that module. And which of those can be set as global ones, so they're also shared with other modules. If you specify a module value and a global value, specific will take preference.
-
-For instance if setting those values (either using service or route data):
-
-```typescript
-const metadataValues: GlobalMetadata & StandardMetadata = {
-  title: 'Global title',
-  standard: {
-    title: 'Standard title',
-  },
-}
-```
-
-The `#!html <title>` element will contain `Standard title`. But other modules will use `Global title`.
-
-By convention, each metadata module provides at least (where `X` is name of module):
-
-- An `NgxMetaXModule` or `provideNgxMetaX` module or provider. To add it to the app (see step 2)
-- An `XMetadata` type with all metadata it can set.
-
-What modules are there and what metadata they provide? Checkout next section about [built-in modules](./built-in-modules/index.md)!
+If you already know about that, maybe you want to explore the [built-in modules](./built-in-modules) that allow setting common metadata.
 
 [^1]: The library doesn't include any schematics for now

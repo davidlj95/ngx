@@ -51,7 +51,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c #v5
         with:
-          python-version-file: '${{ env.DOCS_DIR }}/.python-version'
+          python-version-file: '${{ env.DOCS_DIR }}/pyproject.toml'
           cache: 'poetry'
           cache-dependency-path: '${{ env.DOCS_DIR }}/poetry.lock'
       - name: Setup pnpm

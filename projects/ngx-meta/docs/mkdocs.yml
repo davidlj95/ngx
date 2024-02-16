@@ -18,6 +18,7 @@ nav:
   - get-started.md
   - Guides:
       - guides/global-and-module-metadata.md
+      - guides/defaults.md
   - Built-in modules:
       - Built-in modules: built-in-modules/index.md
       - built-in-modules/standard.md

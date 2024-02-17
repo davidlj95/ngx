@@ -33,6 +33,8 @@ export class NgxMetaService {
    *
    * Will result in a page with title <b>but no description</b>
    *
+   * For more information check the {@link https://ngx-meta.pages.dev/guides/set-metadata-using-service/ | service guide docs}
+   *
    * @param values - Metadata values to set, as a JSON object
    */
   public set(values: MetadataValues = {}): void {

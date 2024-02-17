@@ -8,7 +8,7 @@ This way, everytime you set your metadata values (either using the service or th
 
 === "For non-standalone, module-based apps"
 
-    This is the default for apps generated with Angular CLI before v17
+    --8<-- "includes/module-apps-explanation.md"
 
     Open your `app.module.ts` where [`NgxMetaCoreModule`](../api/ngx-meta.ngxmetacoremodule.md) is imported. Provide your default values by calling [`NgxMetaCoreModule.forRoot`](../api/ngx-meta.ngxmetacoremodule.forroot.md) with the options object.
 
@@ -28,12 +28,11 @@ This way, everytime you set your metadata values (either using the service or th
     export class AppModule {}
     ```
 
-
-    Check out the [Angular v16 example app]'s [`app.module.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/a16/src/app/app.module.ts) for a full app module file example
+    --8<-- "includes/a16-app-module.md"
 
 === "For standalone, module-free apps"
 
-    This is the default for apps generated with Angular CLI v17 and above
+    --8<-- "includes/standalone-apps-explanation.md"
 
     Open your `app.config.ts` file where [`provideNgxMetaCore`](../api/ngx-meta.providengxmetacore.md) is provided. Provide your default values by adding a call to [`withNgxMetaDefaults`](../api/ngx-meta.withngxmetadefaults.md) with the default values to set.
 
@@ -50,7 +49,7 @@ This way, everytime you set your metadata values (either using the service or th
     }
     ```
 
-    Check out the [Angular v17 example app]'s [`app.config.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/a17/src/app/app.config.ts) for a full config file example
+    --8<-- "includes/a17-app-config.md"
 
 Notice how the [Typescript's `satisfies` operator][typescript-satisfies] helps again ensuring the metadata values JSON matches the expected shape.
 

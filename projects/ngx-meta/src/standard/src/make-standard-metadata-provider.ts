@@ -1,6 +1,6 @@
 import {
   GlobalMetadata,
-  makeMetadataProviderFromSetterFactory,
+  makeMetadataSetterProviderFromFactory,
   MetadataSetterFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
@@ -24,7 +24,7 @@ export const makeStandardMetadataProvider = <Key extends keyof Standard>(
     d?: FactoryProvider['deps']
   } = {},
 ): FactoryProvider =>
-  makeMetadataProviderFromSetterFactory(
+  makeMetadataSetterProviderFromFactory(
     opts.s ??
       ((metaService: NgxMetaMetaService) => (value: Standard[Key]) =>
         metaService.set(

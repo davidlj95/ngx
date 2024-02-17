@@ -134,10 +134,13 @@ export const makeKeyValMetaDefinition: (opts: {
 }) => NgxMetaMetaDefinition;
 
 // @internal (undocumented)
-export const _makeMetadata: <T>(id: string, resolverOptions: MetadataResolverOptions, set: MetadataSetter<T>) => NgxMetaMetadata<T>;
+export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global']) => MetadataResolverOptions;
+
+// @internal (undocumented)
+export const _makeMetadataSetter: <T>(id: string, resolverOptions: MetadataResolverOptions, set: MetadataSetter<T>) => NgxMetaMetadataSetter<T>;
 
 // @public
-export const makeMetadataProviderFromSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: {
+export const makeMetadataSetterProviderFromFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: {
     d?: FactoryProvider['deps'];
     id?: string;
     jP: ReadonlyArray<string>;
@@ -145,15 +148,12 @@ export const makeMetadataProviderFromSetterFactory: <T>(setterFactory: MetadataS
 }) => FactoryProvider;
 
 // @internal (undocumented)
-export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global']) => MetadataResolverOptions;
-
-// @internal (undocumented)
 class MetadataRegistry {
-    constructor(injectedMetadata: ReadonlyArray<NgxMetaMetadata> | null);
+    constructor(setters: ReadonlyArray<NgxMetaMetadataSetter> | null);
     // (undocumented)
-    getAll(): Iterable<NgxMetaMetadata>;
+    getAll(): Iterable<NgxMetaMetadataSetter>;
     // (undocumented)
-    register(metadata: NgxMetaMetadata): void;
+    register(setter: NgxMetaMetadataSetter): void;
 }
 
 // @internal (undocumented)
@@ -191,14 +191,14 @@ export class NgxMetaJsonLdModule {
 export type NgxMetaMetaContent = string | undefined | null;
 
 // @public
-export abstract class NgxMetaMetadata<Value = unknown> {
-    abstract readonly id: string;
-    abstract readonly resolverOptions: MetadataResolverOptions;
-    abstract readonly set: MetadataSetter<Value>;
+export class NgxMetaMetadataLoaderModule {
 }
 
 // @public
-export class NgxMetaMetadataLoaderModule {
+export abstract class NgxMetaMetadataSetter<Value = unknown> {
+    abstract readonly id: string;
+    abstract readonly resolverOptions: MetadataResolverOptions;
+    abstract readonly set: MetadataSetter<Value>;
 }
 
 // @public

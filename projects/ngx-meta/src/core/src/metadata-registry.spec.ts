@@ -1,53 +1,55 @@
 import { MetadataRegistry } from './metadata-registry'
 import { TestBed } from '@angular/core/testing'
-import { makeMetadataSpy } from './__tests__/make-metadata-spy'
+import { makeMetadataSetterSpy } from './__tests__/make-metadata-setter-spy'
 import { MockProvider } from 'ng-mocks'
-import { NgxMetaMetadata } from './ngx-meta-metadata'
+import { NgxMetaMetadataSetter } from './ngx-meta-metadata-setter'
 
 describe('Metadata registry', () => {
-  const dummyMetadata = makeMetadataSpy()
+  const dummySetter = makeMetadataSetterSpy()
 
-  it('should register metadata from DI system', () => {
-    const sut = makeSut({ metadata: [dummyMetadata] })
+  it('should register metadata setters from DI system', () => {
+    const sut = makeSut({ setters: [dummySetter] })
 
-    const allMetadata = [...sut.getAll()]
-    expect(allMetadata).toHaveSize(1)
-    expect(allMetadata).toEqual([dummyMetadata])
+    const setters = [...sut.getAll()]
+    expect(setters).toHaveSize(1)
+    expect(setters).toEqual([dummySetter])
   })
 
-  it('should register the given metadata', () => {
+  it('should register the given metadata setter', () => {
     const sut = makeSut()
 
-    sut.register(dummyMetadata)
+    sut.register(dummySetter)
 
-    const allMetadata = [...sut.getAll()]
-    expect(allMetadata).toHaveSize(1)
-    expect(allMetadata).toEqual([dummyMetadata])
+    const setters = [...sut.getAll()]
+    expect(setters).toHaveSize(1)
+    expect(setters).toEqual([dummySetter])
   })
 
   it('should not register twice the same metadata', () => {
-    const sameDummyMetadata = makeMetadataSpy({ id: dummyMetadata.id })
+    const sameDummySetter = makeMetadataSetterSpy({
+      id: dummySetter.id,
+    })
     const sut = makeSut()
 
-    sut.register(dummyMetadata)
-    sut.register(sameDummyMetadata)
+    sut.register(dummySetter)
+    sut.register(sameDummySetter)
 
-    const allMetadata = [...sut.getAll()]
-    expect(allMetadata).toHaveSize(1)
-    expect(allMetadata).toEqual([dummyMetadata])
+    const setters = [...sut.getAll()]
+    expect(setters).toHaveSize(1)
+    expect(setters).toEqual([dummySetter])
   })
 })
 
 function makeSut(
   opts: {
-    metadata?: ReadonlyArray<NgxMetaMetadata>
+    setters?: ReadonlyArray<NgxMetaMetadataSetter>
   } = {},
 ) {
   TestBed.configureTestingModule({
     providers: [
       MetadataRegistry,
-      ...(opts.metadata ?? []).map((metadata) =>
-        MockProvider(NgxMetaMetadata, metadata, 'useValue', true),
+      ...(opts.setters ?? []).map((setter) =>
+        MockProvider(NgxMetaMetadataSetter, setter, 'useValue', true),
       ),
     ],
   })

@@ -1,10 +1,10 @@
-import { NgxMetaMetadata } from '../ngx-meta-metadata'
+import { NgxMetaMetadataSetter } from '../ngx-meta-metadata-setter'
 
-export function makeMetadataSpy(
+export function makeMetadataSetterSpy(
   opts: {
     id?: string
   } = {},
-): NgxMetaMetadata {
+): NgxMetaMetadataSetter {
   return {
     id: opts.id ?? 'dummy',
     resolverOptions: { jsonPath: ['dummy'] },

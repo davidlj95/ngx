@@ -1,6 +1,6 @@
 import {
   makeKeyValMetaDefinition,
-  makeMetadataProviderFromSetterFactory,
+  makeMetadataSetterProviderFromFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import LATE_LOADED_METADATA_JSON from '../../../../cypress/fixtures/late-loaded-metadata.json'
@@ -8,7 +8,7 @@ import LATE_LOADED_METADATA_JSON from '../../../../cypress/fixtures/late-loaded-
 type LateLoadedMetadata = typeof LATE_LOADED_METADATA_JSON
 
 export const provideLateLoadedMetadata = () =>
-  makeMetadataProviderFromSetterFactory<string | undefined>(
+  makeMetadataSetterProviderFromFactory<string | undefined>(
     (metaService: NgxMetaMetaService) => (value) => {
       metaService.set(
         makeKeyValMetaDefinition({

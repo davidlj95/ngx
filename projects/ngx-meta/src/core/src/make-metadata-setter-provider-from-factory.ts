@@ -1,9 +1,9 @@
 import {
-  _makeMetadata,
   _makeMetadataResolverOptions,
+  _makeMetadataSetter,
   MetadataSetter,
-  NgxMetaMetadata,
-} from './ngx-meta-metadata'
+  NgxMetaMetadataSetter,
+} from './ngx-meta-metadata-setter'
 import { FactoryProvider } from '@angular/core'
 
 /**
@@ -18,7 +18,7 @@ export type MetadataSetterFactory<T> = (
 
 /**
  * Creates an Angular's {@link https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory | Factory provider}
- * that provides an {@link NgxMetaMetadata}
+ * that provides an {@link NgxMetaMetadataSetter}
  *
  * @remarks
  *
@@ -28,22 +28,22 @@ export type MetadataSetterFactory<T> = (
  *
  * See {@link https://github.com/davidlj95/ngx/issues/112}
  *
- * @param setterFactory - Function that creates a {@link NgxMetaMetadata} given some dependencies. See {@link MetadataSetterFactory}
+ * @param setterFactory - Function that creates a {@link NgxMetaMetadataSetter} given some dependencies. See {@link MetadataSetterFactory}
  * @param opts - Options to create the factory.
  *               `d` is the list of dependencies to inject. Defaults to no dependencies
- *               `id` is the {@link NgxMetaMetadata.id} to use.
+ *               `id` is the {@link NgxMetaMetadataSetter.id} to use.
  *               Defaults to resolver options `jsonPath` joined by dots.
  *               `jP` is the `jsonPath` that will be used for the {@link MetadataResolverOptions.jsonPath}
  *               `g` is the `global` that will be used for the {@link MetadataResolverOptions.global}
  *
  * @public
  */
-export const makeMetadataProviderFromSetterFactory = <T>(
+export const makeMetadataSetterProviderFromFactory = <T>(
   setterFactory: MetadataSetterFactory<T>,
   opts: {
     // Dependencies to provide to setter factory
     d?: FactoryProvider['deps']
-    // ID of the manager
+    // ID of the setter
     id?: string
     // JSON Path
     jP: ReadonlyArray<string>
@@ -53,10 +53,10 @@ export const makeMetadataProviderFromSetterFactory = <T>(
 ): FactoryProvider => {
   const deps = opts.d ?? []
   return {
-    provide: NgxMetaMetadata,
+    provide: NgxMetaMetadataSetter,
     multi: true,
     useFactory: (...deps: unknown[]) =>
-      _makeMetadata(
+      _makeMetadataSetter(
         opts.id ?? opts.jP.join('.'),
         _makeMetadataResolverOptions(opts.jP, opts.g),
         setterFactory(...deps),

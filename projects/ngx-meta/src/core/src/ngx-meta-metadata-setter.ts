@@ -4,11 +4,11 @@
  * Used as {@link https://angular.dev/guide/di/dependency-injection-providers#using-an-injectiontoken-object | injection token}
  * to provide metadata setters the library will take into account.
  *
- * Can be created with {@link makeMetadataProviderFromSetterFactory}
+ * Can be created with {@link makeMetadataSetterProviderFromFactory}
  *
  * @public
  */
-export abstract class NgxMetaMetadata<Value = unknown> {
+export abstract class NgxMetaMetadataSetter<Value = unknown> {
   /**
    * Identifies the metadata setter
    *
@@ -28,7 +28,7 @@ export abstract class NgxMetaMetadata<Value = unknown> {
 }
 
 /**
- * See {@link NgxMetaMetadata.resolverOptions}
+ * See {@link NgxMetaMetadataSetter.resolverOptions}
  * @public
  */
 export interface MetadataResolverOptions {
@@ -37,7 +37,7 @@ export interface MetadataResolverOptions {
 }
 
 /**
- * See {@link NgxMetaMetadata.set}
+ * See {@link NgxMetaMetadataSetter.set}
  * @public
  */
 export type MetadataSetter<T> = (value: T) => void
@@ -45,11 +45,11 @@ export type MetadataSetter<T> = (value: T) => void
 /**
  * @internal
  */
-export const _makeMetadata = <T>(
-  id: NgxMetaMetadata<T>['id'],
-  resolverOptions: NgxMetaMetadata<T>['resolverOptions'],
-  set: NgxMetaMetadata<T>['set'],
-): NgxMetaMetadata<T> => ({
+export const _makeMetadataSetter = <T>(
+  id: NgxMetaMetadataSetter<T>['id'],
+  resolverOptions: NgxMetaMetadataSetter<T>['resolverOptions'],
+  set: NgxMetaMetadataSetter<T>['set'],
+): NgxMetaMetadataSetter<T> => ({
   id,
   resolverOptions,
   set,

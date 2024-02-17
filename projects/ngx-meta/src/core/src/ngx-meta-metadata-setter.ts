@@ -4,7 +4,7 @@
  * Used as {@link https://angular.dev/guide/di/dependency-injection-providers#using-an-injectiontoken-object | injection token}
  * to provide metadata setters the library will take into account.
  *
- * Can be created with {@link makeMetadataProviderFromSetterFactory}
+ * Can be created with {@link makeMetadataSetterProviderFromFactory}
  *
  * @public
  */

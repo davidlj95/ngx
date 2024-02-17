@@ -53,4 +53,4 @@ This way, everytime you set your metadata values (either using the service or th
 
 Notice how the [Typescript's `satisfies` operator][typescript-satisfies] helps again ensuring the metadata values JSON matches the expected shape.
 
-You can use there a combination of global and module specific metadata values [as seen in previous guide](./global-and-module-metadata.md)
+You can use there a combination of global and module specific metadata values [as seen in previous guide](metadata-values-json.md)

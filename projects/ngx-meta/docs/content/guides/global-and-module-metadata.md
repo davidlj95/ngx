@@ -66,3 +66,5 @@ By convention, each module exports a type named `XMetadata` (where `X` is the na
 Library comes with some built-in modules to help you set common metadata for websites.
 
 What modules are there and what metadata they provide? Checkout next section about [built-in modules](../built-in-modules/index.md)!
+
+Do you want to use some metadata values for all pages? Checkout [defaults](./defaults.md) guide

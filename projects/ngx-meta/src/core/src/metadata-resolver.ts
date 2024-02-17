@@ -7,7 +7,7 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { MetadataResolverOptions } from './ngx-meta-metadata'
+import { MetadataResolverOptions } from './ngx-meta-metadata-setter'
 
 /**
  * @internal

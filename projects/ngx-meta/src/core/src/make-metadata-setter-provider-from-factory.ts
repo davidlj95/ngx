@@ -43,7 +43,7 @@ export const makeMetadataSetterProviderFromFactory = <T>(
   opts: {
     // Dependencies to provide to setter factory
     d?: FactoryProvider['deps']
-    // ID of the manager
+    // ID of the setter
     id?: string
     // JSON Path
     jP: ReadonlyArray<string>

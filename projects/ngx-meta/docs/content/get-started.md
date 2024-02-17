@@ -75,10 +75,10 @@ If you added the routing module / provider, you can set the metadata for a page 
 
 ## 🗺️ Next steps
 
-Want to learn more about how to set metadata using the service, the routing module or both of them at once? Check the [service](./guides/set-metadata-using-service.md) and [routing](./guides/set-metadata-using-routing.md) guides.
+Want to learn more about how to set metadata using the service, the routing module or both of them at once? Check the **[service](./guides/set-metadata-using-service.md) and [routing](./guides/set-metadata-using-routing.md) module guides**.
 
-To know about what's that global metadata thing, checkout [global and module metadata guide](./guides/global-and-module-metadata.md)
+To know about how to properly define the metadata values to set, checkout the **[metadata values JSON guide](./guides/metadata-values-json.md)**
 
-If you already know about that, maybe you want to explore the [built-in modules](./built-in-modules) that allow setting common metadata.
+If you already know about all that, maybe you want to explore the **library's [built-in modules](./built-in-modules) that allow setting common metadata**.
 
 [^1]: The library doesn't include any schematics for now

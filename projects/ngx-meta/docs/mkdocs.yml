@@ -19,9 +19,8 @@ nav:
   - Guides:
       - guides/set-metadata-using-service.md
       - guides/set-metadata-using-routing.md
-      - guides/global-and-module-metadata.md
+      - guides/metadata-values-json.md
       - guides/defaults.md
-      - guides/resolution-order.md
   - Built-in modules:
       - Built-in modules: built-in-modules/index.md
       - built-in-modules/standard.md

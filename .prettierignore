@@ -8,5 +8,6 @@ projects/ngx-meta/docs/content/fonts/**
 #👇 Prettier doesn't understand the *[] syntax
 projects/ngx-meta/docs/includes/abbreviations.md
 #👇 Auto-generated
+projects/ngx-meta/docs/content/api/*.md
 projects/ngx-meta/api-extractor/*.api.md
 projects/ngx-meta/api-extractor/temp/

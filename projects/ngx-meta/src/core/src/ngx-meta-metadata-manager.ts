@@ -1,18 +1,18 @@
 /**
- * Abstract class every metadata setter must implement.
+ * Abstract class every metadata manager must implement.
  *
  * Used as {@link https://angular.dev/guide/di/dependency-injection-providers#using-an-injectiontoken-object | injection token}
- * to provide metadata setters the library will take into account.
+ * to provide metadata managers the library will take into account.
  *
- * Can be created with {@link makeMetadataSetterProviderFromFactory}
+ * Can be created with {@link makeMetadataManagerProviderFromSetterFactory}
  *
  * @public
  */
-export abstract class NgxMetaMetadataSetter<Value = unknown> {
+export abstract class NgxMetaMetadataManager<Value = unknown> {
   /**
-   * Identifies the metadata setter
+   * Identifies the metadata manager
    *
-   * Used to avoid setting same metadata twice in case same two setters are
+   * Used to avoid setting same metadata twice in case same two managers are
    * injected by mistake
    */
   abstract readonly id: string
@@ -28,7 +28,7 @@ export abstract class NgxMetaMetadataSetter<Value = unknown> {
 }
 
 /**
- * See {@link NgxMetaMetadataSetter.resolverOptions}
+ * See {@link NgxMetaMetadataManager.resolverOptions}
  * @public
  */
 export interface MetadataResolverOptions {
@@ -37,7 +37,7 @@ export interface MetadataResolverOptions {
 }
 
 /**
- * See {@link NgxMetaMetadataSetter.set}
+ * See {@link NgxMetaMetadataManager.set}
  * @public
  */
 export type MetadataSetter<T> = (value: T) => void
@@ -45,11 +45,11 @@ export type MetadataSetter<T> = (value: T) => void
 /**
  * @internal
  */
-export const _makeMetadataSetter = <T>(
-  id: NgxMetaMetadataSetter<T>['id'],
-  resolverOptions: NgxMetaMetadataSetter<T>['resolverOptions'],
-  set: NgxMetaMetadataSetter<T>['set'],
-): NgxMetaMetadataSetter<T> => ({
+export const _makeMetadataManager = <T>(
+  id: NgxMetaMetadataManager<T>['id'],
+  resolverOptions: NgxMetaMetadataManager<T>['resolverOptions'],
+  set: NgxMetaMetadataManager<T>['set'],
+): NgxMetaMetadataManager<T> => ({
   id,
   resolverOptions,
   set,

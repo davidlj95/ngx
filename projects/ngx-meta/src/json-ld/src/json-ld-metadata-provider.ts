@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common'
 import {
   _HEAD_ELEMENT_UPSERT_OR_REMOVE,
   _HeadElementUpsertOrRemove,
-  makeMetadataSetterProviderFromFactory,
+  makeMetadataManagerProviderFromSetterFactory,
   MetadataSetterFactory,
 } from '@davidlj95/ngx-meta/core'
 import { JsonLdMetadata } from './json-ld-metadata'
@@ -34,10 +34,11 @@ export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
  * Manages the {@link JsonLdMetadata.jsonLd} metadata
  * @public
  */
-export const JSON_LD_METADATA_PROVIDER = makeMetadataSetterProviderFromFactory(
-  __JSON_LD_METADATA_SETTER_FACTORY,
-  {
-    d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
-    jP: [_JSON_LD_KEY],
-  },
-)
+export const JSON_LD_METADATA_PROVIDER =
+  makeMetadataManagerProviderFromSetterFactory(
+    __JSON_LD_METADATA_SETTER_FACTORY,
+    {
+      d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
+      jP: [_JSON_LD_KEY],
+    },
+  )

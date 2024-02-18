@@ -6,7 +6,7 @@ import { OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER } from './open-graph-profil
 
 /**
  * Adds {@link https://ngx-meta.pages.dev/built-in-modules/open-graph/ | Open Graph module}
- * profile metadata setters
+ * profile metadata managers
  *
  * For module-based apps, use {@link NgxMetaOpenGraphProfileModule} instead
  *

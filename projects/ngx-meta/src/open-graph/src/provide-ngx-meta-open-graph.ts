@@ -9,7 +9,7 @@ import { OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER } from './open-graph-site-name-m
 
 /**
  * Adds {@link https://ngx-meta.pages.dev/built-in-modules/open-graph/ | Open Graph module}
- * basic & optional metadata setters
+ * basic & optional metadata managers
  *
  * For module-based apps, use {@link NgxMetaOpenGraphModule} instead
  *

@@ -10,7 +10,7 @@ import { STANDARD_LOCALE_METADATA_PROVIDER } from './standard-locale-metadata-pr
 
 /**
  * Adds {@link https://ngx-meta.pages.dev/built-in-modules/standard/ | standard module}
- * metadata setters
+ * metadata managers
  *
  * For module-based apps, use {@link NgxMetaStandardModule} instead
  *

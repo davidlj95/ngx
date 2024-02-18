@@ -3,7 +3,7 @@ import { provideNgxMetaOpenGraphProfile } from './provide-ngx-meta-open-graph-pr
 
 /**
  * Adds {@link https://ngx-meta.pages.dev/built-in-modules/open-graph/ | Open Graph module}
- * profile metadata setters
+ * profile metadata managers
  *
  * For standalone apps, use {@link provideNgxMetaOpenGraphProfile} instead
  *

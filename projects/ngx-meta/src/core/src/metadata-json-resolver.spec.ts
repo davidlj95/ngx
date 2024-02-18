@@ -7,7 +7,7 @@ import { MetadataValues } from './metadata-values'
 import {
   _makeMetadataResolverOptions,
   MetadataResolverOptions,
-} from './ngx-meta-metadata-setter'
+} from './ngx-meta-metadata-manager'
 
 describe('Metadata JSON Resolver', () => {
   let sut: MetadataJsonResolver

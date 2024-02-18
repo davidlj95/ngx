@@ -134,13 +134,10 @@ export const makeKeyValMetaDefinition: (opts: {
 }) => NgxMetaMetaDefinition;
 
 // @internal (undocumented)
-export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global']) => MetadataResolverOptions;
-
-// @internal (undocumented)
-export const _makeMetadataSetter: <T>(id: string, resolverOptions: MetadataResolverOptions, set: MetadataSetter<T>) => NgxMetaMetadataSetter<T>;
+export const _makeMetadataManager: <T>(id: string, resolverOptions: MetadataResolverOptions, set: MetadataSetter<T>) => NgxMetaMetadataManager<T>;
 
 // @public
-export const makeMetadataSetterProviderFromFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: {
+export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: {
     d?: FactoryProvider['deps'];
     id?: string;
     jP: ReadonlyArray<string>;
@@ -148,12 +145,15 @@ export const makeMetadataSetterProviderFromFactory: <T>(setterFactory: MetadataS
 }) => FactoryProvider;
 
 // @internal (undocumented)
+export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global']) => MetadataResolverOptions;
+
+// @internal (undocumented)
 class MetadataRegistry {
-    constructor(setters: ReadonlyArray<NgxMetaMetadataSetter> | null);
+    constructor(managers: ReadonlyArray<NgxMetaMetadataManager> | null);
     // (undocumented)
-    getAll(): Iterable<NgxMetaMetadataSetter>;
+    getAll(): Iterable<NgxMetaMetadataManager>;
     // (undocumented)
-    register(setter: NgxMetaMetadataSetter): void;
+    register(manager: NgxMetaMetadataManager): void;
 }
 
 // @internal (undocumented)
@@ -195,7 +195,7 @@ export class NgxMetaMetadataLoaderModule {
 }
 
 // @public
-export abstract class NgxMetaMetadataSetter<Value = unknown> {
+export abstract class NgxMetaMetadataManager<Value = unknown> {
     abstract readonly id: string;
     abstract readonly resolverOptions: MetadataResolverOptions;
     abstract readonly set: MetadataSetter<Value>;

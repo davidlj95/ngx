@@ -28,11 +28,11 @@ const metadataValues: GlobalMetadata = {
 }
 ```
 
-Defines the [`GlobalMetadata.title`](ngx-meta.globalmetadata.title.md) which will set the HTML's `#!html <title>` if [standard module](standard.md) is present and the `#!html <meta property='og:title'>` if [Open Graph module](open-graph.md) is present.
+Defines the [`GlobalMetadata.title`](ngx-meta.globalmetadata.title.md) which will set the HTML's `#!html <title>` if [standard module] is present and the `#!html <meta property='og:title'>` if [Open Graph module] is present.
 
 ### Module metadata
 
-Module metadata values are those that will be used by just one module. For instance, [`StandardMetadata`](ngx-meta.standardmetadata.md) type defines metadata values that will be used only by the [standard module](standard.md). That's why all values are placed inside a key with the name of the module (by convention). For instance, for [standard module](standard.md) metadata values, they're set under the `standard` key. You can inspect the type to know what metadata can be set using that module. If the metadata can be shared by many modules, it will also specify which of those can be set as global ones.
+Module metadata values are those that will be used by just one module. For instance, [`StandardMetadata`](ngx-meta.standardmetadata.md) type defines metadata values that will be used only by the [standard module]. That's why all values are placed inside a key with the name of the module (by convention). For instance, for [standard module] metadata values, they're set under the `standard` key. You can inspect the type to know what metadata can be set using that module. If the metadata can be shared by many modules, it will also specify which of those can be set as global ones.
 
 For instance:
 
@@ -46,7 +46,7 @@ const metadataValues: StandardMetadata = {
 }
 ```
 
-Defines the [`StandardMetadata.title`](ngx-meta.standard.title.md) which will set the HTML's `#!html <title>` if [standard module](standard.md) is present. However, this value won't be used by other modules. For instance `#!html <meta property='og:title'>` will be empty if [Open Graph module](open-graph.md) is present, given only standard `title` property has been set.
+Defines the [`StandardMetadata.title`](ngx-meta.standard.title.md) which will set the HTML's `#!html <title>` if [standard module] is present. However, this value won't be used by other modules. For instance `#!html <meta property='og:title'>` will be empty if [Open Graph module] is present, given only standard `title` property has been set.
 
 ## Combining global and module metadata
 
@@ -63,7 +63,7 @@ const metadataValues: GlobalMetadata & StandardMetadata = {
 }
 ```
 
-The `#!html <title>` element set by [standard module](standard.md) will contain `Standard title`. But other modules , like [Open Graph module](open-graph.md) will use `Global title` instead. So if [Open Graph module](open-graph.md) is present, the title property element will be `#!html <meta property='og:title' content='Global title'`. Of course, you could also set a specific title for Open Graph too.
+The `#!html <title>` element set by [standard module] will contain `Standard title`. But other modules , like [Open Graph module] will use `Global title` instead. So if [Open Graph module](open-graph.md) is present, the title property element will be `#!html <meta property='og:title' content='Global title'`. Of course, you could also set a specific title for Open Graph too.
 
 ## Module types convention
 

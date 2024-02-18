@@ -8,3 +8,5 @@
 [route's data]: https://angular.dev/api/router/Route#:~:text=a%20synchronous%20context.-,data,-Data
 [typescript-satisfies]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator
 [get started setup]: /get-started/#2-setup
+[standard module]: /built-in-modules/standard/
+[Open Graph module]: /built-in-modules/open-graph/

@@ -72,7 +72,7 @@ To generate / update API reference docs, run API Extractor / API Documenter task
 So prefer to link docs by file name (ie: `get-started.md`) instead of including the path to the document (ie: ~~`../get-started.md`~~)
 
 > [!CAUTION]
-> The extension doesn't seem to work in files that are included
+> The extension doesn't seem to work in files that are included (includes common links file)
 
 ## Quirks
 

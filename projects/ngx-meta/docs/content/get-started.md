@@ -40,7 +40,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     --8<-- "includes/standalone-apps-explanation.md"
 
-    Open your `app.config.ts` file and add at least the core provider to the     `providers` section. If you want to set metadata in each route's `data`     using Angular's `Router`, add the routing provider too. In order to set some     standard `<meta>`s, let's add the standard provider.
+    Open your `app.config.ts` file and add at least the core provider to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing provider too. In order to set some standard `<meta>`s, let's add the standard provider.
 
     ```typescript
     export const appConfig: ApplicationConfig = {
@@ -63,9 +63,10 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 --8<-- "includes/service-usage.md"
 
 !!! info "Metadata set by service won't be cleared by default"
-Those elements will be there even if you change the page unless the routing module is added.
 
-    See [service guide about clearing metadata values](../guides/set-metadata-using-service#clearing-metadata-values) for more information
+    Those elements will be there even if you change the page unless the routing module is added.
+
+    See [service guide about clearing metadata values](set-metadata-using-service.md#clearing-metadata-values) for more information
 
 ### Using [route's data]
 
@@ -75,10 +76,10 @@ If you added the routing module / provider, you can set the metadata for a page 
 
 ## 🗺️ Next steps
 
-Want to learn more about how to set metadata using the service, the routing module or both of them at once? Check the **[service](./guides/set-metadata-using-service.md) and [routing](./guides/set-metadata-using-routing.md) module guides**.
+Want to learn more about how to set metadata using the service, the routing module or both of them at once? Check the **[service](set-metadata-using-service.md) and [routing](set-metadata-using-routing.md) module guides**.
 
-To know about how to properly define the metadata values to set, checkout the **[metadata values JSON guide](./guides/metadata-values-json.md)**
+To know about how to properly define the metadata values to set, checkout the **[metadata values JSON guide](metadata-values-json.md)**
 
-If you already know about all that, maybe you want to explore the **library's [built-in modules](./built-in-modules) that allow setting common metadata**.
+If you already know about all that, maybe you want to explore the **library's [built-in modules](./built-in-modules/index.md) that allow setting common metadata**.
 
 [^1]: The library doesn't include any schematics for now

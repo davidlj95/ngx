@@ -10,7 +10,7 @@ First, ensure you added the module to your app.
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Open your `app.module.ts` where [`NgxMetaCoreModule`](../api/ngx-meta.ngxmetacoremodule.md) is imported. Ensure [`NgxMetaRoutingModule`](../api/ngx-meta.ngxmetaroutingmodule.md) is imported too by calling [`NgxMetaRoutingModule.forRoot`](../api/ngx-meta.ngxmetaroutingmodule.forroot.md)
+    Open your `app.module.ts` where [`NgxMetaCoreModule`](ngx-meta.ngxmetacoremodule.md) is imported. Ensure [`NgxMetaRoutingModule`](ngx-meta.ngxmetaroutingmodule.md) is imported too by calling [`NgxMetaRoutingModule.forRoot`](ngx-meta.ngxmetaroutingmodule.forroot.md)
 
     ```typescript
     @NgModule({
@@ -31,7 +31,7 @@ First, ensure you added the module to your app.
 
     --8<-- "includes/standalone-apps-explanation.md"
 
-    Open your `app.config.ts` file where [`provideNgxMetaCore`](../api/ngx-meta.providengxmetacore.md) is provided. Ensure the routing module is added by adding a call to [`provideNgxMetaRouting`](../api/ngx-meta.providengxmetarouting.md)
+    Open your `app.config.ts` file where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided. Ensure the routing module is added by adding a call to [`provideNgxMetaRouting`](ngx-meta.providengxmetarouting.md)
 
     ```typescript
     export const appConfig: ApplicationConfig = {
@@ -54,7 +54,7 @@ Once the module has been set up, you can add the metadata values for a page in i
 
 ## Benefits over using service
 
-You'll be able to provide the metadata values for a page in a more declarative way by attaching that data next to where the route is defined. And save up some code by avoiding the boilerplate of calling `ngOnInit` as per [service usage](./set-metadata-using-service.md). Also, metadata values will get cleared every time you navigate to another page (and replaced by that page's metadata values). To have some metadata values be present for every page, check out [how to set some metadata defaults](./defaults.md)
+You'll be able to provide the metadata values for a page in a more declarative way by attaching that data next to where the route is defined. And save up some code by avoiding the boilerplate of calling `ngOnInit` as per [service usage](set-metadata-using-service.md). Also, metadata values will get cleared every time you navigate to another page (and replaced by that page's metadata values). To have some metadata values be present for every page, check out [how to set some metadata defaults](defaults.md)
 
 However, you won't be able to set there dynamic values. For instance, if the route loads a product's detail (`/product/:id`), you won't be able to set at the route's data the specific product metadata given you don't know the product ID at that point yet. Unless...
 
@@ -110,4 +110,4 @@ export class CoolPageComponent implements OnInit {
 
 The final metadata values set will contain the `title`, `description` and `image` provided.
 
-[^1]: Actually using the [`NgxMetaService`](../api/ngx-meta.ngxmetaservice.md) APIs under the hood
+[^1]: Actually using the [`NgxMetaService`](ngx-meta.ngxmetaservice.md) APIs under the hood

@@ -12,17 +12,17 @@ The module allows you to embed a JSON-LD object inside a `#!html <script>` tag (
 
 === "For non-standalone, module-based apps"
 
-    Add [`NgxMetaJsonLdModule`](../api/ngx-meta.ngxmetajsonldmodule.md) to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
+    Add [`NgxMetaJsonLdModule`](ngx-meta.ngxmetajsonldmodule.md) to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
 
 === "For standalone, module-free apps"
 
-    Add [`provideNgxMetaJsonLd()`](../api/ngx-meta.providengxmetajsonld.md) to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
+    Add [`provideNgxMetaJsonLd()`](ngx-meta.providengxmetajsonld.md) to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
 
 ## Types
 
 Following Typescript types provide you with all implemented metadata:
 
-- [`JsonLdMetadata`](../api/ngx-meta.jsonldmetadata.md)
+- [`JsonLdMetadata`](ngx-meta.jsonldmetadata.md)
 
 ## Resources
 

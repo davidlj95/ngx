@@ -18,27 +18,27 @@ Specifically, manages [basic](https://ogp.me/#metadata) and [optional](https://o
 
 === "For non-standalone, module-based apps"
 
-    Add [`NgxMetaOpenGraphModule`](../api/ngx-meta.ngxmetaopengraphmodule.md) to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
+    Add [`NgxMetaOpenGraphModule`](ngx-meta.ngxmetaopengraphmodule.md) to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
 
 === "For standalone, module-free apps"
 
-    Add [`provideNgxMetaOpenGraph()`](../api/ngx-meta.providengxmetaopengraph.md) to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
+    Add [`provideNgxMetaOpenGraph()`](ngx-meta.providengxmetaopengraph.md) to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
 
 ### Profile
 
 Manages [profile](https://ogp.me/#type_profile) non-vertical metadata
 
 === "For non-standalone, module-based apps"
-Add [`NgxMetaOpenGraphProfileModule`](../api/ngx-meta.ngxmetaopengraphprofilemodule.md) to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
+Add [`NgxMetaOpenGraphProfileModule`](ngx-meta.ngxmetaopengraphprofilemodule.md) to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
 
 === "For standalone, module-free apps"
-Add [`provideNgxMetaOpenGraphProfile()`](../api/ngx-meta.providengxmetaopengraphprofile.md) to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
+Add [`provideNgxMetaOpenGraphProfile()`](ngx-meta.providengxmetaopengraphprofile.md) to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
 
 ## Types
 
 Following Typescript types provide you with all implemented metadata:
 
-- [`OpenGraphMetadata`](../api/ngx-meta.opengraphmetadata.md)
+- [`OpenGraphMetadata`](ngx-meta.opengraphmetadata.md)
 
 ## Platforms reading Open Graph metadata
 
@@ -49,7 +49,7 @@ At the moment of writing this document, Open Graph metadata is read by many popu
 - LinkedIn
 - Slack
 - Telegram
-- Twitter (you can set more details using [Twitter Cards](./twitter-cards.md))
+- Twitter (you can set more details using [Twitter Cards](twitter-cards.md))
 - WhatsApp
 
 ## Resources

@@ -1,8 +1,8 @@
 # Set metadata using the service
 
-One way you can set metadata in your page is using the library's main service: [`NgxMetaService`](../api/ngx-meta.ngxmetaservice.md)
+One way you can set metadata in your page is using the library's main service: [`NgxMetaService`](ngx-meta.ngxmetaservice.md)
 
-The service helps you set metadata in the page by passing a JSON object containing all metadata values to set. See [`NgxMetaService.set`](../api/ngx-meta.ngxmetaservice.set.md).
+The service helps you set metadata in the page by passing a JSON object containing all metadata values to set. See [`NgxMetaService.set`](ngx-meta.ngxmetaservice.set.md).
 
 ## Usage
 
@@ -12,7 +12,7 @@ The service helps you set metadata in the page by passing a JSON object containi
 
 #### Multiple calls
 
-The service is designed to set the metadata values of a page. So further calls to set metadata values won't actually expand the current metadata values, but replace them instead. The only exception is the routing module. Where you can provide some metadata in the route, some in the service and both will be combined. See [routing guide section about it for more information](./set-metadata-using-routing.md#using-routes-data-and-service)
+The service is designed to set the metadata values of a page. So further calls to set metadata values won't actually expand the current metadata values, but replace them instead. The only exception is the routing module. Where you can provide some metadata in the route, some in the service and both will be combined. See [routing guide section about it for more information](set-metadata-using-routing.md#using-routes-data-and-service)
 
 ### Clearing metadata values
 
@@ -35,7 +35,7 @@ export class CoolPageComponent implements OnInit, OnDestroy {
 
 ## Using routing module and service
 
-See [routing guide section about it](./set-metadata-using-routing.md#using-routes-data-and-service)
+See [routing guide section about it](set-metadata-using-routing.md#using-routes-data-and-service)
 
 ## Next steps
 

@@ -81,6 +81,7 @@ plugins:
   # Until we can ignore disabling badges
   #- privacy
   - search
+  - autolinks
   - social:
       cards_layout_options:
         font_family: Inter Tight

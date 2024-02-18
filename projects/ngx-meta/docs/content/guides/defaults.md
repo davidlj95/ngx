@@ -51,6 +51,4 @@ This way, everytime you set your metadata values (either using the service or th
 
     --8<-- "includes/a17-app-config.md"
 
-Notice how the [Typescript's `satisfies` operator][typescript-satisfies] helps again ensuring the metadata values JSON matches the expected shape.
-
-You can use there a combination of global and module specific metadata values [as seen in previous guide](metadata-values-json.md)
+Notice how the [Typescript's `satisfies` operator][typescript-satisfies] helps again ensuring the metadata values JSON matches the expected shape. For more information check [metadata values JSON guide](metadata-values-json.md)

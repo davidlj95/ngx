@@ -15,7 +15,7 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { _makeMetadataResolverOptions } from './ngx-meta-metadata-setter'
+import { _makeMetadataResolverOptions } from './ngx-meta-metadata-manager'
 
 describe('Metadata resolver', () => {
   enableAutoSpy()

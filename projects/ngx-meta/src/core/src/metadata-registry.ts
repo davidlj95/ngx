@@ -1,29 +1,29 @@
 import { Inject, Injectable, Optional } from '@angular/core'
-import { NgxMetaMetadataSetter } from './ngx-meta-metadata-setter'
+import { NgxMetaMetadataManager } from './ngx-meta-metadata-manager'
 
 /**
  * @internal
  */
 @Injectable()
 export class MetadataRegistry {
-  private readonly byId = new Map<string, NgxMetaMetadataSetter>()
+  private readonly byId = new Map<string, NgxMetaMetadataManager>()
 
   constructor(
     @Optional()
-    @Inject(NgxMetaMetadataSetter)
-    setters: ReadonlyArray<NgxMetaMetadataSetter> | null,
+    @Inject(NgxMetaMetadataManager)
+    managers: ReadonlyArray<NgxMetaMetadataManager> | null,
   ) {
-    setters?.forEach((metadata) => this.register(metadata))
+    managers?.forEach((manager) => this.register(manager))
   }
 
-  register(setter: NgxMetaMetadataSetter) {
-    if (this.byId.has(setter.id)) {
+  register(manager: NgxMetaMetadataManager) {
+    if (this.byId.has(manager.id)) {
       return
     }
-    this.byId.set(setter.id, setter)
+    this.byId.set(manager.id, manager)
   }
 
-  getAll(): Iterable<NgxMetaMetadataSetter> {
+  getAll(): Iterable<NgxMetaMetadataManager> {
     return this.byId.values()
   }
 }

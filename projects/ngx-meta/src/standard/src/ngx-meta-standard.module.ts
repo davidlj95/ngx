@@ -3,7 +3,7 @@ import { provideNgxMetaStandard } from './provide-ngx-meta-standard'
 
 /**
  * Adds {@link https://ngx-meta.pages.dev/built-in-modules/standard/ | standard module}
- * metadata setters
+ * metadata managers
  *
  * For standalone apps, use {@link provideNgxMetaStandard} instead
  *

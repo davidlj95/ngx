@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 import { NgxMetaService } from './ngx-meta.service'
 import { MockProvider, MockProviders } from 'ng-mocks'
-import { makeMetadataSetterSpy } from './__tests__/make-metadata-setter-spy'
+import { makeMetadataManagerSpy } from './__tests__/make-metadata-manager-spy'
 import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import { MetadataRegistry } from './metadata-registry'
@@ -19,8 +19,8 @@ describe('NgxMeta service', () => {
   })
 
   describe('set', () => {
-    const firstMetadata = makeMetadataSetterSpy({ id: 'first' })
-    const secondMetadata = makeMetadataSetterSpy({ id: 'second' })
+    const firstMetadata = makeMetadataManagerSpy({ id: 'first' })
+    const secondMetadata = makeMetadataManagerSpy({ id: 'second' })
     const dummyValues = {}
 
     beforeEach(() => {

@@ -10,7 +10,7 @@ This way, everytime you set your metadata values (either using the service or th
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Open your `app.module.ts` where [`NgxMetaCoreModule`](../api/ngx-meta.ngxmetacoremodule.md) is imported. Provide your default values by calling [`NgxMetaCoreModule.forRoot`](../api/ngx-meta.ngxmetacoremodule.forroot.md) with the options object.
+    Open your `app.module.ts` where [`NgxMetaCoreModule`](ngx-meta.ngxmetacoremodule.md) is imported. Provide your default values by calling [`NgxMetaCoreModule.forRoot`](ngx-meta.ngxmetacoremodule.forroot.md) with the options object.
 
     ```typescript
     @NgModule({
@@ -34,7 +34,7 @@ This way, everytime you set your metadata values (either using the service or th
 
     --8<-- "includes/standalone-apps-explanation.md"
 
-    Open your `app.config.ts` file where [`provideNgxMetaCore`](../api/ngx-meta.providengxmetacore.md) is provided. Provide your default values by adding a call to [`withNgxMetaDefaults`](../api/ngx-meta.withngxmetadefaults.md) with the default values to set.
+    Open your `app.config.ts` file where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided. Provide your default values by adding a call to [`withNgxMetaDefaults`](ngx-meta.withngxmetadefaults.md) with the default values to set.
 
     ```typescript
     export const appConfig: ApplicationConfig = {

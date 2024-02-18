@@ -110,4 +110,10 @@ export class CoolPageComponent implements OnInit {
 
 The final metadata values set will contain the `title`, `description` and `image` provided.
 
+## Next steps
+
+To know more about the shape of the JSON containing metadata values to set, checkout the [metadata values JSON guide](metadata-values-json.md).
+
+If you want to set some values for every page, disregarding the route, checkout how to set some [default metadata values](defaults.md)
+
 [^1]: Actually using the [`NgxMetaService`](ngx-meta.ngxmetaservice.md) APIs under the hood

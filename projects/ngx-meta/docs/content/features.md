@@ -41,6 +41,10 @@ Right now it will take **~6-7KiB of your bundle size when using all features**[^
 [tree shaking]: https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking
 [bundle size PR comment]: https://github.com/davidlj95/ngx/pull/243#issuecomment-1912895697
 
+### 🐨 Lazy loading support
+
+To reduce main bundle size, you can also lazy load some metadata. This way, you don't load metadata management code for some metadata elements until you don't need them. For more information, check the [late loading modules guide](late-loading-modules.md)
+
 ### 0️⃣ Zero dependencies[^2]
 
 So less pain with dependency management

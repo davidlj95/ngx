@@ -66,7 +66,7 @@ const coreFeature = <FeatureKind extends CoreFeatureKind>(
  *
  * Use it as part of {@link provideNgxMetaCore}
  *
- * For module-based apps, checkout {@link NgxMetaCoreModule.forRoot}
+ * For module-based apps, check out {@link NgxMetaCoreModule.forRoot}
  *
  * @param defaults - Default metadata values to use
  *

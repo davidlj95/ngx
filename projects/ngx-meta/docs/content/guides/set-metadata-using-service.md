@@ -39,4 +39,4 @@ See [routing guide section about it](set-metadata-using-routing.md#using-routes-
 
 ## Next steps
 
-Checkout how can you set your metadata in your Angular's [route's data] in the [routing module guide](set-metadata-using-routing.md). To know more about the shape of the JSON containing metadata values to set, checkout the [metadata values JSON guide](metadata-values-json.md)
+Check out how can you set your metadata in your Angular's [route's data] in the [routing module guide](set-metadata-using-routing.md). To know more about the shape of the JSON containing metadata values to set, take a look at the [metadata values JSON guide](metadata-values-json.md)

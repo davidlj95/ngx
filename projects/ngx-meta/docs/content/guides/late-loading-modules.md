@@ -101,7 +101,7 @@ If you migrated to standalone apps, where need for Angular modules is reduced, y
 
 [Angular's guide about lazy loading in standalone apps]: https://angular.io/guide/standalone-components#routing-and-lazy-loading
 
-In there, to lazy load a route, you either dynamically import a component or many routes. If you dynamically import a component, checkout next chapter about [adding a metadata module in a component](#component). Otherwise, keep reading.
+In there, to lazy load a route, you either dynamically import a component or many routes. If you dynamically import a component, check out next chapter about [adding a metadata module in a component](#component). Otherwise, keep reading.
 
 You can add a metadata module into the `providers` of a route. For instance, let's say `/blog` routes have been associated with following `BLOG_ROUTES`:
 

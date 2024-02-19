@@ -2,7 +2,6 @@
 
 - Split guides into basics, med, advanced
 - Review next steps
-- Add your own metadata
 - Architecture
   - Resolver
   - Dependency injection
@@ -10,7 +9,6 @@
 - Testing
 - Bundle size
 - Sample apps
-- Provide your own
 - Contribute
 - Philosophy / principles
 - Why this library was born:

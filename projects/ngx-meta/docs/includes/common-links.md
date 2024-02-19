@@ -10,3 +10,4 @@
 [get started setup]: /get-started/#2-setup
 [standard module]: /built-in-modules/standard/
 [Open Graph module]: /built-in-modules/open-graph/
+[bundle size issue]: https://github.com/davidlj95/ngx/issues/112

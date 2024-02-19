@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import {
-  LATE_LOADED_METADATA_JSON,
-  provideLateLoadedMetadata,
-} from './late-loaded-metadata'
 import { NgxMetaMetadataLoaderModule } from '@davidlj95/ngx-meta/core'
 import { MetaLateLoadedComponent } from './meta-late-loaded.component'
 import { JsonPipe } from '@angular/common'
+import {
+  CUSTOM_METADATA_JSON,
+  provideCustomMetadataManager,
+} from './provide-custom-metadata-manager'
 
 @NgModule({
   declarations: [MetaLateLoadedComponent],
@@ -17,10 +17,10 @@ import { JsonPipe } from '@angular/common'
       {
         path: '',
         component: MetaLateLoadedComponent,
-        data: { meta: LATE_LOADED_METADATA_JSON },
+        data: { meta: CUSTOM_METADATA_JSON },
       },
     ]),
   ],
-  providers: [provideLateLoadedMetadata()],
+  providers: [provideCustomMetadataManager()],
 })
 export class MetaLateLoadedModule {}

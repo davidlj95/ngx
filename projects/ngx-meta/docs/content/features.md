@@ -27,11 +27,11 @@ So you can set the metadata of a route in the [route's `data`][route data] and t
 
 ### 📜 Types & documentation
 
-Typescript types are provided so you can discover what metadata can you set and what type of data each metadata accepts. Plus extensive documentation so you can leverage as much as possible of the library's power.
+Typescript types are provided, so you can discover what metadata can you set and what type of data each metadata accepts. Plus extensive documentation so you can leverage as much as possible of the library's power.
 
-### 🧩 Manage your metadata
+### 🧩 Fine-grained metadata management
 
-Thanks to the module based architecture, you can manage popular metadata using built-in library modules or provide our own. Indeed, you can decide which metadata is managed (including the library modules) to reduce the already...
+Thanks to the pluggable module based architecture, you can manage popular metadata using built-in library modules, but you can also provide our own. Learn more about that at [manage your custom metadata guide](manage-your-custom-metadata.md). Indeed, you can decide which metadata is managed (including the library modules) to reduce the already...
 
 ### 📦 Small bundle size
 

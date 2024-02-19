@@ -22,6 +22,7 @@ nav:
       - guides/metadata-values-json.md
       - guides/defaults.md
       - guides/late-loading-modules.md
+      - guides/manage-your-custom-metadata.md
   - Built-in modules:
       - Built-in modules: built-in-modules/index.md
       - built-in-modules/standard.md
@@ -114,5 +115,8 @@ markdown_extensions:
         kwds:
           case: lower
   - pymdownx.critic
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 watch:
   - includes

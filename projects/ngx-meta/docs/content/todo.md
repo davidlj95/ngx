@@ -27,3 +27,6 @@
   - PRs from forks:
     - Can pass checks
     - (optional) Can trigger deployment previews
+- Built-in modules: macros for setup part?
+  - Add code sample
+  - Specify import

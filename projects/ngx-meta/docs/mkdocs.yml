@@ -21,6 +21,7 @@ nav:
       - guides/set-metadata-using-routing.md
       - guides/metadata-values-json.md
       - guides/defaults.md
+      - guides/late-loading-modules.md
   - Built-in modules:
       - Built-in modules: built-in-modules/index.md
       - built-in-modules/standard.md
@@ -112,5 +113,6 @@ markdown_extensions:
       slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
+  - pymdownx.critic
 watch:
   - includes

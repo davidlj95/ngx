@@ -56,6 +56,10 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     --8<-- "includes/a17-app-config.md"
 
+!!! tip "No need to load all metadata modules there"
+
+    You can load metadata modules (like [Open Graph module]) later. And lazily too (if you want). So if you don't need all metadata modules to be available in all your app, you can reduce the main bundle size. Checkout the [late loading modules guide](late-loading-modules.md) for more information
+
 ## 🏷️ 3. Set some metadata
 
 ### Using the service

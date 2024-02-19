@@ -52,3 +52,9 @@ This way, everytime you set your metadata values (either using the service or th
     --8<-- "includes/a17-app-config.md"
 
 Notice how the [Typescript's `satisfies` operator][typescript-satisfies] helps again ensuring the metadata values JSON matches the expected shape. For more information check [metadata values JSON guide](metadata-values-json.md)
+
+## Next steps
+
+Library comes with some built-in modules to help you set common metadata for websites. What modules are there and what metadata they provide? Checkout next section about [built-in modules](../built-in-modules/index.md)!
+
+If you want to optimize your main bundle size, take a look at [late loading modules guide](late-loading-modules.md)

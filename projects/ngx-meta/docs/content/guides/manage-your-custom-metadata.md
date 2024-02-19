@@ -28,17 +28,16 @@ This may sound frightening, but it's not!
 You can implement it by defining a class that implements the interface:
 
 ```typescript
-import { GlobalMetadata, makeKeyValMetaDefinition, MetadataResolverOptions, NgxMetaMetadataManager, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import { makeKeyValMetaDefinition, NgxMetaMetadataManager, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 
 const JSON_PATH = ['custom', 'title']
 
 @Injectable({ providedIn: 'root' })
 class CustomTitleMetadataManager implements NgxMetaMetadataManager<string | undefined> {
-  constructor(private readonly ngxMetaMetaService: NgxMetaMetaService) {}
-
   // Convention is to name id as the JSON path to access the value from
   // the metadata values JSON
   public readonly id = JSON_PATH.join('.')
+
   public readonly resolverOptions: MetadataResolverOptions = {
     jsonPath: JSON_PATH,
     // 👇 If we want that global `title` key in the metadata values
@@ -46,6 +45,8 @@ class CustomTitleMetadataManager implements NgxMetaMetadataManager<string | unde
     //    You can skip this one if N/A
     global: 'title' satisfies keyof GlobalMetadata,
   }
+
+  constructor(private readonly ngxMetaMetaService: NgxMetaMetaService) {}
 
   // Type is constrained by specifying `<string | undefined>` above
   public set(value: string | undefined): void {
@@ -81,8 +82,7 @@ Again, don't let the scarily long name frighten you, [it doesn't bite](https://k
 It takes as argument function that creates a metadata setter given some dependencies. Call it a setter factory. Then, allows you to customize the other elements of a metadata manager.
 
 ```typescript
-import { makeMetadataManagerProviderFromSetterFactory } from '@davidlj95/ngx-meta/core'
-import { NgxMetaMetaService } from './ngx-meta-meta.service'
+import { makeKeyValMetaDefinition, makeMetadataManagerProviderFromSetterFactory, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 
 const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory(
   (ngxMetaMetaService: NgxMetaMetaService) =>
@@ -98,6 +98,11 @@ const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSe
     // JSON Path to resolve the value from the values JSON
     // Will also be used as id
     jP: ['custom', 'title'],
+
+    // 👇 If we want that global `title` key in the metadata values
+    //    JSON is used as custom title if non specific is provided
+    //    You can skip this one if N/A
+    g: 'title' satisfies keyof GlobalMetadata,
   },
 )
 ```
@@ -107,6 +112,8 @@ const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSe
 That would be it, there you have your metadata manager provider, ready to inject into your Angular's app dependencies.
 
 See the API reference of [`makeMetadataManagerProviderFromSetterFactory`](ngx-meta.makemetadatamanagerproviderfromsetterfactory.md) for more information
+
+You can also check a full example at [Angular v17 example app]'s [`provideCustomMetadataManager`](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/a17/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)
 
 ## 2. Inject it
 

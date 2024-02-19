@@ -50,7 +50,7 @@ export interface Standard {
   readonly generator?: true | null
 
   /**
-   * Sets the `#!html <meta name='application-name'>` HTML element
+   * Sets the `<meta name='application-name'>` HTML element
    *
    * Recommendations:
    * - From MDN: simple web pages shouldn't define an application name

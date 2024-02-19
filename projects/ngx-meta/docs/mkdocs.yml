@@ -23,6 +23,7 @@ nav:
       - guides/defaults.md
       - guides/late-loading-modules.md
       - guides/manage-your-custom-metadata.md
+      - guides/custom-metadata-providers-selection.md
   - Built-in modules:
       - Built-in modules: built-in-modules/index.md
       - built-in-modules/standard.md

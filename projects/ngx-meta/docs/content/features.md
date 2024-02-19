@@ -31,7 +31,7 @@ Typescript types are provided, so you can discover what metadata can you set and
 
 ### 🧩 Fine-grained metadata management
 
-Thanks to the pluggable module based architecture, you can manage popular metadata using built-in library modules, but you can also provide our own. Learn more about that at [manage your custom metadata guide](manage-your-custom-metadata.md). Indeed, you can decide which metadata is managed (including the library modules) to reduce the already...
+Thanks to the pluggable module based architecture, you can manage popular metadata using built-in library modules, but you can also provide our own. Learn more about that at [manage your custom metadata guide](manage-your-custom-metadata.md). Indeed, you can decide which specific metadata elements you want to use. Learn more in the [custom metadata providers selection guide](custom-metadata-providers-selection.md). That will actually help you reduce the already...
 
 ### 📦 Small bundle size
 

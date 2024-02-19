@@ -15,7 +15,7 @@ export interface TwitterCard {
    *
    * Used with all cards
    *
-   * Checkout {@link TwitterCardType} type for a list of constants you can use
+   * Check out {@link TwitterCardType} type for a list of constants you can use
    * to specify the card's type
    *
    * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acard, | Property specs}

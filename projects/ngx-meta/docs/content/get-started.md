@@ -4,7 +4,7 @@ Glad you're here 🥰 Let's set it up in 3 steps ⚡️
 
 ## ➕ 1. Install
 
-```
+```shell
 ng add @davidlj95/ngx-meta
 ```
 
@@ -20,7 +20,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     Open your `app.module.ts` file and add at least the core module to the `imports` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing module too. In order to set some standard `<meta>`s, let's add the [standard module].
 
-    ```typescript
+    ```typescript title="app.module.ts"
     @NgModule({
       // ...
       imports: [
@@ -42,7 +42,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     Open your `app.config.ts` file and add at least the core provider to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing provider too. In order to set some standard `<meta>`s, let's add the [standard module] provider.
 
-    ```typescript
+    ```typescript title="app.config.ts"
     export const appConfig: ApplicationConfig = {
       providers: [
         // ...
@@ -58,7 +58,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
 !!! tip "No need to load all metadata modules there"
 
-    You can load metadata modules (like [Open Graph module]) later. And lazily too (if you want). So if you don't need all metadata modules to be available in all your app, you can reduce the main bundle size. Checkout the [late loading modules guide](late-loading-modules.md) for more information
+    You can load metadata modules (like [Open Graph module]) later. And lazily too (if you want). So if you don't need all metadata modules to be available in all your app, you can reduce the main bundle size. Check out the [late loading modules guide](late-loading-modules.md) for more information
 
 ## 🏷️ 3. Set some metadata
 
@@ -82,7 +82,7 @@ If you added the routing module / provider, you can set the metadata for a page 
 
 Want to learn more about how to set metadata using the service, the routing module or both of them at once? Check the **[service](set-metadata-using-service.md) and [routing](set-metadata-using-routing.md) module guides**.
 
-To know about how to properly define the metadata values to set, checkout the **[metadata values JSON guide](metadata-values-json.md)**
+To know about how to properly define the metadata values to set, check out the **[metadata values JSON guide](metadata-values-json.md)**
 
 If you already know about all that, maybe you want to explore the **library's [built-in modules](./built-in-modules/index.md) that allow setting common metadata**.
 

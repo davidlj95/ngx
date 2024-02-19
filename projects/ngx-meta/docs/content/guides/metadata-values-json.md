@@ -14,7 +14,7 @@ For instance, you may want the title of your page to be used for the standard's 
 
 ### Global metadata
 
-Global metadata values are values that will be used by many metadata elements set by [built-in modules](../built-in-modules/index.md). **The type [`GlobalMetadata`](ngx-meta.globalmetadata.md) collects them all**. The type specifies their names and which [built-in metadata modules](../built-in-modules/index.md) will use those values. Checkout the [type's API reference here](ngx-meta.globalmetadata.md) or in your IDE to learn more.
+Global metadata values are values that will be used by many metadata elements set by [built-in modules](../built-in-modules/index.md). **The type [`GlobalMetadata`](ngx-meta.globalmetadata.md) collects them all**. The type specifies their names and which [built-in metadata modules](../built-in-modules/index.md) will use those values. Check out the [type's API reference here](ngx-meta.globalmetadata.md) or in your IDE to learn more.
 
 By convention, those are placed as keys in the JSON object used to set the metadata values (either calling the service or in the route's data)
 
@@ -71,6 +71,6 @@ By convention, each module exports a type named `XMetadata` (where `X` is the na
 
 ## Next steps
 
-Library comes with some built-in modules to help you set common metadata for websites. What modules are there and what metadata they provide? Checkout next section about [built-in modules](../built-in-modules/index.md)!
+Library comes with some built-in modules to help you set common metadata for websites. What modules are there and what metadata they provide? Check out next section about [built-in modules](../built-in-modules/index.md)!
 
-Do you want to use some metadata values as default for all pages? Checkout the [defaults guide](defaults.md)
+Do you want to use some metadata values as default for all pages? Check out the [defaults guide](defaults.md)

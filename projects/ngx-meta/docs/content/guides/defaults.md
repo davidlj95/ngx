@@ -12,7 +12,7 @@ This way, everytime you set your metadata values (either using the service or th
 
     Open your `app.module.ts` where [`NgxMetaCoreModule`](ngx-meta.ngxmetacoremodule.md) is imported. Provide your default values by calling [`NgxMetaCoreModule.forRoot`](ngx-meta.ngxmetacoremodule.forroot.md) with the options object.
 
-    ```typescript
+    ```typescript title="app.module.ts"
     @NgModule({
       // ...
       imports: [
@@ -36,7 +36,7 @@ This way, everytime you set your metadata values (either using the service or th
 
     Open your `app.config.ts` file where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided. Provide your default values by adding a call to [`withNgxMetaDefaults`](ngx-meta.withngxmetadefaults.md) with the default values to set.
 
-    ```typescript
+    ```typescript title="app.config.ts"
     export const appConfig: ApplicationConfig = {
       providers: [
         // ...
@@ -55,6 +55,6 @@ Notice how the [Typescript's `satisfies` operator][typescript-satisfies] helps a
 
 ## Next steps
 
-Library comes with some built-in modules to help you set common metadata for websites. What modules are there and what metadata they provide? Checkout next section about [built-in modules](../built-in-modules/index.md)!
+Library comes with some built-in modules to help you set common metadata for websites. What modules are there and what metadata they provide? Check out next section about [built-in modules](../built-in-modules/index.md)!
 
 If you want to optimize your main bundle size, take a look at [late loading modules guide](late-loading-modules.md)

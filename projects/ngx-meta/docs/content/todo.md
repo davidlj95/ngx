@@ -1,11 +1,29 @@
 # TODO
 
+- Split guides into basics, med, advanced
+- Review next steps
 - Add your own metadata
+- Architecture
+  - Resolver
+  - Dependency injection
+  - Router strategy
+- Testing
+- Bundle size
+- Sample apps
+- Provide your own
 - Contribute
 - Philosophy / principles
 - Why this library was born:
   - What I missed in existing libs
   - Comparison amongst existing libraries
-- API reference
-- Docs site
+- Quirks:
+  - `node_modules` in project, Karma complains
+  - Semantic Release locally
+  - Restart TS service
 - (idea): Short YouTube video explaining getting started
+- Ensure open source contributions can be performed
+  - Contributing document
+  - Code of conduct
+  - PRs from forks:
+    - Can pass checks
+    - (optional) Can trigger deployment previews

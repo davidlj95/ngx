@@ -18,21 +18,21 @@ Specifically, manages [basic](https://ogp.me/#metadata) and [optional](https://o
 
 === "For non-standalone, module-based apps"
 
-    Add [`NgxMetaOpenGraphModule`](ngx-meta.ngxmetaopengraphmodule.md) to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
+    Add [`NgxMetaOpenGraphModule`](ngx-meta.ngxmetaopengraphmodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
 
 === "For standalone, module-free apps"
 
-    Add [`provideNgxMetaOpenGraph()`](ngx-meta.providengxmetaopengraph.md) to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
+    Add [`provideNgxMetaOpenGraph()`](ngx-meta.providengxmetaopengraph.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
 
 ### Profile
 
 Manages [profile](https://ogp.me/#type_profile) non-vertical metadata
 
 === "For non-standalone, module-based apps"
-Add [`NgxMetaOpenGraphProfileModule`](ngx-meta.ngxmetaopengraphprofilemodule.md) to your module-based app's `app.module.ts` file. Checkout [get started setup] for more details.
+Add [`NgxMetaOpenGraphProfileModule`](ngx-meta.ngxmetaopengraphprofilemodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
 
 === "For standalone, module-free apps"
-Add [`provideNgxMetaOpenGraphProfile()`](ngx-meta.providengxmetaopengraphprofile.md) to your standalone app's `app.config.ts` file providers. Checkout [get started setup] for more details.
+Add [`provideNgxMetaOpenGraphProfile()`](ngx-meta.providengxmetaopengraphprofile.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
 
 ## Types
 

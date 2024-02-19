@@ -39,7 +39,7 @@ export interface OpenGraphProfile {
    * Allowing a string here too, so you can specify another gender than the ones
    * specified by standard (male, female)
    *
-   * Checkout {@link OpenGraphProfileGender} type for constants you can use to
+   * Check out {@link OpenGraphProfileGender} type for constants you can use to
    * specify standard values for this field
    *
    * - {@link https://ogp.me/#type_profile:~:text=profile%3Agender%20%2D%20enum | Property specs}

@@ -1,3 +1,117 @@
+## [`ngx-meta` v1.0.0-alpha.39](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.38...ngx-meta-v1.0.0-alpha.39) (2024-02-19)
+
+### Documentation
+
+- abstract standard / open graph module links ([#327](https://github.com/davidlj95/ngx/issues/327)) ([7b12c7d](https://github.com/davidlj95/ngx/commit/7b12c7d8dfe670719d19bfdb75220b379bf35c48))
+- add API Reference docs ([#278](https://github.com/davidlj95/ngx/issues/278)) ([822dc4f](https://github.com/davidlj95/ngx/commit/822dc4fa7cc476572a7b1404bbc317dbf979affe))
+- add custom metadata providers selection guide ([#336](https://github.com/davidlj95/ngx/issues/336)) ([d513e8f](https://github.com/davidlj95/ngx/commit/d513e8f457000f908d6c5a6740bb5950ac560a51))
+- add defaults, routing, service guide ([#318](https://github.com/davidlj95/ngx/issues/318)) ([fabf172](https://github.com/davidlj95/ngx/commit/fabf172a590e02411fe015ec8d35026579f2b991)), closes [#319](https://github.com/davidlj95/ngx/issues/319)
+- add global / module metadata guide ([#317](https://github.com/davidlj95/ngx/issues/317)) ([3851a18](https://github.com/davidlj95/ngx/commit/3851a18ba4eb122bcf92cac4ef79fd152d74201f))
+- add guide about managing custom metadata ([#333](https://github.com/davidlj95/ngx/issues/333)) ([cb1c51f](https://github.com/davidlj95/ngx/commit/cb1c51f9ccfb479894fd4148695e8753e7e282e4))
+- add home, get started, features & built-in mods ([#267](https://github.com/davidlj95/ngx/issues/267)) ([1d51455](https://github.com/davidlj95/ngx/commit/1d51455394fb31a8c4620897f00bf844e74bbb86))
+- add late loading modules guide ([#330](https://github.com/davidlj95/ngx/issues/330)) ([ee7716d](https://github.com/davidlj95/ngx/commit/ee7716de4482ccc9ec3447530ff16d861a879d06))
+- add Material for Mkdocs / API Extractor badges ([#280](https://github.com/davidlj95/ngx/issues/280)) ([5b323c3](https://github.com/davidlj95/ngx/commit/5b323c366c915c9049e7b5ca2f9348d02751dc7e))
+- add metadata values JSON guide ([#323](https://github.com/davidlj95/ngx/issues/323)) ([6d15396](https://github.com/davidlj95/ngx/commit/6d15396d9946fed91badd6993614e04333eab7dd))
+- add next steps to routing / defaults ref ([#328](https://github.com/davidlj95/ngx/issues/328)) ([93dc9d1](https://github.com/davidlj95/ngx/commit/93dc9d1fd37493ec397f1952dc63fdb3d5adf93b))
+- add README.md and autolinks ([#326](https://github.com/davidlj95/ngx/issues/326)) ([2023569](https://github.com/davidlj95/ngx/commit/2023569ff7d68f9d7d1b9f096af89559528abb59))
+- add release tags to providers ([#302](https://github.com/davidlj95/ngx/issues/302)) ([df91c4e](https://github.com/davidlj95/ngx/commit/df91c4e2dcfd66062ba05d83aab51753d6e0fbe4))
+- comments all classes, ifaces & type aliases ([#293](https://github.com/davidlj95/ngx/issues/293)) ([1285a81](https://github.com/davidlj95/ngx/commit/1285a8142bf82f1f139920e3c489f5e1d4f764ec))
+- customize Material for mkdocs ([#264](https://github.com/davidlj95/ngx/issues/264)) ([e45bc40](https://github.com/davidlj95/ngx/commit/e45bc400db289b30a05bd4d38acfb2a97fd6e4cb))
+- fix module setup tabs ([#324](https://github.com/davidlj95/ngx/issues/324)) ([dff1aff](https://github.com/davidlj95/ngx/commit/dff1aff7a7772b100ac67199a2e569f3a867f4b6))
+- inline element wrong lang syntax ([0289ff5](https://github.com/davidlj95/ngx/commit/0289ff583984adc6c193c0af35869629cc854999))
+- link features to custom metadata guide ([4f890ae](https://github.com/davidlj95/ngx/commit/4f890aeef8bc9acbc6251cf35fa526b0a384422f))
+- link module types to API Reference ([#279](https://github.com/davidlj95/ngx/issues/279)) ([ed4845c](https://github.com/davidlj95/ngx/commit/ed4845ce0d638ccbb82a09429c8efcfd27c662d5))
+- link to md doc / supports instead of compat ([#269](https://github.com/davidlj95/ngx/issues/269)) ([3f4b96d](https://github.com/davidlj95/ngx/commit/3f4b96d0f1bbe0afed3105a8839f9ea1f1195f85))
+- mark internal APIs as internal ([#292](https://github.com/davidlj95/ngx/issues/292)) ([51d0c32](https://github.com/davidlj95/ngx/commit/51d0c3259d62620e9136f03b4d35b68b71b26597))
+- point to sample in custom metadata guide ([#335](https://github.com/davidlj95/ngx/issues/335)) ([9808cc2](https://github.com/davidlj95/ngx/commit/9808cc2396f2d037856f5a63dbaa662322a40f5b))
+- public functions ([#299](https://github.com/davidlj95/ngx/issues/299)) ([7b60b4a](https://github.com/davidlj95/ngx/commit/7b60b4aa9d13f71dba8d66adaf9b9ce38fd44732))
+- setup initial mkdocs & deployment ([#257](https://github.com/davidlj95/ngx/issues/257)) ([e4951da](https://github.com/davidlj95/ngx/commit/e4951da40aed4928be437b7344808fefed6c1787))
+- specify code file as title when appropriate ([#332](https://github.com/davidlj95/ngx/issues/332)) ([8428618](https://github.com/davidlj95/ngx/commit/8428618340259950e4e7d53958856f5b6ae2622d))
+- specify release tag for everything but providers ([#301](https://github.com/davidlj95/ngx/issues/301)) ([7594f6b](https://github.com/davidlj95/ngx/commit/7594f6be0436e4e3bf68e488560423ada2018b9c))
+- update ngx-meta desc ([#266](https://github.com/davidlj95/ngx/issues/266)) ([f3508c4](https://github.com/davidlj95/ngx/commit/f3508c448231894b4155cee7df211f243f24d4ea))
+
+### Style
+
+- remove commas in tsconfig.json files ([11ab02f](https://github.com/davidlj95/ngx/commit/11ab02f85c6df68116580696a9f4f0f378f9bba1))
+
+### Miscellaneous Chores
+
+- avoid importing EventType to compile with v17.1 ([#246](https://github.com/davidlj95/ngx/issues/246)) ([5491efe](https://github.com/davidlj95/ngx/commit/5491efea94555646ca65737c3c3981a8dc712cd8))
+- fix wrong version in renovate conf ([d7d23a4](https://github.com/davidlj95/ngx/commit/d7d23a446563bfc710ba5ad7ea0eb26df1e7005e))
+- improve CI docs step name ([a40a527](https://github.com/davidlj95/ngx/commit/a40a5279ce132e6cea9a619d15732e05b8e7bafa))
+- **release:** update CHANGELOG.md ([#248](https://github.com/davidlj95/ngx/issues/248)) ([dfd3d96](https://github.com/davidlj95/ngx/commit/dfd3d9643efb1dd4c3f8660e57e65aa626ee9a14))
+- some Twitter Card renamings ([#270](https://github.com/davidlj95/ngx/issues/270)) ([500c439](https://github.com/davidlj95/ngx/commit/500c439e47d6a19469f4ca81c66493a37057285f))
+- update pkg.json homepage ([41eccb7](https://github.com/davidlj95/ngx/commit/41eccb727afcb55b85fba9d42d9e69cf455dde4f))
+
+### Code Refactoring
+
+- add "setter" suffix to metadata abst class ([#320](https://github.com/davidlj95/ngx/issues/320)) ([f6027c2](https://github.com/davidlj95/ngx/commit/f6027c24d9ae18b8e9ad7db14ab5c808ed268488))
+- hide GLOBAL\_ constant APIs ([#300](https://github.com/davidlj95/ngx/issues/300)) ([8c21c1e](https://github.com/davidlj95/ngx/commit/8c21c1e58369412f44f7ad2210315a4cfa475a2f))
+- metadata setter -> manager (less ambiguous) ([#329](https://github.com/davidlj95/ngx/issues/329)) ([c6aeee0](https://github.com/davidlj95/ngx/commit/c6aeee0054e7d8fecd4feaa3079a50020fcba625))
+
+### Tests
+
+- rename late loaded metadata into custom ([#334](https://github.com/davidlj95/ngx/issues/334)) ([7bbf07e](https://github.com/davidlj95/ngx/commit/7bbf07e60a33d17017999d2148334d6d40445f13))
+
+### Build System
+
+- add API Extractor & Documenter ([#271](https://github.com/davidlj95/ngx/issues/271)) ([6f2447e](https://github.com/davidlj95/ngx/commit/6f2447e7091ebf2ab4d9be6308aff7b52be02f9d))
+- **deps-dev:** bump pnpm/action-setup to v3.0.0 ([#312](https://github.com/davidlj95/ngx/issues/312)) ([1fe6e09](https://github.com/davidlj95/ngx/commit/1fe6e0920856dd5aca064d8149326272a7db2377))
+- **deps-dev:** pin actions/setup-python ([600cdd3](https://github.com/davidlj95/ngx/commit/600cdd3e40c09940b136a53d08602466a91fd42b))
+- **deps-dev:** pin pnpm, cache, cypress actions ([#285](https://github.com/davidlj95/ngx/issues/285)) ([cf6dc66](https://github.com/davidlj95/ngx/commit/cf6dc663b3820c348ccd9666b8429d51cf486e80))
+- **deps-dev:** update actions/download-artifact digest to eaceaf8 ([a860469](https://github.com/davidlj95/ngx/commit/a86046955af2344bafcd34da5876f8c2515c4ca6))
+- **deps-dev:** update actions/setup-node digest to 60edb5d ([7e75ed8](https://github.com/davidlj95/ngx/commit/7e75ed82098212835071b8426c3801ef65d87d3d))
+- **deps-dev:** update actions/upload-artifact digest to 5d5d22a ([7704afb](https://github.com/davidlj95/ngx/commit/7704afbce0856718dc27ccfa3a35aedc5e782023))
+- **deps-dev:** update commitlint monorepo ([247d90a](https://github.com/davidlj95/ngx/commit/247d90ae4a078616e138f9c17343ec51beca1572))
+- **deps-dev:** update dependency @microsoft/api-documenter to v7.23.21 ([8e84a41](https://github.com/davidlj95/ngx/commit/8e84a415b4b9e505993053102af26ceddcb55ab8))
+- **deps-dev:** update dependency @microsoft/api-documenter to v7.23.23 ([850f14b](https://github.com/davidlj95/ngx/commit/850f14bb9dba98d57593d3b005217c95930cdb0d))
+- **deps-dev:** update dependency @microsoft/api-documenter to v7.23.24 ([6cb64dc](https://github.com/davidlj95/ngx/commit/6cb64dc510e59dd21744127a93efea6f4a5e1337))
+- **deps-dev:** update dependency @microsoft/api-extractor to v7.39.5 ([f27900b](https://github.com/davidlj95/ngx/commit/f27900bc08d592eaaa368728302d21dd11339ff8))
+- **deps-dev:** update dependency @microsoft/api-extractor to v7.40.0 ([400936d](https://github.com/davidlj95/ngx/commit/400936d6856214eeeeef37a89d0b4bf8a8af613b))
+- **deps-dev:** update dependency @microsoft/api-extractor to v7.40.1 ([076bb6b](https://github.com/davidlj95/ngx/commit/076bb6b5b48e7f5a8b0efc99bada94efccf43f8d))
+- **deps-dev:** update dependency @microsoft/api-extractor to v7.40.2 ([9c9014e](https://github.com/davidlj95/ngx/commit/9c9014ee3e4ccf8352b52eca04c2cf8f08361c98))
+- **deps-dev:** update dependency cypress to v13.6.4 ([257d894](https://github.com/davidlj95/ngx/commit/257d8940cef53765adf66d87ac9b2bbac9b63f76))
+- **deps-dev:** update dependency husky to v9.0.10 ([72eed15](https://github.com/davidlj95/ngx/commit/72eed15f9da9a41e0b53fe2e1188cff74ced9b9b))
+- **deps-dev:** update dependency husky to v9.0.11 ([4937907](https://github.com/davidlj95/ngx/commit/49379076a3ca8ef0bb5dc8dc0a02d0b6a34210db))
+- **deps-dev:** update dependency husky to v9.0.7 ([8d9b7fb](https://github.com/davidlj95/ngx/commit/8d9b7fb8377bce13687d6b2b60a64fc6c82f74c1))
+- **deps-dev:** update dependency husky to v9.0.9 ([2c4ebc4](https://github.com/davidlj95/ngx/commit/2c4ebc401b055d06450b1e27b07b583d82b4313e))
+- **deps-dev:** update dependency jasmine-core to v5.1.2 ([9829e70](https://github.com/davidlj95/ngx/commit/9829e70065d4a6f21e97779f6db3bbc9b8e825e4))
+- **deps-dev:** update dependency lint-staged to v15.2.1 ([67e5684](https://github.com/davidlj95/ngx/commit/67e5684b562181ef407280685b3e9fc567f75e90))
+- **deps-dev:** update dependency lint-staged to v15.2.2 ([9d7e23a](https://github.com/davidlj95/ngx/commit/9d7e23aaa30c28efee67335d72e9f243793344fe))
+- **deps-dev:** update dependency mkdocs-git-revision-date-localized-plugin to v1.2.4 ([8aca221](https://github.com/davidlj95/ngx/commit/8aca2211b14f15f39e04063e5a73e0b6fe1fa268))
+- **deps-dev:** update dependency mkdocs-material to v9.5.10 ([374a262](https://github.com/davidlj95/ngx/commit/374a2622f254a50c77e4f9ba50fed76fe54160a9))
+- **deps-dev:** update dependency mkdocs-material to v9.5.7 ([2ed322d](https://github.com/davidlj95/ngx/commit/2ed322dc3c347f8d5f0f4e76502fa2a4874cba0b))
+- **deps-dev:** update dependency mkdocs-material to v9.5.8 ([077974e](https://github.com/davidlj95/ngx/commit/077974e39c7599dcf772fe7b069b0fc5ad73d4ac))
+- **deps-dev:** update dependency mkdocs-material to v9.5.9 ([cc4ff7b](https://github.com/davidlj95/ngx/commit/cc4ff7b10f21dc35abdc4d12d36afd9cd587aeac))
+- **deps-dev:** update dependency ng-packagr to v17.2.0 ([f391af9](https://github.com/davidlj95/ngx/commit/f391af9e60fede592993797eebe3e9843eb00e99))
+- **deps-dev:** update dependency node to v20.11.1 ([079840f](https://github.com/davidlj95/ngx/commit/079840f5b4fe1d0e548d39fdf6333f607e8cc688))
+- **deps-dev:** update dependency prettier to v3.2.5 ([42f1312](https://github.com/davidlj95/ngx/commit/42f1312bba4516cca7d497022636d5f5e34a333b))
+- **deps-dev:** update dependency semantic-release to v23.0.1 ([111c935](https://github.com/davidlj95/ngx/commit/111c9358d81f6dd1434b941d895305f65d5453e4))
+- **deps-dev:** update dependency semantic-release to v23.0.2 ([9193729](https://github.com/davidlj95/ngx/commit/9193729a30b5fe393eb84110e909008c66961736))
+- **deps-dev:** update peter-evans/create-pull-request action to v6 ([#263](https://github.com/davidlj95/ngx/issues/263)) ([3a73a02](https://github.com/davidlj95/ngx/commit/3a73a02a58a014c8cceb684a92a9c75373f4210a))
+- **deps-dev:** update pnpm to v8.15.0 ([78d796f](https://github.com/davidlj95/ngx/commit/78d796f6aac1ddbc5e9cadbd7621d7bf8b2bcced))
+- **deps-dev:** update pnpm to v8.15.1 ([45a2779](https://github.com/davidlj95/ngx/commit/45a277949b6a4f783b7fa6020011f53b33156878))
+- **deps-dev:** update pnpm to v8.15.3 ([09afe96](https://github.com/davidlj95/ngx/commit/09afe963300ef43dcd6623c9404da3fb7a7cbaa5))
+- **deps-dev:** update python docker tag to v3.12.2 ([057dee1](https://github.com/davidlj95/ngx/commit/057dee1042e2b7083482d5b649debbf5eada3c18))
+- **deps-dev:** update typescript-eslint monorepo to v6.20.0 ([0e5dac5](https://github.com/davidlj95/ngx/commit/0e5dac53a26fc4112a0e4e7a342437aa8d82e2bf))
+- **deps-dev:** update typescript-eslint monorepo to v6.21.0 ([644f641](https://github.com/davidlj95/ngx/commit/644f64177a3b243bfa74f4e7dee2dff142211225))
+- **deps-dev:** update typescript-eslint monorepo to v7 ([54e6c0d](https://github.com/davidlj95/ngx/commit/54e6c0d1684ea281346c6b8794973606eb6c57e1))
+- **deps-dev:** use v for cypress GH action ([#313](https://github.com/davidlj95/ngx/issues/313)) ([e56ac6a](https://github.com/davidlj95/ngx/commit/e56ac6abb0c35d14c744f16cb386016c80a79952))
+- **deps:** pin dependencies ([#316](https://github.com/davidlj95/ngx/issues/316)) ([00180ed](https://github.com/davidlj95/ngx/commit/00180eddb51ef16ca2b0e0b530a853d50d710640))
+- **deps:** update [@angular](https://github.com/angular) deps to v17.1.3 ([#304](https://github.com/davidlj95/ngx/issues/304)) ([586886b](https://github.com/davidlj95/ngx/commit/586886b14bef9e03e3ba47fa544a378f53186478))
+- **deps:** update angular monorepo ([#250](https://github.com/davidlj95/ngx/issues/250)) ([f629662](https://github.com/davidlj95/ngx/commit/f629662b70ca1365d741fcdada4b1591bf814cf7))
+- **deps:** update Angular to v17.2 ([#314](https://github.com/davidlj95/ngx/issues/314)) ([ffe5486](https://github.com/davidlj95/ngx/commit/ffe5486a23a8c894f5cb568aebfc18ba0d4dd6ca))
+- **deps:** update dependency zone.js to v0.14.4 ([0452b7c](https://github.com/davidlj95/ngx/commit/0452b7cac67d5fc40f105c1a2a99f3097d7d61e2))
+- husky v9 deprecated install ([e1fed81](https://github.com/davidlj95/ngx/commit/e1fed81929bc23510ae4c431d12bce2015c206c6))
+- ignore generated API docs ([#325](https://github.com/davidlj95/ngx/issues/325)) ([286f2cf](https://github.com/davidlj95/ngx/commit/286f2cf66a09795c3f82db91fd202e009d70afa9))
+- re-arrange ignore files ([#256](https://github.com/davidlj95/ngx/issues/256)) ([c097e41](https://github.com/davidlj95/ngx/commit/c097e41a3c5189cc2a5a652b4deabd8f8fa96ce1))
+- remove .python-version file ([#315](https://github.com/davidlj95/ngx/issues/315)) ([5a40951](https://github.com/davidlj95/ngx/commit/5a40951a19c6d40e10aef8ea9daf5e6e53acbe6c))
+
+### Continuous (Integration|Deployment)
+
+- move tsc to build workflow ([#276](https://github.com/davidlj95/ngx/issues/276)) ([7ac26de](https://github.com/davidlj95/ngx/commit/7ac26de7a9ef264450ada71afc9d1a4a2e362235))
+- refer to proper build artifact ([#277](https://github.com/davidlj95/ngx/issues/277)) ([da6f83e](https://github.com/davidlj95/ngx/commit/da6f83eb6bcb77d924021ddebdcabcf67ec28376))
+
 ## [`ngx-meta` v1.0.0-alpha.38](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.37...ngx-meta-v1.0.0-alpha.38) (2024-01-27)
 
 ### Reverts

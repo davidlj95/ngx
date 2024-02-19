@@ -20,8 +20,8 @@ export const ROUTES = {
     linkId: undefined,
   },
   metaLateLoaded: {
-    path: 'meta-late-loaded',
-    displayName: 'Meta late loaded',
+    path: 'meta-late-loaded-custom',
+    displayName: 'Meta late loaded + custom',
     linkId: undefined,
   },
 }

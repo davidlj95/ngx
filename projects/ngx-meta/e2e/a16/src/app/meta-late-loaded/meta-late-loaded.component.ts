@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { provideLateLoadedMetadata } from './late-loaded-metadata'
+import { provideCustomMetadataManager } from './provide-custom-metadata-manager'
 
 @Component({
   selector: 'app-meta-late-loaded',
@@ -12,6 +12,6 @@ export class MetaLateLoadedComponent {
 
   constructor(activatedRoute: ActivatedRoute) {
     this.routeData = activatedRoute.snapshot.data
-    this.providerSourceCode = provideLateLoadedMetadata.toString()
+    this.providerSourceCode = provideCustomMetadataManager.toString()
   }
 }

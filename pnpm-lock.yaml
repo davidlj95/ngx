@@ -71,8 +71,8 @@ devDependencies:
     specifier: 18.6.2
     version: 18.6.2
   '@microsoft/api-documenter':
-    specifier: 7.23.24
-    version: 7.23.24(@types/node@20.9.4)
+    specifier: 7.23.25
+    version: 7.23.25(@types/node@20.9.4)
   '@microsoft/api-extractor':
     specifier: 7.40.3
     version: 7.40.3(@types/node@20.9.4)
@@ -2609,27 +2609,17 @@ packages:
       call-bind: 1.0.5
     dev: true
 
-  /@microsoft/api-documenter@7.23.24(@types/node@20.9.4):
-    resolution: {integrity: sha512-mig/L2g3geTN+rkJynyu2yFBvS6s/v5Q5OqAjwzYE/tNiBDHj+81qKTB/3ib94FNU0g5U4l+DsVkDtHwoN37Hw==}
+  /@microsoft/api-documenter@7.23.25(@types/node@20.9.4):
+    resolution: {integrity: sha512-zb7wm2l5n+DDkU1P9D9px9dpbzB8WWWFRmIyJweCVjyAX12dNeoqHS9kr4LiOfJcDjpdRJT2zPU0vNqMpkSLWA==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.10(@types/node@20.9.4)
+      '@microsoft/api-extractor-model': 7.28.11(@types/node@20.9.4)
       '@microsoft/tsdoc': 0.14.2
-      '@rushstack/node-core-library': 3.66.1(@types/node@20.9.4)
+      '@rushstack/node-core-library': 4.0.0(@types/node@20.9.4)
       '@rushstack/ts-command-line': 4.17.2
       colors: 1.2.5
       js-yaml: 3.13.1
       resolve: 1.22.8
-    transitivePeerDependencies:
-      - '@types/node'
-    dev: true
-
-  /@microsoft/api-extractor-model@7.28.10(@types/node@20.9.4):
-    resolution: {integrity: sha512-5ThitnV04Jbo0337Q0/VOjeGdx0OiduGgx4aGzfD6gsTSppYCPQjm2eIygRfc7w+XIP33osAZsWHAOo419PGQg==}
-    dependencies:
-      '@microsoft/tsdoc': 0.14.2
-      '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.66.1(@types/node@20.9.4)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
@@ -3179,24 +3169,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.3
-    dev: true
-
-  /@rushstack/node-core-library@3.66.1(@types/node@20.9.4):
-    resolution: {integrity: sha512-ker69cVKAoar7MMtDFZC4CzcDxjwqIhFzqEnYI5NRN/8M3om6saWCVx/A7vL2t/jFCJsnzQplRDqA7c78pytng==}
-    peerDependencies:
-      '@types/node': '*'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-    dependencies:
-      '@types/node': 20.9.4
-      colors: 1.2.5
-      fs-extra: 7.0.1
-      import-lazy: 4.0.0
-      jju: 1.4.0
-      resolve: 1.22.8
-      semver: 7.5.4
-      z-schema: 5.0.5
     dev: true
 
   /@rushstack/node-core-library@4.0.0(@types/node@20.9.4):

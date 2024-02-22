@@ -1,23 +1,29 @@
 # TODO
 
-- Split guides into basics, med, advanced
-- Review next steps
-- Architecture
-  - Resolver
-  - Dependency injection
-  - Router strategy
-- Testing
-- Bundle size
-- Sample apps
-- Contribute
-- Quirks:
-  - `node_modules` in project, Karma complains
-  - Semantic Release locally
-  - Restart TS service
-- (idea): Short YouTube video explaining getting started
-- Ensure open source contributions can be performed
-  - Contributing document
-  - PRs from forks:
-    - Can pass checks
-    - (optional) Can trigger deployment previews
-- Set just one metadata
+- General documentation
+  - Split guides into basics, med, advanced?
+  - Review next steps
+  - Architecture
+    - Resolver
+    - Dependency injection
+    - Router strategy
+  - Sample apps
+  - Bundle size
+- Contributions
+  - PRs from forks
+    - Pass checks
+    - Can't read secrets
+    - (optional) Can trigger doc preview deploys
+  - Docs
+    - CONTRIBUTING.md
+      - Include in docs site
+    - Testing
+    - Quirks:
+      - `node_modules` in project, Karma complains
+      - Semantic Release locally
+      - Restart TS service
+- Features
+  - Set just one metadata
+- Pre-release
+  - Look for feedback / stars
+- Release 1.0.0

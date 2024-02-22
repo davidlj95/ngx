@@ -102,6 +102,7 @@ const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSe
   {
     // Dependencies to pass to the setter factory
     d: [NgxMetaMetaService],
+    
     // JSON Path to resolve the value from the values JSON
     // Will also be used as id
     jP: ['custom', 'title'],

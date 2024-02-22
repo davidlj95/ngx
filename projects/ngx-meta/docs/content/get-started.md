@@ -21,6 +21,10 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
     Open your `app.module.ts` file and add at least the core module to the `imports` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing module too. In order to set some standard `<meta>`s, let's add the [standard module].
 
     ```typescript title="app.module.ts"
+    import {NgxMetaCoreModule} from '@davidlj95/ngx-meta/core'
+    import {NgxMetaRoutingModule} from '@davidlj95/ngx-meta/routing'
+    import {NgxMetaStandardModule} from '@davidlj95/ngx-meta/standard'
+
     @NgModule({
       // ...
       imports: [
@@ -43,7 +47,12 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
     Open your `app.config.ts` file and add at least the core provider to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing provider too. In order to set some standard `<meta>`s, let's add the [standard module] provider.
 
     ```typescript title="app.config.ts"
+    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
+    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
+    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard'
+
     export const appConfig: ApplicationConfig = {
+      // ...
       providers: [
         // ...
         provideNgxMetaCore(),

@@ -16,17 +16,57 @@ To set the Twitter Card type or the basic _summary_ or _summary large_ cards, yo
 
 === "For non-standalone, module-based apps"
 
+    --8<-- "includes/module-apps-explanation.md"
+
     Add [`NgxMetaTwitterCardModule`](ngx-meta.ngxmetatwittercardmodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
+
+    ```typescript title="app.module.ts"
+    import {NgxMetaTwitterCardModule} from '@davidlj95/ngx-meta/twitter-card';
+
+    @NgModule({
+      // ...
+      imports: [
+        // ...
+        NgxMetaCoreModule.forRoot(),
+        NgxMetaRoutingModule.forRoot(),
+        NgxMetaTwitterCardModule,
+        // ...
+      ],
+      // ...
+    })
+    export class AppModule {}
+    ```
 
 === "For standalone, module-free apps"
 
+    --8<-- "includes/standalone-apps-explanation.md"
+
     Add [`provideNgxMetaTwitterCard()`](ngx-meta.providengxmetatwittercard.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
 
-## Types
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaTwitterCard} from '@davidlj95/ngx-meta/twitter-card';
 
-Following Typescript types provide you with all implemented metadata:
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaTwitterCard(),
+        // ...
+      ],
+    }
+    ```
 
-- [`TwitterCardMetadata`](ngx-meta.twittercard.md)
+## Type
+
+Following Typescript type provides you with all implemented metadata you can set:
+
+```typescript
+import { TwitterCardMetadata } from '@davidlj95/ngx-meta/twitter-card'
+```
+
+[`TwitterCardMetadata` API Reference](ngx-meta.twittercardmetadata.md)
 
 ## Resources
 

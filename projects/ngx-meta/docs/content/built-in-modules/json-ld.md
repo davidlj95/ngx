@@ -12,17 +12,57 @@ The module allows you to embed a JSON-LD object inside a `#!html <script>` tag (
 
 === "For non-standalone, module-based apps"
 
+    --8<-- "includes/module-apps-explanation.md"
+
     Add [`NgxMetaJsonLdModule`](ngx-meta.ngxmetajsonldmodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
+
+    ```typescript title="app.module.ts"
+    import {NgxMetaJsonLdModule} from '@davidlj95/ngx-meta/json-ld';
+
+    @NgModule({
+      // ...
+      imports: [
+        // ...
+        NgxMetaCoreModule.forRoot(),
+        NgxMetaRoutingModule.forRoot(),
+        NgxMetaJsonLdModule,
+        // ...
+      ],
+      // ...
+    })
+    export class AppModule {}
+    ```
 
 === "For standalone, module-free apps"
 
+    --8<-- "includes/standalone-apps-explanation.md"
+
     Add [`provideNgxMetaJsonLd()`](ngx-meta.providengxmetajsonld.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
 
-## Types
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaJsonLd} from '@davidlj95/ngx-meta/json-ld';
 
-Following Typescript types provide you with all implemented metadata:
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaJsonLd(),
+        // ...
+      ],
+    }
+    ```
 
-- [`JsonLdMetadata`](ngx-meta.jsonldmetadata.md)
+## Type
+
+Following Typescript type provides you with all implemented metadata you can set:
+
+```typescript
+import { JsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
+```
+
+[`JsonLdMetadata` API Reference](ngx-meta.jsonldmetadata.md)
 
 ## Resources
 

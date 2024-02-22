@@ -10,17 +10,57 @@ Depending on what metadata you need to set, add one of more of the following mod
 
 === "For non-standalone, module-based apps"
 
+    --8<-- "includes/module-apps-explanation.md"
+
     Add [`NgxMetaStandardModule`](ngx-meta.ngxmetastandardmodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
+
+    ```typescript title="app.module.ts"
+    import {NgxMetaStandardModule} from '@davidlj95/ngx-meta/standard';
+
+    @NgModule({
+      // ...
+      imports: [
+        // ...
+        NgxMetaCoreModule.forRoot(),
+        NgxMetaRoutingModule.forRoot(),
+        NgxMetaStandardModule,
+        // ...
+      ],
+      // ...
+    })
+    export class AppModule {}
+    ```
 
 === "For standalone, module-free apps"
 
+    --8<-- "includes/standalone-apps-explanation.md"
+
     Add [`provideNgxMetaStandard()`](ngx-meta.providengxmetastandard.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
 
-## Types
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard';
 
-Following Typescript types provide you with all implemented metadata:
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaStandard(),
+        // ...
+      ],
+    }
+    ```
 
-- [`StandardMetadata`](ngx-meta.standardmetadata.md)
+## Type
+
+Following Typescript type provides you with all implemented metadata you can set:
+
+```typescript
+import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
+```
+
+[`StandardMetadata` API Reference](ngx-meta.standardmetadata.md)
 
 ## Resources
 

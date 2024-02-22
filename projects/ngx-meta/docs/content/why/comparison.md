@@ -110,7 +110,7 @@ It is certainly a better option than installing a poorly maintained library. But
     | ⚙️❗️| Can be done but will require some work |
     | ❌ | Not possible in analysed version |
 
-### By common set metadata groups
+## By common metadata groups
 
 | Built-in setters    | 🙋 `ngx-meta` | `@avivharuzi/ngx-seo` | `@ngaox/seo` | `@ngx-meta/core` |
 | ------------------- | :-----------: | :-------------------: | :----------: | :--------------: |

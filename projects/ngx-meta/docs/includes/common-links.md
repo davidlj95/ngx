@@ -11,3 +11,5 @@
 [standard module]: /built-in-modules/standard/
 [Open Graph module]: /built-in-modules/open-graph/
 [bundle size issue]: https://github.com/davidlj95/ngx/issues/112
+[tree shaking]: https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking
+[Angular actively supported versions]: https://angular.io/guide/releases#actively-supported-versions

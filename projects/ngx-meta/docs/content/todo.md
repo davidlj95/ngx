@@ -1,5 +1,6 @@
 # TODO
 
+- ❌ Twitter card metas are `name` , not `property`!!!
 - Split guides into basics, med, advanced
 - Review next steps
 - Architecture
@@ -28,3 +29,4 @@
 - Built-in modules: macros for setup part?
   - Add code sample
   - Specify import
+- Set just one metadata

@@ -14,7 +14,11 @@ site_dir: site
 edit_uri: https://github.com/davidlj95/ngx/edit/main/projects/ngx-meta/docs/content/
 nav:
   - index.md
-  - features.md
+  - Why:
+      - why/index.md
+      - why/design-principles.md
+      - why/features.md
+      - why/comparison.md
   - get-started.md
   - Guides:
       - guides/set-metadata-using-service.md
@@ -119,5 +123,6 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - def_list
 watch:
   - includes

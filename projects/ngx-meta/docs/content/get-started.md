@@ -86,4 +86,6 @@ To know about how to properly define the metadata values to set, check out the *
 
 If you already know about all that, maybe you want to explore the **library's [built-in modules](./built-in-modules/index.md) that allow setting common metadata**.
 
+Otherwise, take a look at "Guides" section to learn about other features of the library.
+
 [^1]: The library doesn't include any schematics for now

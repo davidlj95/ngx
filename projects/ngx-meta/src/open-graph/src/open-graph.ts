@@ -103,6 +103,8 @@ export interface OpenGraph {
    *
    * <b>Requires Open Graph Profile module / provider to work</b>
    *
+   * - {@link OpenGraphProfile | Open Graph profile type}
+   *
    * - {@link https://ogp.me/#type_profile | Open Graph profile specs}
    */
   readonly profile?: OpenGraphProfile

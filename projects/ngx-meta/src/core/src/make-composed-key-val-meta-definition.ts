@@ -16,20 +16,20 @@ import { makeKeyValMetaDefinition } from './make-key-val-meta-definition'
  * }, ['og', 'title'])
  * ```
  *
+ * @param names - Names to create they key name
  * @param options - Options to create the key/val meta definition.
- *                  See {@link makeKeyValMetaDefinition} options.
+ *                  See {@link makeKeyValMetaDefinition} opts.
  *                  Accepts a `separator` argument, which defines how key names
  *                  will be joined together. Separator defaults to `:`
- * @param names - Names to create they key name
  * @public
  */
 export const makeComposedKeyValMetaDefinition = (
+  names: ReadonlyArray<string>,
   options: {
     keyAttr?: string
     valAttr?: string
     separator?: string
-  },
-  names: ReadonlyArray<string>,
+  } = {},
 ): NgxMetaMetaDefinition =>
   makeKeyValMetaDefinition({
     ...options,

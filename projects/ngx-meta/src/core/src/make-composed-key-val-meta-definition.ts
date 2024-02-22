@@ -18,7 +18,7 @@ import { makeKeyValMetaDefinition } from './make-key-val-meta-definition'
  *
  * @param names - Names to create they key name
  * @param options - Options to create the key/val meta definition.
- *                  See {@link makeKeyValMetaDefinition} opts.
+ *                  See {@link makeKeyValMetaDefinition} options.
  *                  Accepts a `separator` argument, which defines how key names
  *                  will be joined together. Separator defaults to `:`
  * @public

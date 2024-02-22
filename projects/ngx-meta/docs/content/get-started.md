@@ -21,7 +21,8 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
     Open your `app.module.ts` file and add at least the core module to the `imports` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing module too. In order to set some standard `<meta>`s, let's add the [standard module].
 
     ```typescript title="app.module.ts"
-    import {NgxMetaCoreModule, NgxMetaRoutingModule} from '@davidlj95/ngx-meta/core'
+    import {NgxMetaCoreModule} from '@davidlj95/ngx-meta/core'
+    import {NgxMetaRoutingModule} from '@davidlj95/ngx-meta/routing'
     import {NgxMetaStandardModule} from '@davidlj95/ngx-meta/standard'
 
     @NgModule({

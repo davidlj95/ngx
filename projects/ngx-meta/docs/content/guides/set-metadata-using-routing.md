@@ -12,7 +12,10 @@ First, ensure you added the module to your app.
 
     Open your `app.module.ts` where [`NgxMetaCoreModule`](ngx-meta.ngxmetacoremodule.md) is imported. Ensure [`NgxMetaRoutingModule`](ngx-meta.ngxmetaroutingmodule.md) is imported too by calling [`NgxMetaRoutingModule.forRoot`](ngx-meta.ngxmetaroutingmodule.forroot.md)
 
-    ```typescript
+    ```typescript title="app.module.ts"
+    import {NgxMetaCoreModule} from '@davidlj95/ngx-meta/core'
+    import {NgxMetaRoutingModule} from '@davidlj95/ngx-meta/routing'
+
     @NgModule({
       // ...
       imports: [
@@ -33,7 +36,10 @@ First, ensure you added the module to your app.
 
     Open your `app.config.ts` file where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided. Ensure the routing module is added by adding a call to [`provideNgxMetaRouting`](ngx-meta.providengxmetarouting.md)
 
-    ```typescript
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
+    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
+
     export const appConfig: ApplicationConfig = {
       providers: [
         // ...
@@ -78,6 +84,9 @@ export const routes: Routes = [
       meta: {
         title: 'Cool page',
         description: '⚠️ Contains awesomeness',
+        standard: {
+          keywords: ['cool', 'awesomeness'],
+        },
       } satisfies NgxMetaRouteData<GlobalMetadata & StandardMetadata>,
     },
   },
@@ -88,8 +97,6 @@ And then some metadata values are provided using the service
 
 ```typescript
 import { NgxMetaService, GlobalMetadata } from '@davidlj95/ngx-meta/core'
-import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
-// ...
 
 @Component({
   // ...
@@ -108,7 +115,7 @@ export class CoolPageComponent implements OnInit {
 }
 ```
 
-The final metadata values set will contain the `title`, `description` and `image` provided.
+The final metadata values set will contain the `title`, `description`, `keywords` and `image` provided.
 
 ## Next steps
 

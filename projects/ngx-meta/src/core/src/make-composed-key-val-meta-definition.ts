@@ -10,10 +10,13 @@ import { makeKeyValMetaDefinition } from './make-key-val-meta-definition'
  * element `<meta property='og:title'>`) could be created with:
  *
  * ```typescript
- * const ogTitleMetaDefinition = makeComposedKeyValMetaDefinition({
- *   keyAttr: 'property',
- *   separator: ':', // could be omitted, as it's the default one
- * }, ['og', 'title'])
+ * const ogTitleMetaDefinition = makeComposedKeyValMetaDefinition(
+ *   ['og', 'title'],
+ *   {
+ *     keyAttr: 'property',
+ *     separator: ':', // could be omitted, as it's the default one
+ *   }
+ * )
  * ```
  *
  * @param names - Names to create they key name

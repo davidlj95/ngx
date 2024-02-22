@@ -186,6 +186,7 @@ It is certainly a better option than installing a poorly maintained library. But
 
     - `#!html <meta name="canonical">` is set by `@avivharuzi/ngx-seo`. However, **that metadata name is not standard**. `#!html <link rel="canonical">` is the HTML spec standard way of specifying canonical URLs.
     - `#!html <meta name="twitter:url">` is set by `@avivharuzi/ngx-seo`. However, **that metadata name is not specified in Twitter Cards markup reference**
+    - `#!html <meta name="twitter:image:alt">` is set by `@ngaox/seo` [**with `property` attribute instead of `name` attribute**](https://github.com/ngaox/ngaox/blob/v5.0.0/packages/seo/src/lib/seo.service.ts#L105). [A PR has been opened to fix it](https://github.com/ngaox/ngaox/pull/256)
     - `#!html <meta property="og:author">` and `#!html <meta property="og:publisher">` are supported by `@ngx-meta/core`. But those are not valid Open Graph elements. In any case, they would be `#!html <meta property="og:article:author|publisher">`
 
 ## Excluded candidates

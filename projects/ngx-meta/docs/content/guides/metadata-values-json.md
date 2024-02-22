@@ -2,21 +2,38 @@
 
 As seen in previous guides, metadata values can be set by describing them in a JSON object. Which will then be used by [the service](set-metadata-using-service.md) or the [routing module](set-metadata-using-routing.md) to set the actual metadata elements on the page.
 
-## Types and global / specific metadata
+## Typescript types
 
-In order to properly shape your metadata values JSON, you can use several utility types. There's not a single one given the plug-in based architecture of the library, where each kind of metadata is handled by a separate module. However, there are two kinds of types as you may have noticed already in the previous guides.
+To help you properly shape the JSON, the library provides you with some Typescript types that will help you ensure the shape of the JSON is the proper one. There's not a single one containing all metadata values possible given the plug-in based architecture of the library. So in order to specify the type of your metadata values JSON, you may need to combine several using the `&` operator.
 
-For instance, in the [get started](get-started.md) example, the Typescript types [`GlobalMetadata`](ngx-meta.globalmetadata.md) and [`StandardMetadata`](ngx-meta.standardmetadata.md) were used to ensure we properly communicated the library what metadata to set.
+For instance, in [get started](get-started.md) global metadata values (described by type [`GlobalMetadata`](ngx-meta.globalmetadata.md)) and [standard module] metadata values (described by type [`StandardMetadata`](ngx-meta.standardmetadata.md)) are used together:
 
-This reveals another feature of the library. There are some values that can be reused to set multiple metadata. Whilst others are specific to a specific kind of metadata.
+```typescript
+import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
+import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
 
-For instance, you may want the title of your page to be used for the standard's HTML `#!html <title>` element and for the Open Graph's `#!html <meta property='og:title'>`. Those values intended to be shared across many metadata elements are defined in:
+const metadataValuesJson: GlobalMetadata & StandardMetadata = {
+  title: 'Cool page',
+  description: 'Contains awesomeness',
+  standard: {
+    keywords: ['cool', 'awesomeness'],
+  },
+}
+```
 
-### Global metadata
+## Shared and specific metadata
 
-Global metadata values are values that will be used by many metadata elements set by [built-in modules](../built-in-modules/index.md). **The type [`GlobalMetadata`](ngx-meta.globalmetadata.md) collects them all**. The type specifies their names and which [built-in metadata modules](../built-in-modules/index.md) will use those values. Check out the [type's API reference here](ngx-meta.globalmetadata.md) or in your IDE to learn more.
+Essentially there are two main kind of metadata values, global / shared metadata values and module / specific metadata values.
 
-By convention, those are placed as keys in the JSON object used to set the metadata values (either calling the service or in the route's data)
+### Global, shared metadata
+
+Global metadata values are used by more than one [built-in metadata module](../built-in-modules/index.md). That will probably set more than one metadata element in the page.
+
+For instance, you may want the title of your page to be used for the standard's HTML `#!html <title>` element and for the Open Graph's `#!html <meta property='og:title'>`.
+
+Values intended to be shared across many metadata elements are defined in **the [`GlobalMetadata`](ngx-meta.globalmetadata.md) type**. The type specifies their names and which [built-in metadata modules](../built-in-modules/index.md) will use those values. Check out the [type's API reference here](ngx-meta.globalmetadata.md) or in your IDE to learn more.
+
+By convention, those are placed as keys in the JSON object used to set the metadata values
 
 For instance:
 
@@ -28,11 +45,13 @@ const metadataValues: GlobalMetadata = {
 }
 ```
 
-Defines the [`GlobalMetadata.title`](ngx-meta.globalmetadata.title.md) which will set the HTML's `#!html <title>` if [standard module] is present and the `#!html <meta property='og:title'>` if [Open Graph module] is present.
+Defines the [`GlobalMetadata.title`](ngx-meta.globalmetadata.title.md) which will set the HTML's `#!html <title>` if [standard module] is present, the `#!html <meta property='og:title'>` if [Open Graph module] is present, and `#!html <meta name="twitter:title">` if [Twitter Cards module] is present.
 
-### Module metadata
+### Module, specific metadata
 
-Module metadata values are those that will be used by just one module. For instance, [`StandardMetadata`](ngx-meta.standardmetadata.md) type defines metadata values that will be used only by the [standard module]. That's why all values are placed inside a key with the name of the module (by convention). For instance, for [standard module] metadata values, they're set under the `standard` key. You can inspect the type to know what metadata can be set using that module. If the metadata can be shared by many modules, it will also specify which of those can be set as global ones.
+Module, specific metadata values are those that will be used by just one module. For instance, [`StandardMetadata`](ngx-meta.standardmetadata.md) type defines metadata values that will be used only by the [standard module]. In the first example of the page, `keywords` is specified under the `standard` key, because it only matters to the `standard` module.
+
+By convention, that's why all module metadata values are placed inside a key with the name of the module. For instance, as you've seen, [standard module] metadata values, are set under the `standard` key. You can inspect the type to know what metadata can be set using that module.
 
 For instance:
 
@@ -46,13 +65,17 @@ const metadataValues: StandardMetadata = {
 }
 ```
 
-Defines the [`StandardMetadata.title`](ngx-meta.standard.title.md) which will set the HTML's `#!html <title>` if [standard module] is present. However, this value won't be used by other modules. For instance `#!html <meta property='og:title'>` will be empty if [Open Graph module] is present, given only standard `title` property has been set.
+Defines the [`StandardMetadata.title`](ngx-meta.standard.title.md) which will set the HTML's `#!html <title>` if [standard module] is present. However, this value won't be used by other modules. For instance `#!html <meta property='og:title'>` will be empty if [Open Graph module] is present, given only standard `title` prope
 
-## Combining global and module metadata
+#### Metadata module types convention
 
-If you specify a module specific value and a global value, specific will take preference.
+By convention, each metadata module exports a type named `XMetadata` (where `X` is the name of the module). So you can know what each metadata each module can set.
 
-For instance if setting those values (again, either using service or route data):
+### Combining both
+
+If you specify a module specific value and a global shared value, specific will take preference.
+
+For instance if setting those values:
 
 ```typescript
 const metadataValues: GlobalMetadata & StandardMetadata = {
@@ -64,10 +87,6 @@ const metadataValues: GlobalMetadata & StandardMetadata = {
 ```
 
 The `#!html <title>` element set by [standard module] will contain `Standard title`. But other modules , like [Open Graph module] will use `Global title` instead. So if [Open Graph module](open-graph.md) is present, the title property element will be `#!html <meta property='og:title' content='Global title'`. Of course, you could also set a specific title for Open Graph too.
-
-## Module types convention
-
-By convention, each module exports a type named `XMetadata` (where `X` is the name of the module). So you can know what each metadata each module can set.
 
 ## Next steps
 

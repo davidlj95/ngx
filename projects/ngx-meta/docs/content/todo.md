@@ -10,7 +10,6 @@
 - Bundle size
 - Sample apps
 - Contribute
-- Philosophy / principles
 - Why this library was born:
   - What I missed in existing libs
   - Comparison amongst existing libraries

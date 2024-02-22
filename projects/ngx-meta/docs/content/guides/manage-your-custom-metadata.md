@@ -27,8 +27,14 @@ This may sound frightening, but it's not!
 
 You can implement it by defining a class that implements the interface:
 
+<!-- prettier-ignore-start -->
+
 ```typescript
-import { makeKeyValMetaDefinition, NgxMetaMetadataManager, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import { 
+    makeKeyValMetaDefinition, 
+    NgxMetaMetadataManager, 
+    NgxMetaMetaService 
+} from '@davidlj95/ngx-meta/core'
 
 const JSON_PATH = ['custom', 'title']
 
@@ -55,6 +61,8 @@ class CustomTitleMetadataManager implements NgxMetaMetadataManager<string | unde
 }
 ```
 
+<!-- prettier-ignore-end -->
+
 --8<-- "includes/ngx-meta-meta.md"
 
 This option is presented first as it's the traditional, Angular'ish way of working (services & `@Injectable` decorators). However, do check out another way of implementing it (see in below box why)
@@ -76,22 +84,38 @@ Again, don't let the scarily long name frighten you, [it doesn't bite](https://k
 
 It takes as argument function that creates a metadata setter given some dependencies. Call it a setter factory. Then, allows you to customize the other elements of a metadata manager.
 
+<!-- prettier-ignore-start -->
+
 ```typescript
-import { makeKeyValMetaDefinition, makeMetadataManagerProviderFromSetterFactory, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import { 
+    makeKeyValMetaDefinition, 
+    makeMetadataManagerProviderFromSetterFactory, 
+    NgxMetaMetaService 
+} from '@davidlj95/ngx-meta/core'
 
-const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory((ngxMetaMetaService: NgxMetaMetaService) => ngxMetaMetaService.set(makeKeyValMetaDefinition('custom:title'), value), {
-  // Dependencies to pass to the setter factory
-  d: [NgxMetaMetaService],
-  // JSON Path to resolve the value from the values JSON
-  // Will also be used as id
-  jP: ['custom', 'title'],
+const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory(
+  (ngxMetaMetaService: NgxMetaMetaService) => 
+    ngxMetaMetaService.set(
+      makeKeyValMetaDefinition('custom:title'), 
+      value
+    ), 
+  {
+    // Dependencies to pass to the setter factory
+    d: [NgxMetaMetaService],
+    // JSON Path to resolve the value from the values JSON
+    // Will also be used as id
+    jP: ['custom', 'title'],
 
-  // 👇 If we want that global `title` key in the metadata values
-  //    JSON is used as custom title if non specific is provided
-  //    You can skip this one if N/A
-  g: 'title' satisfies keyof GlobalMetadata,
-})
+    // 👇 If we want that global `title` key in the metadata values
+    //    JSON is used as custom title if non specific is provided
+    //    You can skip this one if N/A
+    g: 'title' satisfies keyof GlobalMetadata,
+  }
+)
 ```
+
+
+<!-- prettier-ignore-end -->
 
 --8<-- "includes/ngx-meta-meta.md"
 

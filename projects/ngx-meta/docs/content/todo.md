@@ -1,5 +1,6 @@
 # TODO
 
+- ❌ Twitter card metas are `name` , not `property`!!!
 - Split guides into basics, med, advanced
 - Review next steps
 - Architecture

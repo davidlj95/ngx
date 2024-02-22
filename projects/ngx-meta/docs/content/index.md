@@ -12,6 +12,8 @@ For the hands-on devs ([_this is the way_](https://knowyourmeme.com/memes/this-i
 
 ### Existing users
 
-Take a look at guides to refresh your knowledge. Like the one about the [**metadata values JSON**](metadata-values-json.md).
+Take a look at guides to refresh your knowledge. Like the one about setting metadata programmatically [**using the service**](set-metadata-using-service.md), in a declarative fashion [**using route's data**](set-metadata-using-routing.md). Or how [**metadata values JSON**](metadata-values-json.md) is shaped.
 
-Or maybe you just want to take a look at the [**API reference**](ngx-meta.md)?
+Go deeper by [setting some defaults](defaults.md), [loading metadata later](late-loading-modules.md) to reduce main bundle size, providing [your custom metadata managers](manage-your-custom-metadata.md) or [providing in a fine-grained way the metadata elements you're interested in](custom-metadata-providers-selection.md)
+
+Are you by any chance looking for the [**API reference**](ngx-meta.md)?

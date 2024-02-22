@@ -2,7 +2,8 @@
 
 So you're wondering if you should start using this library? Let's try to convince you 😳
 
-Checkout if:
+Checkout:
 
-- 🤝 You like library's [**design principles**](design-principles.md)
-- ✅ Your needs are fulfilled with library's [**features**](features.md)
+- 🤝 If you like library's [**design principles**](design-principles.md)
+- ✅ Whether your needs are fulfilled with library's [**features**](features.md)
+- 📊 How this library [**compares to other alternatives out there**](comparison.md)

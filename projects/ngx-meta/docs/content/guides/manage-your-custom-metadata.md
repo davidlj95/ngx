@@ -50,12 +50,7 @@ class CustomTitleMetadataManager implements NgxMetaMetadataManager<string | unde
 
   // Type is constrained by specifying `<string | undefined>` above
   public set(value: string | undefined): void {
-    this.ngxMetaMetaService.set(
-      makeKeyValMetaDefinition({
-        keyName: 'custom:title',
-      }),
-      value,
-    )
+    this.ngxMetaMetaService.set(makeKeyValMetaDefinition('custom:title'), value)
   }
 }
 ```
@@ -84,27 +79,18 @@ It takes as argument function that creates a metadata setter given some dependen
 ```typescript
 import { makeKeyValMetaDefinition, makeMetadataManagerProviderFromSetterFactory, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 
-const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory(
-  (ngxMetaMetaService: NgxMetaMetaService) =>
-    ngxMetaMetaService.set(
-      makeKeyValMetaDefinition({
-        keyName: 'custom:title',
-      }),
-      value,
-    ),
-  {
-    // Dependencies to pass to the setter factory
-    d: [NgxMetaMetaService],
-    // JSON Path to resolve the value from the values JSON
-    // Will also be used as id
-    jP: ['custom', 'title'],
+const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory((ngxMetaMetaService: NgxMetaMetaService) => ngxMetaMetaService.set(makeKeyValMetaDefinition('custom:title'), value), {
+  // Dependencies to pass to the setter factory
+  d: [NgxMetaMetaService],
+  // JSON Path to resolve the value from the values JSON
+  // Will also be used as id
+  jP: ['custom', 'title'],
 
-    // 👇 If we want that global `title` key in the metadata values
-    //    JSON is used as custom title if non specific is provided
-    //    You can skip this one if N/A
-    g: 'title' satisfies keyof GlobalMetadata,
-  },
-)
+  // 👇 If we want that global `title` key in the metadata values
+  //    JSON is used as custom title if non specific is provided
+  //    You can skip this one if N/A
+  g: 'title' satisfies keyof GlobalMetadata,
+})
 ```
 
 --8<-- "includes/ngx-meta-meta.md"

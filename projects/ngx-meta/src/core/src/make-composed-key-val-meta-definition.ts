@@ -31,12 +31,12 @@ export const makeComposedKeyValMetaDefinition = (
     separator?: string
   } = {},
 ): NgxMetaMetaDefinition =>
-  makeKeyValMetaDefinition({
-    ...options,
-    keyName: names.join(
+  makeKeyValMetaDefinition(
+    names.join(
       options.separator ?? _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR,
     ),
-  })
+    { ...options },
+  )
 
 /**
  * @internal

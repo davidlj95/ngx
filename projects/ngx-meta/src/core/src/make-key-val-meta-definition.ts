@@ -17,23 +17,26 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta.service'
  * Value is set by {@link NgxMetaMetaService.set} by providing this model and an
  * actual value
  *
- * @param opts - Specifies HTML attribute defining key, HTML attribute defining
- *               value and the key name.
+ * @param keyName - Name of the key in the key/value meta definition
+ * @param options - Specifies HTML attribute defining key, HTML attribute defining
+ *               value.
  *               `keyAttr` defaults to `name`
  *               `valAttr` defaults to `content`
  *
  * @public
  */
-export const makeKeyValMetaDefinition = (opts: {
-  keyAttr?: string
-  keyName: string
-  valAttr?: string
-}): NgxMetaMetaDefinition => {
-  const keyAttr = opts.keyAttr ?? _KEY_ATTRIBUTE_NAME
-  const valAttr = opts.valAttr ?? _VAL_ATTRIBUTE_CONTENT
+export const makeKeyValMetaDefinition = (
+  keyName: string,
+  options: {
+    keyAttr?: string
+    valAttr?: string
+  } = {},
+): NgxMetaMetaDefinition => {
+  const keyAttr = options.keyAttr ?? _KEY_ATTRIBUTE_NAME
+  const valAttr = options.valAttr ?? _VAL_ATTRIBUTE_CONTENT
   return {
-    withContent: (value) => ({ [keyAttr]: opts.keyName, [valAttr]: value }),
-    attrSelector: `${keyAttr}='${opts.keyName}'`,
+    withContent: (value) => ({ [keyAttr]: keyName, [valAttr]: value }),
+    attrSelector: `${keyAttr}='${keyName}'`,
   }
 }
 /**

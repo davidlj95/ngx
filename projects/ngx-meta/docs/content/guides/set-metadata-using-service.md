@@ -16,7 +16,7 @@ The service is designed to set the metadata values of a page. So further calls t
 
 ### Clearing metadata values
 
-Metadata set (in the example, `#!html <title>` and `#!html <meta name="description">`) will stay when the route changes if the routing module / provider hasn't been added. If you want those metadata values to get removed when changing route without adding the routing module / provider, you can add a call to the service on the [`ngOnDestroy`](https://angular.dev/guide/components/lifecycle#ngondestroy) hook:
+In the example, we set the elements `#!html <title>` and `#!html <meta name="description|keywords">`. Those will stay when the route changes if the routing module / provider hasn't been added. If you want those metadata values to get removed when changing route without adding the routing module / provider, you can add a call to the service on the [`ngOnDestroy`](https://angular.dev/guide/components/lifecycle#ngondestroy) hook:
 
 ```typescript
 @Component({
@@ -39,4 +39,6 @@ See [routing guide section about it](set-metadata-using-routing.md#using-routes-
 
 ## Next steps
 
-Check out how can you set your metadata in your Angular's [route's data] in the [routing module guide](set-metadata-using-routing.md). To know more about the shape of the JSON containing metadata values to set, take a look at the [metadata values JSON guide](metadata-values-json.md)
+To set your metadata in a more declarative fashion, check out how you can set your metadata in your Angular's [route's data] in the [routing module guide](set-metadata-using-routing.md).
+
+To know more about the shape of the JSON containing metadata values to set, take a look at the [metadata values JSON guide](metadata-values-json.md)

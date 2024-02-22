@@ -15,12 +15,15 @@ export class CoolPageComponent implements OnInit {
     this.ngxMetaService.set({
       title: 'Cool page',
       description: '⚠️ Contains awesomeness',
+      standard: {
+        keywords: ['cool', 'awesomeness'],
+      },
     } satisfies GlobalMetadata & StandardMetadata)
   }
 }
 ```
 
-That's it, you should see the `#!html <title>` and `#!html <meta name="description">` set in that page with the values you provided ✨
+That's it, you should see the `#!html <title>`, `#!html <meta name="description">` and `#!html <meta name="keywords">` set in that page with the values you provided ✨
 
 [Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Take a look at [metadata values JSON guide](metadata-values-json.md) for more information about it.
 

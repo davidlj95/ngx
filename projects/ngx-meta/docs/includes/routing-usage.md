@@ -12,13 +12,16 @@ export const routes: Routes = [
       meta: {
         title: 'Cool page',
         description: '⚠️ Contains awesomeness',
+        standard: {
+          keywords: ['cool', 'awesomeness'],
+        },
       } satisfies NgxMetaRouteData<GlobalMetadata & StandardMetadata>,
     },
   },
 ]
 ```
 
-That's it, you should see the `#!html <title>` and `#!html <meta name='description'>` set in the `cool-page` page with the values you provided ✨
+That's it, you should see the `#!html <title>`, `#!html <meta name="description">` and `#!html <meta name="keywords">` set in that page with the values you provided ✨
 
 As with the service case, [Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Take a look at [metadata values JSON guide](metadata-values-json.md) for more information about it.
 

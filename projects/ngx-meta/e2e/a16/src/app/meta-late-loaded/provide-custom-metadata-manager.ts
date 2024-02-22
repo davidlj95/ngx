@@ -11,9 +11,7 @@ export const provideCustomMetadataManager = () =>
   makeMetadataManagerProviderFromSetterFactory<string | undefined>(
     (metaService: NgxMetaMetaService) => (value) => {
       metaService.set(
-        makeKeyValMetaDefinition({
-          keyName: CUSTOM_METADATA_JSON.custom.keyName,
-        }),
+        makeKeyValMetaDefinition(CUSTOM_METADATA_JSON.custom.keyName),
         value,
       )
     },

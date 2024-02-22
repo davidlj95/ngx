@@ -10,33 +10,36 @@ import { makeKeyValMetaDefinition } from './make-key-val-meta-definition'
  * element `<meta property='og:title'>`) could be created with:
  *
  * ```typescript
- * const ogTitleMetaDefinition = makeComposedKeyValMetaDefinition({
- *   keyAttr: 'property',
- *   separator: ':', // could be omitted, as it's the default one
- * }, ['og', 'title'])
+ * const ogTitleMetaDefinition = makeComposedKeyValMetaDefinition(
+ *   ['og', 'title'],
+ *   {
+ *     keyAttr: 'property',
+ *     separator: ':', // could be omitted, as it's the default one
+ *   }
+ * )
  * ```
  *
+ * @param names - Names to create they key name
  * @param options - Options to create the key/val meta definition.
  *                  See {@link makeKeyValMetaDefinition} options.
  *                  Accepts a `separator` argument, which defines how key names
  *                  will be joined together. Separator defaults to `:`
- * @param names - Names to create they key name
  * @public
  */
 export const makeComposedKeyValMetaDefinition = (
+  names: ReadonlyArray<string>,
   options: {
     keyAttr?: string
     valAttr?: string
     separator?: string
-  },
-  names: ReadonlyArray<string>,
+  } = {},
 ): NgxMetaMetaDefinition =>
-  makeKeyValMetaDefinition({
-    ...options,
-    keyName: names.join(
+  makeKeyValMetaDefinition(
+    names.join(
       options.separator ?? _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR,
     ),
-  })
+    { ...options },
+  )
 
 /**
  * @internal

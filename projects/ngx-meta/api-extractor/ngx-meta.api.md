@@ -120,16 +120,15 @@ export const _KEY_ATTRIBUTE_NAME = "name";
 export const _KEY_ATTRIBUTE_PROPERTY = "property";
 
 // @public
-export const makeComposedKeyValMetaDefinition: (options: {
+export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: {
     keyAttr?: string;
     valAttr?: string;
     separator?: string;
-}, names: ReadonlyArray<string>) => NgxMetaMetaDefinition;
+}) => NgxMetaMetaDefinition;
 
 // @public
-export const makeKeyValMetaDefinition: (opts: {
+export const makeKeyValMetaDefinition: (keyName: string, options?: {
     keyAttr?: string;
-    keyName: string;
     valAttr?: string;
 }) => NgxMetaMetaDefinition;
 

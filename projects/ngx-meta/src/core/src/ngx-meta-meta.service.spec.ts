@@ -18,9 +18,8 @@ describe('NgxMeta meta service', () => {
   })
 
   describe('set', () => {
-    const metaDefinition = makeKeyValMetaDefinition({
+    const metaDefinition = makeKeyValMetaDefinition('dummy', {
       keyAttr: 'propertyName',
-      keyName: 'dummy',
       valAttr: 'propertyContent',
     })
 

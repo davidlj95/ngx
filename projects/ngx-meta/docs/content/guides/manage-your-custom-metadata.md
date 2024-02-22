@@ -27,8 +27,14 @@ This may sound frightening, but it's not!
 
 You can implement it by defining a class that implements the interface:
 
+<!-- prettier-ignore-start -->
+
 ```typescript
-import { makeKeyValMetaDefinition, NgxMetaMetadataManager, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import { 
+    makeKeyValMetaDefinition, 
+    NgxMetaMetadataManager, 
+    NgxMetaMetaService 
+} from '@davidlj95/ngx-meta/core'
 
 const JSON_PATH = ['custom', 'title']
 
@@ -50,15 +56,12 @@ class CustomTitleMetadataManager implements NgxMetaMetadataManager<string | unde
 
   // Type is constrained by specifying `<string | undefined>` above
   public set(value: string | undefined): void {
-    this.ngxMetaMetaService.set(
-      makeKeyValMetaDefinition({
-        keyName: 'custom:title',
-      }),
-      value,
-    )
+    this.ngxMetaMetaService.set(makeKeyValMetaDefinition('custom:title'), value)
   }
 }
 ```
+
+<!-- prettier-ignore-end -->
 
 --8<-- "includes/ngx-meta-meta.md"
 
@@ -81,17 +84,21 @@ Again, don't let the scarily long name frighten you, [it doesn't bite](https://k
 
 It takes as argument function that creates a metadata setter given some dependencies. Call it a setter factory. Then, allows you to customize the other elements of a metadata manager.
 
+<!-- prettier-ignore-start -->
+
 ```typescript
-import { makeKeyValMetaDefinition, makeMetadataManagerProviderFromSetterFactory, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import { 
+    makeKeyValMetaDefinition, 
+    makeMetadataManagerProviderFromSetterFactory, 
+    NgxMetaMetaService 
+} from '@davidlj95/ngx-meta/core'
 
 const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory(
-  (ngxMetaMetaService: NgxMetaMetaService) =>
+  (ngxMetaMetaService: NgxMetaMetaService) => 
     ngxMetaMetaService.set(
-      makeKeyValMetaDefinition({
-        keyName: 'custom:title',
-      }),
-      value,
-    ),
+      makeKeyValMetaDefinition('custom:title'), 
+      value
+    ), 
   {
     // Dependencies to pass to the setter factory
     d: [NgxMetaMetaService],
@@ -103,9 +110,12 @@ const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSe
     //    JSON is used as custom title if non specific is provided
     //    You can skip this one if N/A
     g: 'title' satisfies keyof GlobalMetadata,
-  },
+  }
 )
 ```
+
+
+<!-- prettier-ignore-end -->
 
 --8<-- "includes/ngx-meta-meta.md"
 

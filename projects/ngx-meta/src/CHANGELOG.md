@@ -1,3 +1,29 @@
+## [`ngx-meta` v1.0.0-alpha.40](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.39...ngx-meta-v1.0.0-alpha.40) (2024-02-22)
+
+### Bug Fixes
+
+- use "name" for twitter card metas ([#346](https://github.com/davidlj95/ngx/issues/346)) ([69c3218](https://github.com/davidlj95/ngx/commit/69c321883e3997a776716c3d24910de8b3ff4315))
+
+### Documentation
+
+- add "why" section ([#345](https://github.com/davidlj95/ngx/issues/345)) ([86e910e](https://github.com/davidlj95/ngx/commit/86e910e38810d18ceb144dd8aad2f06867eb0d3a))
+- add mention to ngaox twitter image alt issue ([#347](https://github.com/davidlj95/ngx/issues/347)) ([d54cdff](https://github.com/davidlj95/ngx/commit/d54cdff57a67d0be11623107d2986dbe82840963))
+
+### Miscellaneous Chores
+
+- update CHANGELOG.md ([92a1d36](https://github.com/davidlj95/ngx/commit/92a1d36b06b9583d6c459c8f233643c36ded1e1c))
+
+### Build System
+
+- **deps-dev:** bump ip from 2.0.0 to 2.0.1 ([#340](https://github.com/davidlj95/ngx/issues/340)) ([5ff8ed0](https://github.com/davidlj95/ngx/commit/5ff8ed00d7173e2f689d4fe183b98d1292d6df51))
+- **deps-dev:** bump ip in /projects/ngx-meta/e2e/a15 ([#343](https://github.com/davidlj95/ngx/issues/343)) ([73be8b4](https://github.com/davidlj95/ngx/commit/73be8b4d4bb1e95f79950dda5b19ec0504054814))
+- **deps-dev:** bump ip in /projects/ngx-meta/e2e/a16 ([#342](https://github.com/davidlj95/ngx/issues/342)) ([5fcf373](https://github.com/davidlj95/ngx/commit/5fcf373a6f21d64ad7450670f82eadbe50f6fe71))
+- **deps-dev:** bump ip in /projects/ngx-meta/e2e/a17 ([#341](https://github.com/davidlj95/ngx/issues/341)) ([dd5e76f](https://github.com/davidlj95/ngx/commit/dd5e76f2accfbbbbdabafb2fa8f54858e676a154))
+- **deps-dev:** update dependency @microsoft/api-documenter to v7.23.25 ([7840e22](https://github.com/davidlj95/ngx/commit/7840e22a5141885c2b9b5f2722dc9e977b118ccd))
+- **deps-dev:** update dependency @microsoft/api-extractor to v7.40.3 ([cec79f7](https://github.com/davidlj95/ngx/commit/cec79f758b6ac066dcdac4df6050eb9db2a3bcf3))
+- **deps-dev:** update dependency cypress to v13.6.5 ([5b4734d](https://github.com/davidlj95/ngx/commit/5b4734dc448b15191cce1025d6aaf9daf0dbe478))
+- **deps-dev:** update typescript-eslint monorepo to v7.0.2 ([8e782cd](https://github.com/davidlj95/ngx/commit/8e782cda534e166b46a144fde424e9fc61e17b5d))
+
 ## [`ngx-meta` v1.0.0-alpha.39](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.38...ngx-meta-v1.0.0-alpha.39) (2024-02-19)
 
 ### Documentation

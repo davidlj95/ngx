@@ -19,6 +19,7 @@
 [![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovatebot&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
 [![Docs with Material for Mkdocs](https://img.shields.io/badge/Docs_with-Material_for_Mkdocs-526CFE?logo=materialformkdocs&logoColor=white&link=https%3A%2F%2Fsquidfunk.github.io%2Fmkdocs-material%2F)](https://squidfunk.github.io/mkdocs-material/)
 [![API Report/Docs with API Extractor](https://custom-icon-badges.demolab.com/badge/API_Report_&_Docs_with-API_Extractor-383938.svg?logo=api-extractor&link=https%3A%2F%2Fapi-extractor.com%2F)](https://api-extractor.com/)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/davidlj95/ngx/blob/main/CODE_OF_CONDUCT.md)
 [![Package manager: pnpm](https://img.shields.io/badge/Package_manager-pnpm-f69220?logo=pnpm&link=https%3A%2F%2Fpnpm.io%2F)](https://pnpm.io/)
 
 Set your Angular site's metadata: standard meta tags, Open Graph,

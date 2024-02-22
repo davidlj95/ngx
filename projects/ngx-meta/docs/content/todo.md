@@ -10,9 +10,6 @@
 - Bundle size
 - Sample apps
 - Contribute
-- Why this library was born:
-  - What I missed in existing libs
-  - Comparison amongst existing libraries
 - Quirks:
   - `node_modules` in project, Karma complains
   - Semantic Release locally
@@ -20,7 +17,6 @@
 - (idea): Short YouTube video explaining getting started
 - Ensure open source contributions can be performed
   - Contributing document
-  - Code of conduct
   - PRs from forks:
     - Can pass checks
     - (optional) Can trigger deployment previews

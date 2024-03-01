@@ -71,8 +71,8 @@ devDependencies:
     specifier: 19.0.3
     version: 19.0.3
   '@microsoft/api-documenter':
-    specifier: 7.23.31
-    version: 7.23.31(@types/node@20.9.4)
+    specifier: 7.23.33
+    version: 7.23.33(@types/node@20.9.4)
   '@microsoft/api-extractor':
     specifier: 7.41.0
     version: 7.41.0(@types/node@20.9.4)
@@ -2588,15 +2588,15 @@ packages:
       call-bind: 1.0.5
     dev: true
 
-  /@microsoft/api-documenter@7.23.31(@types/node@20.9.4):
-    resolution: {integrity: sha512-dHCoUN98ihW5+iro0q31tIOt6t5jwk4DKLq+GGDKlGvepwzP3X2XUkcq3zlh9OtxqLt320+9BvKMiJknZo4SXw==}
+  /@microsoft/api-documenter@7.23.33(@types/node@20.9.4):
+    resolution: {integrity: sha512-/atAbkxLt7/+gHocQZEcdMBwGi2V+L+rby12EOMPvzjoy1o7ZVZIc7W4OgUDYnL5fKw4SMWtNMFYtzkzDiaLWQ==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.13(@types/node@20.9.4)
       '@microsoft/tsdoc': 0.14.2
       '@rushstack/node-core-library': 4.0.2(@types/node@20.9.4)
       '@rushstack/terminal': 0.10.0(@types/node@20.9.4)
-      '@rushstack/ts-command-line': 4.17.4(@types/node@20.9.4)
+      '@rushstack/ts-command-line': 4.18.0(@types/node@20.9.4)
       js-yaml: 3.13.1
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -3189,6 +3189,17 @@ packages:
 
   /@rushstack/ts-command-line@4.17.4(@types/node@20.9.4):
     resolution: {integrity: sha512-XPQQDaxgFqRHFRgt7jjCKnr0vrC75s/+ISU6kGhWpDlGzWl4vig6ZfZTs3HgM6Kh1Bb3wUKSyKQOV+G36cyZfg==}
+    dependencies:
+      '@rushstack/terminal': 0.10.0(@types/node@20.9.4)
+      '@types/argparse': 1.0.38
+      argparse: 1.0.10
+      string-argv: 0.3.2
+    transitivePeerDependencies:
+      - '@types/node'
+    dev: true
+
+  /@rushstack/ts-command-line@4.18.0(@types/node@20.9.4):
+    resolution: {integrity: sha512-iq8+NCtnOhz4BR4hwmFCRzULmFd8hSbDqJWbdGG44t/fXMRsK3Drft1fiDkxWGPuD3V1x3RDYdXxAfJqKU3XpQ==}
     dependencies:
       '@rushstack/terminal': 0.10.0(@types/node@20.9.4)
       '@types/argparse': 1.0.38

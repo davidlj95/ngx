@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
-# Generates a PR comment about ngx-meta library bundle size from JSON outputs
-# of source-map-explorer analysis of app main bundles where the library is
-# used
+# Generates a bundle size report: size of including ngx-meta library inside an app's bundle size
+# Using JSON outputs from source-map-explorer analysis of app main bundles where the library is used
 
 # Initialize variables
 base_file=""

@@ -36,6 +36,13 @@ jobs:
     uses: ./.github/workflows/reusable-e2e.yml
     with:
       dist-artifact-name: ngx-meta-dist
+      e2e-app-artifact-name-prefix: ngx-meta-e2e-app-a
+  bundle-size:
+    needs: e2e
+    name: Bundle size
+    uses: ./.github/workflows/reusable-bundle-size.yml
+    with:
+      e2e-app-artifact-name-prefix: ngx-meta-e2e-app-a
     permissions:
       checks: write
   release:

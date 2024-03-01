@@ -1,5 +1,5 @@
 name: Setup
-description: Checks out the repository and installs tooling
+description: Installs tooling and dependencies of repository
 runs:
   using: 'composite'
   steps:

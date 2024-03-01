@@ -1,0 +1,159 @@
+name: Bundle size
+on:
+  workflow_call:
+    inputs:
+      e2e-app-artifact-name-prefix:
+        required: true
+        type: string
+      ref:
+        description: Git reference to checkout. Defaults to @actions/checkout default.
+        type: string
+        required: false
+        default: ''
+
+#permissions:
+#  👇 Needed for PR bundle size comment only
+#  pull_requests: write
+#  👇 Needed for main bundle size check store only
+#  checks: write
+
+env:
+  BUNDLE_SIZE_ARTIFACT_NAME_PREFIX: ngx-meta-bundle-size-a
+  BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-a
+  BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX: ngx-meta-bundle-size-a
+
+jobs:
+  analysis:
+    name: Analysis - Angular v${{ matrix.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        version: [15, 16, 17]
+    env:
+      E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
+    defaults:
+      run:
+        working-directory: ${{ env.E2E_APP_DIR }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Download built E2E app
+        uses: actions/download-artifact@87c55149d96e628cc2ef7e6fc2aab372015aec85 # v4
+        with:
+          name: ${{ inputs.e2e-app-artifact-name-prefix }}${{ matrix.version }}
+          path: ${{ env.E2E_APP_DIR }}/dist
+      - name: Setup E2E app
+        uses: ./.github/actions/setup-e2e
+        with:
+          angular-version: ${{ matrix.version }}
+      - name: Analyze main bundle size with source map explorer
+        run: pnpm run source-map-explorer-json
+      - name: Fetch bundle size analysis results from 'main' branch
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
+        with:
+          script: |
+            const checkRunResponse = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'heads/main',
+              check_name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}',
+              per_page: 1,
+            })
+            const checkRuns = checkRunResponse.data.check_runs
+            if (checkRuns.length < 1) {
+              console.info('No check runs found')
+              return
+            }
+            const checkRun = checkRuns[0]
+            const smeJsonString = checkRun.output.text
+            const fs = require('fs')
+            fs.writeFileSync('${{ env.E2E_APP_DIR }}/source-map-explorer-main.json', smeJsonString)
+      - name: Generate bundle size report
+        run: |
+          pnpm run bundle-size-report \
+          --git-ref '${{ github.event.pull_request.head.sha }}' \
+          --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
+          --base-file 'source-map-explorer-main.json'
+      - name: Upload bundle size analysis results
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
+        with:
+          name: ${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+          path: |
+            ${{ env.E2E_APP_DIR }}/source-map-explorer*.json
+            ${{ env.E2E_APP_DIR }}/bundle-size-report.md
+          retention-days: 5
+
+  pr-comment:
+    needs: analysis
+    if: github.event_name == 'pull_request'
+    name: PR comment - Angular v${{ matrix.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        version: [15, 16, 17]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Download bundle size analysis results
+        uses: actions/download-artifact@87c55149d96e628cc2ef7e6fc2aab372015aec85 # v4
+        with:
+          name: ${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+      - name: Find bundle size PR comment
+        uses: peter-evans/find-comment@d5fe37641ad8451bdd80312415672ba26c86575e # v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}
+      - name: Update bundle size PR comment
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: bundle-size-report.md
+          edit-mode: replace
+
+  store:
+    needs: analysis
+    if: github.event_name == 'push'
+    name: Store - Angular v${{ matrix.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        version: [15, 16, 17]
+    steps:
+      - name: Download main bundle analysis results
+        uses: actions/download-artifact@87c55149d96e628cc2ef7e6fc2aab372015aec85 # v4
+        with:
+          name: ${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+      - name: Create check run
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
+        with:
+          script: |
+            const smeJson = require('./source-map-explorer.json');
+            const smeJsonString = JSON.stringify(smeJson);
+            return github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.version }}',
+              head_sha: context.sha,
+              // In case you're testing this in a PR, you'll want the head SHA
+              // otherwise, `context.sha` refers to the GitHub PR merge branch
+              // which is a detail hidden away from users. Uncomment 👇
+              // head_sha: '${{ github.event.pull_request.head.sha }}',
+              conclusion: 'neutral',
+              output: {
+                title: 'Bundle size - Angular v${{ matrix.version }}',
+                summary: 'Sizes of the library modules when packed inside a ' +
+                         'main bundle of an Angular v${{ matrix.version }} ' +
+                         'app. In bytes. Thanks to `source-map-explorer` :)',
+                text: smeJsonString,
+              }
+            })

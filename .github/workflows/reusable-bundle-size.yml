@@ -121,7 +121,7 @@ jobs:
 
   store:
     needs: analysis
-    if: github.event_name == 'push'
+    #if: github.event_name == 'push'
     name: Store - Angular v${{ matrix.version }}
     runs-on: ubuntu-latest
     timeout-minutes: 5

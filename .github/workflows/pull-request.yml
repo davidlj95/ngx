@@ -41,6 +41,7 @@ jobs:
       e2e-app-artifact-name-prefix: ngx-meta-e2e-app-a
     permissions:
       pull-requests: write
+      checks: write
   docs:
     needs: [api-extractor]
     name: Docs

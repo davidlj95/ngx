@@ -44,7 +44,7 @@ jobs:
       - name: Installed dependencies integrity check
         run: npm audit signatures
       - name: Download distribution files
-        uses: actions/download-artifact@87c55149d96e628cc2ef7e6fc2aab372015aec85 # v4
+        uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
           name: ${{ inputs.dist-artifact-name }}
           path: 'projects/ngx-meta/dist'

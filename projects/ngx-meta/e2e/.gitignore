@@ -11,8 +11,8 @@ cypress/screenshots/*
 cypress/videos/*
 
 # End of https://www.toptal.com/developers/gitignore/api/cypressio
-**/*pr-comment.md
-**/source-map-explorer*.json
+a*/bundle-size-report.md
+a*/source-map-explorer*.json
 # Manual edits
-# - Add bundle size PR comment markdown
+# - Add bundle size report markdown file
 # - Add source map explorer results JSON

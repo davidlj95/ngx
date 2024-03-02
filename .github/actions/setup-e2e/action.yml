@@ -1,0 +1,23 @@
+name: Setup E2E
+description: Installs tooling and dependencies of repository E2E tests / apps
+inputs:
+  angular-version:
+    description: 'Angular version to setup'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
+    - name: Setup Node.js
+      uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+      with:
+        cache: 'pnpm'
+        cache-dependency-path: |
+          projects/ngx-meta/e2e/pnpm-lock.yaml
+          projects/ngx-meta/e2e/a${{ inputs.angular-version }}/pnpm-lock.yaml
+        node-version-file: '.node-version'
+    - name: Install Angular v${{ inputs.angular-version }} E2E app dependencies
+      working-directory: projects/ngx-meta/e2e/a${{ inputs.angular-version }}
+      shell: bash
+      run: pnpm install --frozen-lockfile

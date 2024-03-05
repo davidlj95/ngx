@@ -7,7 +7,7 @@ import { TWITTER_CARD_TITLE_METADATA_PROVIDER } from './twitter-card-title-metad
 import { TWITTER_CARD_IMAGE_METADATA_PROVIDER } from './twitter-card-image-metadata-provider'
 
 /**
- * Adds {@link https://ngx-meta.pages.dev/built-in-modules/twitter-cards/ | Twitter Cards module}
+ * Adds {@link https://ngx-meta.dev/built-in-modules/twitter-cards/ | Twitter Cards module}
  * metadata managers
  *
  * For module-based apps, use {@link NgxMetaTwitterCardModule} instead

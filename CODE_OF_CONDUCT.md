@@ -59,8 +59,8 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement at any of the
-digital contact points provided via [`@davidlj95`'s website](https://davidlj95.com).
+reported to the community leaders responsible for enforcement at the email
+address: `conduct` at `ngx-meta.dev`.
 
 All complaints will be reviewed and investigated promptly and fairly.
 

@@ -4,7 +4,7 @@ import { TwitterCardSite } from './twitter-card-site'
 import { TwitterCardCreator } from './twitter-card-creator'
 
 /**
- * {@link https://ngx-meta.pages.dev/built-in-modules/twitter-cards/ | Twitter Cards module}
+ * {@link https://ngx-meta.dev/built-in-modules/twitter-cards/ | Twitter Cards module}
  * metadata values that can be set
  *
  * @public

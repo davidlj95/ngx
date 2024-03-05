@@ -9,7 +9,7 @@ import { STANDARD_CANONICAL_URL_METADATA_PROVIDER } from './standard-canonical-u
 import { STANDARD_LOCALE_METADATA_PROVIDER } from './standard-locale-metadata-provider'
 
 /**
- * Adds {@link https://ngx-meta.pages.dev/built-in-modules/standard/ | standard module}
+ * Adds {@link https://ngx-meta.dev/built-in-modules/standard/ | standard module}
  * metadata managers
  *
  * For module-based apps, use {@link NgxMetaStandardModule} instead

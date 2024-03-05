@@ -1,6 +1,6 @@
 /**
  * Utility type to provide specific
- * {@link https://ngx-meta.pages.dev/built-in-modules/json-ld/ | JSON-LD module}
+ * {@link https://ngx-meta.dev/built-in-modules/json-ld/ | JSON-LD module}
  * metadata
  *
  * @public

@@ -37,6 +37,7 @@ nav:
   - API Reference: api/ngx-meta.md
   - changelog.md
   - Misc:
+      - misc/example-apps.md
       - misc/bundle-size.md
 not_in_nav: api/*.md
 # From here below, all for Material for mkdocs

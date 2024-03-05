@@ -1,14 +1,5 @@
 # TODO
 
-- General documentation
-  - Split guides into basics, med, advanced?
-  - Review next steps
-  - Architecture
-    - Resolver
-    - Dependency injection
-    - Router strategy
-  - Sample apps
-  - Bundle size
 - Contributions
   - PRs from forks
     - Pass checks

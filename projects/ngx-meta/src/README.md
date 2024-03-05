@@ -34,4 +34,4 @@ Set it up in a flash! 🚀
 
 <!-- Last 4 lines will be cut when this file is included in docs site -->
 
-Ready to start? [Check out the docs to get started](https://ngx-meta.pages.dev)
+Ready to start? [Check out the docs to get started](https://ngx-meta.dev)

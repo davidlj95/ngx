@@ -3,7 +3,7 @@ import { OpenGraphType } from './open-graph-type'
 import { OpenGraphProfile } from './open-graph-profile'
 
 /**
- * {@link https://ngx-meta.pages.dev/built-in-modules/open-graph/ | Open Graph module}
+ * {@link https://ngx-meta.dev/built-in-modules/open-graph/ | Open Graph module}
  * metadata values that can be set
  *
  * @public

@@ -95,6 +95,6 @@ To know about how to properly define the metadata values to set, check out the *
 
 If you already know about all that, maybe you want to explore the **library's [built-in modules](./built-in-modules/index.md) that allow setting common metadata**.
 
-Otherwise, take a look at "Guides" section to learn about other features of the library.
+Otherwise, take a look at "Guides" section to learn about other features of the library. If looking for examples, you can always check out [our example apps](example-apps.md) for some real examples on how to use the library.
 
 [^1]: The library doesn't include any schematics for now

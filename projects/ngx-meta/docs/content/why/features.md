@@ -34,10 +34,11 @@ Thanks to the pluggable module based architecture, you can manage popular metada
 
 ### 📦 Small bundle size
 
-Right now it will take **~6-7KiB of your bundle size when using all features**[^1]. But if you don't use them all, the whole library is designed to be [_tree shakeable_][tree shaking] so that's the maximum size this library will take of your app's bundle. To ensure it doesn't grow over time, there's a bot that comments each PR with a [bundle size PR comment] to ensure bundle size doesn't grow unexpectedly.
+Right now it will take **~6-7KiB of your bundle size when using all features** of the library[^1]. Furthermore, bundle size is tracked in every change made to the library. See [bundle size](bundle-size.md) page for more details. Anyway, the library is...
 
-[bundle size reduction]: https://github.com/davidlj95/ngx/issues/112#issuecomment-1901325536
-[bundle size PR comment]: https://github.com/davidlj95/ngx/pull/243#issuecomment-1912895697
+### 🌳 Tree shakeable
+
+Whole library is designed to be [_tree shakeable_][tree shaking]. So metadata modules you're not interested in, or features you're not interested in won't end up in your app's bundle size if you don't use them.
 
 ### 🐨 Lazy loading support
 

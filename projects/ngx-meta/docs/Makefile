@@ -17,6 +17,10 @@ prebuild:
 		sed "s/> \[!IMPORTANT\]/!!! warning \"Alpha version\"\n/g" \
 		> includes/README.md
 	cp ../src/CHANGELOG.md includes/
+	# Bundle size
+	cp ../e2e/a15/bundle-size-report.md includes/a15-bundle-size-report.md
+	cp ../e2e/a16/bundle-size-report.md includes/a16-bundle-size-report.md
+	cp ../e2e/a17/bundle-size-report.md includes/a17-bundle-size-report.md
 
 install:
 	poetry install --no-root

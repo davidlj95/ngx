@@ -39,6 +39,7 @@ jobs:
     uses: ./.github/workflows/reusable-bundle-size.yml
     with:
       e2e-app-artifact-name-prefix: ngx-meta-e2e-app-a
+      bundle-size-artifact-name-prefix: ngx-meta-bundle-size-a
     permissions:
       pull-requests: write
   docs:
@@ -47,6 +48,7 @@ jobs:
     uses: ./.github/workflows/reusable-docs.yml
     with:
       api-docs-artifact-name: ngx-meta-api-docs
+      bundle-size-artifact-name-prefix: ngx-meta-bundle-size-a
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}

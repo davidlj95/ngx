@@ -1,3 +1,9 @@
+## [`ngx-meta` v1.0.0-alpha.43](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.42...ngx-meta-v1.0.0-alpha.43) (2024-03-05)
+
+### Continuous (Integration|Deployment)
+
+- go back to previous GH token ([e8438f8](https://github.com/davidlj95/ngx/commit/e8438f8871ca0e6fcd6ef9973f69ace2879848f0))
+
 ## [`ngx-meta` v1.0.0-alpha.41](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.40...ngx-meta-v1.0.0-alpha.41) (2024-03-05)
 
 ### Documentation

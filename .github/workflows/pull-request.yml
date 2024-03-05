@@ -43,7 +43,7 @@ jobs:
     permissions:
       pull-requests: write
   docs:
-    needs: [api-extractor]
+    needs: [api-extractor, bundle-size]
     name: Docs
     uses: ./.github/workflows/reusable-docs.yml
     with:

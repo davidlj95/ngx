@@ -6,18 +6,18 @@ settings:
 
 devDependencies:
   '@fontsource-variable/inter-tight':
+    specifier: 5.0.20
+    version: 5.0.20
+  '@fontsource/dm-mono':
     specifier: 5.0.19
     version: 5.0.19
-  '@fontsource/dm-mono':
-    specifier: 5.0.18
-    version: 5.0.18
 
 packages:
 
-  /@fontsource-variable/inter-tight@5.0.19:
-    resolution: {integrity: sha512-lynPgkEstP6NhW9ji4PeMh37D3cPP1G9uogVNYpNZTnwm4rBz2H7/d+b71l3m0f2LRKRcjENEaDlPatGgZvPhA==}
+  /@fontsource-variable/inter-tight@5.0.20:
+    resolution: {integrity: sha512-HJH+9/ftH0+iIQoM59Gkx+C0dBJo9YS026W1e0RWF8Ra39lhXDBti8Pfh4F2m7eTcxmHx9wt/N0MvJ8hQObDmg==}
     dev: true
 
-  /@fontsource/dm-mono@5.0.18:
-    resolution: {integrity: sha512-cKIxxlXfKiE/IhoiemJoZZFL8KshcVQv/DSjlQoTTNjZ0Lhko2WCIGNSdtskcE8J8miaTaz062StG/eKaftLKA==}
+  /@fontsource/dm-mono@5.0.19:
+    resolution: {integrity: sha512-he/hWl/7JwMgVDnWeuw0a4xh/06tozTXwhvb+/LzdrMlj3bqvrMs4Up4CbYBg7HlQcUtWUL6lPOUKHXWjq8Z/g==}
     dev: true

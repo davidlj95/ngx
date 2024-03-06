@@ -43,22 +43,35 @@ jobs:
       # https://github.com/orgs/community/discussions/25220
       - name: Find associated pull request
         id: pr
-        run: |
-          PR_NUMBER="$(gh api /search/issues --method GET -f per_page=1 -f \
-            q="repo:${{ github.repository }} is:pr sha:${{ github.event.workflow_run.head_sha }}" \
-            --jq '.items[0].number')"
-          echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
+        with:
+          script: |
+            const response = await github.rest.search.issuesAndPullRequests({
+              q: 'repo:${{ github.repository }} is:pr sha:${{ github.event.workflow_run.head_sha }}',
+              per_page: 1,
+            })
+            console.log(response)
+            const items = response.items
+            if (items.length < 1) {
+              console.info('No PRs found')
+              return
+            }
+            const pullRequestNumber = items[0].number
+            console.log(pullRequestNumber)
+            return pullRequestNumber
+      - name: Echo pull request number
+        run: echo ${{ steps.pr.outputs.result }}
       - name: Find bundle size PR comment
         uses: peter-evans/find-comment@d5fe37641ad8451bdd80312415672ba26c86575e # v3
         id: fc
         with:
-          issue-number: ${{ steps.pr.outputs.number }}
+          issue-number: ${{ steps.pr.outputs.result }}
           comment-author: 'github-actions[bot]'
           body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}
       - name: Update bundle size PR comment
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ steps.pr.outputs.number }}
+          issue-number: ${{ steps.pr.outputs.result }}
           body-path: bundle-size-report.md
           edit-mode: replace

@@ -4,7 +4,8 @@ export function testSetsAllStandardMetadata() {
   it('should set all standard metadata', () => {
     cy.fixture('all-metadata.json').then(
       (metadata: typeof ALL_METADATA_JSON) => {
-        cy.title().should('eq', metadata.title)
+        standardTitleShouldEqual(metadata.title)
+        standardDescriptionShouldEqual(metadata.description)
         cy.getMeta('description')
           .shouldHaveContent()
           .and('eq', metadata.description)
@@ -28,4 +29,12 @@ export function testSetsAllStandardMetadata() {
       },
     )
   })
+}
+
+export function standardTitleShouldEqual(title: string) {
+  cy.title().should('eq', title)
+}
+
+export function standardDescriptionShouldEqual(description: string) {
+  cy.getMeta('description').shouldHaveContent().and('eq', description)
 }

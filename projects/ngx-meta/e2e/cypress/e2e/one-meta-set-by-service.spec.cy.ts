@@ -4,6 +4,14 @@ import {
   testNoConsoleLogsAreEmitted,
 } from '../support/no-console-logs-are-emitted'
 import ONE_METADATA_JSON from '../fixtures/one-metadata.json'
+import { openGraphTitleShouldEqual } from '../support/test-sets-all-open-graph-metadata'
+import {
+  standardDescriptionShouldEqual,
+  standardTitleShouldEqual,
+} from '../support/test-sets-all-standard-metadata'
+import { twitterCardTitleShouldEqual } from '../support/test-sets-all-twitter-card-metadata'
+import { openGraphDescriptionShouldNotExist } from '../support/test-unsets-all-open-graph-metadata'
+import { twitterCardDescriptionShouldNotExist } from '../support/test-unsets-all-twitter-card-metadata'
 
 describe('One meta set by service', () => {
   beforeEach(() => {
@@ -20,11 +28,9 @@ describe('One meta set by service', () => {
     cy.fixture('one-metadata.json').then(
       (metadata: typeof ONE_METADATA_JSON) => {
         const expectedTitle = metadata.global.value
-        cy.title().should('eq', expectedTitle)
-        cy.getMetaWithProperty('og:title')
-          .shouldHaveContent()
-          .and('eq', expectedTitle)
-        cy.getMeta('twitter:title').shouldHaveContent().and('eq', expectedTitle)
+        standardTitleShouldEqual(expectedTitle)
+        openGraphTitleShouldEqual(expectedTitle)
+        twitterCardTitleShouldEqual(expectedTitle)
       },
     )
   })
@@ -33,11 +39,9 @@ describe('One meta set by service', () => {
     cy.fixture('one-metadata.json').then(
       (metadata: typeof ONE_METADATA_JSON) => {
         const expectedDescription = metadata.jsonPath.value
-        cy.getMeta('description')
-          .shouldHaveContent()
-          .and('eq', expectedDescription)
-        cy.getMetaWithProperty('og:description').should('not.exist')
-        cy.getMeta('twitter:description').should('not.exist')
+        standardDescriptionShouldEqual(expectedDescription)
+        openGraphDescriptionShouldNotExist()
+        twitterCardDescriptionShouldNotExist()
       },
     )
   })

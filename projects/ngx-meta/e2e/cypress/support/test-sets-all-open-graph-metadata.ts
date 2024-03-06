@@ -11,9 +11,7 @@ export function testSetsAllOpenGraphMetadata(openGraphOverrides: object = {}) {
             ...openGraphOverrides,
           },
         }
-        cy.getMetaWithProperty('og:title')
-          .shouldHaveContent()
-          .and('eq', metadata.title)
+        openGraphTitleShouldEqual(metadata.title)
         cy.getMetaWithProperty('og:type')
           .shouldHaveContent()
           .and('eq', metadata.openGraph.type)
@@ -50,4 +48,8 @@ export function testSetsAllOpenGraphMetadata(openGraphOverrides: object = {}) {
       },
     )
   })
+}
+
+export function openGraphTitleShouldEqual(title: string) {
+  cy.getMetaWithProperty('og:title').shouldHaveContent().and('eq', title)
 }

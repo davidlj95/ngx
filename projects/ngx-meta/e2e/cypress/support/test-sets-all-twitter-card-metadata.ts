@@ -31,9 +31,7 @@ export function testSetsAllTwitterCardMetadata(
         cy.getMeta('twitter:description')
           .shouldHaveContent()
           .and('eq', metadata.description)
-        cy.getMeta('twitter:title')
-          .shouldHaveContent()
-          .and('eq', metadata.title)
+        twitterCardTitleShouldEqual(metadata.title)
         cy.getMeta('twitter:image')
           .shouldHaveContent()
           .and('eq', metadata.image.url)
@@ -43,4 +41,8 @@ export function testSetsAllTwitterCardMetadata(
       },
     )
   })
+}
+
+export function twitterCardTitleShouldEqual(title: string) {
+  cy.getMeta('twitter:title').shouldHaveContent().and('eq', title)
 }

@@ -46,7 +46,7 @@ If you know the bug and can provide a bug fix, your pull request is more than we
 
 ### Pull requests
 
-Happy to see you want to provide some code 🥰
+Happy to see you want to provide some code or docs 🥰
 
 Search first there is no open (or closed) pull request already in [GitHub Pull Requests] page to avoid duplicating efforts. If there's none, feel free to open yours.
 
@@ -62,15 +62,17 @@ A reviewer will check your code and provide feedback. If everything's ready, the
 
 [GitHub Pull Requests]: https://github.com/davidlj95/ngx/pulls
 
+- ❤️ **Do** contribute with a pull request. They're very welcome 🥰
+- ✅ **Do** search [GitHub Pull Requests] to find an existing pull request first. Even if it's in closed state.
+- ✅ **Do** describe your changes with a description
+
 ## Developing
 
 You can go and just start writing code. The CI/CD will tell you if you fail to comply with a required code style / convention. However, if you want to know them in advance:
 
-When developing some code and committing it with `git`, please do take into account our [conventions](#conventions).
-
-To know how to perform typical project management tasks (build, test, ...), check the [tasks](#tasks) section.
-
-Checkout also some recommended [tools](#tools)
+- **Follow [conventions](#conventions)** when developing some code and committing it with `git`
+- **See how to perform usual [tasks](#tasks)** such as building, testing, ...
+- **Take a look at [tools](#tools)** recommended to help you develop
 
 ### Conventions
 
@@ -112,6 +114,18 @@ At least, it must provide the visibility of the exported member. Mainly either [
 
 Checkout [API Report](#api-report) section for more information
 
+#### Testing
+
+Do add an E2E test when adding some metadata to ensure it's add and removed as expected.
+
+Avoid unit tests for setting a specific metadata if the logic to set the metadata is straight forward (ie: no `if`s or loops).
+
+#### Documentation
+
+Remember to add some docs to the [comparison page](projects/ngx-meta/docs/content/why/comparison.md) when adding new metadata.
+
+If adding a whole metadata module, add it to the built-in modules section too.
+
 #### CI/CD jobs
 
 To easily reproduce locally CI/CD jobs, most commands run by CI/CD are stored in [`.ci/Makefile` file](.ci/Makefile).
@@ -151,8 +165,6 @@ To run them all
 ```sh
 pnpm run test
 ```
-
-Check out [test tools](#test) section for more information
 
 ##### E2E tests
 

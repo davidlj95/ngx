@@ -40,8 +40,6 @@ jobs:
     with:
       e2e-app-artifact-name-prefix: ngx-meta-e2e-app-a
       bundle-size-artifact-name-prefix: ngx-meta-bundle-size-a
-    permissions:
-      pull-requests: write
   docs:
     needs: [api-extractor, bundle-size]
     name: Docs

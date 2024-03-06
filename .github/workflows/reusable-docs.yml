@@ -63,6 +63,10 @@ jobs:
             version="$(echo "$artifact_dir" | sed "s/^\.\/${{ inputs.bundle-size-artifact-name-prefix }}//")"
             cp "$artifact_dir/bundle-size-report.md" "projects/ngx-meta/e2e/a$version"
           done
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - name: Install poetry # pipx comes built-in in GitHub runner
         run: pipx install poetry
       - name: Setup Python

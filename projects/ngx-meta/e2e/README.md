@@ -87,3 +87,13 @@ Use the `ngx-meta/e2e/a*: build & serve` run configurations to build the library
 #### E2E tests
 
 Use the `ngx-meta/e2e: meta *` run configurations to run E2E tests without having to open the Cypress UI. Tests will appear integrated inside WebStorm. Remember to serve a sample app first.
+
+## Quirks
+
+### Typescript errors
+
+Do restart the Typescript language service when updating library's code if the sample app reports errors. Sometimes it gets lost as doesn't detect that library code changed.
+
+In WebStorm, you can [search for an action](https://www.jetbrains.com/help/webstorm/searching-everywhere.html#ws_search_actions) named `Restart Typescript service`
+
+In Visual Studio Code, with a Typescript file opened, [open the command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) and look for `Typescript: Restart TS Server`

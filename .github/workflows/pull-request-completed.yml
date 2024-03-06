@@ -52,14 +52,12 @@ jobs:
             })
             const items = response.data.items
             if (items.length < 1) {
-              console.info('No PRs found')
+              console.error('No PRs found')
               return
             }
             const pullRequestNumber = items[0].number
-            console.log(pullRequestNumber)
+            console.info("Pull request number is", pullRequestNumber)
             return pullRequestNumber
-      - name: Echo pull request number
-        run: echo ${{ steps.pr.outputs.result }}
       - name: Find bundle size PR comment
         uses: peter-evans/find-comment@d5fe37641ad8451bdd80312415672ba26c86575e # v3
         id: fc

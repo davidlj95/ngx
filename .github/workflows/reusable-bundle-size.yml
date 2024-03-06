@@ -1,4 +1,3 @@
-#👇 Keep in sync with on bundle size completed workflow
 name: Bundle size
 on:
   workflow_call:

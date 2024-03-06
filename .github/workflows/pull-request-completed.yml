@@ -5,8 +5,8 @@ name: Pull request completed
 
 on:
   workflow_run:
-    workflows:
-      - pull-request.yml
+    #👇 Keep in sync with pull request workflow
+    workflows: [Pull request]
     types:
       - completed
 

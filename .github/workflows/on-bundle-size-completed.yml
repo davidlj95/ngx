@@ -1,0 +1,51 @@
+# Split into another workflow to make it work with PRs from forked repos
+# https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
+name: Bundle size completed
+
+on:
+  workflow_run:
+    workflows:
+      - reusable-bundle-size.yml
+    types:
+      - completed
+
+permissions:
+  # 👇 Needed for PR bundle size comment only
+  pull-requests: write
+
+env:
+  #👇 Keep in sync with pull request workflow
+  BUNDLE_SIZE_ARTIFACT_NAME_PREFIX: ngx-meta-bundle-size-a
+  #👇 Keep in sync with bundle size reusable workflow
+  BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-a
+
+jobs:
+  pr-comment:
+    name: PR comment - Angular v${{ matrix.version }}
+    if: github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        version: [15, 16, 17]
+    steps:
+      - name: Download bundle size analysis results
+        uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
+        with:
+          name: ${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+          run-id: ${{ github.event.workflow_run.id }}
+      - name: Find bundle size PR comment
+        uses: peter-evans/find-comment@d5fe37641ad8451bdd80312415672ba26c86575e # v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.workflow_run.pull_requests[0].number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}
+      - name: Update bundle size PR comment
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: bundle-size-report.md
+          edit-mode: replace

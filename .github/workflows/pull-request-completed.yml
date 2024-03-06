@@ -1,11 +1,12 @@
 # Split into another workflow to make it work with PRs from forked repos
 # https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
-name: Bundle size completed
+# Tried using just bundle size reusable workflow file/name, but doesn't work
+name: Pull request completed
 
 on:
   workflow_run:
-    #👇 Keep in sync with bundle size reusable workflow
-    workflows: [Bundle size]
+    workflows:
+      - pull-request.yml
     types:
       - completed
 
@@ -20,8 +21,8 @@ env:
   BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-a
 
 jobs:
-  pr-comment:
-    name: PR comment - Angular v${{ matrix.version }}
+  bundle-size-pr-comment:
+    name: Bundle size - PR comment - Angular v${{ matrix.version }}
     if: github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest

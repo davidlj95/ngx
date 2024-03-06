@@ -88,7 +88,7 @@ echo "### 📦 Bundle size ($header)" >"$output_file"
     echo "<!-- $hidden_info -->"
   fi
   if [ -n "$git_ref" ]; then
-    echo "Git ref: $git_ref"
+    echo "Git ref: [$git_ref](https://github.com/davidlj95/ngx/commit/$git_ref)"
   fi
   echo ""
   printf "| Module file | Size |"

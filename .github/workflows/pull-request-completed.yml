@@ -70,5 +70,5 @@ jobs:
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ steps.pr.outputs.result }}
-          body-path: bundle-size-report.md
+          body-path: bundle-size-pr-comment.md
           edit-mode: replace

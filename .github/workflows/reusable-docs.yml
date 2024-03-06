@@ -61,6 +61,7 @@ jobs:
         if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
         run: |
           ARTIFACT_DIRS=$(ls | grep ${{ inputs.bundle-size-artifact-name-prefix }})
+          echo $ARTIFACT_DIRS
           for artifact_dir in $ARTIFACT_DIRS; do
             version="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
             cp "$artifact_dir/bundle-size-report.md" "projects/ngx-meta/e2e/a$version"

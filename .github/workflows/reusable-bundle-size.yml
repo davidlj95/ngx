@@ -84,9 +84,7 @@ jobs:
           --base-file 'source-map-explorer-main.json' \
           --output-file 'bundle-size-pr-comment.md'
       - name: Generate bundle size report
-        run: |
-          pnpm run bundle-size-report \
-          --git-ref '${{ github.event.pull_request.head.sha }}'
+        run: pnpm run bundle-size-report --git-ref '${{ github.sha }}'
       - name: Upload bundle size analysis results
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:

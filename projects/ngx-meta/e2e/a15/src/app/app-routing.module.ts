@@ -1,29 +1,34 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { ROUTES } from '../../../cypress/fixtures/routes'
-import { MetaSetByServiceComponent } from './meta-set-by-service/meta-set-by-service.component'
-import { MetaSetByRouteComponent } from './meta-set-by-route/meta-set-by-route.component'
+import { AllMetaSetByServiceComponent } from './all-meta-set-by-service/all-meta-set-by-service.component'
+import { AllMetaSetByRouteComponent } from './all-meta-set-by-route/all-meta-set-by-route.component'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
-import * as METADATA_JSON from '../../../cypress/fixtures/metadata.json'
+import * as ALL_METADATA_JSON from '../../../cypress/fixtures/all-metadata.json'
 import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-service/meta-set-by-route-and-service.component'
 import { MetaLateLoadedModule } from './meta-late-loaded/meta-late-loaded.module'
+import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta-set-by-service.component'
 
-const ngxMetaRouteData: NgxMetaRouteData = { meta: METADATA_JSON }
+const ngxMetaRouteData: NgxMetaRouteData = { meta: ALL_METADATA_JSON }
 
 const routes: Routes = [
   {
-    path: ROUTES.metaSetByService.path,
-    component: MetaSetByServiceComponent,
+    path: ROUTES.allMetaSetByService.path,
+    component: AllMetaSetByServiceComponent,
   },
   {
-    path: ROUTES.metaSetByRoute.path,
-    component: MetaSetByRouteComponent,
+    path: ROUTES.allMetaSetByRoute.path,
+    component: AllMetaSetByRouteComponent,
     data: ngxMetaRouteData,
   },
   {
     path: ROUTES.metaSetByRouteAndService.path,
     component: MetaSetByRouteAndServiceComponent,
     data: ngxMetaRouteData,
+  },
+  {
+    path: ROUTES.oneMetaSetByService.path,
+    component: OneMetaSetByServiceComponent,
   },
   {
     path: ROUTES.metaLateLoaded.path,

@@ -1,12 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/e2e: meta set by service" type="JavaScriptTestRunnerCypress">
+  <configuration default="false" name="ngx-meta/e2e: all meta set by route" type="JavaScriptTestRunnerCypress">
     <node-interpreter value="project" />
     <cypress-package value="$PROJECT_DIR$/projects/ngx-meta/e2e/node_modules/cypress" />
     <working-dir value="$PROJECT_DIR$/projects/ngx-meta/e2e" />
     <cypress-options value="-q" />
     <envs />
     <scope-kind value="TEST_FILE" />
-    <test-file value="$PROJECT_DIR$/projects/ngx-meta/e2e/cypress/e2e/meta-set-by-service.spec.cy.ts" />
+    <test-file value="$PROJECT_DIR$/projects/ngx-meta/e2e/cypress/e2e/all-meta-set-by-route.spec.cy.ts" />
     <method v="2" />
   </configuration>
 </component>

@@ -1,0 +1,10 @@
+{
+  "global": {
+    "key": "title",
+    "value": "Individually set global title"
+  },
+  "jsonPath": {
+    "key": "standard.description",
+    "value": "Individually set standard specific description"
+  }
+}

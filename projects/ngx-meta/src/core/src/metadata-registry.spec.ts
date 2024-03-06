@@ -38,6 +38,36 @@ describe('Metadata registry', () => {
     expect(managers).toHaveSize(1)
     expect(managers).toEqual([dummyManager])
   })
+
+  it('should find metadata managers by global', () => {
+    const global = 'global'
+    const globalDummyManager = makeMetadataManagerSpy({
+      global,
+    })
+    const sut = makeSut()
+
+    sut.register(dummyManager)
+    sut.register(globalDummyManager)
+
+    const managers = [...sut.findByGlobalOrJsonPath(global)]
+    expect(managers).toHaveSize(1)
+    expect(managers).toEqual([globalDummyManager])
+  })
+
+  it('should find metadata managers by json path', () => {
+    const jsonPath = ['dummy', 'json', 'path']
+    const jsonPathManager = makeMetadataManagerSpy({
+      jsonPath,
+    })
+    const sut = makeSut()
+
+    sut.register(dummyManager)
+    sut.register(jsonPathManager)
+
+    const managers = [...sut.findByGlobalOrJsonPath(jsonPath.join('.'))]
+    expect(managers).toHaveSize(1)
+    expect(managers).toEqual([jsonPathManager])
+  })
 })
 
 function makeSut(

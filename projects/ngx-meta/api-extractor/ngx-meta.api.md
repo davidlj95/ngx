@@ -150,6 +150,8 @@ export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['j
 class MetadataRegistry {
     constructor(managers: ReadonlyArray<NgxMetaMetadataManager> | null);
     // (undocumented)
+    findByGlobalOrJsonPath(globalOrJsonPath: string): Iterable<NgxMetaMetadataManager>;
+    // (undocumented)
     getAll(): Iterable<NgxMetaMetadataManager>;
     // (undocumented)
     register(manager: NgxMetaMetadataManager): void;
@@ -248,6 +250,7 @@ export class NgxMetaService {
     constructor(registry: MetadataRegistry, resolver: MetadataResolver);
     clear(): void;
     set(values?: MetadataValues): void;
+    setOne(globalOrJsonPath: string, value: unknown): void;
 }
 
 // @public

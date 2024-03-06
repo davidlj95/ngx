@@ -11,6 +11,7 @@ Hey 👋 Glad you're here 😊 Contributions are very welcome ❤️
   - [Conventions](#conventions)
   - [Tasks](#tasks)
   - [Tools](#tools)
+  - [Quirks](#quirks)
 
 ## Code of conduct
 
@@ -73,6 +74,7 @@ You can go and just start writing code. The CI/CD will tell you if you fail to c
 - **Follow [conventions](#conventions)** when developing some code and committing it with `git`
 - **See how to perform usual [tasks](#tasks)** such as building, testing, ...
 - **Take a look at [tools](#tools)** recommended to help you develop
+- **Something strange happens? [Quirks](#quirks)** may help
 
 ### Conventions
 
@@ -165,6 +167,9 @@ To run them all
 ```sh
 pnpm run test
 ```
+
+> [!TIP]
+> There's also a WebStorm run configuration (`All tests`) to run all unit tests and report the results inside the IDE
 
 ##### E2E tests
 
@@ -265,3 +270,20 @@ They should be installed by default. If not, do run
 ```sh
 pnpm husky
 ```
+
+### Quirks
+
+#### Can't run tests: `TestBed` error
+
+If you see this error:
+
+```sh
+Error: Need to call TestBed.initTestEnvironment() first
+    at TestBedImpl.compiler (node_modules/.pnpm/@angular+core@17.2.3_rxjs@7.8.1_zone.js@0.14.2/node_modules/@angular/core/fesm2022/testing.mjs:1970:19)
+```
+
+Maybe you accidentally ran `pnpm install` inside a project's source code (ie: `projects/ngx-meta/src`). **Remove the `node_modules` inside that directory** and error should go away.
+
+> See https://stackoverflow.com/a/74903074/3263250
+
+Remember to stop the Karma server before running tests again.

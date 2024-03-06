@@ -59,12 +59,12 @@ jobs:
           pattern: ${{ inputs.bundle-size-artifact-name-prefix }}*
       - name: Copy reports into directories
         if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
-        shell: bash
-        env:
-          BUNDLE_SIZE_ARTIFACT_NAME_PREFIX: ${{ inputs.bundle-size-artifact-name-prefix }}
+        working-directory: '.'
         run: |
-          for artifact_dir in $BUNDLE_SIZE_ARTIFACT_NAME_PREFIX*; do
-            version="$(echo "$artifact_dir" | sed "s/^$BUNDLE_SIZE_ARTIFACT_NAME_PREFIX//")"
+          pwd
+          ls
+          for artifact_dir in ${{ inputs.bundle-size-artifact-name-prefix }}*; do
+            version="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
             cp "$artifact_dir/bundle-size-report.md" "projects/ngx-meta/e2e/a$version"
           done
       - name: Install poetry # pipx comes built-in in GitHub runner

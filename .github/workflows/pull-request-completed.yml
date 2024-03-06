@@ -50,8 +50,7 @@ jobs:
               q: 'repo:${{ github.repository }} is:pr sha:${{ github.event.workflow_run.head_sha }}',
               per_page: 1,
             })
-            console.log(response)
-            const items = response.items
+            const items = response.data.items
             if (items.length < 1) {
               console.info('No PRs found')
               return

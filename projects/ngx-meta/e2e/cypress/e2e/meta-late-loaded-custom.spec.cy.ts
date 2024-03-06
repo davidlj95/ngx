@@ -16,7 +16,7 @@ describe('Meta late loaded + custom', () => {
 
   testNoConsoleLogsAreEmitted()
   it('should set late loaded + custom metadata', () => {
-    cy.fixture('custom-all-metadata.json').then(
+    cy.fixture('custom-metadata.json').then(
       (customMetadata: typeof CUSTOM_METADATA_JSON) => {
         cy.getMeta(customMetadata.custom.keyName)
           .shouldHaveContent()
@@ -32,7 +32,7 @@ describe('Meta late loaded + custom', () => {
 
     testNoConsoleLogsAreEmitted()
     it('should unset late loaded + custom metadata', () => {
-      cy.fixture('custom-all-metadata.json').then(
+      cy.fixture('custom-metadata.json').then(
         (metadata: typeof CUSTOM_METADATA_JSON) => {
           cy.getMeta(metadata.custom.keyName).should('not.exist')
         },

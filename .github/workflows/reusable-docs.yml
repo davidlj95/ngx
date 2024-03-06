@@ -60,7 +60,7 @@ jobs:
       - name: Copy reports into directories
         if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
         run: |
-          ARTIFACT_DIRS=$(echo ${{ inputs.bundle-size-artifact-name-prefix }}*)
+          ARTIFACT_DIRS=$(ls | grep ${{ inputs.bundle-size-artifact-name-prefix }})
           for artifact_dir in $ARTIFACT_DIRS; do
             version="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
             cp "$artifact_dir/bundle-size-report.md" "projects/ngx-meta/e2e/a$version"

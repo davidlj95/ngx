@@ -34,6 +34,7 @@ jobs:
       run:
         working-directory: '${{ env.DOCS_DIR }}'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     if: |
       github.ref_name == 'main' ||
       (
@@ -51,24 +52,19 @@ jobs:
         with:
           name: ${{ inputs.api-docs-artifact-name }}
           path: 'projects/ngx-meta/docs/content/api'
-      - name: Download bundle size info (Angular v15)
+      - name: Download bundle size info
         if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
-          name: ${{ inputs.bundle-size-artifact-name-prefix }}15
-          path: 'projects/ngx-meta/e2e/a15'
-      - name: Download bundle size info (Angular v16)
+          pattern: ${{ inputs.bundle-size-artifact-name-prefix }}*
+      - name: Copy reports into directories
         if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
-        uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
-        with:
-          name: ${{ inputs.bundle-size-artifact-name-prefix }}16
-          path: 'projects/ngx-meta/e2e/a16'
-      - name: Download bundle size info (Angular v17)
-        if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
-        uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
-        with:
-          name: ${{ inputs.bundle-size-artifact-name-prefix }}17
-          path: 'projects/ngx-meta/e2e/a17'
+        working-directory: '.'
+        run: |
+          for artifact_dir in ${{ inputs.bundle-size-artifact-name-prefix }}*; do
+            version="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
+            cp "$artifact_dir/bundle-size-report.md" "projects/ngx-meta/e2e/a$version"
+          done
       - name: Install poetry # pipx comes built-in in GitHub runner
         run: pipx install poetry
       - name: Setup Python

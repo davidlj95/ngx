@@ -31,6 +31,8 @@ jobs:
       matrix:
         version: [15, 16, 17]
     steps:
+      - name: Show context for debugging
+        run: echo '${{ toJSON(github) }}'
       - name: Download bundle size analysis results
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:

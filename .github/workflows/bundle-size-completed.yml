@@ -4,8 +4,8 @@ name: Bundle size completed
 
 on:
   workflow_run:
-    workflows:
-      - reusable-bundle-size.yml
+    #👇 Keep in sync with bundle size reusable workflow
+    workflows: [Bundle size]
     types:
       - completed
 

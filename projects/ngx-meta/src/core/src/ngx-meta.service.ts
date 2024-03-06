@@ -48,11 +48,11 @@ export class NgxMetaService {
    * Sets a metadata value for the page
    *
    * You can specify which metadata elements will be changed by using the
-   * JSON Path that you would use if using {@link set} API
+   * JSON Path that you would use if using {@link NgxMetaService.set} API
    *
    * @remarks
    * For instance, if you want to just set the title of the page. You'd set it
-   * with {@link set} API like this:
+   * with {@link NgxMetaService.set} API like this:
    *
    * ```typescript
    * this.ngxMetaService.set({
@@ -67,10 +67,10 @@ export class NgxMetaService {
    * this.ngxMetaService.setOne('title', 'foo')
    * ```
    *
-   * @param globalOrJsonPath Looks for metadata managers whose global matches
-   *                         this argument. Or whose JSON path matches this
-   *                         argument.
-   * @param value Value to set for matching metadata elements
+   * @param globalOrJsonPath - Looks for metadata managers whose global matches
+   *                           this argument. Or whose JSON path matches this
+   *                           argument.
+   * @param value - Value to set for matching metadata elements
    */
   public setOne(globalOrJsonPath: string, value: unknown): void {
     const managers = this.registry.findByGlobalOrJsonPath(globalOrJsonPath)

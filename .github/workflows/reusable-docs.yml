@@ -59,6 +59,7 @@ jobs:
           pattern: ${{ inputs.bundle-size-artifact-name-prefix }}*
       - name: Copy reports into directories
         if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
+        shell: bash
         env:
           BUNDLE_SIZE_ARTIFACT_NAME_PREFIX: ${{ inputs.bundle-size-artifact-name-prefix }}
         run: |

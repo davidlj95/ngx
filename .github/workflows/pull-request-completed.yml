@@ -35,6 +35,9 @@ jobs:
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
           name: ${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}${{ matrix.version }}
+          #👇 Need to specify it, otherwise, `run-id` argument won't be taken into account
+          # https://github.com/actions/download-artifact/tree/v4.1.4#:~:text=current%20workflow%20run.-,github%2Dtoken%3A,-%23%20The%20repository
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
       - name: Find bundle size PR comment
         uses: peter-evans/find-comment@d5fe37641ad8451bdd80312415672ba26c86575e # v3

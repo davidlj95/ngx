@@ -6,9 +6,7 @@
     - Can't read secrets
     - (optional) Can trigger doc preview deploys
   - Docs
-    - CONTRIBUTING.md
-      - Include in docs site
-    - Testing
+    - E2E docs
     - Quirks:
       - `node_modules` in project, Karma complains
       - Semantic Release locally

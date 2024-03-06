@@ -27,7 +27,8 @@
     "commitlint-last": "commitlint --verbose --from HEAD~1",
     "semantic-release": "semantic-release",
     "ng-lint-staged": "ng-lint-staged lint --max-warnings 0 --fix --",
-    "cache-clean": "ng cache clean"
+    "cache-clean": "ng cache clean",
+    "commit": "pnpx @commitlint/prompt-cli"
   },
   "private": true,
   "packageManager": "pnpm@8.15.4",

@@ -1,3 +1,42 @@
+## [`ngx-meta` v1.0.0-alpha.44](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.43...ngx-meta-v1.0.0-alpha.44) (2024-03-07)
+
+### Features
+
+- add setOne API to service ([#399](https://github.com/davidlj95/ngx/issues/399)) ([d6eee64](https://github.com/davidlj95/ngx/commit/d6eee642f42e5bff21c4b55409e7b70a40e2ef4f))
+
+### Documentation
+
+- add CONTRIBUTING.md ([#388](https://github.com/davidlj95/ngx/issues/388)) ([92369d5](https://github.com/davidlj95/ngx/commit/92369d5ae6eaf355bdb976837efeae70c5b962c9))
+- add docs preview section ([#398](https://github.com/davidlj95/ngx/issues/398)) ([7e4d167](https://github.com/davidlj95/ngx/commit/7e4d167263fb827060fa60d126fcde057dba0ac6))
+- add e2e tests README ([#391](https://github.com/davidlj95/ngx/issues/391)) ([1678b56](https://github.com/davidlj95/ngx/commit/1678b561c7080c8968ae40cd67d5738dd99d556c))
+- add LICENSE to repo ([4bb4fdc](https://github.com/davidlj95/ngx/commit/4bb4fdc1ecfb146b11f334c0a6213d06e946f0c0))
+- do not report bundle size diff ([#397](https://github.com/davidlj95/ngx/issues/397)) ([85acbb6](https://github.com/davidlj95/ngx/commit/85acbb62af57248d6b4421dd952af0939a86b3e1))
+- improve CONTRIBUTING.md ([#392](https://github.com/davidlj95/ngx/issues/392)) ([460bdd9](https://github.com/davidlj95/ngx/commit/460bdd98e59192caf5765d7e79db8a2f3b40b6a3))
+- move prebuild to script + allow missing bundle size reports ([#400](https://github.com/davidlj95/ngx/issues/400)) ([414453b](https://github.com/davidlj95/ngx/commit/414453b86fa2f21af0649738574cca4f90b67f2b))
+- write about known quirks ([#393](https://github.com/davidlj95/ngx/issues/393)) ([1fecbe4](https://github.com/davidlj95/ngx/commit/1fecbe49f5b7b2f0b1c59e81a07da9e231fae6e9))
+
+### Miscellaneous Chores
+
+- add issue template ([77043d6](https://github.com/davidlj95/ngx/commit/77043d65d33a6233836347e81900a0ea8352a8db))
+- add pull request template ([634779a](https://github.com/davidlj95/ngx/commit/634779affab8a5dba64a1c6874c05c24fec06316))
+- create SECURITY.md ([#390](https://github.com/davidlj95/ngx/issues/390)) ([68e03fe](https://github.com/davidlj95/ngx/commit/68e03fedfb16b726db1031fdf95cc8ad814cba9b))
+- **release:** update CHANGELOG.md ([#387](https://github.com/davidlj95/ngx/issues/387)) ([4ff1598](https://github.com/davidlj95/ngx/commit/4ff1598bac4991d295b2db8a7312fc1e6cc27fe0))
+- remove PRs from fork from TODO ([#394](https://github.com/davidlj95/ngx/issues/394)) ([107268d](https://github.com/davidlj95/ngx/commit/107268dbf28f05bac47f045b73f95ba8e4f14a60))
+
+### Continuous (Integration|Deployment)
+
+- add missing .data in script ([08c2b22](https://github.com/davidlj95/ngx/commit/08c2b223e048db5476c65b005c8f80d8e121f18f))
+- bundle size -> PR completed ([a17dbf2](https://github.com/davidlj95/ngx/commit/a17dbf2de8b73ddca886e77f16ecf4b5386e53be))
+- download all bundle size docs at once ([#396](https://github.com/davidlj95/ngx/issues/396)) ([381bbaa](https://github.com/davidlj95/ngx/commit/381bbaa93e68562bd32a66e9c4b000db4d1ccb91))
+- find associated PR num using gh search api ([18905c8](https://github.com/davidlj95/ngx/commit/18905c8a6449f945cf16465a8351088193812b65))
+- refer to workflow by name ([6f3f633](https://github.com/davidlj95/ngx/commit/6f3f6338dcc1e426159be57ba86c48ea4722e1c6))
+- remove unneeded extra logs ([d9b6aa1](https://github.com/davidlj95/ngx/commit/d9b6aa1b2f574d53af083b18166cba2ff9b1f26c))
+- show context for debugging ([2680ebf](https://github.com/davidlj95/ngx/commit/2680ebf1d1b34e6bae3b8e61a8224e3f9b7dcad8))
+- split PR comment into separate workflow ([#395](https://github.com/davidlj95/ngx/issues/395)) ([7b3511f](https://github.com/davidlj95/ngx/commit/7b3511f14a568e059b1ffc3ff91fdfc584859e5a))
+- use github token in pr completed download artifact ([548a001](https://github.com/davidlj95/ngx/commit/548a0015a5840151383d2f89ecd96949e4d2419e))
+- use name instead of file ([21aeeff](https://github.com/davidlj95/ngx/commit/21aeeffb443323ee72b8b27fd6b64e3fee271e5b))
+- use script instead of GH CLI ([2472bf7](https://github.com/davidlj95/ngx/commit/2472bf7a3cb78b6344620f37e0a813ffb4a2c860))
+
 ## [`ngx-meta` v1.0.0-alpha.43](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.42...ngx-meta-v1.0.0-alpha.43) (2024-03-05)
 
 ### Continuous (Integration|Deployment)

@@ -6,9 +6,6 @@ export function testSetsAllStandardMetadata() {
       (metadata: typeof ALL_METADATA_JSON) => {
         standardTitleShouldEqual(metadata.title)
         standardDescriptionShouldEqual(metadata.description)
-        cy.getMeta('description')
-          .shouldHaveContent()
-          .and('eq', metadata.description)
         cy.getMeta('author')
           .shouldHaveContent()
           .and('eq', metadata.standard.author)

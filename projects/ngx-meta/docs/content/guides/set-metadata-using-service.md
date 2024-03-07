@@ -64,7 +64,11 @@ export class CoolPageComponent implements OnInit {
 
 That would alter the existing title, but leave rest of metadata elements as they are. Here the `#!typescript satisfies keyof GlobalMetadata` would ensure that `title` actually refers to a global key. For more information about the metadata values JSON, check [its guide](metadata-values-json.md)
 
-If instead you wanted to alter keywords, which is specified under the `standard` key:
+!!! note "Title is a global: many metadata elements may change"
+
+    Given `title` is specified as a global key. So `#!html <title>` element will be changed if [standard module] is present. But `#!html <meta property="og:title">` will be also changed if [Open Graph module] is present.
+
+If instead you wanted to alter keywords, which is specified under the standard's module `standard` key:
 
 ```javascript
 {

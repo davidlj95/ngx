@@ -23,6 +23,8 @@ export const routes: Routes = [
 
 That's it, you should see the `#!html <title>`, `#!html <meta name="description">` and `#!html <meta name="keywords">` set in that page with the values you provided ✨
 
+--8<-- "includes/title-description-global.md"
+
 As with the service case, [Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set.
 
 **The [`NgxMetaRouteData`](ngx-meta.ngxmetaroutedata.md) utility type** ensures route data is inside `meta` key of the route's data.

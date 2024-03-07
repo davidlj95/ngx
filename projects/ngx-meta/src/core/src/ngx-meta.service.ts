@@ -67,6 +67,8 @@ export class NgxMetaService {
    * this.ngxMetaService.setOne('title', 'foo')
    * ```
    *
+   * For more information check the {@link https://ngx-meta.dev/guides/set-metadata-using-service/ | service guide docs}
+   *
    * @param globalOrJsonPath - Looks for metadata managers whose global matches
    *                           this argument. Or whose JSON path matches this
    *                           argument.

@@ -9,9 +9,9 @@ import {
   testNoConsoleLogsAreEmitted,
 } from '../support/no-console-logs-are-emitted'
 
-describe('Meta set by service', () => {
+describe('All meta set by service', () => {
   beforeEach(() => {
-    cy.visit(ROUTES.metaSetByService.path, {
+    cy.visit(ROUTES.allMetaSetByService.path, {
       onBeforeLoad(win: Cypress.AUTWindow) {
         spyOnConsole(win)
       },

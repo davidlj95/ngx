@@ -26,4 +26,14 @@ export class MetadataRegistry {
   getAll(): Iterable<NgxMetaMetadataManager> {
     return this.byId.values()
   }
+
+  findByGlobalOrJsonPath(
+    globalOrJsonPath: string,
+  ): Iterable<NgxMetaMetadataManager> {
+    return [...this.getAll()].filter(
+      (manager) =>
+        manager.resolverOptions.global == globalOrJsonPath ||
+        manager.resolverOptions.jsonPath.join('.') == globalOrJsonPath,
+    )
+  }
 }

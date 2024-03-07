@@ -1,11 +1,14 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+import { JsonPipe } from '@angular/common'
 
 @Component({
-  selector: 'app-meta-set-by-route',
-  templateUrl: './meta-set-by-route.component.html',
+  selector: 'app-all-meta-set-by-route',
+  standalone: true,
+  imports: [JsonPipe],
+  templateUrl: './all-meta-set-by-route.component.html',
 })
-export class MetaSetByRouteComponent {
+export class AllMetaSetByRouteComponent {
   protected readonly routeData: unknown
 
   constructor(activatedRoute: ActivatedRoute) {

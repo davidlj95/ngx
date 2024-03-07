@@ -1,13 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import * as METADATA_JSON from '../../../../cypress/fixtures/metadata.json'
+import ALL_METADATA_JSON from '../../../../cypress/fixtures/all-metadata.json'
 import { NgxMetaService } from '@davidlj95/ngx-meta/core'
+import { JsonPipe } from '@angular/common'
 
 @Component({
-  selector: 'app-meta-set-by-service',
-  templateUrl: './meta-set-by-service.component.html',
+  selector: 'app-all-meta-set-by-service',
+  standalone: true,
+  templateUrl: './all-meta-set-by-service.component.html',
+  imports: [JsonPipe],
 })
-export class MetaSetByServiceComponent implements OnInit, OnDestroy {
-  protected readonly metadata = METADATA_JSON
+export class AllMetaSetByServiceComponent implements OnInit, OnDestroy {
+  protected readonly metadata = ALL_METADATA_JSON
 
   constructor(private readonly ngxMetaService: NgxMetaService) {}
 

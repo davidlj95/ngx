@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { JsonPipe, NgForOf } from '@angular/common'
 import { RouterOutlet } from '@angular/router'
-import { MetaSetByServiceComponent } from './meta-set-by-service/meta-set-by-service.component'
-import { MetaSetByRouteComponent } from './meta-set-by-route/meta-set-by-route.component'
+import { AllMetaSetByServiceComponent } from './all-meta-set-by-service/all-meta-set-by-service.component'
+import { AllMetaSetByRouteComponent } from './all-meta-set-by-route/all-meta-set-by-route.component'
 import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-service/meta-set-by-route-and-service.component'
 import { NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
 import * as DEFAULTS_JSON from '../../../cypress/fixtures/defaults.json'
@@ -18,13 +18,15 @@ import {
 } from '@davidlj95/ngx-meta/open-graph'
 import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
 import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
+import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta-set-by-service.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    MetaSetByServiceComponent,
-    MetaSetByRouteComponent,
+    AllMetaSetByServiceComponent,
+    AllMetaSetByRouteComponent,
     MetaSetByRouteAndServiceComponent,
+    OneMetaSetByServiceComponent,
   ],
   imports: [
     BrowserModule,

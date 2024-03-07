@@ -86,7 +86,7 @@ Use the `ngx-meta/e2e/a*: build & serve` run configurations to build the library
 
 #### E2E tests
 
-Use the `ngx-meta/e2e: meta *` run configurations to run E2E tests without having to open the Cypress UI. Tests will appear integrated inside WebStorm. Remember to serve a sample app first.
+Use the `ngx-meta/e2e:` run configurations to run E2E tests without having to open the Cypress UI. Tests will appear integrated inside WebStorm. Remember to serve a sample app first.
 
 ## Quirks
 

@@ -4,19 +4,24 @@ export const ROUTES = {
     displayName: 'Root',
     linkId: 'root',
   },
-  metaSetByService: {
-    path: 'meta-set-by-service',
-    displayName: 'Meta set by service',
+  allMetaSetByService: {
+    path: 'all-meta-set-by-service',
+    displayName: 'All meta set by service',
     linkId: undefined,
   },
-  metaSetByRoute: {
-    path: 'meta-set-by-route',
-    displayName: 'Meta set by route',
+  allMetaSetByRoute: {
+    path: 'all-meta-set-by-route',
+    displayName: 'All meta set by route',
     linkId: undefined,
   },
   metaSetByRouteAndService: {
     path: 'meta-set-by-route-and-service',
     displayName: 'Meta set by route and service',
+    linkId: undefined,
+  },
+  oneMetaSetByService: {
+    path: 'one-meta-set-by-service',
+    displayName: 'One meta set by service',
     linkId: undefined,
   },
   metaLateLoaded: {

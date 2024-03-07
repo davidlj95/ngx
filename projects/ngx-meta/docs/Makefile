@@ -4,23 +4,7 @@ build: prebuild
 	poetry run mkdocs build
 
 prebuild:
-	mkdir -p content/fonts
-	# `cp -L` is required.
-	# In GitHub Actions, symlinks are used and copied symlinks are invalid
-	# https://github.com/davidlj95/ngx/actions/runs/7741714508/job/21109249970
-	cp -Lr node_modules/@fontsource* content/fonts
-	find content/fonts -name '*.md' -delete
-	# Everything but last 4 lines
-	sed "$$(($$(wc -l < ../src/README.md)-4)),\$$d" ../src/README.md | \
-		sed "s|../docs/content||g" | \
-		sed "s/> \([A-Z]\)/    \1/g" | \
-		sed "s/> \[!IMPORTANT\]/!!! warning \"Alpha version\"\n/g" \
-		> includes/README.md
-	cp ../src/CHANGELOG.md includes/
-	# Bundle size
-	cp ../e2e/a15/bundle-size-report.md includes/a15-bundle-size-report.md
-	cp ../e2e/a16/bundle-size-report.md includes/a16-bundle-size-report.md
-	cp ../e2e/a17/bundle-size-report.md includes/a17-bundle-size-report.md
+	./prebuild.sh
 
 install:
 	poetry install --no-root

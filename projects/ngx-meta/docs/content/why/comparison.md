@@ -53,6 +53,7 @@ It is certainly a better option than installing a poorly maintained library. But
 | Last commit                       |   [![lc-this]][repo-this]   |  [![lc-ngx-seo]][repo-ngx-seo]  |  [![lc-ngaox-seo]][repo-ngaox-seo]  |  [![lc-ngx-meta]][repo-ngx-meta]  |
 | Unit tests                        |  [![ci-b-this]][ci-l-this]  | [![ci-b-ngx-seo]][ci-l-ngx-seo] | [![ci-b-ngaox-seo]][ci-l-ngaox-seo] | [![ci-b-ngx-meta]][ci-l-ngx-meta] |
 | E2E tests                         |  [![ci-b-this]][ci-l-this]  |               ❌                |                 ❌                  |                ❌                 |
+| [Provenance][pro-article]         |   [![pro-this]][npm-this]   |  [![pro-ngx-seo]][npm-ngx-seo]  |  [![pro-ngaox-seo]][npm-ngaox-seo]  |  [![pro-ngx-meta]][npm-ngx-meta]  |
 | Collaborators                     |   [![co-this]][npm-this]    |  [![co-ngx-seo]][npm-ngx-seo]   |  [![co-ngaox-seo]][npm-ngaox-seo]   |  [![co-ngx-meta]][npm-ngx-meta]   |
 
 [pkg-this]: https://unpkg.com/browse/@davidlj95/ngx-meta/package.json
@@ -75,6 +76,11 @@ It is certainly a better option than installing a poorly maintained library. But
 [ci-l-ngx-seo]: https://github.com/avivharuzi/ngx-seo/actions/workflows/pr.yml
 [ci-l-ngaox-seo]: https://github.com/ngaox/ngxaox/actions/workflows/integrate.yml
 [ci-l-ngx-meta]: https://circleci.com/gh/fulls1z3/ngx-meta
+[pro-article]: https://github.blog/2023-04-19-introducing-npm-package-provenance/
+[pro-this]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.org%2F%40davidlj95%2Fngx-meta%2Flatest&query=%24.dist.attestations.provenance.predicateType&label=%20&color=darkgreen
+[pro-ngx-seo]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.org%2F%40avivharuzi%2Fngx-seo%2Flatest&query=%24.dist.attestations.provenance.predicateType&label=%20&color=darkgreen
+[pro-ngaox-seo]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.org%2F%40ngaox%2Fseo%2Flatest&query=%24.dist.attestations.provenance.predicateType&label=%20&color=darkgreen
+[pro-ngx-meta]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.org%2F%40ngx-meta%2Fcore%2Flatest&query=%24.dist.attestations.provenance.predicateType&label=%20&color=darkgreen
 [co-this]: https://img.shields.io/npm/collaborators/%40davidlj95%2Fngx-meta?label=%20
 [co-ngx-seo]: https://img.shields.io/npm/collaborators/%40avivharuzi%2Fngx-seo?label=%20
 [co-ngaox-seo]: https://img.shields.io/npm/collaborators/%40ngaox%2Fseo?label=%20

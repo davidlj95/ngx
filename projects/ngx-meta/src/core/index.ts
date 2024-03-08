@@ -1,1 +1,17 @@
-export * from './public-api'
+// Main providers
+export * from './src/ngx-meta-core.module'
+export * from './src/ngx-meta-metadata-loader.module'
+export * from './src/provide-ngx-meta-core'
+export * from './src/provide-ngx-meta-metadata-loader'
+// Others
+export * from './src/global-metadata'
+export * from './src/global-metadata-image'
+export * from './src/head-element-upsert-or-remove'
+export * from './src/make-composed-key-val-meta-definition'
+export * from './src/make-key-val-meta-definition'
+export * from './src/make-metadata-manager-provider-from-setter-factory'
+export * from './src/ngx-meta-meta.service'
+export * from './src/ngx-meta-metadata-manager'
+export * from './src/metadata-values'
+export * from './src/ngx-meta.service'
+export * from './src/ngx-meta-route-values.service'

@@ -1,3 +1,17 @@
+## [`ngx-meta` v1.0.0-alpha.46](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.45...ngx-meta-v1.0.0-alpha.46) (2024-03-08)
+
+### Bug Fixes
+
+- remove public-api files to reduce import possibilities ([#412](https://github.com/davidlj95/ngx/issues/412)) ([cb11fc7](https://github.com/davidlj95/ngx/commit/cb11fc705d11b8d394297203ac5e354ee72727b5))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#410](https://github.com/davidlj95/ngx/issues/410)) ([5ae7452](https://github.com/davidlj95/ngx/commit/5ae7452310e664f4261ffe2bb2f79f150827cffc))
+
+### Build System
+
+- **deps-dev:** update dependency typescript to v5.4.2 ([6f7bd79](https://github.com/davidlj95/ngx/commit/6f7bd79d5142b6db694d527703ee4101765f1bcd))
+
 ## [`ngx-meta` v1.0.0-alpha.45](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.44...ngx-meta-v1.0.0-alpha.45) (2024-03-08)
 
 ### Documentation

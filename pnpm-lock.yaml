@@ -71,8 +71,8 @@ devDependencies:
     specifier: 19.0.3
     version: 19.0.3
   '@microsoft/api-documenter':
-    specifier: 7.23.36
-    version: 7.23.36(@types/node@20.9.4)
+    specifier: 7.23.37
+    version: 7.23.37(@types/node@20.9.4)
   '@microsoft/api-extractor':
     specifier: 7.42.3
     version: 7.42.3(@types/node@20.9.4)
@@ -2584,8 +2584,8 @@ packages:
       call-bind: 1.0.5
     dev: true
 
-  /@microsoft/api-documenter@7.23.36(@types/node@20.9.4):
-    resolution: {integrity: sha512-DD4SkP0EKFmXJprt/WB4XykK2KdKSk5FjXeOvJ3D4cKFw0R5Da7TKfvsDKAASE1COB8FgQO3sftoPDHu9OD3lw==}
+  /@microsoft/api-documenter@7.23.37(@types/node@20.9.4):
+    resolution: {integrity: sha512-8StaLn4tLGllcgXCNGnqQRLFcWT9JILv5dHm2rYDdMWDQulInNKJnc2P9rpcI5mrO+cKcIRl75kdq4QrI9zunw==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.13(@types/node@20.9.4)

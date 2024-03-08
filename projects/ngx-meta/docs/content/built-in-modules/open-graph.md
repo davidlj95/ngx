@@ -134,4 +134,5 @@ At the moment of writing this document, Open Graph metadata is read by many popu
 
 - [Open Graph protocol specification][Open Graph]
 - [Facebook's sharing debugger](https://developers.facebook.com/tools/debug/)
+- [`freeCodeCamp.org`'s article on Open Graph](https://www.freecodecamp.org/news/what-is-open-graph-and-how-can-i-use-it-for-my-website/)
 - [Article on social discovery](https://web.dev/articles/social-discovery)

@@ -77,6 +77,8 @@
     "ng-mocks": "14.12.1",
     "ng-packagr": "17.2.1",
     "prettier": "3.2.5",
+    "rollup": "4.12.1",
+    "rollup-plugin-dts": "6.1.0",
     "semantic-release": "23.0.2",
     "typescript": "5.2.2"
   }

@@ -1,3 +1,22 @@
+## [`ngx-meta` v1.0.0-alpha.45](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.44...ngx-meta-v1.0.0-alpha.45) (2024-03-08)
+
+### Documentation
+
+- add more references to global / specific ([#402](https://github.com/davidlj95/ngx/issues/402)) ([c5b655e](https://github.com/davidlj95/ngx/commit/c5b655e58e24ad206dfbee19f8eb710616a94d64))
+- add motivation + first steps to README.md ([#408](https://github.com/davidlj95/ngx/issues/408)) ([08cfe36](https://github.com/davidlj95/ngx/commit/08cfe3671141c56901216ad5fd4dc935027013af))
+- add NPM provenance to comparison ([#403](https://github.com/davidlj95/ngx/issues/403)) ([a881197](https://github.com/davidlj95/ngx/commit/a881197a7bd281f342245da0a3dad59bd14bbda6))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#401](https://github.com/davidlj95/ngx/issues/401)) ([aefe78b](https://github.com/davidlj95/ngx/commit/aefe78b16798bbfa60cf18e6b49e9f6f385a9ec4))
+- trigger new release ([6894c2f](https://github.com/davidlj95/ngx/commit/6894c2fc62f0fecb35a6fbfb11843943b26d6853))
+
+### Build System
+
+- **deps-dev:** update dependency @microsoft/api-documenter to v7.23.37 ([760bf1b](https://github.com/davidlj95/ngx/commit/760bf1b186c90560c161e6e2614b61cf008bc117))
+- **deps-dev:** update dependency mkdocs-material to v9.5.13 ([c5dbd7e](https://github.com/davidlj95/ngx/commit/c5dbd7ede7fa445b30b2d9eeeae021429e93447a))
+- **deps:** update Angular to v17.2.4 ([#407](https://github.com/davidlj95/ngx/issues/407)) ([352d289](https://github.com/davidlj95/ngx/commit/352d289c6d269b12baf93ccaf023f17470c128ab))
+
 ## [`ngx-meta` v1.0.0-alpha.44](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.43...ngx-meta-v1.0.0-alpha.44) (2024-03-07)
 
 ### Features

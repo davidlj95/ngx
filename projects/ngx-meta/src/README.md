@@ -1,7 +1,7 @@
 ![<ngx-meta/> for Angular](../docs/content/images/logo.png)
 
 [![Angular](https://img.shields.io/badge/Works_with-Angular-red?logo=angular&logoColor=white&link=https%3A%2F%2Fangular.dev%2F)](https://angular.dev/)
-[![Supports Angular SSR/Universal](https://custom-icon-badges.demolab.com/badge/Supports-Angular_SSR%2FUniversal-blue.svg?logo=angular-universal&link=https%3A%2F%2Fangular.dev%2Fguide%2Fssr)](https://angular.dev/guide/ssr)
+[![Supports Angular SSR/Universal](https://custom-icon-badges.demolab.com/badge/Supports-Angular_SSR%2FUniversal-blue.svg?logo=angular-universal&link=https%3A%2F%2Fangular.dev%2Fguide%2Fssr)][SSR]
 [![NPM Version](https://img.shields.io/npm/v/%40davidlj95%2Fngx-meta?logo=npm&label=Latest%20version&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40davidlj95%2Fngx-meta)](https://www.npmjs.com/package/@davidlj95/ngx-meta)
 [![NPM Downloads](https://img.shields.io/npm/dt/%40davidlj95%2Fngx-meta?logo=npm&label=NPM%20downloads&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40davidlj95%2Fngx-meta)](https://www.npmjs.com/package/@davidlj95/ngx-meta)
 [![NPM License](https://img.shields.io/npm/l/%40davidlj95%2Fngx-meta?logo=npm&label=License&link=https%3A%2F%2Fgithub.com%2Fdavidlj95%2Fngx%2Fblob%2Fmain%2Fprojects%2Fngx-meta%2Fsrc%2FLICENSE)](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/src/LICENSE)
@@ -32,6 +32,38 @@ Set it up in a flash! 🚀
 > Current version is still an alpha, so APIs may change at any time
 > When it's finally stable, 1.0.0 version will be published
 
-<!-- Last 4 lines will be cut when this file is included in docs site -->
+## Motivation
 
-Ready to start? [Check out the docs to get started](https://ngx-meta.dev)
+You have a nice Angular-powered website. You want to improve its SEO and decide to add some metadata in your pages. You also enable [Server Side Rendering (SSR)][SSR] so when search engines visit your site, metadata elements are already in the HTML returned by the server. You start adding nice `<meta name="description">` to describe your home page. Then Open Graph metadata like `<meta property="og:title">` [to customize social cards / link previews](https://www.freecodecamp.org/news/what-is-open-graph-and-how-can-i-use-it-for-my-website/). You use [Angular's `Meta` APIs][Angular Meta APIs] to insert those in your DOM. All good so far 😊
+
+Now, you want to set metadata for another page of your site 🤔
+
+Calls to [Angular `Meta` APIs][Angular Meta APIs] start appearing in many places around. Object literals specifying `<meta>` definitions breed like rabbits 🐇 You also have to ensure when changing pages that metadata from a page doesn't stay there when visiting another. It's all starting to be a bit tedious 😅
+
+If only there was a way to easily specify metadata I want for each page in a declarative fashion and forget about it 🙏 You're in the right place then 🎉 This library will definitely help you 🥳
+
+[SSR]: https://angular.dev/guide/ssr
+[Angular Meta APIs]: https://angular.dev/api/platform-browser/Meta
+
+## 🗺️ Start exploring
+
+### New users
+
+First, welcome 🥰
+
+Wondering why this library and not another one? Take a look at [why section](https://ngx-meta.dev/why/). Probably most interesting parts are [**features**](https://ngx-meta.dev/why/features/) and [**comparison**](https://ngx-meta.dev/why/comparison/) pages.
+
+For the hands-on devs ([_this is the way_](https://knowyourmeme.com/memes/this-is-the-way)), [**get started now** ⚡️](https://ngx-meta.dev/get-started/)
+
+### Existing users
+
+Take a look at guides to refresh your knowledge. Like the one about setting metadata programmatically [**using the service**](https://ngx-meta.dev/guides/set-metadata-using-service/), in a declarative fashion [**using route's data**](https://ngx-meta.dev/guides/set-metadata-using-routing/). Or how [**metadata values JSON**](https://ngx-meta.dev/guides/metadata-values-json/) is shaped.
+
+Go deeper by:
+
+- [**Setting default metadata**](https://ngx-meta.dev/guides/defaults/) values for all pages
+- [**Loading metadata later**](https://ngx-meta.dev/guides/late-loading-modules/) to reduce main bundle size
+- [**Providing your custom metadata managers**](https://ngx-meta.dev/guides/manage-your-custom-metadata/)
+- [**Fine-grained choosing metadata elements**](https://ngx-meta.dev/guides/custom-metadata-providers-selection/) you're interested in. Rest of them won't end up in your bundle
+
+Are you by any chance looking for the [**API reference**](https://ngx-meta.dev/api/ngx-meta/)?

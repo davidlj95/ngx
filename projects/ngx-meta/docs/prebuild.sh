@@ -18,10 +18,8 @@ find "$FONTS_DIR" -name '*.md' -delete
 echo "ℹ️ Copying trimmed README file"
 README_FILENAME="README.md"
 README_FILE="../src/$README_FILENAME"
-TAIL_LINES_TO_TRIM=4
 # Everything but last x lines
-sed "$(($(wc -l < $README_FILE) - TAIL_LINES_TO_TRIM)),\$d" $README_FILE |
-  sed "s|../docs/content||g" | # Fix logo path
+sed "s|../docs/content||g" $README_FILE | # Fix logo path
   sed "s/> \([A-Z]\)/    \1/g" | # Remove quoted block + proper admonition 👇
   sed "s/> \[!IMPORTANT\]/!!! warning \"Alpha version\"\n/g" \
     > "$INCLUDES_DIR/$README_FILENAME"

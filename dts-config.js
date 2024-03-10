@@ -4,7 +4,6 @@ const fs = require('fs')
 const NGX_META_DIR = path.join('.', 'projects', 'ngx-meta')
 const NGX_META_SRC_DIR = path.join(NGX_META_DIR, 'src')
 
-const entrypoints = []
 const getDirectories = (source) =>
   fs
     .readdirSync(source, { withFileTypes: true })
@@ -24,9 +23,10 @@ ngxMetaEntrypoints.forEach((entrypoint) => {
   console.info('- ', entrypoint)
 })
 
+const NGX_META_DIST_DIR = path.join(NGX_META_DIR, 'dist')
 const entries = ngxMetaEntrypoints.map((entrypoint) => ({
-  filePath: path.join(NGX_META_DIR, 'out', entrypoint, 'index.d.ts'),
-  outFile: path.join(NGX_META_DIR, 'dist', entrypoint, 'bundled.d.ts'),
+  filePath: path.join(NGX_META_DIST_DIR, entrypoint, 'index.d.ts'),
+  outFile: path.join(NGX_META_DIST_DIR, entrypoint, 'bundled.d.ts'),
   output: {
     exportReferencedTypes: false,
   },

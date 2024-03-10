@@ -6,37 +6,37 @@ settings:
 
 dependencies:
   '@angular/animations':
-    specifier: ^17.2.4
+    specifier: 17.2.4
     version: 17.2.4(@angular/core@17.2.4)
   '@angular/common':
-    specifier: ^17.2.4
+    specifier: 17.2.4
     version: 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
   '@angular/compiler':
-    specifier: ^17.2.4
+    specifier: 17.2.4
     version: 17.2.4(@angular/core@17.2.4)
   '@angular/core':
-    specifier: ^17.2.4
+    specifier: 17.2.4
     version: 17.2.4(rxjs@7.8.1)(zone.js@0.14.2)
   '@angular/forms':
-    specifier: ^17.2.4
+    specifier: 17.2.4
     version: 17.2.4(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1)
   '@angular/platform-browser':
-    specifier: ^17.2.4
+    specifier: 17.2.4
     version: 17.2.4(@angular/animations@17.2.4)(@angular/common@17.2.4)(@angular/core@17.2.4)
   '@angular/platform-browser-dynamic':
-    specifier: ^17.2.4
+    specifier: 17.2.4
     version: 17.2.4(@angular/common@17.2.4)(@angular/compiler@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)
   '@angular/router':
-    specifier: ^17.2.4
+    specifier: 17.2.4
     version: 17.2.4(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1)
   rxjs:
-    specifier: ~7.8.0
+    specifier: 7.8.1
     version: 7.8.1
   tslib:
-    specifier: ^2.3.0
+    specifier: 2.6.2
     version: 2.6.2
   zone.js:
-    specifier: ~0.14.2
+    specifier: 0.14.2
     version: 0.14.2
 
 devDependencies:

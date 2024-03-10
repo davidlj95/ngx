@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-alpha.47](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.46...ngx-meta-v1.0.0-alpha.47) (2024-03-10)
+
+### Bug Fixes
+
+- use dts-bundle-generator for rollup ts files ([#414](https://github.com/davidlj95/ngx/issues/414)) ([05fbcf5](https://github.com/davidlj95/ngx/commit/05fbcf5d826b3b04964b816c0979976d28f40086))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#413](https://github.com/davidlj95/ngx/issues/413)) ([b312362](https://github.com/davidlj95/ngx/commit/b3123628f968f9adf09e9040da48118f42b0694b))
+
 ## [`ngx-meta` v1.0.0-alpha.46](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.45...ngx-meta-v1.0.0-alpha.46) (2024-03-08)
 
 ### Bug Fixes

@@ -14,13 +14,14 @@
   timezone: 'Europe/Madrid',
   labels: ['dependencies'],
   packageRules: [
-    // Library for main, app for E2E apps
+    // App for main / E2E apps (main one isn't published)
+    // Lib for published package JSONs
     {
-      matchFileNames: ['package.json'],
+      matchFileNames: ['projects/ngx-meta/src/package.json'],
       extends: ['config:js-lib'],
     },
     {
-      matchFileNames: ['projects/ngx-meta/e2e/**/*'],
+      matchFileNames: ['package.json', 'projects/ngx-meta/e2e/**/*'],
       extends: ['config:js-app'],
     },
     // Semantic commit messages & PR titles. Mocks @dependabot ones:

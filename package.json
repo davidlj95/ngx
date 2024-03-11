@@ -78,6 +78,6 @@
     "ng-packagr": "17.2.1",
     "prettier": "3.2.5",
     "semantic-release": "23.0.2",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   }
 }

@@ -35,6 +35,6 @@
     "@angular/cli": "17.2.3",
     "@angular/compiler-cli": "17.2.4",
     "source-map-explorer": "2.5.3",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   }
 }

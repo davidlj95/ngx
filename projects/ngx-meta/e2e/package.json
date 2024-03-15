@@ -8,7 +8,7 @@
   "packageManager": "pnpm@8.15.4",
   "private": true,
   "devDependencies": {
-    "cypress": "13.6.6",
+    "cypress": "13.7.0",
     "typescript": "5.4.2"
   }
 }

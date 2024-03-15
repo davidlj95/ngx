@@ -67,7 +67,7 @@
       matchDepTypes: ['devDependencies'],
       automerge: true,
     },
-    // Angular v17.0.x compatibilities
+    // Angular v17.3.x compatibilities
     // https://angular.io/guide/versions
     // https://update.angular.io/?v=16.0-17.0 (zone.js)
     {
@@ -88,7 +88,7 @@
         'package.json',
         'projects/ngx-meta/e2e/a17/package.json',
       ],
-      allowedVersions: '>=4.9.3 <5.4.0',
+      allowedVersions: '>=5.2.0 <5.5.0',
     },
     {
       matchPackageNames: ['rxjs'],

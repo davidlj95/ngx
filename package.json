@@ -30,7 +30,7 @@
     "commit": "pnpx @commitlint/prompt-cli"
   },
   "private": true,
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@8.15.5",
   "dependencies": {
     "@angular/animations": "17.3.0",
     "@angular/common": "17.3.0",

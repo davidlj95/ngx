@@ -3,10 +3,10 @@
  */
 module.exports = {
   branches: [
-    //👇 Fake branch so that we can release alpha versions in `main`
+    //👇 Fake branch so that we can release beta versions in `main`
     //   until we can release 1.0.0
     'semantic-release',
-    { name: 'main', prerelease: 'alpha' },
+    { name: 'main', prerelease: 'beta' },
   ],
   plugins: [
     '@semantic-release/commit-analyzer',
@@ -92,9 +92,9 @@ module.exports = {
       subject: '*maintenance*',
       release: 'patch',
     },
-    // Trigger an alpha release
+    // Trigger a beta release
     {
-      body: '*ALPHA RELEASE*',
+      body: '*BETA RELEASE*',
       release: 'patch',
     },
   ],

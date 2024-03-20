@@ -28,9 +28,9 @@ Supports SSR (and Angular Universal).
 Use a service. Use routes' data.
 Set it up in a flash! 🚀
 
-> [!IMPORTANT]
-> Current version is still an alpha, so APIs may change at any time
-> When it's finally stable, 1.0.0 version will be published
+> [!NOTE]
+> Current version is a beta. APIs are now very stable and very open for feedback.
+> Version 1.0.0 will be published after it has been in the wild for a while
 
 ## Motivation
 

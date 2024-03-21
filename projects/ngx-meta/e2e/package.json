@@ -9,6 +9,6 @@
   "private": true,
   "devDependencies": {
     "cypress": "13.7.0",
-    "typescript": "5.4.2"
+    "typescript": "5.4.3"
   }
 }

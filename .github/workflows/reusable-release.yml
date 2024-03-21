@@ -35,7 +35,9 @@ jobs:
   semantic-release:
     name: Semantic Release
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    #👇 Bit more time here, as if many things to release, GitHub API may
+    # rate limit the process. So a bit of waiting may be needed.
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4

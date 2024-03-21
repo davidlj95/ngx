@@ -133,7 +133,7 @@ export const makeKeyValMetaDefinition: (keyName: string, options?: {
 }) => NgxMetaMetaDefinition;
 
 // @internal (undocumented)
-export const _makeMetadataManager: <T>(id: string, resolverOptions: MetadataResolverOptions, set: MetadataSetter<T>) => NgxMetaMetadataManager<T>;
+export const _makeMetadataManager: <T>(id: NgxMetaMetadataManager<T>['id'], resolverOptions: NgxMetaMetadataManager<T>['resolverOptions'], set: NgxMetaMetadataManager<T>['set']) => NgxMetaMetadataManager<T>;
 
 // @public
 export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: {

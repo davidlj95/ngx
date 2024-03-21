@@ -45,6 +45,11 @@ jobs:
         id: pr
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         with:
+          retries: 3
+          #👇 Default except 403, which is the rate limit sometimes raised
+          # https://github.com/davidlj95/ngx/actions/runs/8362399318/job/22892884496
+          # https://github.com/octokit/plugin-retry.js/blob/v7.0.3/src/index.ts#L14
+          retry-exempt-status-codes: 400,401,404,422,451
           script: |
             const response = await github.rest.search.issuesAndPullRequests({
               q: 'repo:${{ github.repository }} is:pr sha:${{ github.event.workflow_run.head_sha }}',

@@ -21,7 +21,7 @@ README_FILE="../src/$README_FILENAME"
 # Everything but last x lines
 sed "s|../docs/content||g" $README_FILE | # Fix logo path
   sed "s/> \([A-Z]\)/    \1/g" | # Remove quoted block + proper admonition 👇
-  sed "s/> \[!IMPORTANT\]/!!! warning \"Alpha version\"\n/g" \
+  sed "s/> \[!NOTE\]/!!! note \"Beta version\"\n/g" \
     > "$INCLUDES_DIR/$README_FILENAME"
 
 # 📅 CHANGELOG.md

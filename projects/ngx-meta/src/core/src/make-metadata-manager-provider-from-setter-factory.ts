@@ -1,6 +1,7 @@
 import {
   _makeMetadataManager,
   _makeMetadataResolverOptions,
+  MetadataResolverOptions,
   MetadataSetter,
   NgxMetaMetadataManager,
 } from './ngx-meta-metadata-manager'
@@ -35,6 +36,7 @@ export type MetadataSetterFactory<T> = (
  *               Defaults to resolver options `jsonPath` joined by dots.
  *               `jP` is the `jsonPath` that will be used for the {@link MetadataResolverOptions.jsonPath}
  *               `g` is the `global` that will be used for the {@link MetadataResolverOptions.global}
+ *               `m` is the `objectMerge` that will be used for the {@link MetadataResolverOptions.objectMerge}
  *
  * @public
  */
@@ -46,9 +48,11 @@ export const makeMetadataManagerProviderFromSetterFactory = <T>(
     // ID of the manager
     id?: string
     // JSON Path
-    jP: ReadonlyArray<string>
+    jP: MetadataResolverOptions['jsonPath']
     // Global
-    g?: string
+    g?: MetadataResolverOptions['global']
+    // Object merge
+    m?: MetadataResolverOptions['objectMerge']
   },
 ): FactoryProvider => {
   const deps = opts.d ?? []
@@ -58,7 +62,7 @@ export const makeMetadataManagerProviderFromSetterFactory = <T>(
     useFactory: (...deps: unknown[]) =>
       _makeMetadataManager(
         opts.id ?? opts.jP.join('.'),
-        _makeMetadataResolverOptions(opts.jP, opts.g),
+        _makeMetadataResolverOptions(opts.jP, opts.g, opts.m),
         setterFactory(...deps),
       ),
     deps,

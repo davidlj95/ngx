@@ -19,4 +19,5 @@ export const TWITTER_CARD_IMAGE_METADATA_PROVIDER =
         value?.alt,
       )
     },
+    m: true,
   })

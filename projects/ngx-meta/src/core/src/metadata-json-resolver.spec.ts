@@ -113,27 +113,61 @@ describe('Metadata JSON Resolver', () => {
       })
     })
 
-    describe('and it is and object, and a global object exists too', () => {
-      const valueObject = { value: 'value', prop: 'value' }
-      const globalValueObject = {
-        globalValue: 'globalValue',
-        prop: 'globalValue',
-      }
-      const resolverOptions = _makeMetadataResolverOptions(
-        [key, subKey],
-        global,
-      )
-      const values = {
-        [global]: globalValueObject,
-        [key]: {
-          [subKey]: valueObject,
-        },
-      }
+    describe('and a global exists too', () => {
+      describe('when object merging is disabled', () => {
+        const values = {
+          [global]: global,
+          [key]: {
+            [subKey]: value,
+          },
+        }
+        const resolverOptions = _makeMetadataResolverOptions(
+          [key, subKey],
+          global,
+          false,
+        )
 
-      it('should merge both objects, with specific value taking priority', () => {
-        expect(sut(values, resolverOptions)).toEqual({
-          ...globalValueObject,
-          ...valueObject,
+        it('should return specific value', () => {
+          expect(sut(values, resolverOptions)).toEqual(value)
+        })
+      })
+
+      describe('when object merging is enabled', () => {
+        const resolverOptions = _makeMetadataResolverOptions(
+          [key, subKey],
+          global,
+          true,
+        )
+
+        describe('when values are not objects', () => {
+          const values = {
+            [global]: global,
+            [key]: {
+              [subKey]: value,
+            },
+          }
+
+          it('should return specific value', () => {
+            expect(sut(values, resolverOptions)).toEqual(value)
+          })
+        })
+
+        describe('when values are objects', () => {
+          const GLOBAL_OBJECT = { shared: 'shared', global }
+          const VALUE_OBJECT = { shared: 'overridden', value }
+          const values = {
+            [global]: GLOBAL_OBJECT,
+            [key]: {
+              [subKey]: VALUE_OBJECT,
+            },
+          }
+
+          it('should return merged objects', () => {
+            expect(sut(values, resolverOptions)).toEqual({
+              ...GLOBAL_OBJECT,
+              ...VALUE_OBJECT,
+            })
+          })
         })
       })
     })

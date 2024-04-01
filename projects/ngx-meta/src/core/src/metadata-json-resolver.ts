@@ -1,7 +1,7 @@
 import { MetadataValues } from './metadata-values'
-import { isObject } from './is-object'
 import { InjectionToken } from '@angular/core'
 import { MetadataResolverOptions } from './ngx-meta-metadata-manager'
+import { isObject } from './is-object'
 
 export type MetadataJsonResolver = (
   values: MetadataValues | undefined,
@@ -28,14 +28,18 @@ export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
         resolverOptions.global !== undefined
           ? (values as IndexedObject)[resolverOptions.global]
           : undefined
-      if (value !== undefined && !globalValue) {
-        return value
-      }
-      if (isObject(value) && isObject(globalValue)) {
+      if (
+        isObject(value) &&
+        isObject(globalValue) &&
+        resolverOptions.objectMerge
+      ) {
         return {
           ...globalValue,
           ...value,
         }
+      }
+      if (value !== undefined) {
+        return value
       }
       return globalValue
     },

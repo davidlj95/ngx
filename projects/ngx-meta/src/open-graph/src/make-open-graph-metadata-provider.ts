@@ -1,6 +1,7 @@
 import {
   GlobalMetadata,
   makeMetadataManagerProviderFromSetterFactory,
+  MetadataResolverOptions,
   MetadataSetterFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
@@ -20,6 +21,8 @@ export const makeOpenGraphMetadataProvider = <Key extends keyof OpenGraph>(
     g?: keyof GlobalMetadata
     // Setter factory. Defaults to setting the property to the given value.
     s?: MetadataSetterFactory<OpenGraph[Key]>
+    // Object merging. Defaults to false
+    m?: MetadataResolverOptions['objectMerge']
   } = {},
 ): FactoryProvider =>
   makeMetadataManagerProviderFromSetterFactory(
@@ -33,5 +36,6 @@ export const makeOpenGraphMetadataProvider = <Key extends keyof OpenGraph>(
       d: [NgxMetaMetaService],
       jP: [OPEN_GRAPH_KEY, key],
       g: opts.g,
+      m: opts.m,
     },
   )

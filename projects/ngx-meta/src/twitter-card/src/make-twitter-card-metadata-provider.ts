@@ -1,6 +1,7 @@
 import {
   GlobalMetadata,
   makeMetadataManagerProviderFromSetterFactory,
+  MetadataResolverOptions,
   MetadataSetterFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
@@ -20,6 +21,8 @@ export const makeTwitterCardMetadataProvider = <Key extends keyof TwitterCard>(
     g?: keyof GlobalMetadata
     // Setter factory. Defaults to setting the property to the given value.
     s?: MetadataSetterFactory<TwitterCard[Key]>
+    // Object merge
+    m?: MetadataResolverOptions['objectMerge']
   } = {},
 ): FactoryProvider =>
   makeMetadataManagerProviderFromSetterFactory(
@@ -33,5 +36,6 @@ export const makeTwitterCardMetadataProvider = <Key extends keyof TwitterCard>(
       d: [NgxMetaMetaService],
       jP: [TWITTER_KEY, key],
       g: opts.g,
+      m: opts.m,
     },
   )

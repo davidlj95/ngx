@@ -1,3 +1,44 @@
+## [`ngx-meta` v1.0.0-beta.2](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.1...ngx-meta-v1.0.0-beta.2) (2024-04-01)
+
+### Bug Fixes
+
+- only merge image metadata value objects ([#480](https://github.com/davidlj95/ngx/issues/480)) ([169f47f](https://github.com/davidlj95/ngx/commit/169f47fb0e1a19b60f1a885697b425b11dd292d2))
+
+### Miscellaneous Chores
+
+- remove describe block in JSON resolver test ([#477](https://github.com/davidlj95/ngx/issues/477)) ([c059226](https://github.com/davidlj95/ngx/commit/c059226323a25b91af0058bc8a8ad0dcc3f84974))
+- remove unneeded describe in resolver tests ([#479](https://github.com/davidlj95/ngx/issues/479)) ([15f13e7](https://github.com/davidlj95/ngx/commit/15f13e77ead946b86306e2873bc04e41b4e9899a))
+- update PR template with issue desc ([a69eab4](https://github.com/davidlj95/ngx/commit/a69eab49e49a80ecfd9d4ffac9372b6436f94083))
+
+### Code Refactoring
+
+- add "[@test](https://github.com/test)" path mapping ([#478](https://github.com/davidlj95/ngx/issues/478)) ([aa1b8b6](https://github.com/davidlj95/ngx/commit/aa1b8b6b6ee0bc2d5dd8b2656826337200ab0887))
+
+### Build System
+
+- **deps-dev:** bump express from 4.18.2 to 4.19.2 ([#471](https://github.com/davidlj95/ngx/issues/471)) ([3437438](https://github.com/davidlj95/ngx/commit/343743876fd7b0b552cc8ca2063b93b98768b4eb))
+- **deps-dev:** bump express in /projects/ngx-meta/e2e/a15 ([#469](https://github.com/davidlj95/ngx/issues/469)) ([1156277](https://github.com/davidlj95/ngx/commit/1156277c541df05bcabc11ac0c82445a9df04331))
+- **deps-dev:** bump express in /projects/ngx-meta/e2e/a16 ([#470](https://github.com/davidlj95/ngx/issues/470)) ([931fd5c](https://github.com/davidlj95/ngx/commit/931fd5c94d2d6338ff27f19ea167f9639ba92266))
+- **deps-dev:** bump express in /projects/ngx-meta/e2e/a17 ([#468](https://github.com/davidlj95/ngx/issues/468)) ([e6329bf](https://github.com/davidlj95/ngx/commit/e6329bf3ffda18ec08a233d6d9173943d14bf968))
+- **deps-dev:** bump webpack-dev-middleware ([#458](https://github.com/davidlj95/ngx/issues/458)) ([23d7a74](https://github.com/davidlj95/ngx/commit/23d7a74b15d978636eb0e3631651c9c93efa9ee9))
+- **deps-dev:** bump webpack-dev-middleware ([#459](https://github.com/davidlj95/ngx/issues/459)) ([b6aaa5a](https://github.com/davidlj95/ngx/commit/b6aaa5a414eacce7b2d0fe6b109cfb540a711c37))
+- **deps-dev:** bump webpack-dev-middleware ([#461](https://github.com/davidlj95/ngx/issues/461)) ([b21d0bd](https://github.com/davidlj95/ngx/commit/b21d0bd5bef239ed09b18abd65f0e82c68dfd7fd))
+- **deps-dev:** bump webpack-dev-middleware from 5.3.3 to 5.3.4 ([#460](https://github.com/davidlj95/ngx/issues/460)) ([c6df3f1](https://github.com/davidlj95/ngx/commit/c6df3f18cff57814cbe9d5c04ea023a1e1d5d428))
+- **deps-dev:** update actions/setup-python digest to 82c7e63 ([2a7a6c8](https://github.com/davidlj95/ngx/commit/2a7a6c8e3e8fac27f3ea4e2a2da407fc998000c4))
+- **deps-dev:** update dependency cypress to v13.7.1 ([ad37ea9](https://github.com/davidlj95/ngx/commit/ad37ea92fd6c37633ee85a1414d4be4f9f10a7bc))
+- **deps-dev:** update dependency mkdocs-material to v9.5.15 ([f3bac82](https://github.com/davidlj95/ngx/commit/f3bac82fe5290a8e69496d2fae527ce363364eb5))
+- **deps-dev:** update dependency node to v20.12.0 ([4d620b3](https://github.com/davidlj95/ngx/commit/4d620b3822d9679e81202d8f73c29e019c23bed7))
+- **deps-dev:** update dependency semantic-release to v23.0.6 ([62c5b14](https://github.com/davidlj95/ngx/commit/62c5b1401a523dc1c65ff6c2c0cd07b01520f9be))
+- **deps-dev:** update typescript-eslint monorepo to v7.4.0 ([6c96afa](https://github.com/davidlj95/ngx/commit/6c96afa1254cb4fb1935082e82380d437432437a))
+- **deps:** update Angular to v17.3.2 ([#475](https://github.com/davidlj95/ngx/issues/475)) ([530379a](https://github.com/davidlj95/ngx/commit/530379aac88ec4ee5ee3cc4a494529aea24bd7d0))
+- **ide:** fix build run config ([f7f6fc6](https://github.com/davidlj95/ngx/commit/f7f6fc65d8f1f49805aafc7dfc7a2c1ddfc64f63))
+
+### Continuous (Integration|Deployment)
+
+- allow dependabot long commit message lines ([#462](https://github.com/davidlj95/ngx/issues/462)) ([426515a](https://github.com/davidlj95/ngx/commit/426515a7b9a960631bdcb9aeddff4ca7017a226d))
+- increase release timeout ([69b4ab1](https://github.com/davidlj95/ngx/commit/69b4ab16168fcb5042c0d16ef3b200b3486e50d3))
+- use base / head SHAs for commitlint ([#463](https://github.com/davidlj95/ngx/issues/463)) ([9a4b5ab](https://github.com/davidlj95/ngx/commit/9a4b5abb4ee5ac09e3fe71e233be861ed1cff502))
+
 ## [`ngx-meta` v1.0.0-alpha.47](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-alpha.46...ngx-meta-v1.0.0-alpha.47) (2024-03-10)
 
 ### Bug Fixes

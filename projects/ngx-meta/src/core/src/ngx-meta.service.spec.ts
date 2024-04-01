@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing'
 import { NgxMetaService } from './ngx-meta.service'
 import { MockProvider, MockProviders } from 'ng-mocks'
 import { makeMetadataManagerSpy } from './__tests__/make-metadata-manager-spy'
-import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
+import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import { MetadataRegistry } from './metadata-registry'
 

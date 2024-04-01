@@ -11,10 +11,8 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "paths": {
-      // 👇 Changed to add secondary entry points
-      // "ngx-meta": ["./dist/ngx-meta"],
       "@davidlj95/ngx-meta/*": ["./projects/ngx-meta/src/*"],
-      "@davidlj95/ngx-meta": ["./projects/ngx-meta/src"]
+      "@/ngx-meta/test/*": ["./projects/ngx-meta/src/__tests__/*"]
     },
     "sourceMap": true,
     "declaration": false,

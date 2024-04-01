@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 
 import { MockProvider, MockProviders } from 'ng-mocks'
-import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
+import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { _NgxMetaRouteValuesService } from './ngx-meta-route-values.service'
 import { MetadataValues } from './metadata-values'
 import { Provider } from '@angular/core'

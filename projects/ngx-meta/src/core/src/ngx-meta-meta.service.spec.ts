@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing'
 import { NgxMetaMetaService } from './ngx-meta-meta.service'
 import { MockProvider } from 'ng-mocks'
 import { Meta } from '@angular/platform-browser'
-import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
+import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { makeKeyValMetaDefinition } from './make-key-val-meta-definition'
 
 describe('NgxMeta meta service', () => {

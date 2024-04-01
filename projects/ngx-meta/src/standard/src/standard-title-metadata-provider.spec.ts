@@ -1,4 +1,4 @@
-import { enableAutoSpy } from '../../__tests__/enable-auto-spy'
+import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Title } from '@angular/platform-browser'

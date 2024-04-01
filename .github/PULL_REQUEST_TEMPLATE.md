@@ -1,4 +1,11 @@
+# Issue or need
+
+<!-- Describe here WHAT issue or need you're solving -->
+<!-- Fixes # -->
+
 # Proposed changes
+
+<!-- Describe here HOW you're solving it -->
 
 # Quick reminders
 
@@ -9,5 +16,3 @@
 - 💬 **[TSDoc comments](https://github.com/davidlj95/ngx/blob/main/CONTRIBUTING.md#tsdoc-comments)** have been added or updated indicating API visibility if API surface has changed.
 - 🧪 **[Tests](https://github.com/davidlj95/ngx/blob/main/CONTRIBUTING.md#test)** have been added if needed. For instance, if adding new features or fixing a bug. Or removed if removing features.
 - ⚙️ **[API Report](https://github.com/davidlj95/ngx/blob/main/CONTRIBUTING.md#api-report)** has been updated if API surface is altered.
-
-<!-- Fixes issue # -->

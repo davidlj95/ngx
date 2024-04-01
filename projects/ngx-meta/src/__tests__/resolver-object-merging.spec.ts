@@ -1,4 +1,3 @@
-// Relates to https://github.com/davidlj95/ngx/issues/426
 import { TestBed } from '@angular/core/testing'
 import {
   METADATA_RESOLVER,
@@ -9,6 +8,10 @@ import { Provider } from '@angular/core'
 import { MockProvider } from 'ng-mocks'
 import { DEFAULTS_TOKEN } from '../core/src/defaults-token'
 
+// Relates to https://github.com/davidlj95/ngx/issues/426
+// TBH, this is needed cause both Metadata JSON resolver and Metadata resolver
+// may merge objs
+// We could extract merging into a common place and test that there
 describe('Metadata value resolver object merging', () => {
   type Values = { obj: object; specific?: { obj: object } }
   const baseResolverOptions: MetadataResolverOptions = {

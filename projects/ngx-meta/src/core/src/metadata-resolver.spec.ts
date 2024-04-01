@@ -15,19 +15,18 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { _makeMetadataResolverOptions } from './ngx-meta-metadata-manager'
+import {
+  _makeMetadataResolverOptions,
+  MetadataResolverOptions,
+} from './ngx-meta-metadata-manager'
 
 describe('Metadata resolver', () => {
   enableAutoSpy()
 
-  const dummyResolverOptions = _makeMetadataResolverOptions(['dummy'])
-  const dummyValues = { foo: 'bar' }
-  const value = 'value'
-  const valueObject = {
-    value: 'value',
-    prop: 'value',
-  }
-  const routeValues = { route: 'values' }
+  const baseResolverOptions = _makeMetadataResolverOptions(['dummy'])
+  const DUMMY_VALUES = { foo: 'bar' }
+  const VALUE = 'value'
+  const DUMMY_ROUTE_VALUES = { route: 'values' }
   let jsonResolver: jasmine.Spy<MetadataJsonResolver>
   let routeMetadataValues: jasmine.SpyObj<_NgxMetaRouteValuesService>
   let sut: MetadataResolver
@@ -50,20 +49,20 @@ describe('Metadata resolver', () => {
     beforeEach(() => {
       sut = makeSut()
       injectSpies()
-      mockJsonResolver(new Map([[dummyValues, value]]))
+      mockJsonResolver(new Map([[DUMMY_VALUES, VALUE]]))
     })
 
     it('should resolve value using values', () => {
-      sut(dummyValues, dummyResolverOptions)
+      sut(DUMMY_VALUES, baseResolverOptions)
 
       expect(jsonResolver).toHaveBeenCalledWith(
-        dummyValues,
-        dummyResolverOptions,
+        DUMMY_VALUES,
+        baseResolverOptions,
       )
     })
 
     it('should return its value', () => {
-      expect(sut(dummyValues, dummyResolverOptions)).toEqual(value)
+      expect(sut(DUMMY_VALUES, baseResolverOptions)).toEqual(VALUE)
     })
   })
 
@@ -71,22 +70,22 @@ describe('Metadata resolver', () => {
     beforeEach(() => {
       sut = makeSut()
       injectSpies()
-      routeMetadataValues.get.and.returnValue(routeValues)
-      mockJsonResolver(new Map([[routeValues, value]]))
+      routeMetadataValues.get.and.returnValue(DUMMY_ROUTE_VALUES)
+      mockJsonResolver(new Map([[DUMMY_ROUTE_VALUES, VALUE]]))
     })
 
     it('should resolve value using route metadata values', () => {
-      sut(dummyValues, dummyResolverOptions)
+      sut(DUMMY_VALUES, baseResolverOptions)
 
       expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
       expect(jsonResolver).toHaveBeenCalledWith(
-        routeValues,
-        dummyResolverOptions,
+        DUMMY_ROUTE_VALUES,
+        baseResolverOptions,
       )
     })
 
     it('should return value obtained from route metadata values', () => {
-      expect(sut(dummyValues, dummyResolverOptions)).toEqual(value)
+      expect(sut(DUMMY_VALUES, baseResolverOptions)).toEqual(VALUE)
     })
   })
 
@@ -95,75 +94,97 @@ describe('Metadata resolver', () => {
     beforeEach(() => {
       sut = makeSut({ defaults })
       injectSpies()
-      mockJsonResolver(new Map([[defaults, value]]))
+      mockJsonResolver(new Map([[defaults, VALUE]]))
     })
 
     it('should resolve value using default values', () => {
-      sut(dummyValues, dummyResolverOptions)
+      sut(DUMMY_VALUES, baseResolverOptions)
 
-      expect(jsonResolver).toHaveBeenCalledWith(defaults, dummyResolverOptions)
+      expect(jsonResolver).toHaveBeenCalledWith(defaults, baseResolverOptions)
     })
 
     it('should return value obtained from defaults', () => {
-      expect(sut(dummyValues, dummyResolverOptions)).toEqual(value)
+      expect(sut(DUMMY_VALUES, baseResolverOptions)).toEqual(VALUE)
     })
   })
 
   describe('when value exists in values object and route values', () => {
-    describe('when value is an object', () => {
-      const routeValueObject = {
-        routeValue: 'routeValue',
-        prop: 'routeValue',
-      }
-
-      beforeEach(() => {
-        sut = makeSut()
-        injectSpies()
-        routeMetadataValues.get.and.returnValue(routeValues)
-        mockJsonResolver(
-          new Map<MetadataValues, unknown>([
-            [routeValues, routeValueObject],
-            [dummyValues, valueObject],
-          ]),
-        )
-      })
-
-      it('should return the merged object, with value props having more priority', () => {
-        expect(sut(dummyValues, dummyResolverOptions)).toEqual({
-          ...routeValueObject,
-          ...valueObject,
-        })
-      })
-    })
-
-    describe('when value is not an object', () => {
+    describe('when object merging is disabled', () => {
       const routeValue = 'routeValue'
 
       beforeEach(() => {
         sut = makeSut()
         injectSpies()
-        routeMetadataValues.get.and.returnValue(routeValues)
+        routeMetadataValues.get.and.returnValue(DUMMY_ROUTE_VALUES)
         mockJsonResolver(
           new Map<MetadataValues, unknown>([
-            [routeValues, routeValue],
-            [dummyValues, value],
+            [DUMMY_ROUTE_VALUES, routeValue],
+            [DUMMY_VALUES, VALUE],
           ]),
         )
       })
 
       it('should return value from values object', () => {
-        expect(sut(dummyValues, dummyResolverOptions)).toEqual(value)
+        expect(sut(DUMMY_VALUES, baseResolverOptions)).toEqual(VALUE)
+      })
+    })
+
+    describe('when object merging is enabled', () => {
+      const resolverOptions: MetadataResolverOptions = {
+        ...baseResolverOptions,
+        objectMerge: true,
+      }
+
+      describe('when values are not objects', () => {
+        const ROUTE_VALUE = 'routeValue'
+
+        beforeEach(() => {
+          sut = makeSut()
+          injectSpies()
+          routeMetadataValues.get.and.returnValue(DUMMY_ROUTE_VALUES)
+          mockJsonResolver(
+            new Map<MetadataValues, unknown>([
+              [DUMMY_ROUTE_VALUES, ROUTE_VALUE],
+              [DUMMY_VALUES, VALUE],
+            ]),
+          )
+        })
+
+        it('should return value from values object', () => {
+          expect(sut(DUMMY_VALUES, resolverOptions)).toEqual(VALUE)
+        })
+      })
+
+      describe('when values are objects', () => {
+        const ROUTE_VALUE_OBJ = { shared: 'shared', route: 'route' }
+        const VALUE_OBJ = { shared: 'overridden', value: 'value' }
+
+        beforeEach(() => {
+          sut = makeSut()
+          injectSpies()
+          routeMetadataValues.get.and.returnValue(DUMMY_ROUTE_VALUES)
+          mockJsonResolver(
+            new Map<MetadataValues, unknown>([
+              [DUMMY_ROUTE_VALUES, ROUTE_VALUE_OBJ],
+              [DUMMY_VALUES, VALUE_OBJ],
+            ]),
+          )
+        })
+
+        it('should return merged value objects', () => {
+          expect(sut(DUMMY_VALUES, resolverOptions)).toEqual({
+            ...ROUTE_VALUE_OBJ,
+            ...VALUE_OBJ,
+          })
+        })
       })
     })
   })
 
   describe('when neither value, route value or default value exists', () => {
-    beforeEach(() => {
-      sut = makeSut()
-      injectSpies()
-    })
     it('should return nothing', () => {
-      expect(sut(dummyValues, dummyResolverOptions)).toBeUndefined()
+      const sut = makeSut()
+      expect(sut(DUMMY_VALUES, baseResolverOptions)).toBeUndefined()
     })
   })
 })

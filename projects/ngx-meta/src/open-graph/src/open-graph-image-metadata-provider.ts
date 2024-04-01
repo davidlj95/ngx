@@ -50,5 +50,5 @@ export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY =
  */
 export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = makeOpenGraphMetadataProvider(
   _GLOBAL_IMAGE,
-  { s: __OPEN_GRAPH_IMAGE_SETTER_FACTORY, g: _GLOBAL_IMAGE },
+  { s: __OPEN_GRAPH_IMAGE_SETTER_FACTORY, g: _GLOBAL_IMAGE, m: true },
 )

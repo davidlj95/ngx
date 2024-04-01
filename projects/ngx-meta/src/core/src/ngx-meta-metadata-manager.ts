@@ -34,6 +34,7 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
 export interface MetadataResolverOptions {
   readonly jsonPath: ReadonlyArray<string>
   readonly global?: string
+  readonly objectMerge?: boolean
 }
 
 /**
@@ -61,4 +62,5 @@ export const _makeMetadataManager = <T>(
 export const _makeMetadataResolverOptions = (
   jsonPath: MetadataResolverOptions['jsonPath'],
   global?: MetadataResolverOptions['global'],
-): MetadataResolverOptions => ({ jsonPath, global })
+  objectMerge?: MetadataResolverOptions['objectMerge'],
+): MetadataResolverOptions => ({ jsonPath, global, objectMerge })

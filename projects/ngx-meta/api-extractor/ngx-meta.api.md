@@ -139,12 +139,13 @@ export const _makeMetadataManager: <T>(id: NgxMetaMetadataManager<T>['id'], reso
 export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: {
     d?: FactoryProvider['deps'];
     id?: string;
-    jP: ReadonlyArray<string>;
-    g?: string;
+    jP: MetadataResolverOptions['jsonPath'];
+    g?: MetadataResolverOptions['global'];
+    m?: MetadataResolverOptions['objectMerge'];
 }) => FactoryProvider;
 
 // @internal (undocumented)
-export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global']) => MetadataResolverOptions;
+export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global'], objectMerge?: MetadataResolverOptions['objectMerge']) => MetadataResolverOptions;
 
 // @internal (undocumented)
 class MetadataRegistry {
@@ -166,6 +167,8 @@ export interface MetadataResolverOptions {
     readonly global?: string;
     // (undocumented)
     readonly jsonPath: ReadonlyArray<string>;
+    // (undocumented)
+    readonly objectMerge?: boolean;
 }
 
 // @public

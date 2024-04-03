@@ -65,7 +65,7 @@ const metadataValues: StandardMetadata = {
 }
 ```
 
-Defines the [`StandardMetadata.title`](ngx-meta.standard.title.md) which will set the HTML's `#!html <title>` if [standard module] is present. However, this value won't be used by other modules. For instance `#!html <meta property='og:title'>` will be empty if [Open Graph module] is present, given only standard `title` prope
+Defines the [`StandardMetadata.title`](ngx-meta.standard.title.md) which will set the HTML's `#!html <title>` if [standard module] is present. However, this value won't be used by other modules. For instance `#!html <meta property='og:title'>` will be empty if [Open Graph module] is present, given only standard `title` property is set.
 
 #### Metadata module types convention
 

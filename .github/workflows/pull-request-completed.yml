@@ -64,7 +64,7 @@ jobs:
             console.info("Pull request number is", pullRequestNumber)
             return pullRequestNumber
       - name: Find bundle size PR comment
-        uses: peter-evans/find-comment@d5fe37641ad8451bdd80312415672ba26c86575e # v3
+        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3
         id: fc
         with:
           issue-number: ${{ steps.pr.outputs.result }}

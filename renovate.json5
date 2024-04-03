@@ -164,5 +164,12 @@
       matchFileNames: ['projects/ngx-meta/e2e/a15/package.json'],
       allowedVersions: '~0.11.4 || ~0.12.0 || ~0.13.0',
     },
+    // API Documenter to use Markdown tables
+    // Watching issue to see if we can upgrade when fixed
+    // https://github.com/microsoft/rushstack/issues/4586
+    {
+      matchPackageNames: ['@microsoft/api-documenter'],
+      allowedVersions: '7.23.38',
+    },
   ],
 }

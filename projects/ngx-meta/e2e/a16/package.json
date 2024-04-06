@@ -34,7 +34,6 @@
     "@angular-devkit/build-angular": "16.2.13",
     "@angular/cli": "16.2.13",
     "@angular/compiler-cli": "16.2.12",
-    "source-map-explorer": "2.5.3",
     "typescript": "5.1.6"
   }
 }

@@ -3,7 +3,7 @@
     <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/a17/package.json" />
     <command value="run" />
     <scripts>
-      <script value="bundle-pr-comment" />
+      <script value="bundle-size-report" />
     </scripts>
     <arguments value="--base-file source-map-explorer-base.json" />
     <node-interpreter value="project" />

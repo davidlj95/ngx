@@ -8,7 +8,6 @@
     "build:source-map": "ng build --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "cache:clean": "ng cache clean",
     "source-map-explorer": "source-map-explorer dist/a15/main*.js",
     "source-map-explorer-json": "pnpm run --silent source-map-explorer --json > source-map-explorer.json",
     "bundle-size-report": "../bundle-size-report.sh -h 'Angular v15' -i source-map-explorer.json -o bundle-size-report.md"

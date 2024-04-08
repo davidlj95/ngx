@@ -29,7 +29,29 @@ First, build one of the `e2e` sample apps. Checkout [`e2e` infra README][e2e-REA
 Then, run the following command
 
 ```shell
-pnpm run analyze-main-bundle <appName>
+pnpm run a17:analyze-main-bundle
 ```
 
-Where `appName` is the directory name of one of the `e2e` apps. You should see an HTML report opened containing the main bundle size analysis of that app. You'll there find how much size the library takes.
+Replace `a17` for any other E2E app dir. The report will open in your browser. You'll find there how much bytes the lib size inside that app.
+
+## JSON report
+
+First, build one of the `e2e` sample apps. Checkout [`e2e` infra README][e2e-README] for more information. Remember to build with source maps in order to allow the tool to work
+
+To generate a JSON report containing the `source-map-explorer` analysis of an E2E app, run
+
+```shell
+pnpm run a17:sme-json
+```
+
+Replace `a17` for any other E2E app dir. The report will be located inside bundle size project's `a17` subdirectory
+
+## Markdown report
+
+To generate a Markdown report containing a bundle size analysis summary of an E2E app, run
+
+```shell
+pnpm run a17:report
+```
+
+Replace `a17` for any other E2E app dir. The report will be located inside bundle size project's `a17` subdirectory

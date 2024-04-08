@@ -48,7 +48,7 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
           node-version-file: '.node-version'
-      - name: Install Angular v${{ inputs.angular-version }} E2E app dependencies
+      - name: Install Angular v${{ matrix.version }} E2E app dependencies
         run: pnpm install --frozen-lockfile
       - name: Build Angular v${{ matrix.version }} E2E app
         run: pnpm build --source-map # with source map for bundle size analysis

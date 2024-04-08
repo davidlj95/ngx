@@ -81,14 +81,14 @@ jobs:
             const checkRun = checkRuns[0]
             const smeJsonString = checkRun.output.text
             const fs = require('fs')
-            fs.writeFileSync('${{ env.BUNDLE_SIZE_DIR }}/source-map-explorer-main.json', smeJsonString)
+            fs.writeFileSync('${{ env.BUNDLE_SIZE_DIR }}/a${{ matrix.version }}/source-map-explorer-main.json', smeJsonString)
       - name: Generate bundle size PR comment
         if: github.event_name == 'pull_request'
         run: |
           pnpm run a${{ matrix.version }}:report \
           --git-ref '${{ github.event.pull_request.head.sha }}' \
           --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
-          --base-file 'source-map-explorer-main.json' \
+          --base-file 'a${{ matrix.version }}/source-map-explorer-main.json' \
           --output-file 'a${{ matrix.version }}/bundle-size-pr-comment.md'
       - name: Generate bundle size report
         run: pnpm run a${{ matrix.version }}:report --git-ref '${{ github.sha }}'
@@ -97,7 +97,6 @@ jobs:
         with:
           name: ${{ inputs.bundle-size-artifact-name-prefix }}${{ matrix.version }}
           path: |
-            ${{ env.BUNDLE_SIZE_DIR }}/source-map-explorer*.json
             ${{ env.BUNDLE_SIZE_DIR }}/a${{ matrix.version }}/*.json
             ${{ env.BUNDLE_SIZE_DIR }}/a${{ matrix.version }}/*.md
           retention-days: 5

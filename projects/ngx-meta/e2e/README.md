@@ -52,6 +52,12 @@ To build it, use
 pnpm run build
 ```
 
+In order to analyze the app's bundle with `source-map-explorer`, run it with
+
+```
+pnpm run build --source-map
+```
+
 ### E2E tests
 
 #### Setup

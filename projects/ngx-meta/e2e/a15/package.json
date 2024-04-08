@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:source-map": "ng build --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "source-map-explorer": "source-map-explorer dist/a15/main*.js",

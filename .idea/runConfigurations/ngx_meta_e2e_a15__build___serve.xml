@@ -9,7 +9,16 @@
     <envs />
     <method v="2">
       <option name="RunConfigurationTask" enabled="false" run_configuration_name="ngx-meta: build" run_configuration_type="js.build_tools.npm" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="ngx-meta/e2e/a15: cache clean" run_configuration_type="js.build_tools.npm" />
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/a15/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="ng" />
+        </scripts>
+        <arguments value="cache clean" />
+        <node-interpreter value="project" />
+        <envs />
+      </option>
     </method>
   </configuration>
 </component>

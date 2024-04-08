@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "ngx-meta lib E2E testing with Cypress",
   "scripts": {
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "analyze-main-bundle": "./source-map-explorer.sh"
   },
   "packageManager": "pnpm@8.15.6",
   "private": true,

@@ -8,7 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "cache:clean": "ng cache clean",
-    "analyze-main-bundle": "pnpm run build:source-map && pnpm run source-map-explorer",
     "source-map-explorer": "source-map-explorer dist/a17/browser/main*.js",
     "source-map-explorer-json": "pnpm run --silent source-map-explorer --json > source-map-explorer.json",
     "bundle-size-report": "../bundle-size-report.sh -h 'Angular v17' -i source-map-explorer.json -o bundle-size-report.md"

@@ -1,0 +1,22 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ngx-meta/bundle-size/a17: report" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/projects/ngx-meta/bundle-size/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="a17:report" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2">
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/bundle-size/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="a17:sme-json" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+    </method>
+  </configuration>
+</component>

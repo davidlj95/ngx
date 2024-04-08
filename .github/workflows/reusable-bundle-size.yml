@@ -60,7 +60,7 @@ jobs:
       - name: Install bundle size analysis dependencies
         run: pnpm install --frozen-lockfile
       - name: Analyze main bundle size with source map explorer
-        run: pnpm run sme-json:a${{ matrix.version }}
+        run: pnpm run a${{ matrix.version }}:sme-json
       - name: Fetch bundle size analysis results from 'main' branch
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         if: github.event_name == 'pull_request'
@@ -85,13 +85,13 @@ jobs:
       - name: Generate bundle size PR comment
         if: github.event_name == 'pull_request'
         run: |
-          pnpm run report:a${{ matrix.version }} \
+          pnpm run a${{ matrix.version }}:report \
           --git-ref '${{ github.event.pull_request.head.sha }}' \
           --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
           --base-file 'source-map-explorer-main.json' \
           --output-file 'a${{ matrix.version }}/bundle-size-pr-comment.md'
       - name: Generate bundle size report
-        run: pnpm run report:a${{ matrix.version }} --git-ref '${{ github.sha }}'
+        run: pnpm run a${{ matrix.version }}:report --git-ref '${{ github.sha }}'
       - name: Upload bundle size analysis results
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:

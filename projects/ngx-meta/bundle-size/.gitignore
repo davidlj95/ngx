@@ -1,6 +1,5 @@
 a*/*.json
 a*/*.md
-source-map-explorer*.json
 # Manual edits
 # - Add source map explorer results JSON
 # - Add bundle size report markdown file

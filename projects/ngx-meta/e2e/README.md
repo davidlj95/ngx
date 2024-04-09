@@ -6,11 +6,11 @@ Within this directory, there are several sample Angular applications containing 
 
 ## Example apps
 
-They're located inside the directories prefixed by `a`, followed by the major version number.
+They're located inside the `apps` directory. Each app directory is prefixed by `a`, followed by the major version number.
 
-- [Angular v15](./a15)
-- [Angular v16](./a16)
-- [Angular v17](./a17)
+- [Angular v15](./apps/a15)
+- [Angular v16](./apps/a16)
+- [Angular v17](./apps/a17)
 
 ## Tasks
 

@@ -26,7 +26,7 @@ jobs:
       matrix:
         version: [15, 16, 17]
     env:
-      E2E_APP_DIR: projects/ngx-meta/e2e/a${{ matrix.version }}
+      E2E_APP_DIR: projects/ngx-meta/e2e/apps/a${{ matrix.version }}
     defaults:
       run:
         working-directory: ${{ env.E2E_APP_DIR }}

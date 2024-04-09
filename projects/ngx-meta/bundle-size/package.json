@@ -1,0 +1,21 @@
+{
+  "name": "@ngx-meta/bundle-size",
+  "version": "0.0.0",
+  "description": "ngx-meta lib bundle size analysis with source-map-explorer",
+  "scripts": {
+    "a15:analyze-main-bundle": "source-map-explorer ../e2e/a15/dist/a15/main*.js",
+    "a15:sme-json": "mkdir -p a15 && pnpm run --silent a15:analyze-main-bundle --json > a15/source-map-explorer.json",
+    "a15:report": "mkdir -p a15 && ./bundle-size-report.sh -h 'Angular v15' -i a15/source-map-explorer.json -o a15/bundle-size-report.md",
+    "a16:analyze-main-bundle": "source-map-explorer ../e2e/a16/dist/a16/main*.js",
+    "a16:sme-json": "mkdir -p a16 && pnpm run --silent a16:analyze-main-bundle --json > a16/source-map-explorer.json",
+    "a16:report": "mkdir -p a16 && ./bundle-size-report.sh -h 'Angular v16' -i a16/source-map-explorer.json -o a16/bundle-size-report.md",
+    "a17:analyze-main-bundle": "source-map-explorer ../e2e/a17/dist/a17/browser/main*.js",
+    "a17:sme-json": "mkdir -p a17 && pnpm run --silent a17:analyze-main-bundle --json > a17/source-map-explorer.json",
+    "a17:report": "mkdir -p a17 && ./bundle-size-report.sh -h 'Angular v17' -i a17/source-map-explorer.json -o a17/bundle-size-report.md"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "private": true,
+  "devDependencies": {
+    "source-map-explorer": "2.5.3"
+  }
+}

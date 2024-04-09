@@ -40,12 +40,18 @@ jobs:
         with:
           name: ${{ inputs.dist-artifact-name }}
           path: 'projects/ngx-meta/dist'
-      - name: Setup E2E app
-        uses: ./.github/actions/setup-e2e
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
+      - name: Setup Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
-          angular-version: ${{ matrix.version }}
+          cache: 'pnpm'
+          cache-dependency-path: ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
+          node-version-file: '.node-version'
+      - name: Install Angular v${{ matrix.version }} E2E app dependencies
+        run: pnpm install --frozen-lockfile
       - name: Build Angular v${{ matrix.version }} E2E app
-        run: pnpm build:source-map # with source map for bundle size analysis
+        run: pnpm build --source-map # with source map for bundle size analysis
       - name: Start Angular v${{ matrix.version }} E2E app server
         run: pnpm start &
       - name: Cypress run

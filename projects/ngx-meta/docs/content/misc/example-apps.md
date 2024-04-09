@@ -6,6 +6,6 @@ Sample apps live inside the [`e2e` directory of the project's repository](https:
 
 Checkout:
 
-- [Angular v15 example app](https://github.com/davidlj95/ngx/tree/main/projects/ngx-meta/e2e/a15)
+- [Angular v15 example app](https://github.com/davidlj95/ngx/tree/main/projects/ngx-meta/e2e/apps/15)
 - [Angular v16 example app]
 - [Angular v17 example app]

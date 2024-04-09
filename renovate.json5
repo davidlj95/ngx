@@ -74,7 +74,7 @@
       matchPackagePrefixes: ['@angular', '@angular-devkit'],
       matchFileNames: [
         'package.json',
-        'projects/ngx-meta/e2e/a17/package.json',
+        'projects/ngx-meta/e2e/apps/a17/package.json',
       ],
       allowedVersions: '^17',
     },
@@ -86,7 +86,7 @@
       matchPackageNames: ['typescript'],
       matchFileNames: [
         'package.json',
-        'projects/ngx-meta/e2e/a17/package.json',
+        'projects/ngx-meta/e2e/apps/a17/package.json',
       ],
       allowedVersions: '>=5.2.0 <5.5.0',
     },
@@ -94,7 +94,7 @@
       matchPackageNames: ['rxjs'],
       matchFileNames: [
         'package.json',
-        'projects/ngx-meta/e2e/a17/package.json',
+        'projects/ngx-meta/e2e/apps/a17/package.json',
       ],
       allowedVersions: '^6.5.3 || ^7.4.0',
     },
@@ -102,7 +102,7 @@
       matchPackageNames: ['zone.js'],
       matchFileNames: [
         'package.json',
-        'projects/ngx-meta/e2e/a17/package.json',
+        'projects/ngx-meta/e2e/apps/a17/package.json',
       ],
       allowedVersions: '0.14.x',
     },
@@ -111,28 +111,28 @@
     // https://update.angular.io/?v=15.0-16.0 (zone.js)
     {
       matchPackagePrefixes: ['@angular', '@angular-devkit'],
-      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a16/package.json'],
       allowedVersions: '^16',
     },
     //👇 N/A. Just to have this info somewhere near
     {
       matchPackageNames: ['node', '@types/node'],
-      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a16/package.json'],
       allowedVersions: '^16.14.0 || ^18.10.0',
     },
     {
       matchPackageNames: ['typescript'],
-      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a16/package.json'],
       allowedVersions: '>=4.9.3 <5.2.0',
     },
     {
       matchPackageNames: ['rxjs'],
-      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a16/package.json'],
       allowedVersions: '^6.5.3 || ^7.4.0',
     },
     {
       matchPackageNames: ['zone.js'],
-      matchFileNames: ['projects/ngx-meta/e2e/a16/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a16/package.json'],
       allowedVersions: '0.13.x',
     },
     // Angular v15.1.x || v15.2.x compatibilities
@@ -140,28 +140,28 @@
     // https://github.com/angular/angular/blob/15.2.10/packages/core/package.json (zone.js)
     {
       matchPackagePrefixes: ['@angular', '@angular-devkit'],
-      matchFileNames: ['projects/ngx-meta/e2e/a15/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a15/package.json'],
       allowedVersions: '^15',
     },
     //👇 N/A. Just to have this info somewhere near
     {
       matchPackageNames: ['node', '@types/node'],
-      matchFileNames: ['projects/ngx-meta/e2e/a15/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a15/package.json'],
       allowedVersions: '^14.20.0 || ^16.13.0 || ^18.10.0',
     },
     {
       matchPackageNames: ['typescript'],
-      matchFileNames: ['projects/ngx-meta/e2e/a15/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a15/package.json'],
       allowedVersions: '>=4.8.2 <5.0.0',
     },
     {
       matchPackageNames: ['rxjs'],
-      matchFileNames: ['projects/ngx-meta/e2e/a15/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a15/package.json'],
       allowedVersions: '^6.5.3 || ^7.4.0',
     },
     {
       matchPackageNames: ['zone.js'],
-      matchFileNames: ['projects/ngx-meta/e2e/a15/package.json'],
+      matchFileNames: ['projects/ngx-meta/e2e/apps/a15/package.json'],
       allowedVersions: '~0.11.4 || ~0.12.0 || ~0.13.0',
     },
     // API Documenter to use Markdown tables

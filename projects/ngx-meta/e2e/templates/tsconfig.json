@@ -1,3 +1,10 @@
+/* Only for DX purposes to edit templates with editor help
+ * Obtained from Angular CLI:
+ * https://github.com/angular/angular-cli/blob/17.3.x/packages/schematics/angular/workspace/files/tsconfig.json.template
+ * Added:
+ *  - `resolveJsonModule` to load cypress fixtures
+ *  - `paths`` to be able to resolve lib imports
+ */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -18,7 +25,10 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@davidlj95/ngx-meta/*": ["../../dist/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

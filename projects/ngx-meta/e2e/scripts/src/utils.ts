@@ -1,13 +1,23 @@
 import { fileURLToPath } from 'url'
-import { dirname, resolve } from 'path'
+import { dirname, join, resolve } from 'path'
 import * as Stream from 'stream'
 import * as process from 'process'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-export function getE2EDir() {
+export function getE2EAppsDir() {
+  return resolve(getE2EDir(), 'apps')
+}
+function getE2EDir() {
   return resolve(__dirname, '..', '..')
+}
+export function getRelativeLibraryDistDir() {
+  return join('..', '..', '..', 'dist')
+}
+
+export function getStandaloneTemplatesDir() {
+  return resolve(getE2EDir(), 'templates', 'standalone')
 }
 
 /**

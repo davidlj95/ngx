@@ -1,0 +1,13 @@
+/* Only for DX purposes to edit templates with editor help
+ * Obtained from Angular CLI:
+ * https://github.com/angular/angular-cli/blob/17.3.x/packages/schematics/angular/application/files/common-files/tsconfig.app.json.template
+ */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": ["node"]
+  },
+  "files": ["src/main.ts", "src/main.server.ts", "server.ts"],
+  "include": ["src/**/*.d.ts"]
+}

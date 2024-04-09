@@ -43,14 +43,6 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - name: Setup
         uses: ./.github/actions/setup
-      # Why this? https://github.com/npm/cli/issues/7279
-      # Why this way? https://github.com/actions/setup-node/issues/213
-      # Why only here? Because only the npm audit signatures command is affected
-      - name: Install latest npm
-        run: |
-          npm install -g npm@latest &&
-          npm --version &&
-          npm list -g --depth 0
       - name: Installed dependencies integrity check
         run: npm audit signatures
       - name: Download distribution files

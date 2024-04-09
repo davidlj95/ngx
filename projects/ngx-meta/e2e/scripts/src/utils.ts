@@ -19,6 +19,9 @@ export function getRelativeLibraryDistDir() {
 export function getStandaloneTemplatesDir() {
   return resolve(getE2EDir(), 'templates', 'standalone')
 }
+export function getModuleTemplatesDir() {
+  return resolve(getE2EDir(), 'templates', 'module')
+}
 
 /**
  * isMain(import.meta.url)

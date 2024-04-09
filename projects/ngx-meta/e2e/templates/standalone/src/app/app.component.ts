@@ -21,7 +21,7 @@ import packageJson from '../../package.json'
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  title = packageJson.name
+  readonly title = packageJson.name
   protected readonly navItems = Object.values(ROUTES).map((route) => ({
     ...route,
     path: `/${route.path}`,

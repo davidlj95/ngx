@@ -1,6 +1,7 @@
-import { execa } from 'execa'
+import { execa, execaSync } from 'execa'
 import {
   getE2EAppsDir,
+  getModuleTemplatesDir,
   getRelativeLibraryDistDir,
   getStandaloneTemplatesDir,
   isMain,
@@ -14,13 +15,26 @@ interface SampleApp {
   readonly name: string
   readonly version: string
   readonly angularCliNewArguments?: ReadonlyArray<string>
+  readonly standalone: boolean
 }
 
 const SAMPLE_APPS = [
   {
     name: 'a17',
     version: '17',
-    angularCliNewArguments: ['--ssr'],
+    angularCliNewArguments: [
+      '--ssr',
+      '--standalone=true', // Default in v17, but to be explicit
+    ],
+    standalone: true,
+  },
+  {
+    name: 'a16',
+    version: '16',
+    angularCliNewArguments: [
+      '--standalone=false', // Default in v16, but to be explicit
+    ],
+    standalone: false,
   },
 ] satisfies ReadonlyArray<SampleApp>
 
@@ -40,25 +54,36 @@ const DEFAULT_ANGULAR_CLI_NEW_ARGUMENTS = [
   '--style=css',
 ]
 
-async function generateSampleApp(sampleApp: SampleApp) {
+async function generateSampleApp({
+  sampleApp,
+  baseAppDir,
+  noCleanup,
+}: GenerateSampleAppOptions) {
   Log.info(`Generating sample app`)
 
-  const tmpDir = await generateTmpDirAndRegisterCleanupCallbacks()
-  const tmpAppDir = await generateAngularApp({
-    name: sampleApp.name,
-    version: sampleApp.version,
-    extraArgs: sampleApp.angularCliNewArguments,
-    dir: tmpDir,
-  })
-  const appDir = await copyAppDirIntoProject(tmpAppDir)
+  if (baseAppDir) {
+    Log.info('Using "%s" as base app', baseAppDir)
+  } else {
+    const tmpDir = await generateTmpDirAndRegisterCleanupCallback(
+      noCleanup ? () => {} : cleanUpTmpDir,
+    )
+    baseAppDir = await generateAngularApp({
+      name: sampleApp.name,
+      version: sampleApp.version,
+      extraArgs: sampleApp.angularCliNewArguments,
+      dir: tmpDir,
+    })
+  }
+
+  const appDir = await copyAppDirIntoProject(baseAppDir)
   await setHoistedNodeLinker(appDir)
   await installApp(appDir)
   try {
     await Promise.all([
       installLibrary(appDir),
-      copyStandaloneTemplates(appDir),
+      copyTemplates({ appDir, standalone: sampleApp.standalone }),
       configureAngularWorkspace(appDir),
-      addResolveJsonModuleToTsconfig(appDir),
+      updateTsConfigToImportJsonFiles(appDir),
     ])
   } catch (error) {
     Log.error('Failed setting up app', error)
@@ -66,9 +91,17 @@ async function generateSampleApp(sampleApp: SampleApp) {
   }
 }
 
-async function generateTmpDirAndRegisterCleanupCallbacks(): Promise<string> {
+interface GenerateSampleAppOptions {
+  readonly sampleApp: SampleApp
+  readonly baseAppDir?: string
+  readonly noCleanup?: boolean
+}
+
+async function generateTmpDirAndRegisterCleanupCallback(
+  cleanUpCallback: (tmpDir: string) => void,
+): Promise<string> {
   const tmpDir = (await execa('mktemp', ['-d'])).stdout
-  registerAbortAndExitCallback(() => cleanUpTmpDir(tmpDir))
+  registerAbortAndExitCallback(() => cleanUpCallback(tmpDir))
   Log.debug('Temporary dir: "%s"', tmpDir)
   return tmpDir
 }
@@ -106,8 +139,8 @@ function registerAbortAndExitCallback(cleanUpCallback: () => void) {
 function cleanUpTmpDir(tmpDir: string) {
   Log.step('Cleanup')
   if (tmpDir != '' && tmpDir != '/') {
-    //Log.step('Deleting temporary dir')
-    // execaSync('rm', ['-rf', tmpDir])
+    Log.step('Deleting temporary dir')
+    execaSync('rm', ['-rf', tmpDir])
   }
 }
 
@@ -117,29 +150,27 @@ async function generateAngularApp(opts: {
   extraArgs?: ReadonlyArray<string>
   dir: string
 }): Promise<string> {
-  //Log.step('Generating Angular app using Angular CLI')
-  //const ngNewCommand = execa(
-  //  'pnpm',
-  //  [
-  //    'dlx',
-  //    `@angular/cli@${opts.version}`,
-  //    `new`,
-  //    `${opts.name}`,
-  //    ...DEFAULT_ANGULAR_CLI_NEW_ARGUMENTS,
-  //    ...(opts.extraArgs ?? []),
-  //  ],
-  //  { cwd: opts.dir, all: true, env: { FORCE_COLOR: true.toString() } },
-  //)
-  //Log.stream(ngNewCommand.all)
-  //await ngNewCommand
-  //Log.ok('Angular app created')
-  //return join(opts.dir, opts.name)
-  Log.step('Angular would be created here, but using an already created one')
-  return '/var/folders/lf/ckrhnr0j2ln50hznqbzv6cs00000gn/T/tmp.XTXu7mBXhF/a17'
+  Log.step('Generating Angular app using Angular CLI')
+  const ngNewCommand = execa(
+    'pnpm',
+    [
+      'dlx',
+      `@angular/cli@${opts.version}`,
+      `new`,
+      `${opts.name}`,
+      ...DEFAULT_ANGULAR_CLI_NEW_ARGUMENTS,
+      ...(opts.extraArgs ?? []),
+    ],
+    { cwd: opts.dir, all: true, env: { FORCE_COLOR: true.toString() } },
+  )
+  Log.stream(ngNewCommand.all)
+  await ngNewCommand
+  Log.ok('Angular app created')
+  return join(opts.dir, opts.name)
 }
 
 async function copyAppDirIntoProject(appDir: string) {
-  Log.step('Copying app from tmp dir into project')
+  Log.step('Copying app from into project')
   const appDirName = basename(appDir)
   const destination = join(getE2EAppsDir(), appDirName)
   await cp(appDir, destination, { recursive: true })
@@ -175,9 +206,15 @@ async function installLibrary(appDir: string) {
   await installCommand
 }
 
-async function copyStandaloneTemplates(appDir: string) {
-  Log.step('Copying standalone template files')
-  await cp(getStandaloneTemplatesDir(), appDir, { recursive: true })
+async function copyTemplates(opts: { appDir: string; standalone: boolean }) {
+  const templatesDir = opts.standalone
+    ? getStandaloneTemplatesDir()
+    : getModuleTemplatesDir()
+  Log.step(
+    `Copying ${opts.standalone ? 'standalone' : 'module'} apps template files`,
+  )
+  Log.item(templatesDir)
+  await cp(templatesDir, opts.appDir, { recursive: true })
 }
 
 async function configureAngularWorkspace(appDir: string) {
@@ -200,7 +237,7 @@ async function disableAnalytics(appDir: string) {
   await disableAnalyticsCommand
 }
 
-async function addResolveJsonModuleToTsconfig(appDir: string) {
+async function updateTsConfigToImportJsonFiles(appDir: string) {
   Log.step('Adding --resolve-json-module to Typescript config')
   const configFileName = ts.findConfigFile(appDir, ts.sys.fileExists)
   if (!configFileName) {
@@ -221,6 +258,12 @@ async function addResolveJsonModuleToTsconfig(appDir: string) {
   ;(
     config.raw as { compilerOptions: ts.CompilerOptions }
   ).compilerOptions.resolveJsonModule = true
+  // 👇 Not needed for Angular v17, given `esModuleInterop` is enabled there
+  //    https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
+  //    Adding it anyway to be sure
+  ;(
+    config.raw as { compilerOptions: ts.CompilerOptions }
+  ).compilerOptions.allowSyntheticDefaultImports = true
   await writeFile(configFileName, JSON.stringify(config.raw, null, 2))
 }
 
@@ -244,11 +287,41 @@ async function enablePreserveSymlinksCommand(appDir: string) {
   Log.stream(enablePreserveSymlinksCommand.all)
 }
 
+const BASE_APP_DIR_ARG = '--base-app-dir'
+const NO_CLEANUP = '--no-cleanup'
+
 if (isMain(import.meta.url)) {
-  const appName = process.argv[2]
+  await generateSampleApp(parseArgs(process.argv))
+}
+
+function parseArgs(argv: ReadonlyArray<string>): GenerateSampleAppOptions {
+  let appName: string | null = null
+  let baseAppDir: string | undefined
+  let noCleanup: boolean = false
+  for (const arg of argv) {
+    if (arg.startsWith('/') || arg.startsWith('node')) {
+      continue
+    }
+    if (arg.startsWith(BASE_APP_DIR_ARG)) {
+      const [_, argValue] = arg.split('=')
+      baseAppDir = argValue
+      continue
+    }
+    if (arg === NO_CLEANUP) {
+      noCleanup = true
+      continue
+    }
+    if (appName === null) {
+      appName = arg
+      continue
+    }
+    Log.error('Unknown argument', arg)
+    printUsageAndExit()
+    process.exit(1)
+  }
   if (!appName || appName.length === 0) {
     Log.error('No app name specified. Specify app name as first param')
-    printAppNamesAndExit()
+    printUsageAndExit()
     process.exit(1)
   }
   const sampleApp = SAMPLE_APPS_BY_NAME.get(appName)
@@ -257,7 +330,25 @@ if (isMain(import.meta.url)) {
     printAppNamesAndExit()
     process.exit(1)
   }
-  if (appName) await generateSampleApp(sampleApp)
+  return {
+    sampleApp,
+    baseAppDir,
+    noCleanup,
+  }
+}
+
+function printUsageAndExit() {
+  console.log(`
+Usage: node create-sample-app.js APP_NAME
+       [${BASE_APP_DIR_ARG}=APP_DIR] [${NO_CLEANUP}]
+
+       ${BASE_APP_DIR_ARG} allows to use an already created Angular CLI app as base
+       If not provided, a fresh new app will be created
+
+       ${NO_CLEANUP} will not clean up generated base app dir upon process exit
+       Useful to use the same base app dir later
+  `)
+  printAppNamesAndExit()
 }
 
 function printAppNamesAndExit() {

@@ -63,7 +63,9 @@ jobs:
         run: |
           for artifact_dir in ${{ inputs.bundle-size-artifact-name-prefix }}*; do
             version="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
-            cp "$artifact_dir/bundle-size-report.md" "projects/ngx-meta/e2e/a$version"
+            bundle_size_app_dir="projects/ngx-meta/bundle-size/a$version"
+            mkdir -p "$bundle_size_app_dir"
+            cp "$artifact_dir/bundle-size-report.md" "$bundle_size_app_dir"
           done
       - name: Install poetry # pipx comes built-in in GitHub runner
         run: pipx install poetry

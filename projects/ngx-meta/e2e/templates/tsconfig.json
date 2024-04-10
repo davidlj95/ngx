@@ -26,6 +26,9 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "resolveJsonModule": true,
+    // 👇 Not needed because of `esModuleInterop: true`
+    //    But for Angular <17, that wasn't enabled and was needed
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "@davidlj95/ngx-meta/*": ["../../dist/*"]
     }

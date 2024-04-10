@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "es2022",
     "lib": ["es2022"],
-    "module": "node16",
-    "moduleResolution": "node16",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     // 👇 Debugging
     "sourceMap": true,
     // 👇 Base configs (`tsc --init`)

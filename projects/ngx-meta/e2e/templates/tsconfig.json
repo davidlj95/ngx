@@ -1,0 +1,42 @@
+/* Only for DX purposes to edit templates with editor help
+ * Obtained from Angular CLI:
+ * https://github.com/angular/angular-cli/blob/17.3.x/packages/schematics/angular/workspace/files/tsconfig.json.template
+ * Added:
+ *  - `resolveJsonModule` to load cypress fixtures
+ *  - `paths`` to be able to resolve lib imports
+ */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "resolveJsonModule": true,
+    // 👇 Not needed because of `esModuleInterop: true`
+    //    But for Angular <17, that wasn't enabled and was needed
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@davidlj95/ngx-meta/*": ["../../dist/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

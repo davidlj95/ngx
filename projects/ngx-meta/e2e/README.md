@@ -1,16 +1,21 @@
 # `@davidlj95/ngx-meta` E2E tests
 
-Within this directory, there are several sample Angular applications containing main use cases of `@davidlj95/ngx-meta` library. [Cypress] is used to ensure the metadata elements are inserted into / removed from the page as expected.
+Within this directory, there are scripts to generate several sample Angular applications containing main use cases of `@davidlj95/ngx-meta` library. [Cypress] is used to ensure the metadata elements are inserted into / removed from the page as expected.
 
 [Cypress]: https://www.cypress.io/
 
-## Example apps
+## Sample apps
 
-They're located inside the `apps` directory. Each app directory is prefixed by `a`, followed by the major version number.
+First, generate them using [E2E infra scripts](./scripts/README.md).
 
-- [Angular v15](./apps/a15)
-- [Angular v16](./apps/a16)
-- [Angular v17](./apps/a17)
+Once generated, they're located inside the `apps` directory. Each app directory is prefixed by `a`, followed by the major version number.
+
+### Library usages
+
+The code using the library that sample apps use can be found in templates directory:
+
+- [Standalone apps](./templates/standalone/src/app)
+- [Module-based apps](./templates/module/src/app)
 
 ## Tasks
 
@@ -18,27 +23,11 @@ They're located inside the `apps` directory. Each app directory is prefixed by `
 
 #### Setup
 
-First, build the library (see [main `README.md`](../../../README.md) for more information). Apps fetch the library from the build directory, so you can change code and test it in the sample app as quickly as possible.
-
-Install dependencies of the sample app. Go to the app's directory and run
-
-```sh
-pnpm install
-```
-
-> [!NOTE]
-> You just need to install once. Or if dependencies are updated. There's no need to install again when changing the library's code. Just build the library and that's it.
-
-> [!TIP]
-> If you change library's code and the app does not show changes, try clearing up the apps' build cache. Go to the app directory and run
->
-> ```sh
-> ng cache clean
-> ```
+[E2E scripts](./scripts/README.md) will generate and set up the app for you. Check in [their docs](./scripts/README.md) how to generate sample apps. Once generated...
 
 #### Serve
 
-To serve the app, run
+To serve the app, change to its directory and run
 
 ```sh
 pnpm start
@@ -46,7 +35,7 @@ pnpm start
 
 #### Build
 
-To build it, use
+To build it, change to its directory and use
 
 ```sh
 pnpm run build
@@ -88,7 +77,7 @@ There are many run configurations in WebStorm to help you operate sample apps an
 
 #### Sample apps
 
-Use the `ngx-meta/e2e/a*: build & serve` run configurations to build the library, clean the app cache and serve it.
+Use the `ngx-meta/e2e/a*: build & serve` WebStorm run configurations to build the library, clean the app cache and serve it. Only the latest major version of Angular will be there for maintenance reasons. Feel free to create your own local ones.
 
 #### E2E tests
 

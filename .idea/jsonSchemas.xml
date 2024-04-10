@@ -25,6 +25,7 @@
               <option name="generatedName" value="New Schema" />
               <option name="name" value="Material Mkdocs" />
               <option name="relativePathToSchema" value="https://squidfunk.github.io/mkdocs-material/schema.json" />
+              <option name="schemaVersion" value="JSON Schema version 7" />
               <option name="patterns">
                 <list>
                   <Item>

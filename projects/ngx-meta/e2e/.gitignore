@@ -11,9 +11,6 @@ cypress/screenshots/*
 cypress/videos/*
 
 # End of https://www.toptal.com/developers/gitignore/api/cypressio
-a*/bundle-size-report.md
-a*/bundle-size-pr-comment.md
-a*/source-map-explorer*.json
+apps/
 # Manual edits
-# - Add bundle size report markdown file
-# - Add source map explorer results JSON
+# - Exclude generated apps

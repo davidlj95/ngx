@@ -30,11 +30,11 @@ cp ../src/CHANGELOG.md "$INCLUDES_DIR/"
 
 # 📦 Bundle size
 echo "ℹ️ Copying bundle size reports"
-e2e_app_dir_pattern="../e2e/a"
-for e2e_app_dir in "$e2e_app_dir_pattern"*; do
-  version="$(echo "$e2e_app_dir" | sed "s|$e2e_app_dir_pattern||g")"
+bundle_size_app_dir_pattern="../bundle-size/a"
+for bundle_size_app_dir in "$bundle_size_app_dir_pattern"*; do
+  version="$(echo "$bundle_size_app_dir" | sed "s|$bundle_size_app_dir_pattern||g")"
   report_filename="bundle-size-report.md"
-  report_file="$e2e_app_dir/$report_filename"
+  report_file="$bundle_size_app_dir/$report_filename"
   destination_file="includes/a$version-$report_filename"
 
   if [ -r "$report_file" ]; then

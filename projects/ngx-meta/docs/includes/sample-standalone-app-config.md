@@ -1,0 +1,1 @@
+Check out the [sample standalone app]'s [`app.config.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/templates/standalone/src/app/app.config.ts) for a full config file example

@@ -28,7 +28,7 @@ First, ensure you added the module to your app.
     export class AppModule {}
     ```
 
-    --8<-- "includes/a16-app-module.md"
+    --8<-- "includes/sample-module-based-app-module.md"
 
 === "For standalone, module-free apps"
 
@@ -50,7 +50,7 @@ First, ensure you added the module to your app.
     }
     ```
 
-    --8<-- "includes/a17-app-config.md"
+    --8<-- "includes/sample-standalone-app-config.md"
 
 ## Usage
 

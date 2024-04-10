@@ -1,0 +1,1 @@
+Check out the [sample module-based app]'s [`app.module.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/e2e/templates/module/src/app/app.module.ts) for a full app module file example

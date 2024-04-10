@@ -16,6 +16,7 @@ on:
 
 env:
   E2E_DIR: projects/ngx-meta/e2e
+  E2E_SCRIPTS_DIR: projects/ngx-meta/e2e/scripts
 
 jobs:
   e2e:
@@ -27,9 +28,6 @@ jobs:
         version: [15, 16, 17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/apps/a${{ matrix.version }}
-    defaults:
-      run:
-        working-directory: ${{ env.E2E_APP_DIR }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -46,14 +44,25 @@ jobs:
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           cache: 'pnpm'
-          cache-dependency-path: ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
-          node-version-file: '.node-version'
-      - name: Install Angular v${{ matrix.version }} E2E app dependencies
+          cache-dependency-path: |
+            ${{ env.E2E_SCRIPTS_DIR }}/pnpm-lock.yaml
+            ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
+          node-version-file: '.node-version' # TODO: may vary depending on Angular version
+      - name: Install E2E scripts dependencies
         run: pnpm install --frozen-lockfile
+        working-directory: ${{ env.E2E_SCRIPTS_DIR }}
+      - name: Compile E2E scripts
+        run: pnpm run build
+        working-directory: ${{ env.E2E_SCRIPTS_DIR }}
+      - name: Create E2E app
+        run: pnpm run create-sample-app a${{ matrix.version }}
+        working-directory: ${{ env.E2E_SCRIPTS_DIR }}
       - name: Build Angular v${{ matrix.version }} E2E app
         run: pnpm build --source-map # with source map for bundle size analysis
+        working-directory: ${{ env.E2E_APP_DIR }}
       - name: Start Angular v${{ matrix.version }} E2E app server
         run: pnpm start &
+        working-directory: ${{ env.E2E_APP_DIR }}
       - name: Cypress run
         uses: cypress-io/github-action@1b70233146622b69e789ccdd4f9452adc638d25a # v6.6.1
         with:

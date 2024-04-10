@@ -38,7 +38,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
     export class AppModule {}
     ```
 
-    --8<-- "includes/a16-app-module.md"
+    --8<-- "includes/sample-module-based-app-module.md"
 
 === "For standalone, module-free apps"
 
@@ -63,7 +63,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
     }
     ```
 
-    --8<-- "includes/a17-app-config.md"
+    --8<-- "includes/sample-standalone-app-config.md"
 
 !!! tip "Lazy load them if you want!"
 
@@ -95,6 +95,6 @@ To know about how to properly define the metadata values to set, check out the *
 
 If you already know about all that, maybe you want to explore the **library's [built-in modules](./built-in-modules/index.md) that allow setting common metadata**.
 
-Otherwise, take a look at "Guides" section to learn about other features of the library. If looking for examples, you can always check out [our example apps](example-apps.md) for some real examples on how to use the library.
+Otherwise, take a look at "Guides" section to learn about other features of the library. If looking for examples, you can always check out [our sample apps](sample-apps.md) for some real examples on how to use the library.
 
 [^1]: The library doesn't include any schematics for now

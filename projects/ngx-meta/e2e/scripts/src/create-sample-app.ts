@@ -36,6 +36,11 @@ const SAMPLE_APPS = [
     ],
     standalone: false,
   },
+  {
+    name: 'a15',
+    version: '15',
+    standalone: false, // No standalone CLI argument in v15
+  },
 ] satisfies ReadonlyArray<SampleApp>
 
 const SAMPLE_APPS_BY_NAME = new Map<string, SampleApp>(
@@ -185,7 +190,7 @@ async function setHoistedNodeLinker(appDir: string) {
 }
 
 async function installApp(appDir: string) {
-  Log.step('Installing library dependencies')
+  Log.step('Installing app dependencies')
   const installCommand = execa('pnpm', ['install'], {
     cwd: appDir,
     all: true,

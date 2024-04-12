@@ -9,6 +9,9 @@ import {
 } from './utils.js'
 import { basename, join } from 'path'
 import { cp, writeFile } from 'fs/promises'
+//👇 Type assertion needed to make Node.js happy
+// https://stackoverflow.com/a/70106896/3263250
+import ANGULAR_CLI_VERSIONS_PKG_JSON from '../angular-cli-versions.json' with { type: 'json' }
 import ts from 'typescript'
 
 interface SampleApp {
@@ -69,12 +72,14 @@ async function generateSampleApp({
   if (baseAppDir) {
     Log.info('Using "%s" as base app', baseAppDir)
   } else {
+    const angularCliDevDepKey = await getAngularCliDevDepKey(sampleApp.version)
     const tmpDir = await generateTmpDirAndRegisterCleanupCallback(
       noCleanup ? () => {} : cleanUpTmpDir,
     )
+    await createPackageJsonWithAngularCli(angularCliDevDepKey, tmpDir)
+    await installCli(tmpDir)
     baseAppDir = await generateAngularApp({
       name: sampleApp.name,
-      version: sampleApp.version,
       extraArgs: sampleApp.angularCliNewArguments,
       dir: tmpDir,
     })
@@ -100,6 +105,43 @@ interface GenerateSampleAppOptions {
   readonly sampleApp: SampleApp
   readonly baseAppDir?: string
   readonly noCleanup?: boolean
+}
+
+type AngularCliDevDepKey =
+  keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
+
+async function getAngularCliDevDepKey(
+  version: string,
+): Promise<AngularCliDevDepKey> {
+  const devDependencies = ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
+  const key = `a${version}`
+  if (!(key in devDependencies)) {
+    Log.error('Angular CLI pinned version not found: "%s"', version)
+    process.exit(1)
+  }
+  return key as AngularCliDevDepKey
+}
+
+const DEV_DEPENDENCIES_KEY =
+  'devDependencies' satisfies keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON
+const PKG_JSON = 'package.json'
+
+async function createPackageJsonWithAngularCli(
+  angularCliDevDepKey: AngularCliDevDepKey,
+  tmpDir: string,
+) {
+  const pkgJsonFile = join(tmpDir, PKG_JSON)
+  const pkgJsonWithOnlyAngularCliDevDep = {
+    ...ANGULAR_CLI_VERSIONS_PKG_JSON,
+    [DEV_DEPENDENCIES_KEY]: {
+      [angularCliDevDepKey]:
+        ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies[angularCliDevDepKey],
+    },
+  }
+  await writeFile(
+    pkgJsonFile,
+    JSON.stringify(pkgJsonWithOnlyAngularCliDevDep, null, 2),
+  )
 }
 
 async function generateTmpDirAndRegisterCleanupCallback(
@@ -149,9 +191,29 @@ function cleanUpTmpDir(tmpDir: string) {
   }
 }
 
+async function installCli(tmpDir: string) {
+  Log.step('Installing Angular CLI')
+  const installCommand = execa(
+    'pnpm',
+    [
+      'install',
+      // 👇 On CI pipeline, allow updating lockfile if needed
+      //    Given cached lockfile will be updated after updating Angular CLI version
+      //    https://pnpm.io/cli/install#--frozen-lockfile
+      '--frozen-lockfile=false',
+    ],
+    {
+      cwd: tmpDir,
+      all: true,
+      env: { FORCE_COLOR: true.toString() },
+    },
+  )
+  Log.stream(installCommand.all)
+  await installCommand
+}
+
 async function generateAngularApp(opts: {
   name: string
-  version: string
   extraArgs?: ReadonlyArray<string>
   dir: string
 }): Promise<string> {
@@ -159,8 +221,7 @@ async function generateAngularApp(opts: {
   const ngNewCommand = execa(
     'pnpm',
     [
-      'dlx',
-      `@angular/cli@${opts.version}`,
+      'ng',
       `new`,
       `${opts.name}`,
       ...DEFAULT_ANGULAR_CLI_NEW_ARGUMENTS,

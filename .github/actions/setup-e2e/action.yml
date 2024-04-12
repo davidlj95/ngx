@@ -1,9 +1,0 @@
-name: Setup E2E
-description: Installs tooling and dependencies of repository E2E tests / apps
-inputs:
-  angular-version:
-    description: 'Angular version to setup'
-    required: true
-runs:
-  using: 'composite'
-  steps:

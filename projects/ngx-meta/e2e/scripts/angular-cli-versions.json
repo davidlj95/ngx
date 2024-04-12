@@ -5,8 +5,8 @@
   "private": true,
   "packageManager": "pnpm@8.15.6",
   "devDependencies": {
-    "a15": "npm:@angular/cli@15",
-    "a16": "npm:@angular/cli@16",
-    "a17": "npm:@angular/cli@17"
+    "a15": "npm:@angular/cli@15.2.11",
+    "a16": "npm:@angular/cli@16.2.14",
+    "a17": "npm:@angular/cli@17.3.4"
   }
 }

@@ -66,6 +66,7 @@ async function generateSampleApp({
   sampleApp,
   baseAppDir,
   noCleanup,
+  tmpDir,
 }: GenerateSampleAppOptions) {
   Log.info(`Generating sample app`)
 
@@ -73,9 +74,11 @@ async function generateSampleApp({
     Log.info('Using "%s" as base app', baseAppDir)
   } else {
     const angularCliDevDepKey = await getAngularCliDevDepKey(sampleApp.version)
-    const tmpDir = await generateTmpDirAndRegisterCleanupCallback(
-      noCleanup ? () => {} : cleanUpTmpDir,
-    )
+    if (!tmpDir) {
+      tmpDir = await generateTmpDirAndRegisterCleanupCallback(
+        noCleanup ? () => {} : cleanUpTmpDir,
+      )
+    }
     await createPackageJsonWithAngularCli(angularCliDevDepKey, tmpDir)
     await installCli(tmpDir)
     baseAppDir = await generateAngularApp({
@@ -105,6 +108,7 @@ interface GenerateSampleAppOptions {
   readonly sampleApp: SampleApp
   readonly baseAppDir?: string
   readonly noCleanup?: boolean
+  readonly tmpDir?: string
 }
 
 type AngularCliDevDepKey =
@@ -354,7 +358,8 @@ async function enablePreserveSymlinksCommand(appDir: string) {
 }
 
 const BASE_APP_DIR_ARG = '--base-app-dir'
-const NO_CLEANUP = '--no-cleanup'
+const NO_CLEANUP_ARG = '--no-cleanup'
+const TMP_DIR_ARG = '--tmp-dir'
 
 if (isMain(import.meta.url)) {
   await generateSampleApp(parseArgs(process.argv))
@@ -364,6 +369,7 @@ function parseArgs(argv: ReadonlyArray<string>): GenerateSampleAppOptions {
   let appName: string | null = null
   let baseAppDir: string | undefined
   let noCleanup: boolean = false
+  let tmpDir: string | undefined
   for (const arg of argv) {
     if (arg.startsWith('/') || arg.startsWith('node')) {
       continue
@@ -373,8 +379,13 @@ function parseArgs(argv: ReadonlyArray<string>): GenerateSampleAppOptions {
       baseAppDir = argValue
       continue
     }
-    if (arg === NO_CLEANUP) {
+    if (arg === NO_CLEANUP_ARG) {
       noCleanup = true
+      continue
+    }
+    if (arg.startsWith(TMP_DIR_ARG)) {
+      const [_, argValue] = arg.split('=')
+      tmpDir = argValue
       continue
     }
     if (appName === null) {
@@ -400,19 +411,29 @@ function parseArgs(argv: ReadonlyArray<string>): GenerateSampleAppOptions {
     sampleApp,
     baseAppDir,
     noCleanup,
+    tmpDir,
   }
 }
 
 function printUsageAndExit() {
+  const scriptName = process.argv[1]
   console.log(`
-Usage: node create-sample-app.js APP_NAME
-       [${BASE_APP_DIR_ARG}=APP_DIR] [${NO_CLEANUP}]
+Usage: node ${scriptName} APP_NAME
+       [${BASE_APP_DIR_ARG}=APP_DIR] [${NO_CLEANUP_ARG}]
+       [${TMP_DIR_ARG}=TMP_DIR]
 
        ${BASE_APP_DIR_ARG} allows to use an already created Angular CLI app as base
        If not provided, a fresh new app will be created
 
-       ${NO_CLEANUP} will not clean up generated base app dir upon process exit
-       Useful to use the same base app dir later
+       [${NO_CLEANUP_ARG}] will not clean up generated base app dir upon process exit
+       Useful to use the same base app dir later. If using ${TMP_DIR_ARG}, no cleanup
+       will happen anyway.
+
+       [${TMP_DIR_ARG}=TMP_DIR] lets you set the temporary dir where Angular CLI will
+       be installed and a new Angular app will be created. A "package.json" will be
+       created there to install the CLI and allow caching lockfile + deps in CI/CD.
+       Does nothing if ${BASE_APP_DIR_ARG} is used. Directory will not be cleaned up
+       as wasn't created by the script (therefore implicitly enabling ${NO_CLEANUP_ARG})
   `)
   printAppNamesAndExit()
 }

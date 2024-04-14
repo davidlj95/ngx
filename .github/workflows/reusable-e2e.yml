@@ -37,7 +37,7 @@ jobs:
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
           name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.version }}
-          path: projects/ngx-meta/examples/apps/a${{ matrix.version }}
+          path: projects/ngx-meta/examples/apps/a${{ matrix.version }}/dist
       - name: Setup pnpm
         uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
       - name: Setup Node.js

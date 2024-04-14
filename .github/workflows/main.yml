@@ -33,7 +33,7 @@ jobs:
   examples:
     needs: build
     name: Examples
-    uses: ./.github/workflows/reusable-examples.yml
+    uses: ./.github/workflows/reusable-example-apps.yml
     with:
       dist-artifact-name: ngx-meta-dist
       example-app-artifact-name-prefix: ngx-meta-example-app-a

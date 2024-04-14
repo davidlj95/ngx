@@ -1,0 +1,109 @@
+name: Example apps
+on:
+  workflow_call:
+    inputs:
+      dist-artifact-name:
+        required: true
+        type: string
+      example-app-artifact-name-prefix:
+        required: false
+        type: string
+      ref:
+        description: Git reference to checkout. Defaults to @actions/checkout default.
+        type: string
+        required: false
+        default: ''
+
+env:
+  EXAMPLES_DIR: projects/ngx-meta/examples
+
+jobs:
+  example-app:
+    name: Example app - Angular v${{ matrix.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        version: [15, 16, 17]
+    env:
+      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/a${{ matrix.version }}
+    defaults:
+      run:
+        working-directory: ${{ env.EXAMPLES_DIR }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Download distribution files
+        uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
+        with:
+          name: ${{ inputs.dist-artifact-name }}
+          path: projects/ngx-meta/dist
+      - name: Setup pnpm
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
+      - name: Setup Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        with:
+          # Can't cache here, given some cache-dependency-paths do not exist yet
+          # Hence can't be used to create a proper cache key
+          # https://github.com/actions/setup-node/blob/v4.0.2/src/cache-restore.ts#L30-L42
+          node-version-file: .node-version # TODO: may vary depending on Angular version
+        # 👇 For caching, see below
+        # - PNPM store: https://github.com/pnpm/action-setup/tree/v3.0.0?tab=readme-ov-file#use-cache-to-reduce-installation-time
+        # - Angular CLI version: from versions file
+      - name: Get caching key info
+        run: |
+          echo "pnpm_store_path=$(pnpm store path --silent)" >> $GITHUB_ENV
+          echo "angular_cli_version=$(jq -r \
+            '.devDependencies.a${{ matrix.version }}' \
+            'angular-cli-versions.json' |
+            sed 's|npm:@angular/cli@||g'
+          )" >> $GITHUB_ENV
+          echo "week_of_year=$(date --utc '+%V')" >> $GITHUB_ENV
+      - name: Cache dependencies and Angular CLI/app resolution
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+        env:
+          cache-name: ngx-meta-example-apps
+          examples_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.EXAMPLES_DIR)) }}
+        with:
+          # To cache (line by line):
+          # - pnpm global store
+          # - Angular CLI dependency resolution (lockfile)
+          # - Angular app dependency resolution (lockfile)
+          path: |
+            ${{ env.pnpm_store_path }}
+            ${{ runner.temp }}/pnpm-lock.yaml
+            ${{ env.EXAMPLE_APP_DIR }}/pnpm-lock.yaml
+          # Key is designed to be invalidated if:
+          # - Examples scripts dependencies change
+          # - Angular CLI version is updated
+          # - Week of year (UTC) changes
+          # Last one is because we can't know before generating the Angular app
+          # which patch version of Angular will be installed.
+          # Angular CLI creates an app with same minor version:
+          # https://github.com/angular/angular-cli/blob/17.3.4/packages/schematics/angular/utility/latest-versions.ts#L20-L21
+          # So patch is up to dependency resolution step
+          # By invalidating cache each week, if a patch release appears it
+          # will be taken into account in max 1 week time
+          # Patch releases shouldn't break anything anyway
+          key: ${{ env.cache-name }}-${{ env.examples_lockfile_hash }}-${{ env.angular_cli_version }}-${{ env.week_of_year }}
+      - name: Install examples scripts dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Compile examples scripts
+        run: pnpm run build
+      - name: Create example app
+        run: >
+          pnpm run create-example-app a${{ matrix.version }}
+          --tmp-dir=${{ runner.temp }}
+      - name: Build example app
+        run: pnpm build --source-map # with source map for bundle size analysis
+        working-directory: ${{ env.EXAMPLE_APP_DIR }}
+      - name: Upload example app distribution files
+        if: ${{ inputs.example-app-artifact-name-prefix != '' }}
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
+        with:
+          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.version }}
+          path: |
+            ${{ env.EXAMPLE_APP_DIR }}/dist
+          retention-days: 5

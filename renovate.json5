@@ -14,8 +14,8 @@
   timezone: 'Europe/Madrid',
   labels: ['dependencies'],
   npm: {
-    // Keep Angular CLI versions used to generate E2E apps updated
-    fileMatch: ['projects/ngx-meta/e2e/scripts/angular-cli-versions.json'],
+    // Keep Angular CLI versions used to create example apps updated
+    fileMatch: ['projects/ngx-meta/examples/angular-cli-versions.json'],
   },
   packageRules: [
     // App for main / E2E apps (main one isn't published)
@@ -110,25 +110,19 @@
       ],
       allowedVersions: '0.14.x',
     },
-    // Sample apps major versions
+    // Example apps major versions
     {
-      matchFileNames: [
-        'projects/ngx-meta/e2e/scripts/angular-cli-versions.json',
-      ],
+      matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
       matchPackageNames: 'a15',
       allowedVersions: '^15',
     },
     {
-      matchFileNames: [
-        'projects/ngx-meta/e2e/scripts/angular-cli-versions.json',
-      ],
+      matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
       matchPackageNames: 'a16',
       allowedVersions: '^16',
     },
     {
-      matchFileNames: [
-        'projects/ngx-meta/e2e/scripts/angular-cli-versions.json',
-      ],
+      matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
       matchPackageNames: 'a17',
       allowedVersions: '^17',
     },

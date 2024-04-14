@@ -1,0 +1,14 @@
+{
+  "name": "@ngx-meta/examples-angular-cli-versions",
+  "version": "0.0.0",
+  "description": "ngx-meta examples pinned Angular CLI versions",
+  "private": true,
+  "packageManager": "pnpm@8.15.6",
+  "//1": "👇 Updated by dependency bot, but restricted to major versions",
+  "//2": "   See Renovate configuration for more information",
+  "devDependencies": {
+    "a15": "npm:@angular/cli@15.2.11",
+    "a16": "npm:@angular/cli@16.2.14",
+    "a17": "npm:@angular/cli@17.3.4"
+  }
+}

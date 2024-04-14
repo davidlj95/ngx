@@ -24,7 +24,7 @@ jobs:
     name: Style
     uses: ./.github/workflows/reusable-style.yml
   api-extractor:
-    needs: [build]
+    needs: build
     name: API Extractor
     uses: ./.github/workflows/reusable-api-extractor.yml
     with:
@@ -54,7 +54,7 @@ jobs:
       checks: write
   release:
     name: Release
-    needs: [e2e]
+    needs: e2e
     uses: ./.github/workflows/reusable-release.yml
     with:
       dist-artifact-name: ngx-meta-dist
@@ -68,7 +68,7 @@ jobs:
       id-token: write
   docs:
     name: Docs
-    needs: [release, api-extractor, bundle-size]
+    needs: [api-extractor, bundle-size]
     uses: ./.github/workflows/reusable-docs.yml
     with:
       api-docs-artifact-name: ngx-meta-api-docs

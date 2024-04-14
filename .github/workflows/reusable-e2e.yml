@@ -43,11 +43,49 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
-          cache: 'pnpm'
-          cache-dependency-path: |
-            ${{ env.E2E_SCRIPTS_DIR }}/pnpm-lock.yaml
-            ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
+          # Can't cache here, given some cache-dependency-paths do not exist yet
+          # Hence can't be used to create a proper cache key
+          # https://github.com/actions/setup-node/blob/v4.0.2/src/cache-restore.ts#L30-L42
           node-version-file: '.node-version' # TODO: may vary depending on Angular version
+        # 👇 For caching, see below
+        # - PNPM store: https://github.com/pnpm/action-setup/tree/v3.0.0?tab=readme-ov-file#use-cache-to-reduce-installation-time
+        # - Angular CLI version: from versions file. Using `jq` built-in in runner to fetch it
+      - name: Get caching key info
+        run: |
+          echo "pnpm_store_path=$(pnpm store path --silent)" >> $GITHUB_ENV
+          echo "angular_cli_version=$(jq -r \
+            '.devDependencies.a${{ matrix.version }}' \
+            '${{ env.E2E_SCRIPTS_DIR }}/angular-cli-versions.json' |
+            sed 's|npm:@angular/cli@||g'
+          )" >> $GITHUB_ENV
+          echo "week_of_year=$(date --utc '+%V')" >> $GITHUB_ENV
+      - name: Cache dependencies and Angular CLI/app resolution
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+        env:
+          cache-name: ngx-meta-e2e-apps
+          e2e_scripts_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.E2E_SCRIPTS_DIR)) }}
+        with:
+          # To cache (line by line):
+          # - pnpm global store
+          # - Angular CLI dependency resolution (lockfile)
+          # - Angular app dependency resolution (lockfile)
+          path: |
+            ${{ env.pnpm_store_path }}
+            ${{ runner.temp }}/pnpm-lock.yaml
+            ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
+          # Key is designed to be invalidated if:
+          # - E2E script dependencies change
+          # - Angular CLI version is updated
+          # - Week of year (UTC) changes
+          # Last one is because we can't know before generating the Angular app
+          # which patch version of Angular will be installed.
+          # Angular CLI creates an app with same minor version:
+          # https://github.com/angular/angular-cli/blob/17.3.4/packages/schematics/angular/utility/latest-versions.ts#L20-L21
+          # So patch is up to dependency resolution step
+          # By invalidating cache each week, if a patch release appears it
+          # will be taken into account in max 1 week time
+          # Patch releases shouldn't break anything anyway
+          key: ${{ env.cache-name }}-${{ env.e2e_scripts_lockfile_hash }}-${{ env.angular_cli_version }}-${{ env.week_of_year }}
       - name: Install E2E scripts dependencies
         run: pnpm install --frozen-lockfile
         working-directory: ${{ env.E2E_SCRIPTS_DIR }}
@@ -55,8 +93,14 @@ jobs:
         run: pnpm run build
         working-directory: ${{ env.E2E_SCRIPTS_DIR }}
       - name: Create E2E app
-        run: pnpm run create-sample-app a${{ matrix.version }}
+        run: >
+          pnpm run create-sample-app a${{ matrix.version }}
+          --tmp-dir=${{ runner.temp }}
         working-directory: ${{ env.E2E_SCRIPTS_DIR }}
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - name: Build Angular v${{ matrix.version }} E2E app
         run: pnpm build --source-map # with source map for bundle size analysis
         working-directory: ${{ env.E2E_APP_DIR }}

@@ -49,7 +49,10 @@ jobs:
           node-version-file: '.node-version' # TODO: may vary depending on Angular version
         # 👇 For caching, see below
         # - PNPM store: https://github.com/pnpm/action-setup/tree/v3.0.0?tab=readme-ov-file#use-cache-to-reduce-installation-time
-        # - Angular CLI version: from versions file. Using `jq` built-in in runner to fetch it
+        # - Angular CLI version: from versions file
+        # - Cypress cache dir: explicitly set default one:
+        # https://docs.cypress.io/guides/continuous-integration/introduction#Caching
+        # https://github.com/cypress-io/github-action/blob/v6.6.1/index.js#L163-L168
       - name: Get caching key info
         run: |
           echo "pnpm_store_path=$(pnpm store path --silent)" >> $GITHUB_ENV
@@ -59,6 +62,7 @@ jobs:
             sed 's|npm:@angular/cli@||g'
           )" >> $GITHUB_ENV
           echo "week_of_year=$(date --utc '+%V')" >> $GITHUB_ENV
+          echo "cypress_cache_dir=$HOME/.cache/Cypress" >> $GITHUB_ENV
       - name: Cache dependencies and Angular CLI/app resolution
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         env:
@@ -67,12 +71,14 @@ jobs:
         with:
           # To cache (line by line):
           # - pnpm global store
+          # - Cypress cache
           # - Angular CLI dependency resolution (lockfile)
           # - Angular app dependency resolution (lockfile)
           path: |
             ${{ env.pnpm_store_path }}
             ${{ runner.temp }}/pnpm-lock.yaml
             ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
+            ${{ env.cypress_cache_dir }}
           # Key is designed to be invalidated if:
           # - E2E script dependencies change
           # - Angular CLI version is updated
@@ -103,12 +109,21 @@ jobs:
       - name: Start Angular v${{ matrix.version }} E2E app server
         run: pnpm start &
         working-directory: ${{ env.E2E_APP_DIR }}
+      - name: Install E2E tests dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: ${{ env.E2E_DIR }}
       - name: Cypress run
         uses: cypress-io/github-action@1b70233146622b69e789ccdd4f9452adc638d25a # v6.6.1
+        env:
+          CYPRESS_CACHE_FOLDER: ${{ env.cypress_cache_dir }}
         with:
           wait-on: 'http://localhost:4200'
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
+          # 👇 Action doesn't support pnpm caching right now
+          # https://github.com/cypress-io/github-action/tree/v6.6.1?tab=readme-ov-file#pnpm
+          # Given we're doing caching manually, installing apart to leverage cache
+          install: false
       - name: Upload built E2E app
         if: ${{ inputs.e2e-app-artifact-name-prefix != '' }}
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4

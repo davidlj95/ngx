@@ -82,7 +82,7 @@ jobs:
           # Angular CLI creates an app with same minor version:
           # https://github.com/angular/angular-cli/blob/17.3.4/packages/schematics/angular/utility/latest-versions.ts#L20-L21
           # So patch is up to dependency resolution step
-          # By invalidating cache each week so if a patch release appears it
+          # By invalidating cache each week, if a patch release appears it
           # will be taken into account in max 1 week time
           # Patch releases shouldn't break anything anyway
           key: ${{ env.cache-name }}-${{ env.e2e_scripts_lockfile_hash }}-${{ env.angular_cli_version }}-${{ env.week_of_year }}

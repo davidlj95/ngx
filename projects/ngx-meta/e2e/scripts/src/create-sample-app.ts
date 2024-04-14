@@ -197,21 +197,11 @@ function cleanUpTmpDir(tmpDir: string) {
 
 async function installCli(tmpDir: string) {
   Log.step('Installing Angular CLI')
-  const installCommand = execa(
-    'pnpm',
-    [
-      'install',
-      // 👇 On CI pipeline, allow updating lockfile if needed
-      //    Given cached lockfile will be updated after updating Angular CLI version
-      //    https://pnpm.io/cli/install#--frozen-lockfile
-      '--frozen-lockfile=false',
-    ],
-    {
-      cwd: tmpDir,
-      all: true,
-      env: { FORCE_COLOR: true.toString() },
-    },
-  )
+  const installCommand = execa('pnpm', ['install'], {
+    cwd: tmpDir,
+    all: true,
+    env: { FORCE_COLOR: true.toString() },
+  })
   Log.stream(installCommand.all)
   await installCommand
 }

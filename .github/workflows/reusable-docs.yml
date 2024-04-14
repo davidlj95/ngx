@@ -32,7 +32,7 @@ jobs:
     name: Docs build & deploy
     defaults:
       run:
-        working-directory: '${{ env.DOCS_DIR }}'
+        working-directory: ${{ env.DOCS_DIR }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: |
@@ -51,7 +51,7 @@ jobs:
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
           name: ${{ inputs.api-docs-artifact-name }}
-          path: 'projects/ngx-meta/docs/content/api'
+          path: projects/ngx-meta/docs/content/api
       - name: Download bundle size info
         if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
@@ -59,7 +59,7 @@ jobs:
           pattern: ${{ inputs.bundle-size-artifact-name-prefix }}*
       - name: Copy reports into directories
         if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
-        working-directory: '.'
+        working-directory: .
         run: |
           for artifact_dir in ${{ inputs.bundle-size-artifact-name-prefix }}*; do
             version="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
@@ -72,17 +72,17 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5
         with:
-          python-version-file: '${{ env.DOCS_DIR }}/pyproject.toml'
-          cache: 'poetry'
-          cache-dependency-path: '${{ env.DOCS_DIR }}/poetry.lock'
+          python-version-file: ${{ env.DOCS_DIR }}/pyproject.toml
+          cache: poetry
+          cache-dependency-path: ${{ env.DOCS_DIR }}/poetry.lock
       - name: Setup pnpm
         uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
       - name: Setup Node.js
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
-          cache: 'pnpm'
-          cache-dependency-path: '${{ env.DOCS_DIR }}/pnpm-lock.yaml'
-          node-version-file: '.node-version'
+          cache: pnpm
+          cache-dependency-path: ${{ env.DOCS_DIR }}/pnpm-lock.yaml
+          node-version-file: .node-version
       - name: Install deps
         run: make install
       - name: Generate cache id for Mkdocs build
@@ -91,7 +91,7 @@ jobs:
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
-          path: '${{ env.DOCS_DIR }}/.cache'
+          path: ${{ env.DOCS_DIR }}/.cache
           restore-keys: |
             mkdocs-material-
       - name: Build
@@ -104,7 +104,7 @@ jobs:
           # Somehow if this is not set, it deploys to production when building on a PR
           # https://github.com/cloudflare/pages-action/issues/97
           branch: ${{ github.head_ref || github.ref_name }}
-          projectName: 'ngx-meta'
-          directory: 'site'
-          workingDirectory: '${{ env.DOCS_DIR }}'
+          projectName: ngx-meta
+          directory: site
+          workingDirectory: ${{ env.DOCS_DIR }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

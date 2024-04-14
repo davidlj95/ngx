@@ -49,7 +49,7 @@ jobs:
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
           name: ${{ inputs.dist-artifact-name }}
-          path: 'projects/ngx-meta/dist'
+          path: projects/ngx-meta/dist
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,9 +62,9 @@ jobs:
           token: ${{ secrets.github-token-pr }}
           commit-message: 'chore(release): update CHANGELOG.md'
           title: 'chore(release): update generated assets'
-          body: 'Adds generated assets from last release(s)'
+          body: Adds generated assets from last release(s)
           branch: release/update-notes
-          labels: 'semantic-release'
+          labels: semantic-release
       - name: Enable auto-merge
         if: steps.cpr.outputs.pull-request-operation == 'created'
         run: >

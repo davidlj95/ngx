@@ -1,14 +1,16 @@
 import { execa, execaSync } from 'execa'
 import {
   getE2EAppsDir,
+  getLibraryDistDir,
   getModuleTemplatesDir,
   getRelativeLibraryDistDir,
   getStandaloneTemplatesDir,
   isMain,
+  jsonToString,
   Log,
 } from './utils.js'
 import { basename, join } from 'path'
-import { cp, writeFile } from 'fs/promises'
+import { cp, readFile, writeFile } from 'fs/promises'
 //👇 Type assertion needed to make Node.js happy
 // https://stackoverflow.com/a/70106896/3263250
 import ANGULAR_CLI_VERSIONS_PKG_JSON from '../angular-cli-versions.json' with { type: 'json' }
@@ -89,19 +91,14 @@ async function generateSampleApp({
   }
 
   const appDir = await copyAppDirIntoProject(baseAppDir)
-  await setHoistedNodeLinker(appDir)
+  await Promise.all([
+    addLinkedLibrary(appDir),
+    setHoistedNodeLinker(appDir),
+    updateTsConfigToImportJsonFiles(appDir),
+    copyTemplates({ appDir, standalone: sampleApp.standalone }),
+  ])
   await installApp(appDir)
-  try {
-    await Promise.all([
-      installLibrary(appDir),
-      copyTemplates({ appDir, standalone: sampleApp.standalone }),
-      configureAngularWorkspace(appDir),
-      updateTsConfigToImportJsonFiles(appDir),
-    ])
-  } catch (error) {
-    Log.error('Failed setting up app', error)
-    process.exit(1)
-  }
+  await configureAngularWorkspace(appDir)
 }
 
 interface GenerateSampleAppOptions {
@@ -142,10 +139,7 @@ async function createPackageJsonWithAngularCli(
         ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies[angularCliDevDepKey],
     },
   }
-  await writeFile(
-    pkgJsonFile,
-    JSON.stringify(pkgJsonWithOnlyAngularCliDevDep, null, 2),
-  )
+  await writeFile(pkgJsonFile, jsonToString(pkgJsonWithOnlyAngularCliDevDep))
 }
 
 async function generateTmpDirAndRegisterCleanupCallback(
@@ -255,19 +249,35 @@ async function installApp(appDir: string) {
   await installCommand
 }
 
-async function installLibrary(appDir: string) {
-  Log.step('Installing (linking) library')
-  const installCommand = execa(
-    'pnpm',
-    ['install', getRelativeLibraryDistDir()],
-    {
-      cwd: appDir,
-      all: true,
-      env: { FORCE_COLOR: true.toString() },
-    },
+/**
+ * Due to caching lockfile in CI/CD, cannot use `pnpm add/install`
+ * because that would be run twice:
+ * - When installing Angular deps (`pnpm i`)
+ * - When installing the library (`pnpm add <libDir>`)
+ * So the cached lockfile would include library, but then when running
+ * `pnpm i` with cached lockfile, `specifiers` section would be out of sync
+ * given lockfile contains library, but package.json does not (yet)
+ * See https://github.com/davidlj95/ngx/pull/518
+ */
+async function addLinkedLibrary(appDir: string) {
+  Log.step('Adding linked library')
+  const appPkgJsonFile = join(appDir, PKG_JSON)
+  const [libPkgJson, appPkgJson] = (
+    await Promise.all([
+      readFile(join(getLibraryDistDir(), PKG_JSON), 'utf8'),
+      readFile(join(appDir, PKG_JSON), 'utf8'),
+    ])
+  ).map(
+    (data) =>
+      JSON.parse(data) as {
+        name: string
+        dependencies: Record<string, string>
+      },
   )
-  Log.stream(installCommand.all)
-  await installCommand
+
+  appPkgJson.dependencies[libPkgJson.name] =
+    `link:${getRelativeLibraryDistDir()}`
+  await writeFile(appPkgJsonFile, jsonToString(appPkgJson))
 }
 
 async function copyTemplates(opts: { appDir: string; standalone: boolean }) {
@@ -324,11 +334,10 @@ async function updateTsConfigToImportJsonFiles(appDir: string) {
   ).compilerOptions.resolveJsonModule = true
   // 👇 Not needed for Angular v17, given `esModuleInterop` is enabled there
   //    https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
-  //    Adding it anyway to be sure
   ;(
     config.raw as { compilerOptions: ts.CompilerOptions }
   ).compilerOptions.allowSyntheticDefaultImports = true
-  await writeFile(configFileName, JSON.stringify(config.raw, null, 2))
+  await writeFile(configFileName, jsonToString(config.raw))
 }
 
 async function enablePreserveSymlinksCommand(appDir: string) {

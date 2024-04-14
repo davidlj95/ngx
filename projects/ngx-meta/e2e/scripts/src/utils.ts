@@ -15,6 +15,9 @@ function getE2EDir() {
 export function getRelativeLibraryDistDir() {
   return join('..', '..', '..', 'dist')
 }
+export function getLibraryDistDir() {
+  return resolve(getE2EDir(), '..', 'dist')
+}
 
 export function getStandaloneTemplatesDir() {
   return resolve(getE2EDir(), 'templates', 'standalone')
@@ -82,3 +85,7 @@ export class Log {
 }
 
 const STREAM_LINE_PREFIX = '   '
+
+export function jsonToString(json: object): string {
+  return JSON.stringify(json, null, 2)
+}

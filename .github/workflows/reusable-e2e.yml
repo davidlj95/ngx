@@ -86,10 +86,6 @@ jobs:
           # will be taken into account in max 1 week time
           # Patch releases shouldn't break anything anyway
           key: ${{ env.cache-name }}-${{ env.e2e_scripts_lockfile_hash }}-${{ env.angular_cli_version }}-${{ env.week_of_year }}
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
       - name: Install E2E scripts dependencies
         run: pnpm install --frozen-lockfile
         working-directory: ${{ env.E2E_SCRIPTS_DIR }}

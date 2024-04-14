@@ -14,7 +14,7 @@
   timezone: 'Europe/Madrid',
   labels: ['dependencies'],
   npm: {
-    // Keep Angular CLI versions used to generate example apps updated
+    // Keep Angular CLI versions used to create example apps updated
     fileMatch: ['projects/ngx-meta/examples/angular-cli-versions.json'],
   },
   packageRules: [

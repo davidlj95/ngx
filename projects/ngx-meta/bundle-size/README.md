@@ -8,7 +8,7 @@ Angular apps are created by the `examples` infra. Checkout [`examples` infra for
 
 ## Setup
 
-Install deps first example
+Install deps first
 
 ```shell
 pnpm install

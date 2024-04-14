@@ -4,9 +4,9 @@ Infra in this directory allows to test main library features using [example apps
 
 [Cypress]: https://www.cypress.io/
 
-## Example apps
+## Example app
 
-First, create them using [examples infra](../examples).
+First, create the example app to test using [examples infra](../examples).
 
 ## Tasks
 

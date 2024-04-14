@@ -1,7 +1,7 @@
 {
   "name": "@ngx-meta/examples-angular-cli-versions",
   "version": "0.0.0",
-  "description": "ngx-meta E2E pinned Angular CLI versions to create sample apps",
+  "description": "ngx-meta examples pinned Angular CLI versions",
   "private": true,
   "packageManager": "pnpm@8.15.6",
   "//1": "👇 Updated by dependency bot, but restricted to major versions",

@@ -1,7 +1,7 @@
 {
   "name": "@ngx-meta/examples",
   "version": "0.0.0",
-  "description": "ngx-meta lib E2E scripts",
+  "description": "ngx-meta examples scripts",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",

@@ -257,11 +257,15 @@ async function installApp(appDir: string) {
 
 async function installLibrary(appDir: string) {
   Log.step('Installing (linking) library')
-  const installCommand = execa('pnpm', ['add', getRelativeLibraryDistDir()], {
-    cwd: appDir,
-    all: true,
-    env: { FORCE_COLOR: true.toString() },
-  })
+  const installCommand = execa(
+    'pnpm',
+    ['install', getRelativeLibraryDistDir()],
+    {
+      cwd: appDir,
+      all: true,
+      env: { FORCE_COLOR: true.toString() },
+    },
+  )
   Log.stream(installCommand.all)
   await installCommand
 }

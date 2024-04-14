@@ -97,10 +97,6 @@ jobs:
           pnpm run create-sample-app a${{ matrix.version }}
           --tmp-dir=${{ runner.temp }}
         working-directory: ${{ env.E2E_SCRIPTS_DIR }}
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
       - name: Build Angular v${{ matrix.version }} E2E app
         run: pnpm build --source-map # with source map for bundle size analysis
         working-directory: ${{ env.E2E_APP_DIR }}

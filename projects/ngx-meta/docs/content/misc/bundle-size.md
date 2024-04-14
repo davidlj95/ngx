@@ -12,4 +12,4 @@ Here's how much bytes the library takes of your main bundle size when using all 
 
 ## Pull request
 
-Every pull request contains a comment tracking the bundle size including changes in that pull request. See [CI/CD workflow](https://github.com/davidlj95/ngx/blob/d87cd273ab70cfcd4f64e2faa0ccd1f97f2fa241/.github/workflows/reusable-bundle-size.yml#L89-L89) or a [sample PR comment](https://github.com/davidlj95/ngx/pull/192#issuecomment-1895710843)
+Every pull request contains a comment tracking the bundle size including changes in that pull request. See [CI/CD workflow](https://github.com/davidlj95/ngx/blob/d87cd273ab70cfcd4f64e2faa0ccd1f97f2fa241/.github/workflows/reusable-bundle-size.yml#L89-L89) or an [example PR comment](https://github.com/davidlj95/ngx/pull/192#issuecomment-1895710843)

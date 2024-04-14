@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/e2e/a17: create sample app" type="NodeJSConfigurationType" application-parameters="a17" path-to-js-file="projects/ngx-meta/e2e/scripts/src/create-sample-app.js" working-dir="$PROJECT_DIR$">
-    <method v="2" />
-  </configuration>
-</component>

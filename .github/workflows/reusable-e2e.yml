@@ -2,11 +2,9 @@ name: E2E
 on:
   workflow_call:
     inputs:
-      dist-artifact-name:
+      example-app-artifact-name-prefix:
+        description: Artifact name prefix containing built example apps
         required: true
-        type: string
-      e2e-app-artifact-name-prefix:
-        required: false
         type: string
       ref:
         description: Git reference to checkout. Defaults to @actions/checkout default.
@@ -16,7 +14,6 @@ on:
 
 env:
   E2E_DIR: projects/ngx-meta/e2e
-  E2E_SCRIPTS_DIR: projects/ngx-meta/e2e/scripts
 
 jobs:
   e2e:
@@ -28,106 +25,55 @@ jobs:
         version: [15, 16, 17]
     env:
       E2E_APP_DIR: projects/ngx-meta/e2e/apps/a${{ matrix.version }}
+    defaults:
+      run:
+        working-directory: ${{ env.E2E_DIR }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           ref: ${{ inputs.ref }}
-      - name: Download distribution files
+      - name: Download example app
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
-          name: ${{ inputs.dist-artifact-name }}
-          path: 'projects/ngx-meta/dist'
+          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.version }}
+          path: projects/ngx-meta/examples/apps/a${{ matrix.version }}
       - name: Setup pnpm
         uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
       - name: Setup Node.js
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
-          # Can't cache here, given some cache-dependency-paths do not exist yet
-          # Hence can't be used to create a proper cache key
-          # https://github.com/actions/setup-node/blob/v4.0.2/src/cache-restore.ts#L30-L42
-          node-version-file: '.node-version' # TODO: may vary depending on Angular version
-        # 👇 For caching, see below
-        # - PNPM store: https://github.com/pnpm/action-setup/tree/v3.0.0?tab=readme-ov-file#use-cache-to-reduce-installation-time
-        # - Angular CLI version: from versions file
-        # - Cypress cache dir: explicitly set default one:
-        # https://docs.cypress.io/guides/continuous-integration/introduction#Caching
-        # https://github.com/cypress-io/github-action/blob/v6.6.1/index.js#L163-L168
-      - name: Get caching key info
-        run: |
-          echo "pnpm_store_path=$(pnpm store path --silent)" >> $GITHUB_ENV
-          echo "angular_cli_version=$(jq -r \
-            '.devDependencies.a${{ matrix.version }}' \
-            '${{ env.E2E_SCRIPTS_DIR }}/angular-cli-versions.json' |
-            sed 's|npm:@angular/cli@||g'
-          )" >> $GITHUB_ENV
-          echo "week_of_year=$(date --utc '+%V')" >> $GITHUB_ENV
-          echo "cypress_cache_dir=$HOME/.cache/Cypress" >> $GITHUB_ENV
-      - name: Cache dependencies and Angular CLI/app resolution
+          cache: pnpm
+          cache-dependency-path: ${{ env.E2E_DIR }}/pnpm-lock.yaml
+          node-version-file: .node-version
+      - name: Get Cypress cache dir
+        run: echo "cypress_cache_dir=$HOME/.cache/Cypress" >> $GITHUB_ENV
+      - name: Cypress cache
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         env:
-          cache-name: ngx-meta-e2e-apps
-          e2e_scripts_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.E2E_SCRIPTS_DIR)) }}
+          cache-name: ngx-meta-e2e-cypress
+          e2e_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.E2E_DIR)) }}
         with:
-          # To cache (line by line):
-          # - pnpm global store
-          # - Cypress cache
-          # - Angular CLI dependency resolution (lockfile)
-          # - Angular app dependency resolution (lockfile)
-          path: |
-            ${{ env.pnpm_store_path }}
-            ${{ runner.temp }}/pnpm-lock.yaml
-            ${{ env.E2E_APP_DIR }}/pnpm-lock.yaml
-            ${{ env.cypress_cache_dir }}
-          # Key is designed to be invalidated if:
-          # - E2E script dependencies change
-          # - Angular CLI version is updated
-          # - Week of year (UTC) changes
-          # Last one is because we can't know before generating the Angular app
-          # which patch version of Angular will be installed.
-          # Angular CLI creates an app with same minor version:
-          # https://github.com/angular/angular-cli/blob/17.3.4/packages/schematics/angular/utility/latest-versions.ts#L20-L21
-          # So patch is up to dependency resolution step
-          # By invalidating cache each week, if a patch release appears it
-          # will be taken into account in max 1 week time
-          # Patch releases shouldn't break anything anyway
-          key: ${{ env.cache-name }}-${{ env.e2e_scripts_lockfile_hash }}-${{ env.angular_cli_version }}-${{ env.week_of_year }}
-      - name: Install E2E scripts dependencies
+          path: ${{ env.cypress_cache_dir }}
+          key: ${{ env.cache-name }}-${{ env.e2e_lockfile_hash }}
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: ${{ env.E2E_SCRIPTS_DIR }}
-      - name: Compile E2E scripts
-        run: pnpm run build
-        working-directory: ${{ env.E2E_SCRIPTS_DIR }}
-      - name: Create E2E app
-        run: >
-          pnpm run create-sample-app a${{ matrix.version }}
-          --tmp-dir=${{ runner.temp }}
-        working-directory: ${{ env.E2E_SCRIPTS_DIR }}
-      - name: Build Angular v${{ matrix.version }} E2E app
-        run: pnpm build --source-map # with source map for bundle size analysis
-        working-directory: ${{ env.E2E_APP_DIR }}
-      - name: Start Angular v${{ matrix.version }} E2E app server
-        run: pnpm start &
-        working-directory: ${{ env.E2E_APP_DIR }}
-      - name: Install E2E tests dependencies
-        run: pnpm install --frozen-lockfile
-        working-directory: ${{ env.E2E_DIR }}
       - name: Cypress run
         uses: cypress-io/github-action@1b70233146622b69e789ccdd4f9452adc638d25a # v6.6.1
         env:
           CYPRESS_CACHE_FOLDER: ${{ env.cypress_cache_dir }}
+          APP_PORT: 4200
         with:
-          wait-on: 'http://localhost:4200'
+          start: >
+            pnpm
+            http-server
+            ../examples/apps/a${{ matrix.version }}/dist/a${{ matrix.version }}/browser
+            --proxy http://localhost:${{ env.APP_PORT }}?
+            --port ${{ env.APP_PORT }}
+          wait-on: http://localhost:${{ env.APP_PORT }}
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
           # 👇 Action doesn't support pnpm caching right now
           # https://github.com/cypress-io/github-action/tree/v6.6.1?tab=readme-ov-file#pnpm
           # Given we're doing caching manually, installing apart to leverage cache
           install: false
-      - name: Upload built E2E app
-        if: ${{ inputs.e2e-app-artifact-name-prefix != '' }}
-        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
-        with:
-          name: ${{ inputs.e2e-app-artifact-name-prefix }}${{ matrix.version }}
-          path: ${{ env.E2E_APP_DIR }}/dist
-          retention-days: 5

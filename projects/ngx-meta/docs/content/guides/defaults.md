@@ -28,7 +28,7 @@ This way, everytime you set your metadata values (either using the service or th
     export class AppModule {}
     ```
 
-    --8<-- "includes/sample-module-based-app-module.md"
+    --8<-- "includes/example-module-based-app-module.md"
 
 === "For standalone, module-free apps"
 
@@ -49,7 +49,7 @@ This way, everytime you set your metadata values (either using the service or th
     }
     ```
 
-    --8<-- "includes/sample-standalone-app-config.md"
+    --8<-- "includes/example-standalone-app-config.md"
 
 Notice how the [Typescript's `satisfies` operator][typescript-satisfies] helps again ensuring the metadata values JSON matches the expected shape. For more information check [metadata values JSON guide](metadata-values-json.md)
 

@@ -30,13 +30,9 @@ jobs:
         uses: ./.github/actions/setup
       - name: Cache Angular build
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
-        env:
-          cache-name: angular-cache
         with:
           path: .angular/cache
-          key: ${{ env.cache-name }}-${{ inputs.ref != '' && inputs.ref || github.ref }}
-          restore-keys: |
-            ${{ env.cache-name }}
+          key: angular-cache
       - name: Build libraries
         run: cd .ci && make build
       - name: Upload distribution files
@@ -44,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:
           name: ${{ inputs.dist-artifact-name }}
-          path: 'projects/ngx-meta/dist'
+          path: projects/ngx-meta/dist
           retention-days: 5
   tsc:
     name: TypeScript compilation
@@ -64,5 +60,5 @@ jobs:
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:
           name: ${{ inputs.tsc-artifact-name }}
-          path: 'projects/ngx-meta/out'
+          path: projects/ngx-meta/out
           retention-days: 5

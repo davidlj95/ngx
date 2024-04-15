@@ -7,7 +7,7 @@ cd "$(dirname "$0")" || exit 1
 
 app_name="$1"
 [ -z "$app_name" ] && echo "❌  App name not specified" >&2 && exit 1
-. "utils.sh"
+. "./utils.sh"
 
 app_browser_dist_dir="../examples/apps/$app_name/dist/$app_name/browser"
 

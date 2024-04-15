@@ -64,7 +64,7 @@ done
 if [ -z "$app_name" ]; then
   display_usage
 fi
-. "utils.sh"
+. "./utils.sh"
 
 # Defaults
 input_file="$ANALYSIS_JSON_OUTPUT_FILE"

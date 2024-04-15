@@ -17,9 +17,12 @@ import { cp, readFile, writeFile } from 'fs/promises'
 import ANGULAR_CLI_VERSIONS_PKG_JSON from '../angular-cli-versions.json' with { type: 'json' }
 import ts from 'typescript'
 
+type AngularCliVersion =
+  keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
+
 interface ExampleApp {
   readonly name: string
-  readonly version: string
+  readonly cliVersion: AngularCliVersion
   readonly angularCliNewArguments?: ReadonlyArray<string>
   readonly standalone: boolean
   readonly ssr: boolean
@@ -28,7 +31,7 @@ interface ExampleApp {
 const EXAMPLE_APPS = [
   {
     name: 'v17',
-    version: '17',
+    cliVersion: 'v17',
     angularCliNewArguments: [
       '--ssr',
       '--standalone=true', // Default in v17, but to be explicit
@@ -38,7 +41,7 @@ const EXAMPLE_APPS = [
   },
   {
     name: 'v16',
-    version: '16',
+    cliVersion: 'v16',
     angularCliNewArguments: [
       '--standalone=false', // Default in v16, but to be explicit
     ],
@@ -47,7 +50,7 @@ const EXAMPLE_APPS = [
   },
   {
     name: 'v15',
-    version: '15',
+    cliVersion: 'v15',
     ssr: false,
     standalone: false, // No standalone CLI argument in v15
   },
@@ -80,13 +83,12 @@ async function createExampleApp({
   if (baseAppDir) {
     Log.info('Using "%s" as base app', baseAppDir)
   } else {
-    const angularCliDevDepKey = await getAngularCliDevDepKey(exampleApp.version)
     if (!tmpDir) {
       tmpDir = await generateTmpDirAndRegisterCleanupCallback(
         noCleanup ? () => {} : cleanUpTmpDir,
       )
     }
-    await createPackageJsonWithAngularCli(angularCliDevDepKey, tmpDir)
+    await createPackageJsonWithAngularCli(exampleApp.cliVersion, tmpDir)
     await installCli(tmpDir)
     baseAppDir = await generateAngularApp({
       name: exampleApp.name,
@@ -117,35 +119,19 @@ interface CreateExampleAppOptions {
   readonly tmpDir?: string
 }
 
-type AngularCliDevDepKey =
-  keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
-
-async function getAngularCliDevDepKey(
-  version: string,
-): Promise<AngularCliDevDepKey> {
-  const devDependencies = ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
-  const key = `v${version}`
-  if (!(key in devDependencies)) {
-    Log.error('Angular CLI pinned version not found: "%s"', version)
-    process.exit(1)
-  }
-  return key as AngularCliDevDepKey
-}
-
 const DEV_DEPENDENCIES_KEY =
   'devDependencies' satisfies keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON
 const PKG_JSON = 'package.json'
 
 async function createPackageJsonWithAngularCli(
-  angularCliDevDepKey: AngularCliDevDepKey,
+  cliVersion: AngularCliVersion,
   tmpDir: string,
 ) {
   const pkgJsonFile = join(tmpDir, PKG_JSON)
   const pkgJsonWithOnlyAngularCliDevDep = {
     ...ANGULAR_CLI_VERSIONS_PKG_JSON,
     [DEV_DEPENDENCIES_KEY]: {
-      [angularCliDevDepKey]:
-        ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies[angularCliDevDepKey],
+      [cliVersion]: ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies[cliVersion],
     },
   }
   await writeFile(pkgJsonFile, jsonToString(pkgJsonWithOnlyAngularCliDevDep))

@@ -56,7 +56,7 @@ jobs:
         run: |
           echo "pnpm_store_path=$(pnpm store path --silent)" >> $GITHUB_ENV
           echo "angular_cli_version=$(jq -r \
-            '.devDependencies.a${{ matrix.app_name }}' \
+            '.devDependencies.${{ matrix.app_name }}' \
             'angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
           )" >> $GITHUB_ENV

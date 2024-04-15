@@ -6,9 +6,9 @@ In order to keep library take as few bytes as possible from your app's bundle si
 
 Here's how much bytes the library takes of your main bundle size when using all its features:
 
---8<-- "includes/v17-bundle-size-report.md"
---8<-- "includes/v16-bundle-size-report.md"
---8<-- "includes/v15-bundle-size-report.md"
+--8<-- "includes/bundle-size/v17/bundle-size-report.md"
+--8<-- "includes/bundle-size/v16/bundle-size-report.md"
+--8<-- "includes/bundle-size/v15/bundle-size-report.md"
 
 ## Pull request
 

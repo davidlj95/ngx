@@ -4,9 +4,7 @@
   "description": "ngx-meta lib bundle size analysis with source-map-explorer",
   "scripts": {
     "analyze": "./analyze.sh",
-    "v15:report": "mkdir -p out/v15 && ./bundle-size-report.sh -h 'Angular v15' -i out/v15/source-map-explorer.json -o out/v15/bundle-size-report.md",
-    "v16:report": "mkdir -p out/v16 && ./bundle-size-report.sh -h 'Angular v16' -i out/v16/source-map-explorer.json -o out/v16/bundle-size-report.md",
-    "v17:report": "mkdir -p out/v17 && ./bundle-size-report.sh -h 'Angular v17' -i out/v17/source-map-explorer.json -o out/v17/bundle-size-report.md"
+    "report": "./report.sh"
   },
   "packageManager": "pnpm@8.15.6",
   "private": true,

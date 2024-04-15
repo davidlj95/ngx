@@ -1,69 +1,79 @@
 #!/usr/bin/env sh
 # Generates a bundle size report: size of including ngx-meta library inside an app's bundle size
 # Using JSON outputs from source-map-explorer analysis of app main bundles where the library is used
+set -eu
 
-# Initialize variables
-base_file=""
-input_file=""
-header=""
-output_file=""
-git_ref=""
-hidden_info=""
+cd "$(dirname "$0")" || exit 1
 
 # Function to display usage information
+BASE_FILE_ARG="--base-file"
+OUTPUT_FILE_ARG="--output-file"
+GIT_REF_ARG="--git-ref"
+HIDDEN_INFO_ARG="--hidden-info"
 display_usage() {
   cat <<BLOCK
-Usage: $0 -h|--header HEADER -i|--input-file SME_JSON_FILE
-       -b|--base-file SME_JSON_FILE -o|--output-file OUTPUT_FILE
-       [-r|--git-ref GIT_REF] [--hidden-info INFO]
+Usage: $0 APP_NAME
+       [$OUTPUT_FILE_ARG OUTPUT_FILE]
+       [$GIT_REF_ARG GIT_REF] [$HIDDEN_INFO_ARG INFO]
 
-       SME stands for Source Map Explorer
+       APP_NAME: name of example app to report about
+       $BASE_FILE_ARG: analysis JSON file to compare against
+       $OUTPUT_FILE_ARG: output file to report in Markdown format
+       $GIT_REF_ARG: add Git reference this report relates to
+       $HIDDEN_INFO_ARG: add a comment to the report as a Markdown non-visible comment
 BLOCK
   exit 1
 }
 
 # Parse command line arguments
+app_name=""
+base_file=""
+output_file=""
+git_ref=""
+hidden_info=""
 while [ "$#" -gt 0 ]; do
   case "$1" in
-  -h | --header)
-    shift
-    header="$1"
-    ;;
-  -b | --base-file)
+  "$BASE_FILE_ARG")
     shift
     base_file="$1"
     ;;
-  -i | --input-file)
-    shift
-    input_file="$1"
-    ;;
-  -o | --output-file)
+  "$OUTPUT_FILE_ARG")
     shift
     output_file="$1"
     ;;
-  -r | --git-ref)
+  "$GIT_REF_ARG")
     shift
     git_ref="$1"
     ;;
-  --hidden-info)
+  "$HIDDEN_INFO_ARG")
     shift
     hidden_info="$1"
     ;;
   *)
-    display_usage
+    if [ -z "$app_name" ]; then
+      app_name="$1"
+    else
+      display_usage
+    fi
     ;;
   esac
   shift
 done
 
 # Check for mandatory arguments
-if [ -z "$header" ] || [ -z "$input_file" ] || [ -z "$output_file" ]; then
+if [ -z "$app_name" ]; then
   display_usage
 fi
+. "utils.sh"
+
+# Defaults
+input_file="$ANALYSIS_JSON_OUTPUT_FILE"
+[ -z "$output_file" ] && output_file="$APP_OUTPUT_DIR/bundle-size-report.md"
 
 # Check for input file existence
 if ! [ -r "$input_file" ]; then
-  echo "❌ Input file '$input_file' can't be read" >&2
+  echo "❌  Input file '$input_file' can't be read" >&2
+  echo "   Export an analysis with JSON format before reporting"
   exit 1
 fi
 
@@ -82,7 +92,7 @@ base_file_exists() {
 }
 
 # 👇 Keep in sync with CI comment finder
-echo "### 📦 Bundle size ($header)" >"$output_file"
+echo "### 📦 Bundle size (Angular $app_name)" >"$output_file"
 {
   if [ -n "$hidden_info" ]; then
     echo "<!-- $hidden_info -->"
@@ -130,8 +140,8 @@ input_files="$(get_files_from_sizes "$input_lib_sizes")"
 base_lib_sizes=""
 base_files=""
 if base_file_exists; then
-   base_lib_sizes="$(get_sizes_from_sme_file "$base_file")"
-   base_files="$(get_files_from_sizes "$base_lib_sizes")"
+  base_lib_sizes="$(get_sizes_from_sme_file "$base_file")"
+  base_files="$(get_files_from_sizes "$base_lib_sizes")"
 fi
 files="$(printf "%s\n%s" "$input_files" "$base_files" | sort | uniq)"
 

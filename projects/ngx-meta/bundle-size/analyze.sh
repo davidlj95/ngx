@@ -1,11 +1,13 @@
 #!/usr/bin/env sh
 # Analyzes bundle size of the library when bundled inside an app
 # Using source maps & thanks to `source-map-explorer`
+set -eu
 
 cd "$(dirname "$0")" || exit 1
 
 app_name="$1"
 [ -z "$app_name" ] && echo "❌  App name not specified" >&2 && exit 1
+. "utils.sh"
 
 app_browser_dist_dir="../examples/apps/$app_name/dist/$app_name/browser"
 
@@ -25,13 +27,6 @@ sme_command() {
   pnpm source-map-explorer "$main_bundle_file" "$@"
 }
 
-upsert_app_output_dir() {
-  OUTPUT_DIR="out"
-  app_output_dir="$OUTPUT_DIR/$app_name"
-  mkdir -p "$app_output_dir"
-  echo "$app_output_dir"
-}
-
 echo "⚙️ Analyzing ${app_name} main bundle" >&2
 export_format_arg="$2"
 if [ -z "$export_format_arg" ]; then
@@ -41,11 +36,10 @@ fi
 JSON_ARG="--json"
 case "$export_format_arg" in
 "$JSON_ARG")
-  OUTPUT_FILENAME="source-map-explorer.json"
-  output_file="$(upsert_app_output_dir)/$OUTPUT_FILENAME"
   echo "ℹ️ Exporting analysis as JSON" >&2
-  echo "🔸 Output file: \"$output_file\"" >&2
-  sme_command "$JSON_ARG" >"$output_file"
+  echo "🔸 Output file: \"$ANALYSIS_JSON_OUTPUT_FILE\"" >&2
+  upsert_app_output_dir
+  sme_command "$JSON_ARG" >"$ANALYSIS_JSON_OUTPUT_FILE"
   ;;
 *)
   echo "❌  Unknown export format arg '$export_format_arg'" >&2

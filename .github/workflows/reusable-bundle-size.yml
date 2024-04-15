@@ -36,7 +36,7 @@ jobs:
         version: [v15, v16, v17]
     env:
       EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.version }}
-      BUNDLE_SIZE_OUT_DIR: ${{ env.BUNDLE_SIZE_DIR }}/out/${{ matrix.version }}
+      BUNDLE_SIZE_OUTPUT_DIR: projects/ngx-meta/bundle-size/out/${{ matrix.version }}
     defaults:
       run:
         working-directory: ${{ env.BUNDLE_SIZE_DIR }}

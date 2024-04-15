@@ -22,6 +22,8 @@ type AngularCliVersion =
 
 interface ExampleApp {
   readonly name: string
+  //👇 Right now name + CLI version MUST match
+  //   See example apps workflow cache info step for more info
   readonly cliVersion: AngularCliVersion
   readonly angularCliNewArguments?: ReadonlyArray<string>
   readonly standalone: boolean

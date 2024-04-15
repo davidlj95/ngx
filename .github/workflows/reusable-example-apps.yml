@@ -55,8 +55,11 @@ jobs:
       - name: Get caching key info
         run: |
           echo "pnpm_store_path=$(pnpm store path --silent)" >> $GITHUB_ENV
+          # 👇 Actually not 100% app name, but app name's version
+          #    Good enough for now though. In future we can introduce
+          #    some script to get Angular CLI version for a given app name
           echo "angular_cli_version=$(jq -r \
-            '.devDependencies.a${{ matrix.app_name }}' \
+            '.devDependencies.${{ matrix.app_name }}' \
             'angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
           )" >> $GITHUB_ENV

@@ -17,14 +17,14 @@ env:
 
 jobs:
   e2e:
-    name: E2E tests - Angular ${{ matrix.version }}
+    name: E2E tests - Angular ${{ matrix.app_name }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [v15, v16, v17]
+        app_name: [v15, v16, v17]
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.version }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.app_name }}
     defaults:
       run:
         working-directory: ${{ env.E2E_DIR }}
@@ -36,7 +36,7 @@ jobs:
       - name: Download example app distribution files
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
-          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.version }}
+          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
           path: ${{ env.EXAMPLE_APP_DIR }}/dist
       - name: Setup pnpm
         uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
@@ -67,7 +67,7 @@ jobs:
           start: >
             pnpm
             http-server
-            ../examples/apps/${{ matrix.version }}/dist/${{ matrix.version }}/browser
+            ../examples/apps/${{ matrix.app_name }}/dist/${{ matrix.app_name }}/browser
             --proxy http://localhost:${{ env.APP_PORT }}?
             --port ${{ env.APP_PORT }}
           wait-on: http://localhost:${{ env.APP_PORT }}

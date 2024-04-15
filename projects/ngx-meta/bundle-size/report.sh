@@ -13,6 +13,7 @@ HIDDEN_INFO_ARG="--hidden-info"
 display_usage() {
   cat <<BLOCK
 Usage: $0 APP_NAME
+       [$BASE_FILE_ARG BASE_FILE]
        [$OUTPUT_FILE_ARG OUTPUT_FILE]
        [$GIT_REF_ARG GIT_REF] [$HIDDEN_INFO_ARG INFO]
 

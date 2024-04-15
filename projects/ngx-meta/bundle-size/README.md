@@ -29,10 +29,10 @@ First, build one of the example apps. Checkout [`examples` infra][examples-infra
 Then, run the following command
 
 ```shell
-pnpm run a17:analyze-main-bundle
+pnpm run v17:analyze-main-bundle
 ```
 
-Replace `a17` for any other example app dir. The report will open in your browser. You'll find there how much bytes the lib size inside that app.
+Replace `v17` for any other example app dir. The report will open in your browser. You'll find there how much bytes the lib size inside that app.
 
 ## JSON report
 
@@ -41,17 +41,17 @@ First, build one of the example apps. Checkout [`examples` infra][examples-infra
 To generate a JSON report containing the `source-map-explorer` analysis of an example app, run
 
 ```shell
-pnpm run a17:sme-json
+pnpm run v17:sme-json
 ```
 
-Replace `a17` for any other example app dir. The report will be located inside bundle size project's `a17` subdirectory
+Replace `v17` for any other example app dir. The report will be located inside bundle size project's `v17` subdirectory
 
 ## Markdown report
 
 To generate a Markdown report containing a bundle size analysis summary of an example app, run
 
 ```shell
-pnpm run a17:report
+pnpm run v17:report
 ```
 
-Replace `a17` for any other example app dir. The report will be located inside bundle size project's `a17` subdirectory
+Replace `v17` for any other example app dir. The report will be located inside bundle size project's `v17` subdirectory

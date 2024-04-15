@@ -4,6 +4,7 @@ import {
   getLibraryDistDir,
   getModuleTemplatesDir,
   getRelativeLibraryDistDir,
+  getRelativeLibraryE2EDir,
   getStandaloneTemplatesDir,
   isMain,
   jsonToString,
@@ -98,7 +99,7 @@ async function createExampleApp({
   await Promise.all([
     addLinkedLibrary(appDir),
     setHoistedNodeLinker(appDir),
-    updateTsConfigToImportJsonFiles(appDir),
+    updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
     copyTemplates({ appDir, standalone: exampleApp.standalone }),
   ])
   await installApp(appDir)
@@ -299,8 +300,10 @@ async function copyTemplates(opts: { appDir: string; standalone: boolean }) {
   await cp(templatesDir, opts.appDir, { recursive: true })
 }
 
-async function updateTsConfigToImportJsonFiles(appDir: string) {
-  Log.step('Adding --resolve-json-module to Typescript config')
+async function updateTsConfigToImportJsonFilesAndSetPathMappings(
+  appDir: string,
+) {
+  Log.step('Adding JSON imports and path mappings to Typescript config')
   const configFileName = ts.findConfigFile(appDir, ts.sys.fileExists)
   if (!configFileName) {
     Log.error('Cannot find Typescript config file')
@@ -317,14 +320,15 @@ async function updateTsConfigToImportJsonFiles(appDir: string) {
     ts.sys,
     appDir,
   )
-  ;(
-    config.raw as { compilerOptions: ts.CompilerOptions }
-  ).compilerOptions.resolveJsonModule = true
+  type TsConfig = { compilerOptions: ts.CompilerOptions }
+  const rawConfig = config.raw as TsConfig
+  rawConfig.compilerOptions.resolveJsonModule = true
   // 👇 Not needed for Angular v17, given `esModuleInterop` is enabled there
   //    https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
-  ;(
-    config.raw as { compilerOptions: ts.CompilerOptions }
-  ).compilerOptions.allowSyntheticDefaultImports = true
+  rawConfig.compilerOptions.allowSyntheticDefaultImports = true
+  rawConfig.compilerOptions.paths = {
+    '@/e2e/*': [join(getRelativeLibraryE2EDir(), '*')],
+  }
   await writeFile(configFileName, jsonToString(config.raw))
 }
 async function configureAngularWorkspace(opts: {

@@ -9,7 +9,7 @@ import { AllMetaSetByServiceComponent } from './all-meta-set-by-service/all-meta
 import { AllMetaSetByRouteComponent } from './all-meta-set-by-route/all-meta-set-by-route.component'
 import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-service/meta-set-by-route-and-service.component'
 import { NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
-import DEFAULTS_JSON from '../../../../../e2e/cypress/fixtures/defaults.json'
+import DEFAULTS_JSON from '@/e2e/cypress/fixtures/defaults.json'
 import { NgxMetaRoutingModule } from '@davidlj95/ngx-meta/routing'
 import { NgxMetaStandardModule } from '@davidlj95/ngx-meta/standard'
 import {

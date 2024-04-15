@@ -6,7 +6,7 @@ import {
   provideNgxMetaCore,
   withNgxMetaDefaults,
 } from '@davidlj95/ngx-meta/core'
-import DEFAULTS_JSON from '../../../../../e2e/cypress/fixtures/defaults.json'
+import DEFAULTS_JSON from '@/e2e/cypress/fixtures/defaults.json'
 import { provideNgxMetaRouting } from '@davidlj95/ngx-meta/routing'
 import { provideNgxMetaStandard } from '@davidlj95/ngx-meta/standard'
 import {

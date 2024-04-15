@@ -30,7 +30,8 @@
     //    But for Angular <17, that wasn't enabled and was needed
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@davidlj95/ngx-meta/*": ["../../dist/*"]
+      "@davidlj95/ngx-meta/*": ["../../dist/*"],
+      "@/e2e/*": ["../../e2e/*"]
     }
   },
   "angularCompilerOptions": {

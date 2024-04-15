@@ -19,14 +19,14 @@ env:
 
 jobs:
   example-app:
-    name: Example app - Angular ${{ matrix.version }}
+    name: Example app - Angular ${{ matrix.app_name }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [v15, v16, v17]
+        app_name: [v15, v16, v17]
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.version }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.app_name }}
     defaults:
       run:
         working-directory: ${{ env.EXAMPLES_DIR }}
@@ -56,7 +56,7 @@ jobs:
         run: |
           echo "pnpm_store_path=$(pnpm store path --silent)" >> $GITHUB_ENV
           echo "angular_cli_version=$(jq -r \
-            '.devDependencies.a${{ matrix.version }}' \
+            '.devDependencies.a${{ matrix.app_name }}' \
             'angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
           )" >> $GITHUB_ENV
@@ -94,7 +94,7 @@ jobs:
         run: pnpm run build
       - name: Create example app
         run: >
-          pnpm run create-example-app ${{ matrix.version }}
+          pnpm run create-example-app ${{ matrix.app_name }}
           --tmp-dir=${{ runner.temp }}
       - name: Build example app
         run: pnpm build --source-map # with source map for bundle size analysis
@@ -103,7 +103,7 @@ jobs:
         if: ${{ inputs.example-app-artifact-name-prefix != '' }}
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:
-          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.version }}
+          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
           path: |
             ${{ env.EXAMPLE_APP_DIR }}/dist
           retention-days: 5

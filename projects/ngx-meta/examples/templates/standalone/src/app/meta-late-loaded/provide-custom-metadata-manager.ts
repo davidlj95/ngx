@@ -3,7 +3,7 @@ import {
   makeMetadataManagerProviderFromSetterFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
-import CUSTOM_METADATA_JSON from '../../../../../../e2e/cypress/fixtures/custom-metadata.json'
+import CUSTOM_METADATA_JSON from '@/e2e/cypress/fixtures/custom-metadata.json'
 
 type CustomMetadata = typeof CUSTOM_METADATA_JSON
 

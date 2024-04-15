@@ -15,6 +15,9 @@ function getExamplesDir() {
 export function getRelativeLibraryDistDir() {
   return join('..', '..', '..', 'dist')
 }
+export function getRelativeLibraryE2EDir() {
+  return join('..', '..', '..', 'e2e')
+}
 export function getLibraryDistDir() {
   return resolve(getExamplesDir(), '..', 'dist')
 }

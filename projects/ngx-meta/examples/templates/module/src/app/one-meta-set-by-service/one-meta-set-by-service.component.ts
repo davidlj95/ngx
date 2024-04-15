@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import ONE_METADATA_JSON from '../../../../../../e2e/cypress/fixtures/one-metadata.json'
+import ONE_METADATA_JSON from '@/e2e/cypress/fixtures/one-metadata.json'
 import { NgxMetaService } from '@davidlj95/ngx-meta/core'
 
 @Component({

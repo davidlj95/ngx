@@ -19,14 +19,14 @@ env:
 
 jobs:
   example-app:
-    name: Example app - Angular v${{ matrix.version }}
+    name: Example app - Angular ${{ matrix.version }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [15, 16, 17]
+        version: [v15, v16, v17]
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/a${{ matrix.version }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.version }}
     defaults:
       run:
         working-directory: ${{ env.EXAMPLES_DIR }}
@@ -94,7 +94,7 @@ jobs:
         run: pnpm run build
       - name: Create example app
         run: >
-          pnpm run create-example-app a${{ matrix.version }}
+          pnpm run create-example-app ${{ matrix.version }}
           --tmp-dir=${{ runner.temp }}
       - name: Build example app
         run: pnpm build --source-map # with source map for bundle size analysis

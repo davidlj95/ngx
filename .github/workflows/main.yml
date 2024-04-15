@@ -36,20 +36,20 @@ jobs:
     uses: ./.github/workflows/reusable-example-apps.yml
     with:
       dist-artifact-name: ngx-meta-dist
-      example-app-artifact-name-prefix: ngx-meta-example-app-a
+      example-app-artifact-name-prefix: ngx-meta-example-app-
   e2e:
     needs: examples
     name: E2E
     uses: ./.github/workflows/reusable-e2e.yml
     with:
-      example-app-artifact-name-prefix: ngx-meta-example-app-a
+      example-app-artifact-name-prefix: ngx-meta-example-app-
   bundle-size:
     needs: examples
     name: Bundle size
     uses: ./.github/workflows/reusable-bundle-size.yml
     with:
-      example-app-artifact-name-prefix: ngx-meta-example-app-a
-      bundle-size-artifact-name-prefix: ngx-meta-bundle-size-a
+      example-app-artifact-name-prefix: ngx-meta-example-app-
+      bundle-size-artifact-name-prefix: ngx-meta-bundle-size-
     permissions:
       checks: write
   release:
@@ -72,7 +72,7 @@ jobs:
     uses: ./.github/workflows/reusable-docs.yml
     with:
       api-docs-artifact-name: ngx-meta-api-docs
-      bundle-size-artifact-name-prefix: ngx-meta-bundle-size-a
+      bundle-size-artifact-name-prefix: ngx-meta-bundle-size-
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}

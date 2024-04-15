@@ -27,7 +27,7 @@ interface ExampleApp {
 
 const EXAMPLE_APPS = [
   {
-    name: 'a17',
+    name: 'v17',
     version: '17',
     angularCliNewArguments: [
       '--ssr',
@@ -37,7 +37,7 @@ const EXAMPLE_APPS = [
     standalone: true,
   },
   {
-    name: 'a16',
+    name: 'v16',
     version: '16',
     angularCliNewArguments: [
       '--standalone=false', // Default in v16, but to be explicit
@@ -46,7 +46,7 @@ const EXAMPLE_APPS = [
     standalone: false,
   },
   {
-    name: 'a15',
+    name: 'v15',
     version: '15',
     ssr: false,
     standalone: false, // No standalone CLI argument in v15
@@ -124,7 +124,7 @@ async function getAngularCliDevDepKey(
   version: string,
 ): Promise<AngularCliDevDepKey> {
   const devDependencies = ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
-  const key = `a${version}`
+  const key = `v${version}`
   if (!(key in devDependencies)) {
     Log.error('Angular CLI pinned version not found: "%s"', version)
     process.exit(1)

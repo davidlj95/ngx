@@ -76,54 +76,43 @@
     // https://update.angular.io/?v=16.0-17.0 (zone.js)
     {
       matchPackagePrefixes: ['@angular', '@angular-devkit'],
-      matchFileNames: [
-        'package.json',
-        'projects/ngx-meta/e2e/apps/a17/package.json',
-      ],
+      matchFileNames: ['package.json'],
       allowedVersions: '^17',
     },
     {
       matchPackageNames: ['node', '@types/node'],
+      matchFileNames: ['package.json'],
       allowedVersions: '^18.13.0 || ^20.9.0',
     },
     {
       matchPackageNames: ['typescript'],
-      matchFileNames: [
-        'package.json',
-        'projects/ngx-meta/e2e/apps/a17/package.json',
-      ],
+      matchFileNames: ['package.json'],
       allowedVersions: '>=5.2.0 <5.5.0',
     },
     {
       matchPackageNames: ['rxjs'],
-      matchFileNames: [
-        'package.json',
-        'projects/ngx-meta/e2e/apps/a17/package.json',
-      ],
+      matchFileNames: ['package.json'],
       allowedVersions: '^6.5.3 || ^7.4.0',
     },
     {
       matchPackageNames: ['zone.js'],
-      matchFileNames: [
-        'package.json',
-        'projects/ngx-meta/e2e/apps/a17/package.json',
-      ],
+      matchFileNames: ['package.json'],
       allowedVersions: '0.14.x',
     },
     // Example apps major versions
     {
       matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
-      matchPackageNames: 'a15',
+      matchPackageNames: 'v15',
       allowedVersions: '^15',
     },
     {
       matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
-      matchPackageNames: 'a16',
+      matchPackageNames: 'v16',
       allowedVersions: '^16',
     },
     {
       matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
-      matchPackageNames: 'a17',
+      matchPackageNames: 'v17',
       allowedVersions: '^17',
     },
     // API Documenter to use Markdown tables

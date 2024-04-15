@@ -22,19 +22,19 @@ on:
 
 env:
   # 👇 Keep in sync with on bundle size completed workflow
-  BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-a
-  BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX: ngx-meta-bundle-size-a
+  BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-
+  BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX: ngx-meta-bundle-size-
 
 jobs:
   analysis:
-    name: Analysis - Angular v${{ matrix.version }}
+    name: Analysis - Angular ${{ matrix.version }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [15, 16, 17]
+        version: [v15, v16, v17]
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/a${{ matrix.version }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.version }}
       BUNDLE_SIZE_DIR: projects/ngx-meta/bundle-size
     defaults:
       run:
@@ -44,7 +44,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           ref: ${{ inputs.ref }}
-      - name: Download built example app
+      - name: Download example app distribution files
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
         with:
           name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.version }}
@@ -60,7 +60,7 @@ jobs:
       - name: Install bundle size analysis dependencies
         run: pnpm install --frozen-lockfile
       - name: Analyze main bundle size with source map explorer
-        run: pnpm run a${{ matrix.version }}:sme-json
+        run: pnpm run ${{ matrix.version }}:sme-json
       - name: Fetch bundle size analysis results from 'main' branch
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         if: github.event_name == 'pull_request'
@@ -81,35 +81,35 @@ jobs:
             const checkRun = checkRuns[0]
             const smeJsonString = checkRun.output.text
             const fs = require('fs')
-            fs.writeFileSync('${{ env.BUNDLE_SIZE_DIR }}/a${{ matrix.version }}/source-map-explorer-main.json', smeJsonString)
+            fs.writeFileSync('${{ env.BUNDLE_SIZE_DIR }}/${{ matrix.version }}/source-map-explorer-main.json', smeJsonString)
       - name: Generate bundle size PR comment
         if: github.event_name == 'pull_request'
         run: |
-          pnpm run a${{ matrix.version }}:report \
+          pnpm run ${{ matrix.version }}:report \
           --git-ref '${{ github.event.pull_request.head.sha }}' \
           --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}' \
-          --base-file 'a${{ matrix.version }}/source-map-explorer-main.json' \
-          --output-file 'a${{ matrix.version }}/bundle-size-pr-comment.md'
+          --base-file '${{ matrix.version }}/source-map-explorer-main.json' \
+          --output-file '${{ matrix.version }}/bundle-size-pr-comment.md'
       - name: Generate bundle size report
-        run: pnpm run a${{ matrix.version }}:report --git-ref '${{ github.sha }}'
+        run: pnpm run ${{ matrix.version }}:report --git-ref '${{ github.sha }}'
       - name: Upload bundle size analysis results
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:
           name: ${{ inputs.bundle-size-artifact-name-prefix }}${{ matrix.version }}
           path: |
-            ${{ env.BUNDLE_SIZE_DIR }}/a${{ matrix.version }}/*.json
-            ${{ env.BUNDLE_SIZE_DIR }}/a${{ matrix.version }}/*.md
+            ${{ env.BUNDLE_SIZE_DIR }}/${{ matrix.version }}/*.json
+            ${{ env.BUNDLE_SIZE_DIR }}/${{ matrix.version }}/*.md
           retention-days: 5
 
   store:
     needs: analysis
     if: github.event_name == 'push'
-    name: Store - Angular v${{ matrix.version }}
+    name: Store - Angular ${{ matrix.version }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        version: [15, 16, 17]
+        version: [v15, v16, v17]
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
@@ -132,9 +132,9 @@ jobs:
               // head_sha: '${{ github.event.pull_request.head.sha }}',
               conclusion: 'neutral',
               output: {
-                title: 'Bundle size - Angular v${{ matrix.version }}',
+                title: 'Bundle size - Angular ${{ matrix.version }}',
                 summary: 'Sizes of the library modules when packed inside a ' +
-                         'main bundle of an Angular v${{ matrix.version }} ' +
+                         'main bundle of an Angular ${{ matrix.version }} ' +
                          'app. In bytes. Thanks to `source-map-explorer` :)',
                 text: smeJsonString,
               }

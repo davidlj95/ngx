@@ -36,7 +36,7 @@ jobs:
         version: [v15, v16, v17]
     env:
       EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.version }}
-      BUNDLE_SIZE_OUTPUT_DIR: projects/ngx-meta/bundle-size/out/${{ matrix.version }}
+      OUTPUT_DIR: out/${{ matrix.version }}
     defaults:
       run:
         working-directory: ${{ env.BUNDLE_SIZE_DIR }}
@@ -82,22 +82,25 @@ jobs:
             const checkRun = checkRuns[0]
             const smeJsonString = checkRun.output.text
             const fs = require('fs')
-            fs.writeFileSync('${{ env.BUNDLE_SIZE_OUTPUT_DIR }}/source-map-explorer-main.json', smeJsonString)
+            fs.writeFileSync(
+              '${{ env.BUNDLE_SIZE_DIR }}/${{ env.OUTPUT_DIR }}/source-map-explorer-main.json',
+              smeJsonString
+            )
       - name: Generate bundle size PR comment
         if: github.event_name == 'pull_request'
         run: >
           pnpm run ${{ matrix.version }}:report
           --git-ref '${{ github.event.pull_request.head.sha }}'
           --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.version }}'
-          --base-file '${{ env.BUNDLE_SIZE_OUTPUT_DIR }}/source-map-explorer-main.json'
-          --output-file '${{ env.BUNDLE_SIZE_OUTPUT_DIR }}/bundle-size-pr-comment.md'
+          --base-file '${{ env.OUTPUT_DIR }}/source-map-explorer-main.json'
+          --output-file '${{ env.OUTPUT_DIR }}/bundle-size-pr-comment.md'
       - name: Generate bundle size report
         run: pnpm run ${{ matrix.version }}:report --git-ref '${{ github.sha }}'
       - name: Upload bundle size analysis results
         uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3 # v4
         with:
           name: ${{ inputs.bundle-size-artifact-name-prefix }}${{ matrix.version }}
-          path: ${{ env.BUNDLE_SIZE_OUTPUT_DIR }}
+          path: ${{ env.BUNDLE_SIZE_DIR }}/${{ env.OUTPUT_DIR }}
           retention-days: 5
 
   store:

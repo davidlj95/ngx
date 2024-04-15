@@ -30,17 +30,19 @@ cp ../src/CHANGELOG.md "$INCLUDES_DIR/"
 
 # 📦 Bundle size
 echo "ℹ️ Copying bundle size reports"
-bundle_size_app_dir_pattern="../bundle-size/a"
-for bundle_size_app_dir in "$bundle_size_app_dir_pattern"*; do
-  version="$(echo "$bundle_size_app_dir" | sed "s|$bundle_size_app_dir_pattern||g")"
-  report_filename="bundle-size-report.md"
-  report_file="$bundle_size_app_dir/$report_filename"
-  destination_file="includes/a$version-$report_filename"
-
+BUNDLE_SIZE_INCLUDES_DIR="$INCLUDES_DIR/bundle-size"
+BUNDLE_SIZE_OUTPUT_DIR="../bundle-size/out"
+BUNDLE_SIZE_REPORT_FILENAME="bundle-size-report.md"
+for bundle_size_output_app_dir in "$BUNDLE_SIZE_OUTPUT_DIR/"*; do
+  app_name="$(echo "$bundle_size_output_app_dir" | sed "s|$BUNDLE_SIZE_OUTPUT_DIR/||g")"
+  report_file="$bundle_size_output_app_dir/$BUNDLE_SIZE_REPORT_FILENAME"
   if [ -r "$report_file" ]; then
-    cp "$report_file" "$destination_file"
-    echo "ℹ️ Copying Angular v$version E2E app bundle size report"
+    echo "ℹ️ Copying Angular $app_name example app bundle size report"
+    echo "🔸 Report file: \"$report_file\""
+    bundle_size_includes_app_dir="$BUNDLE_SIZE_INCLUDES_DIR/$app_name"
+    mkdir -p "$bundle_size_includes_app_dir"
+    cp "$report_file" "$bundle_size_includes_app_dir/$BUNDLE_SIZE_REPORT_FILENAME"
   else
-    echo "⚠️ Bundle size report for version $version not found"
+    echo "⚠️ Bundle size report for example app $app_name not found"
   fi
 done

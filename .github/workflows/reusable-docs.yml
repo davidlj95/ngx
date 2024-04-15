@@ -62,8 +62,8 @@ jobs:
         working-directory: .
         run: |
           for artifact_dir in ${{ inputs.bundle-size-artifact-name-prefix }}*; do
-            version="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
-            bundle_size_app_dir="projects/ngx-meta/bundle-size/$version"
+            app_name="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
+            bundle_size_app_dir="projects/ngx-meta/bundle-size/out/$app_name"
             mkdir -p "$bundle_size_app_dir"
             cp "$artifact_dir/bundle-size-report.md" "$bundle_size_app_dir"
           done

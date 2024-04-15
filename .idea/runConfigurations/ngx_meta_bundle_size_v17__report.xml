@@ -3,8 +3,9 @@
     <package-json value="$PROJECT_DIR$/projects/ngx-meta/bundle-size/package.json" />
     <command value="run" />
     <scripts>
-      <script value="v17:report" />
+      <script value="report" />
     </scripts>
+    <arguments value="v17" />
     <node-interpreter value="project" />
     <envs />
     <method v="2">
@@ -12,8 +13,9 @@
         <package-json value="$PROJECT_DIR$/projects/ngx-meta/bundle-size/package.json" />
         <command value="run" />
         <scripts>
-          <script value="v17:sme-json" />
+          <script value="analyze" />
         </scripts>
+        <arguments value="v17 --json" />
         <node-interpreter value="project" />
         <envs />
       </option>

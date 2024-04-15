@@ -1,5 +1,3 @@
-a*/*.json
-a*/*.md
+out/
 # Manual edits
-# - Add source map explorer results JSON
-# - Add bundle size report markdown file
+# - Output files directory

@@ -261,6 +261,8 @@ async function disableAnalytics(opts: { cliBinary: string; appDir: string }) {
   await disableAnalyticsCommand
 }
 
+const NPMRC_FILENAME = '.npmrc'
+
 async function setupSsr(opts: {
   cliBinary: string
   appDir: string
@@ -273,6 +275,12 @@ async function setupSsr(opts: {
     )
     return
   }
+  // Avoid failing on CI/CD where second `install` command triggered by
+  // adding `@nguniversal` doesn't work due to default `--frozen-lockfile`
+  // behaviour
+  Log.step('Configuring pnpm to disable lockfiles')
+  const APP_NPMRC = join(opts.appDir, NPMRC_FILENAME)
+  await writeFile(APP_NPMRC, 'lockfile=false')
   // Before v17, the recommendation was using @nguniversal for SSR
   // Current docs SSR guide do this with `ng add @angular/ssr`, which starts at v17
   // https://v16.angular.io/guide/universal
@@ -290,10 +298,10 @@ async function setupSsr(opts: {
   await ngAddNgUniversalCommand
   // Seems there's no way to avoid installing deps
   // https://github.com/angular/angular-cli/blob/16.2.14/packages/angular/cli/src/commands/add/cli.ts#L304
-  Log.step('Removing node modules and lockfile')
+  Log.step('Removing node modules and %s', NPMRC_FILENAME)
   const rmNodeModulesAndLockfileCommand = execa(
     'rm',
-    ['-rf', 'node_modules', 'pnpm-lock.yaml'],
+    ['-rf', 'node_modules', NPMRC_FILENAME],
     {
       cwd: opts.appDir,
       all: true,
@@ -391,7 +399,7 @@ async function updateTsConfigToImportJsonFilesAndSetPathMappings(
 // https://stackoverflow.com/a/78268602/3263250
 async function setHoistedNodeLinker(appDir: string) {
   Log.step('Configuring pnpm to use hoisted node linker')
-  const appNpmRcFile = join(appDir, '.npmrc')
+  const appNpmRcFile = join(appDir, NPMRC_FILENAME)
   await writeFile(appNpmRcFile, 'node-linker=hoisted')
 }
 

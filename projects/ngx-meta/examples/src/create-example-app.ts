@@ -16,6 +16,9 @@ import { cp, readFile, writeFile } from 'fs/promises'
 // https://stackoverflow.com/a/70106896/3263250
 import ANGULAR_CLI_VERSIONS_PKG_JSON from '../angular-cli-versions.json' with { type: 'json' }
 import ts from 'typescript'
+import semverCoerce from 'semver/functions/coerce.js'
+import semverGte from 'semver/functions/gte.js'
+import { SemVer } from 'semver'
 
 type AngularCliVersion =
   keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
@@ -27,7 +30,7 @@ interface ExampleApp {
   readonly cliVersion: AngularCliVersion
   readonly angularCliNewArguments?: ReadonlyArray<string>
   readonly standalone: boolean
-  readonly ssr: boolean
+  readonly updateDistPathToIncludeBrowserDir: boolean
 }
 
 const EXAMPLE_APPS = [
@@ -35,10 +38,9 @@ const EXAMPLE_APPS = [
     name: 'v17',
     cliVersion: 'v17',
     angularCliNewArguments: [
-      '--ssr',
       '--standalone=true', // Default in v17, but to be explicit
     ],
-    ssr: true,
+    updateDistPathToIncludeBrowserDir: true,
     standalone: true,
   },
   {
@@ -47,13 +49,13 @@ const EXAMPLE_APPS = [
     angularCliNewArguments: [
       '--standalone=false', // Default in v16, but to be explicit
     ],
-    ssr: false,
+    updateDistPathToIncludeBrowserDir: false,
     standalone: false,
   },
   {
     name: 'v15',
     cliVersion: 'v15',
-    ssr: false,
+    updateDistPathToIncludeBrowserDir: false,
     standalone: false, // No standalone CLI argument in v15
   },
 ] satisfies ReadonlyArray<ExampleApp>
@@ -73,6 +75,8 @@ const DEFAULT_ANGULAR_CLI_NEW_ARGUMENTS = [
   '--skip-tests',
   '--style=css',
 ]
+const ANGULAR_CLI_NEW_SSR_ARG = '--ssr'
+const ANGULAR_CLI_NEW_SSR_MIN_VERSION = semverCoerceOrExit('v17')
 
 async function createExampleApp({
   exampleApp,
@@ -80,6 +84,7 @@ async function createExampleApp({
   noCleanup,
   tmpDir,
 }: CreateExampleAppOptions) {
+  const angularCliVersion = semverCoerceOrExit(exampleApp.cliVersion)
   Log.info(`Creating example app`)
 
   if (baseAppDir) {
@@ -92,10 +97,11 @@ async function createExampleApp({
     }
     await createPackageJsonWithAngularCli(exampleApp.cliVersion, tmpDir)
     await installCli(tmpDir)
-    baseAppDir = await generateAngularApp({
+    baseAppDir = await createAngularApp({
       name: exampleApp.name,
       extraArgs: exampleApp.angularCliNewArguments,
       dir: tmpDir,
+      angularCliVersion,
     })
   }
 
@@ -106,11 +112,12 @@ async function createExampleApp({
     updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
     copyTemplates({ appDir, standalone: exampleApp.standalone }),
   ])
+  await setupSsr(appDir, angularCliVersion)
   await installApp(appDir)
   await configureAngularWorkspace({
     appDir,
     appName: exampleApp.name,
-    ssr: exampleApp.ssr,
+    ssr: exampleApp.updateDistPathToIncludeBrowserDir,
   })
 }
 
@@ -119,6 +126,15 @@ interface CreateExampleAppOptions {
   readonly baseAppDir?: string
   readonly noCleanup?: boolean
   readonly tmpDir?: string
+}
+
+function semverCoerceOrExit(version: string): SemVer {
+  const semverVersion = semverCoerce(version)
+  if (!semverVersion) {
+    Log.error(`Version '%s' cannot be coerced into a semver version`, version)
+    process.exit(1)
+  }
+  return semverVersion
 }
 
 const DEV_DEPENDENCIES_KEY =
@@ -197,12 +213,17 @@ async function installCli(tmpDir: string) {
   await installCommand
 }
 
-async function generateAngularApp(opts: {
+async function createAngularApp(opts: {
   name: string
   extraArgs?: ReadonlyArray<string>
   dir: string
+  angularCliVersion: SemVer
 }): Promise<string> {
-  Log.step('Generating Angular app using Angular CLI')
+  Log.step('Creating Angular app using Angular CLI')
+  const addSsrArgument = supportsNgNewWithSsr(opts.angularCliVersion)
+  if (addSsrArgument) {
+    Log.info('Adding SSR argument')
+  }
   const ngNewCommand = execa(
     'pnpm',
     [
@@ -211,6 +232,7 @@ async function generateAngularApp(opts: {
       `${opts.name}`,
       ...DEFAULT_ANGULAR_CLI_NEW_ARGUMENTS,
       ...(opts.extraArgs ?? []),
+      ...(addSsrArgument ? [ANGULAR_CLI_NEW_SSR_ARG] : []),
     ],
     { cwd: opts.dir, all: true, env: { FORCE_COLOR: true.toString() } },
   )
@@ -218,6 +240,10 @@ async function generateAngularApp(opts: {
   await ngNewCommand
   Log.ok('Angular app created')
   return join(opts.dir, opts.name)
+}
+
+function supportsNgNewWithSsr(angularCliVersion: SemVer) {
+  return semverGte(angularCliVersion, ANGULAR_CLI_NEW_SSR_MIN_VERSION)
 }
 
 async function copyAppDirIntoProject(appDir: string) {
@@ -233,6 +259,31 @@ async function setHoistedNodeLinker(appDir: string) {
   Log.step('Configuring pnpm to use hoisted node linker')
   const appNpmRcFile = join(appDir, '.npmrc')
   await writeFile(appNpmRcFile, 'node-linker=hoisted')
+}
+
+async function setupSsr(appDir: string, angularCliVersion: SemVer) {
+  if (supportsNgNewWithSsr(angularCliVersion)) {
+    Log.debug(
+      `Skipping SSR setup: Angular CLI %s supports creating apps
+      with SSR support, so assuming it has been added already at creation`,
+    )
+    return
+  }
+  // Before v17, the recommendation was using @nguniversal for SSR
+  // Current docs SSR guide do this with `ng add @angular/ssr`, which starts at v17
+  // https://v16.angular.io/guide/universal
+  Log.step('Setting up SSR using @nguniversal')
+  const ngAddNgUniversalCommand = execa(
+    'pnpm',
+    ['ng', 'add', '@nguniversal/express-engine'],
+    {
+      cwd: appDir,
+      all: true,
+      env: { FORCE_COLOR: true.toString() },
+    },
+  )
+  Log.stream(ngAddNgUniversalCommand.all)
+  await ngAddNgUniversalCommand
 }
 
 async function installApp(appDir: string) {

@@ -16,6 +16,9 @@ import { cp, readFile, writeFile } from 'fs/promises'
 // https://stackoverflow.com/a/70106896/3263250
 import ANGULAR_CLI_VERSIONS_PKG_JSON from '../angular-cli-versions.json' with { type: 'json' }
 import ts from 'typescript'
+import semverCoerce from 'semver/functions/coerce.js'
+import semverGte from 'semver/functions/gte.js'
+import { SemVer } from 'semver'
 
 type AngularCliVersion =
   keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
@@ -27,7 +30,6 @@ interface ExampleApp {
   readonly cliVersion: AngularCliVersion
   readonly angularCliNewArguments?: ReadonlyArray<string>
   readonly standalone: boolean
-  readonly ssr: boolean
 }
 
 const EXAMPLE_APPS = [
@@ -35,10 +37,8 @@ const EXAMPLE_APPS = [
     name: 'v17',
     cliVersion: 'v17',
     angularCliNewArguments: [
-      '--ssr',
       '--standalone=true', // Default in v17, but to be explicit
     ],
-    ssr: true,
     standalone: true,
   },
   {
@@ -47,13 +47,11 @@ const EXAMPLE_APPS = [
     angularCliNewArguments: [
       '--standalone=false', // Default in v16, but to be explicit
     ],
-    ssr: false,
     standalone: false,
   },
   {
     name: 'v15',
     cliVersion: 'v15',
-    ssr: false,
     standalone: false, // No standalone CLI argument in v15
   },
 ] satisfies ReadonlyArray<ExampleApp>
@@ -62,24 +60,13 @@ const EXAMPLE_APPS_BY_NAME = new Map<string, ExampleApp>(
   EXAMPLE_APPS.map((exampleApp) => [exampleApp.name, exampleApp]),
 )
 
-// https://angular.dev/cli/new
-const DEFAULT_ANGULAR_CLI_NEW_ARGUMENTS = [
-  '--inline-style',
-  '--minimal',
-  '--package-manager=pnpm',
-  '--routing',
-  '--skip-git',
-  '--skip-install',
-  '--skip-tests',
-  '--style=css',
-]
-
 async function createExampleApp({
   exampleApp,
   baseAppDir,
   noCleanup,
   tmpDir,
 }: CreateExampleAppOptions) {
+  const angularCliVersion = semverCoerceOrExit(exampleApp.cliVersion)
   Log.info(`Creating example app`)
 
   if (baseAppDir) {
@@ -92,26 +79,27 @@ async function createExampleApp({
     }
     await createPackageJsonWithAngularCli(exampleApp.cliVersion, tmpDir)
     await installCli(tmpDir)
-    baseAppDir = await generateAngularApp({
+    baseAppDir = await createAngularApp({
       name: exampleApp.name,
       extraArgs: exampleApp.angularCliNewArguments,
       dir: tmpDir,
+      angularCliVersion,
     })
+    const cliBinary = '../node_modules/.bin/ng'
+    await disableAnalytics({ cliBinary, appDir: baseAppDir })
+    await setupSsr({ cliBinary, appDir: baseAppDir, angularCliVersion })
   }
 
   const appDir = await copyAppDirIntoProject(baseAppDir)
   await Promise.all([
-    addLinkedLibrary(appDir),
-    setHoistedNodeLinker(appDir),
-    updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
+    (async () => {
+      await addLinkedLibrary(appDir)
+      await addCiBuildRunScript({ appDir, appName: exampleApp.name })
+    })(),
     copyTemplates({ appDir, standalone: exampleApp.standalone }),
+    updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
   ])
   await installApp(appDir)
-  await configureAngularWorkspace({
-    appDir,
-    appName: exampleApp.name,
-    ssr: exampleApp.ssr,
-  })
 }
 
 interface CreateExampleAppOptions {
@@ -121,22 +109,13 @@ interface CreateExampleAppOptions {
   readonly tmpDir?: string
 }
 
-const DEV_DEPENDENCIES_KEY =
-  'devDependencies' satisfies keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON
-const PKG_JSON = 'package.json'
-
-async function createPackageJsonWithAngularCli(
-  cliVersion: AngularCliVersion,
-  tmpDir: string,
-) {
-  const pkgJsonFile = join(tmpDir, PKG_JSON)
-  const pkgJsonWithOnlyAngularCliDevDep = {
-    ...ANGULAR_CLI_VERSIONS_PKG_JSON,
-    [DEV_DEPENDENCIES_KEY]: {
-      [cliVersion]: ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies[cliVersion],
-    },
+function semverCoerceOrExit(version: string): SemVer {
+  const semverVersion = semverCoerce(version)
+  if (!semverVersion) {
+    Log.error(`Version '%s' cannot be coerced into a semver version`, version)
+    process.exit(1)
   }
-  await writeFile(pkgJsonFile, jsonToString(pkgJsonWithOnlyAngularCliDevDep))
+  return semverVersion
 }
 
 async function generateTmpDirAndRegisterCleanupCallback(
@@ -186,6 +165,24 @@ function cleanUpTmpDir(tmpDir: string) {
   }
 }
 
+const PKG_JSON = 'package.json'
+
+async function createPackageJsonWithAngularCli(
+  cliVersion: AngularCliVersion,
+  tmpDir: string,
+) {
+  const DEV_DEPENDENCIES_KEY =
+    'devDependencies' satisfies keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON
+  const pkgJsonFile = join(tmpDir, PKG_JSON)
+  const pkgJsonWithOnlyAngularCliDevDep = {
+    ...ANGULAR_CLI_VERSIONS_PKG_JSON,
+    [DEV_DEPENDENCIES_KEY]: {
+      [cliVersion]: ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies[cliVersion],
+    },
+  }
+  await writeFile(pkgJsonFile, jsonToString(pkgJsonWithOnlyAngularCliDevDep))
+}
+
 async function installCli(tmpDir: string) {
   Log.step('Installing Angular CLI')
   const installCommand = execa('pnpm', ['install'], {
@@ -197,20 +194,38 @@ async function installCli(tmpDir: string) {
   await installCommand
 }
 
-async function generateAngularApp(opts: {
+async function createAngularApp(opts: {
   name: string
   extraArgs?: ReadonlyArray<string>
   dir: string
+  angularCliVersion: SemVer
 }): Promise<string> {
-  Log.step('Generating Angular app using Angular CLI')
+  Log.step('Creating Angular app using Angular CLI')
+  const ngNewSupportsSsr = supportsNgNewWithSsr(opts.angularCliVersion)
+  if (ngNewSupportsSsr) {
+    Log.info('Adding built-in SSR support')
+  }
+  // https://angular.dev/cli/new
+  const ANGULAR_CLI_NEW_DEFAULT_ARGS = [
+    '--inline-style',
+    '--minimal',
+    '--package-manager=pnpm',
+    '--routing',
+    '--skip-git',
+    '--skip-install',
+    '--skip-tests',
+    '--style=css',
+  ]
+  const ANGULAR_CLI_NEW_SSR_ARG = '--ssr'
   const ngNewCommand = execa(
     'pnpm',
     [
       'ng',
       `new`,
       `${opts.name}`,
-      ...DEFAULT_ANGULAR_CLI_NEW_ARGUMENTS,
+      ...ANGULAR_CLI_NEW_DEFAULT_ARGS,
       ...(opts.extraArgs ?? []),
+      ...(ngNewSupportsSsr ? [ANGULAR_CLI_NEW_SSR_ARG] : []),
     ],
     { cwd: opts.dir, all: true, env: { FORCE_COLOR: true.toString() } },
   )
@@ -220,30 +235,81 @@ async function generateAngularApp(opts: {
   return join(opts.dir, opts.name)
 }
 
+function supportsNgNewWithSsr(angularCliVersion: SemVer) {
+  const ANGULAR_CLI_NEW_SSR_MIN_VERSION = semverCoerceOrExit('v17')
+  return semverGte(angularCliVersion, ANGULAR_CLI_NEW_SSR_MIN_VERSION)
+}
+
+async function disableAnalytics(opts: { cliBinary: string; appDir: string }) {
+  Log.step('Disabling Angular analytics')
+  const disableAnalyticsCommand = execa(
+    opts.cliBinary,
+    ['config', 'cli.analytics', false.toString()],
+    {
+      cwd: opts.appDir,
+      all: true,
+      env: { FORCE_COLOR: true.toString() },
+    },
+  )
+  Log.stream(disableAnalyticsCommand.all)
+  await disableAnalyticsCommand
+}
+
+async function setupSsr(opts: {
+  cliBinary: string
+  appDir: string
+  angularCliVersion: SemVer
+}) {
+  if (supportsNgNewWithSsr(opts.angularCliVersion)) {
+    Log.debug(
+      `Skipping SSR setup: Angular CLI %s supports creating apps
+   with SSR support, so assuming it has been added already at creation`,
+    )
+    return
+  }
+  // Avoid failing on CI/CD where second `install` command triggered by
+  // adding `@nguniversal` doesn't work due to default `--frozen-lockfile`
+  // behaviour
+  Log.step('Configuring pnpm to disable lockfiles')
+  const NPMRC_FILENAME = '.npmrc'
+  await writeFile(join(opts.appDir, NPMRC_FILENAME), 'lockfile=false')
+  // Before v17, the recommendation was using @nguniversal for SSR
+  // Current docs SSR guide do this with `ng add @angular/ssr`, which starts at v17
+  // https://v16.angular.io/guide/universal
+  Log.step('Setting up SSR using @nguniversal')
+  const ngAddNgUniversalCommand = execa(
+    opts.cliBinary,
+    ['add', '--skip-confirmation', '@nguniversal/express-engine'],
+    {
+      cwd: opts.appDir,
+      all: true,
+      env: { FORCE_COLOR: true.toString() },
+    },
+  )
+  Log.stream(ngAddNgUniversalCommand.all)
+  await ngAddNgUniversalCommand
+  // Seems there's no way to avoid installing deps
+  // https://github.com/angular/angular-cli/blob/16.2.14/packages/angular/cli/src/commands/add/cli.ts#L304
+  Log.step('Removing node modules and %s', NPMRC_FILENAME)
+  const rmNodeModulesAndLockfileCommand = execa(
+    'rm',
+    ['-rf', 'node_modules', NPMRC_FILENAME],
+    {
+      cwd: opts.appDir,
+      all: true,
+      env: { FORCE_COLOR: true.toString() },
+    },
+  )
+  Log.stream(rmNodeModulesAndLockfileCommand.all)
+  await rmNodeModulesAndLockfileCommand
+}
+
 async function copyAppDirIntoProject(appDir: string) {
   Log.step('Copying app from into project')
   const appDirName = basename(appDir)
   const destination = join(getAppsDir(), appDirName)
   await cp(appDir, destination, { recursive: true })
   return destination
-}
-
-// https://stackoverflow.com/a/78268602/3263250
-async function setHoistedNodeLinker(appDir: string) {
-  Log.step('Configuring pnpm to use hoisted node linker')
-  const appNpmRcFile = join(appDir, '.npmrc')
-  await writeFile(appNpmRcFile, 'node-linker=hoisted')
-}
-
-async function installApp(appDir: string) {
-  Log.step('Installing app dependencies')
-  const installCommand = execa('pnpm', ['install'], {
-    cwd: appDir,
-    all: true,
-    env: { FORCE_COLOR: true.toString() },
-  })
-  Log.stream(installCommand.all)
-  await installCommand
 }
 
 /**
@@ -272,8 +338,30 @@ async function addLinkedLibrary(appDir: string) {
       },
   )
 
+  //👇 Can't use link: protocol (default when you pnpm i <relativeDir>)
+  //   When building SSR target if using `@nguniversal`, it fails
+  //   Even with preserveSymlinks: true in angular.json + hoisted node-linker
   appPkgJson.dependencies[libPkgJson.name] =
-    `link:${getRelativeLibraryDistDir()}`
+    `file:${getRelativeLibraryDistDir()}`
+  await writeFile(appPkgJsonFile, jsonToString(appPkgJson))
+}
+
+async function addCiBuildRunScript(opts: { appDir: string; appName: string }) {
+  // Builds with SSR + source maps
+  Log.step('Adding build run script for CI/CD')
+  const appPkgJsonFile = join(opts.appDir, PKG_JSON)
+  const appPkgJson = JSON.parse(
+    await readFile(join(opts.appDir, PKG_JSON), 'utf8'),
+  ) as {
+    scripts: Record<string, string>
+  }
+  const BUILD_WITH_SOURCE_MAPS = 'ng build --source-map'
+  if ('build:ssr' in appPkgJson.scripts) {
+    appPkgJson.scripts['build:ci'] =
+      `${BUILD_WITH_SOURCE_MAPS} && ng run ${opts.appName}:server`
+  } else {
+    appPkgJson.scripts['build:ci'] = BUILD_WITH_SOURCE_MAPS
+  }
   await writeFile(appPkgJsonFile, jsonToString(appPkgJson))
 }
 
@@ -315,85 +403,21 @@ async function updateTsConfigToImportJsonFilesAndSetPathMappings(
   //    https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
   rawConfig.compilerOptions.allowSyntheticDefaultImports = true
   rawConfig.compilerOptions.paths = {
+    ...rawConfig.compilerOptions.paths,
     '@/e2e/*': [join(getRelativeLibraryE2EDir(), '*')],
   }
   await writeFile(configFileName, jsonToString(config.raw))
 }
-async function configureAngularWorkspace(opts: {
-  appDir: string
-  appName: string
-  ssr: boolean
-}) {
-  await disableAnalytics(opts.appDir)
-  await enablePreserveSymlinksCommand(opts)
-  await updateDistPathIfNeeded(opts)
-}
 
-async function disableAnalytics(appDir: string) {
-  Log.step('Disabling Angular analytics')
-  const disableAnalyticsCommand = execa(
-    'pnpm',
-    ['ng', 'config', 'cli.analytics', false.toString()],
-    {
-      cwd: appDir,
-      all: true,
-      env: { FORCE_COLOR: true.toString() },
-    },
-  )
-  Log.stream(disableAnalyticsCommand.all)
-  await disableAnalyticsCommand
-}
-
-async function enablePreserveSymlinksCommand(opts: {
-  appDir: string
-  appName: string
-}) {
-  Log.step('Enabling preserve symlinks')
-  const enablePreserveSymlinksCommand = execa(
-    'pnpm',
-    [
-      'ng',
-      'config',
-      `projects.${opts.appName}.architect.build.options.preserveSymlinks`,
-      true.toString(),
-    ],
-    {
-      cwd: opts.appDir,
-      all: true,
-      env: { FORCE_COLOR: true.toString() },
-    },
-  )
-  Log.stream(enablePreserveSymlinksCommand.all)
-  await enablePreserveSymlinksCommand
-}
-
-async function updateDistPathIfNeeded(opts: {
-  appDir: string
-  appName: string
-  ssr: boolean
-}) {
-  if (opts.ssr) {
-    Log.debug('Skipping build dir configuration update: SSR is enabled')
-    return
-  }
-
-  Log.step('Configuring dist path as if SSR was there')
-  const updateDistPathCommand = execa(
-    'pnpm',
-    [
-      'ng',
-      'config',
-      `projects.${opts.appName}.architect.build.options.outputPath`,
-      `dist/${opts.appName}/browser`,
-    ],
-    {
-      cwd: opts.appDir,
-      all: true,
-      env: { FORCE_COLOR: true.toString() },
-    },
-  )
-  Log.stream(updateDistPathCommand.all)
-  await updateDistPathCommand
+async function installApp(appDir: string) {
+  Log.step('Installing app dependencies')
+  const installCommand = execa('pnpm', ['install'], {
+    cwd: appDir,
+    all: true,
+    env: { FORCE_COLOR: true.toString() },
+  })
+  Log.stream(installCommand.all)
+  await installCommand
 }
 
 const BASE_APP_DIR_ARG = '--base-app-dir'

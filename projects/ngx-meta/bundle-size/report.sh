@@ -181,11 +181,13 @@ total_diff_bytes_size=0
 NO_BASE_EXISTS_MSG="Not available"
 {
   for file in $files; do
+    LIB_SCOPE="davidlj95"
+    LIB_NAME="ngx-meta"
     beautified_file="$(
       echo "$file" |
-        sed 's|webpack:///||' |
-        sed 's|node_modules/@davidlj95/||' |
-        sed 's|/fesm2022/davidlj95-ngx-meta||'
+        sed 's|webpack:///||' |                                             # Angular webpack builds (<v17 with esbuild)
+        sed 's|node_modules/.pnpm/file[\+\.a-z_@0-9]*/||' |                 # Installed lib with file:
+        sed "s|node_modules/@${LIB_SCOPE}/$LIB_NAME/fesm2022/$LIB_SCOPE-||" # Lib location after file:+..+...
     )"
     input_bytes_size="$(get_size_for_file "$input_lib_sizes" "$file")"
     total_input_bytes_size="$((total_input_bytes_size + input_bytes_size))"

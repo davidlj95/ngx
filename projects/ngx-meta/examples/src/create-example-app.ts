@@ -19,6 +19,17 @@ import ts from 'typescript'
 import semverCoerce from 'semver/functions/coerce.js'
 import semverGte from 'semver/functions/gte.js'
 import { SemVer } from 'semver'
+import {
+  ArrayLiteralExpression,
+  Decorator,
+  Expression,
+  ImportDeclarationStructure,
+  ImportSpecifierStructure,
+  OptionalKind,
+  Project,
+  SourceFile,
+  SyntaxKind,
+} from 'ts-morph'
 
 type AngularCliVersion =
   keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
@@ -98,6 +109,7 @@ async function createExampleApp({
     })(),
     copyTemplates({ appDir, standalone: exampleApp.standalone }),
     updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
+    updateAppModuleOrAppConfigFromTemplates(appDir, exampleApp.standalone),
   ])
   await installApp(appDir)
 }
@@ -373,18 +385,17 @@ async function copyTemplates(opts: { appDir: string; standalone: boolean }) {
     `Copying ${opts.standalone ? 'standalone' : 'module'} apps template files`,
   )
   Log.item(templatesDir)
-  await cp(templatesDir, opts.appDir, { recursive: true })
+  await cp(templatesDir, opts.appDir, {
+    recursive: true,
+    filter: (source) => !source.endsWith('.template.ts'),
+  })
 }
 
 async function updateTsConfigToImportJsonFilesAndSetPathMappings(
   appDir: string,
 ) {
   Log.step('Adding JSON imports and path mappings to Typescript config')
-  const configFileName = ts.findConfigFile(appDir, ts.sys.fileExists)
-  if (!configFileName) {
-    Log.error('Cannot find Typescript config file')
-    process.exit(1)
-  }
+  const configFileName = await findTsConfigFileOrExit(appDir)
 
   const configFile = ts.readConfigFile(configFileName, ts.sys.readFile)
   if (configFile.error) {
@@ -407,6 +418,382 @@ async function updateTsConfigToImportJsonFilesAndSetPathMappings(
     '@/e2e/*': [join(getRelativeLibraryE2EDir(), '*')],
   }
   await writeFile(configFileName, jsonToString(config.raw))
+}
+
+async function findTsConfigFileOrExit(projectDir: string) {
+  const configFileName = ts.findConfigFile(projectDir, ts.sys.fileExists)
+  if (!configFileName) {
+    Log.error('Cannot find Typescript config file in project directory')
+    Log.item(projectDir)
+    process.exit(1)
+  }
+  return configFileName
+}
+
+async function updateAppModuleOrAppConfigFromTemplates(
+  appDir: string,
+  standalone: boolean,
+) {
+  const tsMorphProject = new Project({
+    tsConfigFilePath: await findTsConfigFileOrExit(appDir),
+    skipAddingFilesFromTsConfig: true,
+    skipFileDependencyResolution: true,
+  })
+  standalone
+    ? await updateAppConfig(appDir)
+    : await updateAppModule(tsMorphProject, appDir)
+}
+
+async function updateAppModule(tsMorphProject: Project, appDir: string) {
+  Log.step('Updating app module from template')
+  const APP_MODULE_TEMPLATE_FILENAME = 'app.module.template.ts'
+  const APP_MODULE_FILENAME = 'app.module.ts'
+  const appModuleTemplateFile = tsMorphProject.addSourceFileAtPath(
+    join(getModuleTemplatesDir(), 'src', 'app', APP_MODULE_TEMPLATE_FILENAME),
+  )
+  const appModuleFile = tsMorphProject.addSourceFileAtPath(
+    join(appDir, 'src', 'app', APP_MODULE_FILENAME),
+  )
+  addImportsFromTemplateIntoSourceFile({
+    destination: appModuleFile,
+    template: appModuleTemplateFile,
+  })
+  addAppModuleFromTemplateIntoSourceFile({
+    destination: appModuleFile,
+    template: appModuleTemplateFile,
+  })
+  await appModuleFile.save()
+}
+
+/**
+ * Adds import declarations from a {@link template} source file into a
+ * {@link destination} source file import declarations
+ *
+ * Simplifies imports first of both source files by merging import declarations
+ * from same module specifier
+ *
+ * This may give issues, as merging declarations imports is not always possible
+ * @see {@link mergeImportDeclarations}
+ *
+ * Then creates the merged declarations list by merging existing imports from
+ * {@link destination} source file with merged {@link template} imports
+ *
+ * Finally, replaces import declarations of {@link destination} with the merged
+ * import declarations calculated
+ *
+ * Only properly merges named imports and default imports.
+ * Should be enough: Angular CLI shouldn't generate other kind of imports:
+ *  - Namespace imports (aka `foo as *`) difficult tree-shaking
+ *  - Default imports are a bad practice (but used here to import JSON files)
+ *  - Side effect imports (aka `import 'some-lib'`).
+ *      Those are also now handled at build time with Angular CLI since v15
+ *  - Other kind of imports (file types other than JS) are experimental
+ *      Though, JSON module imports may be coming soon
+ *      https://github.com/tc39/proposal-json-modules
+ */
+function addImportsFromTemplateIntoSourceFile({
+  template,
+  destination,
+}: {
+  template: SourceFile
+  destination: SourceFile
+}) {
+  const destinationDeclarations = destination.getImportDeclarations()
+  const destinationDeclarationStructures = destinationDeclarations.map((d) =>
+    d.getStructure(),
+  )
+  const destinationDeclarationsByModuleSpecifier =
+    getDeclarationsByModuleSpecifier(destinationDeclarationStructures)
+  const templateDeclarationsByModuleSpecifier =
+    getDeclarationsByModuleSpecifier(
+      template.getImportDeclarations().map((d) => d.getStructure()),
+    )
+  const mergedDeclarationsByModuleSpecifier = Array.from(
+    templateDeclarationsByModuleSpecifier.entries(),
+  ).reduce<DeclarationsByModuleSpecifier>(
+    (
+      accumulator,
+      [templateDeclarationModuleSpecifier, templateDeclaration],
+    ) => {
+      const existingDeclaration = accumulator.get(
+        templateDeclarationModuleSpecifier,
+      )
+      if (!existingDeclaration) {
+        return accumulator.set(
+          templateDeclarationModuleSpecifier,
+          templateDeclaration,
+        )
+      }
+      return accumulator.set(
+        templateDeclarationModuleSpecifier,
+        mergeImportDeclarations(existingDeclaration, templateDeclaration),
+      )
+    },
+    destinationDeclarationsByModuleSpecifier,
+  )
+  // Rewrite imports of source file
+  destinationDeclarations.forEach((d) => d.remove())
+  destination.addImportDeclarations(
+    Array.from(mergedDeclarationsByModuleSpecifier.values()),
+  )
+}
+type DeclarationsByModuleSpecifier = Map<
+  string,
+  OptionalKind<ImportDeclarationStructure>
+>
+
+function getDeclarationsByModuleSpecifier(
+  declarations: ReadonlyArray<ImportDeclarationStructure>,
+): DeclarationsByModuleSpecifier {
+  return declarations.reduce<DeclarationsByModuleSpecifier>(
+    (accumulator, declaration) => {
+      const existingDeclaration = accumulator.get(declaration.moduleSpecifier)
+      accumulator.set(
+        declaration.moduleSpecifier,
+        existingDeclaration
+          ? mergeImportDeclarations(existingDeclaration, declaration)
+          : declaration,
+      )
+      return accumulator
+    },
+    new Map(),
+  )
+}
+
+/**
+ * Merges two import declarations for same module specifier
+ *
+ * ie: `import { Foo } from 'pkg' + `import { Bar } from 'pkg'` into
+ *     `import { Foo, Bar } from 'pkg'`
+ *
+ * This is tricky and not always possible, but works fine for named imports
+ * which are the ones we care about most
+ *
+ * For instance:
+ *  - Two side effect imports (should be there twice? only once?)
+ *  - Namespace import + named imports (can't be in a single import declaration as per spec)
+ *  - Two default/namespace imports with different names:
+ *      - Which name do we choose?
+ *      - Do we keep both? Then each name should be in its import declaration
+ *      - Default + namespace import could be in same import declaration though
+ *  ...
+ *
+ * @param declaration
+ * @param otherDeclaration
+ */
+function mergeImportDeclarations(
+  declaration: OptionalKind<ImportDeclarationStructure>,
+  otherDeclaration: OptionalKind<ImportDeclarationStructure>,
+): OptionalKind<ImportDeclarationStructure> {
+  if (declaration.moduleSpecifier !== declaration.moduleSpecifier) {
+    throw new Error("Can't merge imports from different modules")
+  }
+  if (isSideEffectImport(declaration) || isSideEffectImport(otherDeclaration)) {
+    throw new Error("Can't merge side-effect imports")
+  }
+  if (
+    declaration.defaultImport &&
+    otherDeclaration.defaultImport &&
+    declaration.defaultImport !== otherDeclaration.defaultImport
+  ) {
+    throw new Error("Can't merge default imports with different names")
+  }
+  if (
+    declaration.namespaceImport &&
+    otherDeclaration.namespaceImport &&
+    declaration.namespaceImport !== otherDeclaration.namespaceImport
+  ) {
+    throw new Error("Can't merge namespace imports with different names")
+  }
+  const defaultImport =
+    declaration.defaultImport ?? otherDeclaration.defaultImport
+  const namespaceImport =
+    declaration.namespaceImport ?? otherDeclaration.namespaceImport
+  const namedImports = mergeNamedImportSpecifiers(
+    declaration.namedImports,
+    otherDeclaration.namedImports,
+  )
+  return {
+    defaultImport,
+    namespaceImport,
+    namedImports,
+    moduleSpecifier: declaration.moduleSpecifier,
+  }
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#import_a_module_for_its_side_effects_only
+function isSideEffectImport(
+  declaration: OptionalKind<ImportDeclarationStructure>,
+) {
+  return (
+    declaration.namespaceImport === undefined &&
+    declaration.defaultImport === undefined &&
+    declaration.namedImports === undefined &&
+    declaration.attributes === undefined
+  )
+}
+
+function mergeNamedImportSpecifiers(
+  specifiers: ImportDeclarationStructure['namedImports'],
+  otherSpecifiers: ImportDeclarationStructure['namedImports'],
+) {
+  if (specifiers === undefined && otherSpecifiers === undefined) {
+    return undefined
+  }
+  if (specifiers === undefined || otherSpecifiers === undefined) {
+    return specifiers ?? otherSpecifiers
+  }
+  const isSameSpecifier = (
+    specifier: ImportSpecifierStructure,
+    otherSpecifier: ImportSpecifierStructure,
+  ) => {
+    if (specifier.name !== otherSpecifier.name) {
+      return false
+    }
+    return (
+      (specifier.alias === undefined && otherSpecifier.alias === undefined) ||
+      specifier.alias !== otherSpecifier.alias
+    )
+  }
+  return (otherSpecifiers as ReadonlyArray<ImportSpecifierStructure>).reduce<
+    ImportSpecifierStructure[]
+  >(
+    (accumulator, otherSpecifier) => {
+      const alreadyAdded = accumulator.some((importSpecifier) =>
+        isSameSpecifier(importSpecifier, otherSpecifier),
+      )
+      if (alreadyAdded) {
+        return accumulator
+      }
+      return [...accumulator, otherSpecifier]
+    },
+    [...(specifiers as ReadonlyArray<ImportSpecifierStructure>)],
+  )
+}
+
+/**
+ * Completes an existing `AppModule` from a {@link destination} source file
+ * using an `AppModule` from a {@link template} source file
+ *
+ * Only completes array literal expressions for an `NgModule`:
+ *  - declarations
+ *  - imports
+ *  - providers
+ *  - bootstrap
+ */
+function addAppModuleFromTemplateIntoSourceFile({
+  template,
+  destination,
+}: {
+  template: SourceFile
+  destination: SourceFile
+}) {
+  const [destinationAppModuleDecorator, templateAppModuleDecorator] = [
+    getAppModuleClassDecoratorFromSourceFile(destination),
+    getAppModuleClassDecoratorFromSourceFile(template),
+  ]
+  const decoratorPropertiesToMerge = [
+    'declarations',
+    'imports',
+    'providers',
+    'bootstrap',
+  ]
+  decoratorPropertiesToMerge.forEach((property) =>
+    addToNgModuleDecoratorArrayPropertyFromTemplate({
+      template: templateAppModuleDecorator,
+      destination: destinationAppModuleDecorator,
+      property,
+    }),
+  )
+}
+
+function getAppModuleClassDecoratorFromSourceFile(sourceFile: SourceFile) {
+  const APP_MODULE_CLASS_NAME = 'AppModule'
+  const APP_MODULE_DECORATOR_NAME = 'NgModule'
+  return sourceFile
+    .getClassOrThrow(APP_MODULE_CLASS_NAME)
+    .getDecoratorOrThrow(APP_MODULE_DECORATOR_NAME)
+}
+
+function addToNgModuleDecoratorArrayPropertyFromTemplate({
+  template,
+  destination,
+  property,
+}: {
+  template: Decorator
+  destination: Decorator
+  property: string
+}) {
+  const destinationPropertyArray = getNgModuleDecoratorArrayPropertyOrExit(
+    destination,
+    property,
+  )
+  const templatePropertyArray = getNgModuleDecoratorArrayPropertyOrExit(
+    template,
+    property,
+  )
+  if (!templatePropertyArray) {
+    return
+  }
+  if (!destinationPropertyArray) {
+    return templatePropertyArray
+  }
+  const elementsToAdd = templatePropertyArray
+    .getElements()
+    .reduce<
+      ReadonlyArray<Expression>
+    >((accumulator, templatePropertyExpression) => {
+      // Avoid duplicates
+      if (
+        destinationPropertyArray
+          .getElements()
+          .some((destinationPropertyExpression) => {
+            const sameExpression =
+              destinationPropertyExpression.getText() ===
+              templatePropertyExpression.getText()
+            //👇 In Angular v15, BrowserModule with SSR is BrowserModule.withServerTransition
+            //   So template BrowserModule should not be added in favour of that one
+            const sameExpressionButWithPropertyAccess =
+              destinationPropertyExpression
+                .getText()
+                .startsWith(`${templatePropertyExpression.getText()}.`)
+            return sameExpression || sameExpressionButWithPropertyAccess
+          })
+      ) {
+        return accumulator
+      }
+      // Or add it
+      return [...accumulator, templatePropertyExpression]
+    }, [])
+  destinationPropertyArray.addElements(elementsToAdd.map((e) => e.getText()))
+}
+
+function getNgModuleDecoratorArrayPropertyOrExit(
+  decorator: Decorator,
+  property: string,
+): ArrayLiteralExpression | undefined {
+  const decoratorArguments = decorator.getArguments()
+  if (decoratorArguments.length < 1) {
+    throw new Error('NgModule decorator without arguments found')
+  }
+  if (decoratorArguments.length > 1) {
+    Log.warn('NgModule decorator found with more than 1 argument')
+  }
+  const decoratorObject = decorator
+    .getArguments()[0]
+    .asKindOrThrow(SyntaxKind.ObjectLiteralExpression)
+  const propertyAssignment = decoratorObject.getProperty(property)
+  if (!propertyAssignment) {
+    return undefined
+  }
+  return propertyAssignment
+    .asKindOrThrow(SyntaxKind.PropertyAssignment)
+    .getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+}
+
+async function updateAppConfig(appDir: string) {
+  Log.step('Updating app config from template')
+  Log.info('TODO')
 }
 
 async function installApp(appDir: string) {

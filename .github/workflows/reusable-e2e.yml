@@ -34,7 +34,7 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
       - name: Download example app distribution files
-        uses: actions/download-artifact@c850b930e6ba138125429b7e5c93fc707a7f8427 # v4
+        uses: actions/download-artifact@8caf195ad4b1dee92908e23f56eeb0696f1dd42d # v4
         with:
           name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
           path: ${{ env.EXAMPLE_APP_DIR }}/dist

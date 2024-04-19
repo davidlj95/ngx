@@ -49,7 +49,7 @@ jobs:
         uses: actions/download-artifact@8caf195ad4b1dee92908e23f56eeb0696f1dd42d # v4
         with:
           name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
-          path: ${{ env.EXAMPLE_APP_DIR }}/dist
+          path: ${{ env.EXAMPLE_APP_DIR }}
       - name: Setup pnpm
         uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
       - name: Setup Node.js

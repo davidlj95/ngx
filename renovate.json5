@@ -122,5 +122,11 @@
       matchPackageNames: ['@microsoft/api-documenter'],
       allowedVersions: '7.23.38',
     },
+    // dts-bundle-generator missing namespace import
+    // https://github.com/timocov/dts-bundle-generator/issues/319
+    {
+      matchPackageNames: ['dts-bundle-generator'],
+      allowedVersions: '9.3.1',
+    },
   ],
 }

@@ -6,6 +6,7 @@ import {
   SyntaxKind,
 } from 'ts-morph'
 import { Log } from './utils.js'
+import { PROVIDERS_PROPERTY } from './constants.js'
 
 /**
  * Completes an existing `AppModule` from a {@link destination} source file
@@ -25,13 +26,18 @@ export function addAppModuleFromTemplateIntoSourceFile({
   destination: SourceFile
 }) {
   const [destinationAppModuleDecorator, templateAppModuleDecorator] = [
-    getAppModuleClassDecoratorFromSourceFile(destination),
-    getAppModuleClassDecoratorFromSourceFile(template),
-  ]
+    destination,
+    template,
+  ].map((sourceFile) =>
+    sourceFile
+      .getClassOrThrow(APP_MODULE_CLASS_NAME)
+      .getDecoratorOrThrow(APP_MODULE_DECORATOR_NAME),
+  )
+
   const decoratorPropertiesToMerge = [
     'declarations',
     'imports',
-    'providers',
+    PROVIDERS_PROPERTY,
     'bootstrap',
   ]
   decoratorPropertiesToMerge.forEach((property) =>
@@ -42,13 +48,9 @@ export function addAppModuleFromTemplateIntoSourceFile({
     }),
   )
 }
-function getAppModuleClassDecoratorFromSourceFile(sourceFile: SourceFile) {
-  const APP_MODULE_CLASS_NAME = 'AppModule'
-  const APP_MODULE_DECORATOR_NAME = 'NgModule'
-  return sourceFile
-    .getClassOrThrow(APP_MODULE_CLASS_NAME)
-    .getDecoratorOrThrow(APP_MODULE_DECORATOR_NAME)
-}
+
+const APP_MODULE_CLASS_NAME = 'AppModule'
+const APP_MODULE_DECORATOR_NAME = 'NgModule'
 
 function addToNgModuleDecoratorArrayPropertyFromTemplate({
   template,
@@ -59,14 +61,10 @@ function addToNgModuleDecoratorArrayPropertyFromTemplate({
   destination: Decorator
   property: string
 }) {
-  const destinationPropertyArray = getNgModuleDecoratorArrayPropertyOrExit(
+  const [destinationPropertyArray, templatePropertyArray] = [
     destination,
-    property,
-  )
-  const templatePropertyArray = getNgModuleDecoratorArrayPropertyOrExit(
     template,
-    property,
-  )
+  ].map((d) => getNgModuleDecoratorArrayPropertyOrExit(d, property))
   if (!templatePropertyArray) {
     return
   }

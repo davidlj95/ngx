@@ -44,15 +44,13 @@ export function addImportsFromTemplateIntoSourceFile({
   destination: SourceFile
 }) {
   const destinationDeclarations = destination.getImportDeclarations()
-  const destinationDeclarationStructures = destinationDeclarations.map((d) =>
-    d.getStructure(),
-  )
-  const destinationDeclarationsByModuleSpecifier =
-    getDeclarationsByModuleSpecifier(destinationDeclarationStructures)
-  const templateDeclarationsByModuleSpecifier =
-    getDeclarationsByModuleSpecifier(
-      template.getImportDeclarations().map((d) => d.getStructure()),
-    )
+  const [
+    destinationDeclarationsByModuleSpecifier,
+    templateDeclarationsByModuleSpecifier,
+  ] = [destinationDeclarations, template.getImportDeclarations()]
+    .map((ds) => ds.map((d) => d.getStructure()))
+    .map(getDeclarationsByModuleSpecifier)
+
   const mergedDeclarationsByModuleSpecifier = Array.from(
     templateDeclarationsByModuleSpecifier.entries(),
   ).reduce<DeclarationsByModuleSpecifier>(
@@ -126,7 +124,7 @@ function mergeImportDeclarations(
   declaration: OptionalKind<ImportDeclarationStructure>,
   otherDeclaration: OptionalKind<ImportDeclarationStructure>,
 ): OptionalKind<ImportDeclarationStructure> {
-  if (declaration.moduleSpecifier !== declaration.moduleSpecifier) {
+  if (declaration.moduleSpecifier !== otherDeclaration.moduleSpecifier) {
     throw new Error("Can't merge imports from different modules")
   }
   if (isSideEffectImport(declaration) || isSideEffectImport(otherDeclaration)) {

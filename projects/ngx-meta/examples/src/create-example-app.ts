@@ -10,7 +10,7 @@ import { disableAnalytics } from './disable-analytics.js'
 import { setupSsr } from './setup-ssr.js'
 import { copyAppDirIntoProject } from './copy-app-dir-into-project.js'
 import { addLinkedLibrary } from './add-linked-library.js'
-import { addCiBuildRunScript } from './add-ci-build-run-script.js'
+import { addCiRunScripts } from './add-ci-run-scripts.js'
 import { copyTemplates } from './copy-templates.js'
 import { updateTsConfigToImportJsonFilesAndSetPathMappings } from './update-ts-config-to-import-json-files-and-set-path-mappings.js'
 import { updateAppModuleOrAppConfigFromTemplates } from './update-app-module-or-app-config-from-templates.js'
@@ -48,7 +48,7 @@ async function createExampleApp({
   await Promise.all([
     (async () => {
       await addLinkedLibrary(appDir)
-      await addCiBuildRunScript({ appDir, appName: exampleApp.name })
+      await addCiRunScripts({ appDir, appName: exampleApp.name })
     })(),
     copyTemplates({ appDir, standalone: exampleApp.standalone }),
     updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),

@@ -4,6 +4,7 @@ import { Log } from './utils.js'
 import { writeFile } from 'fs/promises'
 import { join } from 'path'
 import { execa } from 'execa'
+import { NPMRC_FILENAME } from './constants.js'
 
 export async function setupSsr(opts: {
   cliBinary: string
@@ -21,7 +22,6 @@ export async function setupSsr(opts: {
   // adding `@nguniversal` doesn't work due to default `--frozen-lockfile`
   // behaviour
   Log.step('Configuring pnpm to disable lockfiles')
-  const NPMRC_FILENAME = '.npmrc'
   await writeFile(join(opts.appDir, NPMRC_FILENAME), 'lockfile=false')
   // Before v17, the recommendation was using @nguniversal for SSR
   // Current docs SSR guide do this with `ng add @angular/ssr`, which starts at v17

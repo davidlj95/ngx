@@ -13,6 +13,6 @@ export async function updateAppModuleOrAppConfigFromTemplates(
     skipFileDependencyResolution: true,
   })
   standalone
-    ? await updateAppConfig(appDir)
+    ? await updateAppConfig(tsMorphProject, appDir)
     : await updateAppModule(tsMorphProject, appDir)
 }

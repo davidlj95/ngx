@@ -108,13 +108,12 @@ jobs:
       - name: Remove unneeded files
         run: >
           rm -rf src .angular .vscode .gitignore README.md server.ts
-            angular.json tsconfig*.json
+          angular.json tsconfig*.json
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Upload example app
         if: ${{ inputs.example-app-artifact-name-prefix != '' }}
         uses: actions/upload-artifact@1746f4ab65b179e0ea60a494b83293b640dd5bba # v4
         with:
           name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
-          path: |
-            ${{ env.EXAMPLE_APP_DIR }}
+          path: ${{ env.EXAMPLE_APP_DIR }}
           retention-days: 5

@@ -9,7 +9,7 @@
   "private": true,
   "//1": "👇 HTTP server to serve built apps in CI/CD until SSR is there",
   "devDependencies": {
-    "cypress": "13.7.3",
+    "cypress": "13.8.0",
     "http-server": "14.1.1",
     "typescript": "5.4.5"
   }

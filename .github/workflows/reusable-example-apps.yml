@@ -100,7 +100,7 @@ jobs:
           pnpm run create-example-app ${{ matrix.app_name }}
           --tmp-dir=${{ runner.temp }}
       - name: Build example app
-        run: pnpm build:ci # includes SSR and source maps
+        run: pnpm ci:build # includes SSR and source maps
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Upload example app distribution files
         if: ${{ inputs.example-app-artifact-name-prefix != '' }}

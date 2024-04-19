@@ -1,10 +1,16 @@
 import { Log } from './utils.js'
 import { execa } from 'execa'
 
-export async function installCli(tmpDir: string) {
-  Log.step('Installing Angular CLI')
+export async function install({
+  projectDir,
+  what,
+}: {
+  projectDir: string
+  what: string
+}) {
+  Log.step(`Installing ${what}`)
   const installCommand = execa('pnpm', ['install'], {
-    cwd: tmpDir,
+    cwd: projectDir,
     all: true,
     env: { FORCE_COLOR: true.toString() },
   })

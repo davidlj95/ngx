@@ -2,7 +2,7 @@ import { isMain, Log } from './utils.js'
 import { CreateExampleAppOptions, parseArgs } from './parse-args.js'
 import { generateTmpDirAndRegisterCleanupCallback } from './generate-tmp-dir-and-register-cleanup-callback.js'
 import { createPackageJsonWithAngularCli } from './create-package-json-with-angular-cli.js'
-import { installCli } from './install-cli.js'
+import { install } from './install.js'
 import { createAngularApp } from './create-angular-app.js'
 import { join } from 'path'
 import { ANGULAR_CLI_BINARY_PATH } from './constants.js'
@@ -14,7 +14,6 @@ import { addCiBuildRunScript } from './add-ci-build-run-script.js'
 import { copyTemplates } from './copy-templates.js'
 import { updateTsConfigToImportJsonFilesAndSetPathMappings } from './update-ts-config-to-import-json-files-and-set-path-mappings.js'
 import { updateAppModuleOrAppConfigFromTemplates } from './update-app-module-or-app-config-from-templates.js'
-import { installApp } from './install-app.js'
 
 async function createExampleApp({
   exampleApp,
@@ -29,7 +28,7 @@ async function createExampleApp({
   } else {
     tmpDir ??= await generateTmpDirAndRegisterCleanupCallback(!noCleanup)
     await createPackageJsonWithAngularCli(exampleApp.cliVersion.alias, tmpDir)
-    await installCli(tmpDir)
+    await install({ projectDir: tmpDir, what: 'Angular CLI' })
     baseAppDir = await createAngularApp({
       name: exampleApp.name,
       extraArgs: exampleApp.cliNewArguments,
@@ -55,7 +54,7 @@ async function createExampleApp({
     updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
     updateAppModuleOrAppConfigFromTemplates(appDir, exampleApp.standalone),
   ])
-  await installApp(appDir)
+  await install({ projectDir: appDir, what: 'app dependencies' })
 }
 
 if (isMain(import.meta.url)) {

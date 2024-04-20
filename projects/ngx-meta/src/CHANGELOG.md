@@ -1,3 +1,93 @@
+## [`ngx-meta` v1.0.0-beta.3](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.2...ngx-meta-v1.0.0-beta.3) (2024-04-20)
+
+### Reverts
+
+- Revert "build(examples): move Angular CLI versions file to another dir (#546)" (#551) ([2b2d2af](https://github.com/davidlj95/ngx/commit/2b2d2af9195f62bbcd01db87df696a6c9c32cc07)), closes [#546](https://github.com/davidlj95/ngx/issues/546) [#551](https://github.com/davidlj95/ngx/issues/551)
+
+### Documentation
+
+- add bundle size back ([#505](https://github.com/davidlj95/ngx/issues/505)) ([33651cb](https://github.com/davidlj95/ngx/commit/33651cb59bae49cb4e2ec73da62dd38a05959687))
+- end phrase in Metadata values JSON guide ([#487](https://github.com/davidlj95/ngx/issues/487)) ([e9e2493](https://github.com/davidlj95/ngx/commit/e9e24931b37746df470149208910c5ec45bdf08e))
+- fix API ref md links downgrading api-documenter ([#485](https://github.com/davidlj95/ngx/issues/485)) ([e9fbb4d](https://github.com/davidlj95/ngx/commit/e9fbb4d64205c7cb85512384566cdf76ab3f1038))
+- fix link in example apps docs ([674ff9e](https://github.com/davidlj95/ngx/commit/674ff9ebd3626f48f2f89d3002761c300abaac76))
+
+### Miscellaneous Chores
+
+- **e2e:** remove unneeded http-server dep ([#544](https://github.com/davidlj95/ngx/issues/544)) ([d41518f](https://github.com/davidlj95/ngx/commit/d41518f4e4312ffad02f42895f6dadffef4a262e))
+- **release:** update CHANGELOG.md ([#481](https://github.com/davidlj95/ngx/issues/481)) ([6a26cd0](https://github.com/davidlj95/ngx/commit/6a26cd07fefe77503bc14cdeff3d51ce1ca47df4))
+- remove unused CI setup-e2e action ([8f8bbea](https://github.com/davidlj95/ngx/commit/8f8bbea5bdf911cb2ffe2edba254f6a5e4712884))
+- update pkg.json descriptions ([8061ec7](https://github.com/davidlj95/ngx/commit/8061ec7f3d876cf49185e07b51f306dc49e90cff))
+
+### Tests
+
+- move bundle size scripts to its own dir ([#499](https://github.com/davidlj95/ngx/issues/499)) ([c283f43](https://github.com/davidlj95/ngx/commit/c283f43fdb45c2cb1ddf6f6de5072a096100b246))
+
+### Build System
+
+- **bundle-size:** dynamic example apps analysis ([#524](https://github.com/davidlj95/ngx/issues/524)) ([6188c7e](https://github.com/davidlj95/ngx/commit/6188c7edb5471b9155d6360f1889cb69b35852c6))
+- config dep updates for Angular CLI versions ([#519](https://github.com/davidlj95/ngx/issues/519)) ([de6b587](https://github.com/davidlj95/ngx/commit/de6b587d34f9307c9046b11048f1af16a5a975bb))
+- **deps-dev:** bump idna from 3.6 to 3.7 in /projects/ngx-meta/docs ([#510](https://github.com/davidlj95/ngx/issues/510)) ([ae6ada6](https://github.com/davidlj95/ngx/commit/ae6ada62518ceb9e6bb7353035dea7e6a149085f))
+- **deps-dev:** bump pillow in /projects/ngx-meta/docs ([#493](https://github.com/davidlj95/ngx/issues/493)) ([4854dc8](https://github.com/davidlj95/ngx/commit/4854dc87c3a791af4bdcba23b1548f3a97d21e32))
+- **deps-dev:** update actions/download-artifact digest to 8caf195 ([4a9e312](https://github.com/davidlj95/ngx/commit/4a9e312285200af913242e83d25ad44a53d1500e))
+- **deps-dev:** update actions/upload-artifact digest to 1746f4a ([4644892](https://github.com/davidlj95/ngx/commit/464489253430d88646b3b26674e15cb52ab2fa99))
+- **deps-dev:** update angular-cli monorepo ([a85c45b](https://github.com/davidlj95/ngx/commit/a85c45b80d2a4ced8a22ed9ef7df0a844b98cdf0))
+- **deps-dev:** update angular-cli monorepo to v17.3.5 ([e09335e](https://github.com/davidlj95/ngx/commit/e09335e5e2249cd5fe1eecd5caa7632c07f4d50d))
+- **deps-dev:** update commitlint monorepo to v19.2.2 ([652692d](https://github.com/davidlj95/ngx/commit/652692d9ecf7f3927f6858b361e67a26ac300d02))
+- **deps-dev:** update dependency @microsoft/api-extractor to v7.43.1 ([d88ce95](https://github.com/davidlj95/ngx/commit/d88ce955ab088aa2c56ccb2ff09ed7434538cb2f))
+- **deps-dev:** update dependency cypress to v13.7.2 ([7cece70](https://github.com/davidlj95/ngx/commit/7cece70ad446300171e4c5d37462ea3bbb5d0830))
+- **deps-dev:** update dependency cypress to v13.7.3 ([404a9a5](https://github.com/davidlj95/ngx/commit/404a9a5b8affb42bc435f3f5c8112b897bf4b52d))
+- **deps-dev:** update dependency cypress to v13.8.0 ([e06851c](https://github.com/davidlj95/ngx/commit/e06851c652e6f799183574a2833c03001fef9eca))
+- **deps-dev:** update dependency mkdocs-material to v9.5.16 ([6b674ae](https://github.com/davidlj95/ngx/commit/6b674ae0d0390edc075ae71f0cba41426b06b089))
+- **deps-dev:** update dependency mkdocs-material to v9.5.17 ([f69ca5c](https://github.com/davidlj95/ngx/commit/f69ca5c3dd7e469c37f712d41c108de16108194a))
+- **deps-dev:** update dependency mkdocs-material to v9.5.18 ([18b168b](https://github.com/davidlj95/ngx/commit/18b168bcb67d8428bac20867ccbb6b25f6828897))
+- **deps-dev:** update dependency ng-mocks to v14.12.2 ([cfb2ed4](https://github.com/davidlj95/ngx/commit/cfb2ed467b6711d6ba2811662265c8abcec5637d))
+- **deps-dev:** update dependency node to v20.12.1 ([9d23272](https://github.com/davidlj95/ngx/commit/9d232729a87bd9b3c23e12d887fac40dec93a6ee))
+- **deps-dev:** update dependency node to v20.12.2 ([5d06367](https://github.com/davidlj95/ngx/commit/5d063673fc2e2ad6edcbb37a7cef920c52f6911b))
+- **deps-dev:** update dependency semantic-release to v23.0.7 ([eed067b](https://github.com/davidlj95/ngx/commit/eed067bf4a4059fccc8de6dda9b8a10477a7e99a))
+- **deps-dev:** update dependency semantic-release to v23.0.8 ([0e51edc](https://github.com/davidlj95/ngx/commit/0e51edcb6ac0133d67f4351057a12d90baef7045))
+- **deps-dev:** update dependency typescript to v5.4.4 ([ba24097](https://github.com/davidlj95/ngx/commit/ba24097c00773157561bb939d940bff2ec906f40))
+- **deps-dev:** update dependency typescript to v5.4.5 ([09e3a3d](https://github.com/davidlj95/ngx/commit/09e3a3d404b47809cb4bdd7b3d9289022aa237bf))
+- **deps-dev:** update fontsource monorepo ([27e4ba6](https://github.com/davidlj95/ngx/commit/27e4ba6d021343542f11dfd06f48de857da28651))
+- **deps-dev:** update peter-evans/create-pull-request digest to 9153d83 ([42dc974](https://github.com/davidlj95/ngx/commit/42dc974ebdbdc27a2b521837b571cc11f9a02313))
+- **deps-dev:** update peter-evans/create-pull-request digest to c55203c ([528d5ba](https://github.com/davidlj95/ngx/commit/528d5ba062c8bcdf62dc556525d081665fdbcb9f))
+- **deps-dev:** update peter-evans/find-comment digest to 3eae4d3 ([b7012bf](https://github.com/davidlj95/ngx/commit/b7012bfd986493561a7c4fabbb56b146e8e7993f))
+- **deps-dev:** update pnpm to v8.15.6 ([ba546c0](https://github.com/davidlj95/ngx/commit/ba546c098a98dfc76fbc102ad31b4438867d4ecf))
+- **deps-dev:** update typescript-eslint monorepo to v7.5.0 ([381dced](https://github.com/davidlj95/ngx/commit/381dcedd827e09e378569ab1d4e77b1c5772e588))
+- **deps-dev:** update typescript-eslint monorepo to v7.6.0 ([5e055ad](https://github.com/davidlj95/ngx/commit/5e055ad42123cbb662e2167e3809ae5f7ed3566f))
+- **deps-dev:** update typescript-eslint monorepo to v7.7.0 ([6b55e2c](https://github.com/davidlj95/ngx/commit/6b55e2ce27fddf931db8c5cdfdcd938b961ae824))
+- **deps:** pin dependencies ([8c1e0a0](https://github.com/davidlj95/ngx/commit/8c1e0a00d9ae1e40773524cf29571c020c6c8fc4))
+- **deps:** update angular monorepo to v17.3.4 ([c6af450](https://github.com/davidlj95/ngx/commit/c6af4504a6814a9e754297ef5b3e2a3eeac66c66))
+- **deps:** update angular monorepo to v17.3.5 ([124142e](https://github.com/davidlj95/ngx/commit/124142ee5a228c53a95fcec70064a3df27fa1ed8))
+- **deps:** update Angular to v17.3.3 ([#497](https://github.com/davidlj95/ngx/issues/497)) ([50ecfad](https://github.com/davidlj95/ngx/commit/50ecfad831a7ecd62fb0f20ca2e9a085e8dac6f1))
+- **e2e:** generate E2E apps with pinned Angular CLI versions ([#511](https://github.com/davidlj95/ngx/issues/511)) ([5243e14](https://github.com/davidlj95/ngx/commit/5243e146079acdca30ffffc46677a4d405b77fc6))
+- **e2e:** generate sample apps dynamically ([#504](https://github.com/davidlj95/ngx/issues/504)) ([23c9f6f](https://github.com/davidlj95/ngx/commit/23c9f6fe04303dbee7799da7510a27b05efa108b))
+- **examples:** add common ci serve run script ([#542](https://github.com/davidlj95/ngx/issues/542)) ([724b2b8](https://github.com/davidlj95/ngx/commit/724b2b8cf6724836fe2e4a33631dc818aeab0ba9))
+- **examples:** add e2e path mapping to apps ([#522](https://github.com/davidlj95/ngx/issues/522)) ([a79af25](https://github.com/davidlj95/ngx/commit/a79af25c0d6b38241c4a36befc5f88821720518b))
+- **examples:** add SSR for Angular <v17 ([#527](https://github.com/davidlj95/ngx/issues/527)) ([2cab354](https://github.com/davidlj95/ngx/commit/2cab3546adbbbf8bec61af72e7eba038aa4d1793))
+- **examples:** avoid leaking apps version prefix ([#523](https://github.com/davidlj95/ngx/issues/523)) ([d1cfd0a](https://github.com/davidlj95/ngx/commit/d1cfd0a89569beb4164973d01dbade75fab3e270))
+- **examples:** minor changes on create script ([#540](https://github.com/davidlj95/ngx/issues/540)) ([799aa66](https://github.com/davidlj95/ngx/commit/799aa668049c2be0ecdfdb719438db0c7cb4d09a))
+- **examples:** move Angular CLI versions file to another dir ([#546](https://github.com/davidlj95/ngx/issues/546)) ([2ed2662](https://github.com/davidlj95/ngx/commit/2ed26620f0a0a166876fa5c6991f0a6148d62a60))
+- **examples:** refactor main script into different files ([#539](https://github.com/davidlj95/ngx/issues/539)) ([3cd27e7](https://github.com/davidlj95/ngx/commit/3cd27e70c0a81cfe6bfe621724f9283c53a74770))
+- **examples:** upload whole app and e2e test with SSR ([#543](https://github.com/davidlj95/ngx/issues/543)) ([23821f2](https://github.com/davidlj95/ngx/commit/23821f21117b9e8ffa6001ec62d40cfb543e103b))
+- **examples:** use app config file as template ([#541](https://github.com/davidlj95/ngx/issues/541)) ([725875a](https://github.com/davidlj95/ngx/commit/725875a73826d51034e8e44fafc6595d7f474316))
+- **examples:** use app module file as template ([#533](https://github.com/davidlj95/ngx/issues/533)) ([b429f83](https://github.com/davidlj95/ngx/commit/b429f83355eadabd82c4daefeb84ceff828f1092))
+- **ide:** fix bundle size report configs ([8078b66](https://github.com/davidlj95/ngx/commit/8078b66417e6a7b27cf540ca9542924bd899b804))
+- move e2e apps into its own dir ([#500](https://github.com/davidlj95/ngx/issues/500)) ([3da10ff](https://github.com/davidlj95/ngx/commit/3da10ffd5e4eb5757bc98174a84fce180e811856))
+- pin API Documenter version ([#486](https://github.com/davidlj95/ngx/issues/486)) ([8accd20](https://github.com/davidlj95/ngx/commit/8accd205d357fc5b270ad1a2c730746c08434324))
+- **renovate:** temporarily pin dts-bundle-generator ([#538](https://github.com/davidlj95/ngx/issues/538)) ([b1a3902](https://github.com/davidlj95/ngx/commit/b1a3902263d7220a0087a37d5d2f127d1bfcf0b2))
+- split example apps infra from e2e infra ([#520](https://github.com/davidlj95/ngx/issues/520)) ([ba8402a](https://github.com/davidlj95/ngx/commit/ba8402a3603dc403c133d91ccc390f051a514052))
+
+### Continuous (Integration|Deployment)
+
+- **e2e:** add caching for generated e2e apps ([#514](https://github.com/davidlj95/ngx/issues/514)) ([2e1df14](https://github.com/davidlj95/ngx/commit/2e1df14f02f41c507be61f385ee082d1157d6511))
+- **e2e:** cache e2e deps as Cypress action cannot ([#517](https://github.com/davidlj95/ngx/issues/517)) ([21aba1c](https://github.com/davidlj95/ngx/commit/21aba1c5415808a5e4f28c424272461d7d5bdb19))
+- **e2e:** fix lockfile specifiers changed issue ([#518](https://github.com/davidlj95/ngx/issues/518)) ([f576849](https://github.com/davidlj95/ngx/commit/f5768499d68ee214118a418183f2c501618206ba))
+- **e2e:** remove debugging with tmate ([7d0af3c](https://github.com/davidlj95/ngx/commit/7d0af3c12725ed12cc1ea127b7cdf4b2f5c5c468))
+- **examples:** fix cache key ([#526](https://github.com/davidlj95/ngx/issues/526)) ([efc094a](https://github.com/davidlj95/ngx/commit/efc094aae25ee295a39568189a33151bf18b4d99))
+- **examples:** use app name instead of version ([#525](https://github.com/davidlj95/ngx/issues/525)) ([b6da43c](https://github.com/davidlj95/ngx/commit/b6da43ca65c5b4eb21f8361799361b50489c2ec3))
+- minor changes on CI/CD workflows ([#521](https://github.com/davidlj95/ngx/issues/521)) ([d02fb15](https://github.com/davidlj95/ngx/commit/d02fb15ac986378348d67b00d79af154595763f7))
+- remove npm update step to verify signatures ([#503](https://github.com/davidlj95/ngx/issues/503)) ([d5e473c](https://github.com/davidlj95/ngx/commit/d5e473cd68bb77697f6939749a683a1336ae7459))
+
 ## [`ngx-meta` v1.0.0-beta.2](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.1...ngx-meta-v1.0.0-beta.2) (2024-04-01)
 
 ### Bug Fixes

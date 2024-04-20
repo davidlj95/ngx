@@ -60,7 +60,7 @@ jobs:
           #    some script to get Angular CLI version for a given app name
           echo "angular_cli_version=$(jq -r \
             '.devDependencies.${{ matrix.app_name }}' \
-            'angular-cli-versions.json' |
+            'data/angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
           )" >> $GITHUB_ENV
           echo "week_of_year=$(date --utc '+%V')" >> $GITHUB_ENV

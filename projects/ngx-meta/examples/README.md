@@ -49,7 +49,7 @@ To build them as their contents change
 To run the script and create an example app:
 
 ```shell
-pnpm run create-example-app APP_NAME
+pnpm run create-example-app ANGULAR_CLI_ALIAS
 ```
 
 Created app will be located inside `apps` directory

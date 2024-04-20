@@ -12,7 +12,11 @@
     "strict": true,
     "skipLibCheck": true,
     //👇 Read JSON
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    //👇 Better than TS/JS in same file:
+    //    - WebStorm includes JS files in project when searching
+    //    - Easier to manually clean up
+    "outDir": "dist"
   },
   "include": ["src/**/*.ts"]
 }

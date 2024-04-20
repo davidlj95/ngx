@@ -54,16 +54,19 @@ jobs:
         # - Angular CLI version: from versions file
       - name: Get caching key info
         run: |
-          echo "pnpm_store_path=$(pnpm store path --silent)" >> $GITHUB_ENV
-          # 👇 Actually not 100% app name, but app name's version
-          #    Good enough for now though. In future we can introduce
-          #    some script to get Angular CLI version for a given app name
-          echo "angular_cli_version=$(jq -r \
+          pnpm_store_path="$(pnpm store path --silent)"
+          angular_cli_version="$(jq -r \
             '.devDependencies.${{ matrix.app_name }}' \
-            'angular-cli-versions.json' |
+            'src/angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
-          )" >> $GITHUB_ENV
-          echo "week_of_year=$(date --utc '+%V')" >> $GITHUB_ENV
+          )"
+          week_of_year="$(date --utc '+%V')"
+          [ -z "$pnpm_store_path" ] && echo "pnpm store path cache key part missing" && exit 1
+          [ -z "$angular_cli_version" ] && echo "Angular CLI version cache part missing" && exit 1
+          [ -z "$week_of_year" ] && echo "Week of year cache part missing" && exit 1
+          echo "pnpm_store_path=${pnpm_store_path}" >> $GITHUB_ENV
+          echo "angular_cli_version=${angular_cli_version}" >> $GITHUB_ENV
+          echo "week_of_year=${week_of_year}" >> $GITHUB_ENV
       - name: Cache dependencies and Angular CLI/app resolution
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         env:

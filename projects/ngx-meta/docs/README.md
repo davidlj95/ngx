@@ -1,4 +1,4 @@
-# `@davidlj95/ngx-meta` docs
+# `@davidlj95/ngx-meta` docs infra
 
 Thanks to [Material for Mkdocs](https://squidfunk.github.io/mkdocs-material/)
 

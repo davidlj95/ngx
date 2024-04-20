@@ -9,7 +9,7 @@ app_name="$1"
 [ -z "$app_name" ] && echo "❌  App name not specified" >&2 && exit 1
 . "./utils.sh"
 
-app_browser_dist_dir="../examples/apps/$app_name/dist/$app_name/browser"
+app_browser_dist_dir="../example-apps/apps/$app_name/dist/$app_name/browser"
 
 sme_command() {
   MAIN_BUNDLE_NAME_PREFIX=main

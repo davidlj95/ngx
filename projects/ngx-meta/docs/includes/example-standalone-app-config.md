@@ -1,1 +1,1 @@
-Check out the [example standalone app]'s [`app.config.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/examples/templates/standalone/src/app/app.config.template.ts) for a full config file example
+Check out the [example standalone app]'s [`app.config.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/example-apps/templates/standalone/src/app/app.config.template.ts) for a full config file example

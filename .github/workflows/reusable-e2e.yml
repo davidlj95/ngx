@@ -25,7 +25,7 @@ jobs:
       matrix:
         app_name: [v15, v16, v17]
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.app_name }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.app_name }}
     defaults:
       run:
         working-directory: ${{ env.E2E_DIR }}

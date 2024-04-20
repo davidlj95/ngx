@@ -31,4 +31,4 @@ As with the service case, [Typescript's `satisfies` operator][typescript-satisfi
 
 As per the global and standard types to shape the metadata values JSON, take a look at [metadata values JSON guide](metadata-values-json.md) for more information about it.
 
-Check out the [example standalone app] [`app.routes.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/examples/templates/standalone/src/app/app.routes.ts) for a full routes file example
+Check out the [example standalone app] [`app.routes.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/example-apps/templates/standalone/src/app/app.routes.ts) for a full routes file example

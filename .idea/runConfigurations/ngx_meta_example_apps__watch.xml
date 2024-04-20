@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/examples: watch" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/projects/ngx-meta/examples/package.json" />
+  <configuration default="false" name="ngx-meta/example-apps: watch" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/package.json" />
     <command value="run" />
     <scripts>
       <script value="watch" />

@@ -1,4 +1,4 @@
-# `@davidlj95/ngx-meta` examples
+# `@davidlj95/ngx-meta` example apps infra
 
 Scripts here allow to create example Angular apps using Angular CLI that use library's main features
 

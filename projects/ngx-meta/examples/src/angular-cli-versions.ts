@@ -1,6 +1,6 @@
 //👇 Type assertion needed to make Node.js happy
 // https://stackoverflow.com/a/70106896/3263250
-import ANGULAR_CLI_VERSIONS_PKG_JSON from '../data/angular-cli-versions.json' with { type: 'json' }
+import ANGULAR_CLI_VERSIONS_PKG_JSON from '../angular-cli-versions.json' with { type: 'json' }
 import { SemVer } from 'semver'
 import { semverCoerceOrThrow } from './semver-coerce-or-throw.js'
 

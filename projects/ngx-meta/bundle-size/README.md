@@ -1,10 +1,10 @@
-# `@davidlj95/ngx-meta` bundle size analysis
+# `@davidlj95/ngx-meta` bundle size analysis infra
 
 Within this directory, there's the tooling to analyze the library size when embedded inside an Angular app.
 
-Angular apps are created by the `examples` infra. Checkout [`examples` infra for more information][examples-infra]
+Angular apps are created by the example apps infra. Checkout [example apps infra for more information][example-apps-infra]
 
-[examples-infra]: ../examples
+[example-apps-infra]: ../example-apps
 
 ## Setup
 
@@ -24,7 +24,7 @@ The pull request completed workflow reports the size for each of the existing ap
 
 ### Analyze main bundle
 
-First, build one of the example apps. Checkout [`examples` infra][examples-infra] for more information. Remember to build with source maps in order to allow the tool to work
+First, build one of the example apps. Checkout [example apps infra][example-apps-infra] for more information. Remember to build with source maps in order to allow the tool to work
 
 Then, run the following command
 
@@ -36,7 +36,7 @@ Replace `v17` for any other example app dir. The report will open in your browse
 
 ## JSON report
 
-First, build one of the example apps. Checkout [`examples` infra][examples-infra] for more information. Remember to build with source maps in order to allow the tool to work
+First, build one of the example apps. Checkout [example apps infra][example-apps-infra] for more information. Remember to build with source maps in order to allow the tool to work
 
 To generate a JSON report containing the `source-map-explorer` analysis of an example app, run
 

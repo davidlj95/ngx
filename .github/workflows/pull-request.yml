@@ -27,21 +27,21 @@ jobs:
     with:
       tsc-artifact-name: ngx-meta-tsc
       api-docs-artifact-name: ngx-meta-api-docs
-  examples:
+  example-apps:
     needs: build
-    name: Examples
+    name: Example apps
     uses: ./.github/workflows/reusable-example-apps.yml
     with:
       dist-artifact-name: ngx-meta-dist
       example-app-artifact-name-prefix: ngx-meta-example-app-
   e2e:
-    needs: examples
+    needs: example-apps
     name: E2E
     uses: ./.github/workflows/reusable-e2e.yml
     with:
       example-app-artifact-name-prefix: ngx-meta-example-app-
   bundle-size:
-    needs: examples
+    needs: example-apps
     name: Bundle size
     uses: ./.github/workflows/reusable-bundle-size.yml
     with:

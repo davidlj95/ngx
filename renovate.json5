@@ -15,17 +15,23 @@
   labels: ['dependencies'],
   npm: {
     // Keep Angular CLI versions used to create example apps updated
-    fileMatch: ['projects/ngx-meta/examples/angular-cli-versions.json'],
+    fileMatch: ['projects/ngx-meta/example-apps/angular-cli-versions.json'],
   },
   packageRules: [
-    // App for main / E2E apps (main one isn't published)
-    // Lib for published package JSONs
+    // Lib config for published package JSONs
     {
       matchFileNames: ['projects/ngx-meta/src/package.json'],
       extends: ['config:js-lib'],
     },
+    // App for rest
     {
-      matchFileNames: ['package.json', 'projects/ngx-meta/e2e/**/*'],
+      matchFileNames: [
+        'package.json',
+        'projects/ngx-meta/bundle-size/**/*',
+        'projects/ngx-meta/docs/**/*',
+        'projects/ngx-meta/e2e/**/*',
+        'projects/ngx-meta/example-apps/**/*',
+      ],
       extends: ['config:js-app'],
     },
     // Semantic commit messages & PR titles. Mocks @dependabot ones:
@@ -35,15 +41,11 @@
     {
       matchFileNames: ['**/*'],
       semanticCommitType: 'build',
-      semanticCommitScope: 'deps-dev',
-    },
-    {
-      matchDepTypes: ['dependencies'],
       semanticCommitScope: 'deps',
     },
     {
-      matchUpdateTypes: ['pin', 'pinDigest'],
-      semanticCommitScope: 'deps',
+      matchDepTypes: ['devDependencies'],
+      semanticCommitScope: 'dev-deps',
     },
     // Tagging
     {
@@ -60,14 +62,13 @@
     },
     // Auto-merge minor/patch production ones, dev dependencies, E2E deps
     {
-      matchFileNames: ['projects/ngx-meta/e2e/**/package.json'],
-      automerge: true,
-    },
-    {
+      matchFileNames: [
+        'projects/ngx-meta/bundle-size/**/*',
+        'projects/ngx-meta/docs/**/*',
+        'projects/ngx-meta/e2e/**/*',
+        'projects/ngx-meta/example-apps/**/*',
+      ],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      automerge: true,
-    },
-    {
       matchDepTypes: ['devDependencies'],
       automerge: true,
     },
@@ -75,7 +76,7 @@
     // https://angular.io/guide/versions
     // https://update.angular.io/?v=16.0-17.0 (zone.js)
     {
-      matchPackagePrefixes: ['@angular', '@angular-devkit'],
+      matchPackagePrefixes: ['@angular'],
       matchFileNames: ['package.json'],
       allowedVersions: '^17',
     },
@@ -101,17 +102,23 @@
     },
     // Example apps major versions
     {
-      matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
+      matchFileNames: [
+        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+      ],
       matchPackageNames: 'v15',
       allowedVersions: '^15',
     },
     {
-      matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
+      matchFileNames: [
+        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+      ],
       matchPackageNames: 'v16',
       allowedVersions: '^16',
     },
     {
-      matchFileNames: ['projects/ngx-meta/examples/angular-cli-versions.json'],
+      matchFileNames: [
+        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+      ],
       matchPackageNames: 'v17',
       allowedVersions: '^17',
     },

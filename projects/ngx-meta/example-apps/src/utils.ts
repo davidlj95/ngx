@@ -7,9 +7,9 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 export function getAppsDir() {
-  return resolve(getExamplesDir(), 'apps')
+  return resolve(getExampleAppsDir(), 'apps')
 }
-function getExamplesDir() {
+function getExampleAppsDir() {
   return resolve(__dirname, '..')
 }
 export function getRelativeLibraryDistDir() {
@@ -19,14 +19,18 @@ export function getRelativeLibraryE2EDir() {
   return join('..', '..', '..', 'e2e')
 }
 export function getLibraryDistDir() {
-  return resolve(getExamplesDir(), '..', 'dist')
+  return resolve(getExampleAppsDir(), '..', 'dist')
 }
 
 export function getStandaloneTemplatesDir() {
-  return resolve(getExamplesDir(), 'templates', 'standalone')
+  return resolve(getTemplatesDir(), 'standalone')
 }
 export function getModuleTemplatesDir() {
-  return resolve(getExamplesDir(), 'templates', 'module')
+  return resolve(getTemplatesDir(), 'module')
+}
+
+export function getTemplatesDir() {
+  return resolve(getExampleAppsDir(), 'templates')
 }
 
 /**

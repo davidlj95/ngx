@@ -124,7 +124,7 @@ That would be it, there you have your metadata manager provider, ready to inject
 
 See the API reference of [`makeMetadataManagerProviderFromSetterFactory`](ngx-meta.makemetadatamanagerproviderfromsetterfactory.md) for more information
 
-You can also check a full example at [example standalone app]'s [`provideCustomMetadataManager`](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/examples/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)
+You can also check a full example at [example standalone app]'s [`provideCustomMetadataManager`](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/example-apps/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)
 
 ## 2. Inject it
 

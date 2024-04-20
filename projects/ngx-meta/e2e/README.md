@@ -1,12 +1,12 @@
-# `@davidlj95/ngx-meta` E2E tests
+# `@davidlj95/ngx-meta` E2E testing infra
 
-Infra in this directory allows to test main library features using [example apps](../examples). [Cypress] is used to ensure the metadata elements are inserted into / removed from the page as expected.
+Infra in this directory allows to test main library features using [example apps](../example-apps). [Cypress] is used to ensure the metadata elements are inserted into / removed from the page as expected.
 
 [Cypress]: https://www.cypress.io/
 
 ## Example app
 
-First, create the example app to test using [examples infra](../examples).
+First, create the example app to test using [example apps infra](../example-apps).
 
 ## Tasks
 

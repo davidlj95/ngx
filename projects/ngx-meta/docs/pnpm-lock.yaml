@@ -1,23 +1,30 @@
-lockfileVersion: '6.0'
+lockfileVersion: '9.0'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-devDependencies:
-  '@fontsource-variable/inter-tight':
-    specifier: 5.0.20
-    version: 5.0.20
-  '@fontsource/dm-mono':
-    specifier: 5.0.19
-    version: 5.0.19
+importers:
+
+  .:
+    devDependencies:
+      '@fontsource-variable/inter-tight':
+        specifier: 5.0.21
+        version: 5.0.21
+      '@fontsource/dm-mono':
+        specifier: 5.0.20
+        version: 5.0.20
 
 packages:
 
-  /@fontsource-variable/inter-tight@5.0.20:
-    resolution: {integrity: sha512-HJH+9/ftH0+iIQoM59Gkx+C0dBJo9YS026W1e0RWF8Ra39lhXDBti8Pfh4F2m7eTcxmHx9wt/N0MvJ8hQObDmg==}
-    dev: true
+  '@fontsource-variable/inter-tight@5.0.21':
+    resolution: {integrity: sha512-EAu40d3RXUgT17vA81ee4fsGGqbF3uXjmitThRXbUo+YvTLhKIoYbKk58pt+wNhUyUFviWTHmJfmZO3+2TjoIg==}
 
-  /@fontsource/dm-mono@5.0.19:
-    resolution: {integrity: sha512-he/hWl/7JwMgVDnWeuw0a4xh/06tozTXwhvb+/LzdrMlj3bqvrMs4Up4CbYBg7HlQcUtWUL6lPOUKHXWjq8Z/g==}
-    dev: true
+  '@fontsource/dm-mono@5.0.20':
+    resolution: {integrity: sha512-Oh4dJc4dv23WhquFrbo7HsDXDpsEHLtUNPXYlof8IpW1Wgi4DK4+ti6xtZsVm/vkat2yvxfLMAGBpzJ7el2ajQ==}
+
+snapshots:
+
+  '@fontsource-variable/inter-tight@5.0.21': {}
+
+  '@fontsource/dm-mono@5.0.20': {}

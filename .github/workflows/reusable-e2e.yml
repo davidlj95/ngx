@@ -14,6 +14,7 @@ on:
 
 env:
   E2E_DIR: projects/ngx-meta/e2e
+  APP_PORT: 4200
 
 jobs:
   e2e:
@@ -33,11 +34,11 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
         with:
           ref: ${{ inputs.ref }}
-      - name: Download example app distribution files
+      - name: Download example app
         uses: actions/download-artifact@8caf195ad4b1dee92908e23f56eeb0696f1dd42d # v4
         with:
           name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
-          path: ${{ env.EXAMPLE_APP_DIR }}/dist
+          path: ${{ env.EXAMPLE_APP_DIR }}
       - name: Setup pnpm
         uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
       - name: Setup Node.js
@@ -45,7 +46,7 @@ jobs:
         with:
           cache: pnpm
           cache-dependency-path: ${{ env.E2E_DIR }}/pnpm-lock.yaml
-          node-version-file: .node-version
+          node-version-file: .node-version # should be one compatible with Angular example app
       - name: Get Cypress cache dir
         run: echo "cypress_cache_dir=$HOME/.cache/Cypress" >> $GITHUB_ENV
       - name: Cypress cache
@@ -58,18 +59,16 @@ jobs:
           key: ${{ env.cache-name }}-${{ env.e2e_lockfile_hash }}
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Serve app
+        run: pnpm run ci:serve &
+        env:
+          PORT: ${{ env.APP_PORT }}
+        working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Cypress run
         uses: cypress-io/github-action@1b70233146622b69e789ccdd4f9452adc638d25a # v6.6.1
         env:
           CYPRESS_CACHE_FOLDER: ${{ env.cypress_cache_dir }}
-          APP_PORT: 4200
         with:
-          start: >
-            pnpm
-            http-server
-            ../examples/apps/${{ matrix.app_name }}/dist/${{ matrix.app_name }}/browser
-            --proxy http://localhost:${{ env.APP_PORT }}?
-            --port ${{ env.APP_PORT }}
           wait-on: http://localhost:${{ env.APP_PORT }}
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome

@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        app_name: [v15]
+        app_name: [v15, v16, v17]
     env:
       EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.app_name }}
     defaults:
@@ -102,22 +102,34 @@ jobs:
       - name: Build example app
         run: pnpm ci:build # includes SSR and source maps
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: true
+        # 👇 We can't do just `pnpm prune --prod` or `pnpm i --prod`
+        #    GitHub Actions `actions/upload-artifact` doesn't like symlinks
+        #    Original error in CI:
+        #    ```
+        #    With the provided path, there will be 130112 files uploaded
+        #    Error: EMFILE: too many open files, open '/home/runner/work/ngx...
+        #    ```
+        #    See https://github.com/actions/upload-artifact/issues/418
+        #    So we need to perform an installation with hoisted node linker
+        #    https://pnpm.io/npmrc#node-linker
+        #    After that, neither of previous commands work :(
+        #    Neither does `pnpm deploy --prod`. So easiest is remove and reinstall
       - name: Remove development dependencies
-        run: pnpm install --prod --frozen-lockfile
-        working-directory: ${{ env.EXAMPLE_APP_DIR }}
-      - name: Remove unneeded files
-        run: >
-          rm -rf src .angular .vscode .gitignore README.md server.ts
-          angular.json tsconfig*.json
+        run: |
+          rm -rf node_modules/
+          echo "node-linker=hoisted" > .npmrc
+          pnpm install --prod --frozen-lockfile
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Upload example app
         if: ${{ inputs.example-app-artifact-name-prefix != '' }}
         uses: actions/upload-artifact@1746f4ab65b179e0ea60a494b83293b640dd5bba # v4
         with:
           name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
-          path: ${{ env.EXAMPLE_APP_DIR }}
+          path: |
+            ${{ env.EXAMPLE_APP_DIR }}/node_modules/
+            !${{ env.EXAMPLE_APP_DIR }}/node_modules/.bin
+            !${{ env.EXAMPLE_APP_DIR }}/node_modules/.pnpm
+            !${{ env.EXAMPLE_APP_DIR }}/node_modules/*.yaml
+            ${{ env.EXAMPLE_APP_DIR }}/dist
+            ${{ env.EXAMPLE_APP_DIR }}/package.json
           retention-days: 5

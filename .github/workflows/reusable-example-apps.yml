@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        app_name: [v15, v16, v17]
+        app_name: [v15]
     env:
       EXAMPLE_APP_DIR: projects/ngx-meta/examples/apps/${{ matrix.app_name }}
     defaults:
@@ -102,6 +102,10 @@ jobs:
       - name: Build example app
         run: pnpm ci:build # includes SSR and source maps
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
       - name: Remove development dependencies
         run: pnpm install --prod --frozen-lockfile
         working-directory: ${{ env.EXAMPLE_APP_DIR }}

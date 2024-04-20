@@ -1,7 +1,7 @@
 {
   "name": "@ngx-meta/cypress",
   "version": "0.0.0",
-  "description": "ngx-meta lib E2E testing with Cypress",
+  "description": "ngx-meta E2E testing infra",
   "scripts": {
     "cypress:open": "cypress open"
   },

@@ -1,7 +1,7 @@
 {
   "name": "@ngx-meta/bundle-size",
   "version": "0.0.0",
-  "description": "ngx-meta lib bundle size analysis with source-map-explorer",
+  "description": "ngx-meta bundle size analysis infra",
   "scripts": {
     "analyze": "./analyze.sh",
     "report": "./report.sh"

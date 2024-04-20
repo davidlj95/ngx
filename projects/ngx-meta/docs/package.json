@@ -1,7 +1,7 @@
 {
-  "name": "@davidlj95/ngx-meta-docs",
+  "name": "@ngx-meta/docs",
   "version": "0.0.0",
-  "description": "@davidlj95/ngx-meta docs",
+  "description": "ngx-meta docs infra",
   "scripts": {},
   "devDependencies": {
     "@fontsource-variable/inter-tight": "5.0.21",

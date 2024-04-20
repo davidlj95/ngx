@@ -1,7 +1,7 @@
 {
   "name": "@ngx-meta/examples",
   "version": "0.0.0",
-  "description": "ngx-meta examples scripts",
+  "description": "ngx-meta example apps infra",
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",

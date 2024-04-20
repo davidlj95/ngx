@@ -15,7 +15,7 @@
   labels: ['dependencies'],
   npm: {
     // Keep Angular CLI versions used to create example apps updated
-    fileMatch: ['projects/ngx-meta/example-apps/angular-cli-versions.json'],
+    fileMatch: ['projects/ngx-meta/example-apps/src/angular-cli-versions.json'],
   },
   packageRules: [
     // Lib config for published package JSONs
@@ -103,21 +103,21 @@
     // Example apps major versions
     {
       matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+        'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
       matchPackageNames: 'v15',
       allowedVersions: '^15',
     },
     {
       matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+        'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
       matchPackageNames: 'v16',
       allowedVersions: '^16',
     },
     {
       matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+        'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
       matchPackageNames: 'v17',
       allowedVersions: '^17',

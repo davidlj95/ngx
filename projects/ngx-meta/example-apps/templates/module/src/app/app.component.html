@@ -5,7 +5,7 @@
 <nav>
   <ul>
     <li *ngFor="let navItem of navItems">
-      <a [routerLink]="navItem.path" [id]="navItem.linkId">
+      <a [routerLink]="navItem.path" [attr.id]="navItem.linkId">
         {{ navItem.displayName }}
       </a>
     </li>

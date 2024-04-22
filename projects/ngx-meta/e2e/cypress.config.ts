@@ -8,4 +8,6 @@ export default defineConfig({
       // implement node event listeners here
     },
   },
+  //👇 Trying it out. Should be fine for CI/CD too
+  defaultCommandTimeout: 1000,
 })

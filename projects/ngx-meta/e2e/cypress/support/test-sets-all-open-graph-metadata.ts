@@ -1,6 +1,6 @@
 import ALL_METADATA_JSON from '../fixtures/all-metadata.json'
 
-export function testSetsAllOpenGraphMetadata(openGraphOverrides: object = {}) {
+export const testSetsAllOpenGraphMetadata = (openGraphOverrides: object = {}) =>
   it('should set all Open Graph metadata', () => {
     cy.fixture('all-metadata.json').then(
       (jsonMetadata: typeof ALL_METADATA_JSON) => {
@@ -48,7 +48,6 @@ export function testSetsAllOpenGraphMetadata(openGraphOverrides: object = {}) {
       },
     )
   })
-}
 
 export function openGraphTitleShouldEqual(title: string) {
   cy.getMetaWithProperty('og:title').shouldHaveContent().and('eq', title)

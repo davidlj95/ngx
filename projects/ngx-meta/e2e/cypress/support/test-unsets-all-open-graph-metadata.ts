@@ -1,4 +1,4 @@
-export function testUnsetsAllOpenGraphMetadata() {
+export const testUnsetsAllOpenGraphMetadata = () =>
   it('should unset all Open Graph metadata', () => {
     cy.getMetaWithProperty('og:title').should('not.exist')
     cy.getMetaWithProperty('og:type').should('not.exist')
@@ -13,7 +13,6 @@ export function testUnsetsAllOpenGraphMetadata() {
     cy.getMetaWithProperty('og:locale').should('not.exist')
     cy.getMetaWithProperty('og:site_name').should('not.exist')
   })
-}
 
 export function openGraphDescriptionShouldNotExist() {
   cy.getMetaWithProperty('og:description').should('not.exist')

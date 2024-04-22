@@ -36,8 +36,9 @@
 //   }
 // }
 
-import Chainable = Cypress.Chainable
 import { ROUTES } from '../fixtures/routes'
+import { JSON_LD_MIME } from './json-ld'
+import { RouteMatcher } from 'cypress/types/net-stubbing'
 
 Cypress.Commands.add<'getMeta'>('getMeta', (name) => {
   cy.get(`meta[name="${name}"]`)
@@ -50,7 +51,7 @@ Cypress.Commands.add<'getMetaWithProperty'>(
   },
 )
 
-Cypress.Commands.add<'shouldHaveContent', Chainable<HTMLMetaElement>>(
+Cypress.Commands.add<'shouldHaveContent', Cypress.Chainable<HTMLMetaElement>>(
   'shouldHaveContent',
   { prevSubject: true },
   (prevSubject) => {
@@ -64,6 +65,46 @@ Cypress.Commands.add<'goToRootPage'>('goToRootPage', () => {
   cy.location('pathname').should('eq', ROUTES.root.path)
 })
 
+const HTML_SCRIPTS_BUT_JSON_LD = new RegExp(
+  `<script(?!\\s*type="${JSON_LD_MIME.replace('+', '\\+')}")[^<]*</script>`,
+  'gi',
+)
+/**
+ * Intercepts URL(s) and modifies the response to remove `<script>` tags in it.
+ * This way we simulate no JavaScript being rendered on the client
+ *
+ * Take into account just requests made by Cypress can be intercepted
+ * (i.e.: click in a link generates a request in the browser that won't be
+ * intercepted)
+ *
+ * To ensure scripts were removed properly, use {@link Cypress.Chainable.shouldNotContainAppScripts}
+ *
+ * Does not remove JSON-LD metadata scripts
+ *
+ * @see Inspired from {@link https://blog.simonireilly.com/posts/server-side-rendering-tests-in-cypress/}
+ */
+Cypress.Commands.add<'simulateSSRForGetRequests'>(
+  'simulateSSRForGetRequests',
+  (url) => {
+    cy.intercept('GET', url, (req) => {
+      req.continue((res) => {
+        res.body = res.body.replace(HTML_SCRIPTS_BUT_JSON_LD, '')
+        res.send()
+      })
+    })
+  },
+)
+Cypress.Commands.add<'shouldNotContainAppScripts'>(
+  'shouldNotContainAppScripts',
+  () => {
+    cy.get(`script`)
+      .not(`[type="${JSON_LD_MIME}"]`)
+      // 👇 Cypress injects always 1 <script> in page
+      .filter((_, element) => !element.innerHTML.includes('window.Cypress='))
+      .should('not.exist')
+  },
+)
+
 // 👇 Make TypeScript happy (not in Cypress docs though)
 // https://stackoverflow.com/a/59499895/3263250
 export {}
@@ -75,6 +116,8 @@ declare global {
       getMeta(name: string): Chainable<HTMLMetaElement>
       getMetaWithProperty(property: string): Chainable<HTMLMetaElement>
       shouldHaveContent(): Chainable<Subject>
+      simulateSSRForGetRequests(url: RouteMatcher): Chainable<void>
+      shouldNotContainAppScripts(): Chainable<void>
     }
   }
 }

@@ -1,4 +1,7 @@
-[Angular SSR]: https://angular.dev/guide/ssr
+[SSR]: https://angular.dev/guide/ssr
+[hydration]: https://angular.dev/guide/hydration
+[prerendering]: https://angular.dev/guide/prerendering
+[SSG]: https://angular.dev/guide/prerendering
 [standard meta tags]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name
 [Open Graph]: https://ogp.me/
 [Twitter Cards]: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards

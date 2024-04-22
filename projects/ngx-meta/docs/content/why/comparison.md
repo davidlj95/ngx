@@ -94,7 +94,8 @@ It is certainly a better option than installing a poorly maintained library. But
 
 | Feature                           | 🙋 `ngx-meta` | No lib | `@avivharuzi/ngx-seo` | `@ngaox/seo`  | `@ngx-meta/core` |
 | --------------------------------- | :-----------: | :----: | :-------------------: | :-----------: | :--------------: |
-| Support SSR                       |      ✅       |   ⚙️   |          ✅           |      ✅       |        ✅        |
+| SSR support                       |      ✅       |   ⚙️   |          ✅           |      ✅       |        ✅        |
+| Hydration support                 |      ✅       |   ⚙️   |          ✅           |      ✅       |        ✅        |
 | Metadata with service             |      ✅       |   ⚙️   |          ✅           |      ✅       |        ✅        |
 | Metadata in route                 |      ✅       |  ⚙️❗️  |          ✅           |      ✅       |      ✅[^8]      |
 | Metadata with component           |      ❌       |  ⚙️❗️  |          ❌           |      ✅       |        ❌        |

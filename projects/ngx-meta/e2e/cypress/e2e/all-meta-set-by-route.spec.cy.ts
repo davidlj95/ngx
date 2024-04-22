@@ -11,35 +11,38 @@ import { testSetsJsonLd } from '../support/test-sets-json-ld'
 import { testUnsetsJsonLd } from '../support/test-unsets-json-ld'
 import {
   spyOnConsole,
-  testNoConsoleLogsAreEmitted,
-} from '../support/no-console-logs-are-emitted'
+  testNoLibLogsAndNoWarnsOrErrors,
+} from '../support/test-no-lib-logs-and-no-warns-or-errors'
+import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 
 describe('All meta set by route', () => {
-  beforeEach(() => {
-    cy.visit(ROUTES.allMetaSetByRoute.path, {
-      onBeforeLoad(win: Cypress.AUTWindow) {
-        spyOnConsole(win)
+  testWithSsrAndCsr(
+    {
+      url: ROUTES.allMetaSetByRoute.path,
+      onBeforeLoad: spyOnConsole,
+    },
+    {
+      ssrAndCsr: () => {
+        testNoLibLogsAndNoWarnsOrErrors()
+        testSetsAllStandardMetadata()
+        testSetsAllOpenGraphMetadata()
+        testSetsAllOpenGraphProfileMetadata()
+        testSetsAllTwitterCardMetadata()
+        testSetsJsonLd()
       },
-    })
-  })
-
-  testSetsAllStandardMetadata()
-  testSetsAllOpenGraphMetadata()
-  testSetsAllOpenGraphProfileMetadata()
-  testSetsAllTwitterCardMetadata()
-  testSetsJsonLd()
-  testNoConsoleLogsAreEmitted()
-
-  describe('when going to another route', () => {
-    beforeEach(() => {
-      cy.goToRootPage()
-    })
-
-    testUnsetsAllStandardMetadata()
-    testUnsetsAllOpenGraphMetadata()
-    testUnsetsAllOpenGraphProfileMetadata()
-    testUnsetsAllTwitterCardMetadata()
-    testUnsetsJsonLd()
-    testNoConsoleLogsAreEmitted()
-  })
+      csrOnly: () => {
+        describe('when going to another route', () => {
+          beforeEach(() => {
+            cy.goToRootPage()
+          })
+          testNoLibLogsAndNoWarnsOrErrors()
+          testUnsetsAllStandardMetadata()
+          testUnsetsAllOpenGraphMetadata()
+          testUnsetsAllOpenGraphProfileMetadata()
+          testUnsetsAllTwitterCardMetadata()
+          testUnsetsJsonLd()
+        })
+      },
+    },
+  )
 })

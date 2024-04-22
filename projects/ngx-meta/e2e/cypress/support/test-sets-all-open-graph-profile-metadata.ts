@@ -1,8 +1,8 @@
 import ALL_METADATA_JSON from '../fixtures/all-metadata.json'
 
-export function testSetsAllOpenGraphProfileMetadata(
+export const testSetsAllOpenGraphProfileMetadata = (
   openGraphProfileOverrides: object = {},
-) {
+) =>
   it('should set all Open Graph profile metadata', () => {
     cy.fixture('all-metadata.json').then(
       (jsonMetadata: typeof ALL_METADATA_JSON) => {
@@ -31,4 +31,3 @@ export function testSetsAllOpenGraphProfileMetadata(
       },
     )
   })
-}

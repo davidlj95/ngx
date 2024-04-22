@@ -1,8 +1,8 @@
 import ALL_METADATA_JSON from '../fixtures/all-metadata.json'
 
-export function testSetsAllTwitterCardMetadata(
+export const testSetsAllTwitterCardMetadata = (
   twitterCardOverrides: object = {},
-) {
+) =>
   it('should set all Twitter card metadata', () => {
     cy.fixture('all-metadata.json').then(
       (jsonMetadata: typeof ALL_METADATA_JSON) => {
@@ -41,7 +41,6 @@ export function testSetsAllTwitterCardMetadata(
       },
     )
   })
-}
 
 export function twitterCardTitleShouldEqual(title: string) {
   cy.getMeta('twitter:title').shouldHaveContent().and('eq', title)

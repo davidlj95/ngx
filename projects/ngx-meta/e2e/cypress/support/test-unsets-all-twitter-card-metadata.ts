@@ -1,4 +1,4 @@
-export function testUnsetsAllTwitterCardMetadata() {
+export const testUnsetsAllTwitterCardMetadata = () =>
   it('should unset all Twitter card metadata', () => {
     cy.getMeta('twitter:card').should('not.exist')
     cy.getMeta('twitter:site').should('not.exist')
@@ -10,7 +10,6 @@ export function testUnsetsAllTwitterCardMetadata() {
     cy.getMeta('twitter:image').should('not.exist')
     cy.getMeta('twitter:image:alt').should('not.exist')
   })
-}
 
 export function twitterCardDescriptionShouldNotExist() {
   cy.getMeta('twitter:description').should('not.exist')

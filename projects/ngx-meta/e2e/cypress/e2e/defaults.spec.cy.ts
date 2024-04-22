@@ -1,26 +1,29 @@
 import { ROUTES } from '../fixtures/routes'
 import {
   spyOnConsole,
-  testNoConsoleLogsAreEmitted,
-} from '../support/no-console-logs-are-emitted'
+  testNoLibLogsAndNoWarnsOrErrors,
+} from '../support/test-no-lib-logs-and-no-warns-or-errors'
 import DEFAULTS_JSON from '../fixtures/defaults.json'
+import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 
 describe('Defaults', () => {
-  beforeEach(() => {
-    cy.visit(ROUTES.root.path, {
-      onBeforeLoad(win: Cypress.AUTWindow) {
-        spyOnConsole(win)
+  testWithSsrAndCsr(
+    {
+      url: ROUTES.root.path,
+      onBeforeLoad: spyOnConsole,
+    },
+    {
+      ssrAndCsr: () => {
+        it('should set default author', () => {
+          cy.fixture('defaults.json').then((defaults: typeof DEFAULTS_JSON) => {
+            cy.getMeta('author')
+              .shouldHaveContent()
+              .and('eq', defaults.standard.author)
+          })
+        })
+
+        testNoLibLogsAndNoWarnsOrErrors()
       },
-    })
-  })
-
-  it('should set default author', () => {
-    cy.fixture('defaults.json').then((defaults: typeof DEFAULTS_JSON) => {
-      cy.getMeta('author')
-        .shouldHaveContent()
-        .and('eq', defaults.standard.author)
-    })
-  })
-
-  testNoConsoleLogsAreEmitted()
+    },
+  )
 })

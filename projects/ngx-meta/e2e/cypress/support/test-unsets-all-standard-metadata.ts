@@ -1,4 +1,4 @@
-export function testUnsetsAllStandardMetadata() {
+export const testUnsetsAllStandardMetadata = () =>
   it('should unset all standard metadata', () => {
     cy.getMeta('description').should('not.exist')
     // It's actually set because of the default
@@ -9,4 +9,3 @@ export function testUnsetsAllStandardMetadata() {
     cy.get('link[rel="canonical"]').should('not.exist')
     cy.get('html').should('not.have.attr', 'lang')
   })
-}

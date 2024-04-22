@@ -1,6 +1,6 @@
 import ALL_METADATA_JSON from '../fixtures/all-metadata.json'
 
-export function testSetsAllStandardMetadata() {
+export const testSetsAllStandardMetadata = () =>
   it('should set all standard metadata', () => {
     cy.fixture('all-metadata.json').then(
       (metadata: typeof ALL_METADATA_JSON) => {
@@ -26,7 +26,6 @@ export function testSetsAllStandardMetadata() {
       },
     )
   })
-}
 
 export function standardTitleShouldEqual(title: string) {
   cy.title().should('eq', title)

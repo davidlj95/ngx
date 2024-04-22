@@ -79,6 +79,14 @@ To serve the app, change to its directory and run
 pnpm start
 ```
 
+To serve it with SSR, build it first (see below). You can then use the common run script
+
+```sh
+pnpm run ci:serve
+```
+
+Which will serve the app in a port where E2E tests will be run against. This is the same run script used in CI/CD to execute E2E tests.
+
 #### Build
 
 To build it, change to its directory and use
@@ -87,12 +95,31 @@ To build it, change to its directory and use
 pnpm run build
 ```
 
-> [!NOTE]
-> In order to analyze the app's bundle with `source-map-explorer`, remember to build it with
->
-> ```shell
-> pnpm run build --source-map
-> ```
+##### For bundle size analysis
+
+In order to analyze the app's bundle size with [bundle size analysis infra](../bundle-size/README.md), remember to build it with source maps included:
+
+```shell
+pnpm run build --source-map
+```
+
+##### With server side rendering
+
+To build the app for browser and for server, run (if present):
+
+```shell
+pnpm run build:ssr
+```
+
+Apps using Angular v17's `application` builder do not have a `build:ssr` run script. That's because a regular `build` will build for browser and server if SSR is enabled.
+
+##### With everything
+
+To build the app ready for bundle size analysis and E2E tests (hence with server code built), run
+
+```shell
+pnpm run ci:build
+```
 
 ## Tips
 

@@ -14,7 +14,6 @@ on:
 
 env:
   E2E_DIR: projects/ngx-meta/e2e
-  APP_PORT: 4200
 
 jobs:
   e2e:
@@ -61,15 +60,13 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Serve app
         run: pnpm run ci:serve &
-        env:
-          PORT: ${{ env.APP_PORT }}
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Cypress run
         uses: cypress-io/github-action@1b70233146622b69e789ccdd4f9452adc638d25a # v6.6.1
         env:
           CYPRESS_CACHE_FOLDER: ${{ env.cypress_cache_dir }}
         with:
-          wait-on: http://localhost:${{ env.APP_PORT }}
+          wait-on: http://localhost:4200
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
           # 👇 Action doesn't support pnpm caching right now

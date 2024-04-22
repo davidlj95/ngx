@@ -8,6 +8,9 @@ const BUILD_SSR_RUN_SCRIPT = 'build:ssr'
 const SERVE_SSR_RUN_SCRIPT_PREFIX = 'serve:ssr'
 const CI_BUILD_RUN_SCRIPT = 'ci:build'
 const CI_SERVE_RUN_SCRIPT = 'ci:serve'
+//👇 Keep in sync with `cypress.config.ts`
+const SSR_PORT_ENV_VAR = 'PORT'
+const SSR_SERVE_PORT = 4200
 const BUILD_WITH_SOURCE_MAPS = 'ng build --source-map'
 
 export async function addCiRunScripts(opts: {
@@ -38,6 +41,7 @@ export async function addCiRunScripts(opts: {
   if (!serveSsrRunScript) {
     throw new Error('Cannot find SSR run script for app')
   }
-  appPkgJson.scripts[CI_SERVE_RUN_SCRIPT] = `pnpm run ${serveSsrRunScript}`
+  appPkgJson.scripts[CI_SERVE_RUN_SCRIPT] =
+    `export ${SSR_PORT_ENV_VAR}=${SSR_SERVE_PORT} && pnpm run ${serveSsrRunScript}`
   await writeFile(appPkgJsonFile, jsonToString(appPkgJson))
 }

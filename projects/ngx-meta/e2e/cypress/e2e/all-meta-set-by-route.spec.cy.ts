@@ -1,8 +1,8 @@
 import { ROUTES } from '../fixtures/routes'
 import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 import {
+  shouldNotEmitUnwantedConsoleLogs,
   spyOnConsole,
-  testNoLibLogsAndNoWarnsOrErrors,
 } from '../support/console'
 import {
   shouldContainAllMetadata,
@@ -17,7 +17,7 @@ describe('All meta set by route', () => {
     },
     {
       ssrAndCsr: () => {
-        testNoLibLogsAndNoWarnsOrErrors()
+        shouldNotEmitUnwantedConsoleLogs()
         shouldContainAllMetadata()
       },
       csrOnly: () => {
@@ -25,7 +25,7 @@ describe('All meta set by route', () => {
           beforeEach(() => {
             cy.goToRootPage()
           })
-          testNoLibLogsAndNoWarnsOrErrors()
+          shouldNotEmitUnwantedConsoleLogs()
           shouldNotContainAnyMetadata()
         })
       },

@@ -1,8 +1,8 @@
 import { ROUTES } from '../fixtures/routes'
 import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 import {
+  shouldNotEmitUnwantedConsoleLogs,
   spyOnConsole,
-  testNoLibLogsAndNoWarnsOrErrors,
 } from '../support/console'
 import { shouldContainAllMetadata } from '../support/metadata/all'
 
@@ -14,7 +14,7 @@ describe('All meta set by service', () => {
     },
     {
       ssrAndCsr: () => {
-        testNoLibLogsAndNoWarnsOrErrors()
+        shouldNotEmitUnwantedConsoleLogs()
         shouldContainAllMetadata()
       },
     },

@@ -1,8 +1,8 @@
 import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 import { ROUTES } from '../fixtures/routes'
 import {
+  shouldNotEmitUnwantedConsoleLogs,
   spyOnConsole,
-  testNoLibLogsAndNoWarnsOrErrors,
 } from '../support/console'
 import { shouldContainAllStandardMetadata } from '../support/metadata/standard'
 import { shouldContainAllOpenGraphMetadata } from '../support/metadata/open-graph'
@@ -19,7 +19,7 @@ describe('Meta set by route and service', () => {
     },
     {
       ssrAndCsr: () => {
-        testNoLibLogsAndNoWarnsOrErrors()
+        shouldNotEmitUnwantedConsoleLogs()
         shouldContainAllStandardMetadata()
         shouldContainAllOpenGraphMetadata({
           type: 'book',
@@ -38,7 +38,7 @@ describe('Meta set by route and service', () => {
             cy.goToRootPage()
           })
 
-          testNoLibLogsAndNoWarnsOrErrors()
+          shouldNotEmitUnwantedConsoleLogs()
           shouldNotContainAnyMetadata()
         })
       },

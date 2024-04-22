@@ -30,17 +30,21 @@ export function spyOnConsole(autWindow: Cypress.AUTWindow) {
 
 const NGX_META_LOG_MSG_MATCHER = 'NgxMeta'
 
-export const testNoLibLogsAndNoWarnsOrErrors = () =>
-  it('should not emit console logs related to the library or any warnings or errors', () => {
-    for (const consoleMethod of CONSOLE_INFO_OR_BELOW_METHODS) {
-      cy.get(consoleAliasAccessorFor(consoleMethod)).should(
-        'not.have.been.calledWithMatch',
-        NGX_META_LOG_MSG_MATCHER,
-      )
-    }
-    for (const consoleMethod of CONSOLE_WARN_OR_ABOVE_METHODS) {
-      cy.get(consoleAliasAccessorFor(consoleMethod)).should(
-        'not.have.been.called',
-      )
-    }
+export const shouldNotEmitUnwantedConsoleLogs = () =>
+  describe('should not emit unwanted console logs', () => {
+    it('like library related logs with info level or below', () => {
+      for (const consoleMethod of CONSOLE_INFO_OR_BELOW_METHODS) {
+        cy.get(consoleAliasAccessorFor(consoleMethod)).should(
+          'not.have.been.calledWithMatch',
+          NGX_META_LOG_MSG_MATCHER,
+        )
+      }
+    })
+    it('like any logs with warning level or above', () => {
+      for (const consoleMethod of CONSOLE_WARN_OR_ABOVE_METHODS) {
+        cy.get(consoleAliasAccessorFor(consoleMethod)).should(
+          'not.have.been.called',
+        )
+      }
+    })
   })

@@ -1,7 +1,7 @@
 import { ROUTES } from '../fixtures/routes'
 import {
+  shouldNotEmitUnwantedConsoleLogs,
   spyOnConsole,
-  testNoLibLogsAndNoWarnsOrErrors,
 } from '../support/console'
 import ONE_METADATA_JSON from '../fixtures/one-metadata.json'
 import {
@@ -26,7 +26,7 @@ describe('One meta set by service', () => {
     },
     {
       ssrAndCsr: () => {
-        testNoLibLogsAndNoWarnsOrErrors()
+        shouldNotEmitUnwantedConsoleLogs()
 
         it('should set all title metadata elements', () => {
           cy.fixture('one-metadata.json').then(

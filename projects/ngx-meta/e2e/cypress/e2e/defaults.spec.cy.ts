@@ -1,8 +1,8 @@
 import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 import { ROUTES } from '../fixtures/routes'
 import {
+  shouldNotEmitUnwantedConsoleLogs,
   spyOnConsole,
-  testNoLibLogsAndNoWarnsOrErrors,
 } from '../support/console'
 import DEFAULTS_JSON from '../fixtures/defaults.json'
 
@@ -22,7 +22,7 @@ describe('Defaults', () => {
           })
         })
 
-        testNoLibLogsAndNoWarnsOrErrors()
+        shouldNotEmitUnwantedConsoleLogs()
       },
     },
   )

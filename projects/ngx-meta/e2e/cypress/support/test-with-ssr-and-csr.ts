@@ -1,10 +1,5 @@
 export function testWithSsrAndCsr(
-  options: Partial<Cypress.VisitOptions> &
-    Pick<Cypress.VisitOptions, 'url'> & {
-      interceptRequests?: Parameters<
-        Cypress.Chainable['simulateSSRForGetRequests']
-      >[0]
-    },
+  options: Partial<Cypress.VisitOptions> & Pick<Cypress.VisitOptions, 'url'>,
   tests: {
     ssrAndCsr?: () => void
     ssrOnly?: () => void
@@ -13,7 +8,7 @@ export function testWithSsrAndCsr(
 ) {
   describe('when using SSR only (by manually removing CSR scripts)', () => {
     beforeEach(() => {
-      cy.simulateSSRForGetRequests(options.interceptRequests ?? options.url)
+      cy.simulateSSRForRequest(options.url)
       cy.visit(options)
       cy.shouldNotContainAppScripts()
     })

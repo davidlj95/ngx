@@ -83,10 +83,10 @@ const HTML_SCRIPTS_BUT_JSON_LD = new RegExp(
  *
  * @see Inspired from {@link https://blog.simonireilly.com/posts/server-side-rendering-tests-in-cypress/}
  */
-Cypress.Commands.add<'simulateSSRForGetRequests'>(
-  'simulateSSRForGetRequests',
+Cypress.Commands.add<'simulateSSRForRequest'>(
+  'simulateSSRForRequest',
   (url) => {
-    cy.intercept('GET', url, (req) => {
+    cy.intercept(url, (req) => {
       req.continue((res) => {
         res.body = res.body.replace(HTML_SCRIPTS_BUT_JSON_LD, '')
         res.send()
@@ -116,7 +116,7 @@ declare global {
       getMeta(name: string): Chainable<HTMLMetaElement>
       getMetaWithProperty(property: string): Chainable<HTMLMetaElement>
       shouldHaveContent(): Chainable<Subject>
-      simulateSSRForGetRequests(url: RouteMatcher): Chainable<void>
+      simulateSSRForRequest(url: RouteMatcher): Chainable<void>
       shouldNotContainAppScripts(): Chainable<void>
     }
   }

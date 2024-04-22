@@ -6,6 +6,7 @@ import {
 } from '../support/console'
 import { shouldContainAllStandardMetadata } from '../support/metadata/standard'
 import { shouldContainAllOpenGraphMetadata } from '../support/metadata/open-graph'
+import ROUTE_SERVICE_OVERRIDES_JSON from '../fixtures/route-service-overrides.json'
 import { shouldContainAllOpenGraphProfileMetadata } from '../support/metadata/open-graph-profile'
 import { shouldContainAllTwitterCardMetadata } from '../support/metadata/twitter-card'
 import { shouldContainJsonLdMetadata } from '../support/metadata/json-ld'
@@ -21,15 +22,15 @@ describe('Meta set by route and service', () => {
       ssrAndCsr: () => {
         shouldNotEmitUnwantedConsoleLogs()
         shouldContainAllStandardMetadata()
-        shouldContainAllOpenGraphMetadata({
-          type: 'book',
-        })
-        shouldContainAllOpenGraphProfileMetadata({
-          gender: 'female',
-        })
-        shouldContainAllTwitterCardMetadata({
-          card: 'summary_large_image',
-        })
+        shouldContainAllOpenGraphMetadata(
+          ROUTE_SERVICE_OVERRIDES_JSON.openGraph,
+        )
+        shouldContainAllOpenGraphProfileMetadata(
+          ROUTE_SERVICE_OVERRIDES_JSON.openGraph.profile,
+        )
+        shouldContainAllTwitterCardMetadata(
+          ROUTE_SERVICE_OVERRIDES_JSON.twitterCard,
+        )
         shouldContainJsonLdMetadata()
       },
       csrOnly: () => {

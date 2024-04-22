@@ -1,0 +1,11 @@
+{
+  "openGraph": {
+    "type": "book",
+    "profile": {
+      "gender": "female"
+    }
+  },
+  "twitterCard": {
+    "card": "summary_large_image"
+  }
+}

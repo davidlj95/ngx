@@ -2,9 +2,18 @@
 
 Here's what library has to offer. Hope it checks all your needs ✅
 
-### 🔙 Supports [Angular SSR] (formerly Angular Universal)
+### 🌐 Supports server side rendering ([SSR]), [hydration] and prerendering / static side generation ([SSG])
 
-Metadata is set using Angular's built-in services to manipulate DOM. So (server/pre) rendered pages will include meta tags.
+Supports server side rendering with new and former packages for SSR in Angular
+
+- [Angular's SSR](https://npmjs.com/package/@angular/ssr) introduced in Angular v17
+- [Angular Universal](https://www.npmjs.com/package/@nguniversal/express-engine) for Angular prior to v17
+
+Metadata is set using Angular's built-in services to manipulate DOM. So (server/pre) rendered pages will include meta tags. Also supports [hydration].
+
+Actually, a series of E2E tests are in place to ensure support for SSR and hydration for all Angular versions the library claims to be compatible with.
+
+[hydration]: https://angular.dev/guide/hydration)
 
 ### 🤝 Compatibility with [Angular actively supported versions]
 

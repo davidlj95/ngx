@@ -1,19 +1,15 @@
-import { ROUTES } from '../fixtures/routes'
-import { testSetsAllStandardMetadata } from '../support/test-sets-all-standard-metadata'
-import { testSetsAllOpenGraphMetadata } from '../support/test-sets-all-open-graph-metadata'
-import { testSetsAllOpenGraphProfileMetadata } from '../support/test-sets-all-open-graph-profile-metadata'
-import { testSetsAllTwitterCardMetadata } from '../support/test-sets-all-twitter-card-metadata'
-import { testSetsJsonLd } from '../support/test-sets-json-ld'
-import {
-  spyOnConsole,
-  testNoLibLogsAndNoWarnsOrErrors,
-} from '../support/test-no-lib-logs-and-no-warns-or-errors'
-import { testUnsetsAllStandardMetadata } from '../support/test-unsets-all-standard-metadata'
-import { testUnsetsAllOpenGraphMetadata } from '../support/test-unsets-all-open-graph-metadata'
-import { testUnsetsAllOpenGraphProfileMetadata } from '../support/test-unsets-all-open-graph-profile-metadata'
-import { testUnsetsAllTwitterCardMetadata } from '../support/test-unsets-all-twitter-card-metadata'
-import { testUnsetsJsonLd } from '../support/test-unsets-json-ld'
 import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
+import { ROUTES } from '../fixtures/routes'
+import {
+  shouldNotEmitUnwantedConsoleLogs,
+  spyOnConsole,
+} from '../support/console'
+import { shouldContainAllStandardMetadata } from '../support/metadata/standard'
+import { shouldContainAllOpenGraphMetadata } from '../support/metadata/open-graph'
+import { shouldContainAllOpenGraphProfileMetadata } from '../support/metadata/open-graph-profile'
+import { shouldContainAllTwitterCardMetadata } from '../support/metadata/twitter-card'
+import { shouldContainJsonLdMetadata } from '../support/metadata/json-ld'
+import { shouldNotContainAnyMetadata } from '../support/metadata/all'
 
 describe('Meta set by route and service', () => {
   testWithSsrAndCsr(
@@ -23,12 +19,18 @@ describe('Meta set by route and service', () => {
     },
     {
       ssrAndCsr: () => {
-        testNoLibLogsAndNoWarnsOrErrors()
-        testSetsAllStandardMetadata()
-        testSetsAllOpenGraphMetadata({ type: 'book' })
-        testSetsAllOpenGraphProfileMetadata({ gender: 'female' })
-        testSetsAllTwitterCardMetadata({ card: 'summary_large_image' })
-        testSetsJsonLd()
+        shouldNotEmitUnwantedConsoleLogs()
+        shouldContainAllStandardMetadata()
+        shouldContainAllOpenGraphMetadata({
+          type: 'book',
+        })
+        shouldContainAllOpenGraphProfileMetadata({
+          gender: 'female',
+        })
+        shouldContainAllTwitterCardMetadata({
+          card: 'summary_large_image',
+        })
+        shouldContainJsonLdMetadata()
       },
       csrOnly: () => {
         describe('when going to another route', () => {
@@ -36,12 +38,8 @@ describe('Meta set by route and service', () => {
             cy.goToRootPage()
           })
 
-          testUnsetsAllStandardMetadata()
-          testUnsetsAllOpenGraphMetadata()
-          testUnsetsAllOpenGraphProfileMetadata()
-          testUnsetsAllTwitterCardMetadata()
-          testUnsetsJsonLd()
-          testNoLibLogsAndNoWarnsOrErrors()
+          shouldNotEmitUnwantedConsoleLogs()
+          shouldNotContainAnyMetadata()
         })
       },
     },

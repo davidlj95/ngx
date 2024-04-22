@@ -1,9 +1,9 @@
-import ALL_METADATA_JSON from '../fixtures/all-metadata.json'
+import ALL_METADATA_JSON from '../../fixtures/all-metadata.json'
 
-export const testSetsAllTwitterCardMetadata = (
+export const shouldContainAllTwitterCardMetadata = (
   twitterCardOverrides: object = {},
 ) =>
-  it('should set all Twitter card metadata', () => {
+  it('should contain all Twitter Card metadata', () => {
     cy.fixture('all-metadata.json').then(
       (jsonMetadata: typeof ALL_METADATA_JSON) => {
         const metadata = {
@@ -44,4 +44,21 @@ export const testSetsAllTwitterCardMetadata = (
 
 export function twitterCardTitleShouldEqual(title: string) {
   cy.getMeta('twitter:title').shouldHaveContent().and('eq', title)
+}
+
+export const shouldNotContainAnyTwitterCardMetadata = () =>
+  it('should not contain any Twitter Card metadata', () => {
+    cy.getMeta('twitter:card').should('not.exist')
+    cy.getMeta('twitter:site').should('not.exist')
+    cy.getMeta('twitter:site:id').should('not.exist')
+    cy.getMeta('twitter:creator').should('not.exist')
+    cy.getMeta('twitter:creator:id').should('not.exist')
+    twitterCardDescriptionShouldNotExist()
+    cy.getMeta('twitter:title').should('not.exist')
+    cy.getMeta('twitter:image').should('not.exist')
+    cy.getMeta('twitter:image:alt').should('not.exist')
+  })
+
+export function twitterCardDescriptionShouldNotExist() {
+  cy.getMeta('twitter:description').should('not.exist')
 }

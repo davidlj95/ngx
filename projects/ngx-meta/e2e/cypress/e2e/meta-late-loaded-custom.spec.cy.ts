@@ -1,10 +1,10 @@
+import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 import { ROUTES } from '../fixtures/routes'
 import {
+  shouldNotEmitUnwantedConsoleLogs,
   spyOnConsole,
-  testNoLibLogsAndNoWarnsOrErrors,
-} from '../support/test-no-lib-logs-and-no-warns-or-errors'
+} from '../support/console'
 import CUSTOM_METADATA_JSON from '../fixtures/custom-metadata.json'
-import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 
 describe('Meta late loaded + custom', () => {
   testWithSsrAndCsr(
@@ -14,7 +14,7 @@ describe('Meta late loaded + custom', () => {
     },
     {
       ssrAndCsr: () => {
-        testNoLibLogsAndNoWarnsOrErrors()
+        shouldNotEmitUnwantedConsoleLogs()
         it('should set late loaded + custom metadata', () => {
           cy.fixture('custom-metadata.json').then(
             (customMetadata: typeof CUSTOM_METADATA_JSON) => {
@@ -31,7 +31,7 @@ describe('Meta late loaded + custom', () => {
             cy.goToRootPage()
           })
 
-          testNoLibLogsAndNoWarnsOrErrors()
+          shouldNotEmitUnwantedConsoleLogs()
           it('should unset late loaded + custom metadata', () => {
             cy.fixture('custom-metadata.json').then(
               (metadata: typeof CUSTOM_METADATA_JSON) => {

@@ -44,7 +44,7 @@ To build them as their contents change
 #### Run
 
 > [!IMPORTANT]
-> Build the library first, example apps will install the library linking it to the distribution files directory. It's important the directory exists. There's no need to re-install / re-link the library when library distribution files change. Given it's a symlink apps will consume new version straight forward. You may need to clear Angular's cache though to get fresh changes (see notice below).
+> Build the library first, example apps will install the library linking it to the distribution files directory. It's important the directory exists. If you update library code, and doesn't show up, check the [live code update tip](#live-code-updates-within-example-apps) below
 
 To run the script and create an example app:
 
@@ -55,13 +55,6 @@ pnpm run create-example-app ANGULAR_CLI_ALIAS
 Created app will be located inside `apps` directory
 
 Script will help with arguments if not used properly. Remember to build the script first.
-
-> [!TIP]
-> If you change library's code and the app does not show changes, try clearing up the apps' build cache. Go to the app directory and run
->
-> ```sh
-> ng cache clean
-> ```
 
 ### Example apps
 
@@ -130,6 +123,16 @@ A run configuration exists to create an example app with latest version of Angul
 Use the CLI for rest of versions (don't want to maintain all those run configs)
 
 You will also find a run configuration to build the library and serve the latest Angular version example app
+
+### Live code updates within example apps
+
+To get live code updates in example apps while updating library code:
+
+- **Build with watch mode**. Run `pnpm watch` in repo root. This way each change you do to the library will be compiled into the distribution directory which example apps use to access the library.
+- **Install example app dependencies again**. This is needed everytime you fire a new build. Run `pnpm install` in the example app directory. This is because library is installed [via hard-links to avoid issues with symlinks](https://pnpm.io/cli/link#whats-the-difference-between-pnpm-link-and-using-the-file-protocol). That's also the reason it's interesting to run build with `watch` mode, so that you just do it once, `install` and all code updates will be reflected. Otherwise, for each build, you need to `install` deps of the example app again to create the hard-links again. That's because every build creates new files and changes `inode`s so hardlinks created for example apps still point to older files.
+- **Serve the app**
+
+There are WebStorm run configurations to perform this workflow for latest Angular major version example app
 
 ## Quirks
 

@@ -1,7 +1,9 @@
-import ALL_METADATA_JSON from '../fixtures/all-metadata.json'
+import ALL_METADATA_JSON from '../../fixtures/all-metadata.json'
 
-export const testSetsAllOpenGraphMetadata = (openGraphOverrides: object = {}) =>
-  it('should set all Open Graph metadata', () => {
+export const shouldContainAllOpenGraphMetadata = (
+  openGraphOverrides: object = {},
+) =>
+  it('should contain all Open Graph metadata', () => {
     cy.fixture('all-metadata.json').then(
       (jsonMetadata: typeof ALL_METADATA_JSON) => {
         const metadata = {
@@ -51,4 +53,24 @@ export const testSetsAllOpenGraphMetadata = (openGraphOverrides: object = {}) =>
 
 export function openGraphTitleShouldEqual(title: string) {
   cy.getMetaWithProperty('og:title').shouldHaveContent().and('eq', title)
+}
+
+export const shouldNotContainAnyOpenGraphMetadata = () =>
+  it('should not contain any Open Graph metadata', () => {
+    cy.getMetaWithProperty('og:title').should('not.exist')
+    cy.getMetaWithProperty('og:type').should('not.exist')
+    cy.getMetaWithProperty('og:image').should('not.exist')
+    cy.getMetaWithProperty('og:image:alt').should('not.exist')
+    cy.getMetaWithProperty('og:image:secure_url').should('not.exist')
+    cy.getMetaWithProperty('og:image:type').should('not.exist')
+    cy.getMetaWithProperty('og:image:width').should('not.exist')
+    cy.getMetaWithProperty('og:image:height').should('not.exist')
+    cy.getMetaWithProperty('og:url').should('not.exist')
+    openGraphDescriptionShouldNotExist()
+    cy.getMetaWithProperty('og:locale').should('not.exist')
+    cy.getMetaWithProperty('og:site_name').should('not.exist')
+  })
+
+export function openGraphDescriptionShouldNotExist() {
+  cy.getMetaWithProperty('og:description').should('not.exist')
 }

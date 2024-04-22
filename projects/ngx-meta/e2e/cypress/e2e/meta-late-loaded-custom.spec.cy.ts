@@ -1,10 +1,10 @@
+import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 import { ROUTES } from '../fixtures/routes'
 import {
   spyOnConsole,
   testNoLibLogsAndNoWarnsOrErrors,
-} from '../support/test-no-lib-logs-and-no-warns-or-errors'
+} from '../support/console'
 import CUSTOM_METADATA_JSON from '../fixtures/custom-metadata.json'
-import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
 
 describe('Meta late loaded + custom', () => {
   testWithSsrAndCsr(

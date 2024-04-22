@@ -2,17 +2,21 @@ import { ROUTES } from '../fixtures/routes'
 import {
   spyOnConsole,
   testNoLibLogsAndNoWarnsOrErrors,
-} from '../support/test-no-lib-logs-and-no-warns-or-errors'
+} from '../support/console'
 import ONE_METADATA_JSON from '../fixtures/one-metadata.json'
-import { openGraphTitleShouldEqual } from '../support/test-sets-all-open-graph-metadata'
 import {
   standardDescriptionShouldEqual,
   standardTitleShouldEqual,
-} from '../support/test-sets-all-standard-metadata'
-import { twitterCardTitleShouldEqual } from '../support/test-sets-all-twitter-card-metadata'
-import { openGraphDescriptionShouldNotExist } from '../support/test-unsets-all-open-graph-metadata'
-import { twitterCardDescriptionShouldNotExist } from '../support/test-unsets-all-twitter-card-metadata'
+} from '../support/metadata/standard'
+import {
+  twitterCardDescriptionShouldNotExist,
+  twitterCardTitleShouldEqual,
+} from '../support/metadata/twitter-card'
 import { testWithSsrAndCsr } from '../support/test-with-ssr-and-csr'
+import {
+  openGraphDescriptionShouldNotExist,
+  openGraphTitleShouldEqual,
+} from '../support/metadata/open-graph'
 
 describe('One meta set by service', () => {
   testWithSsrAndCsr(

@@ -6,7 +6,7 @@
     "analyze": "./analyze.sh",
     "report": "./report.sh"
   },
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@9.0.6",
   "private": true,
   "devDependencies": {
     "source-map-explorer": "2.5.3"

@@ -7,7 +7,7 @@
     "watch": "tsc --watch",
     "create-example-app": "node dist/create-example-app.js"
   },
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@9.0.6",
   "private": true,
   "type": "module",
   "devDependencies": {

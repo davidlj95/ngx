@@ -46,7 +46,7 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
       - name: Download example app distribution files
-        uses: actions/download-artifact@8caf195ad4b1dee92908e23f56eeb0696f1dd42d # v4
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4
         with:
           name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
           path: ${{ env.EXAMPLE_APP_DIR }}
@@ -114,7 +114,7 @@ jobs:
         app_name: [v15, v16, v17]
     steps:
       - name: Download main bundle analysis results
-        uses: actions/download-artifact@8caf195ad4b1dee92908e23f56eeb0696f1dd42d # v4
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4
         with:
           name: ${{ inputs.bundle-size-artifact-name-prefix }}${{ matrix.app_name }}
       - name: Create check run

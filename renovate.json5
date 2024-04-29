@@ -76,27 +76,27 @@
     // https://angular.io/guide/versions
     // https://update.angular.io/?v=16.0-17.0 (zone.js)
     {
-      matchPackagePrefixes: ['@angular'],
+      matchDepPrefixes: ['@angular'],
       matchFileNames: ['package.json'],
       allowedVersions: '^17',
     },
     {
-      matchPackageNames: ['node', '@types/node'],
+      matchDepNames: ['node', '@types/node'],
       matchFileNames: ['package.json'],
       allowedVersions: '^18.13.0 || ^20.9.0',
     },
     {
-      matchPackageNames: ['typescript'],
+      matchDepNames: ['typescript'],
       matchFileNames: ['package.json'],
       allowedVersions: '>=5.2.0 <5.5.0',
     },
     {
-      matchPackageNames: ['rxjs'],
+      matchDepNames: ['rxjs'],
       matchFileNames: ['package.json'],
       allowedVersions: '^6.5.3 || ^7.4.0',
     },
     {
-      matchPackageNames: ['zone.js'],
+      matchDepNames: ['zone.js'],
       matchFileNames: ['package.json'],
       allowedVersions: '0.14.x',
     },
@@ -105,28 +105,28 @@
       matchFileNames: [
         'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
-      matchPackageNames: 'v15',
+      matchDepNames: 'v15',
       allowedVersions: '^15',
     },
     {
       matchFileNames: [
         'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
-      matchPackageNames: 'v16',
+      matchDepNames: 'v16',
       allowedVersions: '^16',
     },
     {
       matchFileNames: [
         'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
-      matchPackageNames: 'v17',
+      matchDepNames: 'v17',
       allowedVersions: '^17',
     },
     // API Documenter to use Markdown tables
     // Watching issue to see if we can upgrade when fixed
     // https://github.com/microsoft/rushstack/issues/4586
     {
-      matchPackageNames: ['@microsoft/api-documenter'],
+      matchDepNames: ['@microsoft/api-documenter'],
       allowedVersions: '7.23.38',
     },
   ],

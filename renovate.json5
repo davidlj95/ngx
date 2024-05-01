@@ -62,14 +62,7 @@
     },
     // Auto-merge minor/patch production ones, dev dependencies, E2E deps
     {
-      matchFileNames: [
-        'projects/ngx-meta/bundle-size/**/*',
-        'projects/ngx-meta/docs/**/*',
-        'projects/ngx-meta/e2e/**/*',
-        'projects/ngx-meta/example-apps/**/*',
-      ],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      matchDepTypes: ['devDependencies'],
       automerge: true,
     },
     // Angular v17.3.x compatibilities

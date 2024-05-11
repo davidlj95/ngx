@@ -12,7 +12,7 @@ mkdocs-autolinks-plugin = "0.7.1"
 
 [tool.poetry.group.dev.dependencies]
 mkdocs-material = {extras = ["imaging"], version = "9.5.21"}
-mkdocs-git-revision-date-localized-plugin = "1.2.4"
+mkdocs-git-revision-date-localized-plugin = "1.2.5"
 
 [build-system]
 requires = ["poetry-core"]

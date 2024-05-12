@@ -3,8 +3,8 @@ import { supportsNgNewWithSsr } from './supports-ng-new-with-ssr.js'
 import { Log } from './utils.js'
 import { writeFile } from 'fs/promises'
 import { join } from 'path'
-import { execa } from 'execa'
 import { NPMRC_FILENAME } from './constants.js'
+import { execa } from './execa.js'
 
 export async function setupSsr(opts: {
   cliBinary: string
@@ -27,29 +27,17 @@ export async function setupSsr(opts: {
   // Current docs SSR guide do this with `ng add @angular/ssr`, which starts at v17
   // https://v16.angular.io/guide/universal
   Log.step('Setting up SSR using @nguniversal')
-  const ngAddNgUniversalCommand = execa(
+  await execa(
     opts.cliBinary,
     ['add', '--skip-confirmation', '@nguniversal/express-engine'],
     {
       cwd: opts.appDir,
-      all: true,
-      env: { FORCE_COLOR: true.toString() },
     },
   )
-  Log.stream(ngAddNgUniversalCommand.all)
-  await ngAddNgUniversalCommand
   // Seems there's no way to avoid installing deps
   // https://github.com/angular/angular-cli/blob/16.2.14/packages/angular/cli/src/commands/add/cli.ts#L304
   Log.step('Removing node modules and %s', NPMRC_FILENAME)
-  const rmNodeModulesAndLockfileCommand = execa(
-    'rm',
-    ['-rf', 'node_modules', NPMRC_FILENAME],
-    {
-      cwd: opts.appDir,
-      all: true,
-      env: { FORCE_COLOR: true.toString() },
-    },
-  )
-  Log.stream(rmNodeModulesAndLockfileCommand.all)
-  await rmNodeModulesAndLockfileCommand
+  await execa('rm', ['-rf', 'node_modules', NPMRC_FILENAME], {
+    cwd: opts.appDir,
+  })
 }

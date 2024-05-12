@@ -1,8 +1,8 @@
 import { SemVer } from 'semver'
 import { Log } from './utils.js'
-import { execa } from 'execa'
 import { join } from 'path'
 import { supportsNgNewWithSsr } from './supports-ng-new-with-ssr.js'
+import { execa } from './execa.js'
 
 export async function createAngularApp(opts: {
   name: string
@@ -27,7 +27,7 @@ export async function createAngularApp(opts: {
     '--style=css',
   ]
   const ANGULAR_CLI_NEW_SSR_ARG = '--ssr'
-  const ngNewCommand = execa(
+  await execa(
     'pnpm',
     [
       'ng',
@@ -37,10 +37,8 @@ export async function createAngularApp(opts: {
       ...(opts.extraArgs ?? []),
       ...(ngNewSupportsSsr ? [ANGULAR_CLI_NEW_SSR_ARG] : []),
     ],
-    { cwd: opts.dir, all: true, env: { FORCE_COLOR: true.toString() } },
+    { cwd: opts.dir },
   )
-  Log.stream(ngNewCommand.all)
-  await ngNewCommand
   Log.ok('Angular app created')
   return join(opts.dir, opts.name)
 }

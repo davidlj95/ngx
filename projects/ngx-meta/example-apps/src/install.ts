@@ -1,5 +1,5 @@
 import { Log } from './utils.js'
-import { execa } from 'execa'
+import { execa } from './execa.js'
 
 export async function install({
   projectDir,
@@ -9,11 +9,7 @@ export async function install({
   what: string
 }) {
   Log.step(`Installing ${what}`)
-  const installCommand = execa('pnpm', ['install'], {
+  return execa('pnpm', ['install'], {
     cwd: projectDir,
-    all: true,
-    env: { FORCE_COLOR: true.toString() },
   })
-  Log.stream(installCommand.all)
-  await installCommand
 }

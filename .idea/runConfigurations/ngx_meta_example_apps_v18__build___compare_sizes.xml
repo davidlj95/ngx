@@ -1,23 +1,23 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/example-apps/v17: build &amp; compare sizes" type="js.build_tools.npm">
+  <configuration default="false" name="ngx-meta/example-apps/v18: build &amp; compare sizes" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/projects/ngx-meta/bundle-size/package.json" />
     <command value="run" />
     <scripts>
       <script value="report" />
     </scripts>
-    <arguments value="v17 --base-file source-map-explorer-base.json" />
+    <arguments value="v18 --base-file source-map-explorer-base.json" />
     <node-interpreter value="project" />
     <envs />
     <method v="2">
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build (all)" run_configuration_type="js.build_tools.npm" />
       <option name="NpmBeforeRunTask" enabled="true">
-        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v17/package.json" />
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v18/package.json" />
         <command value="install" />
         <node-interpreter value="project" />
         <envs />
       </option>
       <option name="NpmBeforeRunTask" enabled="true">
-        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v17/package.json" />
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v18/package.json" />
         <command value="run" />
         <scripts>
           <script value="ng" />
@@ -27,7 +27,7 @@
         <envs />
       </option>
       <option name="NpmBeforeRunTask" enabled="true">
-        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v17/package.json" />
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v18/package.json" />
         <command value="run" />
         <scripts>
           <script value="build" />
@@ -42,7 +42,7 @@
         <scripts>
           <script value="analyze" />
         </scripts>
-        <arguments value="v17 --json" />
+        <arguments value="v18 --json" />
         <node-interpreter value="project" />
         <envs />
       </option>

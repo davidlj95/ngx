@@ -26,6 +26,13 @@ export class ExampleApp {
 
 export const EXAMPLE_APPS = [
   new ExampleApp({
+    cliVersion: new AngularCliVersion('v18'),
+    cliNewArguments: [
+      '--standalone=true', // Default since v17, but to be explicit
+    ],
+    standalone: true,
+  }),
+  new ExampleApp({
     cliVersion: new AngularCliVersion('v17'),
     cliNewArguments: [
       '--standalone=true', // Default in v17, but to be explicit

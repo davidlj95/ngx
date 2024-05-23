@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        app_name: [v15, v16, v17]
+        app_name: [v15, v16, v17, v18]
     env:
       EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.app_name }}
     defaults:

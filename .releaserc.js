@@ -6,7 +6,7 @@ module.exports = {
     //👇 Fake branch so that we can release beta versions in `main`
     //   until we can release 1.0.0
     'semantic-release',
-    { name: 'main', prerelease: 'beta' },
+    { name: 'main', prerelease: 'beta', channel: 'latest' },
   ],
   plugins: [
     '@semantic-release/commit-analyzer',

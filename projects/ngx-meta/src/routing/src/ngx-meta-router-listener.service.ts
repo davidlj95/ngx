@@ -16,8 +16,9 @@ export const NAVIGATION_END_EVENT_TYPE = new NavigationEnd(0, '', '').type
 
 @Injectable({ providedIn: 'root' })
 export class NgxMetaRouterListenerService implements OnDestroy {
-  // Replace by `takeUntilDestroyed` when stable
-  // https://angular.io/api/core/rxjs-interop/takeUntilDestroyed
+  // Replace by `takeUntilDestroyed` when stable & oldest Angular supported version is v16 where it was introduced
+  // https://angular.dev/api/core/rxjs-interop/takeUntilDestroyed
+  // https://github.com/angular/angular/commit/e8831984601da631afc29f9fd72d36f57696f936
   private sub?: Subscription
 
   constructor(

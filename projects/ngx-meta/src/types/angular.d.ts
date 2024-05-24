@@ -6,7 +6,7 @@ declare global {
   /**
    * Used to know if we're in dev mode, in the same fashion Angular does
    *
-   * Public API `isDevMode` (https://angular.io/api/core/isDevMode) is more
+   * Public API `isDevMode` (https://angular.dev/api/core/isDevMode) is more
    * stable. However, given it's a function call, code under `if(isDevMode())`
    * can not tree-shaken. So to allow tree-shaking, using a `const` in the
    * same fashion Angular does for their packages. Simplifying the type to be

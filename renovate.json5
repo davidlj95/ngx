@@ -55,8 +55,8 @@
       automerge: true,
     },
     // Angular v17.3.x compatibilities
-    // https://angular.io/guide/versions
-    // https://update.angular.io/?v=16.0-17.0 (zone.js)
+    // https://angular.dev/reference/versions
+    // https://angular.dev/update-guide?v=16.0-17.0&l=1
     {
       matchDepPrefixes: ['@angular'],
       matchFileNames: ['package.json'],

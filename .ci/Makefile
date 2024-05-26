@@ -29,7 +29,7 @@ format-check:
 	cd .. && pnpm run format-check-all
 
 release:
-	cd .. && pnpm run semantic-release
+	cd .. && pnpm semantic-release
 
 api-extractor:
 	cd .. && pnpm run ngx-meta:api-extractor

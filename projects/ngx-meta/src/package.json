@@ -47,8 +47,7 @@
   "scripts": {},
   "publishConfig": {
     "access": "public",
-    "provenance": true,
-    "tag": "latest"
+    "provenance": true
   },
   "sideEffects": false
 }

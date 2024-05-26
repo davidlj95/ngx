@@ -114,7 +114,7 @@ Every exported member must be documented using [TSDoc](https://tsdoc.org/). Spec
 
 At least, it must provide the visibility of the exported member. Mainly either [`@alpha`](https://api-extractor.com/pages/tsdoc/tag_alpha/), [`@beta`](https://api-extractor.com/pages/tsdoc/tag_beta/), [`@internal`](https://api-extractor.com/pages/tsdoc/tag_internal/) or [`@public`](https://api-extractor.com/pages/tsdoc/tag_public/)
 
-Checkout [API Report](#api-report) section for more information
+Check out [API Report](#api-report) section for more information
 
 #### Testing
 
@@ -133,6 +133,17 @@ If adding a whole metadata module, add it to the built-in modules section too.
 To easily reproduce locally CI/CD jobs, most commands run by CI/CD are stored in [`.ci/Makefile` file](.ci/Makefile).
 
 For instance, you can run `make build` (or just `make` in this case) to ensure the command used to build is the same one the CI/CD job will use.
+
+#### Release and versioning
+
+Every release is identified by a version number that follows [Semantic Versioning 2.0 specification](https://semver.org/)
+
+In order to automatically detect if a new release is needed and what kind of version number bump is needed (major, minor or patch), commit messages since last release are analyzed.
+That's why [commit messages follow a convention](#commit-messages). So that they can be analyzed later to automate the version bump and release process.
+
+Every push to main branch analyzes all commits since latest release. Based on commit messages there's enough information to decide if a new release is needed. If a new version is needed the release process associates the commit with a tag, creates a release in GitHub with notes generated from commit messages and publishes a new package version to NPM.
+
+See [release task](#release) for more information about how to operate releases.
 
 ### Tasks
 
@@ -245,7 +256,231 @@ To generate API Reference docs, which will end up in the [documentation](#docume
 
 #### Docs
 
-Checkout [`ngx-meta` docs `README.md` to operate docs project](projects/ngx-meta/docs/README.md)
+Check out [`ngx-meta` docs `README.md` to operate docs project](projects/ngx-meta/docs/README.md)
+
+#### Release
+
+[Semantic Release] is used to create releases by analyzing [commit messages' semantic information](#commit-messages). Here you'll find how to simulate a release.
+
+##### Dry run: working on a branch
+
+Semantic Release [behaves differently depending on the checked out branch](https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration#workflow-configuration).
+
+If you're working on a branch and want to force a release, you can temporarily
+add your branch to the release configuration.
+
+For instance, add the following to the `branches` configuration in the `.releaserc.js` file to simulate a beta release as if the branch was in the main branch
+
+```json
+{
+  "name": "current-branch-where-work-is-being-done",
+  "prerelease": "beta",
+  "channel": false
+}
+```
+
+###### Beware of the `channel` option
+
+Default is `undefined` for first release branch, but branch name for the rest. So in order to properly simulate the release process, you'll have to manually configure that. [`false` can be used to indicate default distribution channel](https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration#branches-properties).
+
+###### Branch needs to be pushed
+
+Otherwise, it [does not exist for semantic release](https://github.com/semantic-release/semantic-release/blob/v23.1.1/lib/branches/expand.js#L11). Same for commits on that branch. If not pushed, it's like they don't exist.
+
+##### Dry run: minimal
+
+To have a minimal idea of what would happen when running the release process, you can run [Semantic Release] in [dry run mode](https://semantic-release.gitbook.io/semantic-release/usage/configuration#dryrun). This includes: authentication checks, commit analysis to see if a new release is needed and the release notes for it in case it's needed.
+
+> [!WARNING]
+> Push permissions to the repository are needed to pass the `git` auth check.
+> That's a [hardcoded check](https://github.com/semantic-release/semantic-release/blob/v23.1.1/index.js#L86-L102). So there's unfortunately no way to bypass this
+> If you don't have permissions, check out the [next dry run approach](#dry-run-publish)
+
+> [!TIP]
+> 👇 Env vars are needed for plugins which check authentication (GitHub & NPM).
+> You can also comment them out in the configuration file if you're not interested in how they behave. If interested in them and worrying about security, don't: read-only tokens are okay.
+
+First, some env vars need to be defined. Check out [sample release env file] to see which ones with current configuration.
+
+[sample release env file]: .env.release.sample
+
+> [!TIP]
+> You can copy the sample file into a `.env` file and set the credentials there. The file is ignored in git, won't be commited by accident.
+> Then, use a tool like [ohmyzsh's `dotenv` plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dotenv) or
+> [use `direnv`](https://github.com/direnv/direnv) to automatically load the env vars into your shell.
+
+> [!TIP]
+> To simulate a release, you can (and indeed should) use read-only tokens.
+> Check out the [sample release env file] for more details
+
+With env vars set, run
+
+```shell
+# 👇 --dry-run is the default mode when not on CI, but just to be explicit & moar sure
+pnpm semantic-release --dry-run
+```
+
+This is useful to know the version bumped and release notes generated, but prepare and publish NPM steps are skipped. Keep reading to know how to dry run them.
+
+##### "Dry run": publish
+
+What if you want to simulate what would be published to the NPM registry? Or how the generated release notes would look in GitHub? Or how the generated CHANGELOG.md would look like? Keep reading to see how to safely test that.
+
+However, bear in mind that it won't be a dry run (hence the quotes). Semantic Release will be called as if actually performing a release, but with a different registry and repository. There's [no way of dry running a release with semantic release that includes prepare, publish, success or failure steps](https://github.com/semantic-release/semantic-release/blob/v23.1.1/lib/definitions/plugins.js#L72).
+
+###### Private, local registry
+
+A private registry can be used to simulate packaging and publishing steps. [Verdaccio] is a popular choice at this time.
+
+Install [Verdaccio] and run it:
+
+```shell
+pnpm i -g verdaccio # you may be instructed to run a setup step
+verdaccio
+```
+
+Now let's configure this project to use [Verdaccio]. [Semantic Release's NPM plugin] will also [read that configuration in order to publish there and not to the official NPM registry](https://github.com/semantic-release/npm?tab=readme-ov-file#npm-configuration).
+
+```shell
+npm config set registry http://localhost:4873/ --location project
+```
+
+> [!NOTE]
+> The `--location project` flag is added so just NPM configuration for this project is changed. Instead of the [default behaviour which changes the user's configuration](https://docs.npmjs.com/cli/v10/commands/npm-config#set). A `.npmrc` file will be created in the repo if it doesn't exist. Don't worry, it's git ignored. It won't end up in version control.
+
+Time for authentication! Create a user in the fresh [Verdaccio] private registry.
+
+> [!NOTE]
+> Skip this step if you already have a user for the private registry.
+> Ensure you're logged in instead by running `npm login`
+
+```shell
+npm adduser ngx-meta
+# 👆 Registry should be Verdaccio's localhost URL
+#    Any username, password email can be set in there.
+```
+
+> [!NOTE]
+> Skip this step if you already have a token for the user.
+
+> [!TIP]
+> If you forgot the token for the user, you can use `npm token ls` to list existing tokens.
+> However the full token won't be listed there. Copy the id. Then remove it by running `npm token revoke <tokenId>`. Create a new one now :)
+
+Now, we need a token. Let's create one:
+
+```shell
+npm token create
+```
+
+Take note of it. This token will be used by [Semantic Release] to authenticate against the registry as seen in the [minimal dry run](#dry-run-minimal)
+
+###### Different repository
+
+Unfortunately [Semantic Release] [hardcodes pushing to the git repository](https://github.com/semantic-release/semantic-release/blob/v23.1.1/index.js#L207-L212). So there's no way to dry-run that part :(
+
+Then what it can be done is to use another git repository for this purpose. Options:
+
+**🔒 SAFEST (but a bit cumbersome): Create a fork/copy of the repository**
+
+To copy all existing tags needed to simulate a release at the current state. Or [copy it if you can't fork it as you own it](https://stackoverflow.com/a/10966784/3263250).
+
+Then, when using [Semantic Release], set the repository URL to this new repository:
+
+```shell
+pnpm semantic-release --repository-url https://github.com/user/ngx.git
+```
+
+**⚡️ TRICKY (but fastest): Use a noop git remote**
+
+> [!CAUTION] > **It's tricky and dangerous**. If not setup properly, or Semantic Release implementation changes, this could end up actually performing actions on the actual repository. Also, you'll need to later clear the objects created by semantic release which will be in your local git repository. Unless you know what you're doing and are very careful, **skip this approach**.
+
+A trick that can be done is to [create a dummy remote that does nothing](https://stackoverflow.com/a/30543552/3263250) by setting `.` as the repository URL.
+
+This way Semantic Release will push everything to this no-op repository URL / remote URL.
+
+```shell
+pnpm semantic-release --repository-url .
+```
+
+> [!CAUTION]
+> Disable the GitHub plugin in the configuration if using this approach.
+> Otherwise release notes & comments will be created as usual. That's another reason not to use this approach.
+
+> [!IMPORTANT]
+> Semantic Release's release notes generator plugin needs to be disabled if using this approach. As otherwise [it fails when trying to read parts from `.` which is not a URL](https://github.com/semantic-release/release-notes-generator/blob/v13.0.0/index.js#L37-L39)
+
+> [!NOTE]
+> You could use `.` as the URL for the `origin` git remote. [Semantic Release would grab that and use it for the repository URL](https://github.com/semantic-release/semantic-release/blob/v23.1.1/lib/get-config.js#L73) if not set anywhere else. But it would end up [trying to be converted to a URL](https://github.com/semantic-release/semantic-release/blob/v23.1.1/lib/get-git-auth-url.js#L79) anyway. Plus the repository URL may be grabbed from somewhere else therefore using the real repository to operate, which would end up making real changes in there. Also the remote to change would have to be `origin`, which is [hardcoded in the implementation](https://github.com/semantic-release/semantic-release/blob/v23.1.1/lib/git.js#L174). Finally, [`pushURL` is not respected by semantic release](https://github.com/semantic-release/semantic-release/blob/v23.1.1/lib/git.js#L234-L236) so the `origin` URL has to be changed.
+
+_Cleanup_
+
+After running semantic release with this approach, you'll end up with the git objects that semantic release created in your local repository. You'll need to clean them up to avoid weird scenarios in the future (like fetching a tag that already exists as was created during a "dry-run")
+
+This means [currently](https://github.com/semantic-release/semantic-release/blob/v23.1.1/index.js#L207-L212):
+
+```shell
+git tag -d <createdTag> # you can use `git tag -l` to list them
+git notes prune -v # to clear notes about non-existing tags
+# 👆 Seems tag deletion already deletes the note though
+```
+
+If using Semantic Release's git plugin (or another that writes to git), you'll need to remove the created commit by it too.
+
+###### Running the release
+
+With the private registry setup and the new repository created, you can run the release.
+
+Bear in mind to [mangle the configuration if working on a branch](#dry-run-working-on-a-branch). Set up the needed env vars [as seen in minimal dry run](#dry-run-minimal). With following differences:
+
+- **GitHub**: if just interested in NPM publish or using the tricky approach for the repository to use, you can skip that part by commenting out the plugin in the configuration. Otherwise, provide a token that can write to the repository created for running the release simulation.
+- **NPM**: provide the auth token instead obtained in the [private local registry step](#private-local-registry)
+
+Let's check out everything is ready:
+
+```shell
+npm config get registry
+# 👆 Output should be local private registry URL, not NPMjs one
+echo $NPM_TOKEN
+# 👆 Output doesn't start with `npm_`
+#    Should return NPM auth token created for local registry
+cat .releaserc.js
+# 👆 GitHub plugin commented if:
+#     - Env var not configured
+#     - Read-only access token provided
+#     - Using local repository trick
+#    Release notes plugin generator commented if using local repository trick
+#    Branch configuration altered if working on a branch
+```
+
+> ![IMPORTANT]
+> Just [one more thing](https://www.youtube.com/watch?v=hvlHi7iTdaw&t=6s) 😜
+> [Verdaccio doesn't support `provenance`](https://github.com/orgs/verdaccio/discussions/3903)
+> So disable `publishConfig.provenance` in the built `package.json`. Otherwise, Verdaccio won't accept the package submission.
+
+Finally, run the release rehearsal
+
+```shell
+pnpm semantic-release \
+  --repository-url <anotherRepository> \
+  --no-ci
+```
+
+> [!NOTE]
+> If using the local repository trick [as a different repository](#different-repository), remember to do the clean-up!
+
+> [!NOTE]
+> To try again releasing the same release, you can [unpublish it from Verdaccio](https://github.com/verdaccio/verdaccio/issues/365#issuecomment-337901629):
+>
+> ```shell
+> npm unpublish --force <pkg>@<version> --registry http://localhost:4873
+> ```
+>
+> Be careful of specifying the registry. You don't want the package to be actually removed from NPM registry!
+
+[Semantic Release]: https://github.com/semantic-release/semantic-release
+[Semantic Release's NPM plugin]: https://github.com/semantic-release/npm
+[Verdaccio]: https://verdaccio.org/
 
 ### Tools
 

@@ -1,7 +1,11 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   // 👇 Defined in https://github.com/renovatebot/renovate/blob/37.71.1/lib/config/presets/internal/config.ts
-  extends: ['config:best-practices', 'config:js-app'],
+  extends: [
+    'config:best-practices',
+    'config:js-app',
+    'github>davidlj95/renovate-config:angular/v18.0.x',
+  ],
   prHourlyLimit: 0,
   prConcurrentLimit: 5,
   schedule: [
@@ -54,54 +58,32 @@
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       automerge: true,
     },
-    // Angular v17.3.x compatibilities
-    // https://angular.dev/reference/versions
-    // https://angular.dev/update-guide?v=16.0-17.0&l=1
+    // Angular v18
     {
       matchDepPrefixes: ['@angular'],
       matchFileNames: ['package.json'],
-      allowedVersions: '^17',
-    },
-    {
-      matchDepNames: ['node', '@types/node'],
-      matchFileNames: ['package.json'],
-      allowedVersions: '^18.13.0 || ^20.9.0',
-    },
-    {
-      matchDepNames: ['typescript'],
-      matchFileNames: ['package.json'],
-      allowedVersions: '>=5.2.0 <5.5.0',
-    },
-    {
-      matchDepNames: ['rxjs'],
-      matchFileNames: ['package.json'],
-      allowedVersions: '^6.5.3 || ^7.4.0',
-    },
-    {
-      matchDepNames: ['zone.js'],
-      matchFileNames: ['package.json'],
-      allowedVersions: '0.14.x',
+      allowedVersions: '^18',
     },
     // Example apps major versions
     {
       matchFileNames: [
         'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
-      matchDepNames: 'v15',
+      matchDepNames: ['v15'],
       allowedVersions: '^15',
     },
     {
       matchFileNames: [
         'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
-      matchDepNames: 'v16',
+      matchDepNames: ['v16'],
       allowedVersions: '^16',
     },
     {
       matchFileNames: [
         'projects/ngx-meta/example-apps/src/angular-cli-versions.json',
       ],
-      matchDepNames: 'v17',
+      matchDepNames: ['v17'],
       allowedVersions: '^17',
     },
     // API Documenter to use Markdown tables

@@ -64,4 +64,5 @@ Library tries to use Angular & software engineering best practices. Like using A
 [Renovate]: https://renovatebot.com
 
 [^1]: After [taking some time optimizing bundle size](https://github.com/davidlj95/ngx/issues/112#issuecomment-1901325536)
+
 [^2]: Well, actually, just one: `tslib`. But it's because [Angular Package Format recommends it](https://angular.dev/tools/libraries/angular-package-format#tslib)

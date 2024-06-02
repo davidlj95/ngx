@@ -93,11 +93,5 @@
       matchDepNames: ['@microsoft/api-documenter'],
       allowedVersions: '7.23.38',
     },
-    // Semantic Release compatibility
-    // https://github.com/semantic-release/release-notes-generator/issues/633
-    {
-      matchDepNames: ['conventional-changelog-conventionalcommits'],
-      allowedVersions: '7.x',
-    },
   ],
 }

@@ -204,13 +204,23 @@ Some libraries were excluded from analysis for following reasons
 : Not in scope. Only supports AngularJS
 
 [^1]: Keywords used to find libraries: `angular meta`, `angular meta tags`, `ngx meta`. Tried sorting by different criteria: relevance / popularity / maintenance. Excluded libraries for AngularJS
+
 [^2]: [Doesn't appear in docs](https://ngaox-lab.web.app/docs/seo). However, you can set [extra Angular `MetaDefinition`s](https://github.com/ngaox/ngaox/blob/v5.0.0/packages/seo/src/lib/shared/models.ts#L21), but they won't be cleared when changing route. Unless you manually do so.
+
 [^3]: You can set a metadata value that will be used for several purposes. Like a title for `#!html <title>` and Open Graph's `#!html <meta property="og:title">`
+
 [^4]: You can specify a specific metadata value that will be used for only one purpose, whilst the shared metadata value is used for the rest. Like a specific value for `#!html <title>` and another for Open Graph's `#!html <meta property="og:title">`
+
 [^5]: In HTML spec. Mainly `#!html <title>` and some `#!html <meta>`s like `description`, `author`, `keywords`
+
 [^6]: All [Angular actively supported versions]
+
 [^7]: You can't manage it yourself. [Library sets it if URL starts with `https`](https://github.com/ngaox/ngaox/blob/v5.0.0/packages/seo/src/lib/seo.service.ts#L98)
+
 [^8]: Requires declaring a guard (`MetaGuard`) in every route with metadata.
+
 [^9]: You can set custom `#!html <meta>` tags programmatically using service. But [only in the shape of `#!html <meta name='{key}' content='{value}'>`](https://github.com/fulls1z3/ngx-meta/blob/v9.0.0/packages/%40ngx-meta/core/src/meta.service.ts#L192). You then have to manually clear it when changing route. Not available via the route's data.
+
 [^10]: Could be achieved if setting them as custom `#!html <meta>`s
+
 [^11]: You can set [extra Angular `MetaDefinition`s](https://github.com/avivharuzi/ngx-seo/blob/16.0.0/packages/ngx-seo/src/lib/ngx-seo.ts#L13), but they won't be cleared when changing route. Unless you manually do so.

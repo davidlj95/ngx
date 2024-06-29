@@ -1,3 +1,83 @@
+## [`ngx-meta` v1.0.0-beta.5](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.4...ngx-meta-v1.0.0-beta.5) (2024-06-29)
+
+### Documentation
+
+- add semantic release simulation docs ([#608](https://github.com/davidlj95/ngx/issues/608)) ([1f162bc](https://github.com/davidlj95/ngx/commit/1f162bce4efdc34edbb3a410ef80464147a587ec))
+
+### Style
+
+- apply prettier 3.3.0 format ([6c0ee72](https://github.com/davidlj95/ngx/commit/6c0ee72d848ed836f9a670cec713251ebbcbf1e3))
+- apply prettier 3.3.1 styling ([5050a86](https://github.com/davidlj95/ngx/commit/5050a868340f51482ef59cc6a390cef2c17ff70b))
+
+### Miscellaneous Chores
+
+- **release:** maintenance release ([931d874](https://github.com/davidlj95/ngx/commit/931d874c299b280c4d0bb34fcc2291b166f2a279))
+- **release:** update CHANGELOG.md ([#605](https://github.com/davidlj95/ngx/issues/605)) ([b0733a1](https://github.com/davidlj95/ngx/commit/b0733a1e8d9da24892975be8c37eac06b177f470))
+- update links angular.io -> angular.dev ([#606](https://github.com/davidlj95/ngx/issues/606)) ([8d2e519](https://github.com/davidlj95/ngx/commit/8d2e5198d5b3084fe24bbc656746414e20564734))
+
+### Build System
+
+- configure Renovate for v18 with shared preset ([#626](https://github.com/davidlj95/ngx/issues/626)) ([aac1bab](https://github.com/davidlj95/ngx/commit/aac1bab2f699eb2fa20562077897ecc5c9ed2ba6))
+- **deps-dev:** bump urllib3 in /projects/ngx-meta/docs ([#654](https://github.com/davidlj95/ngx/issues/654)) ([7e3fa49](https://github.com/davidlj95/ngx/commit/7e3fa49dbbb80c260464f6015cce00d5e9db0203))
+- **deps:** update actions/checkout digest to 692973e ([2ed6c55](https://github.com/davidlj95/ngx/commit/2ed6c55ca50e144da22e7287b757b4e0feca702c))
+- **deps:** update actions/checkout digest to a5ac7e5 ([f7d55eb](https://github.com/davidlj95/ngx/commit/f7d55ebd9f5225b95b86478dcf0ef337255b347c))
+- **deps:** update Angular (& linter) to v17.(3.10|5.2) ([#619](https://github.com/davidlj95/ngx/issues/619)) ([5efedf2](https://github.com/davidlj95/ngx/commit/5efedf26ea3e8376658b9d9a13aea3b94a31fe7e))
+- **deps:** update Angular to v18.0.3 ([#648](https://github.com/davidlj95/ngx/issues/648)) ([beb33ac](https://github.com/davidlj95/ngx/commit/beb33ac8d1a0876fcc53e5399f6f5728c2d82735))
+- **deps:** update cypress-io/github-action action to v6.7.0 ([b01646d](https://github.com/davidlj95/ngx/commit/b01646d2bb9d6f745a30779755ff1413334f27ea))
+- **deps:** update cypress-io/github-action action to v6.7.1 ([4dcd633](https://github.com/davidlj95/ngx/commit/4dcd6338a49386dd34caa71266b7d6e1eb985822))
+- **deps:** update dependency mkdocs-git-revision-date-localized-plugin to v1.2.6 ([571cdea](https://github.com/davidlj95/ngx/commit/571cdea1feff2bae73090067d9cf72b73e829b2d))
+- **deps:** update dependency mkdocs-material to v9.5.25 ([a08f867](https://github.com/davidlj95/ngx/commit/a08f867b9773bf3ccad44148803bcb64b856e2aa))
+- **deps:** update dependency mkdocs-material to v9.5.26 ([491aea1](https://github.com/davidlj95/ngx/commit/491aea1dc460e602c372808e31268719f654a188))
+- **deps:** update dependency mkdocs-material to v9.5.27 ([1b507c8](https://github.com/davidlj95/ngx/commit/1b507c855e871187ee130495aeebe52fec3a984c))
+- **deps:** update dependency node to v20.14.0 ([c0e5ba1](https://github.com/davidlj95/ngx/commit/c0e5ba120ef1d70c3f2a6dd0ffc81053de0ad624))
+- **deps:** update dependency node to v20.15.0 ([dcc569f](https://github.com/davidlj95/ngx/commit/dcc569fe765da1dca94cc177289c35184a1c42e4))
+- **deps:** update dependency tslib to v2.6.3 ([1ff3006](https://github.com/davidlj95/ngx/commit/1ff3006ea72e8e858fc3c4f79c60f0e341532d6a))
+- **deps:** update dependency zone.js to v0.14.6 ([1aa792d](https://github.com/davidlj95/ngx/commit/1aa792d81b622c46d1e3c6131ee3c05e0ec425b0))
+- **deps:** update peter-evans/create-pull-request digest to c5a7806 ([ebf67fb](https://github.com/davidlj95/ngx/commit/ebf67fb28c87987456d626750cd9a24daa2b5d23))
+- **deps:** update pnpm to v9.1.3 ([960b00b](https://github.com/davidlj95/ngx/commit/960b00bd639d3db90d70af92e3fcd26577fef3f7))
+- **deps:** update pnpm to v9.1.4 ([68e6f81](https://github.com/davidlj95/ngx/commit/68e6f8181a0ea5137d9e63af9e9012d1704e16df))
+- **deps:** update pnpm to v9.2.0 ([c581a58](https://github.com/davidlj95/ngx/commit/c581a589f9b58036ce4f708ca78e670009270f41))
+- **deps:** update pnpm to v9.3.0 ([5fac5ce](https://github.com/davidlj95/ngx/commit/5fac5ce7228a962ead9cdf4761fbdee99582b2f6))
+- **deps:** update pnpm to v9.4.0 ([bae3c88](https://github.com/davidlj95/ngx/commit/bae3c8848a040e9b21e6974365cf3139fd885212))
+- **deps:** update to Angular v18 ([#625](https://github.com/davidlj95/ngx/issues/625)) ([61fe18d](https://github.com/davidlj95/ngx/commit/61fe18ddb211aa65a778f791a4e746b16a845afb))
+- **deps:** update to Angular v18.0.6 ([#666](https://github.com/davidlj95/ngx/issues/666)) ([9f4bf14](https://github.com/davidlj95/ngx/commit/9f4bf14a11df3c4039c9240ea4f1c759532a2ded))
+- **dev-deps:** update angular-cli monorepo ([63dbfcb](https://github.com/davidlj95/ngx/commit/63dbfcb9a19e710f26c5455b0d1c437f1095bd5f))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.45.1 ([951ee0c](https://github.com/davidlj95/ngx/commit/951ee0c8be588d08e0b254c204006473068186bf))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.46.1 ([5b96a94](https://github.com/davidlj95/ngx/commit/5b96a9476773ed387f12e387ac7d4e5d6c7ba534))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.46.2 ([66f47ad](https://github.com/davidlj95/ngx/commit/66f47adf85ed4f2c3b23cc86bd3c99ec2473b72c))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.47.0 ([8be983b](https://github.com/davidlj95/ngx/commit/8be983ba0131c3064d47e16d8d2c2929751cd08d))
+- **dev-deps:** update dependency @types/node to v20.12.12 ([e719d53](https://github.com/davidlj95/ngx/commit/e719d5347dd2beaf8beb2d89cf6a1f1fbea60743))
+- **dev-deps:** update dependency @types/node to v20.12.13 ([83b0e75](https://github.com/davidlj95/ngx/commit/83b0e75e60e7571fda39b15729358f086a4d2966))
+- **dev-deps:** update dependency @types/node to v20.13.0 ([c2af52e](https://github.com/davidlj95/ngx/commit/c2af52e12d95891769770c2c298068d7b1e6770e))
+- **dev-deps:** update dependency @types/node to v20.14.1 ([83aa4b1](https://github.com/davidlj95/ngx/commit/83aa4b1dc2f9b24724fd24a75b81ac7154e694f6))
+- **dev-deps:** update dependency @types/node to v20.14.2 ([502be71](https://github.com/davidlj95/ngx/commit/502be71eae2000ad016ea39f8762e32b90848abe))
+- **dev-deps:** update dependency @types/node to v20.14.9 ([c7bba1c](https://github.com/davidlj95/ngx/commit/c7bba1c5fd1aa19c80622c3413fd6e7ada9fbe3b))
+- **dev-deps:** update dependency cypress to v13.10.0 ([230bcf0](https://github.com/davidlj95/ngx/commit/230bcf0090e51721205e28b24705adc2aa2dd9cb))
+- **dev-deps:** update dependency cypress to v13.11.0 ([a0d081e](https://github.com/davidlj95/ngx/commit/a0d081ef99be72249402ae433d3e670f4ebfb2cc))
+- **dev-deps:** update dependency cypress to v13.12.0 ([6fe7e1a](https://github.com/davidlj95/ngx/commit/6fe7e1afdee95c93dc11008f2b6ff9a781955757))
+- **dev-deps:** update dependency execa to v9.1.0 ([22b4144](https://github.com/davidlj95/ngx/commit/22b4144c8e2001afd5fbe12e8a5387c8437b8fe5))
+- **dev-deps:** update dependency execa to v9.2.0 ([945d3f4](https://github.com/davidlj95/ngx/commit/945d3f4f7e8c0498e2ddc2052c51e840468ec654))
+- **dev-deps:** update dependency execa to v9.3.0 ([00b2412](https://github.com/davidlj95/ngx/commit/00b2412d0d05dbe7bdb9f64d32242993ef6b281a))
+- **dev-deps:** update dependency lint-staged to v15.2.5 ([a4363af](https://github.com/davidlj95/ngx/commit/a4363affbc6b4b43bfb895e8e390cc6e0bc1245b))
+- **dev-deps:** update dependency lint-staged to v15.2.7 ([c601865](https://github.com/davidlj95/ngx/commit/c60186584a53a1e4be8b624e911609e665238605))
+- **dev-deps:** update dependency ng-mocks to v14.13.0 ([61f55e5](https://github.com/davidlj95/ngx/commit/61f55e5c5c96e5237b7bd2a86f67e739663f2686))
+- **dev-deps:** update dependency prettier to v3.3.0 ([d5eda43](https://github.com/davidlj95/ngx/commit/d5eda4355e24d4740d7ef6c860b374c1133e4ac2))
+- **dev-deps:** update dependency prettier to v3.3.1 ([33085c3](https://github.com/davidlj95/ngx/commit/33085c3057c86b4375ec79318f6cee90fb2e77c8))
+- **dev-deps:** update dependency prettier to v3.3.2 ([1e6886d](https://github.com/davidlj95/ngx/commit/1e6886d498144ca6019fa96d8b04fcd048da2e56))
+- **dev-deps:** update dependency semantic-release to v24 ([#636](https://github.com/davidlj95/ngx/issues/636)) ([07653ce](https://github.com/davidlj95/ngx/commit/07653cee23c5fff977fb18f012253a6085447962))
+- **dev-deps:** update dependency ts-morph to v23 ([#665](https://github.com/davidlj95/ngx/issues/665)) ([3c7d638](https://github.com/davidlj95/ngx/commit/3c7d638474ffb90ba2b3b3224e6b44b98ad34be9))
+- **dev-deps:** update dependency typescript to v5.5.2 ([36aa24b](https://github.com/davidlj95/ngx/commit/36aa24b775ec72c7a295cfab2d24e172e424b5a3))
+- **dev-deps:** update dependency v18 to v18.0.2 ([643162f](https://github.com/davidlj95/ngx/commit/643162f1e60eb17d7e81b88c0e64f76b44f0d806))
+- **dev-deps:** update typescript-eslint monorepo to v7.11.0 ([57ce18f](https://github.com/davidlj95/ngx/commit/57ce18f6c1139602b6f755c7d94d9a7a8eb15c15))
+- **dev-deps:** update typescript-eslint monorepo to v7.12.0 ([f3031e7](https://github.com/davidlj95/ngx/commit/f3031e771923131e4a484e45e4b0ad3407abe94a))
+- **dev-deps:** update typescript-eslint monorepo to v7.13.0 ([7940895](https://github.com/davidlj95/ngx/commit/79408955bb34c0b70a9959655f270811a452eadc))
+- **dev-deps:** update typescript-eslint monorepo to v7.14.1 ([67d0a54](https://github.com/davidlj95/ngx/commit/67d0a54ca82aa45eca7f4f816e399a607bf08ecc))
+- use default channel for prereleases ([#609](https://github.com/davidlj95/ngx/issues/609)) ([f64053c](https://github.com/davidlj95/ngx/commit/f64053ccb707b26b7481660ce63320f0dcb1ef63))
+
+### Continuous (Integration|Deployment)
+
+- **release:** no semantic-release run script ([5a5dab5](https://github.com/davidlj95/ngx/commit/5a5dab55b555d8726f757049b2390ab1eca17ff1))
+
 ## [`ngx-meta` v1.0.0-beta.4](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.3...ngx-meta-v1.0.0-beta.4) (2024-05-23)
 
 ### Features

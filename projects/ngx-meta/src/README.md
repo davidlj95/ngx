@@ -16,7 +16,7 @@
 [![Commits follow Conventional Commits convention](https://img.shields.io/badge/Commits_convention-Conventional_Commits-%23FE5196?logo=conventionalcommits&logoColor=white&link=https%3A%2F%2Fconventionalcommits.org)](https://conventionalcommits.org)
 [![Commit hooks with Husky](https://img.shields.io/badge/Commit_hooks_with-Husky%F0%9F%90%B6-1a1a1e?link=https%3A%2F%2Ftypicode.github.io%2Fhusky%2F)](https://typicode.github.io/husky/)
 [![Released with Semantic Release](https://img.shields.io/badge/Released_with-Semantic_Release-e10079?logo=semantic-release&link=https%3A%2F%2Fgithub.com%2Fsemantic-release%2Fsemantic-release)](https://github.com/semantic-release/semantic-release)
-[![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovatebot&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
+[![Dependencies updated with Renovate](https://img.shields.io/badge/Dependencies_updated_with-Renovate-1a1f6c?logo=renovate&link=https%3A%2F%2Frenovatebot.com)](https://renovatebot.com)
 [![Docs with Material for Mkdocs](https://img.shields.io/badge/Docs_with-Material_for_Mkdocs-526CFE?logo=materialformkdocs&logoColor=white&link=https%3A%2F%2Fsquidfunk.github.io%2Fmkdocs-material%2F)](https://squidfunk.github.io/mkdocs-material/)
 [![API Report/Docs with API Extractor](https://custom-icon-badges.demolab.com/badge/API_Report_&_Docs_with-API_Extractor-383938.svg?logo=api-extractor&link=https%3A%2F%2Fapi-extractor.com%2F)](https://api-extractor.com/)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/davidlj95/ngx/blob/main/CODE_OF_CONDUCT.md)

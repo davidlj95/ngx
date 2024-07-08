@@ -374,6 +374,8 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows
 .npmrc
+.idea/git_toolbox_blame.xml
 # Manual edits
 # - Comment `.idea` in Angular to include IDE configs
 # - Add `.npmrc` to set registry to simulate releases, but avoid committing that
+# - Add Git Toolbox plugin blame config

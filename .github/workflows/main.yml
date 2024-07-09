@@ -17,6 +17,8 @@ jobs:
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
+    secrets:
+      codecov-token: ${{ secrets.CODECOV_TOKEN }}
   lint:
     name: Lint
     uses: ./.github/workflows/reusable-lint.yml

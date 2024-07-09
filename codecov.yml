@@ -1,0 +1,14 @@
+coverage:
+  status:
+    patch:
+      default:
+        threshold: 5%
+    project:
+      default:
+        threshold: 5%
+comment:
+  layout: header, diff, files, footer
+  hide_project_coverage: false
+
+codecov:
+  require_ci_to_pass: false

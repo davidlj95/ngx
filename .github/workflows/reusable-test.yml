@@ -9,8 +9,8 @@ on:
         default: ''
 
 jobs:
-  test:
-    name: All tests
+  unit-test:
+    name: Unit tests
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -20,5 +20,5 @@ jobs:
           ref: ${{ inputs.ref }}
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Run tests
-        run: cd .ci && make test
+      - name: Run unit tests
+        run: cd .ci && make unit-test

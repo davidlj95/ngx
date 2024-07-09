@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build && ./postbuild.sh",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test:unit": "ng test",
     "lint": "ng lint",
     "ngx-meta:test": "ng test ngx-meta",
     "ngx-meta:lint": "ng lint ngx-meta",

@@ -26,7 +26,8 @@
     "commitlint-last": "commitlint --verbose --from HEAD~1",
     "ng-lint-staged": "ng-lint-staged lint --max-warnings 0 --fix --",
     "cache-clean": "ng cache clean",
-    "commit": "pnpx @commitlint/prompt-cli"
+    "commit": "pnpx @commitlint/prompt-cli",
+    "validate-codecov-yml": "curl -X POST --data-binary @codecov.yml https://codecov.io/validate"
   },
   "private": true,
   "packageManager": "pnpm@9.4.0",

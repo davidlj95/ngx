@@ -30,7 +30,7 @@ jobs:
       - name: Run unit tests
         run: cd .ci && make unit-test
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
+        uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673 # v4.5.0
         with:
           directory: ${{ env.COVERAGE_DIR }}/ngx-meta
           token: ${{ secrets.codecov-token }}

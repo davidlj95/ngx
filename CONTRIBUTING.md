@@ -176,11 +176,11 @@ Unit tests are run with Angular's default test runner [Karma](https://karma-runn
 To run them all
 
 ```sh
-pnpm run test
+pnpm run test:unit
 ```
 
 > [!TIP]
-> There's also a WebStorm run configuration (`All tests`) to run all unit tests and report the results inside the IDE
+> There's also a WebStorm run configuration (`Unit tests: all`) to run all unit tests and report the results inside the IDE
 
 ##### E2E tests
 
@@ -508,7 +508,7 @@ pnpm husky
 
 ### Quirks
 
-#### Can't run tests: `TestBed` error
+#### Can't run unit tests: `TestBed` error
 
 If you see this error:
 

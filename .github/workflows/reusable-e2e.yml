@@ -6,14 +6,23 @@ on:
         description: Artifact name prefix containing built example apps
         required: true
         type: string
+      example-app-artifact-name-coverage-suffix:
+        description: Artifact name suffix used to indicate example app is instrumented to track for coverage
+        required: true
+        type: string
       ref:
         description: Git reference to checkout. Defaults to @actions/checkout default.
         type: string
         required: false
         default: ''
+    secrets:
+      codecov-token:
+        description: Token to use to upload coverage to Codecov. Can be empty for forks https://about.codecov.io/blog/january-product-update-updating-the-codecov-ci-uploaders-to-the-codecov-cli/
+        required: false
 
 env:
   E2E_DIR: projects/ngx-meta/e2e
+  COVERAGE_DIR: coverage
 
 jobs:
   e2e:
@@ -33,10 +42,10 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ inputs.ref }}
-      - name: Download example app
+      - name: Download example app with coverage instrumentation
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
+          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}${{ inputs.example-app-artifact-name-coverage-suffix }}
           path: ${{ env.EXAMPLE_APP_DIR }}
       - name: Setup pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -72,3 +81,11 @@ jobs:
           # https://github.com/cypress-io/github-action/tree/v6.6.1?tab=readme-ov-file#pnpm
           # Given we're doing caching manually, installing apart to leverage cache
           install: false
+      - name: Fix code coverage paths
+        run: pnpm run coverage:relative-path-fix
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673 # v4.5.0
+        if: failure() || success()
+        with:
+          directory: ${{ env.E2E_DIR }}/${{ env.COVERAGE_DIR }}
+          token: ${{ secrets.codecov-token }}

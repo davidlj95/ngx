@@ -67,3 +67,54 @@ Links:
 - [Testing server side rendered (SSR) React with Cypress](https://blog.simonireilly.com/posts/server-side-rendering-tests-in-cypress/)
 - [End-to-end Testing for Server-Side Rendered Pages](https://glebbahmutov.com/blog/ssr-e2e/)
 - [Cypress and SSR (Server Side Rendering) on Cypress' GitHub Discussions](https://github.com/cypress-io/cypress/discussions/26595)
+
+### `tslib` error
+
+When adding code coverage to E2E tests via the `@cypress/code-coverage` import in `cypress.config.ts`, a ~wild~ error appeared in CI logs (worked fine locally):
+
+```text
+Error: Cannot find module 'tslib'
+```
+
+So added `tslib` to make Cypress happy and it worked 🤷 Was not needed until that point
+
+<details>
+<summary>Stack trace</summary>
+<pre>
+Opening Cypress...
+
+DevTools listening on ws://127.0.0.1:35039/devtools/browser/614fb154-3ca4-4c24-aa4f-87508a1617d2
+Missing baseUrl in compilerOptions. tsconfig-paths will be skipped
+Your configFile is invalid: /home/runner/work/ngx/ngx/projects/ngx-meta/e2e/cypress.config.ts
+
+It threw an error when required, check the stack trace below:
+
+Error: Cannot find module 'tslib'
+Require stack:
+
+- /home/runner/work/ngx/ngx/projects/ngx-meta/e2e/cypress.config.ts
+- /home/runner/.cache/Cypress/13.13.0/Cypress/resources/app/node_modules/@packages/server/lib/plugins/child/run_require_async_child.js
+- /home/runner/.cache/Cypress/13.13.0/Cypress/resources/app/node_modules/@packages/server/lib/plugins/child/require_async_child.js
+at Function.Module.\_resolveFilename (node:internal/modules/cjs/loader:1145:15)
+at Function.Module.\_resolveFilename.sharedData.moduleResolveFilenameHook.installedValue [as _resolveFilename] (/home/runner/.cache/Cypress/13.13.0/Cypress/resources/app/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)
+at Function.Module.\_load (node:internal/modules/cjs/loader:986:27)
+at Module.require (node:internal/modules/cjs/loader:1233:19)
+at require (node:internal/modules/helpers:179:18)
+at Object.<anonymous> (/home/runner/work/ngx/ngx/projects/ngx-meta/e2e/cypress.config.ts:3:17)
+at Module.\_compile (node:internal/modules/cjs/loader:1358:14)
+at Module.m.\_compile (/home/runner/.cache/Cypress/13.13.0/Cypress/resources/app/node_modules/ts-node/dist/index.js:857:29)
+at Module.\_extensions..js (node:internal/modules/cjs/loader:1416:10)
+at Object.require.extensions.<computed> [as .ts] (/home/runner/.cache/Cypress/13.13.0/Cypress/resources/app/node_modules/ts-node/dist/index.js:859:16)
+at Module.load (node:internal/modules/cjs/loader:1208:32)
+at Function.Module.\_load (node:internal/modules/cjs/loader:1024:12)
+at Module.require (node:internal/modules/cjs/loader:1233:19)
+at require (node:internal/modules/helpers:179:18)
+at loadFile (/home/runner/.cache/Cypress/13.13.0/Cypress/resources/app/node_modules/@packages/server/lib/plugins/child/run_require_async_child.js:89:14)
+at EventEmitter.<anonymous> (/home/runner/.cache/Cypress/13.13.0/Cypress/resources/app/node_modules/@packages/server/lib/plugins/child/run_require_async_child.js:116:38)
+Test run failed, code 1
+More information might be available above
+Cypress module has returned the following error message:
+Could not find Cypress test run results
+Error: Could not find Cypress test run results
+</pre>
+</details>

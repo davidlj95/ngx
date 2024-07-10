@@ -5,8 +5,14 @@ on:
       dist-artifact-name:
         required: true
         type: string
+      dist-artifact-name-coverage-suffix:
+        required: true
+        type: string
       example-app-artifact-name-prefix:
-        required: false
+        required: true
+        type: string
+      example-app-artifact-name-coverage-suffix:
+        required: true
         type: string
       ref:
         description: Git reference to checkout. Defaults to @actions/checkout default.
@@ -19,12 +25,13 @@ env:
 
 jobs:
   example-app:
-    name: Example app - Angular ${{ matrix.app_name }}
+    name: Example app - Angular ${{ matrix.app_name }} - Coverage ${{ matrix.coverage }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
         app_name: [v18]
+        coverage: [enabled, disabled]
     env:
       EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.app_name }}
     defaults:
@@ -35,10 +42,25 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           ref: ${{ inputs.ref }}
+      - name: Generate artifact names
+        run: |
+          dist_artifact_name="${{ inputs.dist-artifact-name }}"
+          if [ "${{ matrix.coverage }}" = "enabled" ]; then
+            dist_artifact_name="$dist_artifact_name${{ inputs.dist-artifact-name-coverage-suffix }}"
+          fi
+          echo "$dist_artifact_name"
+          echo "dist_artifact_name=$dist_artifact_name" >> $GITHUB_ENV
+
+          example_app_artifact_name="${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}"
+          if [ "${{ matrix.coverage }}" = "enabled" ]; then
+            example_app_artifact_name="$example_app_artifact_name${{ inputs.example-app-artifact-name-coverage-suffix }}"
+          fi
+          echo "$example_app_artifact_name"
+          echo "example_app_artifact_name=$example_app_artifact_name" >> $GITHUB_ENV
       - name: Download distribution files
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ inputs.dist-artifact-name }}
+          name: ${{ env.dist_artifact_name }}
           path: projects/ngx-meta/dist
       - name: Setup pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -122,17 +144,14 @@ jobs:
           rm -rf node_modules/
           echo "node-linker=hoisted" > .npmrc
           pnpm install --prod --frozen-lockfile
+          rm -rf node_modules/{.bin,.pnpm} node_modules/*.yaml
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Upload example app
-        if: ${{ inputs.example-app-artifact-name-prefix != '' }}
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         with:
-          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}
+          name: ${{ env.example_app_artifact_name }}
           path: |
-            ${{ env.EXAMPLE_APP_DIR }}/node_modules/
-            !${{ env.EXAMPLE_APP_DIR }}/node_modules/.bin
-            !${{ env.EXAMPLE_APP_DIR }}/node_modules/.pnpm
-            !${{ env.EXAMPLE_APP_DIR }}/node_modules/*.yaml
+            ${{ env.EXAMPLE_APP_DIR }}/node_modules
             ${{ env.EXAMPLE_APP_DIR }}/dist
             ${{ env.EXAMPLE_APP_DIR }}/package.json
           retention-days: 5

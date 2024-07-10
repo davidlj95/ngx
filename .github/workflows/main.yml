@@ -13,6 +13,7 @@ jobs:
     uses: ./.github/workflows/reusable-build.yml
     with:
       dist-artifact-name: ngx-meta-dist
+      dist-artifact-name-coverage-suffix: -coverage
       tsc-artifact-name: ngx-meta-tsc
   test:
     name: Test
@@ -38,13 +39,16 @@ jobs:
     uses: ./.github/workflows/reusable-example-apps.yml
     with:
       dist-artifact-name: ngx-meta-dist
+      dist-artifact-name-coverage-suffix: -coverage
       example-app-artifact-name-prefix: ngx-meta-example-app-
+      example-app-artifact-name-coverage-suffix: -coverage
   e2e:
     needs: example-apps
     name: E2E
     uses: ./.github/workflows/reusable-e2e.yml
     with:
       example-app-artifact-name-prefix: ngx-meta-example-app-
+      example-app-artifact-name-coverage-suffix: -coverage
   bundle-size:
     needs: example-apps
     name: Bundle size

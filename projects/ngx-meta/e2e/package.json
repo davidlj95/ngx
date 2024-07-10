@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "description": "ngx-meta E2E testing infra",
   "scripts": {
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "packageManager": "pnpm@9.5.0",
   "private": true,
   "devDependencies": {
+    "@cypress/code-coverage": "3.12.41",
     "cypress": "13.13.1",
     "typescript": "5.5.3"
   }

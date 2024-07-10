@@ -20,11 +20,23 @@ Install dependencies (mainly [Cypress])
 pnpm install
 ```
 
+#### With coverage
+
+[Cypress can be configured to perform code coverage reporting](https://docs.cypress.io/guides/tooling/code-coverage#What-youll-learn). Essentially two steps are needed: instrument the JS code to track lines being hit and later report the results.
+
+Run the `ngx-meta:instrument-for-coverage` script in root repo to instrument the `ngx-meta` library for coverage reporting before running Cypress tests. Then, Cypress is already configured via the [`@cypress/code-coverage` plugin](https://github.com/cypress-io/code-coverage) to report results (to the `coverage` subdirectory).
+
 ### Run tests
 
 First, run an example app. Ensure it serves contents in port 4200.
 
-Then, open Cypress by running inside this directory:
+You can then run inside this directory:
+
+```sh
+pnpm run cypress:run
+```
+
+Or if you want to use Cypress UI, open Cypress by running
 
 ```sh
 pnpm run cypress:open

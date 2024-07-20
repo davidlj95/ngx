@@ -56,7 +56,7 @@ jobs:
           cache-dependency-path: ${{ env.E2E_DIR }}/pnpm-lock.yaml
           node-version-file: .node-version # should be one compatible with Angular example app
       - name: Get Cypress cache dir
-        run: echo "cypress_cache_dir=$HOME/.cache/Cypress" >> $GITHUB_ENV
+        run: echo "cypress_cache_dir=$HOME/.cache/Cypress" >> "$GITHUB_ENV"
       - name: Cypress cache
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         env:

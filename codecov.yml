@@ -8,6 +8,3 @@ coverage:
         threshold: 5%
 comment:
   hide_project_coverage: false
-
-codecov:
-  require_ci_to_pass: false

@@ -1,5 +1,5 @@
 {
   "*": ["pnpm run format"],
   "projects/ngx-meta/src/**/*.ts": ["pnpm run ng-lint-staged"],
-  ".github/**/*.y[a]ml": ["pnpm run lint:gh-actions"]
+  ".github/**/*.{yml,yaml}": ["pnpm run lint:gh-actions"]
 }

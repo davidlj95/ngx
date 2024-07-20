@@ -92,11 +92,7 @@ You can go and just start writing code. The CI/CD will tell you if you fail to c
 
 Pretty similar to [Angular's commit message format](https://github.com/angular/angular/blob/17.2.3/CONTRIBUTING.md#commit)
 
-[`commitlint`](https://commitlint.js.org/) is used to enforce the convention
-
-If you don't provide a commit message with proper conventions, the CI/CD job checking that will fail.
-
-[Git hooks] are provided to automatically ensure your message follows the convention when committing.
+If you don't provide a commit message with proper conventions, CI/CD will fail.
 
 To help you start writing commit messages if you have never used the convention, you can run
 
@@ -107,6 +103,8 @@ pnpm run commit
 To create your first commit message. Type a wrong type and the tool will list you the types available.
 
 There is no formal convention on scopes. Though for `ngx-meta`, metadata module name in kebab case is used. For instance, to add an Open Graph related feature, commit message could be: `feat(open-graph): add article vertical`
+
+See [linting section about commit messages](#commit-messages-1) to know how to ensure commit conventions are followed.
 
 #### TSDoc comments
 
@@ -184,7 +182,7 @@ pnpm run test:unit
 
 ##### E2E tests
 
-Refer to [`ngx-meta`'s E2E README.md for more information](projects/ngx-meta/e2e/README.md)
+Refer to [`ngx-meta`'s E2E `README` for more information](projects/ngx-meta/e2e/README.md)
 
 #### Format
 
@@ -208,15 +206,55 @@ To fix them all
 
 #### Lint
 
-[ESLint](https://eslint.org/) is used to lint the project amongst [Angular ESLint](https://github.com/angular-eslint/angular-eslint). As recommended by Angular when doing `ng lint`.
-
-To lint the whole project:
+To lint everything, run
 
 ```sh
 pnpm run lint
 ```
 
+##### Commit messages
+
+[`commitlint`](https://commitlint.js.org/) is used to enforce the [commit messages conventions](#commit-messages).
+
+In order to lint the last commit message tracked in `git` (`.git/COMMIT_EDITMSG`), run
+
+```sh
+pnpm run lint:commit-message
+```
+
+To lint the last commit message in `git` history:
+
+```sh
+pnpm run commitlint-last
+```
+
+[Git hooks] are provided to automatically ensure your message follows the convention when committing.
+
+##### Most code: TS, JS, HTML...
+
+[ESLint](https://eslint.org/) is used to lint the project amongst [Angular ESLint](https://github.com/angular-eslint/angular-eslint). As recommended by Angular when doing `ng lint`.
+
+To lint the whole project:
+
+```sh
+pnpm run lint:code
+```
+
 [Git hooks] are provided to automatically lint changed files when committing. Thanks to [`lint-staged`](https://github.com/lint-staged/lint-staged)
+
+##### GitHub Actions code (optional)
+
+[`actionlint`](https://github.com/rhysd/actionlint) provides linting for GitHub Actions workflows & actions. Checkout the repository's instructions on how to install the tool in your machine.
+
+Can be run by:
+
+```sh
+pnpm run lint:gh-actions
+```
+
+If the command is not installed, linting will be skipped and a warning will be shown instead. This is to allow operating the repository with as minimal tools as possible. CI/CD will run the linter anyway.
+
+It is also included to run as part of [Git hooks].
 
 #### API Report
 

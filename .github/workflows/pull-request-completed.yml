@@ -22,19 +22,19 @@ env:
 
 jobs:
   bundle-size-pr-comment:
-    name: Bundle size - PR comment - Angular ${{ matrix.app_name }}
+    name: Bundle size - PR comment - Angular ${{ matrix.app-name }}
     if: github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        app_name: [v15, v16, v17, v18]
+        app-name: [v15, v16, v17, v18]
     steps:
       - name: Download bundle size analysis results
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}${{ matrix.app_name }}
+          name: ${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}${{ matrix.app-name }}
           #👇 Need to specify it, otherwise, `run-id` argument won't be taken into account
           # https://github.com/actions/download-artifact/tree/v4.1.4#:~:text=current%20workflow%20run.-,github%2Dtoken%3A,-%23%20The%20repository
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -70,7 +70,7 @@ jobs:
         with:
           issue-number: ${{ steps.pr.outputs.result }}
           comment-author: github-actions[bot]
-          body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.app_name }}
+          body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.app-name }}
       - name: Update bundle size PR comment
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
         if: steps.pr.outputs.result != '' && steps.fc.outputs.comment-id != ''

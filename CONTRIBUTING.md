@@ -256,6 +256,8 @@ If the command is not installed, linting will be skipped and a warning will be s
 
 It is also included to run as part of [Git hooks].
 
+> [!NOTE] > [`actionlint` uses `shellcheck` to lint shell scripts inside `run` blocks in GitHub Actions workflows](https://github.com/rhysd/actionlint/blob/main/docs/checks.md#shellcheck-integration-for-run). In CI/CD the [Docker image includes `shellcheck` and `pyflakes`](https://github.com/rhysd/actionlint/blob/main/docs/usage.md#docker) so those checks will run. If locally you don't have those commands available, `actionlint` won't run those checks. This means different results may be obtained from running in CI/CD vs running locally. Install those (mainly `shellcheck`) to have the same behaviour in CI/CD and locally.
+
 #### API Report
 
 [API Extractor] generates a report of the exposed API of a package in order to keep track of public API signatures. In order to for instance help detecting breaking changes.

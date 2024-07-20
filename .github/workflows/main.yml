@@ -49,6 +49,8 @@ jobs:
     with:
       example-app-artifact-name-prefix: ngx-meta-example-app-
       example-app-artifact-name-coverage-suffix: -coverage
+    secrets:
+      codecov-token: ${{ secrets.CODECOV_TOKEN }}
   bundle-size:
     needs: example-apps
     name: Bundle size

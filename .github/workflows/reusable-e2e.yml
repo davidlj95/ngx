@@ -55,15 +55,15 @@ jobs:
           cache: pnpm
           cache-dependency-path: ${{ env.E2E_DIR }}/pnpm-lock.yaml
           node-version-file: .node-version # should be one compatible with Angular example app
-      - name: Get Cypress cache dir
-        run: echo "cypress_cache_dir=$HOME/.cache/Cypress" >> "$GITHUB_ENV"
+      - name: Configure Cypress cache directory
+        run: echo "CYPRESS_CACHE_FOLDER=$HOME/.cache/Cypress" >> "$GITHUB_ENV"
       - name: Cypress cache
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
         env:
           cache-name: ngx-meta-e2e-cypress
           e2e_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.E2E_DIR)) }}
         with:
-          path: ${{ env.cypress_cache_dir }}
+          path: ${{ env.CYPRESS_CACHE_FOLDER }}
           key: ${{ env.cache-name }}-${{ env.e2e_lockfile_hash }}
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -72,8 +72,6 @@ jobs:
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Cypress run
         uses: cypress-io/github-action@8d3918616d8ac34caa2b49afc8b408b6a872a6f5 # v6.7.1
-        env:
-          CYPRESS_CACHE_FOLDER: ${{ env.cypress_cache_dir }}
         with:
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome

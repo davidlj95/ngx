@@ -25,15 +25,15 @@ env:
 
 jobs:
   example-app:
-    name: Example app - Angular ${{ matrix.app_name }} - Coverage ${{ matrix.coverage }}
+    name: Example app - Angular ${{ matrix.app-name }} - Coverage ${{ matrix.coverage }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        app_name: [v15, v16, v17, v18]
+        app-name: [v15, v16, v17, v18]
         coverage: [enabled, disabled]
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.app_name }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.app-name }}
     defaults:
       run:
         working-directory: ${{ env.EXAMPLE_APPS_DIR }}
@@ -51,7 +51,7 @@ jobs:
           echo "$dist_artifact_name"
           echo "dist_artifact_name=$dist_artifact_name" >> "$GITHUB_ENV"
 
-          example_app_artifact_name="${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app_name }}"
+          example_app_artifact_name="${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app-name }}"
           if [ "${{ matrix.coverage }}" = "enabled" ]; then
             example_app_artifact_name="$example_app_artifact_name${{ inputs.example-app-artifact-name-coverage-suffix }}"
           fi
@@ -78,7 +78,7 @@ jobs:
         run: |
           pnpm_store_path="$(pnpm store path --silent)"
           angular_cli_version="$(jq -r \
-            '.devDependencies.${{ matrix.app_name }}' \
+            '.devDependencies.${{ matrix.app-name }}' \
             'src/angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
           )"
@@ -124,7 +124,7 @@ jobs:
         run: pnpm run build
       - name: Create example app
         run: >
-          pnpm run create-example-app ${{ matrix.app_name }}
+          pnpm run create-example-app ${{ matrix.app-name }}
           --tmp-dir=${{ runner.temp }}
       - name: Build example app
         run: pnpm ci:build # includes SSR and source maps

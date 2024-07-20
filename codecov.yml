@@ -10,4 +10,8 @@ comment:
   hide_project_coverage: false
 
 codecov:
-  require_ci_to_pass: false
+  notify:
+    # 👇 Must be in sync with number of uploads needed.
+    #    Which now depends on amount of E2E tests run
+    #    Plus the unit tests coverage
+    after_n_builds: 5

@@ -10,11 +10,11 @@ on:
       api-docs-artifact-name:
         description: Artifact name containing API reference markdown docs
         type: string
-        required: false
+        required: true
       bundle-size-artifact-name-prefix:
         description: Artifact name prefix containing bundle size info
         type: string
-        required: false
+        required: true
     secrets:
       cloudflare-account-id:
         required: true
@@ -47,18 +47,15 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
       - name: Download API reference docs
-        if: ${{ inputs.api-docs-artifact-name != '' }}
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
           name: ${{ inputs.api-docs-artifact-name }}
           path: projects/ngx-meta/docs/content/api
       - name: Download bundle size info
-        if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
           pattern: ${{ inputs.bundle-size-artifact-name-prefix }}*
       - name: Copy reports into directories
-        if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
         working-directory: .
         run: |
           # shellcheck disable=SC2001

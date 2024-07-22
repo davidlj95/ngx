@@ -20,6 +20,8 @@
     "ngx-meta:api-extractor:local": "pnpm run ngx-meta:tsc:lib && pnpm run ngx-meta:api-extractor --local",
     "ngx-meta:api-documenter": "api-documenter markdown -i ./projects/ngx-meta/api-extractor -o ./projects/ngx-meta/docs/content/api",
     "ngx-meta:instrument-for-coverage": "nyc instrument projects/ngx-meta/dist/fesm2022 --in-place",
+    "ngx-meta:coverage:report:all": "pnpm run ngx-meta:coverage:move-to-nyc-output && nyc report --reporter lcov --report-dir coverage/ngx-meta",
+    "ngx-meta:coverage:move-to-nyc-output": "rm -rf .nyc_output && mkdir .nyc_output && cp -f coverage/ngx-meta/*.json .nyc_output",
     "format-check": "prettier --check",
     "format-check-all": "npm run format-check -- .",
     "format": "prettier --ignore-unknown --write",

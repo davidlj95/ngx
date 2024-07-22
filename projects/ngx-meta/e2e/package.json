@@ -8,7 +8,7 @@
     "//1": "👇 Coverage reporting tools like Codecov usually require paths relative to repo root",
     "coverage:relative-path-fix": "sed -i.bak 's|SF:..|SF:projects/ngx-meta|' coverage/lcov.info"
   },
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.6.0",
   "private": true,
   "devDependencies": {
     "@cypress/code-coverage": "3.12.44",

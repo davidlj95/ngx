@@ -85,5 +85,5 @@ jobs:
         uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673 # v4.5.0
         if: failure() || success()
         with:
-          directory: ${{ env.COVERAGE_DIR }}
+          file: ${{ env.COVERAGE_DIR }}/lcov.info
           token: ${{ secrets.codecov-token }}

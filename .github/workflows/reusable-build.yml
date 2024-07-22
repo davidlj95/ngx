@@ -1,19 +1,14 @@
 name: Build
 on:
   workflow_call:
-    inputs:
-      dist-artifact-name:
-        description: Name for artifact containing lib dist files
-        type: string
-        required: true
-      dist-artifact-name-coverage-suffix:
-        description: Name suffix for artifact containing lib dist files instrumented for code coverage tracking
-        type: string
-        required: true
-      tsc-artifact-name:
-        description: Name for artifact containing lib tsc output files
-        type: string
-        required: true
+
+env:
+  # 👇 Keep in sync with release and example apps workflow
+  DIST_ARTIFACT_NAME_SUFFIX: -dist
+  # 👇 Keep in sync with example apps workflow
+  COVERAGE_ARTIFACT_NAME_SUFFIX: -coverage
+  # 👇 Keep in sync with API Extractor workflow
+  TSC_ARTIFACT_NAME_SUFFIX: -tsc
 
 jobs:
   build:
@@ -35,7 +30,7 @@ jobs:
       - name: Upload distribution files
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         with:
-          name: ${{ inputs.dist-artifact-name }}
+          name: ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/dist
           retention-days: 5
       - name: Instrument for coverage
@@ -43,7 +38,7 @@ jobs:
       - name: Upload distribution files with coverage instrumentation
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         with:
-          name: ${{ inputs.dist-artifact-name }}${{ inputs.dist-artifact-name-coverage-suffix }}
+          name: ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/dist
           retention-days: 5
 
@@ -61,6 +56,6 @@ jobs:
       - name: Upload compiled JS files
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         with:
-          name: ${{ inputs.tsc-artifact-name }}
+          name: ngx-meta${{ env.TSC_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/out
           retention-days: 5

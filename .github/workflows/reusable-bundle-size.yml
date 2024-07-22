@@ -1,25 +1,20 @@
 name: Bundle size
 on:
   workflow_call:
-    inputs:
-      example-app-artifact-name-prefix:
-        description: Artifact name prefix containing built example apps
-        required: true
-        type: string
-      bundle-size-artifact-name-prefix:
-        description: Artifact name prefix where bundle size info is stored
-        required: true
-        type: string
 
 #permissions:
 #  👇 Needed for main bundle size check store only
 #  checks: write
 
 env:
-  # 👇 Keep in sync with on bundle size completed workflow
+  # 👇 Keep in sync with pull request completed workflow
   BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-
   BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX: ngx-meta-bundle-size-
   BUNDLE_SIZE_DIR: projects/ngx-meta/bundle-size
+  # 👇 Keep in sync with example apps workflow
+  EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
+  # 👇 Keep in sync with pull request completed and docs workflow
+  BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX: -bundle-size
 
 jobs:
   analysis:
@@ -41,7 +36,7 @@ jobs:
       - name: Download example app distribution files
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app-name }}
+          name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}
           path: ${{ env.EXAMPLE_APP_DIR }}
       - name: Setup pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -92,7 +87,7 @@ jobs:
       - name: Upload bundle size analysis results
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         with:
-          name: ${{ inputs.bundle-size-artifact-name-prefix }}${{ matrix.app-name }}
+          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}
           path: ${{ env.BUNDLE_SIZE_DIR }}/${{ env.OUTPUT_DIR }}
           retention-days: 5
 
@@ -109,7 +104,7 @@ jobs:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ inputs.bundle-size-artifact-name-prefix }}${{ matrix.app-name }}
+          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}
       - name: Create check run
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         with:

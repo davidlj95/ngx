@@ -24,7 +24,11 @@ pnpm install
 
 [Cypress can be configured to perform code coverage reporting](https://docs.cypress.io/guides/tooling/code-coverage#What-youll-learn). Essentially two steps are needed: instrument the JS code to track lines being hit and later report the results.
 
-Run the `ngx-meta:instrument-for-coverage` script in root repo to instrument the `ngx-meta` library for coverage reporting before running Cypress tests. Then, Cypress is already configured via the [`@cypress/code-coverage` plugin](https://github.com/cypress-io/code-coverage) to report results (to the `coverage` subdirectory).
+Run the `ngx-meta:instrument-for-coverage` script in root repo to instrument the `ngx-meta` library for coverage reporting before running Cypress tests. Now, create an example app and serve it (as usual to run E2E tests). Cypress is configured via the [`@cypress/code-coverage` plugin](https://github.com/cypress-io/code-coverage) to report results. A report will be generated in JSON, `lcov` and HTML formats.
+
+Take look into [`package.json`](package.json)'s `postcypress:run` script for the name of the JSON report generated inside the report directory.
+
+See more details on coverage in [contributing guide](../../../CONTRIBUTING.md#coverage)
 
 ### Run tests
 

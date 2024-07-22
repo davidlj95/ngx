@@ -173,7 +173,7 @@ To build all libraries
 
 #### Unit tests
 
-Unit tests are run with Angular's default test runner [Karma](https://karma-runner.github.io) and written in [Jasmine](https://jasmine.github.io/)
+Unit tests are run with Angular's default test runner [Karma](https://karma-runner.github.io) and default framework [Jasmine](https://jasmine.github.io/)
 
 To run them all
 
@@ -184,9 +184,42 @@ pnpm run test:unit
 > [!TIP]
 > There's also a WebStorm run configuration (`Unit tests: all`) to run all unit tests and report the results inside the IDE
 
+##### With coverage
+
+To enable coverage reporting, add `--code-coverage` CLI option:
+
+```sh
+pnpm run test:unit --code-coverage
+```
+
+Reports will be generated in JSON, `lcov` and HTML format. JSON report file name is `unit-test.json`. See [coverage section](#coverage) for more details.
+
+> [!NOTE]
+> You can also use WebStorm's [`Run with coverage` option](https://www.jetbrains.com/help/webstorm/code-coverage.html). However, seems that it will use a custom Karma config. So the coverage report configuration may be different. At the moment of writing this document, for instance, the report directory and format is not the same.
+
 #### E2E tests
 
 Refer to [`ngx-meta`'s E2E `README` for more information](projects/ngx-meta/e2e/README.md)
+
+#### Coverage
+
+Tests are configured to output coverage reports to the `coverage/<projectName>` directory. See each kind of tests to see which formats will be output there.
+
+[Codecov](https://codecov.io) is used to keep track of code coverage over time. It is configured in CI/CD to ensure each PR introduces tests for new code introduced and to maintain a good overall project coverage. It will also merge coverage reports from different tests (unit, E2E) to have a holistic code coverage view.
+
+In local, beware that reports may overwrite each other. Except for JSON reports. For instance if running unit tests coverage and then E2E tests coverage, the `lcov` and HTML report will take int account E2E tests only.
+
+##### Global coverage
+
+In order to get the coverage for all kinds of tests, [`nyc` CLI](https://github.com/istanbuljs/nyc) can be used to merge several JSON code coverage reports.
+
+First, run all tests with coverage you want to merge to emit those JSON code coverage reports.
+
+Then, you can use the `coverage:report:all` run script in `package.json` to merge reports. For instance, for `ngx-meta`:
+
+```sh
+pnpm run ngx-meta:coverage:report:all
+```
 
 ### Format
 

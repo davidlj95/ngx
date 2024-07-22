@@ -27,7 +27,11 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, '../../../coverage/ngx-meta'),
       subdir: '.',
-      reporters: [{ type: 'text-summary' }, { type: 'lcov' }],
+      reporters: [
+        { type: 'text-summary' },
+        { type: 'lcov' },
+        { type: 'json', file: 'unit-test.json' },
+      ],
     },
     reporters: ['progress', 'kjhtml'],
     browsers: ['Chrome'],

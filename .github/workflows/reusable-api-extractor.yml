@@ -2,11 +2,6 @@ name: API Extractor
 on:
   workflow_call:
     inputs:
-      ref:
-        description: Git reference to checkout. Defaults to @actions/checkout default.
-        type: string
-        required: false
-        default: ''
       tsc-artifact-name:
         description: Artifact name containing built lib
         type: string
@@ -27,8 +22,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Download tsc output files
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
@@ -53,8 +46,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Download API Extractor JSON docs
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:

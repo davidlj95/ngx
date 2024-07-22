@@ -2,11 +2,6 @@ name: Build
 on:
   workflow_call:
     inputs:
-      ref:
-        description: Git reference to checkout. Defaults to @actions/checkout default.
-        type: string
-        required: false
-        default: ''
       dist-artifact-name:
         description: Name for artifact containing lib dist files
         type: string
@@ -28,8 +23,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Cache Angular build
@@ -61,8 +54,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run tsc

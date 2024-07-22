@@ -14,11 +14,6 @@ on:
       example-app-artifact-name-coverage-suffix:
         required: true
         type: string
-      ref:
-        description: Git reference to checkout. Defaults to @actions/checkout default.
-        type: string
-        required: false
-        default: ''
 
 env:
   EXAMPLE_APPS_DIR: projects/ngx-meta/example-apps
@@ -40,8 +35,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Generate artifact names
         run: |
           dist_artifact_name="${{ inputs.dist-artifact-name }}"

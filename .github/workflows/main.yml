@@ -11,10 +11,6 @@ jobs:
   build:
     name: Build
     uses: ./.github/workflows/reusable-build.yml
-    with:
-      dist-artifact-name: ngx-meta-dist
-      dist-artifact-name-coverage-suffix: -coverage
-      tsc-artifact-name: ngx-meta-tsc
   test:
     name: Test
     uses: ./.github/workflows/reusable-test.yml
@@ -30,42 +26,26 @@ jobs:
     needs: build
     name: API Extractor
     uses: ./.github/workflows/reusable-api-extractor.yml
-    with:
-      tsc-artifact-name: ngx-meta-tsc
-      api-docs-artifact-name: ngx-meta-api-docs
   example-apps:
     needs: build
     name: Example apps
     uses: ./.github/workflows/reusable-example-apps.yml
-    with:
-      dist-artifact-name: ngx-meta-dist
-      dist-artifact-name-coverage-suffix: -coverage
-      example-app-artifact-name-prefix: ngx-meta-example-app-
-      example-app-artifact-name-coverage-suffix: -coverage
   e2e:
     needs: example-apps
     name: E2E
     uses: ./.github/workflows/reusable-e2e.yml
-    with:
-      example-app-artifact-name-prefix: ngx-meta-example-app-
-      example-app-artifact-name-coverage-suffix: -coverage
     secrets:
       codecov-token: ${{ secrets.CODECOV_TOKEN }}
   bundle-size:
     needs: example-apps
     name: Bundle size
     uses: ./.github/workflows/reusable-bundle-size.yml
-    with:
-      example-app-artifact-name-prefix: ngx-meta-example-app-
-      bundle-size-artifact-name-prefix: ngx-meta-bundle-size-
     permissions:
       checks: write
   release:
     name: Release
     needs: e2e
     uses: ./.github/workflows/reusable-release.yml
-    with:
-      dist-artifact-name: ngx-meta-dist
     secrets:
       npm-token: ${{ secrets.NPM_TOKEN }}
       github-token-pr: ${{ secrets.PR_GH_TOKEN }}
@@ -78,9 +58,6 @@ jobs:
     name: Docs
     needs: [api-extractor, bundle-size]
     uses: ./.github/workflows/reusable-docs.yml
-    with:
-      api-docs-artifact-name: ngx-meta-api-docs
-      bundle-size-artifact-name-prefix: ngx-meta-bundle-size-
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -1,20 +1,6 @@
 name: Docs
 on:
   workflow_call:
-    inputs:
-      ref:
-        description: Git reference to checkout. Defaults to @actions/checkout default.
-        type: string
-        required: false
-        default: ''
-      api-docs-artifact-name:
-        description: Artifact name containing API reference markdown docs
-        type: string
-        required: false
-      bundle-size-artifact-name-prefix:
-        description: Artifact name prefix containing bundle size info
-        type: string
-        required: false
     secrets:
       cloudflare-account-id:
         required: true
@@ -23,6 +9,10 @@ on:
 
 env:
   DOCS_DIR: projects/ngx-meta/docs
+  # 👇 Keep in sync with API Extractor workflow
+  API_DOCS_ARTIFACT_NAME_SUFFIX: -api-docs
+  # 👇 Keep in sync with pull request completed workflow
+  BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX: -bundle-size
 
 permissions:
   deployments: write
@@ -44,26 +34,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Download API reference docs
-        if: ${{ inputs.api-docs-artifact-name != '' }}
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ${{ inputs.api-docs-artifact-name }}
+          name: ngx-meta${{ env.API_DOCS_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/docs/content/api
       - name: Download bundle size info
-        if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          pattern: ${{ inputs.bundle-size-artifact-name-prefix }}*
+          pattern: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME-SUFFIX }}*
       - name: Copy reports into directories
-        if: ${{ inputs.bundle-size-artifact-name-prefix != '' }}
         working-directory: .
         run: |
           # shellcheck disable=SC2001
-          for artifact_dir in "${{ inputs.bundle-size-artifact-name-prefix }}"*; do
-            app_name="$(echo "$artifact_dir" | sed "s/^${{ inputs.bundle-size-artifact-name-prefix }}//")"
+          for artifact_dir in "ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}"*; do
+            app_name="$(echo "$artifact_dir" | sed "s/^ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-//")"
             bundle_size_app_dir="projects/ngx-meta/bundle-size/out/$app_name"
             mkdir -p "$bundle_size_app_dir"
             cp "$artifact_dir/bundle-size-report.md" "$bundle_size_app_dir"

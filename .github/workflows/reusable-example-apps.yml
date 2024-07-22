@@ -1,27 +1,15 @@
 name: Example apps
 on:
   workflow_call:
-    inputs:
-      dist-artifact-name:
-        required: true
-        type: string
-      dist-artifact-name-coverage-suffix:
-        required: true
-        type: string
-      example-app-artifact-name-prefix:
-        required: true
-        type: string
-      example-app-artifact-name-coverage-suffix:
-        required: true
-        type: string
-      ref:
-        description: Git reference to checkout. Defaults to @actions/checkout default.
-        type: string
-        required: false
-        default: ''
 
 env:
   EXAMPLE_APPS_DIR: projects/ngx-meta/example-apps
+  # 👇 Keep in sync with build workflow
+  DIST_ARTIFACT_NAME_SUFFIX: -dist
+  # 👇 Keep in sync with build and E2E tests workflow
+  COVERAGE_ARTIFACT_NAME_SUFFIX: -coverage
+  # 👇 Keep in sync with bundle size and E2E tests workflow
+  EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
 
 jobs:
   example-app:
@@ -40,23 +28,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Generate artifact names
         run: |
-          dist_artifact_name="${{ inputs.dist-artifact-name }}"
+          dist_artifact_name="ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}"
           if [ "${{ matrix.coverage }}" = "enabled" ]; then
-            dist_artifact_name="$dist_artifact_name${{ inputs.dist-artifact-name-coverage-suffix }}"
+            dist_artifact_name="$dist_artifact_name${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}"
           fi
-          echo "$dist_artifact_name"
-          echo "dist_artifact_name=$dist_artifact_name" >> "$GITHUB_ENV"
+          echo "dist_artifact_name=$dist_artifact_name" | tee -a "$GITHUB_ENV"
 
-          example_app_artifact_name="${{ inputs.example-app-artifact-name-prefix }}${{ matrix.app-name }}"
+          example_app_artifact_name="ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}"
           if [ "${{ matrix.coverage }}" = "enabled" ]; then
-            example_app_artifact_name="$example_app_artifact_name${{ inputs.example-app-artifact-name-coverage-suffix }}"
+            example_app_artifact_name="$example_app_artifact_name${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}"
           fi
-          echo "$example_app_artifact_name"
-          echo "example_app_artifact_name=$example_app_artifact_name" >> "$GITHUB_ENV"
+          echo "example_app_artifact_name=$example_app_artifact_name" | tee -a "$GITHUB_ENV"
       - name: Download distribution files
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:

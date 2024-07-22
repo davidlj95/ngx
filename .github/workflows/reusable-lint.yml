@@ -1,12 +1,6 @@
 name: Lint
 on:
   workflow_call:
-    inputs:
-      ref:
-        description: Git reference to checkout. Defaults to @actions/checkout default.
-        type: string
-        required: false
-        default: ''
 
 jobs:
   code:
@@ -16,8 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run linter
@@ -30,8 +22,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-        with:
-          ref: ${{ inputs.ref }}
       - name: Run GitHub Actions linter
         uses: docker://rhysd/actionlint:latest@sha256:435ecdb63b1169e80ca3e136290072548c07fc4d76a044cf5541021712f8f344
         with:
@@ -46,7 +36,6 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
           fetch-depth: 0
-          ref: ${{ inputs.ref }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Lint last commit

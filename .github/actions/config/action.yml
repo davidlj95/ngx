@@ -1,0 +1,16 @@
+name: Configuration
+description: Loads GitHub Actions CI/CD pipelines (workflows) configuration
+outputs:
+  example-apps-versions:
+    description: Angular version aliases (from angular-cli-versions.json file) to generate example apps for
+    value: ${{ steps.example-apps-versions.outputs.result }}
+runs:
+  using: composite
+  steps:
+    - name: Load example apps Angular versions to generate
+      uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
+      id: example-apps-versions
+      with:
+        script: |
+          const angularCliVersions = require('./projects/ngx-meta/example-apps/src/angular-cli-versions.json')
+          return Object.keys(angularCliVersions.devDependencies)

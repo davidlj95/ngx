@@ -13,7 +13,7 @@ env:
 
 jobs:
   load-config:
-    name: Load configuration
+    name: Load CI/CD configuration
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-      - name: Load configuration
+      - name: Load CI/CD configuration
         id: load-config
         uses: ./.github/actions/config
 

@@ -21,15 +21,29 @@ env:
   BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-
 
 jobs:
+  load-config:
+    name: Load CI/CD configuration
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      example-apps-versions: ${{ steps.load-config.outputs.example-apps-versions }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - name: Load CI/CD configuration
+        id: load-config
+        uses: ./.github/actions/config
+
   bundle-size-pr-comment:
     name: Bundle size - PR comment - Angular ${{ matrix.app-name }}
+    needs: load-config
     if: github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        app-name: [v15, v16, v17, v18]
+        app-name: ${{ fromJSON(needs.load-config.outputs.example-apps-versions) }}
     steps:
       - name: Download bundle size analysis results
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4

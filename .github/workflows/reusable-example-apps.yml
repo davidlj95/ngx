@@ -26,118 +26,120 @@ jobs:
       run:
         working-directory: ${{ env.EXAMPLE_APPS_DIR }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-      - name: Generate artifact names
-        run: |
-          dist_artifact_name="ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}"
-          if [ "${{ matrix.coverage }}" = "enabled" ]; then
-            dist_artifact_name="$dist_artifact_name${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}"
-          fi
-          echo "dist_artifact_name=$dist_artifact_name" | tee -a "$GITHUB_ENV"
+      - name: Nada
+        run: echo "hello world"
+      #- name: Checkout
+      #  uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      #- name: Generate artifact names
+      #  run: |
+      #    dist_artifact_name="ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}"
+      #    if [ "${{ matrix.coverage }}" = "enabled" ]; then
+      #      dist_artifact_name="$dist_artifact_name${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}"
+      #    fi
+      #    echo "dist_artifact_name=$dist_artifact_name" | tee -a "$GITHUB_ENV"
 
-          example_app_artifact_name="ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}"
-          if [ "${{ matrix.coverage }}" = "enabled" ]; then
-            example_app_artifact_name="$example_app_artifact_name${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}"
-          fi
-          echo "example_app_artifact_name=$example_app_artifact_name" | tee -a "$GITHUB_ENV"
-      - name: Download distribution files
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
-        with:
-          name: ${{ env.dist_artifact_name }}
-          path: projects/ngx-meta/dist
-      - name: Setup pnpm
-        uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
-      - name: Setup Node.js
-        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4
-        with:
-          # Can't cache here, given some cache-dependency-paths do not exist yet
-          # Hence can't be used to create a proper cache key
-          # https://github.com/actions/setup-node/blob/v4.0.2/src/cache-restore.ts#L30-L42
-          node-version-file: .node-version # TODO: may vary depending on Angular version
-        # 👇 For caching, see below
-        # - PNPM store: https://github.com/pnpm/action-setup/tree/v3.0.0?tab=readme-ov-file#use-cache-to-reduce-installation-time
-        # - Angular CLI version: from versions file
-      - name: Get caching key info
-        run: |
-          pnpm_store_path="$(pnpm store path --silent)"
-          angular_cli_version="$(jq -r \
-            '.devDependencies.${{ matrix.app-name }}' \
-            'src/angular-cli-versions.json' |
-            sed 's|npm:@angular/cli@||g'
-          )"
-          week_of_year="$(date --utc '+%V')"
-          [ -z "$pnpm_store_path" ] && echo "pnpm store path cache key part missing" && exit 1
-          [ -z "$angular_cli_version" ] && echo "Angular CLI version cache part missing" && exit 1
-          [ -z "$week_of_year" ] && echo "Week of year cache part missing" && exit 1
-          {
-            echo "pnpm_store_path=${pnpm_store_path}"
-            echo "angular_cli_version=${angular_cli_version}"
-            echo "week_of_year=${week_of_year}"
-          } >> "$GITHUB_ENV"
-      - name: Cache dependencies and Angular CLI/app resolution
-        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
-        env:
-          cache-name: ngx-meta-example-apps
-          example_apps_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.EXAMPLE_APPS_DIR)) }}
-        with:
-          # To cache (line by line):
-          # - pnpm global store
-          # - Angular CLI dependency resolution (lockfile)
-          # - Angular app dependency resolution (lockfile)
-          path: |
-            ${{ env.pnpm_store_path }}
-            ${{ runner.temp }}/pnpm-lock.yaml
-            ${{ env.EXAMPLE_APP_DIR }}/pnpm-lock.yaml
-          # Key is designed to be invalidated if:
-          # - Example apps infra dependencies change
-          # - Angular CLI version is updated
-          # - Week of year (UTC) changes
-          # Last one is because we can't know before generating the Angular app
-          # which patch version of Angular will be installed.
-          # Angular CLI creates an app with same minor version:
-          # https://github.com/angular/angular-cli/blob/17.3.4/packages/schematics/angular/utility/latest-versions.ts#L20-L21
-          # So patch is up to dependency resolution step
-          # By invalidating cache each week, if a patch release appears it
-          # will be taken into account in max 1 week time
-          # Patch releases shouldn't break anything anyway
-          key: ${{ env.cache-name }}-${{ env.example_apps_lockfile_hash }}-${{ env.angular_cli_version }}-${{ env.week_of_year }}
-      - name: Install example apps infra dependencies
-        run: pnpm install --frozen-lockfile
-      - name: Compile example apps scripts
-        run: pnpm run build
-      - name: Create example app
-        run: >
-          pnpm run create-example-app ${{ matrix.app-name }}
-          --tmp-dir=${{ runner.temp }}
-      - name: Build example app
-        run: pnpm ci:build # includes SSR and source maps
-        working-directory: ${{ env.EXAMPLE_APP_DIR }}
-        # 👇 We can't do just `pnpm prune --prod` or `pnpm i --prod`
-        #    GitHub Actions `actions/upload-artifact` doesn't like symlinks
-        #    Original error in CI:
-        #    ```
-        #    With the provided path, there will be 130112 files uploaded
-        #    Error: EMFILE: too many open files, open '/home/runner/work/ngx...
-        #    ```
-        #    See https://github.com/actions/upload-artifact/issues/418
-        #    So we need to perform an installation with hoisted node linker
-        #    https://pnpm.io/npmrc#node-linker
-        #    After that, neither of previous commands work :(
-        #    Neither does `pnpm deploy --prod`. So easiest is remove and reinstall
-      - name: Remove development dependencies
-        run: |
-          rm -rf node_modules/
-          echo "node-linker=hoisted" > .npmrc
-          pnpm install --prod --frozen-lockfile
-          rm -rf node_modules/{.bin,.pnpm} node_modules/*.yaml
-        working-directory: ${{ env.EXAMPLE_APP_DIR }}
-      - name: Upload example app
-        uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
-        with:
-          name: ${{ env.example_app_artifact_name }}
-          path: |
-            ${{ env.EXAMPLE_APP_DIR }}/node_modules
-            ${{ env.EXAMPLE_APP_DIR }}/dist
-            ${{ env.EXAMPLE_APP_DIR }}/package.json
-          retention-days: 5
+      #    example_app_artifact_name="ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}"
+      #    if [ "${{ matrix.coverage }}" = "enabled" ]; then
+      #      example_app_artifact_name="$example_app_artifact_name${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}"
+      #    fi
+      #    echo "example_app_artifact_name=$example_app_artifact_name" | tee -a "$GITHUB_ENV"
+      #- name: Download distribution files
+      #  uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
+      #  with:
+      #    name: ${{ env.dist_artifact_name }}
+      #    path: projects/ngx-meta/dist
+      #- name: Setup pnpm
+      #  uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+      #- name: Setup Node.js
+      #  uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4
+      #  with:
+      #    # Can't cache here, given some cache-dependency-paths do not exist yet
+      #    # Hence can't be used to create a proper cache key
+      #    # https://github.com/actions/setup-node/blob/v4.0.2/src/cache-restore.ts#L30-L42
+      #    node-version-file: .node-version # TODO: may vary depending on Angular version
+      #  # 👇 For caching, see below
+      #  # - PNPM store: https://github.com/pnpm/action-setup/tree/v3.0.0?tab=readme-ov-file#use-cache-to-reduce-installation-time
+      #  # - Angular CLI version: from versions file
+      #- name: Get caching key info
+      #  run: |
+      #    pnpm_store_path="$(pnpm store path --silent)"
+      #    angular_cli_version="$(jq -r \
+      #      '.devDependencies.${{ matrix.app-name }}' \
+      #      'src/angular-cli-versions.json' |
+      #      sed 's|npm:@angular/cli@||g'
+      #    )"
+      #    week_of_year="$(date --utc '+%V')"
+      #    [ -z "$pnpm_store_path" ] && echo "pnpm store path cache key part missing" && exit 1
+      #    [ -z "$angular_cli_version" ] && echo "Angular CLI version cache part missing" && exit 1
+      #    [ -z "$week_of_year" ] && echo "Week of year cache part missing" && exit 1
+      #    {
+      #      echo "pnpm_store_path=${pnpm_store_path}"
+      #      echo "angular_cli_version=${angular_cli_version}"
+      #      echo "week_of_year=${week_of_year}"
+      #    } >> "$GITHUB_ENV"
+      #- name: Cache dependencies and Angular CLI/app resolution
+      #  uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+      #  env:
+      #    cache-name: ngx-meta-example-apps
+      #    example_apps_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.EXAMPLE_APPS_DIR)) }}
+      #  with:
+      #    # To cache (line by line):
+      #    # - pnpm global store
+      #    # - Angular CLI dependency resolution (lockfile)
+      #    # - Angular app dependency resolution (lockfile)
+      #    path: |
+      #      ${{ env.pnpm_store_path }}
+      #      ${{ runner.temp }}/pnpm-lock.yaml
+      #      ${{ env.EXAMPLE_APP_DIR }}/pnpm-lock.yaml
+      #    # Key is designed to be invalidated if:
+      #    # - Example apps infra dependencies change
+      #    # - Angular CLI version is updated
+      #    # - Week of year (UTC) changes
+      #    # Last one is because we can't know before generating the Angular app
+      #    # which patch version of Angular will be installed.
+      #    # Angular CLI creates an app with same minor version:
+      #    # https://github.com/angular/angular-cli/blob/17.3.4/packages/schematics/angular/utility/latest-versions.ts#L20-L21
+      #    # So patch is up to dependency resolution step
+      #    # By invalidating cache each week, if a patch release appears it
+      #    # will be taken into account in max 1 week time
+      #    # Patch releases shouldn't break anything anyway
+      #    key: ${{ env.cache-name }}-${{ env.example_apps_lockfile_hash }}-${{ env.angular_cli_version }}-${{ env.week_of_year }}
+      #- name: Install example apps infra dependencies
+      #  run: pnpm install --frozen-lockfile
+      #- name: Compile example apps scripts
+      #  run: pnpm run build
+      #- name: Create example app
+      #  run: >
+      #    pnpm run create-example-app ${{ matrix.app-name }}
+      #    --tmp-dir=${{ runner.temp }}
+      #- name: Build example app
+      #  run: pnpm ci:build # includes SSR and source maps
+      #  working-directory: ${{ env.EXAMPLE_APP_DIR }}
+      #  # 👇 We can't do just `pnpm prune --prod` or `pnpm i --prod`
+      #  #    GitHub Actions `actions/upload-artifact` doesn't like symlinks
+      #  #    Original error in CI:
+      #  #    ```
+      #  #    With the provided path, there will be 130112 files uploaded
+      #  #    Error: EMFILE: too many open files, open '/home/runner/work/ngx...
+      #  #    ```
+      #  #    See https://github.com/actions/upload-artifact/issues/418
+      #  #    So we need to perform an installation with hoisted node linker
+      #  #    https://pnpm.io/npmrc#node-linker
+      #  #    After that, neither of previous commands work :(
+      #  #    Neither does `pnpm deploy --prod`. So easiest is remove and reinstall
+      #- name: Remove development dependencies
+      #  run: |
+      #    rm -rf node_modules/
+      #    echo "node-linker=hoisted" > .npmrc
+      #    pnpm install --prod --frozen-lockfile
+      #    rm -rf node_modules/{.bin,.pnpm} node_modules/*.yaml
+      #  working-directory: ${{ env.EXAMPLE_APP_DIR }}
+      #- name: Upload example app
+      #  uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
+      #  with:
+      #    name: ${{ env.example_app_artifact_name }}
+      #    path: |
+      #      ${{ env.EXAMPLE_APP_DIR }}/node_modules
+      #      ${{ env.EXAMPLE_APP_DIR }}/dist
+      #      ${{ env.EXAMPLE_APP_DIR }}/package.json
+      #    retention-days: 5

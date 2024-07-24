@@ -5,44 +5,44 @@ on:
   pull_request:
 
 jobs:
-  #build:
-  #  name: Build
-  #  uses: ./.github/workflows/reusable-build.yml
-  #test:
-  #  name: Test
-  #  uses: ./.github/workflows/reusable-test.yml
-  #  secrets:
-  #    codecov-token: ${{ secrets.CODECOV_TOKEN }}
-  #lint:
-  #  name: Lint
-  #  uses: ./.github/workflows/reusable-lint.yml
-  #style:
-  #  name: Style
-  #  uses: ./.github/workflows/reusable-style.yml
-  #api-extractor:
-  #  needs: build
-  #  name: API Extractor
-  #  uses: ./.github/workflows/reusable-api-extractor.yml
+  build:
+    name: Build
+    uses: ./.github/workflows/reusable-build.yml
+  test:
+    name: Test
+    uses: ./.github/workflows/reusable-test.yml
+    secrets:
+      codecov-token: ${{ secrets.CODECOV_TOKEN }}
+  lint:
+    name: Lint
+    uses: ./.github/workflows/reusable-lint.yml
+  style:
+    name: Style
+    uses: ./.github/workflows/reusable-style.yml
+  api-extractor:
+    needs: build
+    name: API Extractor
+    uses: ./.github/workflows/reusable-api-extractor.yml
   example-apps:
-    #  needs: build
+    needs: build
     name: Example apps
     uses: ./.github/workflows/reusable-example-apps.yml
-  #e2e:
-  #  needs: example-apps
-  #  name: E2E
-  #  uses: ./.github/workflows/reusable-e2e.yml
-  #  secrets:
-  #    codecov-token: ${{ secrets.CODECOV_TOKEN }}
-  #bundle-size:
-  #  needs: example-apps
-  #  name: Bundle size
-  #  uses: ./.github/workflows/reusable-bundle-size.yml
-  #docs:
-  #  needs: [api-extractor, bundle-size]
-  #  name: Docs
-  #  uses: ./.github/workflows/reusable-docs.yml
-  #  secrets:
-  #    cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-  #    cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-  #  permissions:
-  #    deployments: write
+  e2e:
+    needs: example-apps
+    name: E2E
+    uses: ./.github/workflows/reusable-e2e.yml
+    secrets:
+      codecov-token: ${{ secrets.CODECOV_TOKEN }}
+  bundle-size:
+    needs: example-apps
+    name: Bundle size
+    uses: ./.github/workflows/reusable-bundle-size.yml
+  docs:
+    needs: [api-extractor, bundle-size]
+    name: Docs
+    uses: ./.github/workflows/reusable-docs.yml
+    secrets:
+      cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    permissions:
+      deployments: write

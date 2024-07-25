@@ -76,6 +76,7 @@ export class NgxMetaService {
    */
   public setOne(globalOrJsonPath: string, value: unknown): void {
     const managers = this.registry.findByGlobalOrJsonPath(globalOrJsonPath)
+    /* istanbul ignore if */
     if (ngDevMode && [...managers].length === 0) {
       console.warn(
         "No metadata managers found with global or JSON Path '%s'",

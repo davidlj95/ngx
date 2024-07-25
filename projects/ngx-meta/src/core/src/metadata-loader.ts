@@ -4,7 +4,7 @@ import { MetadataRegistry } from './metadata-registry'
 export type MetadataLoader = () => void
 
 export const METADATA_LOADER = new InjectionToken(
-  ngDevMode ? 'NgxMeta loader' : 'NgxMetaL',
+  ngDevMode ? /* istanbul ignore next */ 'NgxMeta loader' : 'NgxMetaL',
 )
 export const METADATA_LOADER_FACTORY: (
   ...deps: Exclude<FactoryProvider['deps'], undefined>

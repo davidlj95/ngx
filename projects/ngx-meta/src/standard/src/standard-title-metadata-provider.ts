@@ -12,7 +12,7 @@ export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   if (value === undefined || value === null) {
     return
   }
-  titleService.setTitle(value ?? '')
+  titleService.setTitle(value)
 }
 
 /**

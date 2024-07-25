@@ -46,15 +46,16 @@ It is certainly a better option than installing a poorly maintained library. But
 
 ## By maintenance
 
-| Maintenance                       |        🙋 `ngx-meta`        |      `@avivharuzi/ngx-seo`      |            `@ngaox/seo`             |         `@ngx-meta/core`          |
-| --------------------------------- | :-------------------------: | :-----------------------------: | :---------------------------------: | :-------------------------------: |
-| :simple-angular: versions support | [**v15-v18**][pkg-this][^6] |      [v13-16][pkg-ngx-seo]      |        [v15][pkg-ngaox-seo]         |        [v9][pkg-ngx-meta]         |
-| Documentation                     |             ✅              |               ✅                |                 ✅                  |                ✅                 |
-| Last commit                       |   [![lc-this]][repo-this]   |  [![lc-ngx-seo]][repo-ngx-seo]  |  [![lc-ngaox-seo]][repo-ngaox-seo]  |  [![lc-ngx-meta]][repo-ngx-meta]  |
-| Unit tests                        |  [![ci-b-this]][ci-l-this]  | [![ci-b-ngx-seo]][ci-l-ngx-seo] | [![ci-b-ngaox-seo]][ci-l-ngaox-seo] | [![ci-b-ngx-meta]][ci-l-ngx-meta] |
-| E2E tests                         |  [![ci-b-this]][ci-l-this]  |               ❌                |                 ❌                  |                ❌                 |
-| [Provenance][pro-article]         |   [![pro-this]][npm-this]   |  [![pro-ngx-seo]][npm-ngx-seo]  |  [![pro-ngaox-seo]][npm-ngaox-seo]  |  [![pro-ngx-meta]][npm-ngx-meta]  |
-| Collaborators                     |   [![co-this]][npm-this]    |  [![co-ngx-seo]][npm-ngx-seo]   |  [![co-ngaox-seo]][npm-ngaox-seo]   |  [![co-ngx-meta]][npm-ngx-meta]   |
+| Maintenance                       |        🙋 `ngx-meta`        |      `@avivharuzi/ngx-seo`      |             `@ngaox/seo`              |          `@ngx-meta/core`           |
+| --------------------------------- | :-------------------------: | :-----------------------------: | :-----------------------------------: | :---------------------------------: |
+| :simple-angular: versions support | [**v15-v18**][pkg-this][^6] |      [v13-16][pkg-ngx-seo]      |         [v15][pkg-ngaox-seo]          |         [v9][pkg-ngx-meta]          |
+| Documentation                     |             ✅              |               ✅                |                  ✅                   |                 ✅                  |
+| Last commit                       |   [![lc-this]][repo-this]   |  [![lc-ngx-seo]][repo-ngx-seo]  |   [![lc-ngaox-seo]][repo-ngaox-seo]   |   [![lc-ngx-meta]][repo-ngx-meta]   |
+| Unit tests                        |  [![ci-b-this]][ci-l-this]  | [![ci-b-ngx-seo]][ci-l-ngx-seo] |  [![ci-b-ngaox-seo]][ci-l-ngaox-seo]  |  [![ci-b-ngx-meta]][ci-l-ngx-meta]  |
+| E2E tests                         |  [![ci-b-this]][ci-l-this]  |               ❌                |                  ❌                   |                 ❌                  |
+| Code coverage                     | [![cov-b-this]][cov-l-this] |               ❌                | [![cov-b-ngaox-seo]][cov-l-ngaox-seo] | [![cov-b-ngx-meta]][cov-l-ngx-meta] |
+| [Provenance][pro-article]         |   [![pro-this]][npm-this]   |  [![pro-ngx-seo]][npm-ngx-seo]  |   [![pro-ngaox-seo]][npm-ngaox-seo]   |   [![pro-ngx-meta]][npm-ngx-meta]   |
+| Collaborators                     |   [![co-this]][npm-this]    |  [![co-ngx-seo]][npm-ngx-seo]   |   [![co-ngaox-seo]][npm-ngaox-seo]    |   [![co-ngx-meta]][npm-ngx-meta]    |
 
 [pkg-this]: https://unpkg.com/browse/@davidlj95/ngx-meta/package.json
 [pkg-ngx-seo]: https://github.com/avivharuzi/ngx-seo/releases
@@ -76,6 +77,12 @@ It is certainly a better option than installing a poorly maintained library. But
 [ci-l-ngx-seo]: https://github.com/avivharuzi/ngx-seo/actions/workflows/pr.yml
 [ci-l-ngaox-seo]: https://github.com/ngaox/ngxaox/actions/workflows/integrate.yml
 [ci-l-ngx-meta]: https://circleci.com/gh/fulls1z3/ngx-meta
+[cov-b-this]: https://codecov.io/gh/davidlj95/ngx/graph/badge.svg
+[cov-l-this]: https://codecov.io/gh/davidlj95/ngx
+[cov-b-ngaox-seo]: https://codecov.io/gh/ngaox/ngaox/graph/badge.svg
+[cov-l-ngaox-seo]: https://codecov.io/gh/ngaox/ngaox
+[cov-b-ngx-meta]: https://codecov.io/gh/fulls1z3/ngx-meta/graph/badge.svg
+[cov-l-ngx-meta]: https://codecov.io/gh/fulls1z3/ngx-meta
 [pro-article]: https://github.blog/2023-04-19-introducing-npm-package-provenance/
 [pro-this]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.org%2F%40davidlj95%2Fngx-meta%2Flatest&query=%24.dist.attestations.provenance.predicateType&label=%20&color=darkgreen
 [pro-ngx-seo]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.org%2F%40avivharuzi%2Fngx-seo%2Flatest&query=%24.dist.attestations.provenance.predicateType&label=%20&color=darkgreen

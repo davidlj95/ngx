@@ -29,7 +29,8 @@
           "options": {
             "tsConfig": "projects/ngx-meta/src/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"],
-            "karmaConfig": "projects/ngx-meta/src/karma.conf.js"
+            "karmaConfig": "projects/ngx-meta/src/karma.conf.js",
+            "codeCoverageExclude": ["**/__tests__/**"]
           }
         },
         "lint": {

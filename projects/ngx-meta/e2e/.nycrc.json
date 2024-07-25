@@ -1,4 +1,5 @@
 {
   "reporter": ["lcov", "json"],
-  "report-dir": "../../../coverage/ngx-meta"
+  "report-dir": "../../../coverage/ngx-meta",
+  "exclude": ["**/__tests__/**"]
 }

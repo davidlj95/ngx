@@ -19,8 +19,8 @@ lint-gh-actions:
 	ationlint
 
 unit-test:
-	pnpm run test:unit --browsers=ChromeHeadless --no-watch --no-progress \
-		--reporters progress --code-coverage
+	pnpm run test:unit:coverage --browsers=ChromeHeadless --no-watch --no-progress \
+		--reporters progress
 
 format-check:
 	cd .. && pnpm run format-check-all

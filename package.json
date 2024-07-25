@@ -28,7 +28,6 @@
     "format": "prettier --ignore-unknown --write",
     "format-all": "npm run format -- .",
     "prepare": "husky",
-    "lint-staged": "lint-staged",
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --verbose --from HEAD~1",
     "ng-lint-staged": "ng-lint-staged lint --max-warnings 0 --fix --",

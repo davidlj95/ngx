@@ -186,10 +186,10 @@ pnpm run test:unit
 
 ##### With coverage
 
-To enable coverage reporting, add `--code-coverage` CLI option:
+To enable coverage reporting, run the following run script
 
 ```sh
-pnpm run test:unit --code-coverage
+pnpm run test:unit:coverage
 ```
 
 Reports will be generated in JSON, `lcov` and HTML format. JSON report file name is `unit-test.json`. See [coverage section](#coverage) for more details.
@@ -220,6 +220,8 @@ Then, you can use the `coverage:report:all` run script in `package.json` to merg
 ```sh
 pnpm run ngx-meta:coverage:report:all
 ```
+
+The global coverage report will be in `lcov`(`.info`) and HTML format.
 
 ### Format
 

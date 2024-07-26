@@ -319,7 +319,7 @@
     <inspection_tool class="EmptyTryBlockJS" enabled="true" level="WARNING" enabled_by_default="false">
       <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
     </inspection_tool>
-    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="false">
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="ngx-meta API Extractor report" level="INFORMATION" enabled="true" editorAttributes="INFORMATION_ATTRIBUTES" />
     </inspection_tool>
     <inspection_tool class="ExceptionCaughtLocallyJS" enabled="true" level="WARNING" enabled_by_default="true">

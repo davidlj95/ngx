@@ -71,6 +71,7 @@
     "dts-bundle-generator": "9.5.1",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-cypress": "3.4.0",
     "husky": "9.1.1",
     "jasmine-core": "5.2.0",
     "karma": "6.4.3",

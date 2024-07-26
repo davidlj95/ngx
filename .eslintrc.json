@@ -37,6 +37,10 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {}
+    },
+    {
+      "files": ["*.cy.ts"],
+      "extends": ["plugin:cypress/recommended"]
     }
   ]
 }

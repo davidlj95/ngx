@@ -38,7 +38,8 @@
           "options": {
             "lintFilePatterns": [
               "projects/ngx-meta/src/**/*.ts",
-              "projects/ngx-meta/src/**/*.html"
+              "projects/ngx-meta/src/**/*.html",
+              "projects/ngx-meta/e2e/**/*.cy.ts"
             ]
           }
         }

@@ -10,22 +10,19 @@ describe('NgxMeta service', () => {
   enableAutoSpy()
   let sut: NgxMetaService
   let metadataRegistry: jasmine.SpyObj<MetadataRegistry>
+  const firstMetadata = makeMetadataManagerSpy({ id: 'first' })
+  const secondMetadata = makeMetadataManagerSpy({ id: 'second' })
 
   beforeEach(() => {
     sut = makeSut()
     metadataRegistry = TestBed.inject(
       MetadataRegistry,
     ) as jasmine.SpyObj<MetadataRegistry>
+    metadataRegistry.getAll.and.returnValue([firstMetadata, secondMetadata])
   })
 
   describe('set', () => {
-    const firstMetadata = makeMetadataManagerSpy({ id: 'first' })
-    const secondMetadata = makeMetadataManagerSpy({ id: 'second' })
     const dummyValues = {}
-
-    beforeEach(() => {
-      metadataRegistry.getAll.and.returnValue([firstMetadata, secondMetadata])
-    })
 
     it('should set each metadata using resolved values', () => {
       const resolver = TestBed.inject(
@@ -57,6 +54,15 @@ describe('NgxMeta service', () => {
         secondMetadata.resolverOptions,
       )
       expect(secondMetadata.set).toHaveBeenCalledWith(dummySecondMetadataValue)
+    })
+  })
+
+  describe('clear', () => {
+    it('should set each metadata to undefined so they get removed from page', () => {
+      sut.clear()
+
+      expect(firstMetadata.set).toHaveBeenCalledWith(undefined)
+      expect(secondMetadata.set).toHaveBeenCalledWith(undefined)
     })
   })
 })

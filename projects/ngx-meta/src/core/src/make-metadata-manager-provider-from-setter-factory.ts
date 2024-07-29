@@ -55,6 +55,7 @@ export const makeMetadataManagerProviderFromSetterFactory = <T>(
     m?: MetadataResolverOptions['objectMerge']
   },
 ): FactoryProvider => {
+  /* istanbul ignore next */
   const deps = opts.d ?? []
   return {
     provide: NgxMetaMetadataManager,

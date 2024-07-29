@@ -2,6 +2,7 @@
   <configuration default="true" type="JavaScriptTestRunnerKarma">
     <config-file value="" />
     <karma-options value="--browsers=ChromeHeadless" />
+    <working-directory value="$PROJECT_DIR$" />
     <node-interpreter value="project" />
     <envs />
     <method v="2" />

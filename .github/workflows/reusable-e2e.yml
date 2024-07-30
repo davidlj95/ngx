@@ -1,10 +1,6 @@
 name: E2E
 on:
   workflow_call:
-    secrets:
-      codecov-token:
-        description: Token to use to upload coverage to Codecov. Can be empty for forks https://about.codecov.io/blog/january-product-update-updating-the-codecov-ci-uploaders-to-the-codecov-cli/
-        required: false
 
 env:
   E2E_DIR: projects/ngx-meta/e2e
@@ -13,6 +9,8 @@ env:
   COVERAGE_ARTIFACT_NAME_SUFFIX: -coverage
   # 👇 Keep in sync with example apps workflow
   EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
+  # 👇 Keep in sync with e2e and coverage workflows
+  COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX: -coverage-report
 
 jobs:
   load-config:
@@ -81,12 +79,13 @@ jobs:
           # https://github.com/cypress-io/github-action/tree/v6.6.1?tab=readme-ov-file#pnpm
           # Given we're doing caching manually, installing apart to leverage cache
           install: false
-      - name: Fix code coverage paths
-        run: pnpm run coverage:relative-path-fix
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673 # v4.5.0
+      - name: Rename coverage report with app name suffix
+        run: mv ${{ env.COVERAGE_DIR }}/*.json ${{ env.COVERAGE_DIR }}/e2e-${{ matrix.app-name }}.json
+        working-directory: .
+      - name: Upload coverage report
+        uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         if: failure() || success()
         with:
-          disable_search: true
-          file: ${{ env.COVERAGE_DIR }}/lcov.info
-          token: ${{ secrets.codecov-token }}
+          name: ngx-meta-e2e-${{ matrix.app-name }}${{ env.COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX }}
+          path: ${{ env.COVERAGE_DIR }}/*.json
+          retention-days: 5

@@ -5,9 +5,7 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "postcypress:run": "mv -f ../../../coverage/ngx-meta/coverage-final.json ../../../coverage/ngx-meta/e2e.json",
-    "//1": "👇 Coverage reporting tools like Codecov usually require paths relative to repo root",
-    "coverage:relative-path-fix": "sed -i.bak 's|SF:..|SF:projects/ngx-meta|' ../../../coverage/ngx-meta/lcov.info"
+    "postcypress:run": "mv -f ../../../coverage/ngx-meta/coverage-final.json ../../../coverage/ngx-meta/e2e.json"
   },
   "packageManager": "pnpm@9.6.0",
   "private": true,

@@ -1,13 +1,11 @@
 name: Test
 on:
   workflow_call:
-    secrets:
-      codecov-token:
-        description: Token to use to upload coverage to Codecov. Can be empty for forks https://about.codecov.io/blog/january-product-update-updating-the-codecov-ci-uploaders-to-the-codecov-cli/
-        required: true
 
 env:
   COVERAGE_DIR: coverage/ngx-meta
+  # 👇 Keep in sync with e2e and coverage workflows
+  COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX: -coverage-report
 
 jobs:
   unit-test:
@@ -21,9 +19,10 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run unit tests
         run: cd .ci && make unit-test
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673 # v4.5.0
+      - name: Upload coverage report
+        uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
+        if: failure() || success()
         with:
-          disable_search: true
-          file: ${{ env.COVERAGE_DIR }}/lcov.info
-          token: ${{ secrets.codecov-token }}
+          name: ngx-meta-unit-test${{ env.COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX }}
+          path: ${{ env.COVERAGE_DIR }}/*.json
+          retention-days: 5

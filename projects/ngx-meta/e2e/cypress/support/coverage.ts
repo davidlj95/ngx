@@ -16,8 +16,6 @@ export async function removeNycTempDir() {
   await rm(join(nycTempPath), { recursive: true, force: true })
 }
 
-// https://github.com/istanbuljs/nyc/tree/main#common-configuration-options
-
 const DEFAULT_NYC_TEMP_DIR = '.nyc_output'
 
 export async function renameJsonReport() {

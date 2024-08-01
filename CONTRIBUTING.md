@@ -199,13 +199,13 @@ Reports will be generated in JSON, `lcov` and HTML format. JSON report file name
 
 #### E2E tests
 
-Refer to [`ngx-meta`'s E2E `README` for more information](projects/ngx-meta/e2e/README.md)
+Refer to [`ngx-meta`'s E2E infra for more information](projects/ngx-meta/e2e/README.md)
 
 #### Coverage
 
 Tests are configured to output coverage reports to the `coverage/<projectName>` directory. See each kind of tests to see which formats will be output there.
 
-[Codecov](https://codecov.io) is used to keep track of code coverage over time. It is configured in CI/CD to ensure each PR introduces tests for new code introduced and to maintain a good overall project coverage. It will also merge coverage reports from different tests (unit, E2E) to have a holistic code coverage view.
+[Codecov](https://codecov.io) is used to keep track of code coverage over time. It is configured in CI/CD to ensure each PR introduces tests for new code introduced and to maintain a good overall project coverage. All coverage results from different tests (unit, E2E) are uploaded there to have a holistic code coverage view.
 
 In local, beware that reports may overwrite each other. Except for JSON reports. For instance if running unit tests coverage and then E2E tests coverage, the `lcov` and HTML report will take int account E2E tests only.
 

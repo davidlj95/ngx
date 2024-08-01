@@ -4,7 +4,8 @@
   "description": "ngx-meta E2E testing infra",
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "test": "./start-server-and-test.sh"
   },
   "packageManager": "pnpm@9.6.0",
   "private": true,
@@ -13,6 +14,7 @@
     "@istanbuljs/load-nyc-config": "1.1.0",
     "@types/node": "22.0.2",
     "cypress": "13.13.1",
+    "start-server-and-test": "2.0.5",
     "tslib": "2.6.3",
     "typescript": "5.5.3"
   }

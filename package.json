@@ -20,7 +20,6 @@
     "ngx-meta:api-extractor": "api-extractor run -c ./projects/ngx-meta/src/api-extractor.json",
     "ngx-meta:api-extractor:local": "pnpm run ngx-meta:tsc:lib && pnpm run ngx-meta:api-extractor --local",
     "ngx-meta:api-documenter": "api-documenter markdown -i ./projects/ngx-meta/api-extractor -o ./projects/ngx-meta/docs/content/api",
-    "ngx-meta:instrument-for-coverage": "nyc instrument projects/ngx-meta/dist/fesm2022 --in-place",
     "ngx-meta:coverage:report:all": "pnpm run ngx-meta:coverage:move-to-nyc-output && nyc report --reporter lcov --report-dir coverage/ngx-meta",
     "ngx-meta:coverage:move-to-nyc-output": "rm -rf .nyc_output && mkdir .nyc_output && cp -f coverage/ngx-meta/*.json .nyc_output",
     "format-check": "prettier --check",
@@ -33,7 +32,8 @@
     "ng-lint-staged": "ng-lint-staged lint --max-warnings 0 --fix --",
     "cache-clean": "ng cache clean",
     "commit": "pnpx @commitlint/prompt-cli",
-    "validate-codecov-yml": "curl -X POST --data-binary @codecov.yml https://codecov.io/validate"
+    "validate-codecov-yml": "curl -X POST --data-binary @codecov.yml https://codecov.io/validate",
+    "instrument-for-coverage": "./instrument-for-coverage.sh"
   },
   "private": true,
   "packageManager": "pnpm@9.6.0",

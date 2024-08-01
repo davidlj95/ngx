@@ -34,7 +34,7 @@ jobs:
           path: projects/ngx-meta/dist
           retention-days: 5
       - name: Instrument for coverage
-        run: pnpm run ngx-meta:instrument-for-coverage
+        run: pnpm run instrument-for-coverage
       - name: Upload distribution files with coverage instrumentation
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         with:

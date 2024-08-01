@@ -2,6 +2,9 @@
 # Commands to run after building
 set -eu
 
+# Change cwd to this script's directory
+cd "$(dirname "$0")"
+
 # ngx-meta Typescript definitions rollup
 echo "ℹ️ Bundling Typescript definitions"
 dts-bundle-generator --config dts-config.js

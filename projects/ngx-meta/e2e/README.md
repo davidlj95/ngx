@@ -24,13 +24,35 @@ pnpm install
 
 [Cypress can be configured to perform code coverage reporting](https://docs.cypress.io/guides/tooling/code-coverage#What-youll-learn). Essentially two steps are needed: instrument the JS code to track lines being hit and later report the results.
 
-Run the `ngx-meta:instrument-for-coverage` script in root repo to instrument the `ngx-meta` library for coverage reporting before running Cypress tests. Now, create an example app and serve it (as usual to run E2E tests). Cypress is configured via the [`@cypress/code-coverage` plugin](https://github.com/cypress-io/code-coverage) to report results. A report will be generated in JSON, `lcov` and HTML formats.
+Run the `instrument-for-coverage` script in root repo to instrument libraries for coverage reporting before running Cypress tests. Now, create an example app and run E2E tests as usual (see below). Cypress is configured via the [`@cypress/code-coverage` plugin](https://github.com/cypress-io/code-coverage) to report results. A report will be generated in JSON, `lcov` and HTML formats.
 
-Take look into [`package.json`](package.json)'s `postcypress:run` script for the name of the JSON report generated inside the report directory.
+> [!NOTE]
+> Some [coverage utils] have been added to improve the development experience. The main takeaways are:
+>
+> - **`nyc` temp dir is cleared automatically**: before and after running one or many specs of a project. This is in order to avoid Cypress using old runs coverage data for new runs (it merges them by default)
+> - **JSON coverage filename is renamed**: instead of `coverage-final.json` (the default) to `e2e.json`. [`nyc` config doesn't allow that](https://github.com/istanbuljs/nyc/issues/1150). The name can be also customized with an env var (see [coverage utils source code][coverage utils] for more info).
+
+[coverage utils]: ./cypress/support/coverage.ts
 
 See more details on coverage in [contributing guide](../../../CONTRIBUTING.md#coverage)
 
 ### Run tests
+
+#### Automatically
+
+First, build an example app.
+
+Then run
+
+```sh
+pnpm run test v18
+```
+
+Where v18 is the directory name of the example app. A script will automatically serve the built app, start tests and then stop serving the app.
+
+If code is instrumented for coverage reporting, the JSON report filename will be suffixed with the app name being tested.
+
+#### Manually via CLI
 
 First, run an example app. Ensure it serves contents in port 4200.
 
@@ -40,7 +62,11 @@ You can then run inside this directory:
 pnpm run cypress:run
 ```
 
-Or if you want to use Cypress UI, open Cypress by running
+#### Manually via Cypress UI
+
+First, run an example app. Ensure it serves contents in port 4200.
+
+If you want to use Cypress UI, open Cypress by running
 
 ```sh
 pnpm run cypress:open
@@ -52,9 +78,9 @@ Choose E2E testing. Then, choose a browser (Chrome is used in CI/CD). Use Cypres
 
 ### WebStorm run configurations
 
-There are many run configurations `ngx-meta/e2e:` in WebStorm to help you run E2E tests and see results right in the IDE
+There are many run configurations `ngx-meta/e2e:` in WebStorm to help you run E2E tests and see results right in the IDE. Remember to serve an example app to test against first.
 
-Remember to serve an example app first.
+There's also a run configuration to perform all the setup (including coverage), create an example app using latest Angular supported version, build it, serve it and run all tests. Can be very useful to locally check the coverage of E2E tests.
 
 ## Quirks
 
@@ -71,6 +97,34 @@ Links:
 - [Testing server side rendered (SSR) React with Cypress](https://blog.simonireilly.com/posts/server-side-rendering-tests-in-cypress/)
 - [End-to-end Testing for Server-Side Rendered Pages](https://glebbahmutov.com/blog/ssr-e2e/)
 - [Cypress and SSR (Server Side Rendering) on Cypress' GitHub Discussions](https://github.com/cypress-io/cypress/discussions/26595)
+
+### Coverage instrumentation tweak
+
+There's some code in the library that may get removed when building an app in production mode due to [dead code elimination](https://en.wikipedia.org/wiki/Dead-code_elimination) optimization technique in the compilation process.
+
+Specifically, uses of `ngDevMode`. So that we can include code that only runs when running apps in development mode and that gets eliminated in app production builds.
+
+This is not very well handled by coverage tooling. And given the code being run is an optimized version from a flattened version from a compiled version from the original source, source maps can lead to misreporting coverage too.
+
+So in order to at least always have the same code for both unit tests (where no dead code elimination happens) and E2E tests, dead code elimination is prevented. Using a hack though. In library's built code, instances of constants that could lead to dead code elimination (right now only `ngDevMode`) are replaced by `globalThis` object accesses. Object accesses are not eliminated by default. This is for safety as you can't anymore be sure it's a constant (it could be a getter, could be modified by some code around, ....).
+
+TL;DR:
+
+```typescript
+if (ngDevMode) {
+  console.log('This whole `if` clause will be eliminated in production builds')
+}
+```
+
+Becomes (when instrumenting code for E2E testing with coverage)
+
+```typescript
+if (globalThis.ngDevMode) {
+  console.log("This whole `if` clause won't be eliminated in production builds")
+}
+```
+
+More info in [PR introducing that change](https://github.com/davidlj95/ngx/pull/732)
 
 ### `tslib` error
 

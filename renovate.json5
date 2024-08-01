@@ -4,7 +4,7 @@
   extends: [
     'config:best-practices',
     'config:js-app',
-    'github>davidlj95/renovate-config:angular/v18.0.x',
+    'github>davidlj95/renovate-config:angular/v18.1.x',
   ],
   prHourlyLimit: 0,
   prConcurrentLimit: 5,

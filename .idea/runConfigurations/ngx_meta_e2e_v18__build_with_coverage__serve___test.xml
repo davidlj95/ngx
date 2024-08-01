@@ -1,0 +1,53 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ngx-meta/e2e/v18: build with coverage, serve &amp; test" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="test" />
+    </scripts>
+    <arguments value="v18" />
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2">
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="cache-clean" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build (all)" run_configuration_type="js.build_tools.npm" />
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="instrument-for-coverage" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="ngx-meta/example-apps/v18: create example app" run_configuration_type="NodeJSConfigurationType" />
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v18/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="ng" />
+        </scripts>
+        <arguments value="cache clean" />
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v18/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="ci:build" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+    </method>
+  </configuration>
+</component>

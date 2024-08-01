@@ -72,6 +72,8 @@ jobs:
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Cypress run
         uses: cypress-io/github-action@df7484c5ba85def7eef30db301afa688187bc378 # v6.7.2
+        env:
+          COVERAGE_JSON_REPORT_NAME: e2e-${{ matrix.app-name }}.json
         with:
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
@@ -79,9 +81,6 @@ jobs:
           # https://github.com/cypress-io/github-action/tree/v6.6.1?tab=readme-ov-file#pnpm
           # Given we're doing caching manually, installing apart to leverage cache
           install: false
-      - name: Rename coverage report with app name suffix
-        run: mv ${{ env.COVERAGE_DIR }}/*.json ${{ env.COVERAGE_DIR }}/e2e-${{ matrix.app-name }}.json
-        working-directory: .
       - name: Upload coverage report
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         if: failure() || success()

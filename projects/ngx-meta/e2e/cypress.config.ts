@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress'
 import registerCodeCoverageTasks from '@cypress/code-coverage/task'
+import { removeNycTempDir, renameJsonReport } from './cypress/support/coverage'
 
 export default defineConfig({
   e2e: {
@@ -11,6 +12,15 @@ export default defineConfig({
     ) {
       // implement node event listeners here
       registerCodeCoverageTasks(on, config)
+      on('before:run', async () => {
+        console.debug('Running before:run tasks')
+        await removeNycTempDir()
+      })
+      on('after:run', async () => {
+        console.debug('Running after:run tasks')
+        await renameJsonReport()
+        await removeNycTempDir()
+      })
       return config
     },
   },

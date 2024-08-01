@@ -3,7 +3,8 @@
   "include": ["cypress/**/*.ts"],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["cypress"],
+    "types": ["cypress", "node", "istanbuljs__load-nyc-config"],
+    "typeRoots": ["node_modules/@types", "types"],
     // Load JSON fixtures (so we leverage types)
     "resolveJsonModule": true
   }

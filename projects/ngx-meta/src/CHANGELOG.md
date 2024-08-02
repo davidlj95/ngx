@@ -1,3 +1,102 @@
+## [`ngx-meta` v1.0.0-beta.6](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.5...ngx-meta-v1.0.0-beta.6) (2024-08-02)
+
+### Features
+
+- add dev error 4 non http(s) Open Graph image URLs ([#731](https://github.com/davidlj95/ngx/issues/731)) ([85e6ad3](https://github.com/davidlj95/ngx/commit/85e6ad3fadf986c4c7a89356cdd944fdb98f8cd5))
+
+### Documentation
+
+- add Codecov to README.md ([#676](https://github.com/davidlj95/ngx/issues/676)) ([3ff0979](https://github.com/davidlj95/ngx/commit/3ff0979fe3f7c4199fb95e532d1d2a331e41a68b))
+- add coverage section to contributing guide [skip ci] ([#708](https://github.com/davidlj95/ngx/issues/708)) ([5dff223](https://github.com/davidlj95/ngx/commit/5dff2233ca140e7195110fb672a151a574ccfd82))
+- add recent coverage tooling changes ([#735](https://github.com/davidlj95/ngx/issues/735)) ([d532c6e](https://github.com/davidlj95/ngx/commit/d532c6ea60c9cd95572f82d3b2ebf761c4cb9c2e))
+- expand version compatibility check ([af7dd47](https://github.com/davidlj95/ngx/commit/af7dd473ad4dc31c3940a44dcc386204f448887d))
+- improve contributors guide ([#697](https://github.com/davidlj95/ngx/issues/697)) ([1bb30b0](https://github.com/davidlj95/ngx/commit/1bb30b06fce46a3b434c039b505ca20bb7be2dda))
+- remove 1 indent level from contributing guide [skip ci] ([#706](https://github.com/davidlj95/ngx/issues/706)) ([0c0ff95](https://github.com/davidlj95/ngx/commit/0c0ff95e3080abcdfddbe408794aecdb86266dbd))
+- update comparison with code coverage [skip ci] ([#721](https://github.com/davidlj95/ngx/issues/721)) ([6c7e261](https://github.com/davidlj95/ngx/commit/6c7e2615427bae882eb3c4796d3420b361863088))
+- update README.md badge with renovate logo ([f772bdf](https://github.com/davidlj95/ngx/commit/f772bdf5c6eeab72768ee577beaeb2505b3bc557))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#667](https://github.com/davidlj95/ngx/issues/667)) ([be3f5a4](https://github.com/davidlj95/ngx/commit/be3f5a445b7fc763c11e5b0bb2107765683da8ec))
+- remove from Makefile act CI/CD related targets ([9c34a71](https://github.com/davidlj95/ngx/commit/9c34a71faac2de3a19ca000a82cd0c48544ea658))
+
+### Code Refactoring
+
+- use kebab-case for GH Actions matrix vars ([#694](https://github.com/davidlj95/ngx/issues/694)) ([5485abb](https://github.com/davidlj95/ngx/commit/5485abba724eb372ca2adadb029cd112e2bc7be0))
+
+### Tests
+
+- add coverage reporting to Cypress E2E tests ([#679](https://github.com/davidlj95/ngx/issues/679)) ([323a701](https://github.com/davidlj95/ngx/commit/323a701b5c436ecc4112101e8d2e57d29e4c24a9))
+- add missing core module tests ([#728](https://github.com/davidlj95/ngx/issues/728)) ([77bfc3e](https://github.com/davidlj95/ngx/commit/77bfc3ee648437860affb43cc3cc766dba27cbc7))
+- add unit test for `clear` method ([#727](https://github.com/davidlj95/ngx/issues/727)) ([15196ed](https://github.com/davidlj95/ngx/commit/15196edb9cb62a4b8c9b69d12cdebf564204a4ff))
+- configure Codecov ([#675](https://github.com/davidlj95/ngx/issues/675)) ([eeeb541](https://github.com/davidlj95/ngx/commit/eeeb541143b7c3f8721098631825ca38e3292347))
+- increase coverage after reviewing some reports ([#720](https://github.com/davidlj95/ngx/issues/720)) ([e2a09a0](https://github.com/davidlj95/ngx/commit/e2a09a08b59fd6591b19314fdd7d1ebdd9bd79eb))
+- report coverage via Codecov ([#673](https://github.com/davidlj95/ngx/issues/673)) ([9549377](https://github.com/davidlj95/ngx/commit/9549377353ded7de76c6714e0cd18b3ce443f26a))
+- specify which tasks are about unit tests ([#672](https://github.com/davidlj95/ngx/issues/672)) ([145d574](https://github.com/davidlj95/ngx/commit/145d574418e739084c63ff3a4c59801ea9873bbf))
+
+### Build System
+
+- add lint for Cypress spec files ([#722](https://github.com/davidlj95/ngx/issues/722)) ([c4ff62f](https://github.com/davidlj95/ngx/commit/c4ff62f91d0dca876b6a8d87a7b1487427cd7974))
+- add run script for unit tests with coverage ([#718](https://github.com/davidlj95/ngx/issues/718)) ([02c7353](https://github.com/davidlj95/ngx/commit/02c7353b1b08bbb76a1341692d878537166426f9))
+- allow merging coverage reports locally ([#705](https://github.com/davidlj95/ngx/issues/705)) ([8151b7f](https://github.com/davidlj95/ngx/commit/8151b7f1e28aef2705b3f3cc458271a6b18e59a1))
+- automate running E2E tests with coverage ([#734](https://github.com/davidlj95/ngx/issues/734)) ([66d9a58](https://github.com/davidlj95/ngx/commit/66d9a58b6b13168ce0dec4265ef0efe14283bd70))
+- consider tree shaking for code coverage reporting ([#732](https://github.com/davidlj95/ngx/issues/732)) ([ef4cde1](https://github.com/davidlj95/ngx/commit/ef4cde12128d913109bdc416f1cdd092780553ba))
+- **deps:** pin rhysd/actionlint docker tag to 435ecdb ([#699](https://github.com/davidlj95/ngx/issues/699)) ([12152b7](https://github.com/davidlj95/ngx/commit/12152b7ef859f9dca961ed735fea8d97293e629c))
+- **deps:** update actions/download-artifact digest to fa0a91b ([14ae350](https://github.com/davidlj95/ngx/commit/14ae350711ca3fd5db057fd16ad043f475b00ba8))
+- **deps:** update actions/setup-node digest to 1e60f62 ([67caba2](https://github.com/davidlj95/ngx/commit/67caba2651b3511494fad6b74aae7d73777e8f06))
+- **deps:** update actions/setup-python digest to 39cd149 ([8947a0a](https://github.com/davidlj95/ngx/commit/8947a0a63ea46341de56394d1987d604dd8abdd2))
+- **deps:** update actions/upload-artifact digest to 0b2256b ([b6a7fdc](https://github.com/davidlj95/ngx/commit/b6a7fdc11e46c986d93cc42c0f8fd31698771dcb))
+- **deps:** update actions/upload-artifact digest to 0b2256b ([#700](https://github.com/davidlj95/ngx/issues/700)) ([d4f67e7](https://github.com/davidlj95/ngx/commit/d4f67e708d2baebbd8f93358414e97d53f43e79a))
+- **deps:** update codecov/codecov-action action to v4.5.0 ([2eebd45](https://github.com/davidlj95/ngx/commit/2eebd4593475299bc50d814d3d054140de02c768))
+- **deps:** update cypress-io/github-action action to v6.7.2 ([55c700b](https://github.com/davidlj95/ngx/commit/55c700b6c32dcaf1a6f9059299f15090e2f9201b))
+- **deps:** update dependency mkdocs-material to v9.5.28 ([84ce609](https://github.com/davidlj95/ngx/commit/84ce609fdb140f0a03281f2aea3b3fd75b880ad9))
+- **deps:** update dependency mkdocs-material to v9.5.29 ([53d6fd1](https://github.com/davidlj95/ngx/commit/53d6fd194787da6109fbdf4bf594e87ff860f667))
+- **deps:** update dependency mkdocs-material to v9.5.30 ([3c64ddd](https://github.com/davidlj95/ngx/commit/3c64ddd8f328d0af3cc14156b4e979ab809704b9))
+- **deps:** update dependency node to v20.15.1 ([f473b67](https://github.com/davidlj95/ngx/commit/f473b672ba9a8f14b9f566a2926b12250ed41c2c))
+- **deps:** update dependency node to v20.16.0 ([60744ec](https://github.com/davidlj95/ngx/commit/60744ec78378e24663ceb6c799c2e1244c61bb8b))
+- **deps:** update pnpm to v9.5.0 ([13fa925](https://github.com/davidlj95/ngx/commit/13fa925904b9463323ee494ce31bff4b12280d2a))
+- **deps:** update pnpm to v9.6.0 ([9e546b7](https://github.com/davidlj95/ngx/commit/9e546b7360eff81e015f0786f995f92b83ba6507))
+- **deps:** update python to v3.12.4 ([#671](https://github.com/davidlj95/ngx/issues/671)) ([e1352ea](https://github.com/davidlj95/ngx/commit/e1352eaafe8a131ca3b0dd08367a647f0121caf1))
+- **deps:** update to Angular v18.1 ([#703](https://github.com/davidlj95/ngx/issues/703)) ([d3ec2f1](https://github.com/davidlj95/ngx/commit/d3ec2f19888f127e8328838c988418f7d665e3a4))
+- **dev-deps:** update dependency @cypress/code-coverage to v3.12.44 ([e6d91f0](https://github.com/davidlj95/ngx/commit/e6d91f0757ccbc39ebdeea5ffcc49cda2670551b))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.47.2 ([22b63c9](https://github.com/davidlj95/ngx/commit/22b63c977f83022c8b5f6a6e4450ec637c06e797))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.47.3 ([46f25ff](https://github.com/davidlj95/ngx/commit/46f25ff772d1766ab4dc7be145ffea76928a5cfe))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.47.4 ([721bda1](https://github.com/davidlj95/ngx/commit/721bda1faf43c8a7013114b75823ca7a5f60770d))
+- **dev-deps:** update dependency @types/node to v20.14.12 ([4521931](https://github.com/davidlj95/ngx/commit/45219310e4a562b434a31681a26a0253bd3adb09))
+- **dev-deps:** update dependency cypress to v13.13.0 ([df4cdc6](https://github.com/davidlj95/ngx/commit/df4cdc642a9a0bd23a691113a5c92835e90e23e9))
+- **dev-deps:** update dependency cypress to v13.13.1 ([48232da](https://github.com/davidlj95/ngx/commit/48232da6ba273041738c87da1b1bb18b24641aab))
+- **dev-deps:** update dependency husky to v9.1.1 ([059b7be](https://github.com/davidlj95/ngx/commit/059b7be174668ce89b39bd421b9b064777dfe9aa))
+- **dev-deps:** update dependency jasmine-core to v5.2.0 ([94e0795](https://github.com/davidlj95/ngx/commit/94e079554f0c5d5d5a7f4126efbcaaf307b88334))
+- **dev-deps:** update dependency karma to v6.4.4 ([55826a0](https://github.com/davidlj95/ngx/commit/55826a0c0f3d69168c2945f325e8ddcf4ba97b81))
+- **dev-deps:** update dependency ng-packagr to v18.1.0 ([c6bdab1](https://github.com/davidlj95/ngx/commit/c6bdab1bddcbbfe7ac4b9176984b8b6303f29953))
+- **dev-deps:** update dependency prettier to v3.3.3 ([b386f7f](https://github.com/davidlj95/ngx/commit/b386f7f6cfabf324e4ec21d166fffccf36156a5e))
+- **dev-deps:** update dependency semver to v7.6.3 ([6db3a4d](https://github.com/davidlj95/ngx/commit/6db3a4d4873b1b557eeed6e05f602945ced8d982))
+- **dev-deps:** update dependency typescript to v5.5.3 ([305a36d](https://github.com/davidlj95/ngx/commit/305a36de6073751c813bbe6a928765425f223f8c))
+- **dev-deps:** update typescript-eslint monorepo to v7.17.0 ([28fd6fe](https://github.com/davidlj95/ngx/commit/28fd6fe124ba6aebf8296b0fdfd7691cde1804c7))
+- **git:** ignore GitToolbox Jetbrains IDE plugin ([0b3dd0f](https://github.com/davidlj95/ngx/commit/0b3dd0f9d9442eb0446dd5e6086f2576436f2e8f))
+- **ide:** add default inspection profiles for project ([5a67523](https://github.com/davidlj95/ngx/commit/5a67523a513392d5ff308992bc1c36a9e5473fff))
+- **ide:** enable ESLint in WebStorm for project ([44d035d](https://github.com/davidlj95/ngx/commit/44d035df4fb07b8622c50a1014bbe9b4fb08f832))
+- **ide:** setup JetBrains IDEs to use repo root as working dir ([636fc87](https://github.com/davidlj95/ngx/commit/636fc874067b9aacdf493ed8dd26a5a9c09d63e0))
+- ignore **tests** dirs in coverage reports ([#717](https://github.com/davidlj95/ngx/issues/717)) ([b12310c](https://github.com/davidlj95/ngx/commit/b12310c2e6ba62a885526f8704ea53c7943dc9d0))
+- improve Cypress coverage DX: cache & report renaming ([#733](https://github.com/davidlj95/ngx/issues/733)) ([1c80981](https://github.com/davidlj95/ngx/commit/1c809819b6a53c1575ef24bc49170c2104673a97))
+- **lint:** fix lint-staged config for GH Actions ([#695](https://github.com/davidlj95/ngx/issues/695)) ([447b2bc](https://github.com/davidlj95/ngx/commit/447b2bc4a7fca711d5c2de6b4c945d6dc45cf6bf))
+- **lint:** lint GitHub Actions via actionlint ([#692](https://github.com/davidlj95/ngx/issues/692)) ([e146da5](https://github.com/davidlj95/ngx/commit/e146da5cb34ea8a416a0aebd98860745001615a6))
+- tell ng-lint-staged to just lint code [skip ci] ([#719](https://github.com/davidlj95/ngx/issues/719)) ([6a4c26b](https://github.com/davidlj95/ngx/commit/6a4c26bbcb4f9b8837a3579503ba97c3708d345b))
+
+### Continuous (Integration|Deployment)
+
+- avoid fail when can't find PR to comment ([#677](https://github.com/davidlj95/ngx/issues/677)) ([c8045a3](https://github.com/davidlj95/ngx/commit/c8045a39fead674e0b6bbc89e9ee2db916608b97))
+- configure Codecov to don't wait for CI ([#707](https://github.com/davidlj95/ngx/issues/707)) ([e903552](https://github.com/davidlj95/ngx/commit/e903552165f5310715be3cef87e02f46b78f9800))
+- **coverage:** wait for CI until reporting status ([#698](https://github.com/davidlj95/ngx/issues/698)) ([8705565](https://github.com/davidlj95/ngx/commit/870556514bbdc27274e6a42bd70a8aa3b2d02d9d))
+- **e2e:** add Codecov secret for main wf ([#693](https://github.com/davidlj95/ngx/issues/693)) ([d7eb576](https://github.com/davidlj95/ngx/commit/d7eb57629588fe95762e8e11adc230f784ff9520))
+- **e2e:** remove unneded extra env var ([#696](https://github.com/davidlj95/ngx/issues/696)) ([889af34](https://github.com/davidlj95/ngx/commit/889af34556c723adb261002c9b954e51bcc20c8b))
+- extract example apps matrix config ([#716](https://github.com/davidlj95/ngx/issues/716)) ([925a10f](https://github.com/davidlj95/ngx/commit/925a10ff32cfbd315580c957f2394aa481bcd5ed))
+- fix docs workflow after refactor ([#711](https://github.com/davidlj95/ngx/issues/711)) ([0b130a0](https://github.com/davidlj95/ngx/commit/0b130a02af5b7cab02fde57fa485ac0bf0aa0734))
+- merge API Extractor / Documenter into 1 job ([#710](https://github.com/davidlj95/ngx/issues/710)) ([1c71094](https://github.com/davidlj95/ngx/commit/1c7109401f2d84c5cc38710bc206bb220d912c45))
+- reduce complexity ([#709](https://github.com/davidlj95/ngx/issues/709)) ([e5c3e84](https://github.com/davidlj95/ngx/commit/e5c3e848e4500cd2a488e87ffd49d765c26cd313))
+- trigger it ([0682c79](https://github.com/davidlj95/ngx/commit/0682c797e705cee4e808567661693e0933ae2e7e))
+- upload a merged coverage report to codecov ([#729](https://github.com/davidlj95/ngx/issues/729)) ([ed71e0c](https://github.com/davidlj95/ngx/commit/ed71e0c5771bf8307615f5ed3c447de1119bd285))
+
 ## [`ngx-meta` v1.0.0-beta.5](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.4...ngx-meta-v1.0.0-beta.5) (2024-06-29)
 
 ### Documentation

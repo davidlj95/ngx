@@ -18,28 +18,26 @@ describe('Standard generator metadata', () => {
     ) as jasmine.SpyObj<NgxMetaMetaService>
   })
 
-  describe('setter', () => {
-    it('when not provided should call meta service with nothing value', () => {
-      sut(undefined)
+  it('when not provided should call meta service with nothing value', () => {
+    sut(undefined)
 
-      expect(metaService.set).toHaveBeenCalledOnceWith(
-        jasmine.anything(),
-        undefined,
-      )
-    })
-    it('when null should call meta service with null value', () => {
-      sut(null)
+    expect(metaService.set).toHaveBeenCalledOnceWith(
+      jasmine.anything(),
+      undefined,
+    )
+  })
+  it('when null should call meta service with null value', () => {
+    sut(null)
 
-      expect(metaService.set).toHaveBeenCalledOnceWith(jasmine.anything(), null)
-    })
-    it('when true should call meta service with Angular version as value', () => {
-      sut(true)
+    expect(metaService.set).toHaveBeenCalledOnceWith(jasmine.anything(), null)
+  })
+  it('when true should call meta service with Angular version as value', () => {
+    sut(true)
 
-      expect(metaService.set).toHaveBeenCalledOnceWith(
-        jasmine.anything(),
-        `Angular v${VERSION.full}`,
-      )
-    })
+    expect(metaService.set).toHaveBeenCalledOnceWith(
+      jasmine.anything(),
+      `Angular v${VERSION.full}`,
+    )
   })
 })
 

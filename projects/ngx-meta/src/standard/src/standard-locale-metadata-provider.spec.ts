@@ -21,43 +21,41 @@ describe('Standard locale metadata', () => {
     htmlLangAttributeHarness.remove()
   })
 
-  describe('setter', () => {
-    describe('when locale is not provided', () => {
-      const locale = undefined
+  describe('when locale is not provided', () => {
+    const locale = undefined
 
-      it('should remove HTML element lang attribute', () => {
-        htmlLangAttributeHarness.set('es')
-        expect(htmlLangAttributeHarness.get()).toBeTruthy()
+    it('should remove HTML element lang attribute', () => {
+      htmlLangAttributeHarness.set('es')
+      expect(htmlLangAttributeHarness.get()).toBeTruthy()
 
-        sut(locale)
+      sut(locale)
 
-        expect(htmlLangAttributeHarness.get()).toBeNull()
-      })
+      expect(htmlLangAttributeHarness.get()).toBeNull()
     })
+  })
 
-    describe('when locale is provided', () => {
-      const locale = 'es-ES'
+  describe('when locale is provided', () => {
+    const locale = 'es-ES'
 
-      it('should update HTML element lang attribute', () => {
-        sut(locale)
+    it('should update HTML element lang attribute', () => {
+      sut(locale)
 
-        const htmlTagLangAttribute = htmlLangAttributeHarness.get()
-        expect(htmlTagLangAttribute).not.toBeNull()
-        expect(htmlTagLangAttribute?.value).toEqual(locale)
-      })
+      const htmlTagLangAttribute = htmlLangAttributeHarness.get()
+      expect(htmlTagLangAttribute).not.toBeNull()
+      expect(htmlTagLangAttribute?.value).toEqual(locale)
     })
+  })
 
-    describe('when locale is null', () => {
-      const locale = null
+  describe('when locale is null', () => {
+    const locale = null
 
-      it('should remove HTML element lang attribute', () => {
-        htmlLangAttributeHarness.set('es')
-        expect(htmlLangAttributeHarness.get()).toBeTruthy()
+    it('should remove HTML element lang attribute', () => {
+      htmlLangAttributeHarness.set('es')
+      expect(htmlLangAttributeHarness.get()).toBeTruthy()
 
-        sut(locale)
+      sut(locale)
 
-        expect(htmlLangAttributeHarness.get()).toBeNull()
-      })
+      expect(htmlLangAttributeHarness.get()).toBeNull()
     })
   })
 })

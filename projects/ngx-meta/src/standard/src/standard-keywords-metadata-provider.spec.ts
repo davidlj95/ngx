@@ -17,19 +17,17 @@ describe('Standard keywords metadata', () => {
     ) as jasmine.SpyObj<NgxMetaMetaService>
   })
 
-  describe('setter', () => {
-    it('when keywords are provided should set them separated by comma', () => {
-      const firstKeyword = 'first'
-      const secondKeyword = 'second'
-      const thirdKeyword = 'third'
+  it('should set keywords separated by comma', () => {
+    const firstKeyword = 'first'
+    const secondKeyword = 'second'
+    const thirdKeyword = 'third'
 
-      sut([firstKeyword, secondKeyword, thirdKeyword])
+    sut([firstKeyword, secondKeyword, thirdKeyword])
 
-      expect(metaService.set).toHaveBeenCalledOnceWith(
-        jasmine.anything(),
-        `${firstKeyword},${secondKeyword},${thirdKeyword}`,
-      )
-    })
+    expect(metaService.set).toHaveBeenCalledOnceWith(
+      jasmine.anything(),
+      `${firstKeyword},${secondKeyword},${thirdKeyword}`,
+    )
   })
 })
 

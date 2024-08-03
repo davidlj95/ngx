@@ -1,3 +1,21 @@
+## [`ngx-meta` v1.0.0-beta.7](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.6...ngx-meta-v1.0.0-beta.7) (2024-08-03)
+
+### Features
+
+- add dev error 4 non http(s) Twitter Card image URLs ([#738](https://github.com/davidlj95/ngx/issues/738)) ([1ad2375](https://github.com/davidlj95/ngx/commit/1ad23755f7321478c9d21367da7554d45cca0ad9))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#736](https://github.com/davidlj95/ngx/issues/736)) ([7617f97](https://github.com/davidlj95/ngx/commit/7617f977f2a58c12fac800a81dcfa8ff5595161c))
+
+### Build System
+
+- revert dead code elimination hack for coverage ([#737](https://github.com/davidlj95/ngx/issues/737)) ([073700a](https://github.com/davidlj95/ngx/commit/073700a062aabdbb7ce309fd4e801b922e5eb7af))
+
+### Continuous (Integration|Deployment)
+
+- fix bundle size PR comment workflow ([120aa80](https://github.com/davidlj95/ngx/commit/120aa8025a5f1a17b0999826d634f2cf0c27870f))
+
 ## [`ngx-meta` v1.0.0-beta.6](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.5...ngx-meta-v1.0.0-beta.6) (2024-08-02)
 
 ### Features

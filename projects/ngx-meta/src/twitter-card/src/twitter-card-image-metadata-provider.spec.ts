@@ -27,55 +27,24 @@ describe('Twitter Card image metadata', () => {
   } satisfies TwitterCardImage
 
   describe('when image is provided', () => {
-    describe('when its url does not start with http or https', () => {
-      it('should log an error to the console', () => {
-        spyOn(console, 'error')
+    it('should set all meta properties', () => {
+      // noinspection DuplicatedCode
+      sut(image)
 
-        const invalidImageUrl = 'ftp://ftp.example.com/images/og.jpg'
-        sut({ ...image, url: invalidImageUrl })
-
-        expect(console.error).toHaveBeenCalledWith(
-          jasmine.stringMatching(/http or https/),
-          invalidImageUrl,
-        )
-      })
-    })
-
-    describe('when the url is valid', () => {
-      it('should not error', () => {
-        spyOn(console, 'error')
-
-        sut(image)
-
-        expect(console.error).not.toHaveBeenCalled()
-      })
-      it('should set all meta properties', () => {
-        // noinspection DuplicatedCode
-        sut(image)
-
-        const props = Object.keys(image).length
-        expect(metaService.set).toHaveBeenCalledTimes(props)
-        expect(metaService.set).toHaveBeenCalledWith(
-          jasmine.anything(),
-          image.url,
-        )
-        expect(metaService.set).toHaveBeenCalledWith(
-          jasmine.anything(),
-          image.alt,
-        )
-      })
+      const props = Object.keys(image).length
+      expect(metaService.set).toHaveBeenCalledTimes(props)
+      expect(metaService.set).toHaveBeenCalledWith(
+        jasmine.anything(),
+        image.url,
+      )
+      expect(metaService.set).toHaveBeenCalledWith(
+        jasmine.anything(),
+        image.alt,
+      )
     })
   })
 
   describe('when no image provided', () => {
-    it('should not log any error', () => {
-      spyOn(console, 'error')
-
-      sut(undefined)
-
-      expect(console.error).not.toHaveBeenCalled()
-    })
-
     it('should remove all meta properties', () => {
       sut(undefined)
 

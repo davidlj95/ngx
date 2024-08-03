@@ -150,6 +150,13 @@ export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: Me
 // @internal (undocumented)
 export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global'], objectMerge?: MetadataResolverOptions['objectMerge']) => MetadataResolverOptions;
 
+// @internal
+export const _maybeNonHttpUrlDevMessage: (url?: string | URL, opts?: {
+    module?: string;
+    property?: string;
+    link?: string;
+}) => void;
+
 // @internal (undocumented)
 class MetadataRegistry {
     constructor(managers: ReadonlyArray<NgxMetaMetadataManager> | null);
@@ -266,6 +273,9 @@ export class NgxMetaStandardModule {
 // @public
 export class NgxMetaTwitterCardModule {
 }
+
+// @internal (undocumented)
+export const _NO_OP: () => void;
 
 // @public
 export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;

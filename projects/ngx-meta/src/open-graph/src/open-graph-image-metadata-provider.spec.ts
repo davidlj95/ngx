@@ -29,70 +29,39 @@ describe('Open Graph image metadata', () => {
 
   describe('setter', () => {
     describe('when url is provided', () => {
-      describe('when the url does not start with http or https', () => {
-        it('should log an error to the console', () => {
-          spyOn(console, 'error')
+      it('should set all meta properties', () => {
+        sut(image)
 
-          const invalidImageUrl = 'ftp://ftp.example.com/images/og.jpg'
-          sut({ ...image, url: invalidImageUrl })
-
-          expect(console.error).toHaveBeenCalledWith(
-            jasmine.stringMatching(/http or https/),
-            invalidImageUrl,
-          )
-        })
-      })
-
-      describe('when the url is valid', () => {
-        it('should not error', () => {
-          spyOn(console, 'error')
-
-          sut(image)
-
-          expect(console.error).not.toHaveBeenCalled()
-        })
-        it('should set all meta properties', () => {
-          sut(image)
-
-          const props = Object.keys(image).length
-          expect(metaService.set).toHaveBeenCalledTimes(props)
-          expect(metaService.set).toHaveBeenCalledWith(
-            jasmine.anything(),
-            image.url,
-          )
-          expect(metaService.set).toHaveBeenCalledWith(
-            jasmine.anything(),
-            image.alt,
-          )
-          expect(metaService.set).toHaveBeenCalledWith(
-            jasmine.anything(),
-            image.secureUrl,
-          )
-          expect(metaService.set).toHaveBeenCalledWith(
-            jasmine.anything(),
-            image.type,
-          )
-          expect(metaService.set).toHaveBeenCalledWith(
-            jasmine.anything(),
-            image.width.toString(),
-          )
-          expect(metaService.set).toHaveBeenCalledWith(
-            jasmine.anything(),
-            image.height.toString(),
-          )
-        })
+        const props = Object.keys(image).length
+        expect(metaService.set).toHaveBeenCalledTimes(props)
+        expect(metaService.set).toHaveBeenCalledWith(
+          jasmine.anything(),
+          image.url,
+        )
+        expect(metaService.set).toHaveBeenCalledWith(
+          jasmine.anything(),
+          image.alt,
+        )
+        expect(metaService.set).toHaveBeenCalledWith(
+          jasmine.anything(),
+          image.secureUrl,
+        )
+        expect(metaService.set).toHaveBeenCalledWith(
+          jasmine.anything(),
+          image.type,
+        )
+        expect(metaService.set).toHaveBeenCalledWith(
+          jasmine.anything(),
+          image.width.toString(),
+        )
+        expect(metaService.set).toHaveBeenCalledWith(
+          jasmine.anything(),
+          image.height.toString(),
+        )
       })
     })
 
     describe('when no url is defined', () => {
-      it('should not log any error', () => {
-        spyOn(console, 'error')
-
-        sut({ ...image, url: undefined })
-
-        expect(console.error).not.toHaveBeenCalled()
-      })
-
       it('should remove all meta properties', () => {
         sut({ ...image, url: undefined })
 

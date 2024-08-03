@@ -11,6 +11,7 @@ import { TwitterCardMetadata } from './twitter-card-metadata'
 import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
 
 const TWITTER_KEY: keyof TwitterCardMetadata = `twitterCard`
+export const TWITTER_KEY_KEBAB_CASE = 'twitter-card'
 
 export const makeTwitterCardMetadataProvider = <Key extends keyof TwitterCard>(
   key: Key,

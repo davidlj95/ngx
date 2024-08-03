@@ -98,34 +98,6 @@ Links:
 - [End-to-end Testing for Server-Side Rendered Pages](https://glebbahmutov.com/blog/ssr-e2e/)
 - [Cypress and SSR (Server Side Rendering) on Cypress' GitHub Discussions](https://github.com/cypress-io/cypress/discussions/26595)
 
-### Coverage instrumentation tweak
-
-There's some code in the library that may get removed when building an app in production mode due to [dead code elimination](https://en.wikipedia.org/wiki/Dead-code_elimination) optimization technique in the compilation process.
-
-Specifically, uses of `ngDevMode`. So that we can include code that only runs when running apps in development mode and that gets eliminated in app production builds.
-
-This is not very well handled by coverage tooling. And given the code being run is an optimized version from a flattened version from a compiled version from the original source, source maps can lead to misreporting coverage too.
-
-So in order to at least always have the same code for both unit tests (where no dead code elimination happens) and E2E tests, dead code elimination is prevented. Using a hack though. In library's built code, instances of constants that could lead to dead code elimination (right now only `ngDevMode`) are replaced by `globalThis` object accesses. Object accesses are not eliminated by default. This is for safety as you can't anymore be sure it's a constant (it could be a getter, could be modified by some code around, ....).
-
-TL;DR:
-
-```typescript
-if (ngDevMode) {
-  console.log('This whole `if` clause will be eliminated in production builds')
-}
-```
-
-Becomes (when instrumenting code for E2E testing with coverage)
-
-```typescript
-if (globalThis.ngDevMode) {
-  console.log("This whole `if` clause won't be eliminated in production builds")
-}
-```
-
-More info in [PR introducing that change](https://github.com/davidlj95/ngx/pull/732)
-
 ### `tslib` error
 
 When adding code coverage to E2E tests via the `@cypress/code-coverage` import in `cypress.config.ts`, a ~wild~ error appeared in CI logs (worked fine locally):

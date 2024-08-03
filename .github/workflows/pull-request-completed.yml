@@ -87,7 +87,7 @@ jobs:
           body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.app-name }}
       - name: Update bundle size PR comment
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
-        if: steps.pr.outputs.result != '' && steps.fc.outputs.comment-id != ''
+        if: steps.pr.outputs.result != ''
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ steps.pr.outputs.result }}

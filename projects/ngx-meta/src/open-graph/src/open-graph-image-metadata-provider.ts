@@ -1,6 +1,13 @@
 import { OpenGraph } from './open-graph'
-import { _GLOBAL_IMAGE, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
-import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
+import {
+  _GLOBAL_IMAGE,
+  _maybeNonHttpUrlDevMessage,
+  NgxMetaMetaService,
+} from '@davidlj95/ngx-meta/core'
+import {
+  makeOpenGraphMetadataProvider,
+  OPEN_GRAPH_KEBAB_CASE_KEY,
+} from './make-open-graph-metadata-provider'
 import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
 
 const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
@@ -21,18 +28,13 @@ export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY =
     const imageUrl = value?.url?.toString()
     const effectiveValue: OpenGraph[typeof _GLOBAL_IMAGE] =
       imageUrl !== undefined && imageUrl !== null ? value : NO_KEY_VALUE
-    //👇 What the f*ck? You may wonder (and with good cause https://youtu.be/U58IdBjMeS4?si=MT89dCrptOIS98Q9&t=27)
-    //   Checkout https://github.com/davidlj95/ngx/pull/731 for an interesting rabbit hole about coverage reporting
-    //   with `istanbul.js``, source maps & more fun
-    // noinspection HttpUrlsUsage
+    // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
     ngDevMode &&
-      imageUrl &&
-      !(imageUrl?.startsWith('http://') || imageUrl?.startsWith('https://')) &&
-      // prettier-ignore
-      console.error(
-        "ngx-meta/open-graph: an image URL must use either http or https.\n" +
-        "-> Invalid image URL: %s\n" +
-        "For more info, checkout https://stackoverflow.com/a/9858694/3263250", imageUrl)
+      _maybeNonHttpUrlDevMessage(imageUrl, {
+        module: OPEN_GRAPH_KEBAB_CASE_KEY,
+        property: _GLOBAL_IMAGE,
+        link: 'https://stackoverflow.com/a/9858694/3263250',
+      })
     metaService.set(makeOpenGraphMetaDefinition(_GLOBAL_IMAGE), imageUrl)
     metaService.set(
       makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'alt'),

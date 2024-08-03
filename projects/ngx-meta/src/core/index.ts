@@ -15,3 +15,6 @@ export * from './src/ngx-meta-metadata-manager'
 export * from './src/metadata-values'
 export * from './src/ngx-meta.service'
 export * from './src/ngx-meta-route-values.service'
+// Internal utils
+export * from './src/maybe-non-http-url-dev-message'
+export * from './src/no-op'

@@ -44,6 +44,9 @@ export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<St
 export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
 
 // @internal (undocumented)
+export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (image: TwitterCard['image']) => void;
+
+// @internal (undocumented)
 export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ":";
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
@@ -146,6 +149,13 @@ export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: Me
 
 // @internal (undocumented)
 export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global'], objectMerge?: MetadataResolverOptions['objectMerge']) => MetadataResolverOptions;
+
+// @internal
+export const _maybeNonHttpUrlDevMessage: (url?: string | URL, opts?: {
+    module?: string;
+    property?: string;
+    link?: string;
+}) => void;
 
 // @internal (undocumented)
 class MetadataRegistry {
@@ -263,6 +273,9 @@ export class NgxMetaStandardModule {
 // @public
 export class NgxMetaTwitterCardModule {
 }
+
+// @internal (undocumented)
+export const _NO_OP: () => void;
 
 // @public
 export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;

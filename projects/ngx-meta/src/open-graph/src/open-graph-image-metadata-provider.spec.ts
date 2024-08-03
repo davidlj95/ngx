@@ -83,6 +83,7 @@ describe('Open Graph image metadata', () => {
         })
       })
     })
+
     describe('when no url is defined', () => {
       it('should not log any error', () => {
         spyOn(console, 'error')

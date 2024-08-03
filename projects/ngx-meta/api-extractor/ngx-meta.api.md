@@ -44,6 +44,9 @@ export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<St
 export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
 
 // @internal (undocumented)
+export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (image: TwitterCard['image']) => void;
+
+// @internal (undocumented)
 export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ":";
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts

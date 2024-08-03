@@ -16,28 +16,26 @@ describe('Standard title metadata', () => {
     titleService = TestBed.inject(Title) as jasmine.SpyObj<Title>
   })
 
-  describe('setter', () => {
-    it('when title is not provided should not update title', () => {
-      sut(undefined)
+  it('should not update title when title is not provided ', () => {
+    sut(undefined)
 
-      expect(titleService.setTitle).not.toHaveBeenCalled()
-    })
+    expect(titleService.setTitle).not.toHaveBeenCalled()
+  })
 
-    it('when title is empty should update title', () => {
-      const pageTitle = ''
+  it('should update title when title is empty ', () => {
+    const pageTitle = ''
 
-      sut(pageTitle)
+    sut(pageTitle)
 
-      expect(titleService.setTitle).toHaveBeenCalledOnceWith(pageTitle)
-    })
+    expect(titleService.setTitle).toHaveBeenCalledOnceWith(pageTitle)
+  })
 
-    it('when title is provided should update title', () => {
-      const pageTitle = 'Page title'
+  it('should update title when title is provided', () => {
+    const pageTitle = 'Page title'
 
-      sut(pageTitle)
+    sut(pageTitle)
 
-      expect(titleService.setTitle).toHaveBeenCalledOnceWith(pageTitle)
-    })
+    expect(titleService.setTitle).toHaveBeenCalledOnceWith(pageTitle)
   })
 })
 

@@ -20,7 +20,7 @@ export const _maybeNonHttpUrlDevMessage = (
   const propertyStr = opts.property ? `${opts.property} ` : ''
   const linkStr = opts.link ? `For more information, see ${opts.link}` : ''
   console.error(
-    `ngx-meta${moduleStr}: ${propertyStr}URL must use either http or https.\n` +
+    `ngx-meta${moduleStr}: ${propertyStr}URL must be absolute and use either http or https.\n` +
       ` -> Invalid ${propertyStr}URL: ${urlStr}\n${linkStr}`,
   )
 }

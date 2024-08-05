@@ -1,4 +1,5 @@
 import { _maybeTooLongDevMessage } from './maybe-too-long-dev-message'
+import { DUMMY_FORMAT_DEV_MESSAGE_OPTIONS } from './__tests__/dummy-format-dev-message-options'
 
 describe('maybeTooLongDevMessage', () => {
   const sut = _maybeTooLongDevMessage
@@ -9,8 +10,9 @@ describe('maybeTooLongDevMessage', () => {
 
   describe('when message is not defined', () => {
     const message = undefined
+
     it('should not emit any message', () => {
-      sut(message, 300)
+      sut(message, 300, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
 
       expect(console.warn).not.toHaveBeenCalled()
     })
@@ -21,7 +23,7 @@ describe('maybeTooLongDevMessage', () => {
     const maxLength = 300
 
     it('should not emit any message', () => {
-      sut(message, maxLength)
+      sut(message, maxLength, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
 
       expect(console.warn).not.toHaveBeenCalled()
     })
@@ -32,10 +34,10 @@ describe('maybeTooLongDevMessage', () => {
     const maxLength = 10
 
     it('should emit a message about it', () => {
-      sut(message, maxLength)
+      sut(message, maxLength, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
 
       expect(console.warn).toHaveBeenCalledWith(
-        jasmine.stringContaining('too long'),
+        jasmine.stringContaining('exceeds recommended size'),
       )
     })
   })

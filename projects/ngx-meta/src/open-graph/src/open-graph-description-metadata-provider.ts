@@ -1,4 +1,7 @@
-import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
+import {
+  makeOpenGraphMetadataProvider,
+  OPEN_GRAPH_KEBAB_CASE_KEY,
+} from './make-open-graph-metadata-provider'
 import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
@@ -19,7 +22,12 @@ export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER =
       (description: OpenGraph['description']) => {
         /* istanbul ignore next */
         if (ngDevMode) {
-          _maybeTooLongDevMessage(description, 300)
+          _maybeTooLongDevMessage(description, 300, {
+            module: OPEN_GRAPH_KEBAB_CASE_KEY,
+            property: _GLOBAL_DESCRIPTION,
+            value: description,
+            link: 'https://stackoverflow.com/q/8914476/3263250',
+          })
         }
         metaService.set(
           makeOpenGraphMetaDefinition(_GLOBAL_DESCRIPTION),

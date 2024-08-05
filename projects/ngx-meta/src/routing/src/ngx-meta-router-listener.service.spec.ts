@@ -25,7 +25,7 @@ describe('NgxMeta router listener service', () => {
   enableAutoSpy()
 
   describe('when not listening yet', () => {
-    // Though as probably injected in root module, may never be destroyed 🤷‍
+    // Though as probably injected in root module, may never be destroyed
     it('should subscribe to router events and unsubscribe when destroyed', () => {
       const events$ = new EventEmitter()
       const sut = makeSut({ events$ })
@@ -64,7 +64,7 @@ describe('NgxMeta router listener service', () => {
 
       it('should warn about it', () => {
         expect(console.warn).toHaveBeenCalledOnceWith(
-          jasmine.stringContaining('NgxMetaRouting'),
+          jasmine.stringContaining('twice'),
         )
       })
     })

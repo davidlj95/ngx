@@ -66,6 +66,18 @@ const enum CoreFeatureKind {
 }
 
 // @internal (undocumented)
+interface _FormatDevMessageOptions {
+    // (undocumented)
+    link?: string;
+    // (undocumented)
+    module: string;
+    // (undocumented)
+    property?: string;
+    // (undocumented)
+    value?: string | null;
+}
+
+// @internal (undocumented)
 export const _GLOBAL_APPLICATION_NAME = "applicationName";
 
 // @internal (undocumented)
@@ -150,12 +162,13 @@ export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: Me
 // @internal (undocumented)
 export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global'], objectMerge?: MetadataResolverOptions['objectMerge']) => MetadataResolverOptions;
 
+// Warning: (ae-forgotten-export) The symbol "_FormatDevMessageOptions" needs to be exported by the entry point all-entry-points.d.ts
+//
 // @internal
-export const _maybeNonHttpUrlDevMessage: (url?: string | URL, opts?: {
-    module?: string;
-    property?: string;
-    link?: string;
-}) => void;
+export const _maybeNonHttpUrlDevMessage: (url: string | URL | undefined | null, opts: _FormatDevMessageOptions) => void;
+
+// @internal
+export const _maybeTooLongDevMessage: (value: string | undefined | null, maxLength: number, opts: _FormatDevMessageOptions) => void;
 
 // @internal (undocumented)
 class MetadataRegistry {

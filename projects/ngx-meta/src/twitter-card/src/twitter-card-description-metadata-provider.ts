@@ -1,5 +1,13 @@
-import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
-import { _GLOBAL_DESCRIPTION } from '@davidlj95/ngx-meta/core'
+import {
+  makeTwitterCardMetadataProvider,
+  TWITTER_KEY_KEBAB_CASE,
+} from './make-twitter-card-metadata-provider'
+import {
+  _GLOBAL_DESCRIPTION,
+  _maybeTooLongDevMessage,
+} from '@davidlj95/ngx-meta/core'
+import { TwitterCard } from './twitter-card'
+import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
 
 /**
  * Manages the {@link TwitterCard.description} metadata
@@ -8,4 +16,19 @@ import { _GLOBAL_DESCRIPTION } from '@davidlj95/ngx-meta/core'
 export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(_GLOBAL_DESCRIPTION, {
     g: _GLOBAL_DESCRIPTION,
+    s: (metaService) => (description: TwitterCard['description']) => {
+      /* istanbul ignore next */
+      if (ngDevMode) {
+        _maybeTooLongDevMessage(description, 200, {
+          module: TWITTER_KEY_KEBAB_CASE,
+          property: _GLOBAL_DESCRIPTION,
+          value: description,
+          link: 'https://developer.x.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=n/a-,twitter%3Adescription,-Description%20of%20content',
+        })
+      }
+      metaService.set(
+        makeTwitterCardMetaDefinition(_GLOBAL_DESCRIPTION),
+        description,
+      )
+    },
   })

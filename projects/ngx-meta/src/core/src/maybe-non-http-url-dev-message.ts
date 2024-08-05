@@ -1,3 +1,8 @@
+import {
+  _formatDevMessage,
+  _FormatDevMessageOptions,
+} from './format-dev-message'
+
 /**
  * Logs an error message about a URL not being HTTP or HTTPs
  *
@@ -8,19 +13,18 @@
  *
  * @internal
  */
+/* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
 export const _maybeNonHttpUrlDevMessage = (
-  url?: string | URL,
-  opts: { module?: string; property?: string; link?: string } = {},
+  url: string | URL | undefined | null,
+  opts: _FormatDevMessageOptions,
 ) => {
   const urlStr = url?.toString()
-  if (!urlStr || urlStr.startsWith('http') || urlStr.startsWith('https')) {
-    return
+  if (urlStr && !(urlStr.startsWith('http') || urlStr.startsWith('https'))) {
+    console.error(
+      _formatDevMessage(
+        'URL must be absolute and use either http or https',
+        opts,
+      ),
+    )
   }
-  const moduleStr = opts.module ? `/${opts.module}` : ''
-  const propertyStr = opts.property ? `${opts.property} ` : ''
-  const linkStr = opts.link ? `For more information, see ${opts.link}` : ''
-  console.error(
-    `ngx-meta${moduleStr}: ${propertyStr}URL must be absolute and use either http or https.\n` +
-      ` -> Invalid ${propertyStr}URL: ${urlStr}\n${linkStr}`,
-  )
 }

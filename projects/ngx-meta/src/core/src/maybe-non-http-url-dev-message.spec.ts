@@ -1,4 +1,5 @@
 import { _maybeNonHttpUrlDevMessage } from './maybe-non-http-url-dev-message'
+import { DUMMY_FORMAT_DEV_MESSAGE_OPTIONS } from './__tests__/dummy-format-dev-message-options'
 
 describe('maybeNonHttpUrlDevMessage', () => {
   const sut = _maybeNonHttpUrlDevMessage
@@ -17,7 +18,7 @@ describe('maybeNonHttpUrlDevMessage', () => {
     for (const testCase of TEST_CASES) {
       describe(`like when URL ${testCase.case}`, () => {
         it('should not emit any message', () => {
-          sut(testCase.url)
+          sut(testCase.url, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
 
           expect(console.error).not.toHaveBeenCalled()
         })
@@ -36,31 +37,13 @@ describe('maybeNonHttpUrlDevMessage', () => {
     for (const testCase of TEST_CASES) {
       describe(`like when URL ${testCase.case}`, () => {
         it('should emit a message about it', () => {
-          sut(testCase.url)
+          sut(testCase.url, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
 
           expect(console.error).toHaveBeenCalledWith(
-            jasmine.stringContaining(testCase.url),
+            jasmine.stringContaining('URL must be absolute'),
           )
         })
       })
     }
-
-    it('should emit a message containing the provided extra options', () => {
-      let receivedMessage: string
-      ;(console.error as jasmine.Spy).and.callFake(
-        (message) => (receivedMessage = message),
-      )
-      const opts = {
-        module: 'graphTweet',
-        property: 'profile image',
-        link: 'https://example.com/url-error',
-      } satisfies Parameters<typeof sut>[1]
-
-      sut(TEST_CASES[0].url, opts)
-
-      expect(receivedMessage!).toContain(opts.module)
-      expect(receivedMessage!).toContain(opts.property)
-      expect(receivedMessage!).toContain(opts.link)
-    })
   })
 })

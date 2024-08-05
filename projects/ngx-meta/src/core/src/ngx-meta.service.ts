@@ -2,6 +2,8 @@ import { Inject, Injectable } from '@angular/core'
 import { MetadataValues } from './metadata-values'
 import { MetadataRegistry } from './metadata-registry'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
+import { _formatDevMessage } from './format-dev-message'
+import { _MODULE_NAME } from './module-name'
 
 /**
  * Manages the metadata values of the current page
@@ -79,8 +81,10 @@ export class NgxMetaService {
     /* istanbul ignore if */
     if (ngDevMode && [...managers].length === 0) {
       console.warn(
-        "No metadata managers found with global or JSON Path '%s'",
-        globalOrJsonPath,
+        _formatDevMessage(
+          'no metadata managers found for global or JSON Path',
+          { module: _MODULE_NAME, value: globalOrJsonPath },
+        ),
       )
     }
     for (const manager of managers) {

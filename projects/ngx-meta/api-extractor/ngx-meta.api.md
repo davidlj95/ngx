@@ -66,7 +66,10 @@ const enum CoreFeatureKind {
 }
 
 // @internal (undocumented)
-interface _FormatDevMessageOptions {
+export const _formatDevMessage: (message: string, options: _FormatDevMessageOptions) => string;
+
+// @internal (undocumented)
+export interface _FormatDevMessageOptions {
     // (undocumented)
     link?: string;
     // (undocumented)
@@ -162,8 +165,6 @@ export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: Me
 // @internal (undocumented)
 export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global'], objectMerge?: MetadataResolverOptions['objectMerge']) => MetadataResolverOptions;
 
-// Warning: (ae-forgotten-export) The symbol "_FormatDevMessageOptions" needs to be exported by the entry point all-entry-points.d.ts
-//
 // @internal
 export const _maybeNonHttpUrlDevMessage: (url: string | URL | undefined | null, opts: _FormatDevMessageOptions) => void;
 

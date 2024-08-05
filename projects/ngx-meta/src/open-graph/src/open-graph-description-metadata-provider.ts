@@ -1,7 +1,4 @@
-import {
-  makeOpenGraphMetadataProvider,
-  OPEN_GRAPH_KEBAB_CASE_KEY,
-} from './make-open-graph-metadata-provider'
+import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
 import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
@@ -9,6 +6,7 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraph } from './open-graph'
 import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
+import { _MODULE_NAME } from './module-name'
 
 /**
  * Manages the {@link OpenGraph.description} metadata
@@ -23,7 +21,7 @@ export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER =
         /* istanbul ignore next */
         if (ngDevMode) {
           _maybeTooLongDevMessage(description, 300, {
-            module: OPEN_GRAPH_KEBAB_CASE_KEY,
+            module: _MODULE_NAME,
             property: _GLOBAL_DESCRIPTION,
             value: description,
             link: 'https://stackoverflow.com/q/8914476/3263250',

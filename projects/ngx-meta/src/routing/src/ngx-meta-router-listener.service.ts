@@ -6,9 +6,11 @@ import {
   NgxMetaRouteStrategy,
 } from './ngx-meta-route-strategy'
 import {
+  _formatDevMessage,
   _NgxMetaRouteValuesService,
   NgxMetaService,
 } from '@davidlj95/ngx-meta/core'
+import { _MODULE_NAME } from './module-name'
 
 // WTF is this? Why not just import `EventType`? Well, compatibility reasons 🙃
 // See https://github.com/davidlj95/ngx/pull/246 for the details
@@ -35,8 +37,13 @@ export class NgxMetaRouterListenerService implements OnDestroy {
     if (this.sub) {
       if (ngDevMode) {
         console.warn(
-          'NgxMetaRoutingModule was set to listen for route changes ' +
-            'twice. Ensure the NgxMetaRoutingModule is not imported twice',
+          _formatDevMessage(
+            [
+              'prevented listening for route changes twice',
+              'Ensure routing provider or module is only imported once',
+            ].join('\n'),
+            { module: _MODULE_NAME },
+          ),
         )
       }
       return
@@ -49,11 +56,13 @@ export class NgxMetaRouterListenerService implements OnDestroy {
           if (!this.strategy) {
             if (ngDevMode) {
               console.warn(
-                '`NgxMetaRoutingModule` tried to set metadata for this ' +
-                  'route but no metadata route strategy was found. ' +
-                  'Provide at least one `MetadataRouteStrategy` to be able ' +
-                  'to resolve metadata from a route and set it in order to ' +
-                  'fix this.',
+                _formatDevMessage(
+                  [
+                    'tried to set metadata for this route, but no metadata route strategy was found',
+                    'Provide at least one `MetadataRouteStrategy` to resolve metadata for a route',
+                  ].join('\n'),
+                  { module: _MODULE_NAME, value: this.router.url },
+                ),
               )
             }
             return

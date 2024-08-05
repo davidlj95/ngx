@@ -9,7 +9,7 @@
  * @internal
  */
 export const _maybeNonHttpUrlDevMessage = (
-  url?: string | URL,
+  url: string | URL | undefined | null,
   opts: { module?: string; property?: string; link?: string } = {},
 ) => {
   const urlStr = url?.toString()

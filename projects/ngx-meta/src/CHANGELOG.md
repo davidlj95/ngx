@@ -1,3 +1,23 @@
+## [`ngx-meta` v1.0.0-beta.8](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.7...ngx-meta-v1.0.0-beta.8) (2024-08-05)
+
+### Features
+
+- add dev msg if too long OG/Twitter descriptions ([#747](https://github.com/davidlj95/ngx/issues/747)) ([b2f845b](https://github.com/davidlj95/ngx/commit/b2f845bb7187eafb211f39be95a8ddcb55b79859))
+
+### Style
+
+- remove unneeded `setter` describe block in tests ([#739](https://github.com/davidlj95/ngx/issues/739)) ([8f516cc](https://github.com/davidlj95/ngx/commit/8f516cc7954ed7b24ae97ef441bb64abd8a38ad9))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#740](https://github.com/davidlj95/ngx/issues/740)) ([ea6dcc1](https://github.com/davidlj95/ngx/commit/ea6dcc112f6e729350e7da6be05278277703b84f))
+
+### Build System
+
+- **deps:** update dependency mkdocs-material to v9.5.31 ([8d70da9](https://github.com/davidlj95/ngx/commit/8d70da9d6e47471422fc39e01c858dd05f0b8cbf))
+- **deps:** update dependency zone.js to v0.14.8 ([762c5fc](https://github.com/davidlj95/ngx/commit/762c5fcced1d7522c3b14ef96a6b71587c885b28))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.47.5 ([7fa25e2](https://github.com/davidlj95/ngx/commit/7fa25e2ee47edeb93dc4fa9c1e990a837222fe20))
+
 ## [`ngx-meta` v1.0.0-beta.7](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.6...ngx-meta-v1.0.0-beta.7) (2024-08-03)
 
 ### Features

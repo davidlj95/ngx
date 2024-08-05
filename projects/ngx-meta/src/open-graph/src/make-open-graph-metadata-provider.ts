@@ -11,7 +11,6 @@ import { OpenGraphMetadata } from './open-graph-metadata'
 import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
 
 export const OPEN_GRAPH_KEY: keyof OpenGraphMetadata = 'openGraph'
-export const OPEN_GRAPH_KEBAB_CASE_KEY = 'open-graph'
 
 export const makeOpenGraphMetadataProvider = <Key extends keyof OpenGraph>(
   key: Key,

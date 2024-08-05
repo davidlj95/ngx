@@ -4,11 +4,9 @@ import {
   _maybeNonHttpUrlDevMessage,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
-import {
-  makeOpenGraphMetadataProvider,
-  OPEN_GRAPH_KEBAB_CASE_KEY,
-} from './make-open-graph-metadata-provider'
+import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
 import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
+import { _MODULE_NAME } from './module-name'
 
 const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
   url: undefined,
@@ -31,7 +29,7 @@ export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY =
     // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
     ngDevMode &&
       _maybeNonHttpUrlDevMessage(imageUrl, {
-        module: OPEN_GRAPH_KEBAB_CASE_KEY,
+        module: _MODULE_NAME,
         property: _GLOBAL_IMAGE,
         link: 'https://stackoverflow.com/a/9858694/3263250',
       })

@@ -1,7 +1,4 @@
-import {
-  makeTwitterCardMetadataProvider,
-  TWITTER_KEY_KEBAB_CASE,
-} from './make-twitter-card-metadata-provider'
+import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
 import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
 import {
   _GLOBAL_IMAGE,
@@ -9,6 +6,7 @@ import {
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { TwitterCard } from './twitter-card'
+import { _MODULE_NAME } from './module-name'
 
 /**
  * @internal
@@ -18,7 +16,7 @@ export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
     // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
     ngDevMode &&
       _maybeNonHttpUrlDevMessage(image?.url, {
-        module: TWITTER_KEY_KEBAB_CASE,
+        module: _MODULE_NAME,
         property: 'image',
         link: 'https://devcommunity.x.com/t/card-error-unable-to-render-or-no-image-read-this-first/62736',
       })

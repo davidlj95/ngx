@@ -60,7 +60,7 @@
     },
     // Angular v18
     {
-      matchDepPrefixes: ['@angular'],
+      matchDepNames: ['@angular{/,}**'],
       matchFileNames: ['package.json'],
       allowedVersions: '^18',
     },

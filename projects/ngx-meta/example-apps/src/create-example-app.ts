@@ -14,6 +14,7 @@ import { addCiRunScripts } from './add-ci-run-scripts.js'
 import { copyTemplates } from './copy-templates.js'
 import { updateTsConfigToImportJsonFilesAndSetPathMappings } from './update-ts-config-to-import-json-files-and-set-path-mappings.js'
 import { updateAppModuleOrAppConfigFromTemplates } from './update-app-module-or-app-config-from-templates.js'
+import { isStandaloneDefaultForVersion } from './is-standalone-default-for-version.js'
 
 async function createExampleApp({
   exampleApp,
@@ -45,14 +46,17 @@ async function createExampleApp({
   }
 
   const appDir = await copyAppDirIntoProject(baseAppDir)
+  const standalone = isStandaloneDefaultForVersion(
+    exampleApp.cliVersion.asSemVer,
+  )
   await Promise.all([
     (async () => {
       await addLinkedLibrary(appDir)
       await addCiRunScripts({ appDir, appName: exampleApp.name })
     })(),
-    copyTemplates({ appDir, standalone: exampleApp.standalone }),
+    copyTemplates({ appDir, standalone }),
     updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
-    updateAppModuleOrAppConfigFromTemplates(appDir, exampleApp.standalone),
+    updateAppModuleOrAppConfigFromTemplates(appDir, standalone),
   ])
   await install({ projectDir: appDir, what: 'app dependencies' })
 }

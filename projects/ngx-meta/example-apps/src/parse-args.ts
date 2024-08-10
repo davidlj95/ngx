@@ -1,16 +1,16 @@
 import { Log } from './utils.js'
-import { EXAMPLE_APPS, ExampleApp } from './example-app.js'
+import {
+  AngularCliVersion,
+  getAvailableAliases,
+  isValidAngularCliVersionAlias,
+} from './angular-cli-versions.js'
 
 const BASE_APP_DIR_ARG = '--base-app-dir'
 const NO_CLEANUP_ARG = '--no-cleanup'
 const TMP_DIR_ARG = '--tmp-dir'
 
-export const EXAMPLE_APPS_BY_CLI_ALIAS = new Map<string, ExampleApp>(
-  EXAMPLE_APPS.map((exampleApp) => [exampleApp.cliVersion.alias, exampleApp]),
-)
-
 export interface CreateExampleAppOptions {
-  readonly exampleApp: ExampleApp
+  readonly angularCliVersion: AngularCliVersion
   readonly baseAppDir?: string
   readonly noCleanup?: boolean
   readonly tmpDir?: string
@@ -46,39 +46,40 @@ export function parseArgs(
       continue
     }
     Log.error('Unknown argument', arg)
-    printUsageAndExit()
+    printUsage()
     process.exit(1)
   }
   if (!appCliAlias || appCliAlias.length === 0) {
     Log.error(
       'No Angular CLI alias specified. Specify Angular CLI alias to use as first param',
     )
-    printUsageAndExit()
+    printUsage()
     process.exit(1)
   }
-  const exampleApp = EXAMPLE_APPS_BY_CLI_ALIAS.get(appCliAlias)
-  if (!exampleApp) {
-    Log.error('Unknown example app')
-    printAvailableAngularCLIAliasesAndExit()
+  if (!isValidAngularCliVersionAlias(appCliAlias)) {
+    Log.error('Angular CLI version alias "%s" is invalid. ', appCliAlias)
+    printAvailableAngularCliAliases()
     process.exit(1)
   }
+  const angularCliVersion = AngularCliVersion.fromAlias(appCliAlias)
   return {
-    exampleApp,
+    angularCliVersion,
     baseAppDir,
     noCleanup,
     tmpDir,
   }
 }
 
-function printUsageAndExit() {
+function printUsage() {
   const scriptName = process.argv[1]
   console.log(`
 Usage: node ${scriptName} ANGULAR_CLI_ALIAS
        [${BASE_APP_DIR_ARG}=APP_DIR] [${NO_CLEANUP_ARG}]
        [${TMP_DIR_ARG}=TMP_DIR]
 
-       ANGULAR_CLI_ALIAS is one of the aliases defined in Angular CLI versions file
-       "devDependencies" that will be used to create the Angular app
+       ANGULAR_CLI_ALIAS is one of the version aliases defined in Angular CLI versions
+       file. Under "devDependencies" key. It will be used to select the specific
+       Angular CLI version to use to create the Angular app
 
        ${BASE_APP_DIR_ARG} allows to use an already created Angular CLI app as base
        If not provided, a fresh new app will be created
@@ -93,11 +94,10 @@ Usage: node ${scriptName} ANGULAR_CLI_ALIAS
        Does nothing if ${BASE_APP_DIR_ARG} is used. Directory will not be cleaned up
        as wasn't created by the script (therefore implicitly enabling ${NO_CLEANUP_ARG})
   `)
-  printAvailableAngularCLIAliasesAndExit()
+  printAvailableAngularCliAliases()
 }
 
-function printAvailableAngularCLIAliasesAndExit() {
+function printAvailableAngularCliAliases() {
   Log.info('Available Angular CLI aliases:')
-  ;[...EXAMPLE_APPS_BY_CLI_ALIAS.keys()].forEach((name) => Log.item(name))
-  process.exit(1)
+  getAvailableAliases().forEach((name) => Log.item(name))
 }

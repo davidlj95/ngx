@@ -8,14 +8,32 @@ export type AngularCliVersionAlias =
   keyof typeof ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies
 
 export class AngularCliVersion {
-  readonly asSemVer: SemVer
+  private constructor(
+    public readonly alias: AngularCliVersionAlias,
+    public readonly asSemVer: SemVer,
+  ) {}
 
-  constructor(public readonly alias: AngularCliVersionAlias) {
-    const aliasValue = ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies[alias]
-    this.asSemVer = semverCoerceOrThrow(
-      aliasValue.replace('npm:@angular/cli@', ''),
+  static fromAlias(alias: AngularCliVersionAlias): AngularCliVersion {
+    return new AngularCliVersion(
+      alias,
+      semverCoerceOrThrow(
+        ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies[alias].replace(
+          'npm:@angular/cli@',
+          '',
+        ),
+      ),
     )
   }
 }
+
+export const getAvailableAliases = (): ReadonlyArray<AngularCliVersionAlias> =>
+  Object.keys(
+    ANGULAR_CLI_VERSIONS_PKG_JSON.devDependencies,
+  ) as ReadonlyArray<AngularCliVersionAlias>
+
+export const isValidAngularCliVersionAlias = (
+  alias: string,
+): alias is AngularCliVersionAlias =>
+  getAvailableAliases().includes(alias as AngularCliVersionAlias)
 
 export { ANGULAR_CLI_VERSIONS_PKG_JSON }

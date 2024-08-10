@@ -32,7 +32,6 @@ async function createExampleApp({
     await install({ projectDir: tmpDir, what: 'Angular CLI' })
     baseAppDir = await createAngularApp({
       name: exampleApp.name,
-      extraArgs: exampleApp.cliNewArguments,
       dir: tmpDir,
       cliVersionSemver: exampleApp.cliVersion.asSemVer,
     })

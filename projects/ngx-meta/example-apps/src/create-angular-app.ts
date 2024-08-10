@@ -6,7 +6,6 @@ import { execa } from './execa.js'
 
 export async function createAngularApp(opts: {
   name: string
-  extraArgs?: ReadonlyArray<string>
   dir: string
   cliVersionSemver: SemVer
 }): Promise<string> {
@@ -34,7 +33,6 @@ export async function createAngularApp(opts: {
       `new`,
       `${opts.name}`,
       ...ANGULAR_CLI_NEW_DEFAULT_ARGS,
-      ...(opts.extraArgs ?? []),
       ...(ngNewSupportsSsr ? [ANGULAR_CLI_NEW_SSR_ARG] : []),
     ],
     { cwd: opts.dir },

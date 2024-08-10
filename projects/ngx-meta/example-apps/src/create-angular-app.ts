@@ -5,8 +5,7 @@ import { supportsNgNewWithSsr } from './supports-ng-new-with-ssr.js'
 import { execa } from './execa.js'
 
 export async function createAngularApp(opts: {
-  name: string
-  extraArgs?: ReadonlyArray<string>
+  appName: string
   dir: string
   cliVersionSemver: SemVer
 }): Promise<string> {
@@ -32,13 +31,12 @@ export async function createAngularApp(opts: {
     [
       'ng',
       `new`,
-      `${opts.name}`,
+      `${opts.appName}`,
       ...ANGULAR_CLI_NEW_DEFAULT_ARGS,
-      ...(opts.extraArgs ?? []),
       ...(ngNewSupportsSsr ? [ANGULAR_CLI_NEW_SSR_ARG] : []),
     ],
     { cwd: opts.dir },
   )
   Log.ok('Angular app created')
-  return join(opts.dir, opts.name)
+  return join(opts.dir, opts.appName)
 }

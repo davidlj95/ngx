@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      example-apps-versions: ${{ steps.load-config.outputs.example-apps-versions }}
+      example-apps-version-aliases: ${{ steps.load-config.outputs.example-apps-version-aliases }}
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
@@ -31,16 +31,16 @@ jobs:
         uses: ./.github/actions/config
 
   analysis:
-    name: Analysis - Angular ${{ matrix.app-name }}
+    name: Analysis - Angular ${{ matrix.cli-version-alias }}
     needs: load-config
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        app-name: ${{ fromJSON(needs.load-config.outputs.example-apps-versions) }}
+        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.app-name }}
-      OUTPUT_DIR: out/${{ matrix.app-name }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.cli-version-alias }}
+      OUTPUT_DIR: out/${{ matrix.cli-version-alias }}
     defaults:
       run:
         working-directory: ${{ env.BUNDLE_SIZE_DIR }}
@@ -50,7 +50,7 @@ jobs:
       - name: Download example app distribution files
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}
+          name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
           path: ${{ env.EXAMPLE_APP_DIR }}
       - name: Setup pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -63,7 +63,7 @@ jobs:
       - name: Install bundle size analysis dependencies
         run: pnpm install --frozen-lockfile
       - name: Analyze main bundle size
-        run: pnpm run analyze ${{ matrix.app-name }} --json
+        run: pnpm run analyze ${{ matrix.cli-version-alias }} --json
       - name: Fetch bundle size analysis results from 'main' branch
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         if: github.event_name == 'pull_request'
@@ -73,7 +73,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: 'heads/main',
-              check_name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.app-name }}',
+              check_name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.cli-version-alias }}',
               per_page: 1,
             })
             const checkRuns = checkRunResponse.data.check_runs
@@ -91,34 +91,34 @@ jobs:
       - name: Generate bundle size PR comment
         if: github.event_name == 'pull_request'
         run: >
-          pnpm run report ${{ matrix.app-name }}
+          pnpm run report ${{ matrix.cli-version-alias }}
           --git-ref '${{ github.event.pull_request.head.sha }}'
-          --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.app-name }}'
+          --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.cli-version-alias }}'
           --base-file '${{ env.OUTPUT_DIR }}/source-map-explorer-main.json'
           --output-file '${{ env.OUTPUT_DIR }}/bundle-size-pr-comment.md'
       - name: Generate bundle size report
-        run: pnpm run report ${{ matrix.app-name }} --git-ref '${{ github.sha }}'
+        run: pnpm run report ${{ matrix.cli-version-alias }} --git-ref '${{ github.sha }}'
       - name: Upload bundle size analysis results
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         with:
-          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}
+          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
           path: ${{ env.BUNDLE_SIZE_DIR }}/${{ env.OUTPUT_DIR }}
           retention-days: 5
 
   store:
     needs: [load-config, analysis]
     if: github.event_name == 'push'
-    name: Store - Angular ${{ matrix.app-name }}
+    name: Store - Angular ${{ matrix.cli-version-alias }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        app-name: ${{ fromJSON(needs.load-config.outputs.example-apps-versions) }}
+        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}
+          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
       - name: Create check run
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         with:
@@ -128,7 +128,7 @@ jobs:
             return github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.app-name }}',
+              name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.cli-version-alias }}',
               head_sha: context.sha,
               // In case you're testing this in a PR, you'll want the head SHA
               // otherwise, `context.sha` refers to the GitHub PR merge branch
@@ -136,9 +136,9 @@ jobs:
               // head_sha: '${{ github.event.pull_request.head.sha }}',
               conclusion: 'neutral',
               output: {
-                title: 'Bundle size - Angular ${{ matrix.app-name }}',
+                title: 'Bundle size - Angular ${{ matrix.cli-version-alias }}',
                 summary: 'Sizes of the library modules when packed inside a ' +
-                         'main bundle of an Angular ${{ matrix.app-name }} ' +
+                         'main bundle of an Angular ${{ matrix.cli-version-alias }} ' +
                          'app. In bytes. Thanks to `source-map-explorer` :)',
                 text: smeJsonString,
               }

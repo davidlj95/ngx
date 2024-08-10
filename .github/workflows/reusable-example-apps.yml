@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      example-apps-versions: ${{ steps.load-config.outputs.example-apps-versions }}
+      example-apps-version-aliases: ${{ steps.load-config.outputs.example-apps-version-aliases }}
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
@@ -27,15 +27,15 @@ jobs:
 
   example-app:
     needs: load-config
-    name: Example app - Angular ${{ matrix.app-name }} - Coverage ${{ matrix.coverage }}
+    name: Example app - Angular ${{ matrix.cli-version-alias }} - Coverage ${{ matrix.coverage }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        app-name: ${{ fromJSON(needs.load-config.outputs.example-apps-versions) }}
+        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
         coverage: [enabled, disabled]
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.app-name }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.cli-version-alias }}
     defaults:
       run:
         working-directory: ${{ env.EXAMPLE_APPS_DIR }}
@@ -50,7 +50,7 @@ jobs:
           fi
           echo "dist_artifact_name=$dist_artifact_name" | tee -a "$GITHUB_ENV"
 
-          example_app_artifact_name="ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}"
+          example_app_artifact_name="ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}"
           if [ "${{ matrix.coverage }}" = "enabled" ]; then
             example_app_artifact_name="$example_app_artifact_name${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}"
           fi
@@ -76,7 +76,7 @@ jobs:
         run: |
           pnpm_store_path="$(pnpm store path --silent)"
           angular_cli_version="$(jq -r \
-            '.devDependencies.${{ matrix.app-name }}' \
+            '.devDependencies.${{ matrix.cli-version-alias }}' \
             'src/angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
           )"
@@ -122,7 +122,7 @@ jobs:
         run: pnpm run build
       - name: Create example app
         run: >
-          pnpm run create-example-app ${{ matrix.app-name }}
+          pnpm run create-example-app ${{ matrix.cli-version-alias }}
           --tmp-dir=${{ runner.temp }}
       - name: Build example app
         run: pnpm ci:build # includes SSR and source maps

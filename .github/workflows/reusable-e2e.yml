@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      example-apps-versions: ${{ steps.load-config.outputs.example-apps-versions }}
+      example-apps-version-aliases: ${{ steps.load-config.outputs.example-apps-version-aliases }}
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
@@ -27,15 +27,15 @@ jobs:
         uses: ./.github/actions/config
 
   e2e:
-    name: E2E tests - Angular ${{ matrix.app-name }}
+    name: E2E tests - Angular ${{ matrix.cli-version-alias }}
     needs: load-config
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        app-name: ${{ fromJSON(needs.load-config.outputs.example-apps-versions) }}
+        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.app-name }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.cli-version-alias }}
     defaults:
       run:
         working-directory: ${{ env.E2E_DIR }}
@@ -45,7 +45,7 @@ jobs:
       - name: Download example app with coverage instrumentation
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:
-          name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.app-name }}${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}
+          name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}
           path: ${{ env.EXAMPLE_APP_DIR }}
       - name: Setup pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -73,7 +73,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@df7484c5ba85def7eef30db301afa688187bc378 # v6.7.2
         env:
-          COVERAGE_JSON_REPORT_NAME: e2e-${{ matrix.app-name }}.json
+          COVERAGE_JSON_REPORT_NAME: e2e-${{ matrix.cli-version-alias }}.json
         with:
           working-directory: ${{ env.E2E_DIR }}
           browser: chrome
@@ -85,6 +85,6 @@ jobs:
         uses: actions/upload-artifact@0b2256b8c012f0828dc542b3febcab082c67f72b # v4
         if: failure() || success()
         with:
-          name: ngx-meta-e2e-${{ matrix.app-name }}${{ env.COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX }}
+          name: ngx-meta-e2e-${{ matrix.cli-version-alias }}${{ env.COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX }}
           path: ${{ env.COVERAGE_DIR }}/*.json
           retention-days: 5

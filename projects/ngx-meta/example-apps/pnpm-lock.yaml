@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@types/node':
-        specifier: 20.14.13
-        version: 20.14.13
+        specifier: 20.14.15
+        version: 20.14.15
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -51,8 +51,8 @@ packages:
   '@ts-morph/common@0.24.0':
     resolution: {integrity: sha512-c1xMmNHWpNselmpIqursHeOHHBTIsJLbB+NuovbTTRCNiTLEr/U9dbJ8qy0jd/O2x5pc3seWuOUN5R2IoOTp8A==}
 
-  '@types/node@20.14.13':
-    resolution: {integrity: sha512-+bHoGiZb8UiQ0+WEtmph2IWQCjIqg8MDZMAV+ppRRhUZnquF5mQkP/9vpSwJClEiSM/C7fZZExPzfU0vJTyp8w==}
+  '@types/node@20.14.15':
+    resolution: {integrity: sha512-Fz1xDMCF/B00/tYSVMlmK7hVeLh7jE5f3B7X1/hmV0MJBwE27KlS7EvD/Yp+z1lm8mVhwV5w+n8jOZG8AfTlKw==}
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
@@ -256,7 +256,7 @@ snapshots:
       mkdirp: 3.0.1
       path-browserify: 1.0.1
 
-  '@types/node@20.14.13':
+  '@types/node@20.14.15':
     dependencies:
       undici-types: 5.26.5
 

@@ -513,10 +513,10 @@ export const TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE = "summary_large_image";
 // @public
 export interface TwitterCard {
     readonly card?: TwitterCardType | null;
-    readonly creator?: TwitterCardCreator;
+    readonly creator?: TwitterCardCreator | null;
     readonly description?: string | null;
     readonly image?: TwitterCardImage | null;
-    readonly site?: TwitterCardSite;
+    readonly site?: TwitterCardSite | null;
     readonly title?: string | null;
 }
 

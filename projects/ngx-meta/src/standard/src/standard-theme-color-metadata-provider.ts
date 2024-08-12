@@ -21,13 +21,14 @@ export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFacto
 > = (ngxMetaMetaService: NgxMetaMetaService) => (value) => {
   const isValueAnArray = isStandardThemeColorArray(value)
   const baseMetaDefinition = makeStandardMetaDefinition('theme-color')
-  if (!value || !isValueAnArray) {
-    ngxMetaMetaService.set(baseMetaDefinition, value)
+  if (!value || !isValueAnArray || !value.length) {
+    ngxMetaMetaService.set(
+      baseMetaDefinition,
+      isValueAnArray ? undefined : value,
+    )
     return
   }
-  const values =
-    value.length === 0 ? [{ media: undefined, color: undefined }] : value
-  for (const { media, color } of values) {
+  for (const { media, color } of value) {
     const metaDefinition: NgxMetaMetaDefinition = {
       ...baseMetaDefinition,
       withContent: (content) => ({

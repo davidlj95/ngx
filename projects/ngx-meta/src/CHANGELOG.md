@@ -1,3 +1,32 @@
+## [`ngx-meta` v1.0.0-beta.9](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.8...ngx-meta-v1.0.0-beta.9) (2024-08-12)
+
+### Reverts
+
+- Revert "build(deps): update python to v3.12.5" ([#766](https://github.com/davidlj95/ngx/issues/766)) ([464dc36](https://github.com/davidlj95/ngx/commit/464dc364fbd042fe8d58ce924b807df28f866cdd))
+
+### Miscellaneous Chores
+
+- **config:** migrate renovate config ([#750](https://github.com/davidlj95/ngx/issues/750)) ([fab3f3c](https://github.com/davidlj95/ngx/commit/fab3f3c17fd9892652337218cb203f6786c0d9ab))
+- **release:** update CHANGELOG.md ([#748](https://github.com/davidlj95/ngx/issues/748)) ([1d4e403](https://github.com/davidlj95/ngx/commit/1d4e4032613fb5997c5b0ae589de0a9e2f91db0b))
+
+### Code Refactoring
+
+- use dev msg formatter around ([#749](https://github.com/davidlj95/ngx/issues/749)) ([c73d06f](https://github.com/davidlj95/ngx/commit/c73d06f34e421255b3b984201d6f7c7d37226c1c))
+
+### Build System
+
+- **deps:** update actions/upload-artifact digest to 834a144 ([f63cef8](https://github.com/davidlj95/ngx/commit/f63cef8ba783d315221ac681f020d3c3dba721c6))
+- **deps:** update python to v3.12.5 ([4aca420](https://github.com/davidlj95/ngx/commit/4aca4209ee3da53b2fc35fa3dccb1776d4e8a83c))
+- **dev-deps:** update dependency @commitlint/cli to v19.4.0 ([f6fe00c](https://github.com/davidlj95/ngx/commit/f6fe00c3948917231ac14ac88539c07dff2cbb35))
+- **dev-deps:** update dependency @types/node to v20.14.15 ([ffbee98](https://github.com/davidlj95/ngx/commit/ffbee98595820a4afac7df4c4d2c4404bee57a98))
+- **dev-deps:** update dependency @types/node to v22.2.0 ([6f9504a](https://github.com/davidlj95/ngx/commit/6f9504a6f946e590f9b816f076c18769b470d85b))
+- **dev-deps:** update dependency cypress to v13.13.2 ([5242743](https://github.com/davidlj95/ngx/commit/524274304fd63bd24d3f5abb1c75d0fa8ab9d9e5))
+- **dev-deps:** update dependency eslint-plugin-cypress to v3.5.0 ([e51c552](https://github.com/davidlj95/ngx/commit/e51c552a08ebdd9a20df4b3e9e0b16bc76162a90))
+- **dev-deps:** update dependency husky to v9.1.4 ([c966d60](https://github.com/davidlj95/ngx/commit/c966d60cff06cffd0e083090622d2caacc746be0))
+- **dev-deps:** update dependency lint-staged to v15.2.8 ([1137c3d](https://github.com/davidlj95/ngx/commit/1137c3df3e4340c7fa51a8a9c37fd5aed274e2d1))
+- **dev-deps:** update typescript-eslint monorepo to v7.18.0 ([51b1999](https://github.com/davidlj95/ngx/commit/51b199986db7f7cf40ac89cb636c8e3cde3225e5))
+- **example-apps:** detect standalone based on version default ([#759](https://github.com/davidlj95/ngx/issues/759)) ([5e760ce](https://github.com/davidlj95/ngx/commit/5e760cea62c64ec45694b9a28b99caed973f2ce9))
+
 ## [`ngx-meta` v1.0.0-beta.8](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.7...ngx-meta-v1.0.0-beta.8) (2024-08-05)
 
 ### Features

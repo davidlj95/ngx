@@ -14,11 +14,11 @@ export const TWITTER_CARD_SITE_METADATA_PROVIDER =
     s: (metaService) => (value) => {
       metaService.set(
         makeTwitterCardMetaDefinition(KEY),
-        (value as TwitterCardSiteUsername | undefined)?.username,
+        (value as TwitterCardSiteUsername | undefined | null)?.username,
       )
       metaService.set(
         makeTwitterCardMetaDefinition(KEY, 'id'),
-        (value as TwitterCardSiteId | undefined)?.id,
+        (value as TwitterCardSiteId | undefined | null)?.id,
       )
     },
   })

@@ -31,7 +31,7 @@ export interface TwitterCard {
    *
    * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter | Property specs (ID) }
    */
-  readonly site?: TwitterCardSite
+  readonly site?: TwitterCardSite | null
 
   /**
    * Username or ID of the content creator
@@ -40,7 +40,7 @@ export interface TwitterCard {
    *
    * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter | Property specs (id) }
    */
-  readonly creator?: TwitterCardCreator
+  readonly creator?: TwitterCardCreator | null
 
   /**
    * Description of content (maximum 200 characters)

@@ -18,11 +18,11 @@ export const TWITTER_CARD_CREATOR_METADATA_PROVIDER =
     s: (metaService: NgxMetaMetaService) => (value) => {
       metaService.set(
         makeTwitterCardMetaDefinition(KEY),
-        (value as TwitterCardCreatorUsername | undefined)?.username,
+        (value as TwitterCardCreatorUsername | undefined | null)?.username,
       )
       metaService.set(
         makeTwitterCardMetaDefinition(KEY, 'id'),
-        (value as TwitterCardCreatorId | undefined)?.id,
+        (value as TwitterCardCreatorId | undefined | null)?.id,
       )
     },
   })

@@ -27,7 +27,7 @@ Right now being Angular v16, v17 and v18. Update from an Angular version to anot
 
 ### 👥 Supports most of widely used metadata
 
-Like [`<title>`][title-element], many [standard `<meta>`s][standard meta tags], [Open Graph], [Twitter Cards] and JSON LD [structured data]. But if you want more...
+Like [`<title>`][title-element], many [standard `<meta>`s][standard meta tags], [Open Graph], [Twitter Cards] and JSON LD [structured data]. You can see an exhaustive list in [comparison page](comparison.md#by-specific-metadata-elements). But if you want more...
 
 [title-element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
 

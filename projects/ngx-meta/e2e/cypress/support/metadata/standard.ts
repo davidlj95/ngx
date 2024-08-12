@@ -23,6 +23,9 @@ export const shouldContainAllStandardMetadata = () =>
           .should('have.attr', 'href')
           .and('eq', metadata.canonicalUrl)
         cy.get('html').should('have.attr', 'lang').and('eq', metadata.locale)
+        cy.getMeta('theme-color')
+          .shouldHaveContent()
+          .and('eq', metadata.standard.themeColor)
       },
     )
   })
@@ -45,4 +48,5 @@ export const shouldNotContainAnyStandardMetadata = () =>
     cy.getMeta('application-name').should('not.exist')
     cy.get('link[rel="canonical"]').should('not.exist')
     cy.get('html').should('not.have.attr', 'lang')
+    cy.getMeta('theme-color').should('not.exist')
   })

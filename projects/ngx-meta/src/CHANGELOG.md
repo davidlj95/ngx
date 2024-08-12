@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-beta.10](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.9...ngx-meta-v1.0.0-beta.10) (2024-08-12)
+
+### Features
+
+- allow null Twitter Card creator or site ([#769](https://github.com/davidlj95/ngx/issues/769)) ([4d175f3](https://github.com/davidlj95/ngx/commit/4d175f31fe9a1d0be1c20643821f0425216ebf6f))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#767](https://github.com/davidlj95/ngx/issues/767)) ([e84f1a8](https://github.com/davidlj95/ngx/commit/e84f1a8e80443116faff3e07ce643c870e592523))
+
 ## [`ngx-meta` v1.0.0-beta.9](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.8...ngx-meta-v1.0.0-beta.9) (2024-08-12)
 
 ### Reverts

@@ -1,4 +1,5 @@
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
+import { StandardThemeColorMetadata } from './standard-theme-color-metadata'
 
 /**
  * {@link https://ngx-meta.dev/built-in-modules/standard/ | Standard module}
@@ -82,4 +83,25 @@ export interface Standard {
    * @see https://html.spec.whatwg.org/multipage/dom.html#attr-lang
    */
   readonly locale?: GlobalMetadata['locale']
+
+  /**
+   * Sets one or more `<meta name='theme-color'>` HTML elements
+   *
+   * If set, colors must specify a valid CSS color.
+   *
+   * A `media` attribute can be set to specify a different color depending on
+   * the context based on a CSS media query. For instance, to provide one color
+   * for dark mode and another for light mode.
+   *
+   * You can use a `string` value to set one theme color as value. No `media`
+   * attribute will be used.
+   *
+   * You can also specify one or more colors & media queries combinations by
+   * providing an array of objects specifying the color and (optionally) a
+   * media query
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
+   * @see https://html.spec.whatwg.org/multipage/semantics.html#meta-theme-color
+   */
+  readonly themeColor?: StandardThemeColorMetadata | null
 }

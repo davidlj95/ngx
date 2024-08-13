@@ -7,6 +7,7 @@ import { STANDARD_GENERATOR_METADATA_PROVIDER } from './standard-generator-metad
 import { STANDARD_APPLICATION_NAME_METADATA_PROVIDER } from './standard-application-name-metadata-provider'
 import { STANDARD_CANONICAL_URL_METADATA_PROVIDER } from './standard-canonical-url-metadata-provider'
 import { STANDARD_LOCALE_METADATA_PROVIDER } from './standard-locale-metadata-provider'
+import { STANDARD_THEME_COLOR_METADATA_PROVIDER } from './standard-theme-color-metadata-provider'
 
 /**
  * Adds {@link https://ngx-meta.dev/built-in-modules/standard/ | standard module}
@@ -25,4 +26,5 @@ export const provideNgxMetaStandard = (): Provider[] => [
   STANDARD_APPLICATION_NAME_METADATA_PROVIDER,
   STANDARD_CANONICAL_URL_METADATA_PROVIDER,
   STANDARD_LOCALE_METADATA_PROVIDER,
+  STANDARD_THEME_COLOR_METADATA_PROVIDER,
 ]

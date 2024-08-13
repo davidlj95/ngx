@@ -153,6 +153,7 @@ It is certainly a better option than installing a poorly maintained library. But
 | `#!html <meta name="keywords">`                  |      ✅       |          ✅           |      ✅      |        ✅        |
 | `#!html <meta name="generator">`                 |      ✅       |          ⚙️           |      ⚙️      |        ⚙️        |
 | `#!html <meta name="application-name">`          |      ✅       |          ⚙️           |      ⚙️      |        ⚙️        |
+| `#!html <meta name="theme-color">`               |      ✅       |          ⚙️           |      ⚙️      |        ⚙️        |
 | `#!html <link rel="canonical">`                  |      ✅       |          ❌           |      ✅      |        ❌        |
 | `#!html <html lang>`                             |      ✅       |          ❌           |      ❌      |        ❌        |
 | `#!html <meta property="og:title">`              |      ✅       |          ✅           |      ✅      |        ✅        |

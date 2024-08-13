@@ -11,7 +11,8 @@
   "standard": {
     "author": "Mr Bar",
     "keywords": ["foo", "bar"],
-    "generator": true
+    "generator": true,
+    "themeColor": "blue"
   },
   "openGraph": {
     "image": {

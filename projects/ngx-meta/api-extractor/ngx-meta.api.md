@@ -148,6 +148,7 @@ export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, op
 export const makeKeyValMetaDefinition: (keyName: string, options?: {
     keyAttr?: string;
     valAttr?: string;
+    extras?: MetaDefinition;
 }) => NgxMetaMetaDefinition;
 
 // @internal (undocumented)
@@ -442,6 +443,7 @@ export interface Standard {
     readonly generator?: true | null;
     readonly keywords?: ReadonlyArray<string> | null;
     readonly locale?: GlobalMetadata['locale'];
+    readonly themeColor?: StandardThemeColorMetadata | null;
     readonly title?: GlobalMetadata['title'];
 }
 
@@ -478,6 +480,15 @@ export const STANDARD_TITLE_METADATA_PROVIDER: FactoryProvider;
 // @public
 export interface StandardMetadata {
     standard: Standard;
+}
+
+// @public
+export type StandardThemeColorMetadata = string | ReadonlyArray<StandardThemeColorMetadataObject>;
+
+// @public
+export interface StandardThemeColorMetadataObject {
+    color: string;
+    media?: string;
 }
 
 // @public

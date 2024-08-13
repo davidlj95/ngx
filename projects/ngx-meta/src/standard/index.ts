@@ -4,6 +4,7 @@ export * from './src/provide-ngx-meta-standard'
 // Others
 export * from './src/standard'
 export * from './src/standard-metadata'
+export * from './src/standard-theme-color-metadata'
 // Specific providers
 export * from './src/standard-title-metadata-provider'
 export * from './src/standard-description-metadata-provider'

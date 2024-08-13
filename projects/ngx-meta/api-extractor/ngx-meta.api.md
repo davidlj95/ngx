@@ -148,6 +148,7 @@ export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, op
 export const makeKeyValMetaDefinition: (keyName: string, options?: {
     keyAttr?: string;
     valAttr?: string;
+    extras?: MetaDefinition;
 }) => NgxMetaMetaDefinition;
 
 // @internal (undocumented)

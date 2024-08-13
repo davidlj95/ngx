@@ -1,7 +1,6 @@
 import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
 import {
   MetadataSetterFactory,
-  NgxMetaMetaDefinition,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { Standard } from './standard'
@@ -13,6 +12,8 @@ import { StandardThemeColorMetadataObject } from './standard-theme-color-metadat
  */
 export const _STANDARD_THEME_COLOR_KEY = 'themeColor' satisfies keyof Standard
 
+const META_NAME = 'theme-color'
+
 /**
  * @internal
  */
@@ -20,7 +21,7 @@ export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFacto
   Standard[typeof _STANDARD_THEME_COLOR_KEY]
 > = (ngxMetaMetaService: NgxMetaMetaService) => (value) => {
   const isValueAnArray = isStandardThemeColorArray(value)
-  const baseMetaDefinition = makeStandardMetaDefinition('theme-color')
+  const baseMetaDefinition = makeStandardMetaDefinition(META_NAME)
   if (!value || !isValueAnArray || !value.length) {
     ngxMetaMetaService.set(
       baseMetaDefinition,
@@ -29,14 +30,10 @@ export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFacto
     return
   }
   for (const { media, color } of value) {
-    const metaDefinition: NgxMetaMetaDefinition = {
-      ...baseMetaDefinition,
-      withContent: (content) => ({
-        ...baseMetaDefinition.withContent(content),
-        ...(media ? { media } : {}),
-      }),
-    }
-    ngxMetaMetaService.set(metaDefinition, color)
+    ngxMetaMetaService.set(
+      makeStandardMetaDefinition(META_NAME, media ? { extras: { media } } : {}),
+      color,
+    )
   }
 }
 

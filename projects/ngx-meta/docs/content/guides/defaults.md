@@ -4,6 +4,12 @@ If you want every page in your site to have some metadata values, a good option 
 
 This way, everytime you set your metadata values (either using the service or the route's data), if no value is provided for some metadata, default value will be used instead.
 
+??? info "Remember to either use the routing module or call the service"
+
+    As defaults are applied when setting metadata values. So if no metadata values are being set, no defaults will be applied.
+    Metadata values can be set [using the service](./set-metadata-using-service.md) or when navigating to a new route when
+    [using routing](./set-metadata-using-routing.md)
+
 ## Providing default values
 
 === "For non-standalone, module-based apps"

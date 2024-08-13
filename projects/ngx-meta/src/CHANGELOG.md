@@ -1,3 +1,17 @@
+## [`ngx-meta` v1.0.0-beta.11](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.10...ngx-meta-v1.0.0-beta.11) (2024-08-13)
+
+### Features
+
+- **standard:** add theme color meta ([#772](https://github.com/davidlj95/ngx/issues/772)) ([3205f08](https://github.com/davidlj95/ngx/commit/3205f0818ca18e22af26162417f0f6e2e262a7f8))
+
+### Documentation
+
+- add link to supported metadata elements in features page ([#773](https://github.com/davidlj95/ngx/issues/773)) ([09087ee](https://github.com/davidlj95/ngx/commit/09087eeb9243ffe885a94123f8d79cc138fcb3aa))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#770](https://github.com/davidlj95/ngx/issues/770)) ([9083287](https://github.com/davidlj95/ngx/commit/9083287f6e45ccee80f165b63ceeed0eb0aa4a25))
+
 ## [`ngx-meta` v1.0.0-beta.10](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.9...ngx-meta-v1.0.0-beta.10) (2024-08-12)
 
 ### Features

@@ -83,7 +83,7 @@
     "lint-staged": "15.2.8",
     "ng-lint-staged": "12.0.4",
     "ng-mocks": "14.13.0",
-    "ng-packagr": "18.1.0",
+    "ng-packagr": "18.2.0",
     "nyc": "17.0.0",
     "prettier": "3.3.3",
     "semantic-release": "24.0.0",

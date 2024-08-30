@@ -11,7 +11,7 @@ python = "==3.12.4"
 mkdocs-autolinks-plugin = "0.7.1"
 
 [tool.poetry.group.dev.dependencies]
-mkdocs-material = {extras = ["imaging"], version = "9.5.31"}
+mkdocs-material = {extras = ["imaging"], version = "9.5.33"}
 mkdocs-git-revision-date-localized-plugin = "1.2.6"
 
 [build-system]

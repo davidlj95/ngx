@@ -37,7 +37,7 @@
     "update": "ng update @angular/cli @angular/core @angular-eslint/schematics"
   },
   "private": true,
-  "packageManager": "pnpm@9.7.1",
+  "packageManager": "pnpm@9.9.0",
   "dependencies": {
     "@angular/animations": "18.2.0",
     "@angular/common": "18.2.0",

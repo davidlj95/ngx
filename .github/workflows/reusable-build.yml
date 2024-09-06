@@ -28,7 +28,7 @@ jobs:
       - name: Build libraries
         run: cd .ci && make build
       - name: Upload distribution files
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4
+        uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4
         with:
           name: ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/dist
@@ -36,7 +36,7 @@ jobs:
       - name: Instrument for coverage
         run: pnpm run instrument-for-coverage
       - name: Upload distribution files with coverage instrumentation
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4
+        uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4
         with:
           name: ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/dist
@@ -54,7 +54,7 @@ jobs:
       - name: Run tsc
         run: cd .ci && make tsc
       - name: Upload compiled JS files
-        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4
+        uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4
         with:
           name: ngx-meta${{ env.TSC_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/out

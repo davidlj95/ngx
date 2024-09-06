@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@cypress/code-coverage':
-        specifier: 3.12.46
-        version: 3.12.46(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(babel-loader@9.1.3(@babel/core@7.24.7)(webpack@5.92.1))(cypress@13.14.2)(webpack@5.92.1)
+        specifier: 3.12.47
+        version: 3.12.47(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(babel-loader@9.1.3(@babel/core@7.24.7)(webpack@5.92.1))(cypress@13.14.2)(webpack@5.92.1)
       '@istanbuljs/load-nyc-config':
         specifier: 1.1.0
         version: 1.1.0
@@ -616,8 +616,8 @@ packages:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
 
-  '@cypress/code-coverage@3.12.46':
-    resolution: {integrity: sha512-Y6lG3VjJX8R64mZH5lSqZPw2aj89C1v7e8uC9Ngob1r1DgaAVRQtXZD6mXeHm23FHh131ZMckQ9b+AzCUeJ0mg==}
+  '@cypress/code-coverage@3.12.47':
+    resolution: {integrity: sha512-ianeOSqg2NyAIxrY8sxsGDPKe6XBk2EoCXTmrSIqr9cVJn2qWBvIPnyd6O/IG9MGdWhMGeyophpUb57ZZAfpBA==}
     peerDependencies:
       '@babel/core': ^7.0.1
       '@babel/preset-env': ^7.0.0
@@ -1070,6 +1070,9 @@ packages:
 
   dayjs@1.11.12:
     resolution: {integrity: sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==}
+
+  dayjs@1.11.13:
+    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
   debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -2974,7 +2977,7 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@cypress/code-coverage@3.12.46(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(babel-loader@9.1.3(@babel/core@7.24.7)(webpack@5.92.1))(cypress@13.14.2)(webpack@5.92.1)':
+  '@cypress/code-coverage@3.12.47(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(babel-loader@9.1.3(@babel/core@7.24.7)(webpack@5.92.1))(cypress@13.14.2)(webpack@5.92.1)':
     dependencies:
       '@babel/core': 7.24.7
       '@babel/preset-env': 7.24.7(@babel/core@7.24.7)
@@ -2982,7 +2985,7 @@ snapshots:
       babel-loader: 9.1.3(@babel/core@7.24.7)(webpack@5.92.1)
       chalk: 4.1.2
       cypress: 13.14.2
-      dayjs: 1.11.12
+      dayjs: 1.11.13
       debug: 4.3.6(supports-color@8.1.1)
       execa: 4.1.0
       globby: 11.1.0
@@ -3523,6 +3526,8 @@ snapshots:
       assert-plus: 1.0.0
 
   dayjs@1.11.12: {}
+
+  dayjs@1.11.13: {}
 
   debug@3.2.7(supports-color@8.1.1):
     dependencies:

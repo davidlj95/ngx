@@ -27,6 +27,6 @@ That's it, you should see the `#!html <title>`, `#!html <meta name="description"
 
 --8<-- "includes/title-description-global.md"
 
-[Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Take a look at [metadata values JSON guide](metadata-values-json.md) for more information about this values JSON.
+[Typescript's `satisfies` operator][typescript-satisfies] will help you write the proper JSON of metadata values to set. Take a look at [metadata values JSON guide](/guides/metadata-values-json) for more information about this values JSON.
 
 Check out the [example standalone app]'s [`all-meta-set-by-service.component.ts` file](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/example-apps/templates/standalone/src/app/all-meta-set-by-service/all-meta-set-by-service.component.ts) for a full component file example

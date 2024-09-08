@@ -8,7 +8,7 @@
 [structured data]: https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
 [example module-based app]: https://github.com/davidlj95/ngx/tree/main/projects/ngx-meta/example-apps/templates/module/src/app
 [example standalone app]: https://github.com/davidlj95/ngx/tree/main/projects/ngx-meta/example-apps/templates/standalone/src/app
-[route's data]: https://angular.dev/api/router/Route#:~:text=a%20synchronous%20context.-,data,-Data
+[route's data]: https://angular.dev/api/router/Route#data
 [typescript-satisfies]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator
 [get started setup]: /get-started/#2-setup
 [standard module]: /built-in-modules/standard/

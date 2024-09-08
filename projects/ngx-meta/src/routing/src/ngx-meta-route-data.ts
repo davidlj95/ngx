@@ -29,7 +29,7 @@ import { MetadataValues } from '@davidlj95/ngx-meta/core'
  *     // regular route stuff
  *     data: {
  *       meta: { title: 'Foo', standard: { keywords: ['foo', 'bar'] } }
- *     } satisfies NgxMetaRouteData<GlobalMetadata>
+ *     } satisfies NgxMetaRouteData<GlobalMetadata & StandardMetadata>
  *   }
  * ]
  * ```

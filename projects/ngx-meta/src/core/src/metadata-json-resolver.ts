@@ -22,11 +22,11 @@ export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
         if (value === undefined || value === null) {
           break
         }
-        value = (value as IndexedObject)[key]
+        value = (value as StringIndexedObject)[key]
       }
       const globalValue =
         resolverOptions.global !== undefined
-          ? (values as IndexedObject)[resolverOptions.global]
+          ? (values as StringIndexedObject)[resolverOptions.global]
           : undefined
       if (
         isObject(value) &&
@@ -46,4 +46,4 @@ export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
   },
 )
 
-type IndexedObject = Record<string, unknown>
+type StringIndexedObject = Record<string, unknown>

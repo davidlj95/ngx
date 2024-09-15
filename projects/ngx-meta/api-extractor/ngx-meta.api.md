@@ -289,9 +289,6 @@ export class NgxMetaStandardModule {
 export class NgxMetaTwitterCardModule {
 }
 
-// @internal (undocumented)
-export const _NO_OP: () => void;
-
 // @public
 export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 

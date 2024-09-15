@@ -173,6 +173,10 @@ export interface Standard {
    *
    * Can be set with {@link GlobalMetadata.canonicalUrl}.
    *
+   * If {@link https://ngx-meta.dev/guides/url-resolution/ | URL resolution}
+   * feature is enabled and a relative URL is provided, an absolute one will
+   * be used as value after resolving it.
+   *
    * @remarks
    *
    * Very relevant for SEO purposes.

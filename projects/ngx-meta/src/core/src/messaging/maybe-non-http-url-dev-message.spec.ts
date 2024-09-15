@@ -5,7 +5,7 @@ describe('Maybe non HTTP URL developer message', () => {
   const sut = _maybeNonHttpUrlDevMessage
 
   beforeEach(() => {
-    spyOn(console, 'error')
+    spyOn(console, 'warn')
   })
 
   describe('when URL is valid', () => {
@@ -20,7 +20,7 @@ describe('Maybe non HTTP URL developer message', () => {
         it('should not emit any message', () => {
           sut(testCase.url, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
 
-          expect(console.error).not.toHaveBeenCalled()
+          expect(console.warn).not.toHaveBeenCalled()
         })
       })
     }
@@ -39,7 +39,7 @@ describe('Maybe non HTTP URL developer message', () => {
         it('should emit a message about it', () => {
           sut(testCase.url, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
 
-          expect(console.error).toHaveBeenCalledWith(
+          expect(console.warn).toHaveBeenCalledWith(
             jasmine.stringContaining('URL must be absolute'),
           )
         })

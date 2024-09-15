@@ -7,6 +7,7 @@ import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-servi
 import { META_LATE_LOADED_ROUTES } from './meta-late-loaded/meta-late-loaded.routes'
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta-set-by-service.component'
+import { UrlResolutionMetaComponent } from './url-resolution-meta/url-resolution-meta.component'
 
 const ngxMetaRouteData: NgxMetaRouteData = { meta: ALL_METADATA_JSON }
 
@@ -32,5 +33,9 @@ export const routes: Routes = [
   {
     path: ROUTES.metaLateLoaded.path,
     loadChildren: () => META_LATE_LOADED_ROUTES,
+  },
+  {
+    path: ROUTES.urlResolutionMeta.path,
+    component: UrlResolutionMetaComponent,
   },
 ]

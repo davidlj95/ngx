@@ -35,9 +35,7 @@ export const shouldContainAllOpenGraphMetadata = (
         cy.getMetaWithProperty('og:image:height')
           .shouldHaveContent()
           .and('eq', metadata.openGraph.image.height.toString())
-        cy.getMetaWithProperty('og:url')
-          .shouldHaveContent()
-          .and('eq', metadata.canonicalUrl)
+        openGraphUrlShouldEqual(metadata.canonicalUrl)
         cy.getMetaWithProperty('og:description')
           .shouldHaveContent()
           .and('eq', metadata.description)
@@ -53,6 +51,10 @@ export const shouldContainAllOpenGraphMetadata = (
 
 export function openGraphTitleShouldEqual(title: string) {
   cy.getMetaWithProperty('og:title').shouldHaveContent().and('eq', title)
+}
+
+export function openGraphUrlShouldEqual(url: string) {
+  cy.getMetaWithProperty('og:url').shouldHaveContent().and('eq', url)
 }
 
 export const shouldNotContainAnyOpenGraphMetadata = () =>

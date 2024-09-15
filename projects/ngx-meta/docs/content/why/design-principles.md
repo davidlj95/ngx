@@ -8,7 +8,7 @@ Declarative APIs are preferred to offer to library's users. The user just tells 
 
 ## Extendable
 
-Despite built-in tools to set common used metadata, users may have their own needs. So library must allow to manage them in the same fashion as built-in metadata managers do.
+Despite built-in tools to set common used metadata, users may have their own needs. So library must allow to manage them in the same fashion as built-in metadata managers do. This includes any kind of metadata, not just the regular `#!html <meta>` elements in the `#!html <head>` of the page.
 
 ## Tree-shakeable
 

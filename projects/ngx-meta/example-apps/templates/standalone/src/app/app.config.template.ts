@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router'
 import { routes } from './app.routes'
 import {
   provideNgxMetaCore,
+  withNgxMetaBaseUrl,
   withNgxMetaDefaults,
 } from '@davidlj95/ngx-meta/core'
 import DEFAULTS_JSON from '@/e2e/cypress/fixtures/defaults.json'
@@ -15,11 +16,15 @@ import {
 } from '@davidlj95/ngx-meta/open-graph'
 import { provideNgxMetaTwitterCard } from '@davidlj95/ngx-meta/twitter-card'
 import { provideNgxMetaJsonLd } from '@davidlj95/ngx-meta/json-ld'
+import { BASE_URL } from '@/e2e/cypress/fixtures/base-url'
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideNgxMetaCore(withNgxMetaDefaults(DEFAULTS_JSON)),
+    provideNgxMetaCore(
+      withNgxMetaDefaults(DEFAULTS_JSON),
+      withNgxMetaBaseUrl(BASE_URL),
+    ),
     provideNgxMetaRouting(),
     provideNgxMetaStandard(),
     provideNgxMetaOpenGraph(),

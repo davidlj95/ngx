@@ -57,6 +57,10 @@ Whole library is designed to be [_tree shakeable_][tree shaking]. So metadata mo
 
 To reduce main bundle size, you can also lazy load some metadata. This way, you don't load metadata management code for some metadata elements until you don't need them. For more information, check the [late loading modules guide](late-loading-modules.md)
 
+### ✨ URL resolution
+
+For metadata values where an absolute URL is required, a base URL can be provided so that you only need to specify relative URLs around and don't repeat the app URL over and over around. Or use the Angular's route path if that one is appropriate. Check out [URL resolution guide](url-resolution.md) for more information.
+
 ### 0️⃣ Zero dependencies[^2]
 
 So less pain with dependency management

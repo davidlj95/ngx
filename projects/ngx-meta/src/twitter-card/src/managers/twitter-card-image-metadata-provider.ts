@@ -15,6 +15,7 @@ export const TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
       _maybeNonHttpUrlDevMessage(image?.url, {
         module: MODULE_NAME,
         property: 'image',
+        value: image?.url.toString(),
         link: 'https://devcommunity.x.com/t/card-error-unable-to-render-or-no-image-read-this-first/62736',
       })
     metaService.set(

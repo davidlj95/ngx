@@ -29,4 +29,9 @@ export const ROUTES = {
     displayName: 'Meta late loaded + custom',
     linkId: undefined,
   },
+  urlResolutionMeta: {
+    path: 'url-resolution-meta',
+    displayName: 'URL resolution meta',
+    linkId: undefined,
+  },
 }

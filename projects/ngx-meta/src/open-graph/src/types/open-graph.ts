@@ -1,5 +1,6 @@
 import { OpenGraphImage, OpenGraphType } from '../basic-optional'
 import { OpenGraphProfile } from '../profile'
+import { AngularRouterUrl } from '@davidlj95/ngx-meta/core'
 
 /**
  * {@link https://ngx-meta.dev/built-in-modules/open-graph/ | Open Graph module}
@@ -80,6 +81,10 @@ export interface OpenGraph {
    *
    * Can be set with {@link GlobalMetadata.canonicalUrl}.
    *
+   * An absolute URL is needed unless {@link https://ngx-meta.dev/guides/url-resolution/ | URL resolution}
+   * feature is enabled, which allows you to provide a relative URL to be resolved by the library into an
+   * absolute one.
+   *
    * @remarks
    *
    * Provider:
@@ -90,7 +95,7 @@ export interface OpenGraph {
    *
    * - {@link https://ogp.me/#:~:text=og%3Aurl | Property specs}
    */
-  readonly url?: URL | string | null
+  readonly url?: URL | AngularRouterUrl | string | null
 
   /**
    * Optional metadata.

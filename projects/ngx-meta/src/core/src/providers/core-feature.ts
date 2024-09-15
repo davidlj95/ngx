@@ -8,6 +8,7 @@ import { Provider } from '@angular/core'
  */
 export const enum CoreFeatureKind {
   Defaults,
+  BaseUrl,
 }
 
 /**

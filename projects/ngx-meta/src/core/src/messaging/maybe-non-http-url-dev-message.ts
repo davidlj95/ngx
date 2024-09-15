@@ -16,13 +16,14 @@ import {
 /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
 export const _maybeNonHttpUrlDevMessage = (
   url: string | URL | undefined | null,
-  opts: _FormatDevMessageOptions,
+  opts: _FormatDevMessageOptions & { shouldInsteadOfMust?: boolean },
 ) => {
   const urlStr = url?.toString()
   if (urlStr && !(urlStr.startsWith('http') || urlStr.startsWith('https'))) {
-    console.error(
+    const shouldOrMust = opts.shouldInsteadOfMust ? 'should' : 'must'
+    console.warn(
       _formatDevMessage(
-        'URL must be absolute and use either http or https',
+        `URL ${shouldOrMust} be absolute and use either http or https`,
         opts,
       ),
     )

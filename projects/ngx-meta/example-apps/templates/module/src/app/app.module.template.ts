@@ -22,6 +22,7 @@ import {
 import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
 import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
 import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta-set-by-service.component'
+import { UrlResolutionMetaComponent } from './url-resolution-meta/url-resolution-meta.component'
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta
     AllMetaSetByRouteComponent,
     MetaSetByRouteAndServiceComponent,
     OneMetaSetByServiceComponent,
+    UrlResolutionMetaComponent,
   ],
   imports: [
     BrowserModule,

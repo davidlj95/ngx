@@ -41,6 +41,9 @@ export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<
 export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_LOCALE]>;
 
 // @internal (undocumented)
+export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _STANDARD_THEME_COLOR_KEY]>;
+
+// @internal (undocumented)
 export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
 
 // @internal (undocumented)
@@ -470,6 +473,12 @@ export const STANDARD_KEYWORDS_METADATA_PROVIDER: FactoryProvider;
 
 // @public
 export const STANDARD_LOCALE_METADATA_PROVIDER: FactoryProvider;
+
+// @internal (undocumented)
+export const _STANDARD_THEME_COLOR_KEY = "themeColor";
+
+// @public
+export const STANDARD_THEME_COLOR_METADATA_PROVIDER: FactoryProvider;
 
 // @public
 export const STANDARD_TITLE_METADATA_PROVIDER: FactoryProvider;

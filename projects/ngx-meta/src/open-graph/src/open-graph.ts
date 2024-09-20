@@ -17,6 +17,10 @@ export interface OpenGraph {
    *
    * Can be set with {@link GlobalMetadata.title}
    *
+   * @remarks
+   *
+   * See also:
+   *
    * - {@link https://ogp.me/#:~:text=og%3Atitle | Property specs}
    */
   readonly title?: string | null
@@ -30,6 +34,10 @@ export interface OpenGraph {
    * See {@link OpenGraphType} for a list of `const`s you can use to specify
    * the type, so you don't have to write them yourself.
    *
+   * @remarks
+   *
+   * See also:
+   *
    * - {@link https://ogp.me/#:~:text=og%3Atypes | Property specs}
    *
    * - {@link https://ogp.me/#types | Available object types in spec}
@@ -41,9 +49,11 @@ export interface OpenGraph {
    *
    * An image which should represent your object within the graph.
    *
-   * Can be partially set with {@link GlobalMetadata.image}
+   * Can be set (partially) with {@link GlobalMetadata.image}
    *
    * @remarks
+   *
+   * See also:
    *
    * - {@link https://ogp.me/#:~:text=og%3Aimage | Property specs}
    *
@@ -59,6 +69,10 @@ export interface OpenGraph {
    *
    * Can be set with {@link GlobalMetadata.canonicalUrl}
    *
+   * @remarks
+   *
+   * See also:
+   *
    * - {@link https://ogp.me/#:~:text=og%3Aurl | Property specs}
    */
   readonly url?: URL | string | null
@@ -69,6 +83,10 @@ export interface OpenGraph {
    * A one to two sentence description of your object.
    *
    * Can be set with {@link GlobalMetadata.description}
+   *
+   * @remarks
+   *
+   * See also:
    *
    * - {@link https://ogp.me/#:~:text=og%3Adescription | Property specs}
    */
@@ -82,6 +100,10 @@ export interface OpenGraph {
    *
    * Can be set with {@link GlobalMetadata.locale}
    *
+   * @remarks
+   *
+   * See also:
+   *
    * - {@link https://ogp.me/#:~:text=og%3Alocale | Property specs}
    */
   readonly locale?: string | null
@@ -94,6 +116,10 @@ export interface OpenGraph {
    *
    * Can be set with {@link GlobalMetadata.applicationName}
    *
+   * @remarks
+   *
+   * See also:
+   *
    * - {@link https://ogp.me/#:~:text=og%3Asite_name | Property specs}
    */
   readonly siteName?: string | null
@@ -103,7 +129,11 @@ export interface OpenGraph {
    *
    * <b>Requires Open Graph Profile module / provider to work</b>
    *
-   * - {@link OpenGraphProfile | Open Graph profile type}
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link OpenGraphProfile}
    *
    * - {@link https://ogp.me/#type_profile | Open Graph profile specs}
    */

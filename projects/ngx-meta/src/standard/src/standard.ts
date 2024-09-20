@@ -11,7 +11,7 @@ export interface Standard {
   /**
    * Sets the `<title>` HTML element
    *
-   * Can be specified with {@link GlobalMetadata.title}
+   * Can be set with {@link GlobalMetadata.title}
    *
    * @remarks
    *
@@ -44,7 +44,7 @@ export interface Standard {
   /**
    * Sets the `<meta name='description'>` HTML element
    *
-   * Can be specified with {@link GlobalMetadata.description}
+   * Can be set with {@link GlobalMetadata.description}
    *
    * @remarks
    *
@@ -143,7 +143,7 @@ export interface Standard {
   /**
    * Sets the `<meta name='application-name'>` HTML element
    *
-   * Can be specified with {@link GlobalMetadata.applicationName}
+   * Can be set with {@link GlobalMetadata.applicationName}
    *
    * @remarks
    *
@@ -171,7 +171,7 @@ export interface Standard {
   /**
    * Sets the `<link rel='canonical'>` HTML element
    *
-   * Can be specified with {@link GlobalMetadata.canonicalUrl}
+   * Can be set with {@link GlobalMetadata.canonicalUrl}
    *
    * @remarks
    *
@@ -203,7 +203,7 @@ export interface Standard {
   /**
    * Sets the `lang` attribute to the `<html>` element
    *
-   * Can be specified with {@link GlobalMetadata.locale}
+   * Can be set with {@link GlobalMetadata.locale}
    *
    * Value must be a valid language tag complying with BCP 47
    * For instance: "es" or "es-ES"

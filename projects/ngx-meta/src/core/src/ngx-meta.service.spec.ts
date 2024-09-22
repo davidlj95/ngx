@@ -6,7 +6,7 @@ import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import { MetadataRegistry } from './metadata-registry'
 
-describe('NgxMeta service', () => {
+describe('Main service', () => {
   enableAutoSpy()
   let sut: NgxMetaService
   let metadataRegistry: jasmine.SpyObj<MetadataRegistry>

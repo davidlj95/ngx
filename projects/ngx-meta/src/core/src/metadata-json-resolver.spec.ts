@@ -9,7 +9,7 @@ import {
   MetadataResolverOptions,
 } from './ngx-meta-metadata-manager'
 
-describe('Metadata JSON Resolver', () => {
+describe('Metadata JSON resolver', () => {
   let sut: MetadataJsonResolver
 
   beforeEach(() => {

@@ -21,7 +21,7 @@ import {
   NgxMetaService,
 } from '@davidlj95/ngx-meta/core'
 
-describe('NgxMeta router listener service', () => {
+describe('Router listener service', () => {
   enableAutoSpy()
 
   describe('when not listening yet', () => {

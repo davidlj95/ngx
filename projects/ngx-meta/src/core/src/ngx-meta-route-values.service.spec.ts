@@ -5,7 +5,7 @@ import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { MockProviders } from 'ng-mocks'
 import { Router } from '@angular/router'
 
-describe('NgxMeta route values service', () => {
+describe('Route values service', () => {
   enableAutoSpy()
   let sut: _NgxMetaRouteValuesService
   let router: jasmine.SpyObj<Router>

@@ -1,7 +1,7 @@
 import { _maybeNonHttpUrlDevMessage } from './maybe-non-http-url-dev-message'
 import { DUMMY_FORMAT_DEV_MESSAGE_OPTIONS } from './__tests__/dummy-format-dev-message-options'
 
-describe('maybeNonHttpUrlDevMessage', () => {
+describe('Maybe non HTTP URL developer message', () => {
   const sut = _maybeNonHttpUrlDevMessage
 
   beforeEach(() => {

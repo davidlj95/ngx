@@ -6,7 +6,7 @@ import { Meta } from '@angular/platform-browser'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { makeKeyValMetaDefinition } from './make-key-val-meta-definition'
 
-describe('NgxMeta meta service', () => {
+describe('Meta service', () => {
   enableAutoSpy()
 
   let sut: NgxMetaMetaService

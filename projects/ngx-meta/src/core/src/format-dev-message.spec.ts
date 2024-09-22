@@ -1,6 +1,6 @@
 import { _formatDevMessage } from './format-dev-message'
 
-describe('formatDevMessage', () => {
+describe('Developer message formatter', () => {
   const sut = _formatDevMessage
   const message = 'Hello World'
   const module = 'core'

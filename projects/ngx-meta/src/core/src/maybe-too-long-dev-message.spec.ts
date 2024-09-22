@@ -1,7 +1,7 @@
 import { _maybeTooLongDevMessage } from './maybe-too-long-dev-message'
 import { DUMMY_FORMAT_DEV_MESSAGE_OPTIONS } from './__tests__/dummy-format-dev-message-options'
 
-describe('maybeTooLongDevMessage', () => {
+describe('Maybe too long developer message', () => {
   const sut = _maybeTooLongDevMessage
 
   beforeEach(() => {

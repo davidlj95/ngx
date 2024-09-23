@@ -2,11 +2,8 @@
  * Defines the metadata values to use for a page. Broadly speaking, it's just
  * a JSON object
  *
- * @remarks
- *
- * You can ensure its proper shape by using `XMetadata` types where `X` is the
- * metadata module. Or {@link GlobalMetadata} for metadata values shared amongst
- * one or more modules.
+ * See the {@link https://ngx-meta.dev/guides/metadata-values-json/ | metadata values JSON}
+ * guide for more information about typing metadata values with more strict types
  *
  * @public
  */

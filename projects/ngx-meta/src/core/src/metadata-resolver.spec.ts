@@ -6,11 +6,7 @@ import { _RouteValuesService } from './route-values.service'
 import { MetadataValues } from './metadata-values'
 import { Provider } from '@angular/core'
 import { DEFAULTS } from './defaults'
-import {
-  METADATA_RESOLVER,
-  METADATA_RESOLVER_PROVIDER,
-  MetadataResolver,
-} from './metadata-resolver'
+import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
@@ -191,7 +187,6 @@ describe('Metadata resolver', () => {
 
 function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
   const providers: Provider[] = [
-    METADATA_RESOLVER_PROVIDER,
     MockProviders(_RouteValuesService),
     MockProvider(
       METADATA_JSON_RESOLVER,

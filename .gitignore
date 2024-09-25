@@ -375,7 +375,22 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows
 .npmrc
 .idea/git_toolbox_blame.xml
+projects/ngx-meta/example-apps/apps
+projects/ngx-meta/docs/includes/CHANGELOG.md
+projects/ngx-meta/docs/includes/README.md
+projects/ngx-meta/docs/content/api
+projects/ngx-meta/docs/includes/bundle-size
+projects/ngx-meta/api-extractor/temp
+projects/ngx-meta/api-extractor/*.api.json
 # Manual edits
+#
+#   Notice this file will also be read by Prettier to ignore files for formatting
+#   So if some files must be excluded for formatting, including them here is a good idea:w
+#   https://prettier.io/docs/en/ignore.html
+#
 # - Comment `.idea` in Angular to include IDE configs
 # - Add `.npmrc` to set registry to simulate releases, but avoid committing that
 # - Add Git Toolbox plugin blame config
+# - Add generated example apps
+# - Add generated docs
+# - Add API Extractor temp files

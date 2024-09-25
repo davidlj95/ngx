@@ -34,12 +34,6 @@ const enum __CoreFeatureKind {
 // @internal (undocumented)
 type __CoreFeatures = ReadonlyArray<__CoreFeature<__CoreFeatureKind>>;
 
-// @internal (undocumented)
-export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY: (doc: Document) => (selector: string, element: HTMLElement | null | undefined) => void;
-
-// @internal (undocumented)
-export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER: FactoryProvider;
-
 // Warning: (ae-forgotten-export) The symbol "_JSON_LD_KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)

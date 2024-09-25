@@ -18,7 +18,7 @@ type DeclarationsByModuleSpecifier = Map<
  * from same module specifier
  *
  * This may give issues, as merging declarations imports is not always possible
- * @see {@link mergeImportDeclarations}
+ * {@link mergeImportDeclarations}
  *
  * Then creates the merged declarations list by merging existing imports from
  * {@link destination} source file with merged {@link template} imports

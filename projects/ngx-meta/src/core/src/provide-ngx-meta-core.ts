@@ -18,8 +18,11 @@ import { CORE_PROVIDERS } from './core-providers'
  * )
  * ```
  *
- * @see {@link withNgxMetaDefaults}
- * @see {@link https://ngx-meta.dev/guides/defaults/ | Defaults guide}
+ * See also:
+ *
+ * - {@link withNgxMetaDefaults}
+ *
+ * - {@link https://ngx-meta.dev/guides/defaults/ | Defaults guide}
  *
  * @param features - Features to configure
  *

@@ -14,7 +14,7 @@ import { DEFAULTS_TOKEN } from './defaults-token'
  *
  * - {@link NgxMetaCoreModule.(forRoot:1)} to use it with module based APIs
  *
- * - Defaults guide in {@link https://ngx-meta.dev/guides/defaults/}
+ * - {@link https://ngx-meta.dev/guides/defaults/ | Defaults guide}
  *
  * @param defaults - Default metadata values to use
  *

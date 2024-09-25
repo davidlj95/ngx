@@ -49,7 +49,7 @@ export interface GlobalMetadata {
   /**
    * Sets localization of this page
    *
-   * Value must be a valid language tag complying with BCP 47
+   * Value must be a valid language tag complying with BCP 47.
    * For instance: "`es`" or "`es-ES`"
    *
    * For:
@@ -58,7 +58,11 @@ export interface GlobalMetadata {
    *
    *  - {@link OpenGraph.locale} (needs Open Graph module)
    *
-   * @see {@link https://datatracker.ietf.org/doc/html/rfc5646 | RFC 5646/BCP 47}
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link https://datatracker.ietf.org/doc/html/rfc5646 | RFC 5646 / BCP 47}
    */
   readonly locale?: string | null
 

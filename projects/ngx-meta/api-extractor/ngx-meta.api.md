@@ -13,6 +13,27 @@ import { ModuleWithProviders } from '@angular/core';
 import { Provider } from '@angular/core';
 import { Router } from '@angular/router';
 
+// Warning: (ae-forgotten-export) The symbol "__CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
+//
+// @internal (undocumented)
+interface __CoreFeature<FeatureKind extends __CoreFeatureKind> {
+    // (undocumented)
+    _kind: FeatureKind;
+    // (undocumented)
+    _providers: Provider[];
+}
+
+// @internal
+const enum __CoreFeatureKind {
+    // (undocumented)
+    Defaults = 0
+}
+
+// Warning: (ae-forgotten-export) The symbol "__CoreFeature" needs to be exported by the entry point all-entry-points.d.ts
+//
+// @internal (undocumented)
+type __CoreFeatures = ReadonlyArray<__CoreFeature<__CoreFeatureKind>>;
+
 // @internal (undocumented)
 export const __HEAD_ELEMENT_UPSERT_OR_REMOVE_FACTORY: (doc: Document) => (selector: string, element: HTMLElement | null | undefined) => void;
 
@@ -51,22 +72,6 @@ export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY: (metaService: NgxMeta
 
 // @internal (undocumented)
 export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ":";
-
-// Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @internal (undocumented)
-interface CoreFeature<FeatureKind extends CoreFeatureKind = CoreFeatureKind> {
-    // (undocumented)
-    _kind: FeatureKind;
-    // (undocumented)
-    _providers: Provider[];
-}
-
-// @internal
-const enum CoreFeatureKind {
-    // (undocumented)
-    Defaults = 0
-}
 
 // @internal (undocumented)
 export const _formatDevMessage: (message: string, options: _FormatDevMessageOptions) => string;
@@ -210,9 +215,15 @@ export type MetadataValues = object;
 
 // @public
 export class NgxMetaCoreModule {
-    static forRoot(options?: {
-        defaults?: MetadataValues;
-    }): ModuleWithProviders<NgxMetaCoreModule>;
+    // Warning: (ae-forgotten-export) The symbol "__CoreFeatures" needs to be exported by the entry point all-entry-points.d.ts
+    static forRoot(...features: __CoreFeatures): ModuleWithProviders<NgxMetaCoreModule>;
+    // @deprecated
+    static forRoot(options: NgxMetaCoreModuleForRootOptions): ModuleWithProviders<NgxMetaCoreModule>;
+}
+
+// @public @deprecated
+export interface NgxMetaCoreModuleForRootOptions {
+    defaults?: MetadataValues;
 }
 
 // @public
@@ -408,10 +419,8 @@ export type OpenGraphProfileGender = typeof OPEN_GRAPH_PROFILE_GENDER_FEMALE | t
 // @public
 export type OpenGraphType = typeof OPEN_GRAPH_TYPE_MUSIC_SONG | typeof OPEN_GRAPH_TYPE_MUSIC_ALBUM | typeof OPEN_GRAPH_TYPE_MUSIC_PLAYLIST | typeof OPEN_GRAPH_TYPE_MUSIC_RADIO_STATION | typeof OPEN_GRAPH_TYPE_VIDEO_MOVIE | typeof OPEN_GRAPH_TYPE_VIDEO_EPISODE | typeof OPEN_GRAPH_TYPE_VIDEO_TV_SHOW | typeof OPEN_GRAPH_TYPE_VIDEO_OTHER | typeof OPEN_GRAPH_TYPE_ARTICLE | typeof OPEN_GRAPH_TYPE_BOOK | typeof OPEN_GRAPH_TYPE_PROFILE | typeof OPEN_GRAPH_TYPE_WEBSITE;
 
-// Warning: (ae-forgotten-export) The symbol "CoreFeature" needs to be exported by the entry point all-entry-points.d.ts
-//
 // @public
-export const provideNgxMetaCore: (...features: ReadonlyArray<CoreFeature>) => EnvironmentProviders;
+export const provideNgxMetaCore: (...features: __CoreFeatures) => EnvironmentProviders;
 
 // @public
 export const provideNgxMetaJsonLd: () => Provider[];
@@ -582,7 +591,7 @@ export type TwitterCardType = typeof TWITTER_CARD_TYPE_SUMMARY | typeof TWITTER_
 export const _VAL_ATTRIBUTE_CONTENT = "content";
 
 // @public
-export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
+export const withNgxMetaDefaults: (defaults: MetadataValues) => __CoreFeature<__CoreFeatureKind.Defaults>;
 
 // (No @packageDocumentation comment for this package)
 

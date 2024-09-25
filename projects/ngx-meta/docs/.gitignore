@@ -176,7 +176,3 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 content/fonts
-includes/CHANGELOG.md
-includes/README.md
-content/api
-includes/bundle-size

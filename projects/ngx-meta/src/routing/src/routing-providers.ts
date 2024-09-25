@@ -1,4 +1,4 @@
-import { _NgxMetaRouteValuesService } from '@davidlj95/ngx-meta/core'
+import { _RouteValuesService } from '@davidlj95/ngx-meta/core'
 import { ENVIRONMENT_INITIALIZER, Provider, ValueProvider } from '@angular/core'
 import { NgxMetaRouterListenerService } from './ngx-meta-router-listener.service'
 import { NGX_META_ROUTE_STRATEGY } from './ngx-meta-route-strategy'
@@ -21,5 +21,5 @@ export const DEFAULT_METADATA_ROUTE_STRATEGY: ValueProvider = {
 export const ROUTING_PROVIDERS = [
   DEFAULT_METADATA_ROUTE_STRATEGY,
   ROUTING_INITIALIZER,
-  _NgxMetaRouteValuesService,
+  _RouteValuesService,
 ]

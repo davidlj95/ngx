@@ -7,7 +7,7 @@ import {
 } from './ngx-meta-route-strategy'
 import {
   _formatDevMessage,
-  _NgxMetaRouteValuesService,
+  _RouteValuesService,
   NgxMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { _MODULE_NAME } from './module-name'
@@ -30,7 +30,7 @@ export class NgxMetaRouterListenerService implements OnDestroy {
     @Inject(NGX_META_ROUTE_STRATEGY)
     private readonly strategy: NgxMetaRouteStrategy | null,
     private readonly ngxMetaService: NgxMetaService,
-    private readonly routeMetadataValues: _NgxMetaRouteValuesService,
+    private readonly routeValuesService: _RouteValuesService,
   ) {}
 
   public listen() {
@@ -69,7 +69,7 @@ export class NgxMetaRouterListenerService implements OnDestroy {
           }
           const values = this.strategy(this.activatedRoute.snapshot)
           this.ngxMetaService.set(values)
-          this.routeMetadataValues.set(values)
+          this.routeValuesService.set(values)
         },
       })
   }

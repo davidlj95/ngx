@@ -1,3 +1,28 @@
+## [`ngx-meta` v1.0.0-beta.13](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.12...ngx-meta-v1.0.0-beta.13) (2024-09-25)
+
+### Features
+
+- allow feature APIs in core module + deprecate options ([#830](https://github.com/davidlj95/ngx/issues/830)) ([47e027e](https://github.com/davidlj95/ngx/commit/47e027e9a2fc5f1e418690af2f935b9ad5a1651e))
+
+### Documentation
+
+- improve OG, Twitter types ([#827](https://github.com/davidlj95/ngx/issues/827)) ([5e94c81](https://github.com/davidlj95/ngx/commit/5e94c810998d19ba8cee08d719fae585ebdae2be))
+- improve standard module docs ([#824](https://github.com/davidlj95/ngx/issues/824)) ([f0bdc83](https://github.com/davidlj95/ngx/commit/f0bdc837f2022d2377a3b712a4eb9b14d02c7496))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#825](https://github.com/davidlj95/ngx/issues/825)) ([fe26da6](https://github.com/davidlj95/ngx/commit/fe26da6294311dd1086ad821f1b54842daf05484))
+- rename unit test suites ([#828](https://github.com/davidlj95/ngx/issues/828)) ([2f6b805](https://github.com/davidlj95/ngx/commit/2f6b805f4c0c82cb7f1001fc1660dee4e5b72e7a))
+
+### Tests
+
+- improve ngx meta core module unit tests ([#829](https://github.com/davidlj95/ngx/issues/829)) ([5befe1e](https://github.com/davidlj95/ngx/commit/5befe1e8a7183c3f33ab81dedbb8b6e61718ab00))
+
+### Build System
+
+- fix e2e cypress tests failing if no coverage ([#826](https://github.com/davidlj95/ngx/issues/826)) ([033fb15](https://github.com/davidlj95/ngx/commit/033fb15d96919a7f50917cbf8848f39c5b542967))
+- **ide:** set WebStorm to use path mappings only when needed ([#831](https://github.com/davidlj95/ngx/issues/831)) ([0ef6ed2](https://github.com/davidlj95/ngx/commit/0ef6ed263c69cfc3c607ba5947f9721bd0104098))
+
 ## [`ngx-meta` v1.0.0-beta.12](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.11...ngx-meta-v1.0.0-beta.12) (2024-09-19)
 
 ### Features

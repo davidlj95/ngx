@@ -6,7 +6,7 @@ import {
 import { MetadataResolverOptions, MetadataValues } from '../core'
 import { Provider } from '@angular/core'
 import { MockProvider } from 'ng-mocks'
-import { DEFAULTS_TOKEN } from '../core/src/defaults-token'
+import { DEFAULTS } from '../core/src/defaults'
 
 // Relates to https://github.com/davidlj95/ngx/issues/426
 // TBH, this is needed cause both Metadata JSON resolver and Metadata resolver
@@ -92,7 +92,7 @@ describe('Metadata value resolver object merging', () => {
 
 function makeSut(opts: { defaults?: MetadataValues } = {}) {
   const DEFAULT_PROVIDER: Provider[] = opts.defaults
-    ? [MockProvider(DEFAULTS_TOKEN, opts.defaults)]
+    ? [MockProvider(DEFAULTS, opts.defaults)]
     : []
   TestBed.configureTestingModule({
     providers: [METADATA_RESOLVER_PROVIDER, ...DEFAULT_PROVIDER],

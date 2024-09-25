@@ -3,15 +3,10 @@ import { InjectionToken } from '@angular/core'
 import { MetadataResolverOptions } from './ngx-meta-metadata-manager'
 import { isObject } from './is-object'
 
-export type MetadataJsonResolver = (
-  values: MetadataValues | undefined,
-  resolverOptions: MetadataResolverOptions,
-) => unknown
 export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
   ngDevMode ? 'NgxMeta JSON Resolver' : 'NgxMetaJR',
   {
-    providedIn: 'root',
-    factory: (): MetadataJsonResolver => (values, resolverOptions) => {
+    factory: () => (values, resolverOptions) => {
       if (values === undefined) {
         return
       }
@@ -45,5 +40,10 @@ export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
     },
   },
 )
+
+export type MetadataJsonResolver = (
+  values: MetadataValues | undefined,
+  resolverOptions: MetadataResolverOptions,
+) => unknown
 
 type StringIndexedObject = Record<string, unknown>

@@ -1,6 +1,6 @@
 import { MetadataValues } from './metadata-values'
 import { __coreFeature, __CoreFeature, __CoreFeatureKind } from './core-feature'
-import { DEFAULTS_TOKEN } from './defaults-token'
+import { DEFAULTS } from './defaults'
 
 /**
  * Sets up default metadata values.
@@ -24,5 +24,5 @@ export const withNgxMetaDefaults = (
   defaults: MetadataValues,
 ): __CoreFeature<__CoreFeatureKind.Defaults> =>
   __coreFeature(__CoreFeatureKind.Defaults, [
-    { provide: DEFAULTS_TOKEN, useValue: defaults },
+    { provide: DEFAULTS, useValue: defaults },
   ])

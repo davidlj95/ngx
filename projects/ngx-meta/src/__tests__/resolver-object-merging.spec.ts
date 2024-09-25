@@ -88,11 +88,11 @@ describe('Metadata value resolver object merging', () => {
 })
 
 function makeSut(opts: { defaults?: MetadataValues } = {}) {
-  const DEFAULT_PROVIDER: Provider[] = opts.defaults
+  const DEFAULTS_PROVIDER: Provider[] = opts.defaults
     ? [MockProvider(DEFAULTS, opts.defaults)]
     : []
   TestBed.configureTestingModule({
-    providers: [...DEFAULT_PROVIDER],
+    providers: [...DEFAULTS_PROVIDER],
   })
   return TestBed.inject(METADATA_RESOLVER)
 }

@@ -1,45 +1,112 @@
 import { ModuleWithProviders, NgModule } from '@angular/core'
 import { MetadataValues } from './metadata-values'
-import { withNgxMetaDefaults } from './provide-ngx-meta-core'
 import { CORE_PROVIDERS } from './core-providers'
+import { withNgxMetaDefaults } from './with-ngx-meta-defaults'
+import {
+  __CoreFeature,
+  __CoreFeatureKind,
+  __CoreFeatures,
+  __providersFromCoreFeatures,
+  isCoreFeature,
+} from './core-feature'
 
 /**
- * Adds core providers of `ngx-meta` to the application.
- * Must use {@link NgxMetaCoreModule.forRoot} method.
+ * Provides `ngx-meta`'s core library services.
  *
- * For standalone apps, use {@link provideNgxMetaCore} instead
+ * Use {@link NgxMetaCoreModule.(forRoot:1)} method. Importing the module alone does nothing.
+ *
+ * For standalone apps, use {@link provideNgxMetaCore} instead.
  *
  * @public
  */
 @NgModule()
 export class NgxMetaCoreModule {
   /**
-   * Provides the core library services
+   * Provides `ngx-meta`'s core library services.
    *
-   * Allows specifying some default metadata values
+   * Accepts optional features configuration. See examples for more info.
+   *
+   * Previous configuration of features with an options object has been deprecated.
+   * See {@link NgxMetaCoreModule.(forRoot:2)} for more information and how to migrate
    *
    * @example
+   * Default metadata values can be set up.
    *
-   * You can set some defaults using the `options` argument
+   * ```typescript
+   * NgxMetaCoreModule.forRoot(withNgxMetaDefaults({title: 'Default title'})
+   * ```
+   *
+   * @see {@link withNgxMetaDefaults}
+   * @see {@link https://ngx-meta.dev/guides/defaults/}
+   *
+   * @param features - Features to configure the core module with
+   */
+  static forRoot(
+    ...features: __CoreFeatures
+  ): ModuleWithProviders<NgxMetaCoreModule>
+
+  /**
+   * Deprecated way of configuring the core module features.
+   *
+   * This way of configuring options doesn't allow tree shaking unneeded features.
+   * So usage is discouraged and deprecated.
+   * See deprecation notice for the tree-shaking friendly alternative
+   *
+   * Checkout the method signature examples for an example on how to migrate to the recommended way
+   *
+   * @deprecated Use {@link NgxMetaCoreModule.(forRoot:1)} with feature APIs as arguments instead.
+   *
+   * @example
    * ```typescript
    * NgxMetaCoreModule.forRoot({defaults: {title: 'Default title'}})
    * ```
    *
-   * @param options - Allows providing some default metadata values using `defaults`
+   * should be migrated to
+   *
+   * ```typescript
+   * NgxMetaCoreModule.forRoot(withNgxMetaDefaults({title: 'Default title'}))
+   * ```
    */
+  // noinspection JSDeprecatedSymbols
   static forRoot(
-    options: {
-      defaults?: MetadataValues
-    } = {},
+    options: NgxMetaCoreModuleForRootOptions,
+  ): ModuleWithProviders<NgxMetaCoreModule>
+
+  // noinspection JSDeprecatedSymbols
+  static forRoot(
+    optionsOrFeature:
+      | NgxMetaCoreModuleForRootOptions
+      | __CoreFeature<__CoreFeatureKind> = {},
+    ...features: __CoreFeatures
   ): ModuleWithProviders<NgxMetaCoreModule> {
+    const optionFeaturesOrFirstFeature = isCoreFeature(optionsOrFeature)
+      ? [optionsOrFeature]
+      : optionsOrFeature.defaults
+        ? [withNgxMetaDefaults(optionsOrFeature.defaults)]
+        : []
     return {
       ngModule: NgxMetaCoreModule,
       providers: [
         ...CORE_PROVIDERS,
-        ...(options.defaults !== undefined
-          ? withNgxMetaDefaults(options.defaults)._providers
-          : []),
+        ...__providersFromCoreFeatures([
+          ...optionFeaturesOrFirstFeature,
+          ...features,
+        ]),
       ],
     }
   }
+}
+
+/**
+ * Configuration options for {@link NgxMetaCoreModule.(forRoot:2)}
+ *
+ * @deprecated Use {@link NgxMetaCoreModule.(forRoot:1)} with feature APIs as arguments instead.
+ *             See {@link NgxMetaCoreModule.(forRoot:2)} for a migration example
+ * @public
+ */
+export interface NgxMetaCoreModuleForRootOptions {
+  /**
+   * See {@link withNgxMetaDefaults}
+   */
+  defaults?: MetadataValues
 }

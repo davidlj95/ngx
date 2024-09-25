@@ -3,6 +3,7 @@ export * from './src/ngx-meta-core.module'
 export * from './src/ngx-meta-metadata-loader.module'
 export * from './src/provide-ngx-meta-core'
 export * from './src/provide-ngx-meta-metadata-loader'
+export * from './src/with-ngx-meta-defaults'
 // Others
 export * from './src/global-metadata'
 export * from './src/global-metadata-image'

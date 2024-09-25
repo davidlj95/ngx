@@ -8,7 +8,10 @@ import { RouterOutlet } from '@angular/router'
 import { AllMetaSetByServiceComponent } from './all-meta-set-by-service/all-meta-set-by-service.component'
 import { AllMetaSetByRouteComponent } from './all-meta-set-by-route/all-meta-set-by-route.component'
 import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-service/meta-set-by-route-and-service.component'
-import { NgxMetaCoreModule } from '@davidlj95/ngx-meta/core'
+import {
+  NgxMetaCoreModule,
+  withNgxMetaDefaults,
+} from '@davidlj95/ngx-meta/core'
 import DEFAULTS_JSON from '@/e2e/cypress/fixtures/defaults.json'
 import { NgxMetaRoutingModule } from '@davidlj95/ngx-meta/routing'
 import { NgxMetaStandardModule } from '@davidlj95/ngx-meta/standard'
@@ -34,7 +37,7 @@ import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta
     NgForOf,
     RouterOutlet,
     JsonPipe,
-    NgxMetaCoreModule.forRoot({ defaults: DEFAULTS_JSON }),
+    NgxMetaCoreModule.forRoot(withNgxMetaDefaults(DEFAULTS_JSON)),
     NgxMetaRoutingModule.forRoot(),
     NgxMetaStandardModule,
     NgxMetaOpenGraphModule,

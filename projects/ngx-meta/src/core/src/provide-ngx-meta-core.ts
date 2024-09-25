@@ -1,6 +1,5 @@
 import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core'
 import { __CoreFeatures, __providersFromCoreFeatures } from './core-feature'
-import { CORE_PROVIDERS } from './core-providers'
 
 /**
  * Adds core services of the library to the application.
@@ -31,7 +30,4 @@ import { CORE_PROVIDERS } from './core-providers'
 export const provideNgxMetaCore = (
   ...features: __CoreFeatures
 ): EnvironmentProviders =>
-  makeEnvironmentProviders([
-    ...CORE_PROVIDERS,
-    ...__providersFromCoreFeatures(features),
-  ])
+  makeEnvironmentProviders([...__providersFromCoreFeatures(features)])

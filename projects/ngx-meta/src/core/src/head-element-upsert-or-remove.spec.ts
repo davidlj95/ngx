@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing'
 import { HeadElementHarness } from './__tests__/head-element-harness'
 import { DOCUMENT } from '@angular/common'
 import {
-  __HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER,
   _HEAD_ELEMENT_UPSERT_OR_REMOVE,
   _HeadElementUpsertOrRemove,
 } from './head-element-upsert-or-remove'
@@ -95,8 +94,6 @@ describe('Head element upsert or remove', () => {
 })
 
 function makeSut() {
-  TestBed.configureTestingModule({
-    providers: [__HEAD_ELEMENT_UPSERT_OR_REMOVE_PROVIDER],
-  })
+  TestBed.configureTestingModule({})
   return TestBed.inject(_HEAD_ELEMENT_UPSERT_OR_REMOVE)
 }

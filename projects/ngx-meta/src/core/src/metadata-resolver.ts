@@ -1,7 +1,7 @@
 import { FactoryProvider, InjectionToken, Optional } from '@angular/core'
 import { MetadataValues } from './metadata-values'
 import { _RouteValuesService } from './route-values.service'
-import { DEFAULTS_TOKEN } from './defaults-token'
+import { DEFAULTS } from './defaults'
 import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
@@ -51,6 +51,6 @@ export const METADATA_RESOLVER_PROVIDER: FactoryProvider = {
   deps: [
     METADATA_JSON_RESOLVER,
     [_RouteValuesService, new Optional()],
-    [DEFAULTS_TOKEN, new Optional()],
+    [DEFAULTS, new Optional()],
   ],
 }

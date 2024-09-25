@@ -5,7 +5,7 @@ import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { _RouteValuesService } from './route-values.service'
 import { MetadataValues } from './metadata-values'
 import { Provider } from '@angular/core'
-import { DEFAULTS_TOKEN } from './defaults-token'
+import { DEFAULTS } from './defaults'
 import {
   METADATA_RESOLVER,
   METADATA_RESOLVER_PROVIDER,
@@ -199,7 +199,7 @@ function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
     ),
   ]
   if (opts.defaults) {
-    providers.push(MockProvider(DEFAULTS_TOKEN, opts.defaults))
+    providers.push(MockProvider(DEFAULTS, opts.defaults))
   }
   TestBed.configureTestingModule({
     providers,

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 import { NgxMetaCoreModule } from './ngx-meta-core.module'
-import { injectDefaults } from './defaults-token'
+import { injectDefaults } from './defaults'
 import { ModuleWithProviders } from '@angular/core'
 import { GlobalMetadata } from './global-metadata'
 import { withNgxMetaDefaults } from './with-ngx-meta-defaults'

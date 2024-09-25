@@ -16,10 +16,7 @@ import {
 } from './ngx-meta-route-strategy'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
 import { Subscription } from 'rxjs'
-import {
-  _NgxMetaRouteValuesService,
-  NgxMetaService,
-} from '@davidlj95/ngx-meta/core'
+import { _RouteValuesService, NgxMetaService } from '@davidlj95/ngx-meta/core'
 
 describe('Router listener service', () => {
   enableAutoSpy()
@@ -119,8 +116,8 @@ describe('Router listener service', () => {
           NgxMetaService,
         ) as unknown as jasmine.SpyObj<NgxMetaService>
         const routeMetadataValues = TestBed.inject(
-          _NgxMetaRouteValuesService,
-        ) as unknown as jasmine.SpyObj<_NgxMetaRouteValuesService>
+          _RouteValuesService,
+        ) as unknown as jasmine.SpyObj<_RouteValuesService>
 
         sut.listen()
 
@@ -152,7 +149,7 @@ function makeSut(
     NgxMetaRouterListenerService,
     MockProvider(Router, { events: events$ } as Partial<Router>, 'useValue'),
     MockProvider(ActivatedRoute, activatedRoute, 'useValue'),
-    MockProviders(NgxMetaService, _NgxMetaRouteValuesService),
+    MockProviders(NgxMetaService, _RouteValuesService),
   ]
 
   if (opts.strategy) {

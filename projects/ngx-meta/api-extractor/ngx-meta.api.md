@@ -264,15 +264,6 @@ export interface NgxMetaRouteData<Metadata = MetadataValues> {
     meta: Metadata;
 }
 
-// @internal (undocumented)
-export class _NgxMetaRouteValuesService {
-    constructor(router: Router);
-    // (undocumented)
-    get(): MetadataValues;
-    // (undocumented)
-    set(values: MetadataValues | undefined): void;
-}
-
 // @public
 export class NgxMetaRoutingModule {
     // (undocumented)
@@ -436,6 +427,15 @@ export const provideNgxMetaStandard: () => Provider[];
 
 // @public
 export const provideNgxMetaTwitterCard: () => Provider[];
+
+// @internal (undocumented)
+export class _RouteValuesService {
+    constructor(router: Router);
+    // (undocumented)
+    get(): MetadataValues;
+    // (undocumented)
+    set(values: MetadataValues | undefined): void;
+}
 
 // @public
 export interface Standard {

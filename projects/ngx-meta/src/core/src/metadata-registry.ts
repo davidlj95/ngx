@@ -4,7 +4,7 @@ import { NgxMetaMetadataManager } from './ngx-meta-metadata-manager'
 /**
  * @internal
  */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class MetadataRegistry {
   private readonly byId = new Map<string, NgxMetaMetadataManager>()
 

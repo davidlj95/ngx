@@ -1,6 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core'
 import { MetadataValues } from './metadata-values'
-import { CORE_PROVIDERS } from './core-providers'
 import { withNgxMetaDefaults } from './with-ngx-meta-defaults'
 import {
   __CoreFeature,
@@ -90,7 +89,6 @@ export class NgxMetaCoreModule {
     return {
       ngModule: NgxMetaCoreModule,
       providers: [
-        ...CORE_PROVIDERS,
         ...__providersFromCoreFeatures([
           ...optionFeaturesOrFirstFeature,
           ...features,

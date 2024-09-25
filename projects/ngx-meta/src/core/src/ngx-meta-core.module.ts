@@ -36,8 +36,11 @@ export class NgxMetaCoreModule {
    * NgxMetaCoreModule.forRoot(withNgxMetaDefaults({title: 'Default title'})
    * ```
    *
-   * @see {@link withNgxMetaDefaults}
-   * @see {@link https://ngx-meta.dev/guides/defaults/}
+   * See also:
+   *
+   *  - {@link withNgxMetaDefaults}
+   *
+   *  - {@link https://ngx-meta.dev/guides/defaults/ | Defaults guide}
    *
    * @param features - Features to configure the core module with
    */

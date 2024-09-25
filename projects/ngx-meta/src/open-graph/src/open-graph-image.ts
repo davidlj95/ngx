@@ -8,7 +8,11 @@ export interface OpenGraphImage {
    *
    * Can be unset to use image from global metadata
    *
-   * @see https://ogp.me/#structured:~:text=og%3Aimage%3Aurl
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link https://ogp.me/#structured:~:text=og%3Aimage%3Aurl | Property specs}
    */
   readonly url?: URL | string
 
@@ -18,35 +22,55 @@ export interface OpenGraphImage {
    *
    * Can be unset to use image from global metadata
    *
-   * @see https://ogp.me/#structured:~:text=og%3Aimage%3Aalt
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link https://ogp.me/#structured:~:text=og%3Aimage%3Aalt | Property specs}
    */
   readonly alt?: string
 
   /**
    * An alternate url to use if the webpage requires HTTPS.
    *
-   * @see https://ogp.me/#structured:~:text=og%3Aimage%3Asecure_url
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link https://ogp.me/#structured:~:text=og%3Aimage%3Asecure_url | Property specs}
    */
   readonly secureUrl?: URL | string | null
 
   /**
    * A MIME type for this image.
    *
-   * @see https://ogp.me/#structured:~:text=og%3Aimage%3Atype
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link https://ogp.me/#structured:~:text=og%3Aimage%3Atype | Property specs}
    */
   readonly type?: string | null
 
   /**
    * The number of pixels wide.
    *
-   * @see https://ogp.me/#structured:~:text=og%3Aimage%3Awidth
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link https://ogp.me/#structured:~:text=og%3Aimage%3Awidth | Property specs}
    */
   readonly width?: number | null
 
   /**
    * The number of pixels high.
    *
-   * @see https://ogp.me/#structured:~:text=og%3Aimage%3Aheight
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link https://ogp.me/#structured:~:text=og%3Aimage%3Aheight | Property specs}
    */
   readonly height?: number | null
 }

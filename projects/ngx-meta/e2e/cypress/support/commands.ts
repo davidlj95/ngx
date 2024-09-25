@@ -81,7 +81,7 @@ const HTML_SCRIPTS_BUT_JSON_LD = new RegExp(
  *
  * Does not remove JSON-LD metadata scripts
  *
- * @see Inspired from {@link https://blog.simonireilly.com/posts/server-side-rendering-tests-in-cypress/}
+ * Inspired from {@link https://blog.simonireilly.com/posts/server-side-rendering-tests-in-cypress/}
  */
 Cypress.Commands.add<'simulateSSRForRequest'>(
   'simulateSSRForRequest',

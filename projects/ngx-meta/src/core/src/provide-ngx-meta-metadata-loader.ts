@@ -1,5 +1,5 @@
-import { Provider } from '@angular/core'
-import { METADATA_LOADER_PROVIDERS } from './metadata-loader-providers'
+import { ENVIRONMENT_INITIALIZER, inject, Provider } from '@angular/core'
+import { MetadataRegistry } from './metadata-registry'
 
 /**
  * Allows to load metadata modules after library has been initialized
@@ -8,5 +8,20 @@ import { METADATA_LOADER_PROVIDERS } from './metadata-loader-providers'
  *
  * @public
  */
-export const provideNgxMetaMetadataLoader = (): Provider[] =>
-  METADATA_LOADER_PROVIDERS
+export const provideNgxMetaMetadataLoader = (): Provider[] => [
+  MetadataRegistry,
+  {
+    provide: ENVIRONMENT_INITIALIZER,
+    multi: true,
+    useFactory: () => {
+      const globalRegistry = inject(MetadataRegistry, { skipSelf: true })
+      const localRegistry = inject(MetadataRegistry)
+      return () => {
+        const localMetadata = localRegistry.getAll()
+        for (const metadata of localMetadata) {
+          globalRegistry.register(metadata)
+        }
+      }
+    },
+  },
+]

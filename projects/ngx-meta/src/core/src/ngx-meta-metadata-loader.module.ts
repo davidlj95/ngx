@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { METADATA_LOADER_PROVIDERS } from './metadata-loader-providers'
+import { provideNgxMetaMetadataLoader } from './provide-ngx-meta-metadata-loader'
 
 /**
  * Allows to load metadata modules after library has been initialized
@@ -9,6 +9,6 @@ import { METADATA_LOADER_PROVIDERS } from './metadata-loader-providers'
  * @public
  */
 @NgModule({
-  providers: [...METADATA_LOADER_PROVIDERS],
+  providers: provideNgxMetaMetadataLoader(),
 })
 export class NgxMetaMetadataLoaderModule {}

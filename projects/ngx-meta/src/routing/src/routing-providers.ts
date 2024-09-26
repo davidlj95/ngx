@@ -5,7 +5,7 @@ import {
   Provider,
   ValueProvider,
 } from '@angular/core'
-import { NgxMetaRouterListenerService } from './ngx-meta-router-listener.service'
+import { RouterListenerService } from './router-listener.service'
 import { NGX_META_ROUTE_STRATEGY } from './ngx-meta-route-strategy'
 import { CURRENT_ROUTE_DATA_ROUTE_STRATEGY } from './current-route-data-strategy'
 
@@ -13,7 +13,7 @@ export const ROUTING_INITIALIZER: Provider = {
   provide: ENVIRONMENT_INITIALIZER,
   multi: true,
   useFactory: () => {
-    const routerListener = inject(NgxMetaRouterListenerService)
+    const routerListener = inject(RouterListenerService)
     return () => {
       routerListener.listen()
     }

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 
-import { NgxMetaRouterListenerService } from './ngx-meta-router-listener.service'
+import { RouterListenerService } from './router-listener.service'
 import { MockProvider, MockProviders, MockService } from 'ng-mocks'
 import {
   ActivatedRoute,
@@ -38,7 +38,7 @@ describe('Router listener service', () => {
   })
 
   describe('when already listening', () => {
-    let sut: NgxMetaRouterListenerService
+    let sut: RouterListenerService
 
     beforeEach(() => {
       sut = makeSut()
@@ -137,7 +137,7 @@ function makeSut(
     strategy?: NgxMetaRouteStrategy
     activatedRoute?: ActivatedRoute
   } = {},
-): NgxMetaRouterListenerService {
+): RouterListenerService {
   const events$ = opts.events$ ?? new EventEmitter()
   const activatedRoute =
     opts.activatedRoute ??
@@ -146,7 +146,7 @@ function makeSut(
     } as Partial<ActivatedRoute>)
 
   const providers: Provider[] = [
-    NgxMetaRouterListenerService,
+    RouterListenerService,
     MockProvider(Router, { events: events$ } as Partial<Router>, 'useValue'),
     MockProvider(ActivatedRoute, activatedRoute, 'useValue'),
     MockProviders(NgxMetaService, _RouteValuesService),
@@ -162,7 +162,7 @@ function makeSut(
     providers,
   })
 
-  return TestBed.inject(NgxMetaRouterListenerService)
+  return TestBed.inject(RouterListenerService)
 }
 
 function makeNavigationEvent(type: EventType): NavigationEvent {

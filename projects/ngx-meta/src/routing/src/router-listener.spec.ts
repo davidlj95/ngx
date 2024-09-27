@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing'
 
-import { RouterListenerService } from './router-listener.service'
 import { MockProvider, MockProviders, MockService } from 'ng-mocks'
 import {
   ActivatedRoute,
@@ -9,16 +8,17 @@ import {
   Router,
   RouterEvent,
 } from '@angular/router'
-import { EventEmitter, Provider } from '@angular/core'
+import { EventEmitter } from '@angular/core'
 import {
   NGX_META_ROUTE_STRATEGY,
   NgxMetaRouteStrategy,
 } from './ngx-meta-route-strategy'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
-import { Subscription } from 'rxjs'
 import { _RouteValuesService, NgxMetaService } from '@davidlj95/ngx-meta/core'
+import { ROUTER_LISTENER, RouterListener } from './router-listener'
+import { Observable } from 'rxjs'
 
-describe('Router listener service', () => {
+describe('Router listener', () => {
   enableAutoSpy()
 
   describe('when not listening yet', () => {
@@ -38,25 +38,30 @@ describe('Router listener service', () => {
   })
 
   describe('when already listening', () => {
-    let sut: RouterListenerService
+    let events$: Observable<NavigationEvent>
+    let subscribersCount: number
+    let sut: RouterListener
 
     beforeEach(() => {
-      sut = makeSut()
+      subscribersCount = 0
+      events$ = new Observable(() => void subscribersCount++)
+      sut = makeSut({ events$ })
+
       sut.listen()
     })
 
-    describe('when listening again', () => {
-      let existingSubscription: Subscription
+    it('should subscribe just once', () => {
+      expect(subscribersCount).toBe(1)
+    })
 
+    describe('when listening again', () => {
       beforeEach(() => {
-        existingSubscription = sut['sub']!
-        expect(existingSubscription).toBeDefined()
-        spyOn(console, 'warn').and.stub()
+        spyOn(console, 'warn')
         sut.listen()
       })
 
       it('should not subscribe again', () => {
-        expect(sut['sub']).toBe(existingSubscription)
+        expect(subscribersCount).toBe(1)
       })
 
       it('should warn about it', () => {
@@ -133,11 +138,11 @@ describe('Router listener service', () => {
 
 function makeSut(
   opts: {
-    events$?: EventEmitter<NavigationEvent>
+    events$?: Observable<NavigationEvent>
     strategy?: NgxMetaRouteStrategy
     activatedRoute?: ActivatedRoute
   } = {},
-): RouterListenerService {
+): RouterListener {
   const events$ = opts.events$ ?? new EventEmitter()
   const activatedRoute =
     opts.activatedRoute ??
@@ -145,24 +150,18 @@ function makeSut(
       snapshot: 'dummySnapshot' as unknown as ActivatedRouteSnapshot,
     } as Partial<ActivatedRoute>)
 
-  const providers: Provider[] = [
-    RouterListenerService,
-    MockProvider(Router, { events: events$ } as Partial<Router>, 'useValue'),
-    MockProvider(ActivatedRoute, activatedRoute, 'useValue'),
-    MockProviders(NgxMetaService, _RouteValuesService),
-  ]
-
-  if (opts.strategy) {
-    providers.push(
-      MockProvider(NGX_META_ROUTE_STRATEGY, opts.strategy, 'useValue'),
-    )
-  }
-
   TestBed.configureTestingModule({
-    providers,
+    providers: [
+      MockProvider(Router, { events: events$ } as Partial<Router>, 'useValue'),
+      MockProvider(ActivatedRoute, activatedRoute, 'useValue'),
+      MockProviders(NgxMetaService, _RouteValuesService),
+      opts.strategy
+        ? MockProvider(NGX_META_ROUTE_STRATEGY, opts.strategy, 'useValue')
+        : [],
+    ],
   })
 
-  return TestBed.inject(RouterListenerService)
+  return TestBed.inject(ROUTER_LISTENER)
 }
 
 function makeNavigationEvent(type: EventType): NavigationEvent {

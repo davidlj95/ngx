@@ -1,10 +1,8 @@
 import { TestBed } from '@angular/core/testing'
 
-import { MockProvider, MockProviders } from 'ng-mocks'
+import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
-import { _RouteValuesService } from './route-values.service'
 import { MetadataValues } from './metadata-values'
-import { Provider } from '@angular/core'
 import { DEFAULTS } from './defaults'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import {
@@ -15,6 +13,10 @@ import {
   _makeMetadataResolverOptions,
   MetadataResolverOptions,
 } from './ngx-meta-metadata-manager'
+import {
+  _ROUTE_METADATA_STRATEGY,
+  _RouteMetadataStrategy,
+} from './route-metadata-strategy'
 
 describe('Metadata resolver', () => {
   enableAutoSpy()
@@ -24,7 +26,7 @@ describe('Metadata resolver', () => {
   const VALUE = 'value'
   const DUMMY_ROUTE_VALUES = { route: 'values' }
   let jsonResolver: jasmine.Spy<MetadataJsonResolver>
-  let routeMetadataValues: jasmine.SpyObj<_RouteValuesService>
+  let routeMetadataStrategy: jasmine.Spy<_RouteMetadataStrategy>
   let sut: MetadataResolver
 
   function mockJsonResolver(returnMap: Map<MetadataValues, unknown>) {
@@ -36,9 +38,9 @@ describe('Metadata resolver', () => {
     jsonResolver = TestBed.inject(
       METADATA_JSON_RESOLVER,
     ) as jasmine.Spy<MetadataJsonResolver>
-    routeMetadataValues = TestBed.inject(
-      _RouteValuesService,
-    ) as jasmine.SpyObj<_RouteValuesService>
+    routeMetadataStrategy = TestBed.inject(
+      _ROUTE_METADATA_STRATEGY,
+    ) as jasmine.Spy<_RouteMetadataStrategy>
   }
 
   describe('when value exists in provided values', () => {
@@ -66,14 +68,14 @@ describe('Metadata resolver', () => {
     beforeEach(() => {
       sut = makeSut()
       injectSpies()
-      routeMetadataValues.get.and.returnValue(DUMMY_ROUTE_VALUES)
+      routeMetadataStrategy.and.returnValue(DUMMY_ROUTE_VALUES)
       mockJsonResolver(new Map([[DUMMY_ROUTE_VALUES, VALUE]]))
     })
 
     it('should resolve value using route metadata values', () => {
       sut(DUMMY_VALUES, baseResolverOptions)
 
-      expect(routeMetadataValues.get).toHaveBeenCalledOnceWith()
+      expect(routeMetadataStrategy).toHaveBeenCalledOnceWith()
       expect(jsonResolver).toHaveBeenCalledWith(
         DUMMY_ROUTE_VALUES,
         baseResolverOptions,
@@ -111,7 +113,7 @@ describe('Metadata resolver', () => {
       beforeEach(() => {
         sut = makeSut()
         injectSpies()
-        routeMetadataValues.get.and.returnValue(DUMMY_ROUTE_VALUES)
+        routeMetadataStrategy.and.returnValue(DUMMY_ROUTE_VALUES)
         mockJsonResolver(
           new Map<MetadataValues, unknown>([
             [DUMMY_ROUTE_VALUES, routeValue],
@@ -137,7 +139,7 @@ describe('Metadata resolver', () => {
         beforeEach(() => {
           sut = makeSut()
           injectSpies()
-          routeMetadataValues.get.and.returnValue(DUMMY_ROUTE_VALUES)
+          routeMetadataStrategy.and.returnValue(DUMMY_ROUTE_VALUES)
           mockJsonResolver(
             new Map<MetadataValues, unknown>([
               [DUMMY_ROUTE_VALUES, ROUTE_VALUE],
@@ -158,7 +160,7 @@ describe('Metadata resolver', () => {
         beforeEach(() => {
           sut = makeSut()
           injectSpies()
-          routeMetadataValues.get.and.returnValue(DUMMY_ROUTE_VALUES)
+          routeMetadataStrategy.and.returnValue(DUMMY_ROUTE_VALUES)
           mockJsonResolver(
             new Map<MetadataValues, unknown>([
               [DUMMY_ROUTE_VALUES, ROUTE_VALUE_OBJ],
@@ -186,18 +188,18 @@ describe('Metadata resolver', () => {
 })
 
 function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
-  const providers: Provider[] = [
-    MockProviders(_RouteValuesService),
-    MockProvider(
-      METADATA_JSON_RESOLVER,
-      jasmine.createSpy('Metadata JSON resolver'),
-    ),
-  ]
-  if (opts.defaults) {
-    providers.push(MockProvider(DEFAULTS, opts.defaults))
-  }
   TestBed.configureTestingModule({
-    providers,
+    providers: [
+      MockProvider(
+        METADATA_JSON_RESOLVER,
+        jasmine.createSpy('Metadata JSON resolver'),
+      ),
+      MockProvider(
+        _ROUTE_METADATA_STRATEGY,
+        jasmine.createSpy('Route metadata strategy'),
+      ),
+      opts.defaults ? [MockProvider(DEFAULTS, opts.defaults)] : [],
+    ],
   })
   return TestBed.inject(METADATA_RESOLVER)
 }

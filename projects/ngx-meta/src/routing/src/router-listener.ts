@@ -1,12 +1,7 @@
 import { inject, InjectionToken, OnDestroy } from '@angular/core'
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
+import { NavigationEnd, Router } from '@angular/router'
 import { filter, Subscription } from 'rxjs'
-import { ROUTE_METADATA_STRATEGY } from './route-metadata-strategy'
-import {
-  _formatDevMessage,
-  _RouteValuesService,
-  NgxMetaService,
-} from '@davidlj95/ngx-meta/core'
+import { _formatDevMessage, NgxMetaService } from '@davidlj95/ngx-meta/core'
 import { _MODULE_NAME } from './module-name'
 
 // WTF is this? Why not just import `EventType`? Well, compatibility reasons 🙃
@@ -18,10 +13,7 @@ export const ROUTER_LISTENER = new InjectionToken<RouterListener>(
   {
     factory: () => {
       const router = inject(Router)
-      const activatedRoute = inject(ActivatedRoute)
-      const strategy = inject(ROUTE_METADATA_STRATEGY)
       const ngxMetaService = inject(NgxMetaService)
-      const routeValuesService = inject(_RouteValuesService)
       let subscription: Subscription | undefined
       return {
         listen() {
@@ -44,11 +36,7 @@ export const ROUTER_LISTENER = new InjectionToken<RouterListener>(
           subscription = router.events
             .pipe(filter(({ type }) => type === NAVIGATION_END_EVENT_TYPE))
             .subscribe({
-              next: () => {
-                const values = strategy(activatedRoute.snapshot)
-                ngxMetaService.set(values)
-                routeValuesService.set(values)
-              },
+              next: () => ngxMetaService.set(),
             })
         },
         // Can't use DestroyRef is introduced in Angular v16

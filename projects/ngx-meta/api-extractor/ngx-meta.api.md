@@ -11,7 +11,6 @@ import { Meta } from '@angular/platform-browser';
 import { MetaDefinition } from '@angular/platform-browser';
 import { ModuleWithProviders } from '@angular/core';
 import { Provider } from '@angular/core';
-import { Router } from '@angular/router';
 
 // Warning: (ae-forgotten-export) The symbol "__CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
 //
@@ -121,6 +120,9 @@ export const _HEAD_ELEMENT_UPSERT_OR_REMOVE: InjectionToken<_HeadElementUpsertOr
 
 // @internal (undocumented)
 export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement | null | undefined) => void;
+
+// @internal (undocumented)
+export const _injectRouteMetadataStrategy: () => _RouteMetadataStrategy;
 
 // @internal (undocumented)
 const _JSON_LD_KEY: keyof JsonLdMetadata;
@@ -429,13 +431,10 @@ export const provideNgxMetaStandard: () => Provider[];
 export const provideNgxMetaTwitterCard: () => Provider[];
 
 // @internal (undocumented)
-export class _RouteValuesService {
-    constructor(router: Router);
-    // (undocumented)
-    get(): MetadataValues;
-    // (undocumented)
-    set(values: MetadataValues | undefined): void;
-}
+export const _ROUTE_METADATA_STRATEGY: InjectionToken<_RouteMetadataStrategy>;
+
+// @internal (undocumented)
+export type _RouteMetadataStrategy = () => MetadataValues | undefined;
 
 // @public
 export interface Standard {

@@ -1,20 +1,10 @@
 import { TestBed } from '@angular/core/testing'
 
-import { MockProvider, MockProviders, MockService } from 'ng-mocks'
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  EventType,
-  Router,
-  RouterEvent,
-} from '@angular/router'
+import { MockProvider } from 'ng-mocks'
+import { EventType, Router, RouterEvent } from '@angular/router'
 import { EventEmitter } from '@angular/core'
-import {
-  ROUTE_METADATA_STRATEGY,
-  RouteMetadataStrategy,
-} from './route-metadata-strategy'
 import { enableAutoSpy } from '@davidlj95/ngx-meta/__tests__/enable-auto-spy'
-import { _RouteValuesService, NgxMetaService } from '@davidlj95/ngx-meta/core'
+import { NgxMetaService } from '@davidlj95/ngx-meta/core'
 import { ROUTER_LISTENER, RouterListener } from './router-listener'
 import { Observable } from 'rxjs'
 
@@ -73,10 +63,9 @@ describe('Router listener', () => {
   })
 
   describe('when a non-end navigation event is triggered', () => {
-    it('should not call any metadata strategy method', () => {
+    it('should not call service', () => {
       const events$ = new EventEmitter()
-      const strategy = jasmine.createSpy()
-      const sut = makeSut({ events$, strategy })
+      const sut = makeSut({ events$ })
       const ngxMetaService = TestBed.inject(
         NgxMetaService,
       ) as unknown as jasmine.SpyObj<NgxMetaService>
@@ -84,36 +73,25 @@ describe('Router listener', () => {
 
       events$.emit(makeNavigationEvent(EventType.ActivationEnd))
 
-      expect(strategy).not.toHaveBeenCalled()
       expect(ngxMetaService.set).not.toHaveBeenCalled()
     })
   })
 
   describe('when a navigation end event is triggered', () => {
-    it('should call strategy resolve, set that metadata and store it using service', () => {
-      const metadata = { key: 'value' }
-      const strategy = jasmine.createSpy().and.returnValue(metadata)
+    it('should call service to set metadata', () => {
       const events$ = new EventEmitter()
-      const activatedRoute = MockService(ActivatedRoute)
       const sut = makeSut({
         events$,
-        strategy,
-        activatedRoute,
       })
       const ngxMetaService = TestBed.inject(
         NgxMetaService,
       ) as unknown as jasmine.SpyObj<NgxMetaService>
-      const routeMetadataValues = TestBed.inject(
-        _RouteValuesService,
-      ) as unknown as jasmine.SpyObj<_RouteValuesService>
 
       sut.listen()
 
       events$.emit(makeNavigationEvent(EventType.NavigationEnd))
 
-      expect(strategy).toHaveBeenCalledOnceWith(activatedRoute.snapshot)
-      expect(ngxMetaService.set).toHaveBeenCalledOnceWith(metadata)
-      expect(routeMetadataValues.set).toHaveBeenCalledOnceWith(metadata)
+      expect(ngxMetaService.set).toHaveBeenCalledOnceWith()
     })
   })
 })
@@ -121,25 +99,15 @@ describe('Router listener', () => {
 function makeSut(
   opts: {
     events$?: Observable<NavigationEvent>
-    strategy?: RouteMetadataStrategy
-    activatedRoute?: ActivatedRoute
   } = {},
 ): RouterListener {
-  const events$ = opts.events$ ?? new EventEmitter()
-  const activatedRoute =
-    opts.activatedRoute ??
-    ({
-      snapshot: 'dummySnapshot' as unknown as ActivatedRouteSnapshot,
-    } as Partial<ActivatedRoute>)
+  const events$ = (opts.events$ ??
+    new EventEmitter<NavigationEvent>()) as Router['events']
 
   TestBed.configureTestingModule({
     providers: [
-      MockProvider(Router, { events: events$ } as Partial<Router>, 'useValue'),
-      MockProvider(ActivatedRoute, activatedRoute, 'useValue'),
-      MockProviders(NgxMetaService, _RouteValuesService),
-      opts.strategy
-        ? MockProvider(ROUTE_METADATA_STRATEGY, opts.strategy, 'useValue')
-        : [],
+      MockProvider(Router, { events: events$ }),
+      MockProvider(NgxMetaService),
     ],
   })
 

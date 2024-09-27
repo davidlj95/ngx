@@ -18,7 +18,7 @@ export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER =
     s:
       (metaService: NgxMetaMetaService) =>
       (description: OpenGraph['description']) => {
-        /* istanbul ignore next */
+        /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
         if (ngDevMode) {
           _maybeTooLongDevMessage(description, 300, {
             module: _MODULE_NAME,

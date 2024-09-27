@@ -15,7 +15,7 @@ export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(_GLOBAL_DESCRIPTION, {
     g: _GLOBAL_DESCRIPTION,
     s: (metaService) => (description: TwitterCard['description']) => {
-      /* istanbul ignore next */
+      /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
       if (ngDevMode) {
         _maybeTooLongDevMessage(description, 200, {
           module: _MODULE_NAME,

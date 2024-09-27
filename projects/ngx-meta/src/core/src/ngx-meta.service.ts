@@ -78,7 +78,7 @@ export class NgxMetaService {
    */
   public setOne(globalOrJsonPath: string, value: unknown): void {
     const managers = this.registry.findByGlobalOrJsonPath(globalOrJsonPath)
-    /* istanbul ignore if */
+    /* istanbul ignore next - not unit tested hence no warning test */
     if (ngDevMode && [...managers].length === 0) {
       console.warn(
         _formatDevMessage(

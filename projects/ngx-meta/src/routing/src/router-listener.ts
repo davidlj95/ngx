@@ -1,7 +1,7 @@
 import { inject, InjectionToken, OnDestroy } from '@angular/core'
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
 import { filter, Subscription } from 'rxjs'
-import { NGX_META_ROUTE_STRATEGY } from './ngx-meta-route-strategy'
+import { ROUTE_METADATA_STRATEGY } from './route-metadata-strategy'
 import {
   _formatDevMessage,
   _RouteValuesService,
@@ -19,7 +19,7 @@ export const ROUTER_LISTENER = new InjectionToken<RouterListener>(
     factory: () => {
       const router = inject(Router)
       const activatedRoute = inject(ActivatedRoute)
-      const strategy = inject(NGX_META_ROUTE_STRATEGY, { optional: true })
+      const strategy = inject(ROUTE_METADATA_STRATEGY)
       const ngxMetaService = inject(NgxMetaService)
       const routeValuesService = inject(_RouteValuesService)
       let subscription: Subscription | undefined
@@ -45,21 +45,6 @@ export const ROUTER_LISTENER = new InjectionToken<RouterListener>(
             .pipe(filter(({ type }) => type === NAVIGATION_END_EVENT_TYPE))
             .subscribe({
               next: () => {
-                /* istanbul ignore next Removed in next PR */
-                if (!strategy) {
-                  if (ngDevMode) {
-                    console.warn(
-                      _formatDevMessage(
-                        [
-                          'tried to set metadata for this route, but no metadata route strategy was found',
-                          'Provide at least one `NGX_META_ROUTE_STRATEGY` to resolve metadata for a route',
-                        ].join('\n'),
-                        { module: _MODULE_NAME, value: router.url },
-                      ),
-                    )
-                  }
-                  return
-                }
                 const values = strategy(activatedRoute.snapshot)
                 ngxMetaService.set(values)
                 routeValuesService.set(values)

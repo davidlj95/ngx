@@ -1,12 +1,11 @@
 import { MetadataValues } from '@davidlj95/ngx-meta/core'
 
 /**
- * Utility type to ensure metadata values are set properly inside an Angular's
- * {@link https://angular.dev/api/router/Route#:~:text=a%20synchronous%20context.-,data,-Data | Route.data}
+ * Utility type to ensure metadata values are set properly inside an Angular
+ * {@link https://angular.dev/api/router/Route#data | `Route.data`}
  *
  * You can also provide specific metadata module types to ensure type safety
- * of the metadata values. Open the API to see an example.
- *
+ * of the metadata values. Open doc details to see an example.
  *
  * @remarks
  * If you don't specify a metadata values type, no type safety will be enforced
@@ -21,7 +20,7 @@ import { MetadataValues } from '@davidlj95/ngx-meta/core'
  *
  * @example
  * With Typescript's {@link https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator | satisfies}
- * operator and specifying {@link GlobalMetadata} and {@link StandardMetadata}
+ * operator and specifying {@link GlobalMetadata} and {@link StandardMetadata} types
 
  * ```typescript
  * const routes: Routes = [
@@ -34,7 +33,10 @@ import { MetadataValues } from '@davidlj95/ngx-meta/core'
  * ]
  * ```
  *
- * @typeParam Metadata - type of metadata values to use
+ * See {@link https://ngx-meta.dev/guides/metadata-values-json/ | metadata values JSON guide} for more information
+ * about typing the metadata values JSON object.
+ *
+ * @typeParam Metadata - Metadata values type
  * @public
  */
 export interface NgxMetaRouteData<Metadata = MetadataValues> {

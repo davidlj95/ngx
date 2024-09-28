@@ -10,7 +10,7 @@
   "packageManager": "pnpm@9.11.0",
   "private": true,
   "devDependencies": {
-    "@cypress/code-coverage": "3.12.48",
+    "@cypress/code-coverage": "3.13.2",
     "@istanbuljs/load-nyc-config": "1.1.0",
     "@types/node": "22.5.4",
     "cypress": "13.14.2",

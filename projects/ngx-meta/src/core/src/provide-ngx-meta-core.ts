@@ -2,26 +2,16 @@ import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core'
 import { __CoreFeatures, __providersFromCoreFeatures } from './core-feature'
 
 /**
- * Adds core services of the library to the application.
+ * Provides `ngx-meta`'s core library services.
  *
- * For module-based apps, you may use {@link NgxMetaCoreModule.(forRoot:1)} instead.
+ * @remarks
  *
- * Configures also extra features. Keep reading to see some examples.
+ * This is the standalone, recommended API. Using this API is preferred.
+ * However, you may also use {@link NgxMetaCoreModule.(forRoot:1)} as the Angular module-based equivalent API.
  *
- * @example
- * Default metadata values can be set up with {@link withNgxMetaDefaults}.
- *
- * ```typescript
- * provideNgxMetaCore(
- *   withNgxMetaDefaults({title: 'Default title'})
- * )
- * ```
- *
- * See also:
+ * Configures also extra features:
  *
  * - {@link withNgxMetaDefaults}
- *
- * - {@link https://ngx-meta.dev/guides/defaults/ | Defaults guide}
  *
  * @param features - Features to configure
  *

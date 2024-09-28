@@ -7,7 +7,7 @@ import {
 import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
 import { NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 
-const KEY: keyof TwitterCard = 'creator'
+const KEY = 'creator' satisfies keyof TwitterCard
 
 /**
  * Manages the {@link TwitterCard.creator} metadata

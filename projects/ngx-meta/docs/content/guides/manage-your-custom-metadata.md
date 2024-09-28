@@ -38,7 +38,7 @@ import {
 
 const JSON_PATH = ['custom', 'title']
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 class CustomTitleMetadataManager implements NgxMetaMetadataManager<string | undefined> {
   // Convention is to name id as the JSON path to access the value from
   // the metadata values JSON
@@ -75,7 +75,7 @@ If you don't need any dependencies injection, this approach is definitely cleane
 
 ### Using a factory provider (recommended)
 
-Another way is to directly create an object implementing the interface and define an Angular's [`Provider`] to inject dependencies. Specifically, [a factory provider](https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory)
+Another way is to directly create an object implementing the interface and define an Angular [`Provider`](https://angular.dev/guide/di/dependency-injection-providers) to inject dependencies. Specifically, [a factory provider](https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory)
 
 Main benefit of this approach is **bundle size reduction** (see warning in previous section). Which is noticeable when writing many small managers. Which the library does and encourages you to do so.
 
@@ -132,9 +132,7 @@ Now that you have implemented your manager, you can inject it into your Angular'
 
 ### Injecting the class
 
-If you implemented using an `#!typescript @Injectable` class with the `#!javascript {providedIn: 'root'}` option, nothing else is needed 🎉
-
-Otherwise, create a [class provider](https://angular.dev/guide/di/dependency-injection-providers#class-providers-useclass) and add it to your main app file. In a similar fashion as you would do with a built-in metadata module like [standard module] in the [get started setup] step
+Create a [class provider](https://angular.dev/guide/di/dependency-injection-providers#class-providers-useclass) and add it to your main app file. In a similar fashion as you would do with a built-in metadata module like [standard module] in the [get started setup] step
 
 === "For non-standalone, module-based apps"
 
@@ -151,6 +149,7 @@ Otherwise, create a [class provider](https://angular.dev/guide/di/dependency-inj
         {
           provide: NgxMetaMetadataManager,
           useClass: CustomTitleMetadataManager,
+          multi: true,
         }
       ]
     })
@@ -172,6 +171,7 @@ Otherwise, create a [class provider](https://angular.dev/guide/di/dependency-inj
         {
           provide: NgxMetaMetadataManager,
           useClass: CustomTitleMetadataManager,
+          multi: true,
         }
       ]
     })

@@ -6,11 +6,6 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
 
-const LINK_TAG = 'link'
-const REL_ATTR = 'rel'
-const CANONICAL_VAL = 'canonical'
-const SELECTOR = `${LINK_TAG}[${REL_ATTR}='${CANONICAL_VAL}']`
-
 /**
  * Manages the {@link Standard.canonicalUrl} metadata
  * @public
@@ -31,3 +26,8 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
       },
     d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
   })
+
+const LINK_TAG = 'link'
+const REL_ATTR = 'rel'
+const CANONICAL_VAL = 'canonical'
+const SELECTOR = `${LINK_TAG}[${REL_ATTR}='${CANONICAL_VAL}']`

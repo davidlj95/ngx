@@ -6,9 +6,9 @@ export interface GlobalMetadataImage {
   /**
    * URL of the image. Used for:
    *
-   *  - {@link OpenGraphImage.url}
+   *  - {@link OpenGraphImage.url} (needs Open Graph module)
    *
-   *  - {@link TwitterCardImage.url}
+   *  - {@link TwitterCardImage.url} (needs Twitter Cards module)
    */
   readonly url: string | URL
 
@@ -18,9 +18,9 @@ export interface GlobalMetadataImage {
    *
    * Used for:
    *
-   *  - {@link OpenGraphImage.alt}
+   *  - {@link OpenGraphImage.alt} (needs Open Graph module)
    *
-   *  - {@link TwitterCardImage.alt}
+   *  - {@link TwitterCardImage.alt} (needs Twitter Cards module)
    */
   readonly alt: string
 }

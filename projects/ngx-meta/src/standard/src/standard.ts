@@ -3,19 +3,19 @@ import { StandardThemeColorMetadata } from './standard-theme-color-metadata'
 
 /**
  * {@link https://ngx-meta.dev/built-in-modules/standard/ | Standard module}
- * metadata values that can be set
+ * metadata values that can be set.
  *
  * @public
  */
 export interface Standard {
   /**
-   * Sets the `<title>` HTML element
+   * Sets the `<title>` HTML element.
    *
-   * Can be set with {@link GlobalMetadata.title}
+   * Can be set with {@link GlobalMetadata.title}.
    *
    * @remarks
    *
-   * Very relevant for SEO purposes
+   * Very relevant for SEO purposes.
    *
    * Recommendations:
    *
@@ -42,17 +42,17 @@ export interface Standard {
   readonly title?: GlobalMetadata['title']
 
   /**
-   * Sets the `<meta name='description'>` HTML element
+   * Sets the `<meta name='description'>` HTML element.
    *
-   * Can be set with {@link GlobalMetadata.description}
+   * Can be set with {@link GlobalMetadata.description}.
    *
    * @remarks
    *
-   * Very relevant for SEO purposes
+   * Very relevant for SEO purposes.
    *
    * Recommendations:
    *
-   *  - Up to 155 characters
+   *  - Up to 155 characters.
    *
    * Provider:
    *
@@ -69,7 +69,7 @@ export interface Standard {
   readonly description?: GlobalMetadata['description']
 
   /**
-   * Sets the `<meta name='author'>` HTML element
+   * Sets the `<meta name='author'>` HTML element.
    *
    * @remarks
    *
@@ -91,7 +91,7 @@ export interface Standard {
   readonly author?: string | null
 
   /**
-   * Sets the `<meta name='keywords'>` HTML element
+   * Sets the `<meta name='keywords'>` HTML element.
    *
    * @remarks
    *
@@ -117,9 +117,9 @@ export interface Standard {
   readonly keywords?: ReadonlyArray<string> | null
 
   /**
-   * Sets the `<meta name='generator'>` HTML tag
+   * Sets the `<meta name='generator'>` HTML tag.
    *
-   * Includes the Angular version used to generate the page
+   * Includes the Angular version used to generate the page.
    *
    * @remarks
    *
@@ -141,9 +141,9 @@ export interface Standard {
   readonly generator?: true | null
 
   /**
-   * Sets the `<meta name='application-name'>` HTML element
+   * Sets the `<meta name='application-name'>` HTML element.
    *
-   * Can be set with {@link GlobalMetadata.applicationName}
+   * Can be set with {@link GlobalMetadata.applicationName}.
    *
    * @remarks
    *
@@ -151,10 +151,10 @@ export interface Standard {
    *
    * Recommendations:
    *
-   * - From MDN: simple web pages shouldn't define an application name
+   * - From MDN: simple web pages shouldn't define an application name.
    *
    * - From HTML specs: if the page is not a web application, the
-   * `application-name` metadata name must not be used
+   * `application-name` metadata name must not be used.
    *
    * Provider:
    *
@@ -169,13 +169,13 @@ export interface Standard {
   readonly applicationName?: GlobalMetadata['applicationName']
 
   /**
-   * Sets the `<link rel='canonical'>` HTML element
+   * Sets the `<link rel='canonical'>` HTML element.
    *
-   * Can be set with {@link GlobalMetadata.canonicalUrl}
+   * Can be set with {@link GlobalMetadata.canonicalUrl}.
    *
    * @remarks
    *
-   * Very relevant for SEO purposes
+   * Very relevant for SEO purposes.
    *
    * Recommendations:
    *
@@ -201,12 +201,12 @@ export interface Standard {
   readonly canonicalUrl?: GlobalMetadata['canonicalUrl']
 
   /**
-   * Sets the `lang` attribute to the `<html>` element
+   * Sets the `lang` attribute to the `<html>` element.
    *
-   * Can be set with {@link GlobalMetadata.locale}
+   * Can be set with {@link GlobalMetadata.locale}.
    *
    * Value must be a valid language tag complying with BCP 47
-   * For instance: "es" or "es-ES"
+   * For instance: "es" or "es-ES".
    *
    * @remarks
    *
@@ -229,7 +229,7 @@ export interface Standard {
   readonly locale?: GlobalMetadata['locale']
 
   /**
-   * Sets one or more `<meta name='theme-color'>` HTML elements
+   * Sets one or more `<meta name='theme-color'>` HTML elements.
    *
    * @remarks
    *
@@ -240,13 +240,11 @@ export interface Standard {
    * for dark mode and another for light mode.
    *
    * You can use a `string` value to set one theme color as value. No `media`
-   * attribute will be used.
+   * attribute will be used then.
    *
    * You can also specify one or more colors and media queries combinations by
    * providing an array of {@link StandardThemeColorMetadataObject} specifying
    * the color and (optionally) a media query.
-   *
-   * See {@link StandardThemeColorMetadata} type for more information.
    *
    * Not related to SEO.
    *
@@ -259,6 +257,23 @@ export interface Standard {
    * - {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color | MDN docs}
    *
    * - {@link https://html.spec.whatwg.org/multipage/semantics.html#meta-theme-color | HTML specs}
+   *
+   * @example
+   *
+   * Providing just one theme color:
+   *
+   * ```typescript
+   * const themeColor: Standard['themeColor'] = 'lightblue'
+   * ```
+   *
+   * Providing multiple theme colors based on a media query:
+   *
+   * ```typescript
+   * const themeColor: StandardThemeColorMetadata = [
+   *   {color: 'darkblue', media: '(prefers-color-scheme: dark)'}
+   *   {color: 'lightblue'}, // Default (when user does not prefer dark)
+   * ]
+   * ```
    */
   readonly themeColor?: StandardThemeColorMetadata | null
 }

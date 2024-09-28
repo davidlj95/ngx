@@ -1,7 +1,7 @@
 import { GlobalMetadataImage } from './global-metadata-image'
 
 /**
- * Specifies metadata that will be used by more than one module
+ * Specifies metadata that will be used by more than one module.
  *
  * @public
  */
@@ -47,7 +47,7 @@ export interface GlobalMetadata {
   readonly canonicalUrl?: URL | string | null
 
   /**
-   * Sets localization of this page
+   * Sets localization of this page.
    *
    * Value must be a valid language tag complying with BCP 47.
    * For instance: "`es`" or "`es-ES`"

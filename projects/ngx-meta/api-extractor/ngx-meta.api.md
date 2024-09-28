@@ -33,38 +33,37 @@ const enum __CoreFeatureKind {
 // @internal (undocumented)
 type __CoreFeatures = ReadonlyArray<__CoreFeature<__CoreFeatureKind>>;
 
-// Warning: (ae-forgotten-export) The symbol "_JSON_LD_KEY" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "JSON_LD_KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof _JSON_LD_KEY]>;
+export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof JSON_LD_KEY]>;
 
 // @internal (undocumented)
 export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (value: OpenGraph[typeof _GLOBAL_IMAGE]) => void;
 
-// Warning: (ae-forgotten-export) The symbol "_STANDARD_GENERATOR_KEY" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "KEY_2" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _STANDARD_GENERATOR_KEY]>;
+export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_2]>;
 
-// Warning: (ae-forgotten-export) The symbol "_STANDARD_KEYWORDS_KEY" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _STANDARD_KEYWORDS_KEY]>;
+export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY]>;
 
 // @internal (undocumented)
 export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_LOCALE]>;
 
+// Warning: (ae-forgotten-export) The symbol "KEY_3" needs to be exported by the entry point all-entry-points.d.ts
+//
 // @internal (undocumented)
-export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _STANDARD_THEME_COLOR_KEY]>;
+export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_3]>;
 
 // @internal (undocumented)
 export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
 
 // @internal (undocumented)
 export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (image: TwitterCard['image']) => void;
-
-// @internal (undocumented)
-export const _COMPOSED_KEY_VAL_META_DEFINITION_DEFAULT_SEPARATOR = ":";
 
 // @internal (undocumented)
 export const _formatDevMessage: (message: string, options: _FormatDevMessageOptions) => string;
@@ -125,7 +124,7 @@ export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement
 export const _injectRouteMetadataStrategy: () => _RouteMetadataStrategy;
 
 // @internal (undocumented)
-const _JSON_LD_KEY: keyof JsonLdMetadata;
+const JSON_LD_KEY = "jsonLd";
 
 // @public
 export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
@@ -136,39 +135,43 @@ export interface JsonLdMetadata {
 }
 
 // @internal (undocumented)
-export const _KEY_ATTRIBUTE_NAME = "name";
+const KEY = "keywords";
 
 // @internal (undocumented)
-export const _KEY_ATTRIBUTE_PROPERTY = "property";
+const KEY_2 = "generator";
+
+// @internal (undocumented)
+const KEY_3 = "themeColor";
 
 // @public
-export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: {
-    keyAttr?: string;
-    valAttr?: string;
+export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
+
+// @public
+export interface MakeComposedKeyValMetaDefinitionOptions extends MakeKeyValMetaDefinitionOptions {
     separator?: string;
-}) => NgxMetaMetaDefinition;
+}
 
 // @public
-export const makeKeyValMetaDefinition: (keyName: string, options?: {
+export const makeKeyValMetaDefinition: (keyName: string, options?: MakeKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
+
+// @public
+export interface MakeKeyValMetaDefinitionOptions {
+    extras?: MetaDefinition;
     keyAttr?: string;
     valAttr?: string;
-    extras?: MetaDefinition;
-}) => NgxMetaMetaDefinition;
-
-// @internal (undocumented)
-export const _makeMetadataManager: <T>(id: NgxMetaMetadataManager<T>['id'], resolverOptions: NgxMetaMetadataManager<T>['resolverOptions'], set: NgxMetaMetadataManager<T>['set']) => NgxMetaMetadataManager<T>;
+}
 
 // @public
-export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: {
+export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: MakeMetadataManagerProviderFromSetterFactoryOptions) => FactoryProvider;
+
+// @public
+export interface MakeMetadataManagerProviderFromSetterFactoryOptions {
     d?: FactoryProvider['deps'];
+    g?: MetadataResolverOptions['global'];
     id?: string;
     jP: MetadataResolverOptions['jsonPath'];
-    g?: MetadataResolverOptions['global'];
     m?: MetadataResolverOptions['objectMerge'];
-}) => FactoryProvider;
-
-// @internal (undocumented)
-export const _makeMetadataResolverOptions: (jsonPath: MetadataResolverOptions['jsonPath'], global?: MetadataResolverOptions['global'], objectMerge?: MetadataResolverOptions['objectMerge']) => MetadataResolverOptions;
+}
 
 // @internal
 export const _maybeNonHttpUrlDevMessage: (url: string | URL | undefined | null, opts: _FormatDevMessageOptions) => void;
@@ -192,11 +195,8 @@ type MetadataResolver = (values: MetadataValues, resolverOptions: MetadataResolv
 
 // @public
 export interface MetadataResolverOptions {
-    // (undocumented)
     readonly global?: string;
-    // (undocumented)
     readonly jsonPath: ReadonlyArray<string>;
-    // (undocumented)
     readonly objectMerge?: boolean;
 }
 
@@ -243,7 +243,7 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
 // @public
 export interface NgxMetaMetaDefinition {
     readonly attrSelector: string;
-    readonly withContent: (content: string) => MetaDefinition;
+    withContent(content: string): MetaDefinition;
 }
 
 // @public
@@ -422,7 +422,7 @@ export const provideNgxMetaOpenGraph: () => Provider[];
 export const provideNgxMetaOpenGraphProfile: () => Provider[];
 
 // @public
-export const provideNgxMetaRouting: () => EnvironmentProviders | Provider[];
+export const provideNgxMetaRouting: () => Provider[];
 
 // @public
 export const provideNgxMetaStandard: () => Provider[];
@@ -461,23 +461,14 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER: FactoryProvider;
 // @public
 export const STANDARD_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
 
-// @internal (undocumented)
-const _STANDARD_GENERATOR_KEY: keyof Standard;
-
 // @public
 export const STANDARD_GENERATOR_METADATA_PROVIDER: FactoryProvider;
-
-// @internal (undocumented)
-const _STANDARD_KEYWORDS_KEY: keyof Standard;
 
 // @public
 export const STANDARD_KEYWORDS_METADATA_PROVIDER: FactoryProvider;
 
 // @public
 export const STANDARD_LOCALE_METADATA_PROVIDER: FactoryProvider;
-
-// @internal (undocumented)
-export const _STANDARD_THEME_COLOR_KEY = "themeColor";
 
 // @public
 export const STANDARD_THEME_COLOR_METADATA_PROVIDER: FactoryProvider;
@@ -579,9 +570,6 @@ export interface TwitterCardSiteUsername {
 
 // @public
 export type TwitterCardType = typeof TWITTER_CARD_TYPE_SUMMARY | typeof TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE | typeof TWITTER_CARD_TYPE_APP | typeof TWITTER_CARD_TYPE_PLAYER;
-
-// @internal (undocumented)
-export const _VAL_ATTRIBUTE_CONTENT = "content";
 
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => __CoreFeature<__CoreFeatureKind.Defaults>;

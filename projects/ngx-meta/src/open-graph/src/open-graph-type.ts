@@ -70,6 +70,7 @@ export const OPEN_GRAPH_TYPE_PROFILE = 'profile'
  */
 export const OPEN_GRAPH_TYPE_WEBSITE = 'website'
 
+// noinspection JSValidateJSDoc
 /**
  * Types for {@link OpenGraph."type"} property
  *

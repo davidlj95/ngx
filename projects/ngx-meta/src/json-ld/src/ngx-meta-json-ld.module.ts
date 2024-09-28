@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core'
 import { provideNgxMetaJsonLd } from './provide-ngx-meta-json-ld'
 
 /**
- * Adds {@link https://ngx-meta.dev/built-in-modules/json-ld/ | JSON-LD module}
- * metadata managers
+ * Provides {@link https://ngx-meta.dev/built-in-modules/json-ld/ | JSON-LD module}
+ * metadata managers.
  *
- * For standalone apps, use {@link provideNgxMetaJsonLd} instead
+ * Check out {@link provideNgxMetaJsonLd} for the standalone, recommended API.
  *
  * @public
  */
 @NgModule({
-  providers: [...provideNgxMetaJsonLd()],
+  providers: provideNgxMetaJsonLd(),
 })
 export class NgxMetaJsonLdModule {}

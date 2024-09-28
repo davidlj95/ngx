@@ -29,6 +29,7 @@ export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
       image?.alt,
     )
   }
+
 /**
  * Manages the {@link TwitterCard.image} metadata
  * @public

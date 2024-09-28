@@ -2,9 +2,12 @@ import { ENVIRONMENT_INITIALIZER, inject, Provider } from '@angular/core'
 import { MetadataRegistry } from './metadata-registry'
 
 /**
- * Allows to load metadata modules after library has been initialized
+ * Allows to load metadata managers after library has been initialized.
  *
- * For module-based apps, use {@link NgxMetaMetadataLoaderModule} instead
+ * @remarks
+ *
+ * This is the standalone, recommended API. Using this API is preferred.
+ * However, you may also use {@link NgxMetaMetadataLoaderModule} as the Angular module-based equivalent API.
  *
  * @public
  */

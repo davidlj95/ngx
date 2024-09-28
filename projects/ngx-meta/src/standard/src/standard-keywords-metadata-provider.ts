@@ -9,24 +9,21 @@ import { makeStandardMetaDefinition } from './make-standard-meta-definition'
 /**
  * @internal
  */
-const _STANDARD_KEYWORDS_KEY: keyof Standard = 'keywords'
+export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<
+  Standard[typeof KEY]
+> = (metaService: NgxMetaMetaService) => (value) =>
+  metaService.set(makeStandardMetaDefinition(KEY), value?.join(','))
 
 /**
  * @internal
  */
-export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<
-  Standard[typeof _STANDARD_KEYWORDS_KEY]
-> = (metaService: NgxMetaMetaService) => (value) =>
-  metaService.set(
-    makeStandardMetaDefinition(_STANDARD_KEYWORDS_KEY),
-    value?.join(','),
-  )
+const KEY = 'keywords' satisfies keyof Standard
 
 /**
  * Manages the {@link Standard.keywords} metadata
  * @public
  */
 export const STANDARD_KEYWORDS_METADATA_PROVIDER = makeStandardMetadataProvider(
-  _STANDARD_KEYWORDS_KEY,
+  KEY,
   { s: __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY },
 )

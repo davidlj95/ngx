@@ -8,10 +8,13 @@ import { OPEN_GRAPH_LOCALE_METADATA_PROVIDER } from './open-graph-locale-metadat
 import { OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER } from './open-graph-site-name-metadata-provider'
 
 /**
- * Adds {@link https://ngx-meta.dev/built-in-modules/open-graph/ | Open Graph module}
- * basic & optional metadata managers
+ * Provides {@link https://ngx-meta.dev/built-in-modules/open-graph/ | Open Graph module}
+ * basic and optional metadata managers.
  *
- * For module-based apps, use {@link NgxMetaOpenGraphModule} instead
+ * @remarks
+ *
+ * This is the standalone, recommended API. Using this API is preferred.
+ * However, you may also use {@link NgxMetaOpenGraphModule} as the Angular module-based equivalent API.
  *
  * @public
  */

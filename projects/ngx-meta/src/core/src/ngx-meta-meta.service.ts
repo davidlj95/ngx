@@ -4,7 +4,7 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
 import { NgxMetaMetaContent } from './ngx-meta-meta-content'
 
 /**
- * Inserts, updates or removes `<meta>` elements in the current page.
+ * Creates, updates or removes `<meta>` elements.
  *
  * Uses Angular {@link https://angular.dev/api/platform-browser/Meta | Meta} APIs under the hood.
  *
@@ -21,7 +21,7 @@ export class NgxMetaMetaService {
    *
    * The element is created with the provided content. If no content is given, element is removed.
    *
-   * @param definition - `<meta>` element to upsert or remove
+   * @param definition - `<meta>` element to create, update or remove
    * @param content - Content value to create or update the `<meta>` element.
    *                  Use `null` or `undefined` to remove the element from the page.
    */

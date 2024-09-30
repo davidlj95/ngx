@@ -7,13 +7,13 @@ import { OpenGraphProfileGender } from './open-graph-profile-gender'
  *
  * @remarks
  *
+ * Used in {@link OpenGraph.profile} with type {@link OpenGraphProfile}
+ *
  * Provider:
  *
  * {@link provideNgxMetaOpenGraphProfile} or {@link NgxMetaOpenGraphProfileModule}
  *
  * See also:
- *
- * - {@link OpenGraphProfile} type
  *
  * - {@link https://ogp.me/#type_profile | Open Graph profile specs}
  *

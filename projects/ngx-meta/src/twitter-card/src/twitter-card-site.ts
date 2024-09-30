@@ -3,6 +3,8 @@
  *
  * Either {@link TwitterCardSiteUsername} or {@link TwitterCardSiteId} is required.
  *
+ * Used in {@link TwitterCard.site} with type {@link TwitterCardSite}
+ *
  * @remarks
  *
  * Provider:

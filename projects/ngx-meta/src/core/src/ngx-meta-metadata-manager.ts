@@ -25,7 +25,7 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
    */
   abstract readonly id: string
   /**
-   * See {@link MetadataResolverOptions}
+   * {@inheritDoc MetadataResolverOptions}
    */
   abstract readonly resolverOptions: MetadataResolverOptions
   /**
@@ -37,7 +37,7 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
 /**
  * Options to resolve metadata values for a metadata manager
  *
- * Specified in {@link NgxMetaMetadataManager.resolverOptions}
+ * Used in {@link NgxMetaMetadataManager.resolverOptions} with type {@link MetadataResolverOptions}
  *
  * @public
  */

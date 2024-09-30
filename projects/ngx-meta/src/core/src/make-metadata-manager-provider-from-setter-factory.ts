@@ -7,7 +7,7 @@ import { FactoryProvider } from '@angular/core'
 
 /**
  * Creates an Angular {@link https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory | factory provider}
- * that for an {@link NgxMetaMetadataManager}.
+ * providing an {@link NgxMetaMetadataManager}.
  *
  * See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | manage custom metadata guide} for an example.
  *

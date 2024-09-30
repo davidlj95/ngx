@@ -61,9 +61,7 @@ describe('Metadata JSON resolver', () => {
     })
     describe('like when key does not exist', () => {
       const values = {}
-      const resolverOptions = {
-        jsonPath: [key, subKey],
-      }
+      const resolverOptions = { jsonPath: [key, subKey] }
 
       testGlobalMayBeRetrieved(values, resolverOptions)
     })
@@ -72,19 +70,14 @@ describe('Metadata JSON resolver', () => {
       const values = {
         [key]: {},
       }
-      const resolverOptions = {
-        jsonPath: [key, subKey],
-      }
+      const resolverOptions = { jsonPath: [key, subKey] }
 
       testGlobalMayBeRetrieved(values, resolverOptions)
     })
 
     describe('like when key is null', () => {
       const values = { [key]: null }
-      const resolverOptions = {
-        jsonPath: [key, subKey],
-        objectMerge: undefined,
-      }
+      const resolverOptions = { jsonPath: [key, subKey] }
 
       it('should return null', () => {
         expect(sut(values, resolverOptions)).toBeNull()

@@ -35,7 +35,7 @@ Like [`<title>`][title-element], many [standard `<meta>`s][standard meta tags], 
 
 So you can set the metadata of a route in the [route's `data`][route data] and the library will set those metadata values in the page for you.
 
-[route data]: https://angular.dev/api/router/Route#:~:text=Additional%20developer%2Ddefined%20data
+[route data]: https://angular.dev/api/router/Route#data
 
 ### 📜 Types & documentation
 

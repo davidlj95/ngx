@@ -3,7 +3,7 @@
  *
  * Can be `undefined` or `null`. In that case, the element will be removed.
  *
- * See {@link NgxMetaMetaService}
+ * See {@link NgxMetaMetaService.set}
  *
  * @public
  */

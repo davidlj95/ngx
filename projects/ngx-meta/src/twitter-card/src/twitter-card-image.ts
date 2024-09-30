@@ -5,6 +5,8 @@
  *
  * Can be set with {@link GlobalMetadata.image}.
  *
+ * Used in {@link TwitterCard.image} with type {@link TwitterCardImage}
+ *
  * @remarks
  *
  * Provider:

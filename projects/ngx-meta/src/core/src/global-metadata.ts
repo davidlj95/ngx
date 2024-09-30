@@ -67,15 +67,7 @@ export interface GlobalMetadata {
   readonly locale?: string | null
 
   /**
-   * Specifies image metadata (will be used for link previews / social cards)
-   * to be used for more than one module. Like:
-   *
-   * - {@link OpenGraph.image} (needs standard module)
-   *
-   * - {@link TwitterCard.image} (needs Twitter Cards module)
-   *
-   * Open Graph allows for more attributes for the image.
-   * Specify {@link OpenGraph.image} if you want to customize those too.
+   * {@inheritDoc GlobalMetadataImage}
    */
   readonly image?: GlobalMetadataImage | null
 }

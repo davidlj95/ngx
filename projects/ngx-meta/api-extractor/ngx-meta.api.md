@@ -33,31 +33,31 @@ const enum __CoreFeatureKind {
 // @internal (undocumented)
 type __CoreFeatures = ReadonlyArray<__CoreFeature<__CoreFeatureKind>>;
 
-// Warning: (ae-forgotten-export) The symbol "JSON_LD_KEY" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "KEY" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof JSON_LD_KEY]>;
+export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof KEY]>;
 
 // @internal (undocumented)
 export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (value: OpenGraph[typeof _GLOBAL_IMAGE]) => void;
 
+// Warning: (ae-forgotten-export) The symbol "KEY_3" needs to be exported by the entry point all-entry-points.d.ts
+//
+// @internal (undocumented)
+export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_3]>;
+
 // Warning: (ae-forgotten-export) The symbol "KEY_2" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_2]>;
-
-// Warning: (ae-forgotten-export) The symbol "KEY" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @internal (undocumented)
-export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY]>;
+export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_2]>;
 
 // @internal (undocumented)
 export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_LOCALE]>;
 
-// Warning: (ae-forgotten-export) The symbol "KEY_3" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "KEY_4" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_3]>;
+export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_4]>;
 
 // @internal (undocumented)
 export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
@@ -123,9 +123,6 @@ export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement
 // @internal (undocumented)
 export const _injectRouteMetadataStrategy: () => _RouteMetadataStrategy;
 
-// @internal (undocumented)
-const JSON_LD_KEY = "jsonLd";
-
 // @public
 export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
 
@@ -135,13 +132,16 @@ export interface JsonLdMetadata {
 }
 
 // @internal (undocumented)
-const KEY = "keywords";
+const KEY = "jsonLd";
 
 // @internal (undocumented)
-const KEY_2 = "generator";
+const KEY_2 = "keywords";
 
 // @internal (undocumented)
-const KEY_3 = "themeColor";
+const KEY_3 = "generator";
+
+// @internal (undocumented)
+const KEY_4 = "themeColor";
 
 // @public
 export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;

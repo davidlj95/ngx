@@ -1,6 +1,8 @@
 /**
  * `@username` or Twitter ID of the content creator.
  *
+ * Used in {@link TwitterCard.creator} with type {@link TwitterCardCreator}
+ *
  * @remarks
  *
  * Provider:
@@ -32,7 +34,7 @@ export type TwitterCardCreator =
   | (TwitterCardCreatorUsername & TwitterCardCreatorId)
 
 /**
- * See {@link TwitterCard.creator}
+ * See {@link TwitterCardCreator}
  * @public
  */
 export interface TwitterCardCreatorUsername {
@@ -53,7 +55,7 @@ export interface TwitterCardCreatorUsername {
 }
 
 /**
- * See {@link TwitterCard.creator}
+ * See {@link TwitterCardCreator}
  * @public
  */
 export interface TwitterCardCreatorId {

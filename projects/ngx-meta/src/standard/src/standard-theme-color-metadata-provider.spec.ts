@@ -2,17 +2,14 @@ import { MetadataSetter, NgxMetaMetaService } from '../../core'
 import { Standard } from './standard'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
-import {
-  __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY,
-  _STANDARD_THEME_COLOR_KEY,
-} from './standard-theme-color-metadata-provider'
+import { __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY } from './standard-theme-color-metadata-provider'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { MetaDefinition } from '@angular/platform-browser'
 import { StandardThemeColorMetadataObject } from './standard-theme-color-metadata'
 
 describe('Standard theme color metadata', () => {
   enableAutoSpy()
-  let sut: MetadataSetter<Standard[typeof _STANDARD_THEME_COLOR_KEY]>
+  let sut: MetadataSetter<Standard['themeColor']>
   let metaService: jasmine.SpyObj<NgxMetaMetaService>
 
   const DUMMY_COLOR = 'black'
@@ -90,7 +87,7 @@ describe('Standard theme color metadata', () => {
   })
 })
 
-function makeSut(): MetadataSetter<Standard[typeof _STANDARD_THEME_COLOR_KEY]> {
+function makeSut(): MetadataSetter<Standard['themeColor']> {
   TestBed.configureTestingModule({
     providers: [MockProvider(NgxMetaMetaService)],
   })

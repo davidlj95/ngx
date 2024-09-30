@@ -10,12 +10,13 @@ import { TwitterCardCreator } from './twitter-card-creator'
  * @public
  */
 export interface TwitterCard {
+  // noinspection JSValidateJSDoc
   /**
    * The card type.
    *
    * Used with all cards.
    *
-   * If an {@link OpenGraph.type}, {@link OpenGraph.title} and {@link OpenGraph.description} exist in the markup but
+   * If an {@link OpenGraph."type"}, {@link OpenGraph.title} and {@link OpenGraph.description} exist in the markup but
    * {@link TwitterCard.card} is absent, then a summary card may be rendered.
    *
    * Check out {@link TwitterCardType} type for a list of constants you can use

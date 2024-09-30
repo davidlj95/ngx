@@ -10,10 +10,13 @@ import { STANDARD_LOCALE_METADATA_PROVIDER } from './standard-locale-metadata-pr
 import { STANDARD_THEME_COLOR_METADATA_PROVIDER } from './standard-theme-color-metadata-provider'
 
 /**
- * Adds {@link https://ngx-meta.dev/built-in-modules/standard/ | standard module}
- * metadata managers
+ * Provides {@link https://ngx-meta.dev/built-in-modules/standard/ | standard module}
+ * metadata managers.
  *
- * For module-based apps, use {@link NgxMetaStandardModule} instead
+ * @remarks
+ *
+ * This is the standalone, recommended API. Using this API is preferred.
+ * However, you may also use {@link NgxMetaStandardModule} as the Angular module-based equivalent API.
  *
  * @public
  */

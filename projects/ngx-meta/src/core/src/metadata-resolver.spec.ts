@@ -9,10 +9,7 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import {
-  _makeMetadataResolverOptions,
-  MetadataResolverOptions,
-} from './ngx-meta-metadata-manager'
+import { MetadataResolverOptions } from './ngx-meta-metadata-manager'
 import {
   _ROUTE_METADATA_STRATEGY,
   _RouteMetadataStrategy,
@@ -21,7 +18,9 @@ import {
 describe('Metadata resolver', () => {
   enableAutoSpy()
 
-  const baseResolverOptions = _makeMetadataResolverOptions(['dummy'])
+  const baseResolverOptions = {
+    jsonPath: ['dummy'],
+  } satisfies MetadataResolverOptions
   const DUMMY_VALUES = { foo: 'bar' }
   const VALUE = 'value'
   const DUMMY_ROUTE_VALUES = { route: 'values' }

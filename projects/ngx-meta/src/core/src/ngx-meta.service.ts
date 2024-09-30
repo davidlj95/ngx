@@ -6,7 +6,7 @@ import { _formatDevMessage } from './format-dev-message'
 import { _MODULE_NAME } from './module-name'
 
 /**
- * Manages the metadata values of the current page
+ * Manages the metadata values of the current page.
  *
  * @public
  */
@@ -50,7 +50,7 @@ export class NgxMetaService {
    * Sets a metadata value for the page
    *
    * You can specify which metadata elements will be changed by using the
-   * JSON Path that you would use if using {@link NgxMetaService.set} API
+   * global or JSON Path that you would use if using {@link NgxMetaService.set} API
    *
    * @remarks
    * For instance, if you want to just set the title of the page. You'd set it
@@ -58,15 +58,20 @@ export class NgxMetaService {
    *
    * ```typescript
    * this.ngxMetaService.set({
-   *  title: 'foo'
+   *  title: 'Global title'
+   *  standard: {
+   *    title: 'Standard title',
+   *  }
    * })
    * ```
    *
-   * But rest of metadata would be removed
+   * But rest of metadata would be removed.
    *
    * To only set the `title`, you can use this API:
+   *
    * ```typescript
-   * this.ngxMetaService.setOne('title', 'foo')
+   * this.ngxMetaService.setOne('title', 'Global title')
+   * this.ngxMetaService.setOne('standard.title', 'Standard title')
    * ```
    *
    * For more information check the {@link https://ngx-meta.dev/guides/set-metadata-using-service/ | service guide docs}

@@ -3,14 +3,14 @@ export * from './src/ngx-meta-open-graph.module'
 export * from './src/ngx-meta-open-graph-profile.module'
 export * from './src/provide-ngx-meta-open-graph'
 export * from './src/provide-ngx-meta-open-graph-profile'
-// Others
+// Types
 export * from './src/open-graph'
 export * from './src/open-graph-image'
 export * from './src/open-graph-metadata'
 export * from './src/open-graph-profile'
 export * from './src/open-graph-profile-gender'
 export * from './src/open-graph-type'
-// Specific providers
+// Specific metadata managers
 // Basic
 export * from './src/open-graph-title-metadata-provider'
 export * from './src/open-graph-type-metadata-provider'

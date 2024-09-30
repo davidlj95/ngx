@@ -8,6 +8,7 @@ import { MetadataValues } from '@davidlj95/ngx-meta/core'
  * of the metadata values. Open doc details to see an example.
  *
  * @remarks
+ *
  * If you don't specify a metadata values type, no type safety will be enforced
  *
  * ```typescript
@@ -16,7 +17,7 @@ import { MetadataValues } from '@davidlj95/ngx-meta/core'
  * }
  * ```
  *
- * See example to enforce type safety on metadata values too
+ * See example to enforce type safety on metadata values too.
  *
  * @example
  * With Typescript's {@link https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator | satisfies}

@@ -1,6 +1,4 @@
 import {
-  _makeMetadataManager,
-  _makeMetadataResolverOptions,
   MetadataResolverOptions,
   MetadataSetter,
   NgxMetaMetadataManager,
@@ -8,8 +6,49 @@ import {
 import { FactoryProvider } from '@angular/core'
 
 /**
- * Utility type for a function that returns a {@link MetadataSetter}
- * provided some dependencies (which should be able to be injectable)
+ * Creates an Angular {@link https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory | factory provider}
+ * providing an {@link NgxMetaMetadataManager}.
+ *
+ * See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | manage custom metadata guide} for an example.
+ *
+ * @remarks
+ *
+ * Factory providers are used for built-in modules instead of Angular services.
+ * Reason is that code created by `@Injectable` decorator takes many bytes,
+ * whereas a call to this function creating a factory provider takes fewer.
+ *
+ * See {@link https://github.com/davidlj95/ngx/issues/112}
+ *
+ * @param setterFactory - Function that creates a {@link NgxMetaMetadataManager} given some dependencies
+ * @param opts - Options to create the factory
+ * @public
+ */
+export const makeMetadataManagerProviderFromSetterFactory = <T>(
+  setterFactory: MetadataSetterFactory<T>,
+  opts: MakeMetadataManagerProviderFromSetterFactoryOptions,
+): FactoryProvider => {
+  /* istanbul ignore next - simple enough */
+  const deps = opts.d ?? []
+  return {
+    provide: NgxMetaMetadataManager,
+    multi: true,
+    useFactory: (...deps: unknown[]) => ({
+      id: opts.id ?? opts.jP.join('.'),
+      resolverOptions: {
+        jsonPath: opts.jP,
+        global: opts.g,
+        objectMerge: opts.m,
+      },
+      set: setterFactory(...deps),
+    }),
+    deps,
+  }
+}
+
+/**
+ * Utility type for a factory function that returns a {@link MetadataSetter} given some injectable dependencies.
+ *
+ * Used as part of {@link makeMetadataManagerProviderFromSetterFactory}.
  *
  * @public
  */
@@ -18,54 +57,41 @@ export type MetadataSetterFactory<T> = (
 ) => MetadataSetter<T>
 
 /**
- * Creates an Angular's {@link https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory | Factory provider}
- * that provides an {@link NgxMetaMetadataManager}
- *
- * @remarks
- *
- * Factory providers are used for built-in modules instead of Angular services.
- * Reason is that code created by `@Injectable` decorator takes many bytes,
- * whereas a call to this function creating a factory provider takes few.
- *
- * See {@link https://github.com/davidlj95/ngx/issues/112}
- *
- * @param setterFactory - Function that creates a {@link NgxMetaMetadataManager} given some dependencies. See {@link MetadataSetterFactory}
- * @param opts - Options to create the factory.
- *               `d` is the list of dependencies to inject. Defaults to no dependencies
- *               `id` is the {@link NgxMetaMetadataManager.id} to use.
- *               Defaults to resolver options `jsonPath` joined by dots.
- *               `jP` is the `jsonPath` that will be used for the {@link MetadataResolverOptions.jsonPath}
- *               `g` is the `global` that will be used for the {@link MetadataResolverOptions.global}
- *               `m` is the `objectMerge` that will be used for the {@link MetadataResolverOptions.objectMerge}
+ * Options argument object for {@link makeMetadataManagerProviderFromSetterFactory}.
  *
  * @public
  */
-export const makeMetadataManagerProviderFromSetterFactory = <T>(
-  setterFactory: MetadataSetterFactory<T>,
-  opts: {
-    // Dependencies to provide to setter factory
-    d?: FactoryProvider['deps']
-    // ID of the manager
-    id?: string
-    // JSON Path
-    jP: MetadataResolverOptions['jsonPath']
-    // Global
-    g?: MetadataResolverOptions['global']
-    // Object merge
-    m?: MetadataResolverOptions['objectMerge']
-  },
-): FactoryProvider => {
-  /* istanbul ignore next - simple enough */
-  const deps = opts.d ?? []
-  return {
-    provide: NgxMetaMetadataManager,
-    multi: true,
-    useFactory: (...deps: unknown[]) =>
-      _makeMetadataManager(
-        opts.id ?? opts.jP.join('.'),
-        _makeMetadataResolverOptions(opts.jP, opts.g, opts.m),
-        setterFactory(...deps),
-      ),
-    deps,
-  }
+export interface MakeMetadataManagerProviderFromSetterFactoryOptions {
+  /**
+   * Dependencies to inject to the setter factory.
+   *
+   * See also:
+   *
+   * - {@link https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory:~:text=property%20is%20an%20array%20of%20provider%20tokens | Factory providers' deps}
+   *
+   * - {@link https://angular.dev/api/core/FactoryProvider#deps | FactoryProvider#deps}
+   *
+   * Defaults to no dependencies
+   */
+  d?: FactoryProvider['deps']
+  /**
+   * Metadata manager identifier
+   *
+   * See {@link NgxMetaMetadataManager.id}
+   *
+   * Defaults to the JSON path joined by dots (`['standard', 'title'] => 'standard.title'`)
+   */
+  id?: string
+  /**
+   * See {@link MetadataResolverOptions.jsonPath}
+   */
+  jP: MetadataResolverOptions['jsonPath']
+  /**
+   * See {@link MetadataResolverOptions.global}
+   */
+  g?: MetadataResolverOptions['global']
+  /**
+   * See {@link MetadataResolverOptions.objectMerge}
+   */
+  m?: MetadataResolverOptions['objectMerge']
 }

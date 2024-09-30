@@ -3,7 +3,7 @@ import { TwitterCard } from './twitter-card'
 import { TwitterCardSiteId, TwitterCardSiteUsername } from './twitter-card-site'
 import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
 
-const KEY: keyof TwitterCard = 'site'
+const KEY = 'site' satisfies keyof TwitterCard
 
 /**
  * Manages the {@link TwitterCard.site} metadata

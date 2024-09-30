@@ -1,5 +1,6 @@
 import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
 
+// noinspection JSValidateJSDoc
 /**
  * Manages the {@link OpenGraph."type"} metadata
  * @public

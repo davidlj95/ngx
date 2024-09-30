@@ -10,24 +10,24 @@ import { makeStandardMetaDefinition } from './make-standard-meta-definition'
 /**
  * @internal
  */
-const _STANDARD_GENERATOR_KEY: keyof Standard = 'generator'
+export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<
+  Standard[typeof KEY]
+> = (metaService: NgxMetaMetaService) => (value) =>
+  metaService.set(
+    makeStandardMetaDefinition(KEY),
+    value === true ? `Angular v${VERSION.full}` : value,
+  )
 
 /**
  * @internal
  */
-export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<
-  Standard[typeof _STANDARD_GENERATOR_KEY]
-> = (metaService: NgxMetaMetaService) => (value) =>
-  metaService.set(
-    makeStandardMetaDefinition(_STANDARD_GENERATOR_KEY),
-    value === true ? `Angular v${VERSION.full}` : value,
-  )
+const KEY = 'generator' satisfies keyof Standard
 
 /**
  * Manages the {@link Standard.generator} metadata
  * @public
  */
 export const STANDARD_GENERATOR_METADATA_PROVIDER =
-  makeStandardMetadataProvider(_STANDARD_GENERATOR_KEY, {
+  makeStandardMetadataProvider(KEY, {
     s: __STANDARD_GENERATOR_METADATA_SETTER_FACTORY,
   })

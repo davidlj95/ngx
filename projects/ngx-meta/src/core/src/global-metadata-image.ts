@@ -1,14 +1,27 @@
 /**
- * {@inheritDoc GlobalMetadata.image}
+ * Specifies image metadata (will be used for link previews / social cards)
+ * to be used for more than one module. Like:
+ *
+ * - {@link OpenGraph.image} (needs standard module)
+ *
+ * - {@link TwitterCard.image} (needs Twitter Cards module)
+ *
+ * Open Graph allows for more attributes for the image.
+ * Specify {@link OpenGraph.image} if you want to customize those too.
+ *
+ * @remarks
+ *
+ * Used in {@link GlobalMetadata.image} with type {@link GlobalMetadataImage}
+ *
  * @public
  */
 export interface GlobalMetadataImage {
   /**
    * URL of the image. Used for:
    *
-   *  - {@link OpenGraphImage.url}
+   *  - {@link OpenGraphImage.url} (needs Open Graph module)
    *
-   *  - {@link TwitterCardImage.url}
+   *  - {@link TwitterCardImage.url} (needs Twitter Cards module)
    */
   readonly url: string | URL
 
@@ -18,9 +31,9 @@ export interface GlobalMetadataImage {
    *
    * Used for:
    *
-   *  - {@link OpenGraphImage.alt}
+   *  - {@link OpenGraphImage.alt} (needs Open Graph module)
    *
-   *  - {@link TwitterCardImage.alt}
+   *  - {@link TwitterCardImage.alt} (needs Twitter Cards module)
    */
   readonly alt: string
 }

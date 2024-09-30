@@ -1,5 +1,31 @@
 /**
- * See {@link TwitterCard.creator}
+ * `@username` or Twitter ID of the content creator.
+ *
+ * Used in {@link TwitterCard.creator} with type {@link TwitterCardCreator}
+ *
+ * @remarks
+ *
+ * Provider:
+ *
+ * {@link TWITTER_CARD_CREATOR_METADATA_PROVIDER}
+ *
+ * See also:
+ *
+ * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator | Property specs (username) }
+ *
+ * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter | Property specs (id) }
+ *
+ * @example
+ *
+ * Providing both the `@username` and id. Just one of them is enough though.
+ *
+ * ```typescript
+ * const twitterCardCreator: TwitterCardCreator = {
+ *    username: '@example',
+ *    id: 16542877,
+ * }
+ * ```
+ *
  * @public
  */
 export type TwitterCardCreator =
@@ -8,14 +34,20 @@ export type TwitterCardCreator =
   | (TwitterCardCreatorUsername & TwitterCardCreatorId)
 
 /**
- * See {@link TwitterCard.creator}
+ * See {@link TwitterCardCreator}
  * @public
  */
 export interface TwitterCardCreatorUsername {
   /**
-   * `@username` of content creator
+   * `@username` of content creator.
    *
-   * Used with `summary_large_image` cards
+   * Used with `summary_large_image` cards.
+   *
+   * In other words, same ones as {@link TwitterCardCreatorId} except for `summary` cards.
+   *
+   * @remarks
+   *
+   * See also:
    *
    * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator | Property specs}
    */
@@ -23,14 +55,20 @@ export interface TwitterCardCreatorUsername {
 }
 
 /**
- * See {@link TwitterCard.creator}
+ * See {@link TwitterCardCreator}
  * @public
  */
 export interface TwitterCardCreatorId {
   /**
-   * Twitter user ID of content creator
+   * Twitter user ID of content creator.
    *
-   * Used with `summary`, `summary_large_image` cards
+   * Used with `summary`, `summary_large_image` cards.
+   *
+   * In other words, same ones as {@link TwitterCardCreatorUsername} plus `summary` cards.
+   *
+   * @remarks
+   *
+   * See also:
    *
    * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Acreator%3Aid,-Twitter | Property specs }
    *

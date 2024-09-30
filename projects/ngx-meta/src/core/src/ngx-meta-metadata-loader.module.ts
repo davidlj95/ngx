@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core'
 import { provideNgxMetaMetadataLoader } from './provide-ngx-meta-metadata-loader'
 
 /**
- * Allows to load metadata modules after library has been initialized
+ * Allows to load metadata managers after library has been initialized.
  *
- * For standalone apps, use {@link provideNgxMetaMetadataLoader} instead
+ * Check out {@link provideNgxMetaMetadataLoader} for the standalone, recommended API.
  *
  * @public
  */

@@ -4,10 +4,7 @@ import {
   MetadataJsonResolver,
 } from './metadata-json-resolver'
 import { MetadataValues } from './metadata-values'
-import {
-  _makeMetadataResolverOptions,
-  MetadataResolverOptions,
-} from './ngx-meta-metadata-manager'
+import { MetadataResolverOptions } from './ngx-meta-metadata-manager'
 
 describe('Metadata JSON resolver', () => {
   let sut: MetadataJsonResolver
@@ -59,14 +56,12 @@ describe('Metadata JSON resolver', () => {
       const values = undefined
 
       it('should return undefined', () => {
-        expect(
-          sut(values, _makeMetadataResolverOptions(['dummy'])),
-        ).toBeUndefined()
+        expect(sut(values, { jsonPath: ['dummy'] })).toBeUndefined()
       })
     })
     describe('like when key does not exist', () => {
       const values = {}
-      const resolverOptions = _makeMetadataResolverOptions([key, subKey])
+      const resolverOptions = { jsonPath: [key, subKey] }
 
       testGlobalMayBeRetrieved(values, resolverOptions)
     })
@@ -75,14 +70,14 @@ describe('Metadata JSON resolver', () => {
       const values = {
         [key]: {},
       }
-      const resolverOptions = _makeMetadataResolverOptions([key, subKey])
+      const resolverOptions = { jsonPath: [key, subKey] }
 
       testGlobalMayBeRetrieved(values, resolverOptions)
     })
 
     describe('like when key is null', () => {
       const values = { [key]: null }
-      const resolverOptions = _makeMetadataResolverOptions([key, subKey])
+      const resolverOptions = { jsonPath: [key, subKey] }
 
       it('should return null', () => {
         expect(sut(values, resolverOptions)).toBeNull()
@@ -93,7 +88,7 @@ describe('Metadata JSON resolver', () => {
       const values = {
         [key]: 42,
       }
-      const resolverOptions = _makeMetadataResolverOptions([key, subKey])
+      const resolverOptions = { jsonPath: [key, subKey] }
 
       testGlobalMayBeRetrieved(values, resolverOptions)
     })
@@ -106,7 +101,7 @@ describe('Metadata JSON resolver', () => {
           [subKey]: value,
         },
       }
-      const resolverOptions = _makeMetadataResolverOptions([key, subKey])
+      const resolverOptions = { jsonPath: [key, subKey] }
 
       it('should return value using key and sub key as path', () => {
         expect(sut(values, resolverOptions)).toEqual(value)
@@ -121,11 +116,7 @@ describe('Metadata JSON resolver', () => {
             [subKey]: value,
           },
         }
-        const resolverOptions = _makeMetadataResolverOptions(
-          [key, subKey],
-          global,
-          false,
-        )
+        const resolverOptions = { jsonPath: [key, subKey], global }
 
         it('should return specific value', () => {
           expect(sut(values, resolverOptions)).toEqual(value)
@@ -133,11 +124,11 @@ describe('Metadata JSON resolver', () => {
       })
 
       describe('when object merging is enabled', () => {
-        const resolverOptions = _makeMetadataResolverOptions(
-          [key, subKey],
+        const resolverOptions = {
+          jsonPath: [key, subKey],
           global,
-          true,
-        )
+          objectMerge: true,
+        }
 
         describe('when values are not objects', () => {
           const values = {

@@ -1,7 +1,7 @@
 import { GlobalMetadataImage } from './global-metadata-image'
 
 /**
- * Specifies metadata that will be used by more than one module
+ * Specifies metadata that will be used by more than one module.
  *
  * @public
  */
@@ -47,7 +47,7 @@ export interface GlobalMetadata {
   readonly canonicalUrl?: URL | string | null
 
   /**
-   * Sets localization of this page
+   * Sets localization of this page.
    *
    * Value must be a valid language tag complying with BCP 47.
    * For instance: "`es`" or "`es-ES`"
@@ -67,15 +67,7 @@ export interface GlobalMetadata {
   readonly locale?: string | null
 
   /**
-   * Specifies image metadata (will be used for link previews / social cards)
-   * to be used for more than one module. Like:
-   *
-   * - {@link OpenGraph.image} (needs standard module)
-   *
-   * - {@link TwitterCard.image} (needs Twitter Cards module)
-   *
-   * Open Graph allows for more attributes for the image.
-   * Specify {@link OpenGraph.image} if you want to customize those too.
+   * {@inheritDoc GlobalMetadataImage}
    */
   readonly image?: GlobalMetadataImage | null
 }

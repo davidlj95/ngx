@@ -1,5 +1,33 @@
 /**
- * See {@link TwitterCard.site}
+ * `@username` or Twitter ID of the author of the website.
+ *
+ * Either {@link TwitterCardSiteUsername} or {@link TwitterCardSiteId} is required.
+ *
+ * Used in {@link TwitterCard.site} with type {@link TwitterCardSite}
+ *
+ * @remarks
+ *
+ * Provider:
+ *
+ * {@link TWITTER_CARD_SITE_METADATA_PROVIDER}
+ *
+ * See also:
+ *
+ * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite, | Property specs (username) }
+ *
+ * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter | Property specs (id) }
+ *
+ * @example
+ *
+ * Providing both the `@username` and id. Just one of them is enough though.
+ *
+ * ```typescript
+ * const twitterCardSite: TwitterCardSite = {
+ *    username: '@example',
+ *    id: 16542877,
+ * }
+ * ```
+ *
  * @public
  */
 export type TwitterCardSite =
@@ -8,7 +36,7 @@ export type TwitterCardSite =
   | (TwitterCardSiteUsername & TwitterCardSiteId)
 
 /**
- * See {@link TwitterCard.site}
+ * See {@link TwitterCardSite}
  * @public
  */
 export interface TwitterCardSiteUsername {
@@ -17,7 +45,13 @@ export interface TwitterCardSiteUsername {
    *
    * Either {@link TwitterCardSiteUsername} or {@link TwitterCardSiteId} is required.
    *
-   * Used with `summary`, `summary_large_image`, `app`, `player` cards
+   * Used with `summary`, `summary_large_image`, `app`, `player` cards.
+   *
+   * In other words, same ones as {@link TwitterCardSiteId} plus `app` cards.
+   *
+   * @remarks
+   *
+   * See also:
    *
    * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite, | Property specs }
    *
@@ -27,7 +61,8 @@ export interface TwitterCardSiteUsername {
 }
 
 /**
- * See {@link TwitterCard.site}
+ * See {@link TwitterCardSite}
+ *
  * @public
  */
 export interface TwitterCardSiteId {
@@ -36,9 +71,15 @@ export interface TwitterCardSiteId {
    *
    * Either {@link TwitterCardSiteUsername} or {@link TwitterCardSiteId} is required.
    *
-   * Used with `summary`, `summary_large_image`, `player` cards
+   * Used with `summary`, `summary_large_image`, `player` cards.
    *
-   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter | Property specs (ID) }
+   * In other words, same ones as {@link TwitterCardSiteUsername} except for `app` cards.
+   *
+   * @remarks
+   *
+   * See also:
+   *
+   * - {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup#:~:text=twitter%3Asite%3Aid,-Same%20as%20twitter | Property specs (id) }
    *
    * - {@link https://twiteridfinder.com/ | Find your Twitter ID}
    *

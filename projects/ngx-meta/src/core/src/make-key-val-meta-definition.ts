@@ -1,42 +1,35 @@
-import { NgxMetaMetaDefinition } from './ngx-meta-meta.service'
 import { MetaDefinition } from '@angular/platform-browser'
+import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
 
 /**
  * Creates a {@link NgxMetaMetaDefinition} for its use with {@link NgxMetaMetaService}
  * by understanding `<meta>` elements as key / value pair elements.
- * Read the API reference docs for more info.
  *
  * @remarks
+ *
  * One can think about some `<meta>` elements as key / value pairs.
+ *
  * For instance `<meta name='description' content='Lorem ipsum'>` would
- * actually be a key / pair meta where
+ * actually be a key / value pair meta where
  *  - `description` is the key
  *  - `Lorem ipsum` is the value
- *  - `name` is the key's HTML attribute
- *  - `content`is the value's HTML attribute
+ *  - `name` is the key's HTML attribute name
+ *  - `content`is the value's HTML attribute name
  *
  * Value is set by {@link NgxMetaMetaService.set} by providing this model and an
  * actual value
  *
  * @param keyName - Name of the key in the key/value meta definition
- * @param options - Specifies HTML attribute defining key, HTML attribute defining
- *               value and optional extras to include in definition
- *               `keyAttr` defaults to `name`
- *               `valAttr` defaults to `content`
- *               `extras` defaults to nothing
+ * @param options - Specifies HTML attribute names and extras of the definition if any
  *
  * @public
  */
 export const makeKeyValMetaDefinition = (
   keyName: string,
-  options: {
-    keyAttr?: string
-    valAttr?: string
-    extras?: MetaDefinition
-  } = {},
+  options: MakeKeyValMetaDefinitionOptions = {},
 ): NgxMetaMetaDefinition => {
-  const keyAttr = options.keyAttr ?? _KEY_ATTRIBUTE_NAME
-  const valAttr = options.valAttr ?? _VAL_ATTRIBUTE_CONTENT
+  const keyAttr = options.keyAttr ?? 'name'
+  const valAttr = options.valAttr ?? 'content'
   return {
     withContent: (value) => ({
       [keyAttr]: keyName,
@@ -46,15 +39,29 @@ export const makeKeyValMetaDefinition = (
     attrSelector: `${keyAttr}='${keyName}'`,
   }
 }
+
 /**
- * @internal
+ * Options argument object for {@link makeKeyValMetaDefinition}
+ *
+ * @public
  */
-export const _KEY_ATTRIBUTE_NAME = 'name'
-/**
- * @internal
- */
-export const _KEY_ATTRIBUTE_PROPERTY = 'property'
-/**
- * @internal
- */
-export const _VAL_ATTRIBUTE_CONTENT = 'content'
+export interface MakeKeyValMetaDefinitionOptions {
+  /**
+   * Name of the `<meta>` attribute that will hold the key
+   *
+   * Default value is `name`
+   */
+  keyAttr?: string
+  /**
+   * Name of the `<meta>` attribute that will hold the value
+   *
+   * Default value is `content`
+   */
+  valAttr?: string
+  /**
+   * Extra contents for the meta definition
+   *
+   * Default value is `undefined`
+   */
+  extras?: MetaDefinition
+}

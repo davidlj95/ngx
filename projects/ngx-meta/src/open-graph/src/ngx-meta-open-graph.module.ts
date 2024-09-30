@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core'
 import { provideNgxMetaOpenGraph } from './provide-ngx-meta-open-graph'
 
 /**
- * Adds {@link https://ngx-meta.dev/built-in-modules/open-graph/ | Open Graph module}
- * basic & optional metadata managers
+ * Provides {@link https://ngx-meta.dev/built-in-modules/open-graph/ | Open Graph module}
+ * basic and optional metadata managers.
  *
- * For standalone apps, use {@link provideNgxMetaOpenGraph} instead
+ * Check out {@link provideNgxMetaOpenGraph} for the standalone, recommended API.
  *
  * @public
  */
 @NgModule({
-  providers: [...provideNgxMetaOpenGraph()],
+  providers: provideNgxMetaOpenGraph(),
 })
 export class NgxMetaOpenGraphModule {}

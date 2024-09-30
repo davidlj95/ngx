@@ -3,8 +3,6 @@ import { _GLOBAL_LOCALE, MetadataSetterFactory } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
 import { Standard } from './standard'
 
-const ATTRIBUTE_NAME = 'lang'
-
 /**
  * @internal
  */
@@ -18,6 +16,8 @@ export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   }
   htmlElement.setAttribute(ATTRIBUTE_NAME, locale)
 }
+
+const ATTRIBUTE_NAME = 'lang'
 
 /**
  * Manages the {@link Standard.locale} metadata

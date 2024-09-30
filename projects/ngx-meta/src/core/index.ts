@@ -14,6 +14,8 @@ export * from './src/ngx-meta.service'
 export * from './src/global-metadata'
 export * from './src/global-metadata-image'
 export * from './src/metadata-values'
+export * from './src/ngx-meta-meta-content'
+export * from './src/ngx-meta-meta-definition'
 // Tokens
 export * from './src/ngx-meta-metadata-manager'
 // Internal

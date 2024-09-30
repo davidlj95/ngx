@@ -1,8 +1,8 @@
-import { NgxMetaMetaDefinition } from './ngx-meta-meta.service'
 import {
   makeKeyValMetaDefinition,
   MakeKeyValMetaDefinitionOptions,
 } from './make-key-val-meta-definition'
+import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
 
 /**
  * Creates a key / value meta definition ({@link NgxMetaMetaDefinition})

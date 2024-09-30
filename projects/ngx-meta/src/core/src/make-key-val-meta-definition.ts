@@ -1,5 +1,5 @@
-import { NgxMetaMetaDefinition } from './ngx-meta-meta.service'
 import { MetaDefinition } from '@angular/platform-browser'
+import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
 
 /**
  * Creates a {@link NgxMetaMetaDefinition} for its use with {@link NgxMetaMetaService}

@@ -243,7 +243,7 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
 // @public
 export interface NgxMetaMetaDefinition {
     readonly attrSelector: string;
-    withContent(content: string): MetaDefinition;
+    readonly withContent: (content: string) => MetaDefinition;
 }
 
 // @public

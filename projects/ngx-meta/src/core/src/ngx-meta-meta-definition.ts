@@ -27,7 +27,7 @@ export interface NgxMetaMetaDefinition {
    * `<meta name='description' content='{content}'>` element. Where `content` will come from
    * {@link NgxMetaMetaService.set} second argument value.
    */
-  withContent(content: string): MetaDefinition
+  readonly withContent: (content: string) => MetaDefinition
 
   /**
    * {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors | Attribute selector}

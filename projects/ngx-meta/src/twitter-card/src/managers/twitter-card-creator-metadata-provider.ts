@@ -1,5 +1,5 @@
 import { makeTwitterCardMetadataProvider } from '../utils/make-twitter-card-metadata-provider'
-import { TwitterCard } from '../types/twitter-card'
+import { TwitterCard } from '../types'
 import {
   TwitterCardCreatorId,
   TwitterCardCreatorUsername,

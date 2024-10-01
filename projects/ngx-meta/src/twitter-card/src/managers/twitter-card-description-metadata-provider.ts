@@ -3,7 +3,7 @@ import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
 } from '@davidlj95/ngx-meta/core'
-import { TwitterCard } from '../types/twitter-card'
+import { TwitterCard } from '../types'
 import { makeTwitterCardMetaDefinition } from '../utils/make-twitter-card-meta-definition'
 import { _MODULE_NAME } from '../module-name'
 

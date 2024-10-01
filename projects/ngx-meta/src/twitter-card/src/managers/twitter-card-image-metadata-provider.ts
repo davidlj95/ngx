@@ -5,7 +5,7 @@ import {
   _maybeNonHttpUrlDevMessage,
   NgxMetaMetaService,
 } from '../../../core'
-import { TwitterCard } from '../types/twitter-card'
+import { TwitterCard } from '../types'
 import { _MODULE_NAME } from '../module-name'
 
 /**

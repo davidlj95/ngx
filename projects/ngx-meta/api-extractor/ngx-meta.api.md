@@ -459,6 +459,9 @@ export const TWITTER_CARD_IMAGE_METADATA_PROVIDER: FactoryProvider;
 export const TWITTER_CARD_SITE_METADATA_PROVIDER: FactoryProvider;
 
 // @public
+export const TWITTER_CARD_TITLE_METADATA_PROVIDER: FactoryProvider;
+
+// @public
 export const TWITTER_CARD_TYPE_APP = "app";
 
 // @public

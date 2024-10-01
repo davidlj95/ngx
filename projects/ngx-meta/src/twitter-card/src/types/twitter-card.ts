@@ -1,7 +1,9 @@
-import { TwitterCardType } from '../managers/twitter-card-type'
-import { TwitterCardImage } from '../managers/twitter-card-image'
-import { TwitterCardSite } from '../managers/twitter-card-site'
-import { TwitterCardCreator } from '../managers/twitter-card-creator'
+import {
+  TwitterCardCreator,
+  TwitterCardImage,
+  TwitterCardSite,
+  TwitterCardType,
+} from '../managers'
 
 /**
  * {@link https://ngx-meta.dev/built-in-modules/twitter-cards/ | Twitter Cards module}

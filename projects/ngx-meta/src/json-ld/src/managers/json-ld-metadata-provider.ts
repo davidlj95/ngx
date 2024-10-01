@@ -7,15 +7,9 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { JsonLdMetadata } from './json-ld-metadata'
 
-/**
- * @internal
- */
 const KEY = 'jsonLd' satisfies keyof JsonLdMetadata
 const SCRIPT_TYPE = 'application/ld+json'
 
-/**
- * @internal
- */
 export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   JsonLdMetadata[typeof KEY]
 > =

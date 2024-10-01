@@ -4,7 +4,7 @@ import {
   _GLOBAL_IMAGE,
   _maybeNonHttpUrlDevMessage,
   NgxMetaMetaService,
-} from '../../../core'
+} from '@davidlj95/ngx-meta/core'
 import { TwitterCard } from '../types'
 import { _MODULE_NAME } from '../module-name'
 

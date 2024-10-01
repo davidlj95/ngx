@@ -14,6 +14,31 @@ Or just use your package manager's `install` command[^1]
 
 Let's add the library to your Angular site and set some standard `#!html <meta>` tags.
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Open your `app.config.ts` file and add at least the core provider to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing provider too. In order to set some standard `#!html <meta>`s, let's add the [standard module] provider.
+
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
+    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
+    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard'
+
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaStandard(),
+        // ...
+      ],
+    }
+    ```
+
+    --8<-- "includes/example-standalone-app-config.md"
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -40,32 +65,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     --8<-- "includes/example-module-based-app-module.md"
 
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Open your `app.config.ts` file and add at least the core provider to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing provider too. In order to set some standard `<meta>`s, let's add the [standard module] provider.
-
-    ```typescript title="app.config.ts"
-    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
-    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
-    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard'
-
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(),
-        provideNgxMetaStandard(),
-        // ...
-      ],
-    }
-    ```
-
-    --8<-- "includes/example-standalone-app-config.md"
-
-!!! tip "Lazy load them if you want!"
+??? tip "Lazy load them if you want!"
 
     You can load metadata modules (like [Open Graph module]) later. They can be lazy loaded too actually. So if you don't need all metadata modules to be available in all your app, you can reduce the main bundle size by loading some later. Check out the [late loading modules guide](late-loading-modules.md) for more information
 

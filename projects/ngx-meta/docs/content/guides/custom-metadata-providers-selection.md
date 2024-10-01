@@ -40,6 +40,27 @@ You can find the [`STANDARD_TITLE_METADATA_PROVIDER`](ngx-meta.standard_title_me
 
 Now that you've found the metadata manager provider you want to use, add it as you would add a built-in module. Remove also the metadata module itself if you will not use other metadata managers from it apart from the ones you specify.
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    ```title="app.config.ts"
+    // ...
+    import {STANDARD_TITLE_METADATA_PROVIDER} from '@davidlj95/ngx-meta/standard'
+
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        {--provideNgxMetaStandard(),--}
+        {++STANDARD_TITLE_METADATA_PROVIDER++},
+        // ...
+      ]
+    })
+    ```
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -62,27 +83,6 @@ Now that you've found the metadata manager provider you want to use, add it as y
       ]
     })
     export class AppModule {}
-    ```
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    ```title="app.config.ts"
-    // ...
-    import {STANDARD_TITLE_METADATA_PROVIDER} from '@davidlj95/ngx-meta/standard'
-
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(),
-        {--provideNgxMetaStandard(),--}
-        {++STANDARD_TITLE_METADATA_PROVIDER++},
-        // ...
-      ]
-    })
     ```
 
 !!! tip "You can also (lazy) load it later"

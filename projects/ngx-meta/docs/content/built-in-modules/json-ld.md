@@ -10,6 +10,27 @@ The module allows you to embed a JSON-LD object inside a `#!html <script>` tag (
 
 ## Setup
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Add [`provideNgxMetaJsonLd()`](ngx-meta.providengxmetajsonld.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
+
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaJsonLd} from '@davidlj95/ngx-meta/json-ld';
+
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaJsonLd(),
+        // ...
+      ],
+    }
+    ```
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -31,27 +52,6 @@ The module allows you to embed a JSON-LD object inside a `#!html <script>` tag (
       // ...
     })
     export class AppModule {}
-    ```
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Add [`provideNgxMetaJsonLd()`](ngx-meta.providengxmetajsonld.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
-
-    ```typescript title="app.config.ts"
-    import {provideNgxMetaJsonLd} from '@davidlj95/ngx-meta/json-ld';
-
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(),
-        provideNgxMetaJsonLd(),
-        // ...
-      ],
-    }
     ```
 
 ## Type

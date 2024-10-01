@@ -2,11 +2,11 @@ import { inject, InjectionToken, OnDestroy } from '@angular/core'
 import { NavigationEnd, Router } from '@angular/router'
 import { filter, Subscription } from 'rxjs'
 import { _formatDevMessage, NgxMetaService } from '@davidlj95/ngx-meta/core'
-import { _MODULE_NAME } from './module-name'
+import { _MODULE_NAME } from '../module-name'
 
 // WTF is this? Why not just import `EventType`? Well, compatibility reasons 🙃
 // See https://github.com/davidlj95/ngx/pull/246 for the details
-export const NAVIGATION_END_EVENT_TYPE = new NavigationEnd(0, '', '').type
+const NAVIGATION_END_EVENT_TYPE = new NavigationEnd(0, '', '').type
 
 export const ROUTER_LISTENER = new InjectionToken<RouterListener>(
   ngDevMode ? 'NgxMeta Router listener' : 'NgxMetaRL',

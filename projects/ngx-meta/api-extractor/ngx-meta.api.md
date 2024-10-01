@@ -12,27 +12,6 @@ import { MetaDefinition } from '@angular/platform-browser';
 import { ModuleWithProviders } from '@angular/core';
 import { Provider } from '@angular/core';
 
-// Warning: (ae-forgotten-export) The symbol "KEY_2" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @internal (undocumented)
-export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_2]>;
-
-// Warning: (ae-forgotten-export) The symbol "KEY" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @internal (undocumented)
-export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY]>;
-
-// @internal (undocumented)
-export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_LOCALE]>;
-
-// Warning: (ae-forgotten-export) The symbol "KEY_3" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @internal (undocumented)
-export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_3]>;
-
-// @internal (undocumented)
-export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
-
 // @internal (undocumented)
 export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (image: TwitterCard['image']) => void;
 
@@ -119,15 +98,6 @@ export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
 export interface JsonLdMetadata {
     readonly jsonLd?: object | null;
 }
-
-// @internal (undocumented)
-const KEY = "keywords";
-
-// @internal (undocumented)
-const KEY_2 = "generator";
-
-// @internal (undocumented)
-const KEY_3 = "themeColor";
 
 // @public
 export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;

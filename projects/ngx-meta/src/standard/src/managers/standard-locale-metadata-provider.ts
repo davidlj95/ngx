@@ -1,12 +1,9 @@
-import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
+import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import { _GLOBAL_LOCALE, MetadataSetterFactory } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
-import { Standard } from './standard'
+import { Standard } from '../types/standard'
 
-/**
- * @internal
- */
-export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
+export const STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof _GLOBAL_LOCALE]
 > = (doc: Document) => (locale) => {
   const htmlElement = doc.documentElement
@@ -27,7 +24,7 @@ export const STANDARD_LOCALE_METADATA_PROVIDER = makeStandardMetadataProvider(
   _GLOBAL_LOCALE,
   {
     g: _GLOBAL_LOCALE,
-    s: __STANDARD_LOCALE_METADATA_SETTER_FACTORY,
+    s: STANDARD_LOCALE_METADATA_SETTER_FACTORY,
     d: [DOCUMENT],
   },
 )

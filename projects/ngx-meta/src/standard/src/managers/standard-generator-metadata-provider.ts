@@ -1,16 +1,13 @@
-import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
-import { Standard } from './standard'
+import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
+import { Standard } from '../types/standard'
 import {
   MetadataSetterFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { VERSION } from '@angular/core'
-import { makeStandardMetaDefinition } from './make-standard-meta-definition'
+import { makeStandardMetaDefinition } from '../utils/make-standard-meta-definition'
 
-/**
- * @internal
- */
-export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<
+export const STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof KEY]
 > = (metaService: NgxMetaMetaService) => (value) =>
   metaService.set(
@@ -18,9 +15,6 @@ export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory
     value === true ? `Angular v${VERSION.full}` : value,
   )
 
-/**
- * @internal
- */
 const KEY = 'generator' satisfies keyof Standard
 
 /**
@@ -29,5 +23,5 @@ const KEY = 'generator' satisfies keyof Standard
  */
 export const STANDARD_GENERATOR_METADATA_PROVIDER =
   makeStandardMetadataProvider(KEY, {
-    s: __STANDARD_GENERATOR_METADATA_SETTER_FACTORY,
+    s: STANDARD_GENERATOR_METADATA_SETTER_FACTORY,
   })

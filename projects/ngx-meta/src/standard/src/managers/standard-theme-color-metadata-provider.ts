@@ -1,16 +1,13 @@
-import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
+import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import {
   MetadataSetterFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
-import { Standard } from './standard'
-import { makeStandardMetaDefinition } from './make-standard-meta-definition'
+import { Standard } from '../types/standard'
+import { makeStandardMetaDefinition } from '../utils/make-standard-meta-definition'
 import { StandardThemeColorMetadataObject } from './standard-theme-color-metadata'
 
-/**
- * @internal
- */
-export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<
+export const STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof KEY]
 > = (ngxMetaMetaService: NgxMetaMetaService) => (value) => {
   const isValueAnArray = isStandardThemeColorArray(value)
@@ -30,9 +27,6 @@ export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFacto
   }
 }
 
-/**
- * @internal
- */
 const KEY = 'themeColor' satisfies keyof Standard
 const META_NAME = 'theme-color'
 
@@ -46,5 +40,5 @@ const isStandardThemeColorArray: (
  */
 export const STANDARD_THEME_COLOR_METADATA_PROVIDER =
   makeStandardMetadataProvider(KEY, {
-    s: __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY,
+    s: STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY,
   })

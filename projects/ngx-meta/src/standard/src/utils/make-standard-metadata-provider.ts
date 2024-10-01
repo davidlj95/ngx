@@ -5,8 +5,8 @@ import {
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
-import { Standard } from './standard'
-import { StandardMetadata } from './standard-metadata'
+import { Standard } from '../types/standard'
+import { StandardMetadata } from '../types/standard-metadata'
 import { makeStandardMetaDefinition } from './make-standard-meta-definition'
 
 const STANDARD_KEY: keyof StandardMetadata = 'standard'

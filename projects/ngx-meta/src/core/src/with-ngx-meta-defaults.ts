@@ -1,5 +1,5 @@
 import { MetadataValues } from './metadata-values'
-import { __coreFeature, __CoreFeature, __CoreFeatureKind } from './core-feature'
+import { coreFeature, CoreFeature, CoreFeatureKind } from './core-feature'
 import { DEFAULTS } from './defaults'
 
 /**
@@ -40,7 +40,7 @@ import { DEFAULTS } from './defaults'
  */
 export const withNgxMetaDefaults = (
   defaults: MetadataValues,
-): __CoreFeature<__CoreFeatureKind.Defaults> =>
-  __coreFeature(__CoreFeatureKind.Defaults, [
+): CoreFeature<CoreFeatureKind.Defaults> =>
+  coreFeature(CoreFeatureKind.Defaults, [
     { provide: DEFAULTS, useValue: defaults },
   ])

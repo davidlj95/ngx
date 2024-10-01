@@ -2,11 +2,11 @@ import { ModuleWithProviders, NgModule } from '@angular/core'
 import { MetadataValues } from './metadata-values'
 import { withNgxMetaDefaults } from './with-ngx-meta-defaults'
 import {
-  __CoreFeature,
-  __CoreFeatureKind,
-  __CoreFeatures,
-  __providersFromCoreFeatures,
+  CoreFeature,
+  CoreFeatureKind,
+  CoreFeatures,
   isCoreFeature,
+  providersFromCoreFeatures,
 } from './core-feature'
 
 /**
@@ -35,7 +35,7 @@ export class NgxMetaCoreModule {
    * @param features - Features to configure the core module with
    */
   static forRoot(
-    ...features: __CoreFeatures
+    ...features: CoreFeatures
   ): ModuleWithProviders<NgxMetaCoreModule>
 
   /**
@@ -73,8 +73,8 @@ export class NgxMetaCoreModule {
   static forRoot(
     optionsOrFeature:
       | NgxMetaCoreModuleForRootOptions
-      | __CoreFeature<__CoreFeatureKind> = {},
-    ...features: __CoreFeatures
+      | CoreFeature<CoreFeatureKind> = {},
+    ...features: CoreFeatures
   ): ModuleWithProviders<NgxMetaCoreModule> {
     const optionFeaturesOrFirstFeature = isCoreFeature(optionsOrFeature)
       ? [optionsOrFeature]
@@ -84,7 +84,7 @@ export class NgxMetaCoreModule {
     return {
       ngModule: NgxMetaCoreModule,
       providers: [
-        ...__providersFromCoreFeatures([
+        ...providersFromCoreFeatures([
           ...optionFeaturesOrFirstFeature,
           ...features,
         ]),

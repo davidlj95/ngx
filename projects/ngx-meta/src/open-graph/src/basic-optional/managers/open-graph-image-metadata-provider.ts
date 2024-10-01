@@ -6,7 +6,7 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { makeOpenGraphMetadataProvider } from '../../utils/make-open-graph-metadata-provider'
 import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
-import { _MODULE_NAME } from '../../module-name'
+import { MODULE_NAME } from '../../module-name'
 
 const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
   url: undefined,
@@ -26,7 +26,7 @@ export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
     // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
     ngDevMode &&
       _maybeNonHttpUrlDevMessage(imageUrl, {
-        module: _MODULE_NAME,
+        module: MODULE_NAME,
         property: _GLOBAL_IMAGE,
         link: 'https://stackoverflow.com/a/9858694/3263250',
       })

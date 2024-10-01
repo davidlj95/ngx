@@ -6,7 +6,7 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraph } from './open-graph'
 import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
-import { _MODULE_NAME } from '../../module-name'
+import { MODULE_NAME } from '../../module-name'
 
 /**
  * Manages the {@link OpenGraph.description} metadata
@@ -21,7 +21,7 @@ export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER =
         /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
         if (ngDevMode) {
           _maybeTooLongDevMessage(description, 300, {
-            module: _MODULE_NAME,
+            module: MODULE_NAME,
             property: _GLOBAL_DESCRIPTION,
             value: description,
             link: 'https://stackoverflow.com/q/8914476/3263250',

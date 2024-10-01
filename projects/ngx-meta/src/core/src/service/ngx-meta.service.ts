@@ -6,7 +6,7 @@ import {
   MetadataResolver,
 } from '../resolvers/metadata-resolver'
 import { _formatDevMessage } from '../messaging'
-import { _MODULE_NAME } from '../module-name'
+import { MODULE_NAME } from '../module-name'
 
 /**
  * Manages the metadata values of the current page.
@@ -91,7 +91,7 @@ export class NgxMetaService {
       console.warn(
         _formatDevMessage(
           'no metadata managers found for global or JSON Path',
-          { module: _MODULE_NAME, value: globalOrJsonPath },
+          { module: MODULE_NAME, value: globalOrJsonPath },
         ),
       )
     }

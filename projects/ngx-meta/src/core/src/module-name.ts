@@ -1,1 +1,1 @@
-export const _MODULE_NAME = 'core'
+export const MODULE_NAME = 'core'

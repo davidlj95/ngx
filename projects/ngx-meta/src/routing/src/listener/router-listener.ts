@@ -2,7 +2,7 @@ import { inject, InjectionToken, OnDestroy } from '@angular/core'
 import { NavigationEnd, Router } from '@angular/router'
 import { filter, Subscription } from 'rxjs'
 import { _formatDevMessage, NgxMetaService } from '@davidlj95/ngx-meta/core'
-import { _MODULE_NAME } from '../module-name'
+import { MODULE_NAME } from '../module-name'
 
 // WTF is this? Why not just import `EventType`? Well, compatibility reasons 🙃
 // See https://github.com/davidlj95/ngx/pull/246 for the details
@@ -27,7 +27,7 @@ export const ROUTER_LISTENER = new InjectionToken<RouterListener>(
                   'prevented listening for route changes twice',
                   'Ensure routing provider or module is only imported once',
                 ].join('\n'),
-                { module: _MODULE_NAME },
+                { module: MODULE_NAME },
               ))
           /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
           if (subscription) {

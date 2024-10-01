@@ -6,14 +6,14 @@ import {
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { TwitterCard } from '../types'
-import { _MODULE_NAME } from '../module-name'
+import { MODULE_NAME } from '../module-name'
 
 export const TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
   (metaService: NgxMetaMetaService) => (image: TwitterCard['image']) => {
     // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
     ngDevMode &&
       _maybeNonHttpUrlDevMessage(image?.url, {
-        module: _MODULE_NAME,
+        module: MODULE_NAME,
         property: 'image',
         link: 'https://devcommunity.x.com/t/card-error-unable-to-render-or-no-image-read-this-first/62736',
       })

@@ -1,1 +1,1 @@
-export const _MODULE_NAME = 'routing'
+export const MODULE_NAME = 'routing'

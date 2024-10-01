@@ -6,6 +6,28 @@ Another way you can set metadata in your page is using the library's routing mod
 
 First, ensure you added the module to your app.
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Open your `app.config.ts` file where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided. Ensure the routing module is added by adding a call to [`provideNgxMetaRouting`](ngx-meta.providengxmetarouting.md)
+
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
+    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
+
+    export const appConfig: ApplicationConfig = {
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        // ...
+      ],
+    }
+    ```
+
+    --8<-- "includes/example-standalone-app-config.md"
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -29,28 +51,6 @@ First, ensure you added the module to your app.
     ```
 
     --8<-- "includes/example-module-based-app-module.md"
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Open your `app.config.ts` file where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided. Ensure the routing module is added by adding a call to [`provideNgxMetaRouting`](ngx-meta.providengxmetarouting.md)
-
-    ```typescript title="app.config.ts"
-    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
-    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
-
-    export const appConfig: ApplicationConfig = {
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(),
-        // ...
-      ],
-    }
-    ```
-
-    --8<-- "includes/example-standalone-app-config.md"
 
 ## Usage
 

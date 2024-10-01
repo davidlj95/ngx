@@ -33,7 +33,7 @@ For instance, you may want the title of your page to be used for the standard's 
 
 Values intended to be shared across many metadata elements are defined in **the [`GlobalMetadata`](ngx-meta.globalmetadata.md) type**. The type specifies their names and which [built-in metadata modules](../built-in-modules/index.md) will use those values. Check out the [type's API reference here](ngx-meta.globalmetadata.md) or in your IDE to learn more.
 
-By convention, those are placed as keys in the JSON object used to set the metadata values
+By convention, those are placed as keys in the metadata values JSON object. Keys are at first level, hence global keys, hence global metadata.
 
 For instance:
 

@@ -12,6 +12,29 @@ This way, everytime you set your metadata values (either using the service or th
 
 ## Providing default values
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Open your `app.config.ts` file where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided.
+
+    Provide your default values by adding a call to [`withNgxMetaDefaults`](ngx-meta.withngxmetadefaults.md) with the default values to set.
+
+    ```typescript title="app.config.ts"
+    export const appConfig: ApplicationConfig = {
+      providers: [
+        // ...
+        provideNgxMetaCore(
+          withNgxMetaDefaults({
+            description: "Awesome products made real ✨"
+          } satisfies GlobalMetadata)
+        ),
+      ],
+    }
+    ```
+
+    --8<-- "includes/example-standalone-app-config.md"
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -37,29 +60,6 @@ This way, everytime you set your metadata values (either using the service or th
     ```
 
     --8<-- "includes/example-module-based-app-module.md"
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Open your `app.config.ts` file where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided.
-
-    Provide your default values by adding a call to [`withNgxMetaDefaults`](ngx-meta.withngxmetadefaults.md) with the default values to set.
-
-    ```typescript title="app.config.ts"
-    export const appConfig: ApplicationConfig = {
-      providers: [
-        // ...
-        provideNgxMetaCore(
-          withNgxMetaDefaults({
-            description: "Awesome products made real ✨"
-          } satisfies GlobalMetadata)
-        ),
-      ],
-    }
-    ```
-
-    --8<-- "includes/example-standalone-app-config.md"
 
 Notice how the [Typescript's `satisfies` operator][typescript-satisfies] helps again ensuring the metadata values JSON matches the expected shape. For more information check [metadata values JSON guide](metadata-values-json.md)
 

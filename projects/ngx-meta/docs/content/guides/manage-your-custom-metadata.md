@@ -134,6 +134,27 @@ Now that you have implemented your manager, you can inject it into your Angular'
 
 Create a [class provider](https://angular.dev/guide/di/dependency-injection-providers#class-providers-useclass) and add it to your main app file. In a similar fashion as you would do with a built-in metadata module like [standard module] in the [get started setup] step
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Open your `app.config.ts` file. Add the following provider:
+
+    ```typescript title="app.config.ts"
+    import {NgxMetaMetadataManager} from '@davidlj95/ngx-meta/core'
+
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        {
+          provide: NgxMetaMetadataManager,
+          useClass: CustomTitleMetadataManager,
+          multi: true,
+        }
+      ]
+    })
+    ```
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -156,30 +177,24 @@ Create a [class provider](https://angular.dev/guide/di/dependency-injection-prov
     export class AppModule {}
     ```
 
+### Injecting the factory provider
+
+The provider has been created already, so you just need to add it to your main app file. In a similar fashion as you would do with a built-in metadata module like [standard module] in the [get started setup] step
+
 === "For standalone, module-free apps"
 
     --8<-- "includes/standalone-apps-explanation.md"
 
-    Open your `app.config.ts` file. Add the following provider:
+    Open your `app.config.ts` file. Add the created factory provider to the providers list.
 
     ```typescript title="app.config.ts"
-    import {NgxMetaMetadataManager} from '@davidlj95/ngx-meta/core'
-
     export const appConfig: ApplicationConfig = {
       // ...
       providers: [
-        {
-          provide: NgxMetaMetadataManager,
-          useClass: CustomTitleMetadataManager,
-          multi: true,
-        }
+        CUSTOM_TITLE_METADATA_MANAGER_PROVIDER,
       ]
     })
     ```
-
-### Injecting the factory provider
-
-The provider has been created already, so you just need to add it to your main app file. In a similar fashion as you would do with a built-in metadata module like [standard module] in the [get started setup] step
 
 === "For non-standalone, module-based apps"
 
@@ -195,21 +210,6 @@ The provider has been created already, so you just need to add it to your main a
       ]
     })
     export class AppModule {}
-    ```
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Open your `app.config.ts` file. Add the created factory provider to the providers list.
-
-    ```typescript title="app.config.ts"
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        CUSTOM_TITLE_METADATA_MANAGER_PROVIDER,
-      ]
-    })
     ```
 
 !!! tip "You can also (lazy) load it later"

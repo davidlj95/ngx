@@ -8,6 +8,27 @@ Depending on what metadata you need to set, add one of more of the following mod
 
 ### Main
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Add [`provideNgxMetaStandard()`](ngx-meta.providengxmetastandard.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
+
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard';
+
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaStandard(),
+        // ...
+      ],
+    }
+    ```
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -29,27 +50,6 @@ Depending on what metadata you need to set, add one of more of the following mod
       // ...
     })
     export class AppModule {}
-    ```
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Add [`provideNgxMetaStandard()`](ngx-meta.providengxmetastandard.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
-
-    ```typescript title="app.config.ts"
-    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard';
-
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(),
-        provideNgxMetaStandard(),
-        // ...
-      ],
-    }
     ```
 
 ## Type

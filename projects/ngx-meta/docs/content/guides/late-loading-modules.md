@@ -8,6 +8,25 @@ Let's put into practice the given example. We'll provide [standard module] at ap
 
 First, remove the metadata module from your main app config / module file
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Open your `app.config.ts` file. Keep the core provider (and routing one if you want it). Remove the metadata module provider you want to load later. Like [Open Graph module] in this example.
+
+    ```title="app.config.ts"
+    export const appConfig: ApplicationConfig = {
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaStandard(),
+        {--provideNgxMetaOpenGraph(),--}
+        // ...
+      ],
+    }
+    ```
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -27,25 +46,6 @@ First, remove the metadata module from your main app config / module file
       // ...
     })
     export class AppModule {}
-    ```
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Open your `app.config.ts` file. Keep the core provider (and routing one if you want it). Remove the metadata module provider you want to load later. Like [Open Graph module] in this example.
-
-    ```title="app.config.ts"
-    export const appConfig: ApplicationConfig = {
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(),
-        provideNgxMetaStandard(),
-        {--provideNgxMetaOpenGraph(),--}
-        // ...
-      ],
-    }
     ```
 
 ## 2. Add the metadata module

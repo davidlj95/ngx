@@ -14,6 +14,27 @@ Depending on what metadata you need to set, add one of more of the Twitter Card 
 
 To set the Twitter Card type or the basic _summary_ or _summary large_ cards, you can use the main Twitter Cards module
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Add [`provideNgxMetaTwitterCard()`](ngx-meta.providengxmetatwittercard.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
+
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaTwitterCard} from '@davidlj95/ngx-meta/twitter-card';
+
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaTwitterCard(),
+        // ...
+      ],
+    }
+    ```
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -35,27 +56,6 @@ To set the Twitter Card type or the basic _summary_ or _summary large_ cards, yo
       // ...
     })
     export class AppModule {}
-    ```
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Add [`provideNgxMetaTwitterCard()`](ngx-meta.providengxmetatwittercard.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
-
-    ```typescript title="app.config.ts"
-    import {provideNgxMetaTwitterCard} from '@davidlj95/ngx-meta/twitter-card';
-
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(),
-        provideNgxMetaTwitterCard(),
-        // ...
-      ],
-    }
     ```
 
 ## Type

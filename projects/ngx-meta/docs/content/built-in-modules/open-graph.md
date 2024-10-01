@@ -16,6 +16,27 @@ Contains the essential to set up Open Graph metadata. They will allow you to set
 
 Specifically, manages [basic](https://ogp.me/#metadata) and [optional](https://ogp.me/#optional) metadata
 
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Add [`provideNgxMetaOpenGraph()`](ngx-meta.providengxmetaopengraph.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
+
+    ```typescript title="app.config.ts"
+    import {provideNgxMetaOpenGraph} from '@davidlj95/ngx-meta/open-graph';
+
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        // ...
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
+        provideNgxMetaOpenGraph(),
+        // ...
+      ],
+    }
+    ```
+
 === "For non-standalone, module-based apps"
 
     --8<-- "includes/module-apps-explanation.md"
@@ -39,14 +60,18 @@ Specifically, manages [basic](https://ogp.me/#metadata) and [optional](https://o
     export class AppModule {}
     ```
 
+### Profile
+
+Manages [profile](https://ogp.me/#type_profile) non-vertical metadata. Manages metadata under [`OpenGraph.profile`](ngx-meta.opengraph.profile.md)
+
 === "For standalone, module-free apps"
 
     --8<-- "includes/standalone-apps-explanation.md"
 
-    Add [`provideNgxMetaOpenGraph()`](ngx-meta.providengxmetaopengraph.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
+    Add [`provideNgxMetaOpenGraphProfile()`](ngx-meta.providengxmetaopengraphprofile.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
 
     ```typescript title="app.config.ts"
-    import {provideNgxMetaOpenGraph} from '@davidlj95/ngx-meta/open-graph';
+    import {provideNgxMetaOpenGraphProfile} from '@davidlj95/ngx-meta/open-graph';
 
     export const appConfig: ApplicationConfig = {
       // ...
@@ -54,15 +79,11 @@ Specifically, manages [basic](https://ogp.me/#metadata) and [optional](https://o
         // ...
         provideNgxMetaCore(),
         provideNgxMetaRouting(),
-        provideNgxMetaOpenGraph(),
+        provideNgxMetaOpenGraphProfile(),
         // ...
       ],
     }
     ```
-
-### Profile
-
-Manages [profile](https://ogp.me/#type_profile) non-vertical metadata. Manages metadata under [`OpenGraph.profile`](ngx-meta.opengraph.profile.md)
 
 === "For non-standalone, module-based apps"
 
@@ -85,27 +106,6 @@ Manages [profile](https://ogp.me/#type_profile) non-vertical metadata. Manages m
       // ...
     })
     export class AppModule {}
-    ```
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Add [`provideNgxMetaOpenGraphProfile()`](ngx-meta.providengxmetaopengraphprofile.md) to your standalone app's `app.config.ts` file providers. Check out [get started setup] for more details.
-
-    ```typescript title="app.config.ts"
-    import {provideNgxMetaOpenGraphProfile} from '@davidlj95/ngx-meta/open-graph';
-
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(),
-        provideNgxMetaOpenGraphProfile(),
-        // ...
-      ],
-    }
     ```
 
 ## Type

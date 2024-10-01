@@ -1,6 +1,6 @@
-import { MetadataValues } from '../service/metadata-values'
+import { MetadataValues } from '../service'
 import { InjectionToken } from '@angular/core'
-import { MetadataResolverOptions } from '../managers/ngx-meta-metadata-manager'
+import { MetadataResolverOptions } from '../managers'
 import { isObject } from '../utils/is-object'
 
 export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(

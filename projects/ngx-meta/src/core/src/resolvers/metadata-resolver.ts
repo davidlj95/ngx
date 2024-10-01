@@ -1,8 +1,8 @@
 import { inject, InjectionToken } from '@angular/core'
-import { MetadataValues } from '../service/metadata-values'
+import { MetadataValues } from '../service'
 import { injectDefaults } from '../defaults/defaults'
 import { METADATA_JSON_RESOLVER } from './metadata-json-resolver'
-import { MetadataResolverOptions } from '../managers/ngx-meta-metadata-manager'
+import { MetadataResolverOptions } from '../managers'
 import { isObject } from '../utils/is-object'
 import { _injectRouteMetadataStrategy } from '../routing/route-metadata-strategy'
 

@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core'
-import { MetadataValues } from '../service/metadata-values'
+import { MetadataValues } from '../service'
 
 export const DEFAULTS = new InjectionToken<MetadataValues>(
   ngDevMode ? 'NgxMeta Metadata defaults' : 'NgxMetaDefs',

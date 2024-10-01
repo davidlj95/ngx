@@ -5,7 +5,7 @@ import {
   METADATA_RESOLVER,
   MetadataResolver,
 } from '../resolvers/metadata-resolver'
-import { _formatDevMessage } from '../messaging/format-dev-message'
+import { _formatDevMessage } from '../messaging'
 import { _MODULE_NAME } from '../module-name'
 
 /**

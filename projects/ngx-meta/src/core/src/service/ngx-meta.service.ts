@@ -1,6 +1,9 @@
 import { Inject, Injectable } from '@angular/core'
 import { MetadataValues } from './metadata-values'
-import { MetadataRegistry } from '../managers/metadata-registry'
+import {
+  METADATA_REGISTRY,
+  MetadataRegistry,
+} from '../managers/metadata-registry'
 import {
   METADATA_RESOLVER,
   MetadataResolver,
@@ -16,7 +19,7 @@ import { MODULE_NAME } from '../module-name'
 @Injectable({ providedIn: 'root' })
 export class NgxMetaService {
   constructor(
-    private readonly registry: MetadataRegistry,
+    @Inject(METADATA_REGISTRY) private readonly registry: MetadataRegistry,
     @Inject(METADATA_RESOLVER) private readonly resolver: MetadataResolver,
   ) {}
 

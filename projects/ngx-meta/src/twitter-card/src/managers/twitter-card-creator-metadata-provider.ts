@@ -1,11 +1,11 @@
-import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
-import { TwitterCard } from './twitter-card'
+import { makeTwitterCardMetadataProvider } from '../utils/make-twitter-card-metadata-provider'
+import { TwitterCard } from '../types/twitter-card'
 import {
   TwitterCardCreatorId,
   TwitterCardCreatorUsername,
 } from './twitter-card-creator'
-import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
-import { NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import { makeTwitterCardMetaDefinition } from '../utils/make-twitter-card-meta-definition'
+import { NgxMetaMetaService } from '../../../core'
 
 const KEY = 'creator' satisfies keyof TwitterCard
 

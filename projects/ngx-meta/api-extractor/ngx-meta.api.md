@@ -12,9 +12,6 @@ import { MetaDefinition } from '@angular/platform-browser';
 import { ModuleWithProviders } from '@angular/core';
 import { Provider } from '@angular/core';
 
-// @internal (undocumented)
-export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (image: TwitterCard['image']) => void;
-
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
@@ -460,9 +457,6 @@ export const TWITTER_CARD_IMAGE_METADATA_PROVIDER: FactoryProvider;
 
 // @public
 export const TWITTER_CARD_SITE_METADATA_PROVIDER: FactoryProvider;
-
-// @public
-export const TWITTER_CARD_TITLE_METADATA_PROVIDER: FactoryProvider;
 
 // @public
 export const TWITTER_CARD_TYPE_APP = "app";

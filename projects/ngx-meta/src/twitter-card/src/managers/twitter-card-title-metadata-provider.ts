@@ -1,4 +1,4 @@
-import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
+import { makeTwitterCardMetadataProvider } from '../utils/make-twitter-card-metadata-provider'
 import { _GLOBAL_TITLE } from '@davidlj95/ngx-meta/core'
 
 /**

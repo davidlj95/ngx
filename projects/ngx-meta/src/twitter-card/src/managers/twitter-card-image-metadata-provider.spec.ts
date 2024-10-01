@@ -1,8 +1,8 @@
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
-import { MetadataSetter, NgxMetaMetaService } from '../../core'
+import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 import { TestBed } from '@angular/core/testing'
 import { MockProviders } from 'ng-mocks'
-import { TwitterCard } from './twitter-card'
+import { TwitterCard } from '../types/twitter-card'
 import {
   __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY,
   TWITTER_CARD_IMAGE_METADATA_PROVIDER,

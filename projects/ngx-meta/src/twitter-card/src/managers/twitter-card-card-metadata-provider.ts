@@ -1,4 +1,4 @@
-import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
+import { makeTwitterCardMetadataProvider } from '../utils/make-twitter-card-metadata-provider'
 
 /**
  * Manages the {@link TwitterCard.card} metadata

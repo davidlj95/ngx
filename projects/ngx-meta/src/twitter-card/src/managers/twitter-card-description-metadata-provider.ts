@@ -1,11 +1,11 @@
-import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
+import { makeTwitterCardMetadataProvider } from '../utils/make-twitter-card-metadata-provider'
 import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
 } from '@davidlj95/ngx-meta/core'
-import { TwitterCard } from './twitter-card'
-import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
-import { _MODULE_NAME } from './module-name'
+import { TwitterCard } from '../types/twitter-card'
+import { makeTwitterCardMetaDefinition } from '../utils/make-twitter-card-meta-definition'
+import { _MODULE_NAME } from '../module-name'
 
 /**
  * Manages the {@link TwitterCard.description} metadata

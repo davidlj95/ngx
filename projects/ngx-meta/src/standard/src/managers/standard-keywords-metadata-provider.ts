@@ -1,5 +1,5 @@
 import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
-import { Standard } from '../types/standard'
+import { Standard } from '../types'
 import {
   MetadataSetterFactory,
   NgxMetaMetaService,

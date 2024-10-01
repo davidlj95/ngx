@@ -1,5 +1,5 @@
 import { GlobalMetadata } from '@davidlj95/ngx-meta/core'
-import { StandardThemeColorMetadata } from '../managers/standard-theme-color-metadata'
+import { StandardThemeColorMetadata } from '../managers'
 
 /**
  * {@link https://ngx-meta.dev/built-in-modules/standard/ | Standard module}

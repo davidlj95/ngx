@@ -3,7 +3,7 @@ import {
   MetadataSetterFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
-import { Standard } from '../types/standard'
+import { Standard } from '../types'
 import { makeStandardMetaDefinition } from '../utils/make-standard-meta-definition'
 import { StandardThemeColorMetadataObject } from './standard-theme-color-metadata'
 

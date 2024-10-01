@@ -1,5 +1,5 @@
 import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
-import { Standard } from '../types/standard'
+import { Standard } from '../types'
 import { Title } from '@angular/platform-browser'
 import { _GLOBAL_TITLE, MetadataSetterFactory } from '@davidlj95/ngx-meta/core'
 

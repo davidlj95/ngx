@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Title } from '@angular/platform-browser'
 import { MetadataSetter } from '@davidlj95/ngx-meta/core'
-import { Standard } from '../types/standard'
+import { Standard } from '../types'
 import { STANDARD_TITLE_METADATA_SETTER_FACTORY } from './standard-title-metadata-provider'
 
 describe('Standard title metadata', () => {

@@ -6,7 +6,7 @@ import { FactoryProvider } from '@angular/core'
 import { OpenGraphProfile } from '../managers'
 import { OPEN_GRAPH_KEY } from '../../utils/make-open-graph-metadata-provider'
 import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
-import { OpenGraph } from '../../basic-optional'
+import { OpenGraph } from '../../types'
 
 export const OPEN_GRAPH_PROFILE_KEY: keyof OpenGraph = 'profile'
 

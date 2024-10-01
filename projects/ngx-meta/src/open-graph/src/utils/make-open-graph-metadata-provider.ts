@@ -5,9 +5,8 @@ import {
   MetadataSetterFactory,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
-import { OpenGraph } from '../basic-optional'
 import { FactoryProvider } from '@angular/core'
-import { OpenGraphMetadata } from '../open-graph-metadata'
+import { OpenGraph, OpenGraphMetadata } from '../types'
 import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
 
 export const OPEN_GRAPH_KEY: keyof OpenGraphMetadata = 'openGraph'

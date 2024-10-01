@@ -4,7 +4,7 @@ import {
   _maybeTooLongDevMessage,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
-import { OpenGraph } from './open-graph'
+import { OpenGraph } from '../../types'
 import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
 import { _MODULE_NAME } from '../../module-name'
 

@@ -1,4 +1,4 @@
-import { OpenGraph } from './basic-optional'
+import { OpenGraph } from './open-graph'
 
 /**
  * Utility type to provide specific

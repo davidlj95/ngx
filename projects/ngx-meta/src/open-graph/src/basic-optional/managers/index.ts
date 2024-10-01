@@ -1,4 +1,3 @@
-export { OpenGraph } from './open-graph'
 export { OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER } from './open-graph-description-metadata-provider'
 export { OPEN_GRAPH_IMAGE_METADATA_PROVIDER } from './open-graph-image-metadata-provider'
 export { OpenGraphImage } from './open-graph-image'

@@ -10,7 +10,7 @@ import { JsonLdMetadata } from './json-ld-metadata'
 const KEY = 'jsonLd' satisfies keyof JsonLdMetadata
 const SCRIPT_TYPE = 'application/ld+json'
 
-export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
+export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   JsonLdMetadata[typeof KEY]
 > =
   (headElementUpsertOrRemove: _HeadElementUpsertOrRemove, doc: Document) =>
@@ -30,7 +30,7 @@ export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
  */
 export const JSON_LD_METADATA_PROVIDER =
   makeMetadataManagerProviderFromSetterFactory(
-    __JSON_LD_METADATA_SETTER_FACTORY,
+    JSON_LD_METADATA_SETTER_FACTORY,
     {
       d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
       jP: [KEY],

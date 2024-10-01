@@ -3,10 +3,10 @@ import {
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
-import { OpenGraphProfile } from './open-graph-profile'
-import { OPEN_GRAPH_KEY } from './make-open-graph-metadata-provider'
-import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
-import { OpenGraph } from './open-graph'
+import { OpenGraphProfile } from '../managers'
+import { OPEN_GRAPH_KEY } from '../../utils/make-open-graph-metadata-provider'
+import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
+import { OpenGraph } from '../../basic-optional'
 
 export const OPEN_GRAPH_PROFILE_KEY: keyof OpenGraph = 'profile'
 

@@ -1,6 +1,6 @@
 import { OpenGraphImage } from './open-graph-image'
 import { OpenGraphType } from './open-graph-type'
-import { OpenGraphProfile } from './open-graph-profile'
+import { OpenGraphProfile } from '../../profile'
 
 /**
  * {@link https://ngx-meta.dev/built-in-modules/open-graph/ | Open Graph module}

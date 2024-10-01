@@ -3,8 +3,8 @@ import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { MetadataValues } from './metadata-values'
-import { MetadataResolverOptions } from './ngx-meta-metadata-manager'
+import { MetadataValues } from '../metadata-values'
+import { MetadataResolverOptions } from '../managers/ngx-meta-metadata-manager'
 
 describe('Metadata JSON resolver', () => {
   let sut: MetadataJsonResolver

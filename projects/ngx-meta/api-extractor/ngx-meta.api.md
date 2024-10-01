@@ -12,31 +12,26 @@ import { MetaDefinition } from '@angular/platform-browser';
 import { ModuleWithProviders } from '@angular/core';
 import { Provider } from '@angular/core';
 
-// Warning: (ae-forgotten-export) The symbol "KEY" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @internal (undocumented)
-export const __JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<JsonLdMetadata[typeof KEY]>;
-
 // @internal (undocumented)
 export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY: (metaService: NgxMetaMetaService) => (value: OpenGraph[typeof _GLOBAL_IMAGE]) => void;
-
-// Warning: (ae-forgotten-export) The symbol "KEY_3" needs to be exported by the entry point all-entry-points.d.ts
-//
-// @internal (undocumented)
-export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_3]>;
 
 // Warning: (ae-forgotten-export) The symbol "KEY_2" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_2]>;
+export const __STANDARD_GENERATOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_2]>;
+
+// Warning: (ae-forgotten-export) The symbol "KEY" needs to be exported by the entry point all-entry-points.d.ts
+//
+// @internal (undocumented)
+export const __STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY]>;
 
 // @internal (undocumented)
 export const __STANDARD_LOCALE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_LOCALE]>;
 
-// Warning: (ae-forgotten-export) The symbol "KEY_4" needs to be exported by the entry point all-entry-points.d.ts
+// Warning: (ae-forgotten-export) The symbol "KEY_3" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_4]>;
+export const __STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof KEY_3]>;
 
 // @internal (undocumented)
 export const __STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<Standard[typeof _GLOBAL_TITLE]>;
@@ -129,16 +124,13 @@ export interface JsonLdMetadata {
 }
 
 // @internal (undocumented)
-const KEY = "jsonLd";
+const KEY = "keywords";
 
 // @internal (undocumented)
-const KEY_2 = "keywords";
+const KEY_2 = "generator";
 
 // @internal (undocumented)
-const KEY_3 = "generator";
-
-// @internal (undocumented)
-const KEY_4 = "themeColor";
+const KEY_3 = "themeColor";
 
 // @public
 export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;

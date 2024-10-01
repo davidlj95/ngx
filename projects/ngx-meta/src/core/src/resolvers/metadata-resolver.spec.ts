@@ -2,18 +2,18 @@ import { TestBed } from '@angular/core/testing'
 
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
-import { MetadataValues } from './metadata-values'
-import { DEFAULTS } from './defaults'
+import { MetadataValues } from '../metadata-values'
+import { DEFAULTS } from '../defaults/defaults'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import {
   METADATA_JSON_RESOLVER,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
-import { MetadataResolverOptions } from './ngx-meta-metadata-manager'
+import { MetadataResolverOptions } from '../managers/ngx-meta-metadata-manager'
 import {
   _ROUTE_METADATA_STRATEGY,
   _RouteMetadataStrategy,
-} from './route-metadata-strategy'
+} from '../routing/route-metadata-strategy'
 
 describe('Metadata resolver', () => {
   enableAutoSpy()

@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing'
-import { METADATA_RESOLVER } from '../core/src/metadata-resolver'
+import { METADATA_RESOLVER } from '../core/src/resolvers/metadata-resolver'
 import { MetadataResolverOptions, MetadataValues } from '../core'
 import { Provider } from '@angular/core'
 import { MockProvider } from 'ng-mocks'
-import { DEFAULTS } from '../core/src/defaults'
+import { DEFAULTS } from '../core/src/defaults/defaults'
 
 // Relates to https://github.com/davidlj95/ngx/issues/426
 // TBH, this is needed cause both Metadata JSON resolver and Metadata resolver

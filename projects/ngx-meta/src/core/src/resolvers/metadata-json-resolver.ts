@@ -1,7 +1,7 @@
-import { MetadataValues } from './metadata-values'
+import { MetadataValues } from '../metadata-values'
 import { InjectionToken } from '@angular/core'
-import { MetadataResolverOptions } from './ngx-meta-metadata-manager'
-import { isObject } from './is-object'
+import { MetadataResolverOptions } from '../managers/ngx-meta-metadata-manager'
+import { isObject } from '../utils/is-object'
 
 export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
   ngDevMode ? 'NgxMeta JSON Resolver' : 'NgxMetaJR',

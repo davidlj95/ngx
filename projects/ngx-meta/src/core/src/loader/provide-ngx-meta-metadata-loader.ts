@@ -1,5 +1,5 @@
 import { ENVIRONMENT_INITIALIZER, inject, Provider } from '@angular/core'
-import { MetadataRegistry } from './metadata-registry'
+import { MetadataRegistry } from '../managers/metadata-registry'
 
 /**
  * Allows to load metadata managers after library has been initialized.

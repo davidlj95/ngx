@@ -1,10 +1,13 @@
 import { TestBed } from '@angular/core/testing'
 import { NgxMetaService } from './ngx-meta.service'
 import { MockProvider, MockProviders } from 'ng-mocks'
-import { makeMetadataManagerSpy } from './__tests__/make-metadata-manager-spy'
+import { makeMetadataManagerSpy } from './managers/__tests__/make-metadata-manager-spy'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
-import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
-import { MetadataRegistry } from './metadata-registry'
+import {
+  METADATA_RESOLVER,
+  MetadataResolver,
+} from './resolvers/metadata-resolver'
+import { MetadataRegistry } from './managers/metadata-registry'
 
 describe('Main service', () => {
   enableAutoSpy()

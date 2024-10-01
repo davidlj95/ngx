@@ -1,8 +1,11 @@
 import { Inject, Injectable } from '@angular/core'
 import { MetadataValues } from './metadata-values'
-import { MetadataRegistry } from './metadata-registry'
-import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
-import { _formatDevMessage } from './format-dev-message'
+import { MetadataRegistry } from './managers/metadata-registry'
+import {
+  METADATA_RESOLVER,
+  MetadataResolver,
+} from './resolvers/metadata-resolver'
+import { _formatDevMessage } from './messaging/format-dev-message'
 import { _MODULE_NAME } from './module-name'
 
 /**

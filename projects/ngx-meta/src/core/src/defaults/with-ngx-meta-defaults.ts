@@ -1,5 +1,9 @@
-import { MetadataValues } from './metadata-values'
-import { coreFeature, CoreFeature, CoreFeatureKind } from './core-feature'
+import { MetadataValues } from '../metadata-values'
+import {
+  coreFeature,
+  CoreFeature,
+  CoreFeatureKind,
+} from '../providers/core-feature'
 import { DEFAULTS } from './defaults'
 
 /**

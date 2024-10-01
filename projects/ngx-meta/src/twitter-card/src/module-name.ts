@@ -1,1 +1,1 @@
-export const _MODULE_NAME = 'twitter-card'
+export const MODULE_NAME = 'twitter-card'

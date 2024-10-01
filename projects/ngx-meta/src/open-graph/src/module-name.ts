@@ -1,1 +1,1 @@
-export const _MODULE_NAME = 'open-graph'
+export const MODULE_NAME = 'open-graph'

@@ -8,10 +8,7 @@ import {
 import { TwitterCard } from '../types'
 import { _MODULE_NAME } from '../module-name'
 
-/**
- * @internal
- */
-export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
+export const TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
   (metaService: NgxMetaMetaService) => (image: TwitterCard['image']) => {
     // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
     ngDevMode &&
@@ -37,6 +34,6 @@ export const __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(_GLOBAL_IMAGE, {
     g: _GLOBAL_IMAGE,
-    s: __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY,
+    s: TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY,
     m: true,
   })

@@ -15,3 +15,4 @@ export {
   TwitterCardSiteId,
   TwitterCardSiteUsername,
 } from './twitter-card-site'
+export { TWITTER_CARD_TITLE_METADATA_PROVIDER } from './twitter-card-title-metadata-provider'

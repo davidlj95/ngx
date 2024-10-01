@@ -5,8 +5,8 @@ import {
   TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER,
   TWITTER_CARD_IMAGE_METADATA_PROVIDER,
   TWITTER_CARD_SITE_METADATA_PROVIDER,
+  TWITTER_CARD_TITLE_METADATA_PROVIDER,
 } from '../managers'
-import { TWITTER_CARD_TITLE_METADATA_PROVIDER } from '../managers/twitter-card-title-metadata-provider'
 
 /**
  * Provides {@link https://ngx-meta.dev/built-in-modules/twitter-cards/ | Twitter Cards module}

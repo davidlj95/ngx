@@ -1,4 +1,4 @@
-import { makeStandardMetadataProvider } from './make-standard-metadata-provider'
+import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import { _GLOBAL_DESCRIPTION } from '@davidlj95/ngx-meta/core'
 
 /**

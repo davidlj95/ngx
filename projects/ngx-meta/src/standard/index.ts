@@ -1,17 +1,3 @@
-// Main providers
-export * from './src/ngx-meta-standard.module'
-export * from './src/provide-ngx-meta-standard'
-// Types
-export * from './src/standard'
-export * from './src/standard-metadata'
-export * from './src/standard-theme-color-metadata'
-// Specific metadata managers
-export * from './src/standard-title-metadata-provider'
-export * from './src/standard-description-metadata-provider'
-export * from './src/standard-author-metadata-provider'
-export * from './src/standard-keywords-metadata-provider'
-export * from './src/standard-generator-metadata-provider'
-export * from './src/standard-application-name-metadata-provider'
-export * from './src/standard-canonical-url-metadata-provider'
-export * from './src/standard-locale-metadata-provider'
-export * from './src/standard-theme-color-metadata-provider'
+export * from './src/managers'
+export * from './src/providers'
+export * from './src/types'

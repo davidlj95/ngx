@@ -3,7 +3,7 @@ import { MockProviders } from 'ng-mocks'
 import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { OpenGraphImage } from './open-graph-image'
-import { OpenGraph } from './open-graph'
+import { OpenGraph } from '../../types'
 import { OPEN_GRAPH_IMAGE_SETTER_FACTORY } from './open-graph-image-metadata-provider'
 
 describe('Open Graph image metadata', () => {

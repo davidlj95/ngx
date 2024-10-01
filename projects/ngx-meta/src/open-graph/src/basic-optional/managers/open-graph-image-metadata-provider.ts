@@ -1,4 +1,4 @@
-import { OpenGraph } from './open-graph'
+import { OpenGraph } from '../../types'
 import {
   _GLOBAL_IMAGE,
   _maybeNonHttpUrlDevMessage,

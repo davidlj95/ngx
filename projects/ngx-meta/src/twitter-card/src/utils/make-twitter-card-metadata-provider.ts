@@ -6,8 +6,7 @@ import {
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
-import { TwitterCard } from './twitter-card'
-import { TwitterCardMetadata } from './twitter-card-metadata'
+import { TwitterCard, TwitterCardMetadata } from '../types'
 import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
 
 const TWITTER_KEY: keyof TwitterCardMetadata = `twitterCard`

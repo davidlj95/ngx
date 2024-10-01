@@ -1,7 +1,7 @@
-import { makeTwitterCardMetadataProvider } from './make-twitter-card-metadata-provider'
-import { TwitterCard } from './twitter-card'
+import { makeTwitterCardMetadataProvider } from '../utils/make-twitter-card-metadata-provider'
+import { TwitterCard } from '../types'
 import { TwitterCardSiteId, TwitterCardSiteUsername } from './twitter-card-site'
-import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
+import { makeTwitterCardMetaDefinition } from '../utils/make-twitter-card-meta-definition'
 
 const KEY = 'site' satisfies keyof TwitterCard
 

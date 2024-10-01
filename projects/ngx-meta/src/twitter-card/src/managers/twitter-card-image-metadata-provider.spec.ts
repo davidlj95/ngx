@@ -1,11 +1,11 @@
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
-import { MetadataSetter, NgxMetaMetaService } from '../../core'
+import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 import { TestBed } from '@angular/core/testing'
 import { MockProviders } from 'ng-mocks'
-import { TwitterCard } from './twitter-card'
+import { TwitterCard } from '../types'
 import {
-  __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY,
   TWITTER_CARD_IMAGE_METADATA_PROVIDER,
+  TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY,
 } from './twitter-card-image-metadata-provider'
 import { TwitterCardImage } from './twitter-card-image'
 
@@ -67,7 +67,7 @@ function makeSut(): MetadataSetter<TwitterCard['image']> {
       TWITTER_CARD_IMAGE_METADATA_PROVIDER,
     ],
   })
-  return __TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY(
+  return TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY(
     TestBed.inject(NgxMetaMetaService),
   )
 }

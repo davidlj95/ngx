@@ -4,7 +4,7 @@ import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { OpenGraphImage } from './open-graph-image'
 import { OpenGraph } from './open-graph'
-import { __OPEN_GRAPH_IMAGE_SETTER_FACTORY } from './open-graph-image-metadata-provider'
+import { OPEN_GRAPH_IMAGE_SETTER_FACTORY } from './open-graph-image-metadata-provider'
 
 describe('Open Graph image metadata', () => {
   enableAutoSpy()
@@ -77,5 +77,5 @@ function makeSut(): MetadataSetter<OpenGraph['image']> {
   TestBed.configureTestingModule({
     providers: [MockProviders(NgxMetaMetaService)],
   })
-  return __OPEN_GRAPH_IMAGE_SETTER_FACTORY(TestBed.inject(NgxMetaMetaService))
+  return OPEN_GRAPH_IMAGE_SETTER_FACTORY(TestBed.inject(NgxMetaMetaService))
 }

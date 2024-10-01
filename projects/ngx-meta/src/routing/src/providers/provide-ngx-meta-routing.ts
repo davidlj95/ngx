@@ -1,7 +1,7 @@
 import { ENVIRONMENT_INITIALIZER, inject, Provider } from '@angular/core'
 import { _ROUTE_METADATA_STRATEGY } from '@davidlj95/ngx-meta/core'
-import { DEFAULT_ROUTE_METADATA_STRATEGY } from './default-route-metadata-strategy'
-import { ROUTER_LISTENER } from './router-listener'
+import { DEFAULT_ROUTE_METADATA_STRATEGY } from '../route-metadata/default-route-metadata-strategy'
+import { ROUTER_LISTENER } from '../listener/router-listener'
 
 /**
  * Allows to manage metadata of a page by specifying it in its Angular

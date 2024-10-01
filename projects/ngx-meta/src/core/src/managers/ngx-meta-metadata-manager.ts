@@ -1,3 +1,5 @@
+import { inject } from '@angular/core'
+
 /**
  * Abstract class every metadata manager must implement.
  *
@@ -33,6 +35,13 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
    */
   abstract readonly set: MetadataSetter<Value>
 }
+
+export const injectMetadataManagers: () => ReadonlyArray<NgxMetaMetadataManager> =
+  () =>
+    // https://stackoverflow.com/q/74598049/3263250
+    (inject(NgxMetaMetadataManager, {
+      optional: true,
+    }) as ReadonlyArray<NgxMetaMetadataManager> | null) ?? []
 
 /**
  * Options to resolve metadata values for a metadata manager

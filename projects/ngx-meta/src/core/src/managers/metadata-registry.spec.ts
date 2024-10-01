@@ -1,4 +1,4 @@
-import { MetadataRegistry } from './metadata-registry'
+import { METADATA_REGISTRY } from './metadata-registry'
 import { TestBed } from '@angular/core/testing'
 import { makeMetadataManagerSpy } from './__tests__/make-metadata-manager-spy'
 import { MockProvider } from 'ng-mocks'
@@ -77,11 +77,10 @@ function makeSut(
 ) {
   TestBed.configureTestingModule({
     providers: [
-      MetadataRegistry,
       ...(opts.managers ?? []).map((manager) =>
         MockProvider(NgxMetaMetadataManager, manager, 'useValue', true),
       ),
     ],
   })
-  return TestBed.inject(MetadataRegistry)
+  return TestBed.inject(METADATA_REGISTRY)
 }

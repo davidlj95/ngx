@@ -133,14 +133,13 @@ export const _maybeNonHttpUrlDevMessage: (url: string | URL | undefined | null, 
 export const _maybeTooLongDevMessage: (value: string | undefined | null, maxLength: number, opts: _FormatDevMessageOptions) => void;
 
 // @internal (undocumented)
-class MetadataRegistry {
-    constructor(managers: ReadonlyArray<NgxMetaMetadataManager> | null);
+interface MetadataRegistry {
     // (undocumented)
-    findByGlobalOrJsonPath(globalOrJsonPath: string): Iterable<NgxMetaMetadataManager>;
+    readonly findByGlobalOrJsonPath: (globalOrJsonPath: string) => Iterable<NgxMetaMetadataManager>;
     // (undocumented)
-    getAll(): Iterable<NgxMetaMetadataManager>;
+    readonly getAll: () => Iterable<NgxMetaMetadataManager>;
     // (undocumented)
-    register(manager: NgxMetaMetadataManager): void;
+    readonly register: (manager: NgxMetaMetadataManager) => void;
 }
 
 // @internal (undocumented)

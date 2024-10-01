@@ -1,39 +1,52 @@
-import { Inject, Injectable, Optional } from '@angular/core'
-import { NgxMetaMetadataManager } from './ngx-meta-metadata-manager'
+import { InjectionToken, Provider } from '@angular/core'
+import {
+  injectMetadataManagers,
+  NgxMetaMetadataManager,
+} from './ngx-meta-metadata-manager'
 
 /**
  * @internal
  */
-@Injectable({ providedIn: 'root' })
-export class MetadataRegistry {
-  private readonly byId = new Map<string, NgxMetaMetadataManager>()
+export interface MetadataRegistry {
+  readonly register: (manager: NgxMetaMetadataManager) => void
+  readonly getAll: () => Iterable<NgxMetaMetadataManager>
+  readonly findByGlobalOrJsonPath: (
+    globalOrJsonPath: string,
+  ) => Iterable<NgxMetaMetadataManager>
+}
 
-  constructor(
-    @Optional()
-    @Inject(NgxMetaMetadataManager)
-    managers: ReadonlyArray<NgxMetaMetadataManager> | null,
-  ) {
-    managers?.forEach((manager) => this.register(manager))
-  }
-
-  register(manager: NgxMetaMetadataManager) {
-    if (this.byId.has(manager.id)) {
+const metadataRegistryFactory: () => MetadataRegistry = () => {
+  const managers = injectMetadataManagers()
+  const managersById = new Map<string, NgxMetaMetadataManager>()
+  const register: MetadataRegistry['register'] = (manager) => {
+    if (managersById.has(manager.id)) {
       return
     }
-    this.byId.set(manager.id, manager)
+    managersById.set(manager.id, manager)
   }
-
-  getAll(): Iterable<NgxMetaMetadataManager> {
-    return this.byId.values()
-  }
-
-  findByGlobalOrJsonPath(
-    globalOrJsonPath: string,
-  ): Iterable<NgxMetaMetadataManager> {
-    return [...this.getAll()].filter(
+  managers.forEach(register)
+  const getAll: MetadataRegistry['getAll'] = () => managersById.values()
+  const findByGlobalOrJsonPath: MetadataRegistry['findByGlobalOrJsonPath'] = (
+    globalOrJsonPath,
+  ) =>
+    [...getAll()].filter(
       (manager) =>
         manager.resolverOptions.global == globalOrJsonPath ||
         manager.resolverOptions.jsonPath.join('.') == globalOrJsonPath,
     )
+  return {
+    register,
+    getAll,
+    findByGlobalOrJsonPath,
   }
 }
+
+export const METADATA_REGISTRY = new InjectionToken<MetadataRegistry>(
+  ngDevMode ? 'NgxMeta Metadata Registry' : 'NgxMetaMR',
+  { factory: metadataRegistryFactory },
+)
+
+export const provideMetadataRegistry: () => Provider = () => ({
+  provide: METADATA_REGISTRY,
+  useFactory: metadataRegistryFactory,
+})

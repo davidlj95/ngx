@@ -1,4 +1,4 @@
-import { makeComposedKeyValMetaDefinition } from '@davidlj95/ngx-meta/core'
+import { makeComposedKeyValMetaDefinition } from '../../../core'
 
 export const makeOpenGraphMetaDefinition = (...names: ReadonlyArray<string>) =>
   makeComposedKeyValMetaDefinition(['og', ...names], {

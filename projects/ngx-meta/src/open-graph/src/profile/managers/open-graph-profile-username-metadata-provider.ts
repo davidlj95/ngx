@@ -1,4 +1,4 @@
-import { makeOpenGraphProfileMetadataProvider } from './make-open-graph-profile-metadata-provider'
+import { makeOpenGraphProfileMetadataProvider } from '../utils/make-open-graph-profile-metadata-provider'
 
 /**
  * Manages the {@link OpenGraphProfile.username} metadata

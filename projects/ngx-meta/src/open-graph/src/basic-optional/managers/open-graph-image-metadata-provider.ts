@@ -4,9 +4,9 @@ import {
   _maybeNonHttpUrlDevMessage,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
-import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
-import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
-import { _MODULE_NAME } from './module-name'
+import { makeOpenGraphMetadataProvider } from '../../utils/make-open-graph-metadata-provider'
+import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
+import { _MODULE_NAME } from '../../module-name'
 
 const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
   url: undefined,
@@ -17,9 +17,6 @@ const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
   height: null,
 }
 
-/**
- * @internal
- */
 export const __OPEN_GRAPH_IMAGE_SETTER_FACTORY =
   (metaService: NgxMetaMetaService) =>
   (value: OpenGraph[typeof _GLOBAL_IMAGE]) => {

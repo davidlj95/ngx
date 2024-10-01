@@ -1,4 +1,4 @@
-import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
+import { makeOpenGraphMetadataProvider } from '../../utils/make-open-graph-metadata-provider'
 
 // noinspection JSValidateJSDoc
 /**

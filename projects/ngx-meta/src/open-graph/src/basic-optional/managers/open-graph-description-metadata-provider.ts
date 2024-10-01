@@ -1,12 +1,12 @@
-import { makeOpenGraphMetadataProvider } from './make-open-graph-metadata-provider'
+import { makeOpenGraphMetadataProvider } from '../../utils/make-open-graph-metadata-provider'
 import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraph } from './open-graph'
-import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
-import { _MODULE_NAME } from './module-name'
+import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
+import { _MODULE_NAME } from '../../module-name'
 
 /**
  * Manages the {@link OpenGraph.description} metadata

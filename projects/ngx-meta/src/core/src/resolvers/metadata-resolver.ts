@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core'
-import { MetadataValues } from '../metadata-values'
+import { MetadataValues } from '../service/metadata-values'
 import { injectDefaults } from '../defaults/defaults'
 import { METADATA_JSON_RESOLVER } from './metadata-json-resolver'
 import { MetadataResolverOptions } from '../managers/ngx-meta-metadata-manager'

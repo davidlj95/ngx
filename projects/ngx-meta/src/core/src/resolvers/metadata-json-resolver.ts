@@ -1,4 +1,4 @@
-import { MetadataValues } from '../metadata-values'
+import { MetadataValues } from '../service/metadata-values'
 import { InjectionToken } from '@angular/core'
 import { MetadataResolverOptions } from '../managers/ngx-meta-metadata-manager'
 import { isObject } from '../utils/is-object'

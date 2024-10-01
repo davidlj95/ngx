@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core'
-import { MetadataValues } from '../metadata-values'
+import { MetadataValues } from '../service/metadata-values'
 
 /**
  * @internal

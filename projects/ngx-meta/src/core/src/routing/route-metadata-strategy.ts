@@ -1,5 +1,5 @@
 import { inject, InjectionToken } from '@angular/core'
-import { MetadataValues } from '../metadata-values'
+import { MetadataValues } from '../service'
 
 /**
  * @internal
@@ -14,8 +14,5 @@ export const _ROUTE_METADATA_STRATEGY =
  */
 export type _RouteMetadataStrategy = () => MetadataValues | undefined
 
-/**
- * @internal
- */
-export const _injectRouteMetadataStrategy: () => _RouteMetadataStrategy = () =>
+export const injectRouteMetadataStrategy: () => _RouteMetadataStrategy = () =>
   inject(_ROUTE_METADATA_STRATEGY, { optional: true }) ?? (() => undefined)

@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing'
 import { NgxMetaCoreModule } from './ngx-meta-core.module'
 import { injectDefaults } from '../defaults/defaults'
 import { ModuleWithProviders } from '@angular/core'
-import { GlobalMetadata } from '../globals/global-metadata'
-import { withNgxMetaDefaults } from '../defaults/with-ngx-meta-defaults'
+import { GlobalMetadata } from '../globals'
+import { withNgxMetaDefaults } from '../defaults'
 
 describe('Core module', () => {
   const defaults: GlobalMetadata = { title: 'Hello World!' }

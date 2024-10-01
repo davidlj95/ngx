@@ -120,9 +120,6 @@ export const _HEAD_ELEMENT_UPSERT_OR_REMOVE: InjectionToken<_HeadElementUpsertOr
 // @internal (undocumented)
 export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement | null | undefined) => void;
 
-// @internal (undocumented)
-export const _injectRouteMetadataStrategy: () => _RouteMetadataStrategy;
-
 // @public
 export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
 

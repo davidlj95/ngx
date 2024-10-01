@@ -1,4 +1,4 @@
-import { MetadataValues } from '../metadata-values'
+import { MetadataValues } from '../service'
 import {
   coreFeature,
   CoreFeature,

@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core'
-import { MetadataValues } from '../metadata-values'
-import { withNgxMetaDefaults } from '../defaults/with-ngx-meta-defaults'
+import { MetadataValues } from '../service'
+import { withNgxMetaDefaults } from '../defaults'
 import {
   CoreFeature,
   CoreFeatureKind,

@@ -39,6 +39,7 @@ nav:
   - Misc:
       - misc/example-apps.md
       - misc/bundle-size.md
+      - misc/public-api-surface.md
 not_in_nav: api/*.md
 # From here below, all for Material for mkdocs
 repo_name: davidlj95/ngx

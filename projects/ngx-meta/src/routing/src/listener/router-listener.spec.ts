@@ -107,7 +107,10 @@ function makeSut(
   TestBed.configureTestingModule({
     providers: [
       MockProvider(Router, { events: events$ }),
-      MockProvider(NgxMetaService),
+      MockProvider(
+        NgxMetaService,
+        jasmine.createSpyObj<NgxMetaService>(['set']),
+      ),
     ],
   })
 

@@ -40,9 +40,6 @@ export const METADATA_RESOLVER = new InjectionToken<MetadataResolver>(
   },
 )
 
-/**
- * @internal
- */
 export type MetadataResolver = (
   values: MetadataValues,
   resolverOptions: MetadataResolverOptions,

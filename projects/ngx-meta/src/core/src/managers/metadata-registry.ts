@@ -4,9 +4,6 @@ import {
   NgxMetaMetadataManager,
 } from './ngx-meta-metadata-manager'
 
-/**
- * @internal
- */
 export interface MetadataRegistry {
   readonly register: (manager: NgxMetaMetadataManager) => void
   readonly getAll: () => Iterable<NgxMetaMetadataManager>

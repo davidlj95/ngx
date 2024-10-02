@@ -1,13 +1,7 @@
-import { Inject, Injectable } from '@angular/core'
 import { MetadataValues } from './metadata-values'
-import {
-  METADATA_REGISTRY,
-  MetadataRegistry,
-} from '../managers/metadata-registry'
-import {
-  METADATA_RESOLVER,
-  MetadataResolver,
-} from '../resolvers/metadata-resolver'
+import { FactoryProvider, inject } from '@angular/core'
+import { METADATA_REGISTRY } from '../managers/metadata-registry'
+import { METADATA_RESOLVER } from '../resolvers/metadata-resolver'
 import { _formatDevMessage } from '../messaging'
 import { MODULE_NAME } from '../module-name'
 
@@ -16,13 +10,7 @@ import { MODULE_NAME } from '../module-name'
  *
  * @public
  */
-@Injectable({ providedIn: 'root' })
-export class NgxMetaService {
-  constructor(
-    @Inject(METADATA_REGISTRY) private readonly registry: MetadataRegistry,
-    @Inject(METADATA_RESOLVER) private readonly resolver: MetadataResolver,
-  ) {}
-
+export abstract class NgxMetaService {
   /**
    * Sets the metadata values of the current page
    *
@@ -45,12 +33,7 @@ export class NgxMetaService {
    *
    * @param values - Metadata values to set, as a JSON object
    */
-  public set(values: MetadataValues = {}): void {
-    const allMetadata = this.registry.getAll()
-    for (const metadata of allMetadata) {
-      metadata.set(this.resolver(values, metadata.resolverOptions))
-    }
-  }
+  abstract set(values?: MetadataValues): void
 
   /**
    * Sets a metadata value for the page
@@ -87,26 +70,47 @@ export class NgxMetaService {
    *                           argument.
    * @param value - Value to set for matching metadata elements
    */
-  public setOne(globalOrJsonPath: string, value: unknown): void {
-    const managers = this.registry.findByGlobalOrJsonPath(globalOrJsonPath)
-    /* istanbul ignore next - not unit tested hence no warning test */
-    if (ngDevMode && [...managers].length === 0) {
-      console.warn(
-        _formatDevMessage(
-          'no metadata managers found for global or JSON Path',
-          { module: MODULE_NAME, value: globalOrJsonPath },
-        ),
-      )
-    }
-    for (const manager of managers) {
-      manager.set(value)
-    }
-  }
+  abstract setOne(globalOrJsonPath: string, value: unknown): void
 
   /**
    * Clears all managed metadata elements of the current page
    */
-  public clear(): void {
-    this.set()
-  }
+  abstract clear(): void
 }
+
+export const provideNgxMetaService: () => FactoryProvider = () => ({
+  provide: NgxMetaService,
+  useFactory: (): NgxMetaService => {
+    const registry = inject(METADATA_REGISTRY)
+    const resolver = inject(METADATA_RESOLVER)
+    return {
+      set(values = {}) {
+        const allMetadata = registry.getAll()
+        for (const metadata of allMetadata) {
+          metadata.set(resolver(values, metadata.resolverOptions))
+        }
+      },
+      setOne(globalOrJsonPath, value) {
+        const managers = registry.findByGlobalOrJsonPath(globalOrJsonPath)
+        /* istanbul ignore next - not unit tested hence no warning test */
+        if (ngDevMode && [...managers].length === 0) {
+          console.warn(
+            _formatDevMessage(
+              'no metadata managers found for global or JSON Path',
+              {
+                module: MODULE_NAME,
+                value: globalOrJsonPath,
+              },
+            ),
+          )
+        }
+        for (const manager of managers) {
+          manager.set(value)
+        }
+      },
+      clear() {
+        this.set()
+      },
+    }
+  },
+})

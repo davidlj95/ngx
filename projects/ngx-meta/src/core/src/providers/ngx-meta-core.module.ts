@@ -28,6 +28,7 @@ export class NgxMetaCoreModule {
    * Configures also extra features:
    *
    *  - {@link withNgxMetaDefaults}
+   *  - {@link withNgxMetaBaseUrl}
    *
    * Previous features configuration with an options object has been deprecated.
    * See {@link NgxMetaCoreModule.(forRoot:2)} for more information and how to migrate.

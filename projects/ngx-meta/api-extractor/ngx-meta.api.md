@@ -12,6 +12,15 @@ import { MetaDefinition } from '@angular/platform-browser';
 import { ModuleWithProviders } from '@angular/core';
 import { Provider } from '@angular/core';
 
+// @public
+export const ANGULAR_ROUTER_URL: unique symbol;
+
+// @public
+export type AngularRouterUrl = typeof ANGULAR_ROUTER_URL;
+
+// @public
+export type BaseUrl = string;
+
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
@@ -24,6 +33,8 @@ interface CoreFeature<FeatureKind extends CoreFeatureKind> {
 
 // @internal
 const enum CoreFeatureKind {
+    // (undocumented)
+    BaseUrl = 1,
     // (undocumented)
     Defaults = 0
 }
@@ -69,7 +80,7 @@ export const _GLOBAL_TITLE = "title";
 // @public
 export interface GlobalMetadata {
     readonly applicationName?: string | null;
-    readonly canonicalUrl?: URL | string | null;
+    readonly canonicalUrl?: URL | AngularRouterUrl | string | null;
     readonly description?: string | null;
     readonly image?: GlobalMetadataImage | null;
     readonly locale?: string | null;
@@ -127,7 +138,9 @@ export interface MakeMetadataManagerProviderFromSetterFactoryOptions {
 }
 
 // @internal
-export const _maybeNonHttpUrlDevMessage: (url: string | URL | undefined | null, opts: _FormatDevMessageOptions) => void;
+export const _maybeNonHttpUrlDevMessage: (url: string | URL | undefined | null, opts: _FormatDevMessageOptions & {
+    shouldInsteadOfMust?: boolean;
+}) => void;
 
 // @internal
 export const _maybeTooLongDevMessage: (value: string | undefined | null, maxLength: number, opts: _FormatDevMessageOptions) => void;
@@ -310,7 +323,7 @@ export interface OpenGraph {
     readonly siteName?: string | null;
     readonly title?: string | null;
     readonly type?: OpenGraphType | null;
-    readonly url?: URL | string | null;
+    readonly url?: URL | AngularRouterUrl | string | null;
 }
 
 // @public
@@ -506,6 +519,15 @@ export interface TwitterCardSiteUsername {
 
 // @public
 export type TwitterCardType = typeof TWITTER_CARD_TYPE_SUMMARY | typeof TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE | typeof TWITTER_CARD_TYPE_APP | typeof TWITTER_CARD_TYPE_PLAYER;
+
+// @internal
+export const _URL_RESOLVER: InjectionToken<_UrlResolver>;
+
+// @internal (undocumented)
+export type _UrlResolver = (url: URL | string | undefined | null | AngularRouterUrl) => string | undefined | null;
+
+// @public
+export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKind.BaseUrl>;
 
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;

@@ -22,6 +22,8 @@ export const makeOpenGraphMetadataProvider = <Key extends keyof OpenGraph>(
     s?: MetadataSetterFactory<OpenGraph[Key]>
     // Object merging. Defaults to false
     m?: MetadataResolverOptions['objectMerge']
+    // Deps for the setter factory
+    d?: FactoryProvider['deps']
   } = {},
 ): FactoryProvider =>
   makeMetadataManagerProviderFromSetterFactory(
@@ -32,7 +34,7 @@ export const makeOpenGraphMetadataProvider = <Key extends keyof OpenGraph>(
           value as string,
         )),
     {
-      d: [NgxMetaMetaService],
+      d: opts.d ?? [NgxMetaMetaService],
       jP: [OPEN_GRAPH_KEY, key],
       g: opts.g,
       m: opts.m,

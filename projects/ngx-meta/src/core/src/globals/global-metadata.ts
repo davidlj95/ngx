@@ -1,4 +1,5 @@
 import { GlobalMetadataImage } from './global-metadata-image'
+import { AngularRouterUrl } from '../url-resolution'
 
 /**
  * Specifies metadata that will be used by more than one module.
@@ -43,8 +44,14 @@ export interface GlobalMetadata {
    *  - {@link Standard.canonicalUrl} (needs standard module)
    *
    *  - {@link OpenGraph.url} (needs Open Graph module)
+   *
+   * If {@link https://ngx-meta.dev/guides/url-resolution/ | URL resolution} feature is enabled, you may use
+   * a relative URL here. It will be resolved and the absolute URL will be used instead.
+   *
+   * You can also use the special value {@link ANGULAR_ROUTER_URL} to use the current Angular router's URL
+   * as the relative URL to be resolved into an absolute one.
    */
-  readonly canonicalUrl?: URL | string | null
+  readonly canonicalUrl?: URL | AngularRouterUrl | string | null
 
   /**
    * Sets localization of this page.

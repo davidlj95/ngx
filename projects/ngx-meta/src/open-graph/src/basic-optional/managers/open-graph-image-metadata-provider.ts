@@ -28,6 +28,7 @@ export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
       _maybeNonHttpUrlDevMessage(imageUrl, {
         module: MODULE_NAME,
         property: _GLOBAL_IMAGE,
+        value: imageUrl,
         link: 'https://stackoverflow.com/a/9858694/3263250',
       })
     metaService.set(makeOpenGraphMetaDefinition(_GLOBAL_IMAGE), imageUrl)

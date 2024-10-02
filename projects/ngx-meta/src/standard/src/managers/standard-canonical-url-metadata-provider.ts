@@ -3,8 +3,38 @@ import {
   _GLOBAL_CANONICAL_URL,
   _HEAD_ELEMENT_UPSERT_OR_REMOVE,
   _HeadElementUpsertOrRemove,
+  _maybeNonHttpUrlDevMessage,
+  _URL_RESOLVER,
+  _UrlResolver,
+  MetadataSetter,
 } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
+import { Standard } from '../types'
+import { MODULE_NAME } from '../module-name'
+
+export const STANDARD_CANONICAL_URL_SETTER_FACTORY: (
+  headElementUpsertOrRemove: _HeadElementUpsertOrRemove,
+  doc: Document,
+  urlResolver: _UrlResolver,
+) => MetadataSetter<Standard[typeof _GLOBAL_CANONICAL_URL]> =
+  (headElementUpsertOrRemove, doc, urlResolver) => (url) => {
+    const resolvedUrl = urlResolver(url)
+    ngDevMode &&
+      _maybeNonHttpUrlDevMessage(resolvedUrl, {
+        module: MODULE_NAME,
+        property: _GLOBAL_CANONICAL_URL,
+        value: resolvedUrl,
+        link: 'https://stackoverflow.com/a/8467966/3263250',
+        shouldInsteadOfMust: true,
+      })
+    let linkElement: HTMLLinkElement | undefined
+    if (resolvedUrl !== null && resolvedUrl !== undefined) {
+      linkElement = doc.createElement(LINK_TAG)
+      linkElement.setAttribute(REL_ATTR, CANONICAL_VAL)
+      linkElement.setAttribute('href', resolvedUrl)
+    }
+    headElementUpsertOrRemove(SELECTOR, linkElement)
+  }
 
 /**
  * Manages the {@link Standard.canonicalUrl} metadata
@@ -13,18 +43,8 @@ import { DOCUMENT } from '@angular/common'
 export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
   makeStandardMetadataProvider(_GLOBAL_CANONICAL_URL, {
     g: _GLOBAL_CANONICAL_URL,
-    s:
-      (headElementUpsertOrRemove: _HeadElementUpsertOrRemove, doc: Document) =>
-      (value) => {
-        let linkElement: HTMLLinkElement | undefined
-        if (value !== null && value !== undefined) {
-          linkElement = doc.createElement(LINK_TAG)
-          linkElement.setAttribute(REL_ATTR, CANONICAL_VAL)
-          linkElement.setAttribute('href', value.toString())
-        }
-        headElementUpsertOrRemove(SELECTOR, linkElement)
-      },
-    d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
+    s: STANDARD_CANONICAL_URL_SETTER_FACTORY,
+    d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT, _URL_RESOLVER],
   })
 
 const LINK_TAG = 'link'

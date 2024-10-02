@@ -10,6 +10,7 @@ import { AllMetaSetByRouteComponent } from './all-meta-set-by-route/all-meta-set
 import { MetaSetByRouteAndServiceComponent } from './meta-set-by-route-and-service/meta-set-by-route-and-service.component'
 import {
   NgxMetaCoreModule,
+  withNgxMetaBaseUrl,
   withNgxMetaDefaults,
 } from '@davidlj95/ngx-meta/core'
 import DEFAULTS_JSON from '@/e2e/cypress/fixtures/defaults.json'
@@ -22,6 +23,8 @@ import {
 import { NgxMetaTwitterCardModule } from '@davidlj95/ngx-meta/twitter-card'
 import { NgxMetaJsonLdModule } from '@davidlj95/ngx-meta/json-ld'
 import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta-set-by-service.component'
+import { UrlResolutionMetaComponent } from './url-resolution-meta/url-resolution-meta.component'
+import { BASE_URL } from '@/e2e/cypress/fixtures/base-url'
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta
     AllMetaSetByRouteComponent,
     MetaSetByRouteAndServiceComponent,
     OneMetaSetByServiceComponent,
+    UrlResolutionMetaComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,10 @@ import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta
     NgForOf,
     RouterOutlet,
     JsonPipe,
-    NgxMetaCoreModule.forRoot(withNgxMetaDefaults(DEFAULTS_JSON)),
+    NgxMetaCoreModule.forRoot(
+      withNgxMetaDefaults(DEFAULTS_JSON),
+      withNgxMetaBaseUrl(BASE_URL),
+    ),
     NgxMetaRoutingModule.forRoot(),
     NgxMetaStandardModule,
     NgxMetaOpenGraphModule,

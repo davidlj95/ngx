@@ -19,9 +19,7 @@ export const shouldContainAllStandardMetadata = () =>
         cy.getMeta('application-name')
           .shouldHaveContent()
           .and('eq', metadata.applicationName)
-        cy.get('link[rel="canonical"]')
-          .should('have.attr', 'href')
-          .and('eq', metadata.canonicalUrl)
+        standardCanonicalUrlShouldEqual(metadata.canonicalUrl)
         cy.get('html').should('have.attr', 'lang').and('eq', metadata.locale)
         cy.getMeta('theme-color')
           .shouldHaveContent()
@@ -36,6 +34,12 @@ export function standardTitleShouldEqual(title: string) {
 
 export function standardDescriptionShouldEqual(description: string) {
   cy.getMeta('description').shouldHaveContent().and('eq', description)
+}
+
+export function standardCanonicalUrlShouldEqual(canonicalUrl: string) {
+  cy.get('link[rel="canonical"]')
+    .should('have.attr', 'href')
+    .and('eq', canonicalUrl)
 }
 
 export const shouldNotContainAnyStandardMetadata = () =>

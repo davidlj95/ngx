@@ -21,23 +21,32 @@ import { provideRelativeUrlResolver } from './relative-url-resolver'
  * metadata value.
  *
  * @example
- * Relative URL resolution can be enabled providing a base URL with
- * {@link withNgxMetaBaseUrl}
  *
+ * <b>Using standalone, recommended API</b>
  * ```typescript
  * provideNgxMetaCore(
  *   withNgxMetaBaseUrl('https://example.com')
  * )
  * ```
  *
- * @see {@link withNgxMetaBaseUrl}
- * @see {@link https://ngx-meta.dev/guides/url-resolution/ | URL resolution guide}
+ * <b>Using module-based API</b>
+ * ```typescript
+ * NgxMetaCoreModule.forRoot(
+ *   withNgxMetaBaseUrl('https://example.com')
+ * )
+ * ```
  *
- * @see {@link provideNgxMetaCore | Example of how to configure the feature}
- * @see {@link https://ngx-meta.dev/guides/url-resolution/ | URL resolution guide}
+ * See also:
+ *
+ * - {@link provideNgxMetaCore}: to use it with the standalone, recommended API.
+ *
+ * - {@link NgxMetaCoreModule.(forRoot:1)}: to use it with the module-based API.
+ *
+ * - {@link https://ngx-meta.dev/guides/url-resolution/ | URL resolution guide}
+ *
  *
  * @param baseUrl - Prefix URL to use when relative URLs are used in metadata
- * values where an absolute URL is required.
+ * values where an absolute URL is preferred or required.
  *
  * @public
  */

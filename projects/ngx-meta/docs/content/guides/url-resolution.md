@@ -26,34 +26,11 @@ But don't worry, got you covered 😉 Set up URL resolution and the problem will
 To avoid repeating the same URL prefix over and over, the library provides a way to configure a **base URL**. This way, when specifying a relative URL where an absolute URL is required or preferred, the **base URL** will be prepended. So that eventually an absolute URL appears as
 metadata value.
 
-=== "For non-standalone, module-based apps"
-
-    --8<-- "includes/module-apps-explanation.md"
-
-    Provide `baseUrl` when initializing core module with [`NgxMetaCoreModule.forRoot`](ngx-meta.ngxmetacoremodule.forroot.md) in `app.module.ts` file.
-
-    ```typescript title="app.module.ts"
-    import {NgxMetaCoreModule} from '@davidlj95/ngx-meta/core';
-
-    @NgModule({
-      // ...
-      imports: [
-        // ...
-        NgxMetaCoreModule.forRoot(
-          { baseUrl: 'https://example.com/app' }
-        ),
-        // ...
-      ],
-      // ...
-    })
-    export class AppModule {}
-    ```
-
 === "For standalone, module-free apps"
 
     --8<-- "includes/standalone-apps-explanation.md"
 
-    Add [`withBaseUrl`](ngx-meta.withngxmetabaseurl.md) as a [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) feature to your standalone app's `app.config.ts` file providers.
+    Add [`withNgxMetaBaseUrl`](ngx-meta.withngxmetabaseurl.md) as a [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) feature to your standalone app's `app.config.ts` file providers.
 
     ```typescript title="app.config.ts"
     import {provideNgxMetaCore, withNgxMetaBaseUrl} from '@davidlj95/ngx-meta/core';
@@ -68,6 +45,29 @@ metadata value.
         // ...
       ],
     }
+    ```
+
+=== "For non-standalone, module-based apps"
+
+    --8<-- "includes/module-apps-explanation.md"
+
+    Add [`withNgxMetaBaseUrl`](ngx-meta.withngxmetabaseurl.md) as an [`NgxMetaCoreModule.forRoot`](ngx-meta.ngxmetacoremodule.forroot.md) feature in `app.module.ts` file.
+
+    ```typescript title="app.module.ts"
+    import {NgxMetaCoreModule, withNgxMetaBaseUrl} from '@davidlj95/ngx-meta/core';
+
+    @NgModule({
+      // ...
+      imports: [
+        // ...
+        NgxMetaCoreModule.forRoot(
+          withNgxMetaBaseUrl('https://example.com/app'),
+        ),
+        // ...
+      ],
+      // ...
+    })
+    export class AppModule {}
     ```
 
 ## Usage
@@ -114,31 +114,6 @@ const fooPageMetadata: GlobalMetadata = {
 
 You can also use the previous [`ANGULAR_ROUTER_URL`](ngx-meta.angularrouterurl.md) value as a [default value](defaults.md) for some metadata. This way the Angular router's URL will be used as default if no other value is specified.
 
-=== "For non-standalone, module-based apps"
-
-    --8<-- "includes/module-apps-explanation.md"
-
-    ```typescript title="app.module.ts"
-    import {NgxMetaCoreModule, ANGULAR_ROUTER_URL} from '@davidlj95/ngx-meta/core';
-
-    @NgModule({
-      // ...
-      imports: [
-        // ...
-        NgxMetaCoreModule.forRoot(
-          {
-            defaults: {
-              canonicalUrl: ANGULAR_ROUTER_URL,
-            } satisfies GlobalMetadata
-          }
-        ),
-        // ...
-      ],
-      // ...
-    })
-    export class AppModule {}
-    ```
-
 === "For standalone, module-free apps"
 
     --8<-- "includes/standalone-apps-explanation.md"
@@ -160,6 +135,29 @@ You can also use the previous [`ANGULAR_ROUTER_URL`](ngx-meta.angularrouterurl.m
         // ...
       ],
     }
+    ```
+
+=== "For non-standalone, module-based apps"
+
+    --8<-- "includes/module-apps-explanation.md"
+
+    ```typescript title="app.module.ts"
+    import {NgxMetaCoreModule, withNgxMetaDefaults, ANGULAR_ROUTER_URL} from '@davidlj95/ngx-meta/core';
+
+    @NgModule({
+      // ...
+      imports: [
+        // ...
+        NgxMetaCoreModule.forRoot(
+          withNgxMetaDefaults({
+            canonicalUrl: ANGULAR_ROUTER_URL,
+          } satisfies GlobalMetadata),
+        ),
+        // ...
+      ],
+      // ...
+    })
+    export class AppModule {}
     ```
 
 ## Implementation notes

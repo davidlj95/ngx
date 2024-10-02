@@ -14,6 +14,7 @@ import { provideNoOpRelativeUrlResolver } from '../url-resolution/no-op-relative
  * Configures also extra features:
  *
  * - {@link withNgxMetaDefaults}
+ * - {@link withNgxMetaBaseUrl}
  *
  * @param features - Features to configure
  *

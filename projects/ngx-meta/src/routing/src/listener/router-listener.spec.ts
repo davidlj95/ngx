@@ -11,42 +11,45 @@ import { Observable } from 'rxjs'
 describe('Router listener', () => {
   enableAutoSpy()
 
-  describe('when not listening yet', () => {
-    // Though as probably injected in root module, may never be destroyed
-    it('should subscribe to router events and unsubscribe when destroyed', () => {
-      const events$ = new EventEmitter()
-      const sut = makeSut({ events$ })
-
-      sut.listen()
-
-      expect(events$.observed).toBeTrue()
-
-      TestBed.resetTestingModule()
-
-      expect(events$.observed).toBeFalse()
-    })
-  })
-
-  describe('when already listening', () => {
-    let events$: Observable<NavigationEvent>
+  describe('when listening', () => {
     let subscribersCount: number
+    let events$: Observable<NavigationEvent>
     let sut: RouterListener
 
     beforeEach(() => {
       subscribersCount = 0
-      events$ = new Observable(() => void subscribersCount++)
+      events$ = new Observable(() => {
+        subscribersCount++
+        return () => {
+          subscribersCount--
+        }
+      })
+      spyOn(console, 'warn')
       sut = makeSut({ events$ })
-
       sut.listen()
     })
 
-    it('should subscribe just once', () => {
+    it('should subscribe once to router events', () => {
       expect(subscribersCount).toBe(1)
     })
 
-    describe('when listening again', () => {
+    it('should not warn about anything', () => {
+      expect(console.warn).not.toHaveBeenCalled()
+    })
+
+    // Though as probably injected in root module, won't ever be destroyed
+    describe('after destroyed', () => {
       beforeEach(() => {
-        spyOn(console, 'warn')
+        TestBed.resetTestingModule()
+      })
+
+      it('should unsubscribe from router events', () => {
+        expect(subscribersCount).toBe(0)
+      })
+    })
+
+    describe('when trying to listen twice', () => {
+      beforeEach(() => {
         sut.listen()
       })
 
@@ -63,34 +66,42 @@ describe('Router listener', () => {
   })
 
   describe('when a non-end navigation event is triggered', () => {
-    it('should not call service', () => {
-      const events$ = new EventEmitter()
+    let ngxMetaService: jasmine.SpyObj<NgxMetaService>
+
+    beforeEach(() => {
+      const events$ = new EventEmitter<NavigationEvent>()
       const sut = makeSut({ events$ })
-      const ngxMetaService = TestBed.inject(
+      ngxMetaService = TestBed.inject(
         NgxMetaService,
       ) as unknown as jasmine.SpyObj<NgxMetaService>
       sut.listen()
 
       events$.emit(makeNavigationEvent(EventType.ActivationEnd))
+    })
 
+    it('should not call service', () => {
       expect(ngxMetaService.set).not.toHaveBeenCalled()
     })
   })
 
   describe('when a navigation end event is triggered', () => {
-    it('should call service to set metadata', () => {
-      const events$ = new EventEmitter()
+    let ngxMetaService: jasmine.SpyObj<NgxMetaService>
+
+    beforeEach(() => {
+      const events$ = new EventEmitter<NavigationEvent>()
       const sut = makeSut({
         events$,
       })
-      const ngxMetaService = TestBed.inject(
+      ngxMetaService = TestBed.inject(
         NgxMetaService,
       ) as unknown as jasmine.SpyObj<NgxMetaService>
 
       sut.listen()
 
       events$.emit(makeNavigationEvent(EventType.NavigationEnd))
+    })
 
+    it('should call service to set metadata', () => {
       expect(ngxMetaService.set).toHaveBeenCalledOnceWith()
     })
   })

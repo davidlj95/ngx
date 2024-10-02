@@ -6,8 +6,8 @@ import {
   CoreFeatureKind,
   CoreFeatures,
   isCoreFeature,
-  providersFromCoreFeatures,
 } from './core-feature'
+import { provideNgxMetaCore } from './provide-ngx-meta-core'
 
 /**
  * Provides `ngx-meta`'s core library services.
@@ -84,10 +84,7 @@ export class NgxMetaCoreModule {
     return {
       ngModule: NgxMetaCoreModule,
       providers: [
-        ...providersFromCoreFeatures([
-          ...optionFeaturesOrFirstFeature,
-          ...features,
-        ]),
+        provideNgxMetaCore(...optionFeaturesOrFirstFeature, ...features),
       ],
     }
   }

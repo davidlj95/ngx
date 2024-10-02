@@ -36,6 +36,5 @@ export const isCoreFeature = (
  */
 export type CoreFeatures = ReadonlyArray<CoreFeature<CoreFeatureKind>>
 
-export const providersFromCoreFeatures = (
-  features: CoreFeatures,
-): ReadonlyArray<Provider> => features.map((f) => f._providers)
+export const providersFromCoreFeatures = (features: CoreFeatures): Provider[] =>
+  features.map((f) => f._providers)

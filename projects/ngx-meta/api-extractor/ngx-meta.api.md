@@ -132,19 +132,6 @@ export const _maybeNonHttpUrlDevMessage: (url: string | URL | undefined | null, 
 // @internal
 export const _maybeTooLongDevMessage: (value: string | undefined | null, maxLength: number, opts: _FormatDevMessageOptions) => void;
 
-// @internal (undocumented)
-interface MetadataRegistry {
-    // (undocumented)
-    readonly findByGlobalOrJsonPath: (globalOrJsonPath: string) => Iterable<NgxMetaMetadataManager>;
-    // (undocumented)
-    readonly getAll: () => Iterable<NgxMetaMetadataManager>;
-    // (undocumented)
-    readonly register: (manager: NgxMetaMetadataManager) => void;
-}
-
-// @internal (undocumented)
-type MetadataResolver = (values: MetadataValues, resolverOptions: MetadataResolverOptions) => unknown;
-
 // @public
 export interface MetadataResolverOptions {
     readonly global?: string;
@@ -225,13 +212,10 @@ export class NgxMetaRoutingModule {
 }
 
 // @public
-export class NgxMetaService {
-    // Warning: (ae-forgotten-export) The symbol "MetadataRegistry" needs to be exported by the entry point all-entry-points.d.ts
-    // Warning: (ae-forgotten-export) The symbol "MetadataResolver" needs to be exported by the entry point all-entry-points.d.ts
-    constructor(registry: MetadataRegistry, resolver: MetadataResolver);
-    clear(): void;
-    set(values?: MetadataValues): void;
-    setOne(globalOrJsonPath: string, value: unknown): void;
+export abstract class NgxMetaService {
+    abstract clear(): void;
+    abstract set(values?: MetadataValues): void;
+    abstract setOne(globalOrJsonPath: string, value: unknown): void;
 }
 
 // @public

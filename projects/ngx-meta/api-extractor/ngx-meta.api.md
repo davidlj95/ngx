@@ -186,6 +186,12 @@ export type MetadataSetterFactory<T> = (...deps: Exclude<FactoryProvider['deps']
 // @public
 export type MetadataValues = object;
 
+// @alpha (undocumented)
+export const NGX_META_ELEMENT_SETTER: InjectionToken<NgxMetaElementSetter>;
+
+// @alpha (undocumented)
+export const NGX_META_ELEMENTS_SETTER: InjectionToken<NgxMetaElementsSetter>;
+
 // @public
 export class NgxMetaCoreModule {
     // Warning: (ae-forgotten-export) The symbol "CoreFeatures" needs to be exported by the entry point all-entry-points.d.ts
@@ -198,6 +204,27 @@ export class NgxMetaCoreModule {
 export interface NgxMetaCoreModuleForRootOptions {
     defaults?: MetadataValues;
 }
+
+// @alpha
+export type NgxMetaElementAttributes = Partial<{
+    charset: string;
+    content: string;
+    'http-equiv': string;
+    id: string;
+    itemprop: string;
+    name: string;
+    property: string;
+    scheme: string;
+    url: string;
+}> & {
+    [key: string]: string;
+};
+
+// @alpha (undocumented)
+export type NgxMetaElementSetter = (nameAttribute: readonly [name: string, value: string], content: NgxMetaElementAttributes | undefined) => void;
+
+// @alpha (undocumented)
+export type NgxMetaElementsSetter = (nameAttribute: readonly [name: string, value: string], contents: ReadonlyArray<NgxMetaElementAttributes | undefined>) => void;
 
 // @public
 export class NgxMetaJsonLdModule {
@@ -554,11 +581,20 @@ export type _UrlResolver = (url: URL | string | undefined | null | AngularRouter
 // @internal
 export const _urlResolver: _LazyInjectionToken<_UrlResolver>;
 
+// @alpha
+export const withContentAttribute: (content: string | null | undefined) => NgxMetaElementAttributes | undefined;
+
+// @alpha
+export const withNameAttribute: (value: string) => readonly ["name", string];
+
 // @public
 export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKind.BaseUrl>;
 
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
+
+// @alpha
+export const withPropertyAttribute: (value: string) => string[];
 
 // (No @packageDocumentation comment for this package)
 

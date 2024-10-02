@@ -52,7 +52,6 @@ describe('URL resolver', () => {
   })
 
   describe('when URL is relative', () => {
-    const relativeUrl = 'foo'
     const dummyResolvedUrl = 'dummy-resolved-url'
 
     let sut: _UrlResolver
@@ -66,9 +65,14 @@ describe('URL resolver', () => {
       sut = makeSut({ relativeUrlResolver })
     })
 
-    it('should return the resolved URL', () => {
-      expect(sut(relativeUrl)).toEqual(dummyResolvedUrl)
-      expect(relativeUrlResolver).toHaveBeenCalledWith(relativeUrl)
+    const TEST_CASES = ['foo', '']
+    TEST_CASES.forEach((testCase) => {
+      describe(`like when URL is '${testCase}'`, () => {
+        it('should return the resolved URL', () => {
+          expect(sut(testCase)).toEqual(dummyResolvedUrl)
+          expect(relativeUrlResolver).toHaveBeenCalledWith(testCase)
+        })
+      })
     })
   })
 })

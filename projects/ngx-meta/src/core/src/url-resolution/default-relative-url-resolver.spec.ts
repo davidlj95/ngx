@@ -2,9 +2,9 @@ import { TestBed } from '@angular/core/testing'
 import { provideRouter } from '@angular/router'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { ANGULAR_ROUTER_URL } from './angular-router-url'
-import { _URL_RESOLVER } from './url-resolver'
 import { provideDefaultRelativeUrlResolver } from './default-relative-url-resolver'
 import { Component } from '@angular/core'
+import { RELATIVE_URL_RESOLVER } from './relative-url-resolver'
 
 describe('Default relative URL resolver', () => {
   //👇 Let the H̴u̴n̴g̴e̴r̴ Slash Games begin 🏁
@@ -100,5 +100,5 @@ async function makeSut(opts: { baseUrl: string; initialUrl?: string }) {
   if (opts.initialUrl) {
     await RouterTestingHarness.create(opts.initialUrl)
   }
-  return TestBed.inject(_URL_RESOLVER)
+  return TestBed.inject(RELATIVE_URL_RESOLVER)
 }

@@ -1,3 +1,62 @@
+## [`ngx-meta` v1.0.0-beta.14](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.13...ngx-meta-v1.0.0-beta.14) (2024-10-02)
+
+### Features
+
+- change provider API to return environment providers ([#875](https://github.com/davidlj95/ngx/issues/875)) ([2d84e04](https://github.com/davidlj95/ngx/commit/2d84e04f10b466f4fd1f4810d10ee416eb77f38b))
+
+### Documentation
+
+- add public api surface docs ([#860](https://github.com/davidlj95/ngx/issues/860)) ([ff5ca0e](https://github.com/davidlj95/ngx/commit/ff5ca0eb26dfdec4732d174db545f12c958fadc5))
+- recommend standalone APIs over module-based APIs ([#859](https://github.com/davidlj95/ngx/issues/859)) ([42edc50](https://github.com/davidlj95/ngx/commit/42edc505d833e47bc4ecaf65430652da9b1a62fb))
+- remove [@see](https://github.com/see) usages & use ref name syntax ([#834](https://github.com/davidlj95/ngx/issues/834)) ([0c7cecd](https://github.com/davidlj95/ngx/commit/0c7cecd85d84628677542b7c0590a7003b4b3efa))
+
+### Miscellaneous Chores
+
+- add comments to coverage ignored blocks ([#846](https://github.com/davidlj95/ngx/issues/846)) ([953e126](https://github.com/davidlj95/ngx/commit/953e12601feefe6b684c3668541d4bafa79c373a))
+- improve API ref docs and types ([#858](https://github.com/davidlj95/ngx/issues/858)) ([bdfbfa6](https://github.com/davidlj95/ngx/commit/bdfbfa691024b68bcaa5ced104af1015f9c7bea4))
+- **release:** update CHANGELOG.md ([#832](https://github.com/davidlj95/ngx/issues/832)) ([405e298](https://github.com/davidlj95/ngx/commit/405e29813cdbd67f9426980f6d071dd9aa53d4a5))
+- remove unneeded double underscore prefixes ([#869](https://github.com/davidlj95/ngx/issues/869)) ([7239d54](https://github.com/davidlj95/ngx/commit/7239d544ea292c66bdf5a7e3ac6854d5717e7aad))
+
+### Code Refactoring
+
+- add an index per core feature listing exports ([#863](https://github.com/davidlj95/ngx/issues/863)) ([e67faff](https://github.com/davidlj95/ngx/commit/e67faff613292b227a7009f428d9ba909edbfe7c))
+- group core module files into features ([#862](https://github.com/davidlj95/ngx/issues/862)) ([e65ff6d](https://github.com/davidlj95/ngx/commit/e65ff6d5a1e5c9b13b1642baf128f6bed80891fd))
+- group json ld module files by feature dirs ([#864](https://github.com/davidlj95/ngx/issues/864)) ([2300236](https://github.com/davidlj95/ngx/commit/2300236f03ceb897be842558729251ee1048f73c))
+- group Open Graph module by feature dirs ([#865](https://github.com/davidlj95/ngx/issues/865)) ([fa5a0c1](https://github.com/davidlj95/ngx/commit/fa5a0c10115baa5734b99e745c3473a3b60b1545))
+- group routing module files into dirs by feature ([#866](https://github.com/davidlj95/ngx/issues/866)) ([e163938](https://github.com/davidlj95/ngx/commit/e1639381b027a81be695f6cf5d3b40cbd72587b4))
+- group standard module files by feature dirs ([#867](https://github.com/davidlj95/ngx/issues/867)) ([5ffd491](https://github.com/davidlj95/ngx/commit/5ffd491c7717433d7ad8e2e9a2a864f925b0c930))
+- group Twitter Card files by feature dirs ([#868](https://github.com/davidlj95/ngx/issues/868)) ([791593e](https://github.com/davidlj95/ngx/commit/791593e59b69ddc6bd1638f38d6dceada631ea64))
+- move Open Graph main types into directory ([#871](https://github.com/davidlj95/ngx/issues/871)) ([c531cdf](https://github.com/davidlj95/ngx/commit/c531cdfca1d95b5159259a2b180683f88909cda9))
+- provide head element mgr with root factory ([#836](https://github.com/davidlj95/ngx/issues/836)) ([099197d](https://github.com/davidlj95/ngx/commit/099197d1ab02f2740aa638c244db5b8efc336dc9))
+- provide metadata loader with factory fn ([#841](https://github.com/davidlj95/ngx/issues/841)) ([e83fc97](https://github.com/davidlj95/ngx/commit/e83fc97f3b0723ab4eb102cb7f30a6c90657f667))
+- provide metadata registry in root ([#840](https://github.com/davidlj95/ngx/issues/840)) ([fcc891b](https://github.com/davidlj95/ngx/commit/fcc891b140585f6b96f35137a0cdeb4d22f863de))
+- provide metadata resolver using factory fn ([#839](https://github.com/davidlj95/ngx/issues/839)) ([eef8c5a](https://github.com/davidlj95/ngx/commit/eef8c5ae1d88adef307ed2a3a74302d68b7ed1a0))
+- remove lib prefix from route values service ([#837](https://github.com/davidlj95/ngx/issues/837)) ([20733f1](https://github.com/davidlj95/ngx/commit/20733f1069daaaf5e52e2e85093abe0025291ea3))
+- remove prefix from router listener service ([#843](https://github.com/davidlj95/ngx/issues/843)) ([e5e2b7b](https://github.com/davidlj95/ngx/commit/e5e2b7b6a3ad1c762303198fed7ec901fc648093))
+- remove underscore prefix from core feature APIs ([#861](https://github.com/davidlj95/ngx/issues/861)) ([eeae8dc](https://github.com/davidlj95/ngx/commit/eeae8dc3e0c5c5eb7a0f01e72d3e2d3e53495e56))
+- remove underscore prefix from module name ([#870](https://github.com/davidlj95/ngx/issues/870)) ([23d8a0e](https://github.com/davidlj95/ngx/commit/23d8a0ed00e938688a0c7a06a0247de70c21bbc6))
+- rename defaults token to defaults ([#838](https://github.com/davidlj95/ngx/issues/838)) ([b85ca2c](https://github.com/davidlj95/ngx/commit/b85ca2cc6be2f4b14822f0d623a097f30a83d804))
+- simplify route metadata strategy ([#845](https://github.com/davidlj95/ngx/issues/845)) ([5c1a2e7](https://github.com/davidlj95/ngx/commit/5c1a2e7ab3f244b217adfa7395fd92a820014d5d))
+- turn metadata registry into a lightweight token ([#872](https://github.com/davidlj95/ngx/issues/872)) ([cbf54bc](https://github.com/davidlj95/ngx/commit/cbf54bcab87a930b80a80d71e2fa1aef2772ac27))
+- turn router listener into a lightweight injectable ([#844](https://github.com/davidlj95/ngx/issues/844)) ([58b240e](https://github.com/davidlj95/ngx/commit/58b240e60205e4822a963e879ca92808487c6c50))
+- use core provider API from module API ([#874](https://github.com/davidlj95/ngx/issues/874)) ([c1212b7](https://github.com/davidlj95/ngx/commit/c1212b74ec8e8afefe40c46170c30b1b44f093b2))
+- use inject for route listener init ([#842](https://github.com/davidlj95/ngx/issues/842)) ([df7349e](https://github.com/davidlj95/ngx/commit/df7349e7d01c9a0ef85c4cf7f094a691bef31d59))
+- use route metadata strategy to get route values ([#847](https://github.com/davidlj95/ngx/issues/847)) ([fac8e4a](https://github.com/davidlj95/ngx/commit/fac8e4a0425a798d147781692db5c308b770a6b8))
+
+### Build System
+
+- add missing commitlint types dev dep ([#835](https://github.com/davidlj95/ngx/issues/835)) ([d2cca3d](https://github.com/davidlj95/ngx/commit/d2cca3dbbc95e0c91703de18dd3de551ca80cb19))
+- **deps:** update actions/setup-node digest to 0a44ba7 ([69aa5fb](https://github.com/davidlj95/ngx/commit/69aa5fb17b1fe58c76ffc39d32a46c3213f4e133))
+- **deps:** update dependency mkdocs-material to v9.5.39 ([c5be2b8](https://github.com/davidlj95/ngx/commit/c5be2b84463bd1ae9e28f8996dcb8db870dbf66a))
+- **deps:** update peter-evans/create-pull-request digest to 5e91468 ([ec39a40](https://github.com/davidlj95/ngx/commit/ec39a402829410dcc081d0f8ae83f8a5596b0570))
+- **deps:** update pnpm to v9.11.0 ([021902e](https://github.com/davidlj95/ngx/commit/021902ef6fa4541d3a1a88663298bc3572a0c32e))
+- **deps:** update rhysd/actionlint:latest docker digest to 89d3f90 ([7a6165a](https://github.com/davidlj95/ngx/commit/7a6165a4328f1d5654f04a1ece3fe1399f4fd795))
+- **dev-deps:** update dependency @cypress/code-coverage to v3.13.2 ([77c04cf](https://github.com/davidlj95/ngx/commit/77c04cfa68a34caa4520dc4edc4abd28495f8c88))
+- **dev-deps:** update dependency execa to v9.4.0 ([2deb03b](https://github.com/davidlj95/ngx/commit/2deb03bd920781504bc8e054596b6485a018e0b6))
+- **dev-deps:** update dependency nyc to v17.1.0 ([701eb67](https://github.com/davidlj95/ngx/commit/701eb67a3304e181441acd035370c0e12dbbfd51))
+- **dev-deps:** update dependency semantic-release to v24.1.2 ([3a46457](https://github.com/davidlj95/ngx/commit/3a46457fc1ac6e2de3951c99e8009b7c125fbd3c))
+- move files for format ignore to global gitignore ([#833](https://github.com/davidlj95/ngx/issues/833)) ([3f1d6b6](https://github.com/davidlj95/ngx/commit/3f1d6b67d5b88975057475e5903896a66c30da0e))
+
 ## [`ngx-meta` v1.0.0-beta.13](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.12...ngx-meta-v1.0.0-beta.13) (2024-09-25)
 
 ### Features

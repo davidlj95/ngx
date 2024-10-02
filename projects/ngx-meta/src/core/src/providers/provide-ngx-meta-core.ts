@@ -1,7 +1,6 @@
 import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core'
 import { CoreFeatures, providersFromCoreFeatures } from './core-feature'
 import { provideNgxMetaService } from '../service/ngx-meta.service'
-import { provideNoOpRelativeUrlResolver } from '../url-resolution/no-op-relative-url-resolver'
 
 /**
  * Provides `ngx-meta`'s core library services.
@@ -25,6 +24,5 @@ export const provideNgxMetaCore = (
 ): EnvironmentProviders =>
   makeEnvironmentProviders([
     provideNgxMetaService(),
-    provideNoOpRelativeUrlResolver(),
     providersFromCoreFeatures(features),
   ])

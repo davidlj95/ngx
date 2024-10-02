@@ -4,7 +4,6 @@ import {
   RELATIVE_URL_RESOLVER,
   RelativeUrlResolver,
 } from './relative-url-resolver'
-import { provideNoOpRelativeUrlResolver } from './no-op-relative-url-resolver'
 
 describe('URL resolver', () => {
   describe('when no URL is given', () => {
@@ -81,7 +80,6 @@ const makeSut = (
 ) => {
   TestBed.configureTestingModule({
     providers: [
-      provideNoOpRelativeUrlResolver(),
       opts.relativeUrlResolver
         ? {
             provide: RELATIVE_URL_RESOLVER,

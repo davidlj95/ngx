@@ -1,6 +1,6 @@
 import { inject, InjectionToken } from '@angular/core'
 import { AngularRouterUrl } from './angular-router-url'
-import { _RELATIVE_URL_RESOLVER } from './relative-url-resolver'
+import { RELATIVE_URL_RESOLVER } from './relative-url-resolver'
 
 /**
  * Resolves relative URLs into absolute URLs if a base URL was provided.
@@ -14,7 +14,7 @@ export const _URL_RESOLVER = new InjectionToken<_UrlResolver>(
   ngDevMode ? 'NgxMeta URL Resolver' : 'NgxMetaUR',
   {
     factory: () => {
-      const relativeUrlResolver = inject(_RELATIVE_URL_RESOLVER)
+      const relativeUrlResolver = inject(RELATIVE_URL_RESOLVER)
       return (url) => {
         if (url === undefined || url === null) {
           return url

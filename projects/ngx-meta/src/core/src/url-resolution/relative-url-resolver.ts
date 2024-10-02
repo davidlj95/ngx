@@ -3,18 +3,18 @@ import { BaseUrl } from './base-url'
 import { Router } from '@angular/router'
 import { ANGULAR_ROUTER_URL, AngularRouterUrl } from './angular-router-url'
 
-export type _RelativeUrlResolver = (url: string | AngularRouterUrl) => string
+export type RelativeUrlResolver = (url: string | AngularRouterUrl) => string
 
-export const _RELATIVE_URL_RESOLVER = new InjectionToken<_RelativeUrlResolver>(
+export const RELATIVE_URL_RESOLVER = new InjectionToken<RelativeUrlResolver>(
   ngDevMode ? 'NgxMeta Relative URL Resolver' : 'NgxMetaRUR',
 )
 
-export const _provideRelativeUrlResolver: (baseUrl: BaseUrl) => Provider = (
+export const provideRelativeUrlResolver: (baseUrl: BaseUrl) => Provider = (
   baseUrl,
 ) => ({
-  provide: _RELATIVE_URL_RESOLVER,
+  provide: RELATIVE_URL_RESOLVER,
   useFactory:
-    (router: Router): _RelativeUrlResolver =>
+    (router: Router): RelativeUrlResolver =>
     (givenUrl) => {
       const relativeUrl =
         givenUrl === ANGULAR_ROUTER_URL ? router.url : givenUrl

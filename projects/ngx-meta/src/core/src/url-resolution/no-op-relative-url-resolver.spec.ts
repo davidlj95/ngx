@@ -1,16 +1,16 @@
-import { __noOpRelativeUrlResolver } from './no-op-relative-url-resolver'
+import { noOpRelativeUrlResolver } from './no-op-relative-url-resolver'
 import { ANGULAR_ROUTER_URL } from './angular-router-url'
-import { _RelativeUrlResolver } from './relative-url-resolver'
+import { RelativeUrlResolver } from './relative-url-resolver'
 
 describe('No Op relative URL resolver', () => {
-  const sut = __noOpRelativeUrlResolver
+  const sut = noOpRelativeUrlResolver
 
   beforeEach(() => {
     spyOn(console, 'warn')
   })
 
   describe('when Angular router URL is given', () => {
-    const url: Parameters<_RelativeUrlResolver>[0] = ANGULAR_ROUTER_URL
+    const url: Parameters<RelativeUrlResolver>[0] = ANGULAR_ROUTER_URL
 
     it('should log a message when an Angular router URL is used as value', () => {
       sut(url)

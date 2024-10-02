@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { ANGULAR_ROUTER_URL } from './angular-router-url'
 import { _URL_RESOLVER } from './url-resolver'
-import { _provideRelativeUrlResolver } from './relative-url-resolver'
+import { provideRelativeUrlResolver } from './relative-url-resolver'
 import { Component } from '@angular/core'
 
 describe('Relative URL resolver', () => {
@@ -86,7 +86,7 @@ async function makeSut(opts: { baseUrl: string; initialUrl?: string }) {
 
   TestBed.configureTestingModule({
     providers: [
-      _provideRelativeUrlResolver(opts.baseUrl),
+      provideRelativeUrlResolver(opts.baseUrl),
       opts.initialUrl
         ? provideRouter([
             {

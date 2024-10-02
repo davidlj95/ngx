@@ -2,12 +2,12 @@ import { ANGULAR_ROUTER_URL } from './angular-router-url'
 import { _formatDevMessage } from '../messaging'
 import { MODULE_NAME } from '../module-name'
 import {
-  _RELATIVE_URL_RESOLVER,
-  _RelativeUrlResolver,
+  RELATIVE_URL_RESOLVER,
+  RelativeUrlResolver,
 } from './relative-url-resolver'
 import { Provider } from '@angular/core'
 
-export const __noOpRelativeUrlResolver: _RelativeUrlResolver = (url) => {
+export const noOpRelativeUrlResolver: RelativeUrlResolver = (url) => {
   ngDevMode &&
     url === ANGULAR_ROUTER_URL &&
     console.warn(
@@ -23,7 +23,7 @@ export const __noOpRelativeUrlResolver: _RelativeUrlResolver = (url) => {
   return url.toString()
 }
 
-export const _NO_OP_RELATIVE_URL_RESOLVER_PROVIDER: Provider = {
-  provide: _RELATIVE_URL_RESOLVER,
-  useValue: __noOpRelativeUrlResolver,
-}
+export const provideNoOpRelativeUrlResolver: () => Provider = () => ({
+  provide: RELATIVE_URL_RESOLVER,
+  useValue: noOpRelativeUrlResolver,
+})

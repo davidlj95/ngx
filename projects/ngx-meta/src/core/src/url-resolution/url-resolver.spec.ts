@@ -1,96 +1,32 @@
 import { TestBed } from '@angular/core/testing'
-import { _URL_RESOLVER, _UrlResolver } from './url-resolver'
-import {
-  RELATIVE_URL_RESOLVER,
-  RelativeUrlResolver,
-} from './relative-url-resolver'
+import { _URL_RESOLVER } from './url-resolver'
+import { noOpUrlResolver } from './no-op-url-resolver'
+import { Provider } from '@angular/core'
+import { provideDefaultUrlResolver } from './default-url-resolver'
 
 describe('URL resolver', () => {
-  describe('when no URL is given', () => {
-    const TEST_CASES = [null, undefined]
-    TEST_CASES.forEach((testCase) => {
-      describe(`like when URL is ${testCase}`, () => {
-        it(`should return ${testCase}`, () => {
-          const sut = makeSut()
+  it('should provide no op URL resolver by default', () => {
+    const sut = makeSut()
 
-          expect(sut(testCase)).toEqual(testCase)
-        })
-      })
-    })
+    expect(sut).toEqual(noOpUrlResolver)
   })
 
-  describe('when URL is absolute', () => {
-    const absoluteUrlString = 'https://absolute.example.com'
-    const TEST_CASES = [
-      { absoluteUrl: absoluteUrlString },
-      { absoluteUrl: new URL(absoluteUrlString) },
-    ] satisfies ReadonlyArray<{ absoluteUrl: URL | string }>
-
-    TEST_CASES.forEach((testCase) => {
-      describe(`like a URL ${typeof testCase.absoluteUrl}`, () => {
-        let sut: _UrlResolver
-        let relativeUrlResolver: jasmine.Spy<RelativeUrlResolver>
-
-        beforeEach(() => {
-          relativeUrlResolver = jasmine.createSpy()
-          sut = makeSut({ relativeUrlResolver })
-        })
-
-        it('should return the given absolute URL as a string', () => {
-          expect(sut(testCase.absoluteUrl)).toEqual(
-            testCase.absoluteUrl.toString(),
-          )
-        })
-
-        it(`should not use the relative URL resolver`, () => {
-          sut(testCase.absoluteUrl)
-
-          expect(relativeUrlResolver).not.toHaveBeenCalled()
-        })
-      })
-    })
-  })
-
-  describe('when URL is relative', () => {
-    const dummyResolvedUrl = 'dummy-resolved-url'
-
-    let sut: _UrlResolver
-    let relativeUrlResolver: jasmine.Spy<RelativeUrlResolver>
-
-    beforeEach(() => {
-      relativeUrlResolver = jasmine
-        .createSpy()
-        .and.returnValue(dummyResolvedUrl)
-
-      sut = makeSut({ relativeUrlResolver })
+  it('should override no op URL resolver when another one is specified', () => {
+    const sut = makeSut({
+      providers: [provideDefaultUrlResolver('https://example.com')],
     })
 
-    const TEST_CASES = ['foo', '']
-    TEST_CASES.forEach((testCase) => {
-      describe(`like when URL is '${testCase}'`, () => {
-        it('should return the resolved URL', () => {
-          expect(sut(testCase)).toEqual(dummyResolvedUrl)
-          expect(relativeUrlResolver).toHaveBeenCalledWith(testCase)
-        })
-      })
-    })
+    expect(sut).not.toEqual(noOpUrlResolver)
   })
 })
 
 const makeSut = (
   opts: {
-    relativeUrlResolver?: RelativeUrlResolver
+    providers?: Provider[]
   } = {},
 ) => {
   TestBed.configureTestingModule({
-    providers: [
-      opts.relativeUrlResolver
-        ? {
-            provide: RELATIVE_URL_RESOLVER,
-            useValue: opts.relativeUrlResolver,
-          }
-        : [],
-    ],
+    providers: opts.providers ?? [],
   })
   return TestBed.inject(_URL_RESOLVER)
 }

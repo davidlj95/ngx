@@ -4,7 +4,7 @@ import {
   CoreFeature,
   CoreFeatureKind,
 } from '../providers/core-feature'
-import { provideDefaultRelativeUrlResolver } from './default-relative-url-resolver'
+import { provideDefaultUrlResolver } from './default-url-resolver'
 
 /**
  * Provides a base URL to enable resolving relative URLs. Including relative
@@ -53,6 +53,4 @@ import { provideDefaultRelativeUrlResolver } from './default-relative-url-resolv
 export const withNgxMetaBaseUrl = (
   baseUrl: BaseUrl,
 ): CoreFeature<CoreFeatureKind.BaseUrl> =>
-  coreFeature(CoreFeatureKind.BaseUrl, [
-    provideDefaultRelativeUrlResolver(baseUrl),
-  ])
+  coreFeature(CoreFeatureKind.BaseUrl, [provideDefaultUrlResolver(baseUrl)])

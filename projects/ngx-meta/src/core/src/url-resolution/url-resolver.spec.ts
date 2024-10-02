@@ -81,7 +81,7 @@ const makeSut = (
 ) => {
   TestBed.configureTestingModule({
     providers: [
-      provideNoOpRelativeUrlResolver,
+      provideNoOpRelativeUrlResolver(),
       opts.relativeUrlResolver
         ? {
             provide: RELATIVE_URL_RESOLVER,

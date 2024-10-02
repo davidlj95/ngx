@@ -1,4 +1,6 @@
 /**
- * @internal
+ * Base URL type for {@link withNgxMetaBaseUrl} feature
+ *
+ * @public
  */
-export type _BaseUrl = string
+export type BaseUrl = string

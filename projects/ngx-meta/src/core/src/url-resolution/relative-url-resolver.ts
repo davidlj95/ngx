@@ -1,5 +1,5 @@
 import { InjectionToken, Provider } from '@angular/core'
-import { _BaseUrl } from './base-url'
+import { BaseUrl } from './base-url'
 import { Router } from '@angular/router'
 import { ANGULAR_ROUTER_URL, AngularRouterUrl } from './angular-router-url'
 
@@ -9,7 +9,7 @@ export const _RELATIVE_URL_RESOLVER = new InjectionToken<_RelativeUrlResolver>(
   ngDevMode ? 'NgxMeta Relative URL Resolver' : 'NgxMetaRUR',
 )
 
-export const _provideRelativeUrlResolver: (baseUrl: _BaseUrl) => Provider = (
+export const _provideRelativeUrlResolver: (baseUrl: BaseUrl) => Provider = (
   baseUrl,
 ) => ({
   provide: _RELATIVE_URL_RESOLVER,

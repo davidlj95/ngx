@@ -18,8 +18,8 @@ export const ANGULAR_ROUTER_URL: unique symbol;
 // @public
 export type AngularRouterUrl = typeof ANGULAR_ROUTER_URL;
 
-// @internal (undocumented)
-type _BaseUrl = string;
+// @public
+export type BaseUrl = string;
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
 //
@@ -526,10 +526,8 @@ export const _URL_RESOLVER: InjectionToken<_UrlResolver>;
 // @internal (undocumented)
 export type _UrlResolver = (url: URL | string | undefined | null | AngularRouterUrl) => string | undefined | null;
 
-// Warning: (ae-forgotten-export) The symbol "_BaseUrl" needs to be exported by the entry point all-entry-points.d.ts
-//
 // @public
-export const withNgxMetaBaseUrl: (baseUrl: _BaseUrl) => CoreFeature<CoreFeatureKind.BaseUrl>;
+export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKind.BaseUrl>;
 
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;

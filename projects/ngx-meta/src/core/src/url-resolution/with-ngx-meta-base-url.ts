@@ -1,4 +1,4 @@
-import { _BaseUrl } from './base-url'
+import { BaseUrl } from './base-url'
 import {
   coreFeature,
   CoreFeature,
@@ -42,6 +42,6 @@ import { _provideRelativeUrlResolver } from './relative-url-resolver'
  * @public
  */
 export const withNgxMetaBaseUrl = (
-  baseUrl: _BaseUrl,
+  baseUrl: BaseUrl,
 ): CoreFeature<CoreFeatureKind.BaseUrl> =>
   coreFeature(CoreFeatureKind.BaseUrl, [_provideRelativeUrlResolver(baseUrl)])

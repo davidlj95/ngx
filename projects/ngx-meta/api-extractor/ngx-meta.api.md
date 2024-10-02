@@ -374,7 +374,7 @@ export const provideNgxMetaOpenGraph: () => Provider[];
 export const provideNgxMetaOpenGraphProfile: () => Provider[];
 
 // @public
-export const provideNgxMetaRouting: () => Provider[];
+export const provideNgxMetaRouting: () => EnvironmentProviders;
 
 // @public
 export const provideNgxMetaStandard: () => Provider[];

@@ -14,7 +14,7 @@ export class NgxMetaRoutingModule {
   static forRoot(): ModuleWithProviders<NgxMetaRoutingModule> {
     return {
       ngModule: NgxMetaRoutingModule,
-      providers: provideNgxMetaRouting(),
+      providers: [provideNgxMetaRouting()],
     }
   }
 }

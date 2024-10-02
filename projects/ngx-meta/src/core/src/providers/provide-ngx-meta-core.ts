@@ -20,4 +20,4 @@ import { CoreFeatures, providersFromCoreFeatures } from './core-feature'
 export const provideNgxMetaCore = (
   ...features: CoreFeatures
 ): EnvironmentProviders =>
-  makeEnvironmentProviders([...providersFromCoreFeatures(features)])
+  makeEnvironmentProviders(providersFromCoreFeatures(features))

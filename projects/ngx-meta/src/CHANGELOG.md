@@ -1,3 +1,21 @@
+## [`ngx-meta` v1.0.0-beta.15](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.14...ngx-meta-v1.0.0-beta.15) (2024-10-02)
+
+### Features
+
+- add URLs resolution given a base URL ([#798](https://github.com/davidlj95/ngx/issues/798)) ([712436f](https://github.com/davidlj95/ngx/commit/712436fe09157eee9912a6ca24a3d626da0dfa57))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#876](https://github.com/davidlj95/ngx/issues/876)) ([d0fd446](https://github.com/davidlj95/ngx/commit/d0fd4463cd5f8d0ef91b60ed84d0ac2e02abffef))
+
+### Code Refactoring
+
+- turn meta service into abstract class with factory provider ([#873](https://github.com/davidlj95/ngx/issues/873)) ([1fdf846](https://github.com/davidlj95/ngx/commit/1fdf846a1cdf6cf9cd20a3c8dda6076ebb7d5610))
+
+### Tests
+
+- improve router listener unit tests ([#877](https://github.com/davidlj95/ngx/issues/877)) ([ae0f46d](https://github.com/davidlj95/ngx/commit/ae0f46df96f04bb1f32d4db39e78eaa24c0af287))
+
 ## [`ngx-meta` v1.0.0-beta.14](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.13...ngx-meta-v1.0.0-beta.14) (2024-10-02)
 
 ### Features

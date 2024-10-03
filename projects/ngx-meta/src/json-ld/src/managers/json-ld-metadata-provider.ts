@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common'
 import {
   _HEAD_ELEMENT_UPSERT_OR_REMOVE,
   _HeadElementUpsertOrRemove,
+  _isDefined,
   makeMetadataManagerProviderFromSetterFactory,
   MetadataSetterFactory,
 } from '@davidlj95/ngx-meta/core'
@@ -16,7 +17,7 @@ export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   (headElementUpsertOrRemove: _HeadElementUpsertOrRemove, doc: Document) =>
   (jsonLd) => {
     let scriptElement: HTMLScriptElement | undefined
-    if (jsonLd !== null && jsonLd !== undefined) {
+    if (_isDefined(jsonLd)) {
       scriptElement = doc.createElement('script')
       scriptElement.setAttribute('type', SCRIPT_TYPE)
       scriptElement.innerHTML = JSON.stringify(jsonLd)

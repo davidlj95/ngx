@@ -3,6 +3,7 @@ import {
   _GLOBAL_CANONICAL_URL,
   _HEAD_ELEMENT_UPSERT_OR_REMOVE,
   _HeadElementUpsertOrRemove,
+  _isDefined,
   _maybeNonHttpUrlDevMessage,
   _URL_RESOLVER,
   _UrlResolver,
@@ -28,7 +29,7 @@ export const STANDARD_CANONICAL_URL_SETTER_FACTORY: (
         shouldInsteadOfMust: true,
       })
     let linkElement: HTMLLinkElement | undefined
-    if (resolvedUrl !== null && resolvedUrl !== undefined) {
+    if (_isDefined(resolvedUrl)) {
       linkElement = doc.createElement(LINK_TAG)
       linkElement.setAttribute(REL_ATTR, CANONICAL_VAL)
       linkElement.setAttribute('href', resolvedUrl)

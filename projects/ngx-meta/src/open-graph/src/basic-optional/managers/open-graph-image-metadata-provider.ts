@@ -1,6 +1,7 @@
 import { OpenGraph } from '../../types'
 import {
   _GLOBAL_IMAGE,
+  _isDefined,
   _maybeNonHttpUrlDevMessage,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
@@ -21,8 +22,9 @@ export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
   (metaService: NgxMetaMetaService) =>
   (value: OpenGraph[typeof _GLOBAL_IMAGE]) => {
     const imageUrl = value?.url?.toString()
-    const effectiveValue: OpenGraph[typeof _GLOBAL_IMAGE] =
-      imageUrl !== undefined && imageUrl !== null ? value : NO_KEY_VALUE
+    const effectiveValue: OpenGraph[typeof _GLOBAL_IMAGE] = _isDefined(imageUrl)
+      ? value
+      : NO_KEY_VALUE
     // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
     ngDevMode &&
       _maybeNonHttpUrlDevMessage(imageUrl, {

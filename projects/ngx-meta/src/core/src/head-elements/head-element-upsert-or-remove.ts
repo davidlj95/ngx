@@ -1,5 +1,6 @@
 import { inject, InjectionToken } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
+import { _isDefined } from '../utils'
 
 /**
  * @internal
@@ -16,7 +17,7 @@ export const _HEAD_ELEMENT_UPSERT_OR_REMOVE =
             head.removeChild(existingScriptElement)
           }
 
-          if (element === null || element === undefined) {
+          if (!_isDefined(element)) {
             return
           }
           head.appendChild(element)

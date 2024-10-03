@@ -1,12 +1,16 @@
 import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import { Standard } from '../types'
 import { Title } from '@angular/platform-browser'
-import { _GLOBAL_TITLE, MetadataSetterFactory } from '@davidlj95/ngx-meta/core'
+import {
+  _GLOBAL_TITLE,
+  _isDefined,
+  MetadataSetterFactory,
+} from '@davidlj95/ngx-meta/core'
 
 export const STANDARD_TITLE_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof _GLOBAL_TITLE]
 > = (titleService: Title) => (value) => {
-  if (value === undefined || value === null) {
+  if (!_isDefined(value)) {
     return
   }
   titleService.setTitle(value)

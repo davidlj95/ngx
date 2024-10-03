@@ -2,6 +2,7 @@ import { MetadataValues } from '../service'
 import { InjectionToken } from '@angular/core'
 import { MetadataResolverOptions } from '../managers'
 import { isObject } from '../utils/is-object'
+import { _isDefined } from '../utils'
 
 export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
   ngDevMode ? 'NgxMeta JSON Resolver' : 'NgxMetaJR',
@@ -14,7 +15,7 @@ export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
       const keys = [...resolverOptions.jsonPath]
       let value: unknown = values
       for (const key of keys) {
-        if (value === undefined || value === null) {
+        if (!_isDefined(value)) {
           break
         }
         value = (value as StringIndexedObject)[key]

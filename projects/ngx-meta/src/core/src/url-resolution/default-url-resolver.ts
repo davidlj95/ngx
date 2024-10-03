@@ -3,6 +3,7 @@ import { BaseUrl } from './base-url'
 import { _URL_RESOLVER, _UrlResolver } from './url-resolver'
 import { ANGULAR_ROUTER_URL } from './angular-router-url'
 import { Router } from '@angular/router'
+import { _isDefined } from '../utils'
 
 export const provideDefaultUrlResolver: (baseUrl: BaseUrl) => Provider = (
   baseUrl,
@@ -11,7 +12,7 @@ export const provideDefaultUrlResolver: (baseUrl: BaseUrl) => Provider = (
   useFactory: (): _UrlResolver => {
     const router = inject(Router)
     return (url) => {
-      if (url === undefined || url === null) {
+      if (!_isDefined(url)) {
         return url
       }
       const urlString = url.toString()

@@ -14,16 +14,28 @@ export const shouldContainAllStandardMetadata = () =>
           .and('eq', metadata.standard.keywords.join(','))
         cy.getMeta('generator')
           .shouldHaveContent()
-          .and('match', /^Angular v/)
+          .and('match', /^Angular v1/)
         //👆 v1 cause we E2E test v15+
         cy.getMeta('application-name')
           .shouldHaveContent()
           .and('eq', metadata.applicationName)
         standardCanonicalUrlShouldEqual(metadata.canonicalUrl)
         cy.get('html').should('have.attr', 'lang').and('eq', metadata.locale)
-        cy.getMeta('theme-color')
-          .shouldHaveContent()
-          .and('eq', metadata.standard.themeColor)
+        cy.getMetas('theme-color')
+          .should('have.length', metadata.standard.themeColor.length)
+          .each((element, index) => {
+            cy.wrap(element)
+              .shouldHaveContent()
+              .and('eq', metadata.standard.themeColor[index].color)
+            const media = metadata.standard.themeColor[index].media
+            if (media) {
+              cy.wrap(element)
+                .should('have.attr', 'media')
+                .and('eq', metadata.standard.themeColor[index].media)
+            } else {
+              cy.wrap(element).should('not.have.attr', 'media')
+            }
+          })
       },
     )
   })

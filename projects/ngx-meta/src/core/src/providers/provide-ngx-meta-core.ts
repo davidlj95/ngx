@@ -13,6 +13,7 @@ import { provideNgxMetaService } from '../service/ngx-meta.service'
  * Configures also extra features:
  *
  * - {@link withNgxMetaDefaults}
+ *
  * - {@link withNgxMetaBaseUrl}
  *
  * @param features - Features to configure

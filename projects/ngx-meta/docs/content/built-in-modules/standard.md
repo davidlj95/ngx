@@ -1,6 +1,6 @@
 # Standard
 
-This module allows managing HTML `#!html <meta>` tags whose `name` attribute is defined in the HTML specification and the site's `#!html <title>`. We call those [standard meta tags]
+This module allows managing HTML `#!html <meta>` tags whose [`name` attribute is defined in the HTML specification][html-spec-standard-metas] and the site's `#!html <title>`. We call those [standard meta tags]
 
 ## Setup
 
@@ -65,4 +65,6 @@ import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
 ## Resources
 
 - [List of standard metas in MDN][standard meta tags]
-- [Standard metadata names in HTML specification](https://html.spec.whatwg.org/multipage/semantics.html#standard-metadata-names)
+- [Standard metadata names in HTML specification][html-spec-standard-metas]
+
+[html-spec-standard-metas]: https://html.spec.whatwg.org/multipage/semantics.html#standard-metadata-names

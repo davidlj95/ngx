@@ -67,4 +67,3 @@ import { JsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
 ## Resources
 
 - [Google docs about structured data][structured data]
-- [Standard metadata names in HTML specification](https://html.spec.whatwg.org/multipage/semantics.html#standard-metadata-names)

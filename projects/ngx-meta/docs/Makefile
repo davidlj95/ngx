@@ -6,7 +6,7 @@ build: prebuild
 prebuild:
 	./prebuild.sh
 
-install:
+setup:
 	poetry install --no-root
 	pnpm install
 

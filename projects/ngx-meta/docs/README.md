@@ -9,7 +9,7 @@ Project uses [Poetry](https://python-poetry.org/) to manage dependencies. `pnpm`
 To install (both Python and NPM deps), you can run for short:
 
 ```
-make install
+make setup
 ```
 
 ### Python dependencies
@@ -20,15 +20,36 @@ Poetry will also create an ad-hoc virtual environment to install dependencies th
 
 ### Python version
 
-Checkout the `pyproject.toml` file for required version. In my case, Poetry automatically read the file and grabbed a Python version installed via [homebrew](https://fontsource.org/). So eventually I didn't need any Python version manager.
+Checkout the [`pyproject.toml` file](./pyproject.toml) for required version.
 
-If needed, I personally like [`pyenv`](https://github.com/pyenv/pyenv) to manage multiple Python versions. Probably any version 3 will work so:
+Poetry automatically will read the file and determine Python version to use.
 
+It can happen that the required Python version is already installed. For instance via [homebrew](https://brew.sh/).
+
+However, now that the Python version to use is fixed in [`pyproject.toml`](./pyproject.toml), the specific minor and patch version needs to be used.
+And probably you don't have that one installed.
+
+In that case, [`pyenv`](https://github.com/pyenv/pyenv) can be used to manage multiple Python versions.
+
+```shell
+pyenv local <version> # Maybe you need `pyenv install <version>` first
 ```
-pyenv local 3
+
+You can then tell Poetry to use the active Python version for the virtual environment:
+
+```shell
+poetry config virtualenvs.prefer-active-python true
 ```
 
-Should get you up and running
+Remove the current virtual environment if any. Then create one with the proper Python version.
+That's it!
+
+```shell
+poetry env info
+poetry env remove <envFromPreviousCommand>
+```
+
+You may want to install deps as per the [setup](#setup) step again now
 
 ### NPM package
 

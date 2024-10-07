@@ -70,7 +70,7 @@ jobs:
           cache-dependency-path: ${{ env.DOCS_DIR }}/pnpm-lock.yaml
           node-version-file: .node-version
       - name: Install deps
-        run: make install
+        run: make setup
       - name: Generate cache id for Mkdocs build
         run: echo "cache_id=$(date --utc '+%V')" >> "$GITHUB_ENV"
       - name: Cache Mkdocs build

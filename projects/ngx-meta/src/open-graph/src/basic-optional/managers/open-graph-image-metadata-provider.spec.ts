@@ -1,14 +1,18 @@
 import { TestBed } from '@angular/core/testing'
-import { MockProviders } from 'ng-mocks'
-import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import { MockProvider } from 'ng-mocks'
+import {
+  NgxMetaMetadataManager,
+  NgxMetaMetaService,
+} from '@davidlj95/ngx-meta/core'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { OpenGraphImage } from './open-graph-image'
 import { OpenGraph } from '../../types'
-import { OPEN_GRAPH_IMAGE_SETTER_FACTORY } from './open-graph-image-metadata-provider'
+import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
+import { OPEN_GRAPH_IMAGE_METADATA_PROVIDER } from './open-graph-image-metadata-provider'
 
-describe('Open Graph image metadata', () => {
+describe('Open Graph image metadata manager', () => {
   enableAutoSpy()
-  let sut: MetadataSetter<OpenGraph['image']>
+  let sut: NgxMetaMetadataManager<OpenGraph['image']>
   let metaService: jasmine.SpyObj<NgxMetaMetaService>
 
   beforeEach(() => {
@@ -29,7 +33,7 @@ describe('Open Graph image metadata', () => {
 
   describe('when url is provided', () => {
     it('should set all meta properties', () => {
-      sut(image)
+      sut.set(image)
 
       const props = Object.keys(image).length
       expect(metaService.set).toHaveBeenCalledTimes(props)
@@ -62,7 +66,7 @@ describe('Open Graph image metadata', () => {
 
   describe('when no url is defined', () => {
     it('should remove all meta properties', () => {
-      sut({ ...image, url: undefined })
+      sut.set({ ...image, url: undefined })
 
       const props = Object.keys(image).length
       expect(metaService.set).toHaveBeenCalledTimes(props)
@@ -73,9 +77,12 @@ describe('Open Graph image metadata', () => {
   })
 })
 
-function makeSut(): MetadataSetter<OpenGraph['image']> {
+function makeSut(): NgxMetaMetadataManager<OpenGraph['image']> {
   TestBed.configureTestingModule({
-    providers: [MockProviders(NgxMetaMetaService)],
+    providers: [
+      MockProvider(NgxMetaMetaService),
+      OPEN_GRAPH_IMAGE_METADATA_PROVIDER,
+    ],
   })
-  return OPEN_GRAPH_IMAGE_SETTER_FACTORY(TestBed.inject(NgxMetaMetaService))
+  return injectOneMetadataManager()
 }

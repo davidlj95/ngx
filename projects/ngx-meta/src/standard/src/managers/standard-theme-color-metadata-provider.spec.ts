@@ -1,15 +1,19 @@
-import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import {
+  NgxMetaMetadataManager,
+  NgxMetaMetaService,
+} from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
-import { STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY } from './standard-theme-color-metadata-provider'
+import { STANDARD_THEME_COLOR_METADATA_PROVIDER } from './standard-theme-color-metadata-provider'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { MetaDefinition } from '@angular/platform-browser'
 import { StandardThemeColorMetadataObject } from './standard-theme-color-metadata'
+import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 
-describe('Standard theme color metadata', () => {
+describe('Standard theme color metadata manager', () => {
   enableAutoSpy()
-  let sut: MetadataSetter<Standard['themeColor']>
+  let sut: NgxMetaMetadataManager<Standard['themeColor']>
   let metaService: jasmine.SpyObj<NgxMetaMetaService>
 
   const DUMMY_COLOR = 'black'
@@ -23,7 +27,7 @@ describe('Standard theme color metadata', () => {
   })
 
   it('should call the meta service with no value when no value provided', () => {
-    sut(undefined)
+    sut.set(undefined)
 
     expect(metaService.set).toHaveBeenCalledOnceWith(
       jasmine.anything(),
@@ -32,7 +36,7 @@ describe('Standard theme color metadata', () => {
   })
 
   it('should call the meta service with the specified content when a string value is provided', () => {
-    sut(DUMMY_COLOR)
+    sut.set(DUMMY_COLOR)
 
     expect(metaService.set).toHaveBeenCalledOnceWith(
       jasmine.anything(),
@@ -41,7 +45,7 @@ describe('Standard theme color metadata', () => {
   })
 
   it('should call the meta service with no value when an empty array is provided', () => {
-    sut([])
+    sut.set([])
 
     expect(metaService.set).toHaveBeenCalledOnceWith(
       jasmine.anything(),
@@ -57,7 +61,7 @@ describe('Standard theme color metadata', () => {
     const secondMediaDefinition = {
       color: 'white',
     } satisfies MetaDefinition & StandardThemeColorMetadataObject
-    sut([firstMediaDefinition, secondMediaDefinition])
+    sut.set([firstMediaDefinition, secondMediaDefinition])
 
     expect(metaService.set).toHaveBeenCalledWith(
       jasmine.anything(),
@@ -87,11 +91,12 @@ describe('Standard theme color metadata', () => {
   })
 })
 
-function makeSut(): MetadataSetter<Standard['themeColor']> {
+function makeSut(): NgxMetaMetadataManager<Standard['themeColor']> {
   TestBed.configureTestingModule({
-    providers: [MockProvider(NgxMetaMetaService)],
+    providers: [
+      MockProvider(NgxMetaMetaService),
+      STANDARD_THEME_COLOR_METADATA_PROVIDER,
+    ],
   })
-  return STANDARD_THEME_COLOR_METADATA_SETTER_FACTORY(
-    TestBed.inject(NgxMetaMetaService),
-  )
+  return injectOneMetadataManager()
 }

@@ -1,13 +1,17 @@
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
-import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import {
+  NgxMetaMetadataManager,
+  NgxMetaMetaService,
+} from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'
-import { STANDARD_KEYWORDS_METADATA_SETTER_FACTORY } from './standard-keywords-metadata-provider'
+import { STANDARD_KEYWORDS_METADATA_PROVIDER } from './standard-keywords-metadata-provider'
+import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 
-describe('Standard keywords metadata', () => {
+describe('Standard keywords metadata manager', () => {
   enableAutoSpy()
-  let sut: MetadataSetter<Standard['keywords']>
+  let sut: NgxMetaMetadataManager<Standard['keywords']>
   let metaService: jasmine.SpyObj<NgxMetaMetaService>
 
   beforeEach(() => {
@@ -22,7 +26,7 @@ describe('Standard keywords metadata', () => {
     const secondKeyword = 'second'
     const thirdKeyword = 'third'
 
-    sut([firstKeyword, secondKeyword, thirdKeyword])
+    sut.set([firstKeyword, secondKeyword, thirdKeyword])
 
     expect(metaService.set).toHaveBeenCalledOnceWith(
       jasmine.anything(),
@@ -31,11 +35,12 @@ describe('Standard keywords metadata', () => {
   })
 })
 
-function makeSut(): MetadataSetter<Standard['keywords']> {
+function makeSut(): NgxMetaMetadataManager<Standard['keywords']> {
   TestBed.configureTestingModule({
-    providers: [MockProvider(NgxMetaMetaService)],
+    providers: [
+      MockProvider(NgxMetaMetaService),
+      STANDARD_KEYWORDS_METADATA_PROVIDER,
+    ],
   })
-  return STANDARD_KEYWORDS_METADATA_SETTER_FACTORY(
-    TestBed.inject(NgxMetaMetaService),
-  )
+  return injectOneMetadataManager()
 }

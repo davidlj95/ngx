@@ -13,6 +13,7 @@ export const NGX_META_ELEMENT_SETTER = new InjectionToken<NgxMetaElementSetter>(
       return (nameAttribute, content) => {
         const [nameAttributeName, nameAttributeValue] = nameAttribute
         const attrSelector = `${nameAttributeName}="${nameAttributeValue}"`
+        /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
         if (!content) {
           meta.removeTag(attrSelector)
           return

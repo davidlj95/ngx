@@ -33,3 +33,9 @@ export type _HeadElementUpsertOrRemove = (
   selector: string,
   element: HTMLElement | null | undefined,
 ) => void
+
+/**
+ * @internal
+ */
+export const _injectHeadElementUpsertOrRemove = () =>
+  inject(_HEAD_ELEMENT_UPSERT_OR_REMOVE)

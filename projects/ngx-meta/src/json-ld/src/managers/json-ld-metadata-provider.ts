@@ -1,21 +1,22 @@
-import { DOCUMENT } from '@angular/common'
 import {
-  _HEAD_ELEMENT_UPSERT_OR_REMOVE,
-  _HeadElementUpsertOrRemove,
+  _injectHeadElementUpsertOrRemove,
   _isDefined,
   makeMetadataManagerProviderFromSetterFactory,
   MetadataSetterFactory,
 } from '@davidlj95/ngx-meta/core'
 import { JsonLdMetadata } from './json-ld-metadata'
+import { DOCUMENT } from '@angular/common'
+import { inject } from '@angular/core'
 
 const KEY = 'jsonLd' satisfies keyof JsonLdMetadata
 const SCRIPT_TYPE = 'application/ld+json'
 
 export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   JsonLdMetadata[typeof KEY]
-> =
-  (headElementUpsertOrRemove: _HeadElementUpsertOrRemove, doc: Document) =>
-  (jsonLd) => {
+> = () => {
+  const doc = inject(DOCUMENT)
+  const headElementUpsertOrRemove = _injectHeadElementUpsertOrRemove()
+  return (jsonLd) => {
     let scriptElement: HTMLScriptElement | undefined
     if (_isDefined(jsonLd)) {
       scriptElement = doc.createElement('script')
@@ -24,6 +25,7 @@ export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
     }
     headElementUpsertOrRemove(`script[type='${SCRIPT_TYPE}']`, scriptElement)
   }
+}
 
 /**
  * Manages the {@link JsonLdMetadata.jsonLd} metadata
@@ -33,7 +35,6 @@ export const JSON_LD_METADATA_PROVIDER =
   makeMetadataManagerProviderFromSetterFactory(
     JSON_LD_METADATA_SETTER_FACTORY,
     {
-      d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
       jP: [KEY],
     },
   )

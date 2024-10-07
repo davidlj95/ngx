@@ -1,14 +1,18 @@
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
-import { MetadataSetter, NgxMetaMetaService } from '@davidlj95/ngx-meta/core'
+import {
+  NgxMetaMetadataManager,
+  NgxMetaMetaService,
+} from '@davidlj95/ngx-meta/core'
 import { VERSION } from '@angular/core'
 import { Standard } from '../types'
-import { STANDARD_GENERATOR_METADATA_SETTER_FACTORY } from './standard-generator-metadata-provider'
+import { STANDARD_GENERATOR_METADATA_PROVIDER } from './standard-generator-metadata-provider'
+import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 
-describe('Standard generator metadata', () => {
+describe('Standard generator metadata manager', () => {
   enableAutoSpy()
-  let sut: MetadataSetter<Standard['generator']>
+  let sut: NgxMetaMetadataManager<Standard['generator']>
   let metaService: jasmine.SpyObj<NgxMetaMetaService>
 
   beforeEach(() => {
@@ -18,34 +22,42 @@ describe('Standard generator metadata', () => {
     ) as jasmine.SpyObj<NgxMetaMetaService>
   })
 
-  it('when not provided should call meta service with nothing value', () => {
-    sut(undefined)
+  describe('when not provided', () => {
+    const TEST_CASES = [null, undefined]
+    TEST_CASES.forEach((testCase) => {
+      describe(`like when ${testCase}`, () => {
+        it(`should call meta service with ${testCase}`, () => {
+          sut.set(undefined)
 
-    expect(metaService.set).toHaveBeenCalledOnceWith(
-      jasmine.anything(),
-      undefined,
-    )
+          expect(metaService.set).toHaveBeenCalledOnceWith(
+            jasmine.anything(),
+            undefined,
+          )
+        })
+      })
+    })
   })
-  it('when null should call meta service with null value', () => {
-    sut(null)
 
-    expect(metaService.set).toHaveBeenCalledOnceWith(jasmine.anything(), null)
-  })
-  it('when true should call meta service with Angular version as value', () => {
-    sut(true)
+  describe('when true', () => {
+    const value: Standard['generator'] = true
 
-    expect(metaService.set).toHaveBeenCalledOnceWith(
-      jasmine.anything(),
-      `Angular v${VERSION.full}`,
-    )
+    it('should call meta service with Angular version as value', () => {
+      sut.set(value)
+
+      expect(metaService.set).toHaveBeenCalledOnceWith(
+        jasmine.anything(),
+        `Angular v${VERSION.full}`,
+      )
+    })
   })
 })
 
-function makeSut(): MetadataSetter<Standard['generator']> {
+function makeSut(): NgxMetaMetadataManager<Standard['generator']> {
   TestBed.configureTestingModule({
-    providers: [MockProvider(NgxMetaMetaService)],
+    providers: [
+      MockProvider(NgxMetaMetaService),
+      STANDARD_GENERATOR_METADATA_PROVIDER,
+    ],
   })
-  return STANDARD_GENERATOR_METADATA_SETTER_FACTORY(
-    TestBed.inject(NgxMetaMetaService),
-  )
+  return injectOneMetadataManager()
 }

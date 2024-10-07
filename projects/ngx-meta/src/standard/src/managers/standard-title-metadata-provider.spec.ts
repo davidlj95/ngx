@@ -2,13 +2,14 @@ import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { Title } from '@angular/platform-browser'
-import { MetadataSetter } from '@davidlj95/ngx-meta/core'
+import { NgxMetaMetadataManager } from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'
-import { STANDARD_TITLE_METADATA_SETTER_FACTORY } from './standard-title-metadata-provider'
+import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
+import { STANDARD_TITLE_METADATA_PROVIDER } from './standard-title-metadata-provider'
 
-describe('Standard title metadata', () => {
+describe('Standard title metadata manager', () => {
   enableAutoSpy()
-  let sut: MetadataSetter<Standard['title']>
+  let sut: NgxMetaMetadataManager<Standard['title']>
   let titleService: jasmine.SpyObj<Title>
 
   beforeEach(() => {
@@ -17,7 +18,7 @@ describe('Standard title metadata', () => {
   })
 
   it('should not update title when title is not provided ', () => {
-    sut(undefined)
+    sut.set(undefined)
 
     expect(titleService.setTitle).not.toHaveBeenCalled()
   })
@@ -25,7 +26,7 @@ describe('Standard title metadata', () => {
   it('should update title when title is empty ', () => {
     const pageTitle = ''
 
-    sut(pageTitle)
+    sut.set(pageTitle)
 
     expect(titleService.setTitle).toHaveBeenCalledOnceWith(pageTitle)
   })
@@ -33,15 +34,15 @@ describe('Standard title metadata', () => {
   it('should update title when title is provided', () => {
     const pageTitle = 'Page title'
 
-    sut(pageTitle)
+    sut.set(pageTitle)
 
     expect(titleService.setTitle).toHaveBeenCalledOnceWith(pageTitle)
   })
 })
 
-function makeSut(): MetadataSetter<Standard['title']> {
+function makeSut(): NgxMetaMetadataManager<Standard['title']> {
   TestBed.configureTestingModule({
-    providers: [MockProvider(Title)],
+    providers: [MockProvider(Title), STANDARD_TITLE_METADATA_PROVIDER],
   })
-  return STANDARD_TITLE_METADATA_SETTER_FACTORY(TestBed.inject(Title))
+  return injectOneMetadataManager()
 }

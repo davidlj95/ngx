@@ -4,12 +4,14 @@ import {
   _HeadElementUpsertOrRemove,
   _URL_RESOLVER,
   _UrlResolver,
+  NgxMetaMetadataManager,
 } from '@davidlj95/ngx-meta/core'
 import { TestBed } from '@angular/core/testing'
-import { STANDARD_CANONICAL_URL_SETTER_FACTORY } from './standard-canonical-url-metadata-provider'
-import { DOCUMENT } from '@angular/common'
+import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
+import { Standard } from '../types'
+import { STANDARD_CANONICAL_URL_METADATA_PROVIDER } from './standard-canonical-url-metadata-provider'
 
-describe('Standard canonical URL metadata provider', () => {
+describe('Standard canonical URL metadata manager', () => {
   enableAutoSpy()
 
   const LINK_REL_CANONICAL_SELECTOR = "link[rel='canonical']"
@@ -23,7 +25,7 @@ describe('Standard canonical URL metadata provider', () => {
             jasmine.createSpy<_HeadElementUpsertOrRemove>()
           const sut = makeSut({ headElementUpsertOrRemove })
 
-          sut(testCase)
+          sut.set(testCase)
 
           expect(headElementUpsertOrRemove).toHaveBeenCalledWith(
             LINK_REL_CANONICAL_SELECTOR,
@@ -51,7 +53,7 @@ describe('Standard canonical URL metadata provider', () => {
         })
       const sut = makeSut({ headElementUpsertOrRemove })
 
-      sut(dummyAbsoluteUrl)
+      sut.set(dummyAbsoluteUrl)
 
       expect(receivedSelector).toEqual(LINK_REL_CANONICAL_SELECTOR)
       expect(receivedElement?.tagName.toLowerCase()).toEqual('link')
@@ -72,7 +74,7 @@ describe('Standard canonical URL metadata provider', () => {
 
       const sut = makeSut({ headElementUpsertOrRemove, urlResolver })
 
-      sut(dummyRelativeUrl)
+      sut.set(dummyRelativeUrl)
 
       expect(receivedElement?.getAttribute('href')).toEqual(dummyAbsoluteUrl)
     })
@@ -85,7 +87,7 @@ describe('Standard canonical URL metadata provider', () => {
 
       const sut = makeSut({ urlResolver })
 
-      sut(dummyRelativeUrl)
+      sut.set(dummyRelativeUrl)
 
       expect(console.warn).toHaveBeenCalledWith(
         jasmine.stringContaining('should be absolute'),
@@ -99,7 +101,7 @@ const makeSut = (
     headElementUpsertOrRemove?: _HeadElementUpsertOrRemove
     urlResolver?: _UrlResolver
   } = {},
-) => {
+): NgxMetaMetadataManager<Standard['canonicalUrl']> => {
   TestBed.configureTestingModule({
     providers: [
       {
@@ -116,11 +118,8 @@ const makeSut = (
             .createSpy<_UrlResolver>('URL Resolver')
             .and.callFake((url) => url?.toString()),
       },
+      STANDARD_CANONICAL_URL_METADATA_PROVIDER,
     ],
   })
-  return STANDARD_CANONICAL_URL_SETTER_FACTORY(
-    TestBed.inject(_HEAD_ELEMENT_UPSERT_OR_REMOVE),
-    TestBed.inject(DOCUMENT),
-    TestBed.inject(_URL_RESOLVER),
-  )
+  return injectOneMetadataManager()
 }

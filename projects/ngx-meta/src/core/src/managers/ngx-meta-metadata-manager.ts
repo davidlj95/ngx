@@ -36,7 +36,10 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
   abstract readonly set: MetadataSetter<Value>
 }
 
-export const injectMetadataManagers: () => ReadonlyArray<NgxMetaMetadataManager> =
+/**
+ * @internal
+ */
+export const _injectMetadataManagers: () => ReadonlyArray<NgxMetaMetadataManager> =
   () =>
     // https://stackoverflow.com/q/74598049/3263250
     (inject(NgxMetaMetadataManager, {

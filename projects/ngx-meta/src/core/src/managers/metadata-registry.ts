@@ -1,6 +1,6 @@
 import { InjectionToken, Provider } from '@angular/core'
 import {
-  injectMetadataManagers,
+  _injectMetadataManagers,
   NgxMetaMetadataManager,
 } from './ngx-meta-metadata-manager'
 
@@ -13,7 +13,7 @@ export interface MetadataRegistry {
 }
 
 const metadataRegistryFactory: () => MetadataRegistry = () => {
-  const managers = injectMetadataManagers()
+  const managers = _injectMetadataManagers()
   const managersById = new Map<string, NgxMetaMetadataManager>()
   const register: MetadataRegistry['register'] = (manager) => {
     if (managersById.has(manager.id)) {

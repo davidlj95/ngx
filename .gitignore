@@ -376,6 +376,7 @@ $RECYCLE.BIN/
 .npmrc
 .idea/git_toolbox_blame.xml
 projects/ngx-meta/example-apps/apps
+projects/ngx-meta/bundle-size/source-map-explorer*.json
 projects/ngx-meta/docs/includes/CHANGELOG.md
 projects/ngx-meta/docs/includes/README.md
 projects/ngx-meta/docs/content/api
@@ -392,5 +393,6 @@ projects/ngx-meta/api-extractor/*.api.json
 # - Add `.npmrc` to set registry to simulate releases, but avoid committing that
 # - Add Git Toolbox plugin blame config
 # - Add generated example apps
+# - Add base bundle size files
 # - Add generated docs
 # - Add API Extractor temp files

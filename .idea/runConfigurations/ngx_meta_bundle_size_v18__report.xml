@@ -15,7 +15,7 @@
         <scripts>
           <script value="analyze" />
         </scripts>
-        <arguments value="v17 --json" />
+        <arguments value="v18 --json" />
         <node-interpreter value="project" />
         <envs />
       </option>

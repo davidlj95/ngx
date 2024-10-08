@@ -1,3 +1,43 @@
+## [`ngx-meta` v1.0.0-beta.16](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.15...ngx-meta-v1.0.0-beta.16) (2024-10-08)
+
+### Reverts
+
+- Revert "refactor: add head element util inject function and use it ([#894](https://github.com/davidlj95/ngx/issues/894))" ([#899](https://github.com/davidlj95/ngx/issues/899)) ([73f64b4](https://github.com/davidlj95/ngx/commit/73f64b4e328e61b5fe3aff9447eafc36cf204781))
+
+### Documentation
+
+- minor improvements ([#884](https://github.com/davidlj95/ngx/issues/884)) ([13d5e2a](https://github.com/davidlj95/ngx/commit/13d5e2a0c3359b0b42f8502f5460979764cc5074))
+
+### Miscellaneous Chores
+
+- add util to make (lazy) injection tokens ([#892](https://github.com/davidlj95/ngx/issues/892)) ([b49c0ff](https://github.com/davidlj95/ngx/commit/b49c0ff41f819aa6383712da60d16d87ff4c18ba))
+- improve Cypress setup ([#880](https://github.com/davidlj95/ngx/issues/880)) ([631a943](https://github.com/davidlj95/ngx/commit/631a943e60cc9bdd7e4a1dbbb34ca390e3bfc36a))
+- **release:** update CHANGELOG.md ([#878](https://github.com/davidlj95/ngx/issues/878)) ([e8911ea](https://github.com/davidlj95/ngx/commit/e8911ea9419c0584ec59bee493b6b7cb29da6946))
+
+### Code Refactoring
+
+- add head element util inject function and use it ([#894](https://github.com/davidlj95/ngx/issues/894)) ([e0c17af](https://github.com/davidlj95/ngx/commit/e0c17afd148a1c8caa328c2deccc799b834cc6db))
+- add isDefined util ([#879](https://github.com/davidlj95/ngx/issues/879)) ([9462176](https://github.com/davidlj95/ngx/commit/94621765f5b7703722ba76d3fd90b1fa2be16f34))
+
+### Tests
+
+- add and use util to inject one metadata manager ([#893](https://github.com/davidlj95/ngx/issues/893)) ([19d988d](https://github.com/davidlj95/ngx/commit/19d988d0c34aaaca5e631597c8a2b0aa8006132a))
+
+### Build System
+
+- bundle size workflow improvements ([#890](https://github.com/davidlj95/ngx/issues/890)) ([67f4527](https://github.com/davidlj95/ngx/commit/67f4527969874d59098f1eadedf1868f844aed20))
+- **deps:** bump body-parser from 1.20.2 to 1.20.3 ([#897](https://github.com/davidlj95/ngx/issues/897)) ([8fb97f7](https://github.com/davidlj95/ngx/commit/8fb97f75f214afba2f923d46f54e3fac9f162509))
+- **deps:** bump braces in /projects/ngx-meta/example-apps ([#887](https://github.com/davidlj95/ngx/issues/887)) ([2f5434c](https://github.com/davidlj95/ngx/commit/2f5434cf9189c3a3e98e22668d43f86587df5189))
+- **deps:** bump ejs in /projects/ngx-meta/bundle-size ([#888](https://github.com/davidlj95/ngx/issues/888)) ([4e25174](https://github.com/davidlj95/ngx/commit/4e25174ca2516f045ebbdeb7d040dae97699e9d0))
+- **deps:** bump express from 4.19.2 to 4.21.0 ([#896](https://github.com/davidlj95/ngx/issues/896)) ([a648f36](https://github.com/davidlj95/ngx/commit/a648f3669fdbd1f23a9147f9a159f9a263d80dc2))
+- **deps:** bump micromatch in /projects/ngx-meta/e2e ([#889](https://github.com/davidlj95/ngx/issues/889)) ([cec8f81](https://github.com/davidlj95/ngx/commit/cec8f81338f3303008b8c3201be8c214feac9b7e))
+- **deps:** bump tar from 6.2.0 to 6.2.1 ([#898](https://github.com/davidlj95/ngx/issues/898)) ([ab24d2e](https://github.com/davidlj95/ngx/commit/ab24d2e9a7ebcf1e6fb0f39a74118b4777fda6ac))
+- rename docs install target to setup ([#885](https://github.com/davidlj95/ngx/issues/885)) ([4640438](https://github.com/davidlj95/ngx/commit/46404388a0cff93df99bdea3e725bd7490b1989d))
+
+### Continuous (Integration|Deployment)
+
+- fix docs pipeline ([#886](https://github.com/davidlj95/ngx/issues/886)) ([0d86763](https://github.com/davidlj95/ngx/commit/0d867639935a9475f5d165ab5d528aa8dc93cd37))
+
 ## [`ngx-meta` v1.0.0-beta.15](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.14...ngx-meta-v1.0.0-beta.15) (2024-10-02)
 
 ### Features

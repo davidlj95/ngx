@@ -100,9 +100,6 @@ export const _HEAD_ELEMENT_UPSERT_OR_REMOVE: InjectionToken<_HeadElementUpsertOr
 export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement | null | undefined) => void;
 
 // @internal (undocumented)
-export const _injectHeadElementUpsertOrRemove: () => _HeadElementUpsertOrRemove;
-
-// @internal (undocumented)
 export const _injectMetadataManagers: () => ReadonlyArray<NgxMetaMetadataManager>;
 
 // @internal

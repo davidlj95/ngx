@@ -1,8 +1,8 @@
 import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import {
   _GLOBAL_CANONICAL_URL,
+  _HEAD_ELEMENT_UPSERT_OR_REMOVE,
   _HeadElementUpsertOrRemove,
-  _injectHeadElementUpsertOrRemove,
   _isDefined,
   _maybeNonHttpUrlDevMessage,
   _URL_RESOLVER,
@@ -12,17 +12,13 @@ import {
 import { DOCUMENT } from '@angular/common'
 import { Standard } from '../types'
 import { MODULE_NAME } from '../module-name'
-import { inject } from '@angular/core'
 
 export const STANDARD_CANONICAL_URL_SETTER_FACTORY: (
   headElementUpsertOrRemove: _HeadElementUpsertOrRemove,
   doc: Document,
   urlResolver: _UrlResolver,
-) => MetadataSetter<Standard[typeof _GLOBAL_CANONICAL_URL]> = () => {
-  const headElementUpsertOrRemove = _injectHeadElementUpsertOrRemove()
-  const doc = inject(DOCUMENT)
-  const urlResolver = inject(_URL_RESOLVER)
-  return (url) => {
+) => MetadataSetter<Standard[typeof _GLOBAL_CANONICAL_URL]> =
+  (headElementUpsertOrRemove, doc, urlResolver) => (url) => {
     const resolvedUrl = urlResolver(url)
     ngDevMode &&
       _maybeNonHttpUrlDevMessage(resolvedUrl, {
@@ -40,7 +36,6 @@ export const STANDARD_CANONICAL_URL_SETTER_FACTORY: (
     }
     headElementUpsertOrRemove(SELECTOR, linkElement)
   }
-}
 
 /**
  * Manages the {@link Standard.canonicalUrl} metadata
@@ -50,6 +45,7 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
   makeStandardMetadataProvider(_GLOBAL_CANONICAL_URL, {
     g: _GLOBAL_CANONICAL_URL,
     s: STANDARD_CANONICAL_URL_SETTER_FACTORY,
+    d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT, _URL_RESOLVER],
   })
 
 const LINK_TAG = 'link'

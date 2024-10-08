@@ -1,13 +1,13 @@
 import {
-  _makeInjectionToken,
+  _lazyInjectionToken,
   INJECTION_TOKEN_FACTORIES,
   INJECTION_TOKENS,
-} from './make-injection-token'
+} from './lazy-injection-token'
 import { TestBed } from '@angular/core/testing'
 import { InjectionToken } from '@angular/core'
 
-describe('make injection token', () => {
-  const sut = _makeInjectionToken
+describe('lazy injection token', () => {
+  const sut = _lazyInjectionToken
   const description = 'dummy'
   const factory = () => description
 
@@ -16,25 +16,25 @@ describe('make injection token', () => {
     INJECTION_TOKEN_FACTORIES.clear()
   })
 
-  it('should return an injection token using the provided factory', () => {
+  it('should return a lazy injection token using the provided factory', () => {
     const factoryOutput = factory()
-    const injectionToken = sut(description, factory)
+    const lazyInjectionToken = sut(description, factory)
 
-    expect(TestBed.inject(injectionToken)).toEqual(factoryOutput)
+    expect(TestBed.inject(lazyInjectionToken())).toEqual(factoryOutput)
   })
 
-  it('should return an injection token with given description prefixed by library name', () => {
-    const injectionToken = sut(description, factory)
+  it('should return a lazy injection token with given description prefixed by library name', () => {
+    const lazyInjectionToken = sut(description, factory)
 
-    expect(injectionToken.toString()).toContain(`ngx-meta ${description}`)
+    expect(lazyInjectionToken().toString()).toContain(`ngx-meta ${description}`)
   })
 
-  describe('when making an already existing token', () => {
+  describe('when creating an already existing token', () => {
     let injectionToken: InjectionToken<ReturnType<typeof factory>>
 
     beforeEach(() => {
       spyOn(console, 'warn')
-      injectionToken = sut(description, factory)
+      injectionToken = sut(description, factory)()
     })
 
     const shouldNotLogAnyMessage = () =>
@@ -46,7 +46,7 @@ describe('make injection token', () => {
       let secondInjectionToken: InjectionToken<ReturnType<typeof factory>>
 
       beforeEach(() => {
-        secondInjectionToken = sut('another-description', factory)
+        secondInjectionToken = sut('another-description', factory)()
       })
 
       it('should return another injection token', () => {
@@ -60,7 +60,7 @@ describe('make injection token', () => {
       let secondInjectionToken: InjectionToken<ReturnType<typeof factory>>
 
       beforeEach(() => {
-        secondInjectionToken = sut(description, factory)
+        secondInjectionToken = sut(description, factory)()
       })
 
       it('should return the same injection token', () => {
@@ -77,7 +77,7 @@ describe('make injection token', () => {
       >
 
       beforeEach(() => {
-        secondInjectionToken = sut(description, anotherFactory)
+        secondInjectionToken = sut(description, anotherFactory)()
       })
 
       it('should return the same injection token if providing same description but different factory', () => {

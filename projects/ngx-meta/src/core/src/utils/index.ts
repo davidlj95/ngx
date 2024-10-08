@@ -1,2 +1,5 @@
 export { _isDefined } from './is-defined'
-export { _makeInjectionToken } from './make-injection-token'
+export {
+  _lazyInjectionToken,
+  _LazyInjectionToken,
+} from './lazy-injection-token'

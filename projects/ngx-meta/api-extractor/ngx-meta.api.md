@@ -113,6 +113,12 @@ export interface JsonLdMetadata {
     readonly jsonLd?: object | null;
 }
 
+// @internal
+export type _LazyInjectionToken<T> = () => InjectionToken<T>;
+
+// @internal
+export const _lazyInjectionToken: <T>(description: string, factory: () => T) => _LazyInjectionToken<T>;
+
 // @public
 export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
 
@@ -120,9 +126,6 @@ export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, op
 export interface MakeComposedKeyValMetaDefinitionOptions extends MakeKeyValMetaDefinitionOptions {
     separator?: string;
 }
-
-// @internal
-export const _makeInjectionToken: <T>(description: string, factory: () => T) => InjectionToken<T>;
 
 // @public
 export const makeKeyValMetaDefinition: (keyName: string, options?: MakeKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;

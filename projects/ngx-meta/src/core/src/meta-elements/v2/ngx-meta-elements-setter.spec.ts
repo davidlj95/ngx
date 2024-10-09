@@ -5,7 +5,7 @@ import {
 import { getMetaElementsBySelector } from './__tests__/get-meta-elements-by-selector'
 import { TestBed } from '@angular/core/testing'
 import {
-  NGX_META_ELEMENTS_SETTER,
+  ngxMetaElementsSetter,
   NgxMetaElementsSetter,
 } from './ngx-meta-elements-setter'
 import { htmlAttributesToJson } from './__tests__/html-attributes-to-json'
@@ -104,5 +104,5 @@ describe('Meta elements setter', () => {
 
 const makeSut = () => {
   TestBed.configureTestingModule({})
-  return TestBed.inject(NGX_META_ELEMENTS_SETTER)
+  return TestBed.inject(ngxMetaElementsSetter())
 }

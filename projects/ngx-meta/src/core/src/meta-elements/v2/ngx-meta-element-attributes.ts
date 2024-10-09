@@ -1,4 +1,3 @@
-// noinspection JSValidateJSDoc
 /**
  * Models a `<meta>` element HTML's attributes as a key / value map.
  *
@@ -13,9 +12,9 @@ export type NgxMetaElementAttributes = Partial<{
   content: string
   /**
    * In an Angular's {@link https://angular.dev/api/platform-browser/MetaDefinition/ | MetaDefinition},
-   * `httpEquiv` would also be accepted. This way no need to quote the key property.
+   * `httpEquiv` would also be accepted. This way there's no need to quote the key property.
    *
-   * This way there's no need to map attribute names.
+   * But without `httpEquiv` there's no need to map attribute names. So one more bit of code less around.
    */
   'http-equiv': string
   id: string

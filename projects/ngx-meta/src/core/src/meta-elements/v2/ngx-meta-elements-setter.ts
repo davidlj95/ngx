@@ -1,30 +1,28 @@
-import { inject, InjectionToken } from '@angular/core'
+import { inject } from '@angular/core'
 import { Meta } from '@angular/platform-browser'
 import { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
+import { _LazyInjectionToken, _makeInjectionToken } from '../../utils'
 
 /**
  * @alpha
  */
-export const NGX_META_ELEMENTS_SETTER =
-  new InjectionToken<NgxMetaElementsSetter>(
-    ngDevMode ? 'NgxMeta Meta elements setter' : 'NgxMetaMEsS',
-    {
-      factory: () => {
-        const meta = inject(Meta)
-        return (nameAttribute, contents) => {
-          const [nameAttributeName, nameAttributeValue] = nameAttribute
-          const attrSelector = `${nameAttributeName}="${nameAttributeValue}"`
-          meta.getTags(attrSelector).forEach((tag) => tag.remove())
-          meta.addTags(
-            contents.map((content) => ({
-              [nameAttributeName]: nameAttributeValue,
-              ...content,
-            })),
-          )
-        }
-      },
-    },
-  )
+export const ngxMetaElementsSetter: _LazyInjectionToken<
+  NgxMetaElementsSetter
+> = () =>
+  _makeInjectionToken(ngDevMode ? 'Meta elements setter' : 'MEsS', () => {
+    const meta = inject(Meta)
+    return (nameAttribute, contents) => {
+      const [nameAttributeName, nameAttributeValue] = nameAttribute
+      const attrSelector = `${nameAttributeName}="${nameAttributeValue}"`
+      meta.getTags(attrSelector).forEach((tag) => tag.remove())
+      meta.addTags(
+        contents.map((content) => ({
+          [nameAttributeName]: nameAttributeValue,
+          ...content,
+        })),
+      )
+    }
+  })
 
 /**
  * @alpha

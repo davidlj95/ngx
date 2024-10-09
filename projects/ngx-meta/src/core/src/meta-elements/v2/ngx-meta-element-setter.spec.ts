@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 import {
-  NGX_META_ELEMENT_SETTER,
+  ngxMetaElementSetter,
   NgxMetaElementSetter,
 } from './ngx-meta-element-setter'
 import {
@@ -113,5 +113,5 @@ describe('Meta element setter', () => {
 
 const makeSut = (): NgxMetaElementSetter => {
   TestBed.configureTestingModule({})
-  return TestBed.inject(NGX_META_ELEMENT_SETTER)
+  return TestBed.inject(ngxMetaElementSetter())
 }

@@ -186,12 +186,6 @@ export type MetadataSetterFactory<T> = (...deps: Exclude<FactoryProvider['deps']
 // @public
 export type MetadataValues = object;
 
-// @alpha (undocumented)
-export const NGX_META_ELEMENT_SETTER: InjectionToken<NgxMetaElementSetter>;
-
-// @alpha (undocumented)
-export const NGX_META_ELEMENTS_SETTER: InjectionToken<NgxMetaElementsSetter>;
-
 // @public
 export class NgxMetaCoreModule {
     // Warning: (ae-forgotten-export) The symbol "CoreFeatures" needs to be exported by the entry point all-entry-points.d.ts
@@ -223,8 +217,18 @@ export type NgxMetaElementAttributes = Partial<{
 // @alpha (undocumented)
 export type NgxMetaElementSetter = (nameAttribute: readonly [name: string, value: string], content: NgxMetaElementAttributes | undefined) => void;
 
+// Warning: (ae-incompatible-release-tags) The symbol "ngxMetaElementSetter" is marked as @alpha, but its signature references "_LazyInjectionToken" which is marked as @internal
+//
+// @alpha (undocumented)
+export const ngxMetaElementSetter: _LazyInjectionToken<NgxMetaElementSetter>;
+
 // @alpha (undocumented)
 export type NgxMetaElementsSetter = (nameAttribute: readonly [name: string, value: string], contents: ReadonlyArray<NgxMetaElementAttributes | undefined>) => void;
+
+// Warning: (ae-incompatible-release-tags) The symbol "ngxMetaElementsSetter" is marked as @alpha, but its signature references "_LazyInjectionToken" which is marked as @internal
+//
+// @alpha (undocumented)
+export const ngxMetaElementsSetter: _LazyInjectionToken<NgxMetaElementsSetter>;
 
 // @public
 export class NgxMetaJsonLdModule {

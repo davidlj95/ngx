@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { _URL_RESOLVER } from './url-resolver'
+import { _urlResolver } from './url-resolver'
 import { noOpUrlResolver } from './no-op-url-resolver'
 import { Provider } from '@angular/core'
 import { provideDefaultUrlResolver } from './default-url-resolver'
@@ -28,5 +28,5 @@ const makeSut = (
   TestBed.configureTestingModule({
     providers: opts.providers ?? [],
   })
-  return TestBed.inject(_URL_RESOLVER)
+  return TestBed.inject(_urlResolver())
 }

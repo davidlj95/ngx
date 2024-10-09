@@ -2,7 +2,7 @@ import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import {
   _headElementUpsertOrRemove,
   _HeadElementUpsertOrRemove,
-  _URL_RESOLVER,
+  _urlResolver,
   _UrlResolver,
   NgxMetaMetadataManager,
 } from '@davidlj95/ngx-meta/core'
@@ -111,7 +111,7 @@ const makeSut = (
           jasmine.createSpy('Head element upsert or remove'),
       },
       {
-        provide: _URL_RESOLVER,
+        provide: _urlResolver(),
         useValue:
           opts.urlResolver ??
           jasmine

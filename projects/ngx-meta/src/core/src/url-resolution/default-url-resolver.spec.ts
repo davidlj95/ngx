@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { _URL_RESOLVER, _UrlResolver } from './url-resolver'
+import { _urlResolver, _UrlResolver } from './url-resolver'
 import { provideDefaultUrlResolver } from './default-url-resolver'
 import { ANGULAR_ROUTER_URL } from './angular-router-url'
 import { BaseUrl } from './base-url'
@@ -147,5 +147,5 @@ const makeSut = async (
     await RouterTestingHarness.create(opts.initialUrl)
   }
 
-  return TestBed.inject(_URL_RESOLVER)
+  return TestBed.inject(_urlResolver())
 }

@@ -5,7 +5,7 @@ import {
   _HeadElementUpsertOrRemove,
   _isDefined,
   _maybeNonHttpUrlDevMessage,
-  _URL_RESOLVER,
+  _urlResolver,
   _UrlResolver,
   MetadataSetter,
 } from '@davidlj95/ngx-meta/core'
@@ -45,7 +45,7 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
   makeStandardMetadataProvider(_GLOBAL_CANONICAL_URL, {
     g: _GLOBAL_CANONICAL_URL,
     s: STANDARD_CANONICAL_URL_SETTER_FACTORY,
-    d: [_headElementUpsertOrRemove(), DOCUMENT, _URL_RESOLVER],
+    d: [_headElementUpsertOrRemove(), DOCUMENT, _urlResolver()],
   })
 
 const LINK_TAG = 'link'

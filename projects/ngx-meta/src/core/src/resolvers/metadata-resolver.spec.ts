@@ -10,7 +10,7 @@ import {
   MetadataJsonResolver,
 } from './metadata-json-resolver'
 import { MetadataResolverOptions } from '../managers'
-import { _ROUTE_METADATA_STRATEGY, _RouteMetadataStrategy } from '../routing'
+import { _routeMetadataStrategy, _RouteMetadataStrategy } from '../routing'
 
 describe('Metadata resolver', () => {
   enableAutoSpy()
@@ -35,7 +35,7 @@ describe('Metadata resolver', () => {
       metadataJsonResolver(),
     ) as jasmine.Spy<MetadataJsonResolver>
     routeMetadataStrategy = TestBed.inject(
-      _ROUTE_METADATA_STRATEGY,
+      _routeMetadataStrategy(),
     ) as jasmine.Spy<_RouteMetadataStrategy>
   }
 
@@ -191,7 +191,7 @@ function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
         jasmine.createSpy('Metadata JSON resolver'),
       ),
       MockProvider(
-        _ROUTE_METADATA_STRATEGY,
+        _routeMetadataStrategy(),
         jasmine.createSpy('Route metadata strategy'),
       ),
       opts.defaults ? [MockProvider(defaults(), opts.defaults)] : [],

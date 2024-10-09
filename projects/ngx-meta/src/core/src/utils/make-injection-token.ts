@@ -6,7 +6,17 @@ export const INJECTION_TOKENS = new Map<string, InjectionToken<unknown>>()
 export const INJECTION_TOKEN_FACTORIES = new Map<string, () => unknown>()
 
 /**
- * See https://github.com/davidlj95/ngx/pull/892
+ * Creates an injection token with the given factory function if it doesn't exist.
+ * To determine if an injection token exists, the description string is used.
+ *
+ * Useful to create {@link _LazyInjectionToken}s.
+
+ * \> The function can't be used to create a lazy injection token directly
+ * \> As a function call won't be tree-shaken. Which is the main purpose of lazy tokens.
+ * \> More in https://github.com/davidlj95/ngx/pull/902
+ *
+ * It also adds the library name as prefix to the injection token description.
+ * In order to locate library's injectable easily when debugging an Angular project.
  *
  * @internal
  */

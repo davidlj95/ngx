@@ -113,6 +113,9 @@ export interface JsonLdMetadata {
     readonly jsonLd?: object | null;
 }
 
+// @internal
+export type _LazyInjectionToken<T> = () => InjectionToken<T>;
+
 // @public
 export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
 

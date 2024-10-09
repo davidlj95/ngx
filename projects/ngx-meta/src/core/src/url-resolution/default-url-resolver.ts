@@ -1,6 +1,6 @@
 import { inject, Provider } from '@angular/core'
 import { BaseUrl } from './base-url'
-import { _URL_RESOLVER, _UrlResolver } from './url-resolver'
+import { _urlResolver, _UrlResolver } from './url-resolver'
 import { ANGULAR_ROUTER_URL } from './angular-router-url'
 import { Router } from '@angular/router'
 import { _isDefined } from '../utils'
@@ -8,7 +8,7 @@ import { _isDefined } from '../utils'
 export const provideDefaultUrlResolver: (baseUrl: BaseUrl) => Provider = (
   baseUrl,
 ) => ({
-  provide: _URL_RESOLVER,
+  provide: _urlResolver(),
   useFactory: (): _UrlResolver => {
     const router = inject(Router)
     return (url) => {

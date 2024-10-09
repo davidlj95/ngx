@@ -2,7 +2,7 @@ import { makeOpenGraphMetadataProvider } from '../../utils/make-open-graph-metad
 import {
   _GLOBAL_CANONICAL_URL,
   _maybeNonHttpUrlDevMessage,
-  _URL_RESOLVER,
+  _urlResolver,
   _UrlResolver,
   NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
@@ -35,6 +35,6 @@ export const OPEN_GRAPH_URL_METADATA_PROVIDER = makeOpenGraphMetadataProvider(
   {
     g: _GLOBAL_CANONICAL_URL,
     s: OPEN_GRAPH_URL_SETTER_FACTORY,
-    d: [NgxMetaMetaService, _URL_RESOLVER],
+    d: [NgxMetaMetaService, _urlResolver()],
   },
 )

@@ -532,11 +532,11 @@ export interface TwitterCardSiteUsername {
 // @public
 export type TwitterCardType = typeof TWITTER_CARD_TYPE_SUMMARY | typeof TWITTER_CARD_TYPE_SUMMARY_LARGE_IMAGE | typeof TWITTER_CARD_TYPE_APP | typeof TWITTER_CARD_TYPE_PLAYER;
 
-// @internal
-export const _URL_RESOLVER: InjectionToken<_UrlResolver>;
-
 // @internal (undocumented)
 export type _UrlResolver = (url: URL | string | undefined | null | AngularRouterUrl) => string | undefined | null;
+
+// @internal
+export const _urlResolver: _LazyInjectionToken<_UrlResolver>;
 
 // @public
 export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKind.BaseUrl>;

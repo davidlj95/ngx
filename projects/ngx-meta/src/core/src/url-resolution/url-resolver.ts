@@ -1,6 +1,6 @@
-import { InjectionToken } from '@angular/core'
 import { AngularRouterUrl } from './angular-router-url'
 import { noOpUrlResolver } from './no-op-url-resolver'
+import { _LazyInjectionToken, _makeInjectionToken } from '../utils'
 
 /**
  * Resolves relative URLs into absolute URLs if a base URL was provided.
@@ -10,10 +10,8 @@ import { noOpUrlResolver } from './no-op-url-resolver'
  *
  * @internal
  */
-export const _URL_RESOLVER = new InjectionToken<_UrlResolver>(
-  ngDevMode ? 'NgxMeta URL Resolver' : 'NgxMetaUR',
-  { factory: () => noOpUrlResolver },
-)
+export const _urlResolver: _LazyInjectionToken<_UrlResolver> = () =>
+  _makeInjectionToken(ngDevMode ? 'URL Resolver' : 'UR', () => noOpUrlResolver)
 
 /**
  * @internal

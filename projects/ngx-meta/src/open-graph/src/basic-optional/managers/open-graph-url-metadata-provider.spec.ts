@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 import {
-  _URL_RESOLVER,
+  _urlResolver,
   _UrlResolver,
   NgxMetaMetadataManager,
   NgxMetaMetaService,
@@ -45,7 +45,7 @@ function makeSut(opts: {
     providers: [
       MockProvider(NgxMetaMetaService),
       {
-        provide: _URL_RESOLVER,
+        provide: _urlResolver(),
         useValue: opts.urlResolver ?? jasmine.createSpy(),
       },
       OPEN_GRAPH_URL_METADATA_PROVIDER,

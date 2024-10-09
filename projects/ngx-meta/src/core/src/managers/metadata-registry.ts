@@ -1,8 +1,9 @@
-import { InjectionToken, Provider } from '@angular/core'
+import { Provider } from '@angular/core'
 import {
   _injectMetadataManagers,
   NgxMetaMetadataManager,
 } from './ngx-meta-metadata-manager'
+import { _LazyInjectionToken, _makeInjectionToken } from '../utils'
 
 export interface MetadataRegistry {
   readonly register: (manager: NgxMetaMetadataManager) => void
@@ -38,12 +39,13 @@ const metadataRegistryFactory: () => MetadataRegistry = () => {
   }
 }
 
-export const METADATA_REGISTRY = new InjectionToken<MetadataRegistry>(
-  ngDevMode ? 'NgxMeta Metadata Registry' : 'NgxMetaMR',
-  { factory: metadataRegistryFactory },
-)
+export const metadataRegistry: _LazyInjectionToken<MetadataRegistry> = () =>
+  _makeInjectionToken(
+    ngDevMode ? 'Metadata Registry' : 'MR',
+    metadataRegistryFactory,
+  )
 
 export const provideMetadataRegistry: () => Provider = () => ({
-  provide: METADATA_REGISTRY,
+  provide: metadataRegistry(),
   useFactory: metadataRegistryFactory,
 })

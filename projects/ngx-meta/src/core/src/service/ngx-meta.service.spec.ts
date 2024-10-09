@@ -8,7 +8,7 @@ import {
   MetadataResolver,
 } from '../resolvers/metadata-resolver'
 import {
-  METADATA_REGISTRY,
+  metadataRegistry as metadataRegistryToken,
   MetadataRegistry,
 } from '../managers/metadata-registry'
 
@@ -22,7 +22,7 @@ describe('Main service', () => {
   beforeEach(() => {
     sut = makeSut()
     metadataRegistry = TestBed.inject(
-      METADATA_REGISTRY,
+      metadataRegistryToken(),
     ) as jasmine.SpyObj<MetadataRegistry>
     metadataRegistry.getAll.and.returnValue([firstMetadata, secondMetadata])
   })
@@ -78,7 +78,7 @@ function makeSut() {
     providers: [
       provideNgxMetaService(),
       MockProvider(
-        METADATA_REGISTRY,
+        metadataRegistryToken(),
         jasmine.createSpyObj<MetadataRegistry>(['getAll']),
       ),
       MockProvider(METADATA_RESOLVER, jasmine.createSpy('Metadata resolver')),

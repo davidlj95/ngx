@@ -1,4 +1,4 @@
-import { METADATA_REGISTRY } from './metadata-registry'
+import { metadataRegistry } from './metadata-registry'
 import { TestBed } from '@angular/core/testing'
 import { makeMetadataManagerSpy } from './__tests__/make-metadata-manager-spy'
 import { MockProvider } from 'ng-mocks'
@@ -82,5 +82,5 @@ function makeSut(
       ),
     ],
   })
-  return TestBed.inject(METADATA_REGISTRY)
+  return TestBed.inject(metadataRegistry())
 }

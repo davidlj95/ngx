@@ -1,6 +1,6 @@
 import { MetadataValues } from './metadata-values'
 import { FactoryProvider, inject } from '@angular/core'
-import { METADATA_REGISTRY } from '../managers/metadata-registry'
+import { metadataRegistry } from '../managers/metadata-registry'
 import { METADATA_RESOLVER } from '../resolvers/metadata-resolver'
 import { _formatDevMessage } from '../messaging'
 import { MODULE_NAME } from '../module-name'
@@ -81,7 +81,7 @@ export abstract class NgxMetaService {
 export const provideNgxMetaService: () => FactoryProvider = () => ({
   provide: NgxMetaService,
   useFactory: (): NgxMetaService => {
-    const registry = inject(METADATA_REGISTRY)
+    const registry = inject(metadataRegistry())
     const resolver = inject(METADATA_RESOLVER)
     return {
       set(values = {}) {

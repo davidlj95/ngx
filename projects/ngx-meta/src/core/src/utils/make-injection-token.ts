@@ -22,14 +22,18 @@ export const INJECTION_TOKEN_FACTORIES = new Map<string, () => unknown>()
  */
 export const _makeInjectionToken: <T>(
   description: string,
-  factory: () => T,
+  factory?: () => T,
 ) => InjectionToken<T> = (description, factory) => {
   const injectionToken =
     INJECTION_TOKENS.get(description) ??
-    new InjectionToken(`ngx-meta ${description}`, { factory })
+    new InjectionToken(
+      `ngx-meta ${description}`,
+      /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
+      factory ? { factory } : undefined,
+    )
   INJECTION_TOKENS.set(description, injectionToken)
   /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
-  if (ngDevMode) {
+  if (ngDevMode && factory) {
     if (
       (INJECTION_TOKEN_FACTORIES.get(description)?.toString() ??
         factory.toString()) !== factory.toString()

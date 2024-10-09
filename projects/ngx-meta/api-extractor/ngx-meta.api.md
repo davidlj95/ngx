@@ -125,7 +125,7 @@ export interface MakeComposedKeyValMetaDefinitionOptions extends MakeKeyValMetaD
 }
 
 // @internal
-export const _makeInjectionToken: <T>(description: string, factory: () => T) => InjectionToken<T>;
+export const _makeInjectionToken: <T>(description: string, factory?: () => T) => InjectionToken<T>;
 
 // @public
 export const makeKeyValMetaDefinition: (keyName: string, options?: MakeKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;

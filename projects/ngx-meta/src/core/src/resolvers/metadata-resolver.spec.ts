@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { MetadataValues } from '../service'
-import { DEFAULTS } from '../defaults/defaults'
+import { defaults } from '../defaults/defaults'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import {
   metadataJsonResolver,
@@ -194,7 +194,7 @@ function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
         _ROUTE_METADATA_STRATEGY,
         jasmine.createSpy('Route metadata strategy'),
       ),
-      opts.defaults ? [MockProvider(DEFAULTS, opts.defaults)] : [],
+      opts.defaults ? [MockProvider(defaults(), opts.defaults)] : [],
     ],
   })
   return TestBed.inject(METADATA_RESOLVER)

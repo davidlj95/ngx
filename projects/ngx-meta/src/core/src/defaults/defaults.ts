@@ -1,9 +1,9 @@
-import { inject, InjectionToken } from '@angular/core'
+import { inject } from '@angular/core'
 import { MetadataValues } from '../service'
+import { _LazyInjectionToken, _makeInjectionToken } from '../utils'
 
-export const DEFAULTS = new InjectionToken<MetadataValues>(
-  ngDevMode ? 'NgxMeta Metadata defaults' : 'NgxMetaDefs',
-)
+export const defaults: _LazyInjectionToken<MetadataValues> = () =>
+  _makeInjectionToken(ngDevMode ? 'Metadata defaults' : 'Defs')
 
 export const injectDefaults = (): MetadataValues | null =>
-  inject(DEFAULTS, { optional: true })
+  inject(defaults(), { optional: true })

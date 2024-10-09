@@ -6,7 +6,7 @@ import { MetadataValues } from '../service'
 import { DEFAULTS } from '../defaults/defaults'
 import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
 import {
-  METADATA_JSON_RESOLVER,
+  metadataJsonResolver,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
 import { MetadataResolverOptions } from '../managers'
@@ -32,7 +32,7 @@ describe('Metadata resolver', () => {
   }
   function injectSpies() {
     jsonResolver = TestBed.inject(
-      METADATA_JSON_RESOLVER,
+      metadataJsonResolver(),
     ) as jasmine.Spy<MetadataJsonResolver>
     routeMetadataStrategy = TestBed.inject(
       _ROUTE_METADATA_STRATEGY,
@@ -187,7 +187,7 @@ function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
   TestBed.configureTestingModule({
     providers: [
       MockProvider(
-        METADATA_JSON_RESOLVER,
+        metadataJsonResolver(),
         jasmine.createSpy('Metadata JSON resolver'),
       ),
       MockProvider(

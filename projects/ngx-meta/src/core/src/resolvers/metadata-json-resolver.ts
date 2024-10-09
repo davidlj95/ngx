@@ -1,13 +1,14 @@
 import { MetadataValues } from '../service'
-import { InjectionToken } from '@angular/core'
 import { MetadataResolverOptions } from '../managers'
 import { isObject } from '../utils/is-object'
-import { _isDefined } from '../utils'
+import { _isDefined, _LazyInjectionToken, _makeInjectionToken } from '../utils'
 
-export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
-  ngDevMode ? 'NgxMeta JSON Resolver' : 'NgxMetaJR',
-  {
-    factory: () => (values, resolverOptions) => {
+export const metadataJsonResolver: _LazyInjectionToken<
+  MetadataJsonResolver
+> = () =>
+  _makeInjectionToken(
+    ngDevMode ? 'JSON Resolver' : 'JR',
+    () => (values, resolverOptions) => {
       if (values === undefined) {
         return
       }
@@ -39,8 +40,7 @@ export const METADATA_JSON_RESOLVER = new InjectionToken<MetadataJsonResolver>(
       }
       return globalValue
     },
-  },
-)
+  )
 
 export type MetadataJsonResolver = (
   values: MetadataValues | undefined,

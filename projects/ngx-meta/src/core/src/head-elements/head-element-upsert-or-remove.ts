@@ -1,28 +1,28 @@
-import { inject, InjectionToken } from '@angular/core'
+import { inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
-import { _isDefined } from '../utils'
+import { _isDefined, _LazyInjectionToken, _makeInjectionToken } from '../utils'
 
 /**
  * @internal
  */
-export const _HEAD_ELEMENT_UPSERT_OR_REMOVE =
-  new InjectionToken<_HeadElementUpsertOrRemove>(
-    ngDevMode ? 'NgxMeta head element upsert or remove util' : 'NgxMetaHEUOR',
-    {
-      factory: () => {
-        const head = inject(DOCUMENT).head
-        return (selector: string, element: HTMLElement | null | undefined) => {
-          const existingScriptElement = head.querySelector(selector)
-          if (existingScriptElement) {
-            head.removeChild(existingScriptElement)
-          }
-
-          if (!_isDefined(element)) {
-            return
-          }
-          head.appendChild(element)
+export const _headElementUpsertOrRemove: _LazyInjectionToken<
+  _HeadElementUpsertOrRemove
+> = () =>
+  _makeInjectionToken(
+    ngDevMode ? 'Head element upsert or remove util' : 'HEUOR',
+    () => {
+      const head = inject(DOCUMENT).head
+      return (selector, element) => {
+        const existingScriptElement = head.querySelector(selector)
+        if (existingScriptElement) {
+          head.removeChild(existingScriptElement)
         }
-      },
+
+        if (!_isDefined(element)) {
+          return
+        }
+        head.appendChild(element)
+      }
     },
   )
 

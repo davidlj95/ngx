@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { METADATA_RESOLVER } from '../core/src/resolvers/metadata-resolver'
+import { metadataResolver } from '../core/src/resolvers/metadata-resolver'
 import { MetadataResolverOptions, MetadataValues } from '../core'
 import { Provider } from '@angular/core'
 import { MockProvider } from 'ng-mocks'
@@ -94,5 +94,5 @@ function makeSut(opts: { defaults?: MetadataValues } = {}) {
   TestBed.configureTestingModule({
     providers: [...DEFAULTS_PROVIDER],
   })
-  return TestBed.inject(METADATA_RESOLVER)
+  return TestBed.inject(metadataResolver())
 }

@@ -4,7 +4,7 @@ import { MockProvider } from 'ng-mocks'
 import { makeMetadataManagerSpy } from '../managers/__tests__/make-metadata-manager-spy'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import {
-  METADATA_RESOLVER,
+  metadataResolver,
   MetadataResolver,
 } from '../resolvers/metadata-resolver'
 import {
@@ -32,7 +32,7 @@ describe('Main service', () => {
 
     it('should set each metadata using resolved values', () => {
       const resolver = TestBed.inject(
-        METADATA_RESOLVER,
+        metadataResolver(),
       ) as unknown as jasmine.Spy<MetadataResolver>
       const dummyFirstMetadataValue = 'firstMetadataValue'
       const dummySecondMetadataValue = 'secondMetadataValue'
@@ -81,7 +81,7 @@ function makeSut() {
         metadataRegistryToken(),
         jasmine.createSpyObj<MetadataRegistry>(['getAll']),
       ),
-      MockProvider(METADATA_RESOLVER, jasmine.createSpy('Metadata resolver')),
+      MockProvider(metadataResolver(), jasmine.createSpy('Metadata resolver')),
     ],
   })
   return TestBed.inject(NgxMetaService)

@@ -41,7 +41,7 @@ const metadataRegistryFactory: () => MetadataRegistry = () => {
 
 export const metadataRegistry: _LazyInjectionToken<MetadataRegistry> = () =>
   _makeInjectionToken(
-    ngDevMode ? 'Metadata Registry' : 'MR',
+    ngDevMode ? 'Metadata Registry' : 'MReg',
     metadataRegistryFactory,
   )
 

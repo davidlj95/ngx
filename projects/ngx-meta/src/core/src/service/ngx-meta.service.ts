@@ -1,7 +1,7 @@
 import { MetadataValues } from './metadata-values'
 import { FactoryProvider, inject } from '@angular/core'
 import { metadataRegistry } from '../managers/metadata-registry'
-import { METADATA_RESOLVER } from '../resolvers/metadata-resolver'
+import { metadataResolver } from '../resolvers/metadata-resolver'
 import { _formatDevMessage } from '../messaging'
 import { MODULE_NAME } from '../module-name'
 
@@ -82,7 +82,7 @@ export const provideNgxMetaService: () => FactoryProvider = () => ({
   provide: NgxMetaService,
   useFactory: (): NgxMetaService => {
     const registry = inject(metadataRegistry())
-    const resolver = inject(METADATA_RESOLVER)
+    const resolver = inject(metadataResolver())
     return {
       set(values = {}) {
         const allMetadata = registry.getAll()

@@ -4,7 +4,7 @@ import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { MetadataValues } from '../service'
 import { defaults } from '../defaults/defaults'
-import { METADATA_RESOLVER, MetadataResolver } from './metadata-resolver'
+import { metadataResolver, MetadataResolver } from './metadata-resolver'
 import {
   metadataJsonResolver,
   MetadataJsonResolver,
@@ -197,5 +197,5 @@ function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
       opts.defaults ? [MockProvider(defaults(), opts.defaults)] : [],
     ],
   })
-  return TestBed.inject(METADATA_RESOLVER)
+  return TestBed.inject(metadataResolver())
 }

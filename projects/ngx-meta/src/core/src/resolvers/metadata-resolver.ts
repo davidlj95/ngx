@@ -1,7 +1,7 @@
 import { inject, InjectionToken } from '@angular/core'
 import { MetadataValues } from '../service'
 import { injectDefaults } from '../defaults/defaults'
-import { METADATA_JSON_RESOLVER } from './metadata-json-resolver'
+import { metadataJsonResolver } from './metadata-json-resolver'
 import { MetadataResolverOptions } from '../managers'
 import { isObject } from '../utils/is-object'
 import { injectRouteMetadataStrategy } from '../routing/route-metadata-strategy'
@@ -10,7 +10,7 @@ export const METADATA_RESOLVER = new InjectionToken<MetadataResolver>(
   ngDevMode ? 'NgxMeta Metadata Resolver' : 'NgxMetaMR',
   {
     factory: () => {
-      const jsonResolver = inject(METADATA_JSON_RESOLVER)
+      const jsonResolver = inject(metadataJsonResolver())
       const routeMetadataStrategy = injectRouteMetadataStrategy()
       const defaults = injectDefaults()
       return (values, resolverOptions) => {

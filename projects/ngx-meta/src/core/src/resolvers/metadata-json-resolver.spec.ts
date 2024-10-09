@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
 import {
-  METADATA_JSON_RESOLVER,
+  metadataJsonResolver,
   MetadataJsonResolver,
 } from './metadata-json-resolver'
 import { MetadataValues } from '../service'
@@ -167,5 +167,5 @@ describe('Metadata JSON resolver', () => {
 
 function makeSut(): MetadataJsonResolver {
   TestBed.configureTestingModule({})
-  return TestBed.inject(METADATA_JSON_RESOLVER)
+  return TestBed.inject(metadataJsonResolver())
 }

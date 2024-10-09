@@ -1,13 +1,13 @@
-import { inject, InjectionToken } from '@angular/core'
+import { inject } from '@angular/core'
 import { MetadataValues } from '../service'
+import { _LazyInjectionToken, _makeInjectionToken } from '../utils'
 
 /**
  * @internal
  */
-export const _ROUTE_METADATA_STRATEGY =
-  new InjectionToken<_RouteMetadataStrategy>(
-    ngDevMode ? 'NgxMeta Route metadata strategy' : 'NgxMetaRMS',
-  )
+export const _routeMetadataStrategy: _LazyInjectionToken<
+  _RouteMetadataStrategy
+> = () => _makeInjectionToken(ngDevMode ? 'Route metadata strategy' : 'RMS')
 
 /**
  * @internal
@@ -15,4 +15,4 @@ export const _ROUTE_METADATA_STRATEGY =
 export type _RouteMetadataStrategy = () => MetadataValues | undefined
 
 export const injectRouteMetadataStrategy: () => _RouteMetadataStrategy = () =>
-  inject(_ROUTE_METADATA_STRATEGY, { optional: true }) ?? (() => undefined)
+  inject(_routeMetadataStrategy(), { optional: true }) ?? (() => undefined)

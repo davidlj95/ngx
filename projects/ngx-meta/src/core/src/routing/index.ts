@@ -1,4 +1,4 @@
 export {
   _RouteMetadataStrategy,
-  _ROUTE_METADATA_STRATEGY,
+  _routeMetadataStrategy,
 } from './route-metadata-strategy'

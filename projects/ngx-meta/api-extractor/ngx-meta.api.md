@@ -392,10 +392,10 @@ export const provideNgxMetaStandard: () => Provider[];
 export const provideNgxMetaTwitterCard: () => Provider[];
 
 // @internal (undocumented)
-export const _ROUTE_METADATA_STRATEGY: InjectionToken<_RouteMetadataStrategy>;
+export type _RouteMetadataStrategy = () => MetadataValues | undefined;
 
 // @internal (undocumented)
-export type _RouteMetadataStrategy = () => MetadataValues | undefined;
+export const _routeMetadataStrategy: _LazyInjectionToken<_RouteMetadataStrategy>;
 
 // @public
 export interface Standard {

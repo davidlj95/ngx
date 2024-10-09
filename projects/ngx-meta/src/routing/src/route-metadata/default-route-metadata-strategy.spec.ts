@@ -1,8 +1,9 @@
 import { MockProvider, MockService } from 'ng-mocks'
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router'
 import { TestBed } from '@angular/core/testing'
-import { DEFAULT_ROUTE_METADATA_STRATEGY } from './default-route-metadata-strategy'
 import { NgxMetaRouteData } from './ngx-meta-route-data'
+import { _routeMetadataStrategy } from '../../../core'
+import { DEFAULT_ROUTE_METADATA_STRATEGY_PROVIDER } from './default-route-metadata-strategy'
 
 describe('Default route metadata strategy', () => {
   it('returns current route snapshot metadata key', () => {
@@ -26,7 +27,8 @@ const makeSut = (opts: { activatedRouteSnapshot: ActivatedRouteSnapshot }) => {
   TestBed.configureTestingModule({
     providers: [
       MockProvider(ActivatedRoute, { snapshot: opts.activatedRouteSnapshot }),
+      DEFAULT_ROUTE_METADATA_STRATEGY_PROVIDER,
     ],
   })
-  return TestBed.inject(DEFAULT_ROUTE_METADATA_STRATEGY)
+  return TestBed.inject(_routeMetadataStrategy())
 }

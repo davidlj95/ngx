@@ -5,7 +5,7 @@ import { EventType, Router, RouterEvent } from '@angular/router'
 import { EventEmitter } from '@angular/core'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { NgxMetaService } from '@davidlj95/ngx-meta/core'
-import { ROUTER_LISTENER, RouterListener } from './router-listener'
+import { routerListener, RouterListener } from './router-listener'
 import { Observable } from 'rxjs'
 
 describe('Router listener', () => {
@@ -125,7 +125,7 @@ function makeSut(
     ],
   })
 
-  return TestBed.inject(ROUTER_LISTENER)
+  return TestBed.inject(routerListener())
 }
 
 function makeNavigationEvent(type: EventType): NavigationEvent {

@@ -5,7 +5,7 @@ import {
   makeEnvironmentProviders,
 } from '@angular/core'
 import { DEFAULT_ROUTE_METADATA_STRATEGY_PROVIDER } from '../route-metadata/default-route-metadata-strategy'
-import { ROUTER_LISTENER } from '../listener/router-listener'
+import { routerListener } from '../listener/router-listener'
 
 /**
  * Allows to manage metadata of a page by specifying it in its Angular
@@ -24,6 +24,6 @@ export const provideNgxMetaRouting = (): EnvironmentProviders =>
     {
       provide: ENVIRONMENT_INITIALIZER,
       multi: true,
-      useFactory: () => inject(ROUTER_LISTENER).listen,
+      useFactory: () => inject(routerListener()).listen,
     },
   ])

@@ -1,6 +1,6 @@
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import {
-  _HEAD_ELEMENT_UPSERT_OR_REMOVE,
+  _headElementUpsertOrRemove,
   _HeadElementUpsertOrRemove,
   _URL_RESOLVER,
   _UrlResolver,
@@ -105,7 +105,7 @@ const makeSut = (
   TestBed.configureTestingModule({
     providers: [
       {
-        provide: _HEAD_ELEMENT_UPSERT_OR_REMOVE,
+        provide: _headElementUpsertOrRemove(),
         useValue:
           opts.headElementUpsertOrRemove ??
           jasmine.createSpy('Head element upsert or remove'),

@@ -94,10 +94,10 @@ export interface GlobalMetadataImage {
 }
 
 // @internal (undocumented)
-export const _HEAD_ELEMENT_UPSERT_OR_REMOVE: InjectionToken<_HeadElementUpsertOrRemove>;
+export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement | null | undefined) => void;
 
 // @internal (undocumented)
-export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement | null | undefined) => void;
+export const _headElementUpsertOrRemove: _LazyInjectionToken<_HeadElementUpsertOrRemove>;
 
 // @internal (undocumented)
 export const _injectMetadataManagers: () => ReadonlyArray<NgxMetaMetadataManager>;

@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common'
 import {
-  _HEAD_ELEMENT_UPSERT_OR_REMOVE,
+  _headElementUpsertOrRemove,
   _HeadElementUpsertOrRemove,
   _isDefined,
   makeMetadataManagerProviderFromSetterFactory,
@@ -33,7 +33,7 @@ export const JSON_LD_METADATA_PROVIDER =
   makeMetadataManagerProviderFromSetterFactory(
     JSON_LD_METADATA_SETTER_FACTORY,
     {
-      d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT],
+      d: [_headElementUpsertOrRemove(), DOCUMENT],
       jP: [KEY],
     },
   )

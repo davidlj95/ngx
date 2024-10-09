@@ -1,7 +1,7 @@
 import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import {
   _GLOBAL_CANONICAL_URL,
-  _HEAD_ELEMENT_UPSERT_OR_REMOVE,
+  _headElementUpsertOrRemove,
   _HeadElementUpsertOrRemove,
   _isDefined,
   _maybeNonHttpUrlDevMessage,
@@ -45,7 +45,7 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
   makeStandardMetadataProvider(_GLOBAL_CANONICAL_URL, {
     g: _GLOBAL_CANONICAL_URL,
     s: STANDARD_CANONICAL_URL_SETTER_FACTORY,
-    d: [_HEAD_ELEMENT_UPSERT_OR_REMOVE, DOCUMENT, _URL_RESOLVER],
+    d: [_headElementUpsertOrRemove(), DOCUMENT, _URL_RESOLVER],
   })
 
 const LINK_TAG = 'link'

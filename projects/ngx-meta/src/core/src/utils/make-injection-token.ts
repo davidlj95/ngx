@@ -6,16 +6,14 @@ export const INJECTION_TOKENS = new Map<string, InjectionToken<unknown>>()
 export const INJECTION_TOKEN_FACTORIES = new Map<string, () => unknown>()
 
 /**
- * A utility function to create lazy injection tokens.
- *
- * See {@link _LazyInjectionToken} for more information.
+ * See https://github.com/davidlj95/ngx/pull/892
  *
  * @internal
  */
-export const _lazyInjectionToken: <T>(
+export const _makeInjectionToken: <T>(
   description: string,
   factory: () => T,
-) => _LazyInjectionToken<T> = (description, factory) => () => {
+) => InjectionToken<T> = (description, factory) => {
   const injectionToken =
     INJECTION_TOKENS.get(description) ??
     new InjectionToken(`ngx-meta ${description}`, { factory })
@@ -41,18 +39,3 @@ export const _lazyInjectionToken: <T>(
   INJECTION_TOKENS.set(description, injectionToken)
   return injectionToken
 }
-
-/**
- * Thunk to delay the instantiation of a new injection token.
- * This way they can be tree-shaken if unused.
- * As their factory functions can bring many unused bytes to the production bundle.
- *
- * See also:
- *
- * - {@link https://github.com/davidlj95/ngx/pull/892 | PR where need for this was discovered}
- *
- * - {@link https://en.wikipedia.org/wiki/Thunk | Thunk definition (computer science)}
- *
- * @internal
- */
-export type _LazyInjectionToken<T> = () => InjectionToken<T>

@@ -27,9 +27,13 @@ export const _makeInjectionToken: <T>(
   const injectionToken =
     INJECTION_TOKENS.get(description) ??
     new InjectionToken(`ngx-meta ${description}`, { factory })
+  INJECTION_TOKENS.set(description, injectionToken)
   /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
   if (ngDevMode) {
-    if ((INJECTION_TOKEN_FACTORIES.get(description) ?? factory) !== factory) {
+    if (
+      (INJECTION_TOKEN_FACTORIES.get(description)?.toString() ??
+        factory.toString()) !== factory.toString()
+    ) {
       console.warn(
         _formatDevMessage(
           [
@@ -46,6 +50,5 @@ export const _makeInjectionToken: <T>(
     }
     INJECTION_TOKEN_FACTORIES.set(description, factory)
   }
-  INJECTION_TOKENS.set(description, injectionToken)
   return injectionToken
 }

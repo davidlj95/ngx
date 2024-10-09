@@ -8,12 +8,14 @@ import { InjectionToken } from '@angular/core'
 
 describe('make injection token', () => {
   const sut = _makeInjectionToken
-  const description = 'dummy'
+  const description = 'dummy-injection-token-for-unit-tests'
   const factory = () => description
+  // 👇 See test below about providing same description and factory
+  const sameFactoryDifferentIdentity = () => description
 
   afterEach(() => {
-    INJECTION_TOKENS.clear()
-    INJECTION_TOKEN_FACTORIES.clear()
+    INJECTION_TOKENS.delete(description)
+    INJECTION_TOKEN_FACTORIES.delete(description)
   })
 
   it('should return an injection token using the provided factory', () => {
@@ -60,7 +62,10 @@ describe('make injection token', () => {
       let secondInjectionToken: InjectionToken<ReturnType<typeof factory>>
 
       beforeEach(() => {
-        secondInjectionToken = sut(description, factory)
+        // 👇 Important to provide same factory code, but different identity
+        //    Otherwise creating two injection tokens with an anonymous function
+        //    Given anonymous functions ids are different, would log a message when it shouldn't
+        secondInjectionToken = sut(description, sameFactoryDifferentIdentity)
       })
 
       it('should return the same injection token', () => {

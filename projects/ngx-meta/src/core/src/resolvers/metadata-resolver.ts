@@ -31,6 +31,9 @@ export const metadataResolver: _LazyInjectionToken<MetadataResolver> = () =>
     }
   })
 
+/**
+ * @internal
+ */
 export type MetadataResolver = (
   values: MetadataValues,
   resolverOptions: MetadataResolverOptions,

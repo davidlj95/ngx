@@ -12,7 +12,10 @@
     "author": "Mr Bar",
     "keywords": ["foo", "bar"],
     "generator": true,
-    "themeColor": "blue"
+    "themeColor": [
+      { "media": "(prefers-color-scheme: dark)", "color": "darkblue" },
+      { "color": "lightblue" }
+    ]
   },
   "openGraph": {
     "image": {

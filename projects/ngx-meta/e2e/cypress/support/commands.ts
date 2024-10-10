@@ -6,6 +6,10 @@ Cypress.Commands.add<'getMeta'>('getMeta', (name) => {
   cy.get(`meta[name="${name}"]`)
 })
 
+Cypress.Commands.add<'getMetas'>('getMetas', (name) => {
+  cy.get(`meta[name="${name}"]`)
+})
+
 Cypress.Commands.add<'getMetaWithProperty'>(
   'getMetaWithProperty',
   (property) => {

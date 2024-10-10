@@ -1,13 +1,12 @@
 import { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
 import { Meta } from '@angular/platform-browser'
 import { Injectable } from '@angular/core'
+import { NgxMetaElementNameAttribute } from './ngx-meta-element-name-attribute'
 
 /**
- * Manages `<meta>` elements inside `<head>`.
+ * Manages `<meta>` elements inside `<head>`
  *
- * See {@link NgxMetaElementsService.set}
- *
- * @alpha
+ * @beta
  */
 @Injectable({ providedIn: 'root' })
 export class NgxMetaElementsService {
@@ -30,8 +29,8 @@ export class NgxMetaElementsService {
    *
    * ```typescript
    * ngxMetaElementsService.set(
-   *   withNameAttribute('description'), // same as `['name', 'description']`
-   *   withContent('Cool page'), // same as `{ content: 'Cool page' }`
+   *   withNameAttribute('description'), // same as `['name','description']`
+   *   withContent('Cool page'), // same as `{content:'Cool page'}`
    * )
    * ```
    *
@@ -44,7 +43,7 @@ export class NgxMetaElementsService {
    *
    * ```typescript
    * ngxMetaElementsService.set(
-   *   withNameAttribute('description'), // same as `['name', 'description']`
+   *   withNameAttribute('description'), // same as `['name','description']`
    *   undefined, // same as `withContent(undefined)`
    * )
    * ```
@@ -53,10 +52,10 @@ export class NgxMetaElementsService {
    *
    * ```typescript
    * ngxMetaElementsService.set(
-   *   withNameAttribute('theme-color'), // same as `['name', 'theme-color']`
+   *   withNameAttribute('theme-color'), // same as `['name','theme-color']`
    *   [
    *     withContent('darkblue', { media: "(prefers-color-scheme: dark)" }),
-   *     withContent('lightblue') // same as `{ content: 'lightblue' }`
+   *     withContent('lightblue') // same as `{content:'lightblue'}`
    *   ]
    * )
    * ```
@@ -65,7 +64,7 @@ export class NgxMetaElementsService {
    *
    * ```typescript
    * ngxMetaElementsService.set(
-   *   withNameAttribute('theme-color'), // same as `['name', 'theme-color']`
+   *   withNameAttribute('theme-color'), // same as `['name','theme-color']`
    *   [], // `undefined` is valid too
    * )
    * ```
@@ -88,13 +87,11 @@ export class NgxMetaElementsService {
    *
    * @param content - Content(s) attributes to set for this `<meta>` elements kind.
    *                  Or the lack of them to remove all `<meta>` elements of this kind.
+   *                  See {@link withContentAttribute} helper for creating content objects.
    */
   set(
     nameAttribute: NgxMetaElementNameAttribute,
-    content:
-      | ReadonlyArray<NgxMetaElementAttributes>
-      | NgxMetaElementAttributes
-      | undefined,
+    content: NgxMetaElementAttributes[] | NgxMetaElementAttributes | undefined,
   ): void {
     const [nameAttributeName, nameAttributeValue] = nameAttribute
     const attrSelector = `${nameAttributeName}="${nameAttributeValue}"`
@@ -120,8 +117,3 @@ type isContentsArray = (
     | ReadonlyArray<NgxMetaElementAttributes>
     | NgxMetaElementAttributes,
 ) => contentOrContents is ReadonlyArray<NgxMetaElementAttributes>
-
-/**
- * @alpha
- */
-export type NgxMetaElementNameAttribute = readonly [name: string, value: string]

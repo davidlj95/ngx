@@ -215,13 +215,15 @@ export type NgxMetaElementAttributes = Partial<{
     [key: string]: string;
 };
 
-// @alpha (undocumented)
+// @alpha
 export type NgxMetaElementNameAttribute = readonly [name: string, value: string];
 
-// @alpha
+// @beta
 export class NgxMetaElementsService {
     constructor(meta: Meta);
-    set(nameAttribute: NgxMetaElementNameAttribute, content: ReadonlyArray<NgxMetaElementAttributes> | NgxMetaElementAttributes | undefined): void;
+    // Warning: (ae-incompatible-release-tags) The symbol "set" is marked as @beta, but its signature references "NgxMetaElementNameAttribute" which is marked as @alpha
+    // Warning: (ae-incompatible-release-tags) The symbol "set" is marked as @beta, but its signature references "NgxMetaElementAttributes" which is marked as @alpha
+    set(nameAttribute: NgxMetaElementNameAttribute, content: NgxMetaElementAttributes[] | NgxMetaElementAttributes | undefined): void;
 }
 
 // @public

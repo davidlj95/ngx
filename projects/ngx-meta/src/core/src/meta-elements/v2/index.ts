@@ -1,7 +1,5 @@
-export {
-  NgxMetaElementsService,
-  NgxMetaElementNameAttribute,
-} from './ngx-meta-elements.service'
+export { NgxMetaElementsService } from './ngx-meta-elements.service'
+export { NgxMetaElementNameAttribute } from './ngx-meta-element-name-attribute'
 export { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
 export { withNameAttribute } from './with-name-attribute'
 export { withPropertyAttribute } from './with-property-attribute'

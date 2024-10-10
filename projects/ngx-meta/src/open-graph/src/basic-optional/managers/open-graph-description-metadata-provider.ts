@@ -2,11 +2,12 @@ import { makeOpenGraphMetadataProvider } from '../../utils/make-open-graph-metad
 import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
-  NgxMetaMetaService,
+  NgxMetaElementsService,
+  withContentAttribute,
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraph } from '../../types'
-import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
 import { MODULE_NAME } from '../../module-name'
+import { withOpenGraphPropertyAttribute } from '../../utils/with-open-graph-property-attribute'
 
 /**
  * Manages the {@link OpenGraph.description} metadata
@@ -16,7 +17,7 @@ export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER =
   makeOpenGraphMetadataProvider(_GLOBAL_DESCRIPTION, {
     g: _GLOBAL_DESCRIPTION,
     s:
-      (metaService: NgxMetaMetaService) =>
+      (metaElementsService: NgxMetaElementsService) =>
       (description: OpenGraph['description']) => {
         /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
         if (ngDevMode) {
@@ -27,9 +28,9 @@ export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER =
             link: 'https://stackoverflow.com/q/8914476/3263250',
           })
         }
-        metaService.set(
-          makeOpenGraphMetaDefinition(_GLOBAL_DESCRIPTION),
-          description,
+        metaElementsService.set(
+          withOpenGraphPropertyAttribute(_GLOBAL_DESCRIPTION),
+          withContentAttribute(description),
         )
       },
   })

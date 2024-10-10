@@ -2,14 +2,18 @@ import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-pr
 import { Standard } from '../types'
 import {
   MetadataSetterFactory,
-  NgxMetaMetaService,
+  NgxMetaElementsService,
+  withContentAttribute,
+  withNameAttribute,
 } from '@davidlj95/ngx-meta/core'
-import { makeStandardMetaDefinition } from '../utils/make-standard-meta-definition'
 
 export const STANDARD_KEYWORDS_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   Standard[typeof KEY]
-> = (metaService: NgxMetaMetaService) => (value) =>
-  metaService.set(makeStandardMetaDefinition(KEY), value?.join(','))
+> = (metaElementsService: NgxMetaElementsService) => (value) =>
+  metaElementsService.set(
+    withNameAttribute(KEY),
+    withContentAttribute(value?.join(',')),
+  )
 
 const KEY = 'keywords' satisfies keyof Standard
 

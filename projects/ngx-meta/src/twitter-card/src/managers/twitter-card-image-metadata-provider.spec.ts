@@ -1,7 +1,7 @@
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import {
+  NgxMetaElementsService,
   NgxMetaMetadataManager,
-  NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { TestBed } from '@angular/core/testing'
 import { MockProviders } from 'ng-mocks'
@@ -13,34 +13,40 @@ import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-ma
 describe('Twitter Card image metadata manager', () => {
   enableAutoSpy()
   let sut: NgxMetaMetadataManager<TwitterCard['image']>
-  let metaService: jasmine.SpyObj<NgxMetaMetaService>
+  let metaElementsService: jasmine.SpyObj<NgxMetaElementsService>
 
   beforeEach(() => {
     sut = makeSut()
-    metaService = TestBed.inject(
-      NgxMetaMetaService,
-    ) as jasmine.SpyObj<NgxMetaMetaService>
+    metaElementsService = TestBed.inject(
+      NgxMetaElementsService,
+    ) as jasmine.SpyObj<NgxMetaElementsService>
   })
 
   const image = {
     url: 'https://example.com/foo.png',
     alt: 'Alternative text',
   } satisfies TwitterCardImage
+  const imageKeys = Object.keys(image) as ReadonlyArray<keyof TwitterCardImage>
+  const imageKeyToProperty = (key: keyof TwitterCardImage) => {
+    const mappings = new Map<keyof TwitterCardImage, string | undefined>([
+      ['url', ''],
+    ])
+    return [`twitter:image`, mappings.get(key) ?? key]
+      .filter((x) => !!x)
+      .join(':')
+  }
 
   describe('when image is provided', () => {
     it('should set all meta properties', () => {
-      // noinspection DuplicatedCode
       sut.set(image)
 
-      const props = Object.keys(image).length
-      expect(metaService.set).toHaveBeenCalledTimes(props)
-      expect(metaService.set).toHaveBeenCalledWith(
-        jasmine.anything(),
-        image.url,
+      expect(metaElementsService.set).toHaveBeenCalledWith(
+        ['name', 'twitter:image'],
+        { content: image.url },
       )
-      expect(metaService.set).toHaveBeenCalledWith(
-        jasmine.anything(),
-        image.alt,
+      expect(metaElementsService.set).toHaveBeenCalledWith(
+        ['name', 'twitter:image:alt'],
+        { content: image.alt },
       )
     })
   })
@@ -49,14 +55,12 @@ describe('Twitter Card image metadata manager', () => {
     it('should remove all meta properties', () => {
       sut.set(undefined)
 
-      const props = Object.keys(image).length
-      expect(metaService.set).toHaveBeenCalledTimes(props)
-      for (let i = 0; i < props; i++) {
-        expect(metaService.set).toHaveBeenCalledWith(
-          jasmine.anything(),
+      imageKeys.forEach((key) => {
+        expect(metaElementsService.set).toHaveBeenCalledWith(
+          ['name', imageKeyToProperty(key)],
           undefined,
         )
-      }
+      })
     })
   })
 })
@@ -64,7 +68,7 @@ describe('Twitter Card image metadata manager', () => {
 function makeSut(): NgxMetaMetadataManager<TwitterCard['image']> {
   TestBed.configureTestingModule({
     providers: [
-      MockProviders(NgxMetaMetaService),
+      MockProviders(NgxMetaElementsService),
       TWITTER_CARD_IMAGE_METADATA_PROVIDER,
     ],
   })

@@ -8,7 +8,7 @@
  * accepted. This way there's no need to quote the key property.
  * But without `httpEquiv` there's no need to map attribute names. So one bit of code less.
  *
- * @alpha
+ * @public
  */
 export type NgxMetaElementAttributes = Partial<{
   charset: string

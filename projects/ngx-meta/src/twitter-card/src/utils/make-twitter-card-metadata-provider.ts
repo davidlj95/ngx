@@ -3,11 +3,12 @@ import {
   makeMetadataManagerProviderFromSetterFactory,
   MetadataResolverOptions,
   MetadataSetterFactory,
-  NgxMetaMetaService,
+  NgxMetaElementsService,
+  withContentAttribute,
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
 import { TwitterCard, TwitterCardMetadata } from '../types'
-import { makeTwitterCardMetaDefinition } from './make-twitter-card-meta-definition'
+import { withTwitterCardNameAttribute } from './with-twitter-card-name-attribute'
 
 const TWITTER_KEY: keyof TwitterCardMetadata = `twitterCard`
 export const TWITTER_KEY_KEBAB_CASE = 'twitter-card'
@@ -27,13 +28,14 @@ export const makeTwitterCardMetadataProvider = <Key extends keyof TwitterCard>(
 ): FactoryProvider =>
   makeMetadataManagerProviderFromSetterFactory(
     opts.s ??
-      ((metaService: NgxMetaMetaService) => (value: TwitterCard[Key]) =>
-        metaService.set(
-          makeTwitterCardMetaDefinition(opts.p ?? key),
-          value as string,
-        )),
+      ((metaElementsService: NgxMetaElementsService) =>
+        (value: TwitterCard[Key]) =>
+          metaElementsService.set(
+            withTwitterCardNameAttribute(opts.p ?? key),
+            withContentAttribute(value as string | null | undefined),
+          )),
     {
-      d: [NgxMetaMetaService],
+      d: [NgxMetaElementsService],
       jP: [TWITTER_KEY, key],
       g: opts.g,
       m: opts.m,

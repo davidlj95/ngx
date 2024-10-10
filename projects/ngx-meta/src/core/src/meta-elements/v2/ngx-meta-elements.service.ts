@@ -6,9 +6,7 @@ import { NgxMetaElementNameAttribute } from './ngx-meta-element-name-attribute'
 /**
  * Manages `<meta>` elements inside `<head>`
  *
- * <b>API is in alpha state. But appears as beta due a tooling limitation</b>
- *
- * @beta
+ * @public
  */
 @Injectable({ providedIn: 'root' })
 export class NgxMetaElementsService {

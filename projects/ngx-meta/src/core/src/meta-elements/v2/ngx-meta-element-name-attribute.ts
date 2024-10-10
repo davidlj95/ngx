@@ -1,6 +1,6 @@
 /**
  * See {@link NgxMetaElementsService.set}
  *
- * @alpha
+ * @public
  */
 export type NgxMetaElementNameAttribute = readonly [name: string, value: string]

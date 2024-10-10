@@ -3,11 +3,12 @@ import {
   _GLOBAL_IMAGE,
   _isDefined,
   _maybeNonHttpUrlDevMessage,
-  NgxMetaMetaService,
+  NgxMetaElementsService,
+  withContentAttribute,
 } from '@davidlj95/ngx-meta/core'
 import { makeOpenGraphMetadataProvider } from '../../utils/make-open-graph-metadata-provider'
-import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
 import { MODULE_NAME } from '../../module-name'
+import { withOpenGraphPropertyAttribute } from '../../utils/with-open-graph-property-attribute'
 
 const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
   url: undefined,
@@ -19,7 +20,7 @@ const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
 }
 
 export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
-  (metaService: NgxMetaMetaService) =>
+  (metaElementsService: NgxMetaElementsService) =>
   (value: OpenGraph[typeof _GLOBAL_IMAGE]) => {
     const imageUrl = value?.url?.toString()
     const effectiveValue: OpenGraph[typeof _GLOBAL_IMAGE] = _isDefined(imageUrl)
@@ -33,26 +34,29 @@ export const OPEN_GRAPH_IMAGE_SETTER_FACTORY =
         value: imageUrl,
         link: 'https://stackoverflow.com/a/9858694/3263250',
       })
-    metaService.set(makeOpenGraphMetaDefinition(_GLOBAL_IMAGE), imageUrl)
-    metaService.set(
-      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'alt'),
-      effectiveValue?.alt,
+    metaElementsService.set(
+      withOpenGraphPropertyAttribute(_GLOBAL_IMAGE),
+      withContentAttribute(imageUrl),
     )
-    metaService.set(
-      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'secure_url'),
-      effectiveValue?.secureUrl?.toString(),
+    metaElementsService.set(
+      withOpenGraphPropertyAttribute(_GLOBAL_IMAGE, 'alt'),
+      withContentAttribute(effectiveValue?.alt),
     )
-    metaService.set(
-      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'type'),
-      effectiveValue?.type,
+    metaElementsService.set(
+      withOpenGraphPropertyAttribute(_GLOBAL_IMAGE, 'secure_url'),
+      withContentAttribute(effectiveValue?.secureUrl?.toString()),
     )
-    metaService.set(
-      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'width'),
-      effectiveValue?.width?.toString(),
+    metaElementsService.set(
+      withOpenGraphPropertyAttribute(_GLOBAL_IMAGE, 'type'),
+      withContentAttribute(effectiveValue?.type),
     )
-    metaService.set(
-      makeOpenGraphMetaDefinition(_GLOBAL_IMAGE, 'height'),
-      effectiveValue?.height?.toString(),
+    metaElementsService.set(
+      withOpenGraphPropertyAttribute(_GLOBAL_IMAGE, 'width'),
+      withContentAttribute(effectiveValue?.width?.toString()),
+    )
+    metaElementsService.set(
+      withOpenGraphPropertyAttribute(_GLOBAL_IMAGE, 'height'),
+      withContentAttribute(effectiveValue?.height?.toString()),
     )
   }
 

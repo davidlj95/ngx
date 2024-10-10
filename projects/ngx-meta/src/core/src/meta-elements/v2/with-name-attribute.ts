@@ -5,6 +5,6 @@
  *
  * @param value - Value for the `name` attribute of the `<meta>` element
  *
- * @alpha
+ * @public
  */
 export const withNameAttribute = (value: string) => ['name', value] as const

@@ -19,4 +19,8 @@ export const withContentAttribute = ((
 ) => (content ? { content, ...extras } : undefined)) as {
   (content: null | undefined, extras?: NgxMetaElementAttributes): undefined
   (content: string, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes
+  (
+    content: string | null | undefined,
+    extras?: NgxMetaElementAttributes,
+  ): NgxMetaElementAttributes | undefined
 }

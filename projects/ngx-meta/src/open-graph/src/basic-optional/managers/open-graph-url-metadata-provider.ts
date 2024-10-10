@@ -4,14 +4,15 @@ import {
   _maybeNonHttpUrlDevMessage,
   _urlResolver,
   _UrlResolver,
-  NgxMetaMetaService,
+  NgxMetaElementsService,
+  withContentAttribute,
 } from '@davidlj95/ngx-meta/core'
-import { makeOpenGraphMetaDefinition } from '../../utils/make-open-graph-meta-definition'
 import { OpenGraph } from '../../types'
 import { MODULE_NAME } from '../../module-name'
+import { withOpenGraphPropertyAttribute } from '../../utils/with-open-graph-property-attribute'
 
 export const OPEN_GRAPH_URL_SETTER_FACTORY =
-  (metaService: NgxMetaMetaService, urlResolver: _UrlResolver) =>
+  (metaElementsService: NgxMetaElementsService, urlResolver: _UrlResolver) =>
   (url: OpenGraph[typeof KEY]) => {
     const resolvedUrl = urlResolver(url)
     ngDevMode &&
@@ -21,7 +22,10 @@ export const OPEN_GRAPH_URL_SETTER_FACTORY =
         value: resolvedUrl,
         link: 'https://ogp.me/#metadata',
       })
-    metaService.set(makeOpenGraphMetaDefinition(KEY), urlResolver(url))
+    metaElementsService.set(
+      withOpenGraphPropertyAttribute(KEY),
+      withContentAttribute(urlResolver(url)),
+    )
   }
 
 const KEY = 'url' satisfies keyof OpenGraph
@@ -35,6 +39,6 @@ export const OPEN_GRAPH_URL_METADATA_PROVIDER = makeOpenGraphMetadataProvider(
   {
     g: _GLOBAL_CANONICAL_URL,
     s: OPEN_GRAPH_URL_SETTER_FACTORY,
-    d: [NgxMetaMetaService, _urlResolver()],
+    d: [NgxMetaElementsService, _urlResolver()],
   },
 )

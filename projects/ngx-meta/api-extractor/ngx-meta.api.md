@@ -21,6 +21,9 @@ export type AngularRouterUrl = typeof ANGULAR_ROUTER_URL;
 // @public
 export type BaseUrl = string;
 
+// @internal (undocumented)
+export const _composedMetadataName: (...names: ReadonlyArray<string>) => string;
+
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
@@ -585,6 +588,7 @@ export const _urlResolver: _LazyInjectionToken<_UrlResolver>;
 export const withContentAttribute: {
     (content: null | undefined, extras?: NgxMetaElementAttributes): undefined;
     (content: string, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes;
+    (content: string | null | undefined, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes | undefined;
 };
 
 // @alpha

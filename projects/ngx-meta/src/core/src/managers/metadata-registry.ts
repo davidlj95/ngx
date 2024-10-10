@@ -5,6 +5,9 @@ import {
 } from './ngx-meta-metadata-manager'
 import { _LazyInjectionToken, _makeInjectionToken } from '../utils'
 
+/**
+ * @internal
+ */
 export interface MetadataRegistry {
   readonly register: (manager: NgxMetaMetadataManager) => void
   readonly getAll: () => Iterable<NgxMetaMetadataManager>

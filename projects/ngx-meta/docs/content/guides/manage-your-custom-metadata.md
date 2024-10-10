@@ -30,10 +30,11 @@ You can implement it by defining a class that implements the interface:
 <!-- prettier-ignore-start -->
 
 ```typescript
-import { 
-    makeKeyValMetaDefinition, 
-    NgxMetaMetadataManager, 
-    NgxMetaMetaService 
+import {
+  NgxMetaElementsService,
+  NgxMetaMetadataManager,
+  withContentAttribute,
+  withNameAttribute,
 } from '@davidlj95/ngx-meta/core'
 
 const JSON_PATH = ['custom', 'title']
@@ -52,18 +53,22 @@ class CustomTitleMetadataManager implements NgxMetaMetadataManager<string | unde
     global: 'title' satisfies keyof GlobalMetadata,
   }
 
-  constructor(private readonly ngxMetaMetaService: NgxMetaMetaService) {}
+  constructor(private readonly metaElementsService: NgxMetaElementsService) {
+  }
 
   // Type is constrained by specifying `<string | undefined>` above
   public set(value: string | undefined): void {
-    this.ngxMetaMetaService.set(makeKeyValMetaDefinition('custom:title'), value)
+    this.metaElementsService.set(
+      withNameAttribute('custom:title'),
+      withContentAttribute(value)
+    )
   }
 }
 ```
 
 <!-- prettier-ignore-end -->
 
---8<-- "includes/ngx-meta-meta.md"
+--8<-- "includes/ngx-meta-elements-service.md"
 
 This option is presented first as it's the traditional, Angular'ish way of working (services & `@Injectable` decorators). However, do check out another way of implementing it (see in below box why)
 
@@ -87,21 +92,22 @@ It takes as argument function that creates a metadata setter given some dependen
 <!-- prettier-ignore-start -->
 
 ```typescript
-import { 
-    makeKeyValMetaDefinition, 
-    makeMetadataManagerProviderFromSetterFactory, 
-    NgxMetaMetaService 
+import {
+  makeMetadataManagerProviderFromSetterFactory,
+  NgxMetaElementsService,
+  withContentAttribute,
+  withNameAttribute,
 } from '@davidlj95/ngx-meta/core'
 
 const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory(
-  (ngxMetaMetaService: NgxMetaMetaService) => 
-    ngxMetaMetaService.set(
-      makeKeyValMetaDefinition('custom:title'), 
-      value
+  (metaElementsService: NgxMetaElementsService) => 
+    metaElementsService.set(
+      withNameAttribute('custom:title'), 
+      withContentAttribute(value),
     ), 
   {
     // Dependencies to pass to the setter factory
-    d: [NgxMetaMetaService],
+    d: [NgxMetaElementsService],
     
     // JSON Path to resolve the value from the values JSON
     // Will also be used as id
@@ -118,7 +124,7 @@ const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSe
 
 <!-- prettier-ignore-end -->
 
---8<-- "includes/ngx-meta-meta.md"
+--8<-- "includes/ngx-meta-elements-service.md"
 
 That would be it, there you have your metadata manager provider, ready to inject into your Angular's app dependencies.
 

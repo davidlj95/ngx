@@ -1,5 +1,5 @@
 /**
- * Models a `<meta>` element HTML's attributes as a key / value map.
+ * Models a `<meta>` element HTML's attributes as a key / value JSON object.
  *
  * Almost equivalent to Angular's {@link https://angular.dev/api/platform-browser/MetaDefinition/ | MetaDefinition}
  *

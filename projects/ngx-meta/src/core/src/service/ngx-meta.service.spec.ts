@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { NgxMetaService, provideNgxMetaService } from './ngx-meta.service'
+import { NgxMetaService } from './ngx-meta.service'
 import { MockProvider } from 'ng-mocks'
 import { makeMetadataManagerSpy } from '../managers/__tests__/make-metadata-manager-spy'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
@@ -76,7 +76,6 @@ describe('Main service', () => {
 function makeSut() {
   TestBed.configureTestingModule({
     providers: [
-      provideNgxMetaService(),
       MockProvider(
         metadataRegistryToken(),
         jasmine.createSpyObj<MetadataRegistry>(['getAll']),

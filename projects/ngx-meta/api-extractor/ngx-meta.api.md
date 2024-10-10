@@ -210,6 +210,7 @@ export type NgxMetaElementAttributes = Partial<{
     property: string;
     scheme: string;
     url: string;
+    media: string;
 }> & {
     [key: string]: string;
 };
@@ -220,7 +221,6 @@ export type NgxMetaElementNameAttribute = readonly [name: string, value: string]
 // @alpha
 export class NgxMetaElementsService {
     constructor(meta: Meta);
-    // (undocumented)
     set(nameAttribute: NgxMetaElementNameAttribute, content: ReadonlyArray<NgxMetaElementAttributes> | NgxMetaElementAttributes | undefined): void;
 }
 
@@ -581,8 +581,8 @@ export const _urlResolver: _LazyInjectionToken<_UrlResolver>;
 
 // @alpha
 export const withContentAttribute: {
-    (content: null | undefined): undefined;
-    (content: string): NgxMetaElementAttributes;
+    (content: null | undefined, extras?: NgxMetaElementAttributes): undefined;
+    (content: string, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes;
 };
 
 // @alpha

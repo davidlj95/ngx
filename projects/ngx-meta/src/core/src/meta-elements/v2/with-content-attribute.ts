@@ -12,8 +12,10 @@ import { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
  *
  * @alpha
  */
-export const withContentAttribute = ((content: string | null | undefined) =>
-  content ? { content } : undefined) as {
-  (content: null | undefined): undefined
-  (content: string): NgxMetaElementAttributes
+export const withContentAttribute = ((
+  content: string | null | undefined,
+  extras?: NgxMetaElementAttributes,
+) => (content ? { content, ...extras } : undefined)) as {
+  (content: null | undefined, extras?: NgxMetaElementAttributes): undefined
+  (content: string, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes
 }

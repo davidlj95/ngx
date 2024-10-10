@@ -10,6 +10,24 @@ Similarly to the [Angular public API surface], non-public API members or use cas
     Non-public API or non-public uses of it are not supported use cases.
     Therefore breaking changes may be introduced in those cases without the formal process for those (i.e.: a major release)
 
+## Public, but not production ready APIs: alpha and beta APIs
+
+Some APIs may be public, but in alpha or beta state. You may identify those because any of these reasons:
+
+- **API documentation contains an `@alpha` or `@beta` tag**
+- **A warning in the API reference docs** about the alpha or beta state of it.
+
+You can experiment with those. But beware that they may change based on feedback received.
+
+They are not ready and should not be used in production environments.
+
+A `@beta` API is more mature than an `@alpha` API.
+
+??? note "Some APIs may be marked as beta but be alpha"
+
+    Somehow [API Extractor](https://api-extractor.com/) hides methods from a class if the class or method is marked as `@alpha`
+    when generating the documentation model JSON. So `@beta` is used in order to expose the method anyway.
+
 ## Exclusions
 
 Everything exported is considered a public API except...
@@ -19,6 +37,8 @@ Everything exported is considered a public API except...
 Some exported API members from this package are not intended for public use.
 
 Those can be easily identified because one or more of these reasons:
+
+- **API documentation contains the `@internal` tag**.
 
 - **API is a class method marked as `private`**. Same happens with [Angular public API surface].
 

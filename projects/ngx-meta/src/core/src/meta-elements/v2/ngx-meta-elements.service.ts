@@ -21,6 +21,7 @@ export class NgxMetaElementsService {
     const [nameAttributeName, nameAttributeValue] = nameAttribute
     const attrSelector = `${nameAttributeName}="${nameAttributeValue}"`
     this.meta.getTags(attrSelector).forEach((tag) => tag.remove())
+    /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
     if (!content) {
       return
     }

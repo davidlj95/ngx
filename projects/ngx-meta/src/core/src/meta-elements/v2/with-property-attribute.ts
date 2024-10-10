@@ -9,5 +9,6 @@ import { NgxMetaElementNameAttribute } from './ngx-meta-elements.service'
  *
  * @alpha
  */
+/* istanbul ignore next - will be used in next PRs */
 export const withPropertyAttribute = (value: string) =>
   ['property', value] as const satisfies NgxMetaElementNameAttribute

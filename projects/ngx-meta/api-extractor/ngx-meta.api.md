@@ -215,20 +215,14 @@ export type NgxMetaElementAttributes = Partial<{
 };
 
 // @alpha (undocumented)
-export type NgxMetaElementSetter = (nameAttribute: readonly [name: string, value: string], content: NgxMetaElementAttributes | undefined) => void;
+export type NgxMetaElementNameAttribute = readonly [name: string, value: string];
 
-// Warning: (ae-incompatible-release-tags) The symbol "ngxMetaElementSetter" is marked as @alpha, but its signature references "_LazyInjectionToken" which is marked as @internal
-//
-// @alpha (undocumented)
-export const ngxMetaElementSetter: _LazyInjectionToken<NgxMetaElementSetter>;
-
-// @alpha (undocumented)
-export type NgxMetaElementsSetter = (nameAttribute: readonly [name: string, value: string], contents: ReadonlyArray<NgxMetaElementAttributes | undefined>) => void;
-
-// Warning: (ae-incompatible-release-tags) The symbol "ngxMetaElementsSetter" is marked as @alpha, but its signature references "_LazyInjectionToken" which is marked as @internal
-//
-// @alpha (undocumented)
-export const ngxMetaElementsSetter: _LazyInjectionToken<NgxMetaElementsSetter>;
+// @alpha
+export class NgxMetaElementsService {
+    constructor(meta: Meta);
+    // (undocumented)
+    set(nameAttribute: NgxMetaElementNameAttribute, content: ReadonlyArray<NgxMetaElementAttributes> | NgxMetaElementAttributes | undefined): void;
+}
 
 // @public
 export class NgxMetaJsonLdModule {
@@ -586,7 +580,10 @@ export type _UrlResolver = (url: URL | string | undefined | null | AngularRouter
 export const _urlResolver: _LazyInjectionToken<_UrlResolver>;
 
 // @alpha
-export const withContentAttribute: (content: string | null | undefined) => NgxMetaElementAttributes | undefined;
+export const withContentAttribute: {
+    (content: null | undefined): undefined;
+    (content: string): NgxMetaElementAttributes;
+};
 
 // @alpha
 export const withNameAttribute: (value: string) => readonly ["name", string];
@@ -598,7 +595,7 @@ export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKi
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
 
 // @alpha
-export const withPropertyAttribute: (value: string) => string[];
+export const withPropertyAttribute: (value: string) => readonly ["property", string];
 
 // (No @packageDocumentation comment for this package)
 

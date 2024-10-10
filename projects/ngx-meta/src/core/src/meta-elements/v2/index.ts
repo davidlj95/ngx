@@ -1,15 +1,8 @@
-// v2
 export {
-  ngxMetaElementSetter,
-  NgxMetaElementSetter,
-} from './ngx-meta-element-setter'
-export {
-  ngxMetaElementsSetter,
-  NgxMetaElementsSetter,
-} from './ngx-meta-elements-setter'
+  NgxMetaElementsService,
+  NgxMetaElementNameAttribute,
+} from './ngx-meta-elements.service'
 export { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
-export {
-  withNameAttribute,
-  withPropertyAttribute,
-  withContentAttribute,
-} from './meta-elements-helpers'
+export { withNameAttribute } from './with-name-attribute'
+export { withPropertyAttribute } from './with-property-attribute'
+export { withContentAttribute } from './with-content-attribute'

@@ -6,6 +6,8 @@ import { NgxMetaElementNameAttribute } from './ngx-meta-element-name-attribute'
 /**
  * Manages `<meta>` elements inside `<head>`
  *
+ * <b>API is in alpha state. But appears as beta due a tooling limitation</b>
+ *
  * @beta
  */
 @Injectable({ providedIn: 'root' })
@@ -14,6 +16,8 @@ export class NgxMetaElementsService {
 
   /**
    * Creates, updates or removes some kind of `<meta>` elements inside `<head>` in a declarative fashion.
+   *
+   * <b>API is in alpha state. But appears as beta due a tooling limitation</b>
    *
    * Kind of `<meta>` elements to manage are identified by an HTML attribute providing its metadata name.
    * For instance, to manage description metadata elements (`<meta name="description">`) on the page, the

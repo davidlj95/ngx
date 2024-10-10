@@ -11,7 +11,7 @@ import { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
  * @param content - Value for the `property` attribute of the `<meta>` element
  * @param extras - Extra attributes to include in the object if `content` is defined.
  *
- * @alpha
+ * @public
  */
 export const withContentAttribute = ((
   content: string | null | undefined,

@@ -202,7 +202,7 @@ export interface NgxMetaCoreModuleForRootOptions {
     defaults?: MetadataValues;
 }
 
-// @alpha
+// @public
 export type NgxMetaElementAttributes = Partial<{
     charset: string;
     content: string;
@@ -218,14 +218,12 @@ export type NgxMetaElementAttributes = Partial<{
     [key: string]: string;
 };
 
-// @alpha
+// @public
 export type NgxMetaElementNameAttribute = readonly [name: string, value: string];
 
-// @beta
+// @public
 export class NgxMetaElementsService {
     constructor(meta: Meta);
-    // Warning: (ae-incompatible-release-tags) The symbol "set" is marked as @beta, but its signature references "NgxMetaElementNameAttribute" which is marked as @alpha
-    // Warning: (ae-incompatible-release-tags) The symbol "set" is marked as @beta, but its signature references "NgxMetaElementAttributes" which is marked as @alpha
     set(nameAttribute: NgxMetaElementNameAttribute, content: ReadonlyArray<NgxMetaElementAttributes> | NgxMetaElementAttributes | undefined): void;
 }
 
@@ -584,14 +582,14 @@ export type _UrlResolver = (url: URL | string | undefined | null | AngularRouter
 // @internal
 export const _urlResolver: _LazyInjectionToken<_UrlResolver>;
 
-// @alpha
+// @public
 export const withContentAttribute: {
     (content: null | undefined, extras?: NgxMetaElementAttributes): undefined;
     (content: string, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes;
     (content: string | null | undefined, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes | undefined;
 };
 
-// @alpha
+// @public
 export const withNameAttribute: (value: string) => readonly ["name", string];
 
 // @public
@@ -600,7 +598,7 @@ export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKi
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
 
-// @alpha
+// @public
 export const withPropertyAttribute: (value: string) => readonly ["property", string];
 
 // (No @packageDocumentation comment for this package)

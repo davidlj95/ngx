@@ -223,7 +223,7 @@ export class NgxMetaElementsService {
     constructor(meta: Meta);
     // Warning: (ae-incompatible-release-tags) The symbol "set" is marked as @beta, but its signature references "NgxMetaElementNameAttribute" which is marked as @alpha
     // Warning: (ae-incompatible-release-tags) The symbol "set" is marked as @beta, but its signature references "NgxMetaElementAttributes" which is marked as @alpha
-    set(nameAttribute: NgxMetaElementNameAttribute, content: NgxMetaElementAttributes[] | NgxMetaElementAttributes | undefined): void;
+    set(nameAttribute: NgxMetaElementNameAttribute, content: ReadonlyArray<NgxMetaElementAttributes> | NgxMetaElementAttributes | undefined): void;
 }
 
 // @public

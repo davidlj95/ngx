@@ -91,7 +91,10 @@ export class NgxMetaElementsService {
    */
   set(
     nameAttribute: NgxMetaElementNameAttribute,
-    content: NgxMetaElementAttributes[] | NgxMetaElementAttributes | undefined,
+    content:
+      | ReadonlyArray<NgxMetaElementAttributes>
+      | NgxMetaElementAttributes
+      | undefined,
   ): void {
     const [nameAttributeName, nameAttributeValue] = nameAttribute
     const attrSelector = `${nameAttributeName}="${nameAttributeValue}"`

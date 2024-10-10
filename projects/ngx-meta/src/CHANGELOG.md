@@ -1,3 +1,36 @@
+## [`ngx-meta` v1.0.0-beta.17](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.16...ngx-meta-v1.0.0-beta.17) (2024-10-10)
+
+### Features
+
+- introduce meta element APIs v2 ([#883](https://github.com/davidlj95/ngx/issues/883)) ([52a3c34](https://github.com/davidlj95/ngx/commit/52a3c3490a527c30135144658a3f22913be5de79))
+
+### Documentation
+
+- add note about alpha and beta APIs ([#916](https://github.com/davidlj95/ngx/issues/916)) ([65dd7a3](https://github.com/davidlj95/ngx/commit/65dd7a3f5272128554afc7bc1030b4376a3076b9))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#900](https://github.com/davidlj95/ngx/issues/900)) ([2605fb2](https://github.com/davidlj95/ngx/commit/2605fb224a0e094f4865aa67e75cf75b59a373c6))
+- turn is array utility into type ([#915](https://github.com/davidlj95/ngx/issues/915)) ([0e91f78](https://github.com/davidlj95/ngx/commit/0e91f78eb4e7ff8525304cc645b19a5c419bbb9a))
+
+### Code Refactoring
+
+- allow lazy injection tokens not to provide a factory ([#907](https://github.com/davidlj95/ngx/issues/907)) ([2d572b7](https://github.com/davidlj95/ngx/commit/2d572b72461fdf0191f2cf7ddeea3f508a7cce96))
+- move v1 meta element APIs to directory ([#917](https://github.com/davidlj95/ngx/issues/917)) ([efaa1e3](https://github.com/davidlj95/ngx/commit/efaa1e3ded3e3ecf76aa226f29d1812f85534c8a))
+- remove log & test failures from injection token maker ([#904](https://github.com/davidlj95/ngx/issues/904)) ([25d1323](https://github.com/davidlj95/ngx/commit/25d13234075c5553bf71b1764d66fae6c839ffc3))
+- rename util back to make injection token ([#903](https://github.com/davidlj95/ngx/issues/903)) ([d2566ae](https://github.com/davidlj95/ngx/commit/d2566ae1fa4aa54957f74ed6ad3f61524fd7cadd)), closes [#901](https://github.com/davidlj95/ngx/issues/901)
+- rename util to lazy injection token ([#901](https://github.com/davidlj95/ngx/issues/901)) ([2b46b25](https://github.com/davidlj95/ngx/commit/2b46b25138c63b8794b09bfda46c6af99cb4136b))
+- turn default route metadata strategy into provider ([#912](https://github.com/davidlj95/ngx/issues/912)) ([66d5729](https://github.com/davidlj95/ngx/commit/66d57292f72ff83e47114a13b5cb62b84968303b))
+- turn main service into a class again ([#914](https://github.com/davidlj95/ngx/issues/914)) ([9a6f028](https://github.com/davidlj95/ngx/commit/9a6f0289fc43c43e669eccb64f4ed75b3260238d))
+- use lazy injection token for defaults ([#908](https://github.com/davidlj95/ngx/issues/908)) ([683d279](https://github.com/davidlj95/ngx/commit/683d279d580395db1d8fb30adb6be950b9d3d4b0))
+- use lazy injection token for head utility ([#902](https://github.com/davidlj95/ngx/issues/902)) ([6ab1774](https://github.com/davidlj95/ngx/commit/6ab177421df20c4d94767c473a5d51ebfd2489db))
+- use lazy injection token for JSON metadata resolver ([#905](https://github.com/davidlj95/ngx/issues/905)) ([259fb02](https://github.com/davidlj95/ngx/commit/259fb023e7723519ac675d163ef92d056d70f298))
+- use lazy injection token for metadata registry ([#909](https://github.com/davidlj95/ngx/issues/909)) ([111f6f3](https://github.com/davidlj95/ngx/commit/111f6f3c01b80bd7e5bc62c79ad59b87cdee9dc2))
+- use lazy injection token for metadata resolver ([#910](https://github.com/davidlj95/ngx/issues/910)) ([0bc0450](https://github.com/davidlj95/ngx/commit/0bc0450e55e1e9284437b6a9f76751f0f13511cc))
+- use lazy injection token for route metadata strategy ([#911](https://github.com/davidlj95/ngx/issues/911)) ([26d2300](https://github.com/davidlj95/ngx/commit/26d2300c9a4f9b2e94e79f06719b75aca877ee04))
+- use lazy injection token for router listener ([#913](https://github.com/davidlj95/ngx/issues/913)) ([a959b94](https://github.com/davidlj95/ngx/commit/a959b94d5a5d225c5317b9af33c43b4185d5ce94))
+- use lazy injection token for url resolver ([#906](https://github.com/davidlj95/ngx/issues/906)) ([23abd03](https://github.com/davidlj95/ngx/commit/23abd03cb8834c836f7dfd31d570d89baf7a1cf1))
+
 ## [`ngx-meta` v1.0.0-beta.16](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.15...ngx-meta-v1.0.0-beta.16) (2024-10-08)
 
 ### Reverts

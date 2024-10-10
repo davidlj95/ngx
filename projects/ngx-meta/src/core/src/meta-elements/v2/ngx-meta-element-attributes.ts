@@ -20,6 +20,7 @@ export type NgxMetaElementAttributes = Partial<{
   property: string
   scheme: string
   url: string
+  media: string
 }> & {
   [key: string]: string
 }

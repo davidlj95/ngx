@@ -199,6 +199,33 @@ export interface NgxMetaCoreModuleForRootOptions {
     defaults?: MetadataValues;
 }
 
+// @alpha
+export type NgxMetaElementAttributes = Partial<{
+    charset: string;
+    content: string;
+    'http-equiv': string;
+    id: string;
+    itemprop: string;
+    name: string;
+    property: string;
+    scheme: string;
+    url: string;
+    media: string;
+}> & {
+    [key: string]: string;
+};
+
+// @alpha
+export type NgxMetaElementNameAttribute = readonly [name: string, value: string];
+
+// @beta
+export class NgxMetaElementsService {
+    constructor(meta: Meta);
+    // Warning: (ae-incompatible-release-tags) The symbol "set" is marked as @beta, but its signature references "NgxMetaElementNameAttribute" which is marked as @alpha
+    // Warning: (ae-incompatible-release-tags) The symbol "set" is marked as @beta, but its signature references "NgxMetaElementAttributes" which is marked as @alpha
+    set(nameAttribute: NgxMetaElementNameAttribute, content: ReadonlyArray<NgxMetaElementAttributes> | NgxMetaElementAttributes | undefined): void;
+}
+
 // @public
 export class NgxMetaJsonLdModule {
 }
@@ -554,11 +581,23 @@ export type _UrlResolver = (url: URL | string | undefined | null | AngularRouter
 // @internal
 export const _urlResolver: _LazyInjectionToken<_UrlResolver>;
 
+// @alpha
+export const withContentAttribute: {
+    (content: null | undefined, extras?: NgxMetaElementAttributes): undefined;
+    (content: string, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes;
+};
+
+// @alpha
+export const withNameAttribute: (value: string) => readonly ["name", string];
+
 // @public
 export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKind.BaseUrl>;
 
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
+
+// @alpha
+export const withPropertyAttribute: (value: string) => readonly ["property", string];
 
 // (No @packageDocumentation comment for this package)
 

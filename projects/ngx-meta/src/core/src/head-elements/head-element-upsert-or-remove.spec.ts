@@ -19,12 +19,12 @@ describe('Head element upsert or remove', () => {
     dummyElement = headElementHarness.createDummyElement('dummy 1')
   })
   afterEach(() => {
-    headElementHarness.remove(headElementHarness.dummySelector)
+    headElementHarness.removeAllDummyElements()
   })
 
   describe('when element does not exist already', () => {
     beforeEach(() => {
-      expect(headElementHarness.getAll(headElementHarness.dummySelector))
+      expect(headElementHarness.getAllDummyElements())
         .withContext('element does not exist already')
         .toHaveSize(0)
     })
@@ -33,9 +33,7 @@ describe('Head element upsert or remove', () => {
       it('should append it to head', () => {
         sut(headElementHarness.dummySelector, dummyElement)
 
-        const elements = headElementHarness.getAll(
-          headElementHarness.dummySelector,
-        )
+        const elements = headElementHarness.getAllDummyElements()
         expect(elements).toHaveSize(1)
         const element = elements[0]
         expect(element).toEqual(dummyElement)
@@ -47,9 +45,7 @@ describe('Head element upsert or remove', () => {
         it('should do nothing', () => {
           sut(headElementHarness.dummySelector, testCase)
 
-          expect(
-            headElementHarness.getAll(headElementHarness.dummySelector),
-          ).toHaveSize(0)
+          expect(headElementHarness.getAllDummyElements()).toHaveSize(0)
         })
       })
     })
@@ -58,7 +54,7 @@ describe('Head element upsert or remove', () => {
   describe('when element exists already', () => {
     beforeEach(() => {
       headElementHarness.appendElement(dummyElement)
-      expect(headElementHarness.getAll(headElementHarness.dummySelector))
+      expect(headElementHarness.getAllDummyElements())
         .withContext('element exists already')
         .toHaveSize(1)
     })
@@ -69,9 +65,7 @@ describe('Head element upsert or remove', () => {
           headElementHarness.createDummyElement('dummy 2')
         sut(headElementHarness.dummySelector, anotherDummyElement)
 
-        const elements = headElementHarness.getAll(
-          headElementHarness.dummySelector,
-        )
+        const elements = headElementHarness.getAllDummyElements()
         expect(elements).toHaveSize(1)
         const element = elements[0]
         expect(element).toEqual(anotherDummyElement)
@@ -83,9 +77,7 @@ describe('Head element upsert or remove', () => {
         it('should remove it', () => {
           sut(headElementHarness.dummySelector, testCase)
 
-          expect(
-            headElementHarness.getAll(headElementHarness.dummySelector),
-          ).toHaveSize(0)
+          expect(headElementHarness.getAllDummyElements()).toHaveSize(0)
         })
       })
     })

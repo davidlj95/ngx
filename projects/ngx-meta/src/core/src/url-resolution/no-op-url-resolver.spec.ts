@@ -1,5 +1,6 @@
 import { noOpUrlResolver } from './no-op-url-resolver'
 import { ANGULAR_ROUTER_URL, AngularRouterUrl } from './angular-router-url'
+import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('No Op URL resolver', () => {
   const sut = noOpUrlResolver
@@ -25,13 +26,9 @@ describe('No Op URL resolver', () => {
   })
 
   describe('when no URL is given', () => {
-    const TEST_CASES = [null, undefined]
-
-    TEST_CASES.forEach((testCase) => {
-      describe(`like when URL is ${testCase}`, () => {
-        it(`should return ${testCase}`, () => {
-          expect(sut(testCase)).toEqual(testCase)
-        })
+    likeWhenNullOrUndefined((testCase) => {
+      it(`should return ${testCase}`, () => {
+        expect(sut(testCase)).toEqual(testCase)
       })
     })
   })

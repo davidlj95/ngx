@@ -9,6 +9,7 @@ import { VERSION } from '@angular/core'
 import { Standard } from '../types'
 import { STANDARD_GENERATOR_METADATA_PROVIDER } from './standard-generator-metadata-provider'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
+import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('Standard generator metadata manager', () => {
   enableAutoSpy()
@@ -23,17 +24,14 @@ describe('Standard generator metadata manager', () => {
   })
 
   describe('when not provided', () => {
-    const TEST_CASES = [null, undefined]
-    TEST_CASES.forEach((testCase) => {
-      describe(`like when ${testCase}`, () => {
-        it(`should call meta service with ${testCase}`, () => {
-          sut.set(undefined)
+    likeWhenNullOrUndefined((testCase) => {
+      it(`should call meta service with ${testCase}`, () => {
+        sut.set(undefined)
 
-          expect(metaElementsService.set).toHaveBeenCalledOnceWith(
-            jasmine.anything(),
-            undefined,
-          )
-        })
+        expect(metaElementsService.set).toHaveBeenCalledOnceWith(
+          jasmine.anything(),
+          undefined,
+        )
       })
     })
   })

@@ -6,6 +6,7 @@ import {
   _headElementUpsertOrRemove,
   _HeadElementUpsertOrRemove,
 } from './head-element-upsert-or-remove'
+import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('Head element upsert or remove', () => {
   let sut: _HeadElementUpsertOrRemove
@@ -28,7 +29,7 @@ describe('Head element upsert or remove', () => {
         .toHaveSize(0)
     })
 
-    describe('when element is not null or undefined', () => {
+    describe('when element is defined', () => {
       it('should append it to head', () => {
         sut(headElementHarness.dummySelector, dummyElement)
 
@@ -41,18 +42,17 @@ describe('Head element upsert or remove', () => {
       })
     })
 
-    const TEST_CASES = [null, undefined]
-    for (const TEST_CASE of TEST_CASES) {
-      describe(`when element is ${TEST_CASE}`, () => {
+    describe('when element is not defined', () => {
+      likeWhenNullOrUndefined((testCase) => {
         it('should do nothing', () => {
-          sut(headElementHarness.dummySelector, TEST_CASE)
+          sut(headElementHarness.dummySelector, testCase)
 
           expect(
             headElementHarness.getAll(headElementHarness.dummySelector),
           ).toHaveSize(0)
         })
       })
-    }
+    })
   })
 
   describe('when element exists already', () => {
@@ -63,7 +63,7 @@ describe('Head element upsert or remove', () => {
         .toHaveSize(1)
     })
 
-    describe('when element is not null or undefined', () => {
+    describe('when element is defined', () => {
       it('should update it', () => {
         const anotherDummyElement =
           headElementHarness.createDummyElement('dummy 2')
@@ -78,18 +78,17 @@ describe('Head element upsert or remove', () => {
       })
     })
 
-    const TEST_CASES = [null, undefined]
-    for (const TEST_CASE of TEST_CASES) {
-      describe(`when element is ${TEST_CASE}`, () => {
+    describe('when element is not defined', () => {
+      likeWhenNullOrUndefined((testCase) => {
         it('should remove it', () => {
-          sut(headElementHarness.dummySelector, TEST_CASE)
+          sut(headElementHarness.dummySelector, testCase)
 
           expect(
             headElementHarness.getAll(headElementHarness.dummySelector),
           ).toHaveSize(0)
         })
       })
-    }
+    })
   })
 })
 

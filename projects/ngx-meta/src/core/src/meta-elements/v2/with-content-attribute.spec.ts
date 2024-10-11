@@ -1,25 +1,22 @@
 import { withContentAttribute } from './with-content-attribute'
 import { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
+import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('with content attribute', () => {
   const sut = withContentAttribute
   const extras = { dummy: 'dummy' } satisfies NgxMetaElementAttributes
 
   describe('when no content is provided', () => {
-    const TEST_CASES = [null, undefined]
-
-    TEST_CASES.forEach((testCase) => {
-      describe(`like when ${testCase}`, () => {
-        describe('when not providing extras', () => {
-          it('should return undefined', () => {
-            expect(sut(testCase)).toBeUndefined()
-          })
+    likeWhenNullOrUndefined((testCase) => {
+      describe('when not providing extras', () => {
+        it('should return undefined', () => {
+          expect(sut(testCase)).toBeUndefined()
         })
+      })
 
-        describe('when providing extras', () => {
-          it('should return undefined', () => {
-            expect(sut(testCase, extras)).toBeUndefined()
-          })
+      describe('when providing extras', () => {
+        it('should return undefined', () => {
+          expect(sut(testCase, extras)).toBeUndefined()
         })
       })
     })

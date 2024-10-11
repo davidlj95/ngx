@@ -16,12 +16,12 @@ export class HeadElementHarness {
     this.doc.head.appendChild(element)
   }
 
-  getAll(selector: string): NodeListOf<HTMLElement> {
-    return this.doc.querySelectorAll(selector)
+  getAllDummyElements(): NodeListOf<HTMLElement> {
+    return this.doc.head.querySelectorAll(this.dummySelector)
   }
 
-  remove(selector: string): void {
-    const elements = this.getAll(selector)
+  removeAllDummyElements(): void {
+    const elements = this.getAllDummyElements()
     elements.forEach((element) => {
       element.remove()
     })

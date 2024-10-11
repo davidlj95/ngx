@@ -417,8 +417,31 @@ export const provideNgxMetaCore: (...features: CoreFeatures) => EnvironmentProvi
 // @public
 export const provideNgxMetaJsonLd: () => Provider[];
 
+// Warning: (ae-incompatible-release-tags) The symbol "provideNgxMetaManager" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+//
+// @alpha (undocumented)
+export const provideNgxMetaManager: <T>(jsonPath: string, setterFactory: MetadataSetterFactory<T>, options?: _ProvideNgxMetaManagerOptions) => FactoryProvider;
+
+// @internal (undocumented)
+export type _ProvideNgxMetaManagerOptions = Partial<{
+    deps: FactoryProvider['deps'];
+    global: MetadataResolverOptions['global'];
+    id: NgxMetaMetadataManager['id'];
+    objectMerge: MetadataResolverOptions['objectMerge'];
+}>;
+
 // @public
 export const provideNgxMetaMetadataLoader: () => Provider[];
+
+// @internal (undocumented)
+export const _provideNgxMetaModuleManager: <Type extends object, Key extends Extract<keyof Type, string>>(key: Key, options?: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
+
+// @internal (undocumented)
+export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
+    scope: ReadonlyArray<string>;
+    setterFactory: MetadataSetterFactory<T>;
+    nameAttribute: NgxMetaElementNameAttribute;
+}> & _ProvideNgxMetaManagerOptions;
 
 // @public
 export const provideNgxMetaOpenGraph: () => Provider[];
@@ -588,6 +611,46 @@ export const withContentAttribute: {
     (content: string, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes;
     (content: string | null | undefined, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes | undefined;
 };
+
+// Warning: (ae-incompatible-release-tags) The symbol "withManagerDeps" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+//
+// @alpha (undocumented)
+export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefined>) => Partial<_ProvideNgxMetaManagerOptions>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "withManagerGlobal" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+//
+// @alpha (undocumented)
+export const withManagerGlobal: (global: string) => Partial<_ProvideNgxMetaManagerOptions>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "withManagerId" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+//
+// @alpha (undocumented)
+export const withManagerId: (id: string) => Partial<_ProvideNgxMetaManagerOptions>;
+
+// @alpha (undocumented)
+export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPath']) => string;
+
+// Warning: (ae-incompatible-release-tags) The symbol "withManagerObjectMerging" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+//
+// @alpha (undocumented)
+export const withManagerObjectMerging: () => Partial<_ProvideNgxMetaManagerOptions>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "withManagerOptions" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+//
+// @alpha (undocumented)
+export const withManagerOptions: (...options: ReadonlyArray<_ProvideNgxMetaManagerOptions>) => _ProvideNgxMetaManagerOptions;
+
+// @internal (undocumented)
+export const _withModuleManagerNameAttribute: <T>(nameAttribute: NgxMetaElementNameAttribute) => _ProvideNgxMetaModuleManagerOptions<T>;
+
+// @internal (undocumented)
+export const _withModuleManagerOptions: <T>(...options: ReadonlyArray<_ProvideNgxMetaModuleManagerOptions<T>>) => _ProvideNgxMetaModuleManagerOptions<T>;
+
+// @internal (undocumented)
+export const _withModuleManagerScope: <T>(...scope: ReadonlyArray<string>) => _ProvideNgxMetaModuleManagerOptions<T>;
+
+// @internal (undocumented)
+export const _withModuleManagerSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @public
 export const withNameAttribute: (value: string) => readonly ["name", string];

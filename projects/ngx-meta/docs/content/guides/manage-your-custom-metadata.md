@@ -23,9 +23,62 @@ First, you'll need to implement an [`NgxMetaMetadataManager`](ngx-meta.ngxmetame
 
 This may sound frightening, but it's not!
 
+### Using a factory provider (recommended)
+
+Recommended way is to directly create an object implementing the interface and define an Angular [`Provider`](https://angular.dev/guide/di/dependency-injection-providers) to inject dependencies. Specifically, [a factory provider](https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory)
+
+Main benefit of this approach is **bundle size reduction** (see warning in next section about using a class for more information). Which is noticeable when writing many small managers. Which the library does and encourages you to do so.
+
+Let's get hands-on! To avoid writing a provider yourself, the library provides a useful function to create a factory provider: [`makeMetadataManagerProviderFromSetterFactory`](ngx-meta.makemetadatamanagerproviderfromsetterfactory.md).
+Again, don't let the scarily long name frighten you, [it doesn't bite](https://knowyourmeme.com/memes/does-he-bite).
+
+It takes as argument function that creates a metadata setter given some dependencies. Call it a setter factory. Then, allows you to customize the other elements of a metadata manager.
+
+<!-- prettier-ignore-start -->
+
+```typescript
+import {
+  makeMetadataManagerProviderFromSetterFactory,
+  NgxMetaElementsService,
+  withContentAttribute,
+  withNameAttribute,
+} from '@davidlj95/ngx-meta/core'
+
+const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory(
+  (metaElementsService: NgxMetaElementsService) => 
+    metaElementsService.set(
+      withNameAttribute('custom:title'), 
+      withContentAttribute(value),
+    ), 
+  {
+    // Dependencies to pass to the setter factory
+    d: [NgxMetaElementsService],
+    
+    // JSON Path to resolve the value from the values JSON
+    // Will also be used as id
+    jP: ['custom', 'title'],
+
+    // 👇 If we want that global `title` key in the metadata values
+    //    JSON is used as custom title if non specific is provided
+    //    You can skip this one if N/A
+    g: 'title' satisfies keyof GlobalMetadata,
+  }
+)
+```
+
+<!-- prettier-ignore-end -->
+
+--8<-- "includes/ngx-meta-elements-service.md"
+
+That would be it, there you have your metadata manager provider, ready to inject into your Angular's app dependencies.
+
+See the API reference of [`makeMetadataManagerProviderFromSetterFactory`](ngx-meta.makemetadatamanagerproviderfromsetterfactory.md) for more information.
+
+You can also check a full example at [example standalone app]'s [`provideCustomMetadataManager`](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/example-apps/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)
+
 ### Using a class
 
-You can implement it by defining a class that implements the interface:
+You can also implement it by defining a class that implements the interface:
 
 <!-- prettier-ignore-start -->
 
@@ -68,73 +121,58 @@ class CustomTitleMetadataManager implements NgxMetaMetadataManager<string | unde
 
 <!-- prettier-ignore-end -->
 
---8<-- "includes/ngx-meta-elements-service.md"
-
-This option is presented first as it's the traditional, Angular'ish way of working (services & `@Injectable` decorators). However, do check out another way of implementing it (see in below box why)
+This option is the traditional, Angular'ish way of working (services & `@Injectable` decorators). However...
 
 !!! warning "Prefer factory functions instead"
 
-    Angular's `@Injectable` [takes around 200 bytes of overhead to perform the dependency injection][bundle size issue]. If writing many managers, do prefer using providers instead (see next section)
+    Angular's `@Injectable` [takes around 200 bytes of overhead to perform the dependency injection][bundle size issue]. If writing many managers, do prefer using providers instead (as in previous section)
 
-If you don't need any dependencies injection, this approach is definitely cleaner. But that's extremely rare. You'll probably need at least the [`DOCUMENT`](https://angular.dev/api/common/DOCUMENT) to safely manage the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) / HTML of the page.
-
-### Using a factory provider (recommended)
-
-Another way is to directly create an object implementing the interface and define an Angular [`Provider`](https://angular.dev/guide/di/dependency-injection-providers) to inject dependencies. Specifically, [a factory provider](https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory)
-
-Main benefit of this approach is **bundle size reduction** (see warning in previous section). Which is noticeable when writing many small managers. Which the library does and encourages you to do so.
-
-Let's get hands-on! To avoid writing a provider yourself, the library provides a useful function to create a factory provider: [`makeMetadataManagerProviderFromSetterFactory`](ngx-meta.makemetadatamanagerproviderfromsetterfactory.md).
-Again, don't let the scarily long name frighten you, [it doesn't bite](https://knowyourmeme.com/memes/does-he-bite).
-
-It takes as argument function that creates a metadata setter given some dependencies. Call it a setter factory. Then, allows you to customize the other elements of a metadata manager.
-
-<!-- prettier-ignore-start -->
-
-```typescript
-import {
-  makeMetadataManagerProviderFromSetterFactory,
-  NgxMetaElementsService,
-  withContentAttribute,
-  withNameAttribute,
-} from '@davidlj95/ngx-meta/core'
-
-const CUSTOM_TITLE_METADATA_MANAGER_PROVIDER = makeMetadataManagerProviderFromSetterFactory(
-  (metaElementsService: NgxMetaElementsService) => 
-    metaElementsService.set(
-      withNameAttribute('custom:title'), 
-      withContentAttribute(value),
-    ), 
-  {
-    // Dependencies to pass to the setter factory
-    d: [NgxMetaElementsService],
-    
-    // JSON Path to resolve the value from the values JSON
-    // Will also be used as id
-    jP: ['custom', 'title'],
-
-    // 👇 If we want that global `title` key in the metadata values
-    //    JSON is used as custom title if non specific is provided
-    //    You can skip this one if N/A
-    g: 'title' satisfies keyof GlobalMetadata,
-  }
-)
-```
-
-
-<!-- prettier-ignore-end -->
+If you don't need any dependencies injection, this approach is definitely cleaner. But that's extremely rare. You'll probably need at least the [`DOCUMENT`](https://angular.dev/api/common/DOCUMENT) to manage the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) / HTML of the page.
 
 --8<-- "includes/ngx-meta-elements-service.md"
-
-That would be it, there you have your metadata manager provider, ready to inject into your Angular's app dependencies.
-
-See the API reference of [`makeMetadataManagerProviderFromSetterFactory`](ngx-meta.makemetadatamanagerproviderfromsetterfactory.md) for more information
-
-You can also check a full example at [example standalone app]'s [`provideCustomMetadataManager`](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/example-apps/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)
 
 ## 2. Inject it
 
 Now that you have implemented your manager, you can inject it into your Angular's app dependencies so the library can use it.
+
+### Injecting the factory provider
+
+The provider has been created already, so you just need to add it to your main app file. In a similar fashion as you would do with a built-in metadata module like [standard module] in the [get started setup] step
+
+=== "For standalone, module-free apps"
+
+    --8<-- "includes/standalone-apps-explanation.md"
+
+    Open your `app.config.ts` file. Add the created factory provider to the providers list.
+
+    ```typescript title="app.config.ts"
+    export const appConfig: ApplicationConfig = {
+      // ...
+      providers: [
+        CUSTOM_TITLE_METADATA_MANAGER_PROVIDER,
+      ]
+    })
+    ```
+
+=== "For non-standalone, module-based apps"
+
+    --8<-- "includes/module-apps-explanation.md"
+
+    Open your `app.module.ts` file. Add the created factory provider to the module.
+
+    ```typescript title="app.module.ts"
+    @NgModule({
+      // ...
+      providers: [
+        CUSTOM_TITLE_METADATA_MANAGER_PROVIDER,
+      ]
+    })
+    export class AppModule {}
+    ```
+
+!!! tip "You can also (lazy) load it later"
+
+    You can also load the custom metadata manager later. This means it can be lazy loaded too (if you want). You can do it in a similar way you would with a built-in metadata module. Check out the [late loading modules guide](late-loading-modules.md) for more information. The only change is instead of adding a built-in metadata module, you'll add your class provider or factory provider as explained above.
 
 ### Injecting the class
 
@@ -182,45 +220,6 @@ Create a [class provider](https://angular.dev/guide/di/dependency-injection-prov
     })
     export class AppModule {}
     ```
-
-### Injecting the factory provider
-
-The provider has been created already, so you just need to add it to your main app file. In a similar fashion as you would do with a built-in metadata module like [standard module] in the [get started setup] step
-
-=== "For standalone, module-free apps"
-
-    --8<-- "includes/standalone-apps-explanation.md"
-
-    Open your `app.config.ts` file. Add the created factory provider to the providers list.
-
-    ```typescript title="app.config.ts"
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        CUSTOM_TITLE_METADATA_MANAGER_PROVIDER,
-      ]
-    })
-    ```
-
-=== "For non-standalone, module-based apps"
-
-    --8<-- "includes/module-apps-explanation.md"
-
-    Open your `app.module.ts` file. Add the created factory provider to the module.
-
-    ```typescript title="app.module.ts"
-    @NgModule({
-      // ...
-      providers: [
-        CUSTOM_TITLE_METADATA_MANAGER_PROVIDER,
-      ]
-    })
-    export class AppModule {}
-    ```
-
-!!! tip "You can also (lazy) load it later"
-
-    You can also load the custom metadata manager later. This means it can be lazy loaded too (if you want). You can do it in a similar way you would with a built-in metadata module. Check out the [late loading modules guide](late-loading-modules.md) for more information. The only change is instead of adding a built-in metadata module, you'll add your class provider or factory provider as explained above.
 
 ## ❤️ Contributions are welcome!
 

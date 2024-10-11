@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import {
+  NgxMetaElementNameAttribute,
   NgxMetaElementsService,
   NgxMetaMetadataManager,
 } from '@davidlj95/ngx-meta/core'
@@ -15,6 +16,10 @@ describe('Standard generator metadata manager', () => {
   enableAutoSpy()
   let sut: NgxMetaMetadataManager<Standard['generator']>
   let metaElementsService: jasmine.SpyObj<NgxMetaElementsService>
+  const EXPECTED_NAME_ATTRIBUTE = [
+    'name',
+    'generator',
+  ] satisfies NgxMetaElementNameAttribute
 
   beforeEach(() => {
     sut = makeSut()
@@ -26,10 +31,10 @@ describe('Standard generator metadata manager', () => {
   describe('when not provided', () => {
     likeWhenNullOrUndefined((testCase) => {
       it(`should call meta service with ${testCase}`, () => {
-        sut.set(undefined)
+        sut.set(testCase)
 
         expect(metaElementsService.set).toHaveBeenCalledOnceWith(
-          jasmine.anything(),
+          EXPECTED_NAME_ATTRIBUTE,
           undefined,
         )
       })
@@ -43,7 +48,7 @@ describe('Standard generator metadata manager', () => {
       sut.set(value)
 
       expect(metaElementsService.set).toHaveBeenCalledOnceWith(
-        ['name', 'generator'],
+        EXPECTED_NAME_ATTRIBUTE,
         { content: `Angular v${VERSION.full}` },
       )
     })

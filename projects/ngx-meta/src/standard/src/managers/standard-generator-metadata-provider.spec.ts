@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import {
+  NgxMetaElementsService,
   NgxMetaMetadataManager,
-  NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { VERSION } from '@angular/core'
 import { Standard } from '../types'
@@ -13,13 +13,13 @@ import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-ma
 describe('Standard generator metadata manager', () => {
   enableAutoSpy()
   let sut: NgxMetaMetadataManager<Standard['generator']>
-  let metaService: jasmine.SpyObj<NgxMetaMetaService>
+  let metaElementsService: jasmine.SpyObj<NgxMetaElementsService>
 
   beforeEach(() => {
     sut = makeSut()
-    metaService = TestBed.inject(
-      NgxMetaMetaService,
-    ) as jasmine.SpyObj<NgxMetaMetaService>
+    metaElementsService = TestBed.inject(
+      NgxMetaElementsService,
+    ) as jasmine.SpyObj<NgxMetaElementsService>
   })
 
   describe('when not provided', () => {
@@ -29,7 +29,7 @@ describe('Standard generator metadata manager', () => {
         it(`should call meta service with ${testCase}`, () => {
           sut.set(undefined)
 
-          expect(metaService.set).toHaveBeenCalledOnceWith(
+          expect(metaElementsService.set).toHaveBeenCalledOnceWith(
             jasmine.anything(),
             undefined,
           )
@@ -44,9 +44,9 @@ describe('Standard generator metadata manager', () => {
     it('should call meta service with Angular version as value', () => {
       sut.set(value)
 
-      expect(metaService.set).toHaveBeenCalledOnceWith(
-        jasmine.anything(),
-        `Angular v${VERSION.full}`,
+      expect(metaElementsService.set).toHaveBeenCalledOnceWith(
+        ['name', 'generator'],
+        { content: `Angular v${VERSION.full}` },
       )
     })
   })
@@ -55,7 +55,7 @@ describe('Standard generator metadata manager', () => {
 function makeSut(): NgxMetaMetadataManager<Standard['generator']> {
   TestBed.configureTestingModule({
     providers: [
-      MockProvider(NgxMetaMetaService),
+      MockProvider(NgxMetaElementsService),
       STANDARD_GENERATOR_METADATA_PROVIDER,
     ],
   })

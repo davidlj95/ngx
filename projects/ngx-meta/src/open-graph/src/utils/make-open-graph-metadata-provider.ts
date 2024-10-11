@@ -3,11 +3,12 @@ import {
   makeMetadataManagerProviderFromSetterFactory,
   MetadataResolverOptions,
   MetadataSetterFactory,
-  NgxMetaMetaService,
+  NgxMetaElementsService,
+  withContentAttribute,
 } from '@davidlj95/ngx-meta/core'
 import { FactoryProvider } from '@angular/core'
 import { OpenGraph, OpenGraphMetadata } from '../types'
-import { makeOpenGraphMetaDefinition } from './make-open-graph-meta-definition'
+import { withOpenGraphPropertyAttribute } from './with-open-graph-property-attribute'
 
 export const OPEN_GRAPH_KEY: keyof OpenGraphMetadata = 'openGraph'
 
@@ -28,13 +29,14 @@ export const makeOpenGraphMetadataProvider = <Key extends keyof OpenGraph>(
 ): FactoryProvider =>
   makeMetadataManagerProviderFromSetterFactory(
     opts.s ??
-      ((metaService: NgxMetaMetaService) => (value: OpenGraph[Key]) =>
-        metaService.set(
-          makeOpenGraphMetaDefinition(opts.p ?? key),
-          value as string,
-        )),
+      ((metaElementsService: NgxMetaElementsService) =>
+        (value: OpenGraph[Key]) =>
+          metaElementsService.set(
+            withOpenGraphPropertyAttribute(opts.p ?? key),
+            withContentAttribute(value as string | null | undefined),
+          )),
     {
-      d: opts.d ?? [NgxMetaMetaService],
+      d: opts.d ?? [NgxMetaElementsService],
       jP: [OPEN_GRAPH_KEY, key],
       g: opts.g,
       m: opts.m,

@@ -1,6 +1,7 @@
 import {
+  NgxMetaElementNameAttribute,
+  NgxMetaElementsService,
   NgxMetaMetadataManager,
-  NgxMetaMetaService,
 } from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'
 import { TestBed } from '@angular/core/testing'
@@ -14,42 +15,46 @@ import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-ma
 describe('Standard theme color metadata manager', () => {
   enableAutoSpy()
   let sut: NgxMetaMetadataManager<Standard['themeColor']>
-  let metaService: jasmine.SpyObj<NgxMetaMetaService>
+  let metaElementsService: jasmine.SpyObj<NgxMetaElementsService>
 
   const DUMMY_COLOR = 'black'
   const DUMMY_MEDIA = '(prefers-color-scheme: dark)'
+  const EXPECTED_NAME_ATTRIBUTE = [
+    'name',
+    'theme-color',
+  ] satisfies NgxMetaElementNameAttribute
 
   beforeEach(() => {
     sut = makeSut()
-    metaService = TestBed.inject(
-      NgxMetaMetaService,
-    ) as jasmine.SpyObj<NgxMetaMetaService>
+    metaElementsService = TestBed.inject(
+      NgxMetaElementsService,
+    ) as jasmine.SpyObj<NgxMetaElementsService>
   })
 
   it('should call the meta service with no value when no value provided', () => {
     sut.set(undefined)
 
-    expect(metaService.set).toHaveBeenCalledOnceWith(
-      jasmine.anything(),
-      undefined,
+    expect(metaElementsService.set).toHaveBeenCalledOnceWith(
+      EXPECTED_NAME_ATTRIBUTE,
+      [],
     )
   })
 
   it('should call the meta service with the specified content when a string value is provided', () => {
     sut.set(DUMMY_COLOR)
 
-    expect(metaService.set).toHaveBeenCalledOnceWith(
-      jasmine.anything(),
-      DUMMY_COLOR,
+    expect(metaElementsService.set).toHaveBeenCalledOnceWith(
+      EXPECTED_NAME_ATTRIBUTE,
+      [{ content: DUMMY_COLOR }],
     )
   })
 
   it('should call the meta service with no value when an empty array is provided', () => {
     sut.set([])
 
-    expect(metaService.set).toHaveBeenCalledOnceWith(
-      jasmine.anything(),
-      undefined,
+    expect(metaElementsService.set).toHaveBeenCalledOnceWith(
+      EXPECTED_NAME_ATTRIBUTE,
+      [],
     )
   })
 
@@ -63,38 +68,23 @@ describe('Standard theme color metadata manager', () => {
     } satisfies MetaDefinition & StandardThemeColorMetadataObject
     sut.set([firstMediaDefinition, secondMediaDefinition])
 
-    expect(metaService.set).toHaveBeenCalledWith(
-      jasmine.anything(),
-      firstMediaDefinition.color,
+    expect(metaElementsService.set).toHaveBeenCalledWith(
+      EXPECTED_NAME_ATTRIBUTE,
+      [
+        {
+          content: firstMediaDefinition.color,
+          media: firstMediaDefinition.media,
+        },
+        { content: secondMediaDefinition.color },
+      ],
     )
-    expect(metaService.set).toHaveBeenCalledWith(
-      jasmine.anything(),
-      secondMediaDefinition.color,
-    )
-    expect(
-      metaService.set.calls
-        .argsFor(0)[0]
-        .withContent(firstMediaDefinition.color),
-    ).toEqual({
-      name: 'theme-color',
-      content: firstMediaDefinition.color,
-      media: firstMediaDefinition.media,
-    })
-    expect(
-      metaService.set.calls
-        .argsFor(1)[0]
-        .withContent(secondMediaDefinition.color),
-    ).toEqual({
-      name: 'theme-color',
-      content: secondMediaDefinition.color,
-    })
   })
 })
 
 function makeSut(): NgxMetaMetadataManager<Standard['themeColor']> {
   TestBed.configureTestingModule({
     providers: [
-      MockProvider(NgxMetaMetaService),
+      MockProvider(NgxMetaElementsService),
       STANDARD_THEME_COLOR_METADATA_PROVIDER,
     ],
   })

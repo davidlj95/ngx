@@ -1,8 +1,8 @@
 export class HeadElementHarness {
   constructor(private readonly doc: Document) {}
 
-  createDummyElement(content: string): HTMLElement {
-    const element = this.doc.createElement('meta')
+  createDummyElement(content: string, document?: Document): HTMLElement {
+    const element = (document ?? this.doc).createElement('meta')
     element.setAttribute('name', 'dummy')
     element.setAttribute('content', content)
     return element
@@ -12,8 +12,8 @@ export class HeadElementHarness {
     return "meta[name='dummy']"
   }
 
-  appendElement(element: HTMLElement): void {
-    this.doc.head.appendChild(element)
+  createAndAppendDummyElement(content: string): HTMLElement {
+    return this.doc.head.appendChild(this.createDummyElement(content))
   }
 
   getAll(selector: string): NodeListOf<HTMLElement> {

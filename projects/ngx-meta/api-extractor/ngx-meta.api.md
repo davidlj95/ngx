@@ -97,7 +97,7 @@ export interface GlobalMetadataImage {
 }
 
 // @internal (undocumented)
-export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement | null | undefined) => void;
+export type _HeadElementUpsertOrRemove = (selector: string, elementFactory: (document: Document) => HTMLElement | undefined) => void;
 
 // @internal (undocumented)
 export const _headElementUpsertOrRemove: _LazyInjectionToken<_HeadElementUpsertOrRemove>;

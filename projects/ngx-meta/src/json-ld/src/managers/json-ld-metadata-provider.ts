@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common'
 import {
   _headElementUpsertOrRemove,
   _HeadElementUpsertOrRemove,
@@ -13,17 +12,16 @@ const SCRIPT_TYPE = 'application/ld+json'
 
 export const JSON_LD_METADATA_SETTER_FACTORY: MetadataSetterFactory<
   JsonLdMetadata[typeof KEY]
-> =
-  (headElementUpsertOrRemove: _HeadElementUpsertOrRemove, doc: Document) =>
-  (jsonLd) => {
-    let scriptElement: HTMLScriptElement | undefined
-    if (_isDefined(jsonLd)) {
-      scriptElement = doc.createElement('script')
-      scriptElement.setAttribute('type', SCRIPT_TYPE)
-      scriptElement.innerHTML = JSON.stringify(jsonLd)
+> = (headElementUpsertOrRemove: _HeadElementUpsertOrRemove) => (jsonLd) =>
+  headElementUpsertOrRemove(`script[type='${SCRIPT_TYPE}']`, (doc) => {
+    if (!_isDefined(jsonLd)) {
+      return
     }
-    headElementUpsertOrRemove(`script[type='${SCRIPT_TYPE}']`, scriptElement)
-  }
+    const scriptElement = doc.createElement('script')
+    scriptElement.setAttribute('type', SCRIPT_TYPE)
+    scriptElement.innerHTML = JSON.stringify(jsonLd)
+    return scriptElement
+  })
 
 /**
  * Manages the {@link JsonLdMetadata.jsonLd} metadata
@@ -33,7 +31,7 @@ export const JSON_LD_METADATA_PROVIDER =
   makeMetadataManagerProviderFromSetterFactory(
     JSON_LD_METADATA_SETTER_FACTORY,
     {
-      d: [_headElementUpsertOrRemove(), DOCUMENT],
+      d: [_headElementUpsertOrRemove()],
       jP: [KEY],
     },
   )

@@ -11,13 +11,15 @@ export const _headElementUpsertOrRemove: _LazyInjectionToken<
   _makeInjectionToken(
     ngDevMode ? 'Head element upsert or remove util' : 'HEUOR',
     () => {
-      const head = inject(DOCUMENT).head
-      return (selector, element) => {
-        const existingScriptElement = head.querySelector(selector)
-        if (existingScriptElement) {
-          head.removeChild(existingScriptElement)
+      const document = inject(DOCUMENT)
+      const head = document.head
+      return (selector, elementFactory) => {
+        const existingElement = head.querySelector(selector)
+        if (existingElement) {
+          head.removeChild(existingElement)
         }
 
+        const element = elementFactory(document)
         if (!_isDefined(element)) {
           return
         }
@@ -31,5 +33,5 @@ export const _headElementUpsertOrRemove: _LazyInjectionToken<
  */
 export type _HeadElementUpsertOrRemove = (
   selector: string,
-  element: HTMLElement | null | undefined,
+  elementFactory: (document: Document) => HTMLElement | undefined,
 ) => void

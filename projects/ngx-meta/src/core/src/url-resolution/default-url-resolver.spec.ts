@@ -6,17 +6,15 @@ import { BaseUrl } from './base-url'
 import { Component } from '@angular/core'
 import { provideRouter } from '@angular/router'
 import { RouterTestingHarness } from '@angular/router/testing'
+import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('Default URL resolver', () => {
   describe('when no URL is given', () => {
-    const TEST_CASES = [null, undefined]
-    TEST_CASES.forEach((testCase) => {
-      describe(`like when URL is ${testCase}`, () => {
-        it(`should return ${testCase}`, async () => {
-          const sut = await makeSut()
+    likeWhenNullOrUndefined((testCase) => {
+      it(`should return ${testCase}`, async () => {
+        const sut = await makeSut()
 
-          expect(sut(testCase)).toEqual(testCase)
-        })
+        expect(sut(testCase)).toEqual(testCase)
       })
     })
   })

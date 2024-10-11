@@ -10,6 +10,7 @@ import { TestBed } from '@angular/core/testing'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 import { Standard } from '../types'
 import { STANDARD_CANONICAL_URL_METADATA_PROVIDER } from './standard-canonical-url-metadata-provider'
+import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('Standard canonical URL metadata manager', () => {
   enableAutoSpy()
@@ -17,21 +18,18 @@ describe('Standard canonical URL metadata manager', () => {
   const LINK_REL_CANONICAL_SELECTOR = "link[rel='canonical']"
 
   describe('when no URL is given', () => {
-    const TEST_CASES = [undefined, null]
-    TEST_CASES.forEach((testCase) => {
-      describe(`like when ${testCase}`, () => {
-        it('should remove the link rel canonical element from the head', () => {
-          const headElementUpsertOrRemove =
-            jasmine.createSpy<_HeadElementUpsertOrRemove>()
-          const sut = makeSut({ headElementUpsertOrRemove })
+    likeWhenNullOrUndefined((testCase) => {
+      it('should remove the link rel canonical element from the head', () => {
+        const headElementUpsertOrRemove =
+          jasmine.createSpy<_HeadElementUpsertOrRemove>()
+        const sut = makeSut({ headElementUpsertOrRemove })
 
-          sut.set(testCase)
+        sut.set(testCase)
 
-          expect(headElementUpsertOrRemove).toHaveBeenCalledWith(
-            LINK_REL_CANONICAL_SELECTOR,
-            jasmine.falsy(),
-          )
-        })
+        expect(headElementUpsertOrRemove).toHaveBeenCalledWith(
+          LINK_REL_CANONICAL_SELECTOR,
+          jasmine.falsy(),
+        )
       })
     })
   })

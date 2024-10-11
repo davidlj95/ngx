@@ -6,6 +6,7 @@ import { NgxMetaMetadataManager } from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 import { STANDARD_LOCALE_METADATA_PROVIDER } from './standard-locale-metadata-provider'
+import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('Standard locale metadata', () => {
   let sut: NgxMetaMetadataManager<Standard['locale']>
@@ -23,18 +24,14 @@ describe('Standard locale metadata', () => {
   })
 
   describe('when locale is not provided', () => {
-    const TEST_CASES = [undefined, null]
+    likeWhenNullOrUndefined((testCase) => {
+      it('should remove HTML element lang attribute', () => {
+        htmlLangAttributeHarness.set('es')
+        expect(htmlLangAttributeHarness.get()).toBeTruthy()
 
-    TEST_CASES.forEach((testCase) => {
-      describe(`like when ${testCase}`, () => {
-        it('should remove HTML element lang attribute', () => {
-          htmlLangAttributeHarness.set('es')
-          expect(htmlLangAttributeHarness.get()).toBeTruthy()
+        sut.set(testCase)
 
-          sut.set(testCase)
-
-          expect(htmlLangAttributeHarness.get()).toBeNull()
-        })
+        expect(htmlLangAttributeHarness.get()).toBeNull()
       })
     })
   })

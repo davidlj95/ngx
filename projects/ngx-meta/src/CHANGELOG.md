@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-beta.18](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.17...ngx-meta-v1.0.0-beta.18) (2024-10-11)
+
+### Features
+
+- use meta element APIs v2 around ([#919](https://github.com/davidlj95/ngx/issues/919)) ([83c9053](https://github.com/davidlj95/ngx/commit/83c9053d752a33af959bced4b5f74ddc4f71c7d9))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#918](https://github.com/davidlj95/ngx/issues/918)) ([e761687](https://github.com/davidlj95/ngx/commit/e7616874aa941b54719078afa1b2534be106e2bd))
+
 ## [`ngx-meta` v1.0.0-beta.17](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.16...ngx-meta-v1.0.0-beta.17) (2024-10-10)
 
 ### Features

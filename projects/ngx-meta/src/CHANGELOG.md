@@ -1,3 +1,21 @@
+## [`ngx-meta` v1.0.0-beta.19](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.18...ngx-meta-v1.0.0-beta.19) (2024-10-11)
+
+### Bug Fixes
+
+- standard theme color metadata can't set two metas ([#881](https://github.com/davidlj95/ngx/issues/881)) ([ef90c7c](https://github.com/davidlj95/ngx/commit/ef90c7c8b3c9d8c920752a5bd13cb0619d5aba33))
+
+### Documentation
+
+- reorder custom managers section: factory provider first ([#921](https://github.com/davidlj95/ngx/issues/921)) ([dfdd97c](https://github.com/davidlj95/ngx/commit/dfdd97cb5e6d918a8fabc3b66d364310a6886a3e))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#920](https://github.com/davidlj95/ngx/issues/920)) ([1c4bc16](https://github.com/davidlj95/ngx/commit/1c4bc164fd96553b0e658327a834bfc93245b08d))
+
+### Tests
+
+- add util to test same scenario for null or undefined ([#922](https://github.com/davidlj95/ngx/issues/922)) ([c2d5d00](https://github.com/davidlj95/ngx/commit/c2d5d00de93b04f8bb85ab3e698078a3945b5be7))
+
 ## [`ngx-meta` v1.0.0-beta.18](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.17...ngx-meta-v1.0.0-beta.18) (2024-10-11)
 
 ### Features

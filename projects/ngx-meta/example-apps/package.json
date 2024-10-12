@@ -15,7 +15,7 @@
     "@types/semver": "7.5.8",
     "execa": "9.4.0",
     "semver": "7.6.3",
-    "ts-morph": "23.0.0",
+    "ts-morph": "24.0.0",
     "typescript": "5.5.3"
   }
 }

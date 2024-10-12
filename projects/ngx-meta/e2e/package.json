@@ -7,7 +7,7 @@
     "cypress:run": "cypress run",
     "test": "./start-server-and-test.sh"
   },
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@9.12.1",
   "private": true,
   "devDependencies": {
     "@cypress/code-coverage": "3.13.2",

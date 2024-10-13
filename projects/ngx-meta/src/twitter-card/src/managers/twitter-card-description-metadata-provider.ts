@@ -1,24 +1,25 @@
-import { makeTwitterCardMetadataProvider } from '../utils/make-twitter-card-metadata-provider'
 import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
+  _withModuleManagerSetterFactory,
   NgxMetaElementsService,
   withContentAttribute,
+  withManagerGlobal,
 } from '@davidlj95/ngx-meta/core'
-import { TwitterCard } from '../types'
 import { MODULE_NAME } from '../module-name'
 import { withTwitterCardNameAttribute } from '../utils/with-twitter-card-name-attribute'
+import { provideTwitterCardManager } from '../utils/provide-twitter-card-manager'
 
 /**
  * Manages the {@link TwitterCard.description} metadata
  * @public
  */
 export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER =
-  makeTwitterCardMetadataProvider(_GLOBAL_DESCRIPTION, {
-    g: _GLOBAL_DESCRIPTION,
-    s:
-      (metaElementsService: NgxMetaElementsService) =>
-      (description: TwitterCard['description']) => {
+  provideTwitterCardManager(
+    _GLOBAL_DESCRIPTION,
+    withManagerGlobal(_GLOBAL_DESCRIPTION),
+    _withModuleManagerSetterFactory(
+      (metaElementsService: NgxMetaElementsService) => (description) => {
         /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
         if (ngDevMode) {
           _maybeTooLongDevMessage(description, 200, {
@@ -33,4 +34,5 @@ export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER =
           withContentAttribute(description),
         )
       },
-  })
+    ),
+  )

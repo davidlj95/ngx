@@ -21,7 +21,7 @@ jobs:
       example-apps-version-aliases: ${{ steps.load-config.outputs.example-apps-version-aliases }}
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
       - name: Load CI/CD configuration
         id: load-config
         uses: ./.github/actions/config
@@ -41,7 +41,7 @@ jobs:
         working-directory: ${{ env.E2E_DIR }}
     steps:
       - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
       - name: Download example app with coverage instrumentation
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
         with:

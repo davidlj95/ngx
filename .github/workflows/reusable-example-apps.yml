@@ -90,7 +90,7 @@ jobs:
             echo "week_of_year=${week_of_year}"
           } >> "$GITHUB_ENV"
       - name: Cache dependencies and Angular CLI/app resolution
-        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4
+        uses: actions/cache@3624ceb22c1c5a301c8db4169662070a689d9ea8 # v4
         env:
           cache-name: ngx-meta-example-apps
           example_apps_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.EXAMPLE_APPS_DIR)) }}

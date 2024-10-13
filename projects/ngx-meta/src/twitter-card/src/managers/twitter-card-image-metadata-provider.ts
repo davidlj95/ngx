@@ -5,30 +5,8 @@ import {
   NgxMetaElementsService,
   withContentAttribute,
 } from '@davidlj95/ngx-meta/core'
-import { TwitterCard } from '../types'
 import { MODULE_NAME } from '../module-name'
 import { withTwitterCardNameAttribute } from '../utils/with-twitter-card-name-attribute'
-
-export const TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
-  (metaElementsService: NgxMetaElementsService) =>
-  (image: TwitterCard['image']) => {
-    // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
-    ngDevMode &&
-      _maybeNonHttpUrlDevMessage(image?.url, {
-        module: MODULE_NAME,
-        property: 'image',
-        value: image?.url.toString(),
-        link: 'https://devcommunity.x.com/t/card-error-unable-to-render-or-no-image-read-this-first/62736',
-      })
-    metaElementsService.set(
-      withTwitterCardNameAttribute(_GLOBAL_IMAGE),
-      withContentAttribute(image?.url?.toString()),
-    )
-    metaElementsService.set(
-      withTwitterCardNameAttribute(_GLOBAL_IMAGE, 'alt'),
-      withContentAttribute(image?.alt),
-    )
-  }
 
 /**
  * Manages the {@link TwitterCard.image} metadata
@@ -37,6 +15,23 @@ export const TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY =
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER =
   makeTwitterCardMetadataProvider(_GLOBAL_IMAGE, {
     g: _GLOBAL_IMAGE,
-    s: TWITTER_CARD_IMAGE_METADATA_SETTER_FACTORY,
+    s: (metaElementsService: NgxMetaElementsService) => (image) => {
+      // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
+      ngDevMode &&
+        _maybeNonHttpUrlDevMessage(image?.url, {
+          module: MODULE_NAME,
+          property: 'image',
+          value: image?.url.toString(),
+          link: 'https://devcommunity.x.com/t/card-error-unable-to-render-or-no-image-read-this-first/62736',
+        })
+      metaElementsService.set(
+        withTwitterCardNameAttribute(_GLOBAL_IMAGE),
+        withContentAttribute(image?.url?.toString()),
+      )
+      metaElementsService.set(
+        withTwitterCardNameAttribute(_GLOBAL_IMAGE, 'alt'),
+        withContentAttribute(image?.alt),
+      )
+    },
     m: true,
   })

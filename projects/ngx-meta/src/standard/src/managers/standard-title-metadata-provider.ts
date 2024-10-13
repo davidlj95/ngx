@@ -1,21 +1,25 @@
-import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import { Title } from '@angular/platform-browser'
-import { _GLOBAL_TITLE, _isDefined } from '@davidlj95/ngx-meta/core'
+import {
+  _GLOBAL_TITLE,
+  _isDefined,
+  _withModuleManagerSetterFactory,
+  withManagerDeps,
+  withManagerGlobal,
+} from '@davidlj95/ngx-meta/core'
+import { provideStandardManager } from '../utils/provide-standard-manager'
 
 /**
  * Manages the {@link Standard.title} metadata
  * @public
  */
-export const STANDARD_TITLE_METADATA_PROVIDER = makeStandardMetadataProvider(
+export const STANDARD_TITLE_METADATA_PROVIDER = provideStandardManager(
   _GLOBAL_TITLE,
-  {
-    g: _GLOBAL_TITLE,
-    s: (titleService: Title) => (value) => {
-      if (!_isDefined(value)) {
-        return
-      }
-      titleService.setTitle(value)
-    },
-    d: [Title],
-  },
+  withManagerGlobal(_GLOBAL_TITLE),
+  withManagerDeps(Title),
+  _withModuleManagerSetterFactory((titleService: Title) => (value) => {
+    if (!_isDefined(value)) {
+      return
+    }
+    titleService.setTitle(value)
+  }),
 )

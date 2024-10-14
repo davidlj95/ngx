@@ -15,6 +15,7 @@ import {
 export const provideNgxMetaManager = <T>(
   jsonPath: string,
   setterFactory: MetadataSetterFactory<T>,
+  /* istanbul ignore next - quite simple */
   options: _ProvideNgxMetaManagerOptions = {},
 ): FactoryProvider => ({
   provide: NgxMetaMetadataManager,
@@ -87,6 +88,7 @@ export const withManagerObjectMerging = (): _ProvideNgxMetaManagerOptions => ({
  *
  * @alpha
  */
+/* istanbul ignore next - quite simple */
 export const withManagerJsonPath = (
   ...jsonPath: MetadataResolverOptions['jsonPath']
 ): string => jsonPath.join('.')

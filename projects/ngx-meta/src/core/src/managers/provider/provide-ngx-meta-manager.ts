@@ -4,6 +4,7 @@ import {
   MetadataResolverOptions,
   NgxMetaMetadataManager,
 } from '../ngx-meta-metadata-manager'
+import { GlobalMetadata } from '../../globals'
 
 /**
  * Creates an {@link NgxMetaMetadataManager} provider to manage some metadata.
@@ -114,8 +115,8 @@ export const withManagerDeps = (
  *
  * @alpha
  */
-export const withManagerGlobal = (
-  global: string,
+export const withManagerGlobal = <G extends string = keyof GlobalMetadata>(
+  global: G,
 ): _ProvideNgxMetaManagerOptions => ({ g: global })
 
 /**

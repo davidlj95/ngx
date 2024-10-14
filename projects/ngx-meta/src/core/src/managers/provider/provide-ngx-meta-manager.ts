@@ -139,7 +139,6 @@ export const withManagerObjectMerging = (): _ProvideNgxMetaManagerOptions => ({
  *
  * @alpha
  */
-/* istanbul ignore next - quite simple */
 export const withManagerJsonPath = (
   ...jsonPath: MetadataResolverOptions['jsonPath']
 ): string => jsonPath.join('.')

@@ -35,7 +35,7 @@ export const _provideNgxMetaModuleManager = <
         )),
     withOptions(
       withManagerDeps(options.d ?? [NgxMetaElementsService]),
-      withManagerGlobal(key),
+      options.gS ? withManagerGlobal(key) : {},
       options,
     ),
   )

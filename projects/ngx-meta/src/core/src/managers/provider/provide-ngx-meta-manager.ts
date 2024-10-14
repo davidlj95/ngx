@@ -61,7 +61,7 @@ export const withManagerDeps = (
  * @alpha
  */
 export const withManagerGlobal = (
-  global: string | undefined,
+  global: string,
 ): _ProvideNgxMetaManagerOptions => ({ g: global })
 
 /**

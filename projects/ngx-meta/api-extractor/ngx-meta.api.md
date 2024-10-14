@@ -620,7 +620,7 @@ export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefin
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerGlobal" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @alpha (undocumented)
-export const withManagerGlobal: (global: string | undefined) => _ProvideNgxMetaManagerOptions;
+export const withManagerGlobal: (global: string) => _ProvideNgxMetaManagerOptions;
 
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerId" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //

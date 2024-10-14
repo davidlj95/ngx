@@ -10,9 +10,11 @@ import { inject } from '@angular/core'
  *
  * See also:
  *
- * - {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | Manage your custom metadata}
+ * - {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | Manage your custom metadata guide}
  *
  * - {@link makeMetadataManagerProviderFromSetterFactory} for a helper to create a metadata manager
+ *
+ * - {@link provideNgxMetaManager} for an experimental helper to create a metadata manager
  *
  * @typeParam Value - Value type that can be handled by the setter
  *

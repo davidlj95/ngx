@@ -9,7 +9,6 @@ import {
   provideNgxMetaManager,
   withManagerDeps,
   withManagerGlobal,
-  withManagerId,
   withManagerObjectMerging,
 } from './provide-ngx-meta-manager'
 
@@ -71,18 +70,6 @@ describe('provide manager', () => {
     })
   })
 
-  describe('when an id is given', () => {
-    const id = 'id'
-
-    it('should set it in the manager', () => {
-      const provider = makeSut({ id })
-
-      const manager = provideAndInject(provider)
-
-      expect(manager.id).toEqual(id)
-    })
-  })
-
   describe('when object merging is enabled', () => {
     const objectMerge = true
 
@@ -102,7 +89,6 @@ const makeSut = (
     factory?: MetadataSetterFactory<unknown>
     deps?: FactoryProvider['deps']
     global?: string
-    id?: string
     objectMerge?: true
   } = {},
 ) =>
@@ -113,7 +99,6 @@ const makeSut = (
       ...[
         opts.deps ? withManagerDeps(...opts.deps) : undefined,
         opts.global ? withManagerGlobal(opts.global) : undefined,
-        opts.id ? withManagerId(opts.id) : undefined,
         opts.objectMerge ? withManagerObjectMerging() : undefined,
       ].filter(_isDefined),
     ),

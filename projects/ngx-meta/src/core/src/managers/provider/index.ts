@@ -2,7 +2,6 @@ export {
   provideNgxMetaManager,
   withManagerDeps,
   withManagerGlobal,
-  withManagerId,
   withManagerObjectMerging,
   withManagerJsonPath,
   _ProvideNgxMetaManagerOptions,

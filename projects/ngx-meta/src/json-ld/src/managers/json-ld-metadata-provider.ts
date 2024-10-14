@@ -5,7 +5,7 @@ import {
   _isDefined,
   provideNgxMetaManager,
   withManagerDeps,
-  withManagerOptions,
+  withOptions,
 } from '@davidlj95/ngx-meta/core'
 import { JsonLdMetadata } from './json-ld-metadata'
 
@@ -30,5 +30,5 @@ export const JSON_LD_METADATA_PROVIDER = provideNgxMetaManager<
       }
       headElementUpsertOrRemove(`script[type='${SCRIPT_TYPE}']`, scriptElement)
     },
-  withManagerOptions(withManagerDeps(_headElementUpsertOrRemove(), DOCUMENT)),
+  withOptions(withManagerDeps(_headElementUpsertOrRemove(), DOCUMENT)),
 )

@@ -1,8 +1,8 @@
 import {
   _provideNgxMetaModuleManager,
   _ProvideNgxMetaModuleManagerOptions,
-  _withModuleManagerOptions,
   _withModuleManagerScope,
+  withOptions,
 } from '@davidlj95/ngx-meta/core'
 import { Standard, StandardMetadata } from '../types'
 
@@ -14,8 +14,5 @@ export const provideStandardManager = <Key extends keyof Standard>(
 ) =>
   _provideNgxMetaModuleManager<Standard, Key>(
     key,
-    _withModuleManagerOptions(
-      _withModuleManagerScope(STANDARD_KEY),
-      ...options,
-    ),
+    withOptions(_withModuleManagerScope(STANDARD_KEY), ...options),
   )

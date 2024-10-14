@@ -2,8 +2,8 @@ import {
   _provideNgxMetaModuleManager,
   _ProvideNgxMetaModuleManagerOptions,
   _withModuleManagerNameAttribute,
-  _withModuleManagerOptions,
   _withModuleManagerScope,
+  withOptions,
 } from '@davidlj95/ngx-meta/core'
 import { TwitterCard, TwitterCardMetadata } from '../types'
 import { withTwitterCardNameAttribute } from './with-twitter-card-name-attribute'
@@ -19,7 +19,7 @@ export const provideTwitterCardManager = <Key extends keyof TwitterCard>(
 ) =>
   _provideNgxMetaModuleManager<TwitterCard, Key>(
     key,
-    _withModuleManagerOptions(
+    withOptions(
       _withModuleManagerScope(TWITTER_CARD_KEY),
       _withModuleManagerNameAttribute(withTwitterCardNameAttribute(key)),
       ...options,

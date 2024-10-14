@@ -2,7 +2,7 @@ import {
   MetadataResolverOptions,
   MetadataSetter,
   NgxMetaMetadataManager,
-} from './ngx-meta-metadata-manager'
+} from '../ngx-meta-metadata-manager'
 import { FactoryProvider } from '@angular/core'
 
 /**

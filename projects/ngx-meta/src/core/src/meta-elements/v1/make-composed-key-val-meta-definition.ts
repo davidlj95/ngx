@@ -29,6 +29,7 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
  * @param options - Options object
  * @public
  */
+/* istanbul ignore next - quite simple */
 export const makeComposedKeyValMetaDefinition = (
   names: ReadonlyArray<string>,
   options: MakeComposedKeyValMetaDefinitionOptions = {},

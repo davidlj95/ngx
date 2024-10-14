@@ -2,7 +2,6 @@ import {
   _provideNgxMetaModuleManager,
   _ProvideNgxMetaModuleManagerOptions,
   _withModuleManagerNameAttribute,
-  _withModuleManagerScope,
   withOptions,
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraph, OpenGraphMetadata } from '../types'
@@ -16,8 +15,8 @@ export const provideOpenGraphManager = <Key extends keyof OpenGraph>(
 ) =>
   _provideNgxMetaModuleManager<OpenGraph, Key>(
     key,
+    [OPEN_GRAPH_KEY],
     withOptions(
-      _withModuleManagerScope(OPEN_GRAPH_KEY),
       _withModuleManagerNameAttribute(withOpenGraphPropertyAttribute(key)),
       ...options,
     ),

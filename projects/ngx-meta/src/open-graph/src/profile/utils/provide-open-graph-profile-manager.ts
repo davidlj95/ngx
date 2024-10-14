@@ -2,7 +2,6 @@ import {
   _provideNgxMetaModuleManager,
   _ProvideNgxMetaModuleManagerOptions,
   _withModuleManagerNameAttribute,
-  _withModuleManagerScope,
   withOptions,
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraphProfile } from '../managers'
@@ -20,8 +19,8 @@ export const provideOpenGraphProfileManager = <
 ) =>
   _provideNgxMetaModuleManager<OpenGraphProfile, Key>(
     key,
+    [OPEN_GRAPH_KEY, OPEN_GRAPH_PROFILE_KEY],
     withOptions(
-      _withModuleManagerScope(OPEN_GRAPH_KEY, OPEN_GRAPH_PROFILE_KEY),
       _withModuleManagerNameAttribute(
         withOpenGraphPropertyAttribute(OPEN_GRAPH_PROFILE_KEY, key),
       ),

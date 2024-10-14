@@ -1,3 +1,18 @@
+## [`ngx-meta` v1.0.0-beta.21](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.20...ngx-meta-v1.0.0-beta.21) (2024-10-14)
+
+### Features
+
+- add type helper to with global manager API ([#945](https://github.com/davidlj95/ngx/issues/945)) ([f66dd3f](https://github.com/davidlj95/ngx/commit/f66dd3fd34b7d2efd85323cba67ec7ef907f2977))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#944](https://github.com/davidlj95/ngx/issues/944)) ([d0c408f](https://github.com/davidlj95/ngx/commit/d0c408f535fd127a7ae7fda6d341a8e3790e97e5))
+
+### Build System
+
+- **dev-deps:** update dependency cypress to v13.15.0 ([cc392f4](https://github.com/davidlj95/ngx/commit/cc392f4bf879a8f22363fe28f82591af725a9942))
+- **dev-deps:** update dependency eslint-plugin-cypress to v3.6.0 ([5a3467a](https://github.com/davidlj95/ngx/commit/5a3467a7e3c32a824cb96c0d91621fabaa43ebb4))
+
 ## [`ngx-meta` v1.0.0-beta.20](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.19...ngx-meta-v1.0.0-beta.20) (2024-10-14)
 
 ### Features

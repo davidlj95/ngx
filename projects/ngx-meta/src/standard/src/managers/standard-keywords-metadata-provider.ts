@@ -1,10 +1,11 @@
-import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import { Standard } from '../types'
 import {
+  _withModuleManagerSetterFactory,
   NgxMetaElementsService,
   withContentAttribute,
   withNameAttribute,
 } from '@davidlj95/ngx-meta/core'
+import { provideStandardManager } from '../utils/provide-standard-manager'
 
 const KEY = 'keywords' satisfies keyof Standard
 
@@ -12,13 +13,13 @@ const KEY = 'keywords' satisfies keyof Standard
  * Manages the {@link Standard.keywords} metadata
  * @public
  */
-export const STANDARD_KEYWORDS_METADATA_PROVIDER = makeStandardMetadataProvider(
+export const STANDARD_KEYWORDS_METADATA_PROVIDER = provideStandardManager(
   KEY,
-  {
-    s: (metaElementsService: NgxMetaElementsService) => (value) =>
+  _withModuleManagerSetterFactory(
+    (metaElementsService: NgxMetaElementsService) => (value) =>
       metaElementsService.set(
         withNameAttribute(KEY),
         withContentAttribute(value?.join(',')),
       ),
-  },
+  ),
 )

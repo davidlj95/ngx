@@ -1,12 +1,18 @@
-import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
-import { _GLOBAL_APPLICATION_NAME } from '@davidlj95/ngx-meta/core'
+import {
+  _GLOBAL_APPLICATION_NAME,
+  _withModuleManagerNameAttribute,
+  _withModuleManagerSameGlobalKey,
+  withNameAttribute,
+} from '@davidlj95/ngx-meta/core'
+import { provideStandardManager } from '../utils/provide-standard-manager'
 
 /**
  * Manages the {@link Standard.applicationName} metadata
  * @public
  */
 export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER =
-  makeStandardMetadataProvider(_GLOBAL_APPLICATION_NAME, {
-    g: _GLOBAL_APPLICATION_NAME,
-    n: 'application-name',
-  })
+  provideStandardManager(
+    _GLOBAL_APPLICATION_NAME,
+    _withModuleManagerSameGlobalKey(),
+    _withModuleManagerNameAttribute(withNameAttribute('application-name')),
+  )

@@ -1,21 +1,26 @@
-import { makeTwitterCardMetadataProvider } from '../utils/make-twitter-card-metadata-provider'
 import {
   _GLOBAL_IMAGE,
   _maybeNonHttpUrlDevMessage,
+  _withModuleManagerSameGlobalKey,
+  _withModuleManagerSetterFactory,
   NgxMetaElementsService,
   withContentAttribute,
+  withManagerObjectMerging,
 } from '@davidlj95/ngx-meta/core'
 import { MODULE_NAME } from '../module-name'
 import { withTwitterCardNameAttribute } from '../utils/with-twitter-card-name-attribute'
+import { provideTwitterCardManager } from '../utils/provide-twitter-card-manager'
 
 /**
  * Manages the {@link TwitterCard.image} metadata
  * @public
  */
-export const TWITTER_CARD_IMAGE_METADATA_PROVIDER =
-  makeTwitterCardMetadataProvider(_GLOBAL_IMAGE, {
-    g: _GLOBAL_IMAGE,
-    s: (metaElementsService: NgxMetaElementsService) => (image) => {
+export const TWITTER_CARD_IMAGE_METADATA_PROVIDER = provideTwitterCardManager(
+  _GLOBAL_IMAGE,
+  _withModuleManagerSameGlobalKey(),
+  withManagerObjectMerging(),
+  _withModuleManagerSetterFactory(
+    (metaElementsService: NgxMetaElementsService) => (image) => {
       // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
       ngDevMode &&
         _maybeNonHttpUrlDevMessage(image?.url, {
@@ -33,5 +38,5 @@ export const TWITTER_CARD_IMAGE_METADATA_PROVIDER =
         withContentAttribute(image?.alt),
       )
     },
-    m: true,
-  })
+  ),
+)

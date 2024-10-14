@@ -10,7 +10,7 @@
  *
  * @param options - Options to combine.
  *
- * @alpha
+ * @public
  */
 export const withOptions = <T extends object>(
   ...options: ReadonlyArray<T>

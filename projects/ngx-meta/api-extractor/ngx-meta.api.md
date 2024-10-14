@@ -417,9 +417,9 @@ export const provideNgxMetaCore: (...features: CoreFeatures) => EnvironmentProvi
 // @public
 export const provideNgxMetaJsonLd: () => Provider[];
 
-// Warning: (ae-incompatible-release-tags) The symbol "provideNgxMetaManager" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "provideNgxMetaManager" is marked as @public, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
-// @alpha
+// @public
 export const provideNgxMetaManager: <T>(jsonPath: string, setterFactory: MetadataSetterFactory<T>, options?: _ProvideNgxMetaManagerOptions) => FactoryProvider;
 
 // @internal (undocumented)
@@ -432,6 +432,16 @@ export type _ProvideNgxMetaManagerOptions = Partial<{
 
 // @public
 export const provideNgxMetaMetadataLoader: () => Provider[];
+
+// @internal (undocumented)
+export const _provideNgxMetaModuleManager: <Type extends object, Key extends Extract<keyof Type, string>>(key: Key, scope: ReadonlyArray<string>, options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
+
+// @internal (undocumented)
+export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
+    f: MetadataSetterFactory<T>;
+    n: NgxMetaElementNameAttribute;
+    k: true;
+}> & _ProvideNgxMetaManagerOptions;
 
 // @public
 export const provideNgxMetaOpenGraph: () => Provider[];
@@ -602,23 +612,32 @@ export const withContentAttribute: {
     (content: string | null | undefined, extras?: NgxMetaElementAttributes): NgxMetaElementAttributes | undefined;
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "withManagerDeps" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "withManagerDeps" is marked as @public, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
-// @alpha
+// @public
 export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefined>) => _ProvideNgxMetaManagerOptions;
 
-// Warning: (ae-incompatible-release-tags) The symbol "withManagerGlobal" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "withManagerGlobal" is marked as @public, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
-// @alpha
+// @public
 export const withManagerGlobal: <G extends string = keyof GlobalMetadata>(global: G) => _ProvideNgxMetaManagerOptions;
 
-// @alpha
+// @public
 export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPath']) => string;
 
-// Warning: (ae-incompatible-release-tags) The symbol "withManagerObjectMerging" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "withManagerObjectMerging" is marked as @public, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
-// @alpha
+// @public
 export const withManagerObjectMerging: () => _ProvideNgxMetaManagerOptions;
+
+// @internal (undocumented)
+export const _withModuleManagerNameAttribute: <T>(nameAttribute: _ProvideNgxMetaModuleManagerOptions<T>['n']) => _ProvideNgxMetaModuleManagerOptions<T>;
+
+// @internal (undocumented)
+export const _withModuleManagerSameGlobalKey: <T>() => _ProvideNgxMetaModuleManagerOptions<T>;
+
+// @internal (undocumented)
+export const _withModuleManagerSetterFactory: <T>(setterFactory: _ProvideNgxMetaModuleManagerOptions<T>['f']) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @public
 export const withNameAttribute: (value: string) => readonly ["name", string];
@@ -629,7 +648,7 @@ export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKi
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
 
-// @alpha
+// @public
 export const withOptions: <T extends object>(...options: ReadonlyArray<T>) => T;
 
 // @public

@@ -3,12 +3,15 @@ import {
   _GLOBAL_IMAGE,
   _isDefined,
   _maybeNonHttpUrlDevMessage,
+  _withModuleManagerSameGlobalKey,
+  _withModuleManagerSetterFactory,
   NgxMetaElementsService,
   withContentAttribute,
+  withManagerObjectMerging,
 } from '@davidlj95/ngx-meta/core'
-import { makeOpenGraphMetadataProvider } from '../../utils/make-open-graph-metadata-provider'
 import { MODULE_NAME } from '../../module-name'
 import { withOpenGraphPropertyAttribute } from '../../utils/with-open-graph-property-attribute'
+import { provideOpenGraphManager } from '../../utils/provide-open-graph-manager'
 
 const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
   url: undefined,
@@ -23,10 +26,12 @@ const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
  * Manages the {@link OpenGraph.image} metadata
  * @public
  */
-export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = makeOpenGraphMetadataProvider(
+export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = provideOpenGraphManager(
   _GLOBAL_IMAGE,
-  {
-    s: (metaElementsService: NgxMetaElementsService) => (value) => {
+  _withModuleManagerSameGlobalKey(),
+  withManagerObjectMerging(),
+  _withModuleManagerSetterFactory(
+    (metaElementsService: NgxMetaElementsService) => (value) => {
       const imageUrl = value?.url?.toString()
       const effectiveValue: OpenGraph[typeof _GLOBAL_IMAGE] = _isDefined(
         imageUrl,
@@ -66,7 +71,5 @@ export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = makeOpenGraphMetadataProvider(
         withContentAttribute(effectiveValue?.height?.toString()),
       )
     },
-    g: _GLOBAL_IMAGE,
-    m: true,
-  },
+  ),
 )

@@ -1,22 +1,27 @@
-import { makeStandardMetadataProvider } from '../utils/make-standard-metadata-provider'
 import {
   _GLOBAL_CANONICAL_URL,
   _headElementUpsertOrRemove,
   _isDefined,
   _maybeNonHttpUrlDevMessage,
   _urlResolver,
+  _withModuleManagerSameGlobalKey,
+  _withModuleManagerSetterFactory,
+  withManagerDeps,
 } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
 import { MODULE_NAME } from '../module-name'
+import { provideStandardManager } from '../utils/provide-standard-manager'
 
 /**
  * Manages the {@link Standard.canonicalUrl} metadata
  * @public
  */
-export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
-  makeStandardMetadataProvider(_GLOBAL_CANONICAL_URL, {
-    g: _GLOBAL_CANONICAL_URL,
-    s: (headElementUpsertOrRemove, doc, urlResolver) => (url) => {
+export const STANDARD_CANONICAL_URL_METADATA_PROVIDER = provideStandardManager(
+  _GLOBAL_CANONICAL_URL,
+  _withModuleManagerSameGlobalKey(),
+  withManagerDeps(_headElementUpsertOrRemove(), DOCUMENT, _urlResolver()),
+  _withModuleManagerSetterFactory(
+    (headElementUpsertOrRemove, doc, urlResolver) => (url) => {
       const resolvedUrl = urlResolver(url)
       ngDevMode &&
         _maybeNonHttpUrlDevMessage(resolvedUrl, {
@@ -34,8 +39,8 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
       }
       headElementUpsertOrRemove(SELECTOR, linkElement)
     },
-    d: [_headElementUpsertOrRemove(), DOCUMENT, _urlResolver()],
-  })
+  ),
+)
 
 const LINK_TAG = 'link'
 const REL_ATTR = 'rel'

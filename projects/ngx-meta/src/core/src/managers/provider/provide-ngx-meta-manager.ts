@@ -56,7 +56,7 @@ import { GlobalMetadata } from '../../globals'
  *                        type-safe option.
  * @param options - Extra options for the metadata manager provider creation. Use one of the helpers listed in this
  *                  method's reference docs to supply one or more of them.
- * @alpha
+ * @public
  */
 export const provideNgxMetaManager = <T>(
   jsonPath: string,
@@ -100,7 +100,7 @@ export type _ProvideNgxMetaManagerOptions = Partial<{
  *
  * @param deps - Dependencies to inject. Each argument declares the dependency to inject.
  *
- * @alpha
+ * @public
  */
 export const withManagerDeps = (
   ...deps: Exclude<FactoryProvider['deps'], undefined>
@@ -113,7 +113,7 @@ export const withManagerDeps = (
  *
  * @param global - See {@link MetadataResolverOptions.global}
  *
- * @alpha
+ * @public
  */
 export const withManagerGlobal = <G extends string = keyof GlobalMetadata>(
   global: G,
@@ -124,7 +124,7 @@ export const withManagerGlobal = <G extends string = keyof GlobalMetadata>(
  *
  * See {@link MetadataResolverOptions.objectMerge} for more information.
  *
- * @alpha
+ * @public
  */
 export const withManagerObjectMerging = (): _ProvideNgxMetaManagerOptions => ({
   o: true,
@@ -137,7 +137,7 @@ export const withManagerObjectMerging = (): _ProvideNgxMetaManagerOptions => ({
  *
  * @param jsonPath - Parts of the JSON Path to join into a string.
  *
- * @alpha
+ * @public
  */
 export const withManagerJsonPath = (
   ...jsonPath: MetadataResolverOptions['jsonPath']

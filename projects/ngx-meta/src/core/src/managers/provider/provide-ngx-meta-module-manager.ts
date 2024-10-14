@@ -24,17 +24,15 @@ export const _provideNgxMetaModuleManager = <
   options: _ProvideNgxMetaModuleManagerOptions<Type[Key]> = {},
 ) =>
   provideNgxMetaManager(
-    withManagerJsonPath(...(options.scope ?? []), key),
-    options.setterFactory ??
+    withManagerJsonPath(...(options.s ?? []), key),
+    options.f ??
       ((metaElementsService: NgxMetaElementsService) => (value) =>
         metaElementsService.set(
-          options.nameAttribute
-            ? options.nameAttribute
-            : withNameAttribute(key),
+          options.n ? options.n : withNameAttribute(key),
           withContentAttribute(value as string | null | undefined),
         )),
     withManagerOptions(
-      withManagerDeps(options.deps ?? [NgxMetaElementsService]),
+      withManagerDeps(options.d ?? [NgxMetaElementsService]),
       options,
     ),
   )
@@ -45,9 +43,9 @@ type StringKey<T = object> = Extract<keyof T, string>
  * @internal
  */
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
-  scope: ReadonlyArray<string>
-  setterFactory: MetadataSetterFactory<T>
-  nameAttribute: NgxMetaElementNameAttribute
+  s: ReadonlyArray<string>
+  f: MetadataSetterFactory<T>
+  n: NgxMetaElementNameAttribute
 }> &
   _ProvideNgxMetaManagerOptions
 
@@ -57,7 +55,7 @@ export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
 export const _withModuleManagerSetterFactory = <T>(
   setterFactory: MetadataSetterFactory<T>,
 ): _ProvideNgxMetaModuleManagerOptions<T> => ({
-  setterFactory,
+  f: setterFactory,
 })
 
 /**
@@ -66,7 +64,7 @@ export const _withModuleManagerSetterFactory = <T>(
 export const _withModuleManagerNameAttribute = <T>(
   nameAttribute: NgxMetaElementNameAttribute,
 ): _ProvideNgxMetaModuleManagerOptions<T> => ({
-  nameAttribute,
+  n: nameAttribute,
 })
 
 /**
@@ -74,7 +72,7 @@ export const _withModuleManagerNameAttribute = <T>(
  */
 export const _withModuleManagerScope = <T>(
   ...scope: ReadonlyArray<string>
-): _ProvideNgxMetaModuleManagerOptions<T> => ({ scope })
+): _ProvideNgxMetaModuleManagerOptions<T> => ({ s: scope })
 
 /**
  * @internal

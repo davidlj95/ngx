@@ -21,25 +21,25 @@ export const provideNgxMetaManager = <T>(
   multi: true,
   useFactory: (...deps: ReadonlyArray<unknown>) =>
     ({
-      id: options.id ?? jsonPath,
+      id: options.i ?? jsonPath,
       set: setterFactory(...deps),
       resolverOptions: {
         jsonPath: jsonPath.split('.'),
-        global: options.global,
-        objectMerge: options.objectMerge,
+        global: options.g,
+        objectMerge: options.o,
       },
     }) satisfies NgxMetaMetadataManager<T>,
-  deps: options.deps,
+  deps: options.d,
 })
 
 /**
  * @internal
  */
 export type _ProvideNgxMetaManagerOptions = Partial<{
-  deps: FactoryProvider['deps']
-  global: MetadataResolverOptions['global']
-  id: NgxMetaMetadataManager['id']
-  objectMerge: MetadataResolverOptions['objectMerge']
+  d: FactoryProvider['deps']
+  g: MetadataResolverOptions['global']
+  i: NgxMetaMetadataManager['id']
+  o: MetadataResolverOptions['objectMerge']
 }>
 
 /**
@@ -65,7 +65,7 @@ export const withManagerOptions = (
 export const withManagerDeps = (
   ...deps: Exclude<FactoryProvider['deps'], undefined>
 ): Partial<_ProvideNgxMetaManagerOptions> => ({
-  deps,
+  d: deps,
 })
 
 /**
@@ -76,7 +76,7 @@ export const withManagerDeps = (
  */
 export const withManagerGlobal = (
   global: string,
-): Partial<_ProvideNgxMetaManagerOptions> => ({ global })
+): Partial<_ProvideNgxMetaManagerOptions> => ({ g: global })
 
 /**
  *
@@ -86,13 +86,13 @@ export const withManagerGlobal = (
  */
 export const withManagerId = (
   id: string,
-): Partial<_ProvideNgxMetaManagerOptions> => ({ id })
+): Partial<_ProvideNgxMetaManagerOptions> => ({ i: id })
 
 /**
  * @alpha
  */
 export const withManagerObjectMerging =
-  (): Partial<_ProvideNgxMetaManagerOptions> => ({ objectMerge: true })
+  (): Partial<_ProvideNgxMetaManagerOptions> => ({ o: true })
 
 /**
  *

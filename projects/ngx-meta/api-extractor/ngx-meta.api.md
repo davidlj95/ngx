@@ -424,10 +424,10 @@ export const provideNgxMetaManager: <T>(jsonPath: string, setterFactory: Metadat
 
 // @internal (undocumented)
 export type _ProvideNgxMetaManagerOptions = Partial<{
-    deps: FactoryProvider['deps'];
-    global: MetadataResolverOptions['global'];
-    id: NgxMetaMetadataManager['id'];
-    objectMerge: MetadataResolverOptions['objectMerge'];
+    d: FactoryProvider['deps'];
+    g: MetadataResolverOptions['global'];
+    i: NgxMetaMetadataManager['id'];
+    o: MetadataResolverOptions['objectMerge'];
 }>;
 
 // @public
@@ -438,9 +438,9 @@ export const _provideNgxMetaModuleManager: <Type extends object, Key extends Ext
 
 // @internal (undocumented)
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
-    scope: ReadonlyArray<string>;
-    setterFactory: MetadataSetterFactory<T>;
-    nameAttribute: NgxMetaElementNameAttribute;
+    s: ReadonlyArray<string>;
+    f: MetadataSetterFactory<T>;
+    n: NgxMetaElementNameAttribute;
 }> & _ProvideNgxMetaManagerOptions;
 
 // @public

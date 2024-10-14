@@ -1,3 +1,35 @@
+## [`ngx-meta` v1.0.0-beta.20](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.19...ngx-meta-v1.0.0-beta.20) (2024-10-14)
+
+### Features
+
+- add metadata manager provider APIs v2 ([#926](https://github.com/davidlj95/ngx/issues/926)) ([8e3e58c](https://github.com/davidlj95/ngx/commit/8e3e58c9e098834d2b0634eb8a4ef1238222dbab))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#923](https://github.com/davidlj95/ngx/issues/923)) ([77d0009](https://github.com/davidlj95/ngx/commit/77d000978770494004b6031792a448abab69b3e8))
+
+### Code Refactoring
+
+- inline setter factories ([#937](https://github.com/davidlj95/ngx/issues/937)) ([479fe2b](https://github.com/davidlj95/ngx/commit/479fe2b243fa3e3b8a03556b9a7145e79d17d45b))
+
+### Tests
+
+- simplify head element harness API surface ([#925](https://github.com/davidlj95/ngx/issues/925)) ([ab420ab](https://github.com/davidlj95/ngx/commit/ab420ab2d5d849b802eceafff461eeb72875f961))
+
+### Build System
+
+- **deps:** update actions/cache digest to 3624ceb ([b49c6a4](https://github.com/davidlj95/ngx/commit/b49c6a40926750b2dc7276902b043b05778273f6))
+- **deps:** update actions/checkout digest to eef6144 ([29064f4](https://github.com/davidlj95/ngx/commit/29064f4d41a85a4b760ed5d14b008ce3132c8c23))
+- **deps:** update actions/upload-artifact digest to b4b15b8 ([b9001bf](https://github.com/davidlj95/ngx/commit/b9001bf48ace50d8e020f46282f42c534da0a198))
+- **deps:** update codecov/codecov-action action to v4.6.0 ([92252c0](https://github.com/davidlj95/ngx/commit/92252c0a21a0bc24871869ccc731b1617cd1837d))
+- **deps:** update dependency mkdocs-git-revision-date-localized-plugin to v1.2.9 ([8a0af00](https://github.com/davidlj95/ngx/commit/8a0af0026c80c01ea07002078c3d548b32b3cd79))
+- **deps:** update pnpm to v9.12.1 ([6898e78](https://github.com/davidlj95/ngx/commit/6898e78b270c67105af9750558bf0b5a4264c65f))
+- **deps:** update rhysd/actionlint:latest docker digest to 7617f05 ([d315171](https://github.com/davidlj95/ngx/commit/d315171645d1fd428f503a2ff87be9458b04e5f8))
+- **dev-deps:** update dependency @types/node to v22.7.5 ([bc4e3d9](https://github.com/davidlj95/ngx/commit/bc4e3d92b88a62258f1ff533cbdc82632d77e421))
+- **dev-deps:** update dependency jasmine-core to v5.4.0 ([1cef4e7](https://github.com/davidlj95/ngx/commit/1cef4e7f686d4fea13c0ec8e190f3a6abf256f9b))
+- **dev-deps:** update dependency ts-morph to v24 ([#931](https://github.com/davidlj95/ngx/issues/931)) ([60d09dd](https://github.com/davidlj95/ngx/commit/60d09dd95acb9196187a3be40708259f4f7a1629))
+- **dev-deps:** update fontsource monorepo to v5.1.0 ([a5637eb](https://github.com/davidlj95/ngx/commit/a5637eb123fa707ffd47d5855a282550c133d5df))
+
 ## [`ngx-meta` v1.0.0-beta.19](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.18...ngx-meta-v1.0.0-beta.19) (2024-10-11)
 
 ### Bug Fixes

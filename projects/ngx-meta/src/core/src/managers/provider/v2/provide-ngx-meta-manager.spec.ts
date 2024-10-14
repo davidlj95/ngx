@@ -3,8 +3,8 @@ import { FactoryProvider, InjectionToken, Provider } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 import { DOCUMENT } from '@angular/common'
 import { Router } from '@angular/router'
-import { MetadataSetterFactory } from './make-metadata-manager-provider-from-setter-factory'
-import { _isDefined, withOptions } from '../../utils'
+import { MetadataSetterFactory } from '../metadata-setter-factory'
+import { _isDefined, withOptions } from '../../../utils'
 import {
   provideNgxMetaManager,
   withManagerDeps,

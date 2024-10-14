@@ -10,9 +10,9 @@ import {
   NgxMetaElementsService,
   withContentAttribute,
   withNameAttribute,
-} from '../../meta-elements'
-import { MetadataSetterFactory } from './make-metadata-manager-provider-from-setter-factory'
-import { withOptions } from '../../utils'
+} from '../../../meta-elements'
+import { MetadataSetterFactory } from '../metadata-setter-factory'
+import { withOptions } from '../../../utils'
 
 /**
  * @internal

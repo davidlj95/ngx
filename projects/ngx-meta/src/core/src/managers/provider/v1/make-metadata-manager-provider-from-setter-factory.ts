@@ -1,9 +1,9 @@
 import {
   MetadataResolverOptions,
-  MetadataSetter,
   NgxMetaMetadataManager,
-} from '../ngx-meta-metadata-manager'
+} from '../../ngx-meta-metadata-manager'
 import { FactoryProvider } from '@angular/core'
+import { MetadataSetterFactory } from '../metadata-setter-factory'
 
 /**
  * Creates an Angular {@link https://angular.dev/guide/di/dependency-injection-providers#factory-providers-usefactory | factory provider}
@@ -44,17 +44,6 @@ export const makeMetadataManagerProviderFromSetterFactory = <T>(
     deps,
   }
 }
-
-/**
- * Utility type for a factory function that returns a {@link MetadataSetter} given some injectable dependencies.
- *
- * Used as part of {@link makeMetadataManagerProviderFromSetterFactory}.
- *
- * @public
- */
-export type MetadataSetterFactory<T> = (
-  ...deps: Exclude<FactoryProvider['deps'], undefined>
-) => MetadataSetter<T>
 
 /**
  * Options argument object for {@link makeMetadataManagerProviderFromSetterFactory}.

@@ -1,20 +1,3 @@
-export {
-  provideNgxMetaManager,
-  withManagerDeps,
-  withManagerGlobal,
-  withManagerObjectMerging,
-  withManagerJsonPath,
-  _ProvideNgxMetaManagerOptions,
-} from './provide-ngx-meta-manager'
-export {
-  _provideNgxMetaModuleManager,
-  _ProvideNgxMetaModuleManagerOptions,
-  _withModuleManagerNameAttribute,
-  _withModuleManagerSetterFactory,
-  _withModuleManagerSameGlobalKey,
-} from './provide-ngx-meta-module-manager'
-export {
-  makeMetadataManagerProviderFromSetterFactory,
-  MetadataSetterFactory,
-  MakeMetadataManagerProviderFromSetterFactoryOptions,
-} from './make-metadata-manager-provider-from-setter-factory'
+export * from './v1'
+export * from './v2'
+export { MetadataSetterFactory } from './metadata-setter-factory'

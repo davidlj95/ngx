@@ -434,7 +434,7 @@ export type _ProvideNgxMetaManagerOptions = Partial<{
 export const provideNgxMetaMetadataLoader: () => Provider[];
 
 // @internal (undocumented)
-export const _provideNgxMetaModuleManager: <Type extends object, Key extends Extract<keyof Type, string>>(key: Key, scope: ReadonlyArray<string>, options?: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
+export const _provideNgxMetaModuleManager: <Type extends object, Key extends Extract<keyof Type, string>>(key: Key, scope: ReadonlyArray<string>, options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
 
 // @internal (undocumented)
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{

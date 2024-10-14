@@ -23,7 +23,7 @@ export const _provideNgxMetaModuleManager = <
 >(
   key: Key,
   scope: ReadonlyArray<string>,
-  options: _ProvideNgxMetaModuleManagerOptions<Type[Key]> = {},
+  options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>,
 ) =>
   provideNgxMetaManager(
     withManagerJsonPath(...scope, key),

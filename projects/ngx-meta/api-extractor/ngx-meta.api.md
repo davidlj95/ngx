@@ -433,6 +433,16 @@ export type _ProvideNgxMetaManagerOptions = Partial<{
 // @public
 export const provideNgxMetaMetadataLoader: () => Provider[];
 
+// @internal (undocumented)
+export const _provideNgxMetaModuleManager: <Type extends object, Key extends Extract<keyof Type, string>>(key: Key, scope: ReadonlyArray<string>, options?: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
+
+// @internal (undocumented)
+export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
+    f: MetadataSetterFactory<T>;
+    n: NgxMetaElementNameAttribute;
+    gS: true;
+}> & _ProvideNgxMetaManagerOptions;
+
 // @public
 export const provideNgxMetaOpenGraph: () => Provider[];
 
@@ -620,6 +630,12 @@ export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPat
 // @alpha
 export const withManagerObjectMerging: () => _ProvideNgxMetaManagerOptions;
 
+// @internal (undocumented)
+export const _withModuleManagerNameAttribute: <T>(nameAttribute: _ProvideNgxMetaModuleManagerOptions<T>['n']) => _ProvideNgxMetaModuleManagerOptions<T>;
+
+// @internal (undocumented)
+export const _withModuleManagerSetterFactory: <T>(setterFactory: _ProvideNgxMetaModuleManagerOptions<T>['f']) => _ProvideNgxMetaModuleManagerOptions<T>;
+
 // @public
 export const withNameAttribute: (value: string) => readonly ["name", string];
 
@@ -634,6 +650,9 @@ export const withOptions: <T extends object>(...options: ReadonlyArray<T>) => T;
 
 // @public
 export const withPropertyAttribute: (value: string) => readonly ["property", string];
+
+// @internal (undocumented)
+export const _withSameNameGlobal: <T>() => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // (No @packageDocumentation comment for this package)
 

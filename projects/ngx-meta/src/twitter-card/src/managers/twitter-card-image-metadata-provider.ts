@@ -1,8 +1,8 @@
 import {
   _GLOBAL_IMAGE,
   _maybeNonHttpUrlDevMessage,
+  _withModuleManagerSameGlobalKey,
   _withModuleManagerSetterFactory,
-  _withSameNameGlobal,
   NgxMetaElementsService,
   withContentAttribute,
   withManagerObjectMerging,
@@ -17,7 +17,7 @@ import { provideTwitterCardManager } from '../utils/provide-twitter-card-manager
  */
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER = provideTwitterCardManager(
   _GLOBAL_IMAGE,
-  _withSameNameGlobal(),
+  _withModuleManagerSameGlobalKey(),
   withManagerObjectMerging(),
   _withModuleManagerSetterFactory(
     (metaElementsService: NgxMetaElementsService) => (image) => {

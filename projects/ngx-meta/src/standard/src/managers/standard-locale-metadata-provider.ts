@@ -1,8 +1,8 @@
 import {
   _GLOBAL_LOCALE,
   _isDefined,
+  _withModuleManagerSameGlobalKey,
   _withModuleManagerSetterFactory,
-  _withSameNameGlobal,
   withManagerDeps,
 } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
@@ -16,7 +16,7 @@ const ATTRIBUTE_NAME = 'lang'
  */
 export const STANDARD_LOCALE_METADATA_PROVIDER = provideStandardManager(
   _GLOBAL_LOCALE,
-  _withSameNameGlobal(),
+  _withModuleManagerSameGlobalKey(),
   withManagerDeps(DOCUMENT),
   _withModuleManagerSetterFactory((doc: Document) => (locale) => {
     const htmlElement = doc.documentElement

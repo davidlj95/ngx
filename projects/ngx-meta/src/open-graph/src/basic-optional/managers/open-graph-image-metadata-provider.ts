@@ -3,8 +3,8 @@ import {
   _GLOBAL_IMAGE,
   _isDefined,
   _maybeNonHttpUrlDevMessage,
+  _withModuleManagerSameGlobalKey,
   _withModuleManagerSetterFactory,
-  _withSameNameGlobal,
   NgxMetaElementsService,
   withContentAttribute,
   withManagerObjectMerging,
@@ -28,7 +28,7 @@ const NO_KEY_VALUE: OpenGraph[typeof _GLOBAL_IMAGE] = {
  */
 export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = provideOpenGraphManager(
   _GLOBAL_IMAGE,
-  _withSameNameGlobal(),
+  _withModuleManagerSameGlobalKey(),
   withManagerObjectMerging(),
   _withModuleManagerSetterFactory(
     (metaElementsService: NgxMetaElementsService) => (value) => {

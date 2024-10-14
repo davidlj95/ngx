@@ -1,8 +1,8 @@
 import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
+  _withModuleManagerSameGlobalKey,
   _withModuleManagerSetterFactory,
-  _withSameNameGlobal,
   NgxMetaElementsService,
   withContentAttribute,
 } from '@davidlj95/ngx-meta/core'
@@ -16,7 +16,7 @@ import { provideOpenGraphManager } from '../../utils/provide-open-graph-manager'
  */
 export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER = provideOpenGraphManager(
   _GLOBAL_DESCRIPTION,
-  _withSameNameGlobal(),
+  _withModuleManagerSameGlobalKey(),
   _withModuleManagerSetterFactory(
     (metaElementsService: NgxMetaElementsService) => (description) => {
       /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */

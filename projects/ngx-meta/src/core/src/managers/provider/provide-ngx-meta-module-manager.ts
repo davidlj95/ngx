@@ -35,7 +35,7 @@ export const _provideNgxMetaModuleManager = <
         )),
     withOptions(
       withManagerDeps(options.d ?? [NgxMetaElementsService]),
-      options.gS ? withManagerGlobal(key) : {},
+      options.k ? withManagerGlobal(key) : {},
       options,
     ),
   )
@@ -48,7 +48,7 @@ type StringKey<T = object> = Extract<keyof T, string>
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
   f: MetadataSetterFactory<T>
   n: NgxMetaElementNameAttribute
-  gS: true
+  k: true
 }> &
   _ProvideNgxMetaManagerOptions
 
@@ -73,8 +73,8 @@ export const _withModuleManagerNameAttribute = <T>(
 /**
  * @internal
  */
-export const _withSameNameGlobal = <
+export const _withModuleManagerSameGlobalKey = <
   T,
 >(): _ProvideNgxMetaModuleManagerOptions<T> => ({
-  gS: true,
+  k: true,
 })

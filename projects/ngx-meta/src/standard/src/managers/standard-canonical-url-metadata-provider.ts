@@ -4,8 +4,8 @@ import {
   _isDefined,
   _maybeNonHttpUrlDevMessage,
   _urlResolver,
+  _withModuleManagerSameGlobalKey,
   _withModuleManagerSetterFactory,
-  _withSameNameGlobal,
   withManagerDeps,
 } from '@davidlj95/ngx-meta/core'
 import { DOCUMENT } from '@angular/common'
@@ -18,7 +18,7 @@ import { provideStandardManager } from '../utils/provide-standard-manager'
  */
 export const STANDARD_CANONICAL_URL_METADATA_PROVIDER = provideStandardManager(
   _GLOBAL_CANONICAL_URL,
-  _withSameNameGlobal(),
+  _withModuleManagerSameGlobalKey(),
   withManagerDeps(_headElementUpsertOrRemove(), DOCUMENT, _urlResolver()),
   _withModuleManagerSetterFactory(
     (headElementUpsertOrRemove, doc, urlResolver) => (url) => {

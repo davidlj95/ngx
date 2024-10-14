@@ -1,4 +1,7 @@
-import { _GLOBAL_TITLE, _withSameNameGlobal } from '@davidlj95/ngx-meta/core'
+import {
+  _GLOBAL_TITLE,
+  _withModuleManagerSameGlobalKey,
+} from '@davidlj95/ngx-meta/core'
 import { provideTwitterCardManager } from '../utils/provide-twitter-card-manager'
 
 /**
@@ -7,5 +10,5 @@ import { provideTwitterCardManager } from '../utils/provide-twitter-card-manager
  */
 export const TWITTER_CARD_TITLE_METADATA_PROVIDER = provideTwitterCardManager(
   _GLOBAL_TITLE,
-  _withSameNameGlobal(),
+  _withModuleManagerSameGlobalKey(),
 )

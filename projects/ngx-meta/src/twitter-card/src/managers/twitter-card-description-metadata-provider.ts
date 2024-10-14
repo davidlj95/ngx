@@ -1,8 +1,8 @@
 import {
   _GLOBAL_DESCRIPTION,
   _maybeTooLongDevMessage,
+  _withModuleManagerSameGlobalKey,
   _withModuleManagerSetterFactory,
-  _withSameNameGlobal,
   NgxMetaElementsService,
   withContentAttribute,
 } from '@davidlj95/ngx-meta/core'
@@ -17,7 +17,7 @@ import { provideTwitterCardManager } from '../utils/provide-twitter-card-manager
 export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER =
   provideTwitterCardManager(
     _GLOBAL_DESCRIPTION,
-    _withSameNameGlobal(),
+    _withModuleManagerSameGlobalKey(),
     _withModuleManagerSetterFactory(
       (metaElementsService: NgxMetaElementsService) => (description) => {
         /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */

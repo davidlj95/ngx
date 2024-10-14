@@ -1,7 +1,7 @@
 import {
   _GLOBAL_APPLICATION_NAME,
   _withModuleManagerNameAttribute,
-  _withSameNameGlobal,
+  _withModuleManagerSameGlobalKey,
   withNameAttribute,
 } from '@davidlj95/ngx-meta/core'
 import { provideStandardManager } from '../utils/provide-standard-manager'
@@ -13,6 +13,6 @@ import { provideStandardManager } from '../utils/provide-standard-manager'
 export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER =
   provideStandardManager(
     _GLOBAL_APPLICATION_NAME,
-    _withSameNameGlobal(),
+    _withModuleManagerSameGlobalKey(),
     _withModuleManagerNameAttribute(withNameAttribute('application-name')),
   )

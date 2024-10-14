@@ -440,7 +440,7 @@ export const _provideNgxMetaModuleManager: <Type extends object, Key extends Ext
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
     f: MetadataSetterFactory<T>;
     n: NgxMetaElementNameAttribute;
-    gS: true;
+    k: true;
 }> & _ProvideNgxMetaManagerOptions;
 
 // @public
@@ -634,6 +634,9 @@ export const withManagerObjectMerging: () => _ProvideNgxMetaManagerOptions;
 export const _withModuleManagerNameAttribute: <T>(nameAttribute: _ProvideNgxMetaModuleManagerOptions<T>['n']) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @internal (undocumented)
+export const _withModuleManagerSameGlobalKey: <T>() => _ProvideNgxMetaModuleManagerOptions<T>;
+
+// @internal (undocumented)
 export const _withModuleManagerSetterFactory: <T>(setterFactory: _ProvideNgxMetaModuleManagerOptions<T>['f']) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @public
@@ -650,9 +653,6 @@ export const withOptions: <T extends object>(...options: ReadonlyArray<T>) => T;
 
 // @public
 export const withPropertyAttribute: (value: string) => readonly ["property", string];
-
-// @internal (undocumented)
-export const _withSameNameGlobal: <T>() => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,6 +1,6 @@
 import {
   _GLOBAL_DESCRIPTION,
-  _withSameNameGlobal,
+  _withModuleManagerSameGlobalKey,
 } from '@davidlj95/ngx-meta/core'
 import { provideStandardManager } from '../utils/provide-standard-manager'
 
@@ -10,5 +10,5 @@ import { provideStandardManager } from '../utils/provide-standard-manager'
  */
 export const STANDARD_DESCRIPTION_METADATA_PROVIDER = provideStandardManager(
   _GLOBAL_DESCRIPTION,
-  _withSameNameGlobal(),
+  _withModuleManagerSameGlobalKey(),
 )

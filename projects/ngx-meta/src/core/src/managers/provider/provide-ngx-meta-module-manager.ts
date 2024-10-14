@@ -30,7 +30,7 @@ export const _provideNgxMetaModuleManager = <
     options.f ??
       ((metaElementsService: NgxMetaElementsService) => (value) =>
         metaElementsService.set(
-          options.n ? options.n : withNameAttribute(key),
+          options.n ?? withNameAttribute(key),
           withContentAttribute(value as string | null | undefined),
         )),
     withOptions(

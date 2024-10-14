@@ -4,14 +4,13 @@ import { TestBed } from '@angular/core/testing'
 import { DOCUMENT } from '@angular/common'
 import { Router } from '@angular/router'
 import { MetadataSetterFactory } from './make-metadata-manager-provider-from-setter-factory'
-import { _isDefined } from '../../utils'
+import { _isDefined, withOptions } from '../../utils'
 import {
   provideNgxMetaManager,
   withManagerDeps,
   withManagerGlobal,
   withManagerId,
   withManagerObjectMerging,
-  withManagerOptions,
 } from './provide-ngx-meta-manager'
 
 describe('provide manager', () => {
@@ -110,7 +109,7 @@ const makeSut = (
   provideNgxMetaManager(
     opts.jsonPath ?? 'dummy-scope.dummy-key',
     opts.factory ?? (() => () => {}),
-    withManagerOptions(
+    withOptions(
       ...[
         opts.deps ? withManagerDeps(...opts.deps) : undefined,
         opts.global ? withManagerGlobal(opts.global) : undefined,

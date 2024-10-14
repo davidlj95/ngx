@@ -434,11 +434,10 @@ export type _ProvideNgxMetaManagerOptions = Partial<{
 export const provideNgxMetaMetadataLoader: () => Provider[];
 
 // @internal (undocumented)
-export const _provideNgxMetaModuleManager: <Type extends object, Key extends Extract<keyof Type, string>>(key: Key, options?: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
+export const _provideNgxMetaModuleManager: <Type extends object, Key extends Extract<keyof Type, string>>(key: Key, scope: ReadonlyArray<string>, options?: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
 
 // @internal (undocumented)
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
-    s: ReadonlyArray<string>;
     f: MetadataSetterFactory<T>;
     n: NgxMetaElementNameAttribute;
     gS: true;
@@ -638,9 +637,6 @@ export const withManagerObjectMerging: () => _ProvideNgxMetaManagerOptions;
 
 // @internal (undocumented)
 export const _withModuleManagerNameAttribute: <T>(nameAttribute: _ProvideNgxMetaModuleManagerOptions<T>['n']) => _ProvideNgxMetaModuleManagerOptions<T>;
-
-// @internal (undocumented)
-export const _withModuleManagerScope: <T>(...scope: Exclude<_ProvideNgxMetaModuleManagerOptions<T>['s'], undefined>) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @internal (undocumented)
 export const _withModuleManagerSetterFactory: <T>(setterFactory: _ProvideNgxMetaModuleManagerOptions<T>['f']) => _ProvideNgxMetaModuleManagerOptions<T>;

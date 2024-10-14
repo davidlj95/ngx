@@ -22,10 +22,11 @@ export const _provideNgxMetaModuleManager = <
   Key extends StringKey<Type>,
 >(
   key: Key,
+  scope: ReadonlyArray<string>,
   options: _ProvideNgxMetaModuleManagerOptions<Type[Key]> = {},
 ) =>
   provideNgxMetaManager(
-    withManagerJsonPath(...(options.s ?? []), key),
+    withManagerJsonPath(...scope, key),
     options.f ??
       ((metaElementsService: NgxMetaElementsService) => (value) =>
         metaElementsService.set(
@@ -45,7 +46,6 @@ type StringKey<T = object> = Extract<keyof T, string>
  * @internal
  */
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
-  s: ReadonlyArray<string>
   f: MetadataSetterFactory<T>
   n: NgxMetaElementNameAttribute
   gS: true
@@ -69,13 +69,6 @@ export const _withModuleManagerNameAttribute = <T>(
 ): _ProvideNgxMetaModuleManagerOptions<T> => ({
   n: nameAttribute,
 })
-
-/**
- * @internal
- */
-export const _withModuleManagerScope = <T>(
-  ...scope: Exclude<_ProvideNgxMetaModuleManagerOptions<T>['s'], undefined>
-): _ProvideNgxMetaModuleManagerOptions<T> => ({ s: scope })
 
 /**
  * @internal

@@ -441,6 +441,7 @@ export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
     s: ReadonlyArray<string>;
     f: MetadataSetterFactory<T>;
     n: NgxMetaElementNameAttribute;
+    gS: true;
 }> & _ProvideNgxMetaManagerOptions;
 
 // @public
@@ -620,7 +621,7 @@ export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefin
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerGlobal" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @alpha (undocumented)
-export const withManagerGlobal: (global: string) => _ProvideNgxMetaManagerOptions;
+export const withManagerGlobal: (global: string | undefined) => _ProvideNgxMetaManagerOptions;
 
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerId" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
@@ -658,6 +659,9 @@ export const withOptions: <T extends object>(...options: ReadonlyArray<T>) => T;
 
 // @public
 export const withPropertyAttribute: (value: string) => readonly ["property", string];
+
+// @internal (undocumented)
+export const _withSameNameGlobal: <T>() => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // (No @packageDocumentation comment for this package)
 

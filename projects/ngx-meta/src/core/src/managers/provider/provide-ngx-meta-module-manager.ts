@@ -2,6 +2,7 @@ import {
   _ProvideNgxMetaManagerOptions,
   provideNgxMetaManager,
   withManagerDeps,
+  withManagerGlobal,
   withManagerJsonPath,
 } from './provide-ngx-meta-manager'
 import {
@@ -33,6 +34,7 @@ export const _provideNgxMetaModuleManager = <
         )),
     withOptions(
       withManagerDeps(options.d ?? [NgxMetaElementsService]),
+      withManagerGlobal(key),
       options,
     ),
   )
@@ -46,6 +48,7 @@ export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
   s: ReadonlyArray<string>
   f: MetadataSetterFactory<T>
   n: NgxMetaElementNameAttribute
+  gS: true
 }> &
   _ProvideNgxMetaManagerOptions
 
@@ -73,3 +76,12 @@ export const _withModuleManagerNameAttribute = <T>(
 export const _withModuleManagerScope = <T>(
   ...scope: ReadonlyArray<string>
 ): _ProvideNgxMetaModuleManagerOptions<T> => ({ s: scope })
+
+/**
+ * @internal
+ */
+export const _withSameNameGlobal = <
+  T,
+>(): _ProvideNgxMetaModuleManagerOptions<T> => ({
+  gS: true,
+})

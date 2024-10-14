@@ -13,6 +13,7 @@ export {
   _withModuleManagerNameAttribute,
   _withModuleManagerScope,
   _withModuleManagerSetterFactory,
+  _withSameNameGlobal,
 } from './provide-ngx-meta-module-manager'
 export {
   makeMetadataManagerProviderFromSetterFactory,

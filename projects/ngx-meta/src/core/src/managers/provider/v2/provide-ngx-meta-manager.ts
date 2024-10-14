@@ -1,10 +1,10 @@
-import { MetadataSetterFactory } from './make-metadata-manager-provider-from-setter-factory'
 import { FactoryProvider } from '@angular/core'
 import {
   MetadataResolverOptions,
   NgxMetaMetadataManager,
-} from '../ngx-meta-metadata-manager'
-import { GlobalMetadata } from '../../globals'
+} from '../../ngx-meta-metadata-manager'
+import { GlobalMetadata } from '../../../globals'
+import { MetadataSetterFactory } from '../metadata-setter-factory'
 
 /**
  * Creates an {@link NgxMetaMetadataManager} provider to manage some metadata.

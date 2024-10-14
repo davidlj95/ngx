@@ -615,17 +615,17 @@ export const withContentAttribute: {
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerDeps" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @alpha (undocumented)
-export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefined>) => Partial<_ProvideNgxMetaManagerOptions>;
+export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefined>) => _ProvideNgxMetaManagerOptions;
 
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerGlobal" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @alpha (undocumented)
-export const withManagerGlobal: (global: string) => Partial<_ProvideNgxMetaManagerOptions>;
+export const withManagerGlobal: (global: string) => _ProvideNgxMetaManagerOptions;
 
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerId" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @alpha (undocumented)
-export const withManagerId: (id: string) => Partial<_ProvideNgxMetaManagerOptions>;
+export const withManagerId: (id: string) => _ProvideNgxMetaManagerOptions;
 
 // @alpha (undocumented)
 export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPath']) => string;
@@ -633,7 +633,7 @@ export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPat
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerObjectMerging" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @alpha (undocumented)
-export const withManagerObjectMerging: () => Partial<_ProvideNgxMetaManagerOptions>;
+export const withManagerObjectMerging: () => _ProvideNgxMetaManagerOptions;
 
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerOptions" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //

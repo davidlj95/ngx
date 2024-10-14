@@ -64,7 +64,7 @@ export const withManagerOptions = (
  */
 export const withManagerDeps = (
   ...deps: Exclude<FactoryProvider['deps'], undefined>
-): Partial<_ProvideNgxMetaManagerOptions> => ({
+): _ProvideNgxMetaManagerOptions => ({
   d: deps,
 })
 
@@ -76,7 +76,7 @@ export const withManagerDeps = (
  */
 export const withManagerGlobal = (
   global: string,
-): Partial<_ProvideNgxMetaManagerOptions> => ({ g: global })
+): _ProvideNgxMetaManagerOptions => ({ g: global })
 
 /**
  *
@@ -84,15 +84,16 @@ export const withManagerGlobal = (
  *
  * @alpha
  */
-export const withManagerId = (
-  id: string,
-): Partial<_ProvideNgxMetaManagerOptions> => ({ i: id })
+export const withManagerId = (id: string): _ProvideNgxMetaManagerOptions => ({
+  i: id,
+})
 
 /**
  * @alpha
  */
-export const withManagerObjectMerging =
-  (): Partial<_ProvideNgxMetaManagerOptions> => ({ o: true })
+export const withManagerObjectMerging = (): _ProvideNgxMetaManagerOptions => ({
+  o: true,
+})
 
 /**
  *

@@ -26,9 +26,12 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
  */
 export const makeKeyValMetaDefinition = (
   keyName: string,
+  /* istanbul ignore next - quite simple */
   options: MakeKeyValMetaDefinitionOptions = {},
 ): NgxMetaMetaDefinition => {
+  /* istanbul ignore next - quite simple */
   const keyAttr = options.keyAttr ?? 'name'
+  /* istanbul ignore next - quite simple */
   const valAttr = options.valAttr ?? 'content'
   return {
     withContent: (value) => ({

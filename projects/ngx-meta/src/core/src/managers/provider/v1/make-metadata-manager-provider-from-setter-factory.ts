@@ -23,11 +23,11 @@ import { MetadataSetterFactory } from '../metadata-setter-factory'
  * @param opts - Options to create the factory
  * @public
  */
+/* istanbul ignore next - unused. was covered when used */
 export const makeMetadataManagerProviderFromSetterFactory = <T>(
   setterFactory: MetadataSetterFactory<T>,
   opts: MakeMetadataManagerProviderFromSetterFactoryOptions,
 ): FactoryProvider => {
-  /* istanbul ignore next - simple enough */
   const deps = opts.d ?? []
   return {
     provide: NgxMetaMetadataManager,

@@ -635,16 +635,8 @@ export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPat
 // @alpha (undocumented)
 export const withManagerObjectMerging: () => _ProvideNgxMetaManagerOptions;
 
-// Warning: (ae-incompatible-release-tags) The symbol "withManagerOptions" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
-//
-// @alpha (undocumented)
-export const withManagerOptions: (...options: ReadonlyArray<_ProvideNgxMetaManagerOptions>) => _ProvideNgxMetaManagerOptions;
-
 // @internal (undocumented)
 export const _withModuleManagerNameAttribute: <T>(nameAttribute: NgxMetaElementNameAttribute) => _ProvideNgxMetaModuleManagerOptions<T>;
-
-// @internal (undocumented)
-export const _withModuleManagerOptions: <T>(...options: ReadonlyArray<_ProvideNgxMetaModuleManagerOptions<T>>) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @internal (undocumented)
 export const _withModuleManagerScope: <T>(...scope: ReadonlyArray<string>) => _ProvideNgxMetaModuleManagerOptions<T>;
@@ -660,6 +652,9 @@ export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKi
 
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
+
+// @alpha (undocumented)
+export const withOptions: <T extends object>(...options: ReadonlyArray<T>) => T;
 
 // @public
 export const withPropertyAttribute: (value: string) => readonly ["property", string];

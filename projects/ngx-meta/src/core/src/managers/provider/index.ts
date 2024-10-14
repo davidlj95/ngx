@@ -1,6 +1,5 @@
 export {
   provideNgxMetaManager,
-  withManagerOptions,
   withManagerDeps,
   withManagerGlobal,
   withManagerId,
@@ -12,7 +11,6 @@ export {
   _provideNgxMetaModuleManager,
   _ProvideNgxMetaModuleManagerOptions,
   _withModuleManagerNameAttribute,
-  _withModuleManagerOptions,
   _withModuleManagerScope,
   _withModuleManagerSetterFactory,
 } from './provide-ngx-meta-module-manager'

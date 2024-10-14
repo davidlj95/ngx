@@ -3,7 +3,6 @@ import {
   provideNgxMetaManager,
   withManagerDeps,
   withManagerJsonPath,
-  withManagerOptions,
 } from './provide-ngx-meta-manager'
 import {
   NgxMetaElementNameAttribute,
@@ -12,6 +11,7 @@ import {
   withNameAttribute,
 } from '../../meta-elements'
 import { MetadataSetterFactory } from './make-metadata-manager-provider-from-setter-factory'
+import { withOptions } from '../../utils'
 
 /**
  * @internal
@@ -31,7 +31,7 @@ export const _provideNgxMetaModuleManager = <
           options.n ? options.n : withNameAttribute(key),
           withContentAttribute(value as string | null | undefined),
         )),
-    withManagerOptions(
+    withOptions(
       withManagerDeps(options.d ?? [NgxMetaElementsService]),
       options,
     ),
@@ -73,14 +73,3 @@ export const _withModuleManagerNameAttribute = <T>(
 export const _withModuleManagerScope = <T>(
   ...scope: ReadonlyArray<string>
 ): _ProvideNgxMetaModuleManagerOptions<T> => ({ s: scope })
-
-/**
- * @internal
- */
-export const _withModuleManagerOptions = <T>(
-  ...options: ReadonlyArray<_ProvideNgxMetaModuleManagerOptions<T>>
-): _ProvideNgxMetaModuleManagerOptions<T> =>
-  options.reduce<_ProvideNgxMetaModuleManagerOptions<T>>(
-    (acc, curr) => ({ ...acc, ...curr }),
-    {},
-  )

@@ -44,20 +44,6 @@ export type _ProvideNgxMetaManagerOptions = Partial<{
 
 /**
  *
- * @param options -
- *
- * @alpha
- */
-export const withManagerOptions = (
-  ...options: ReadonlyArray<_ProvideNgxMetaManagerOptions>
-): _ProvideNgxMetaManagerOptions =>
-  options.reduce<Partial<_ProvideNgxMetaManagerOptions>>(
-    (acc, curr) => ({ ...acc, ...curr }),
-    {},
-  )
-
-/**
- *
  * @param deps -
  *
  * @alpha

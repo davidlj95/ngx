@@ -610,7 +610,7 @@ export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefin
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerGlobal" is marked as @alpha, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @alpha
-export const withManagerGlobal: (global: string) => _ProvideNgxMetaManagerOptions;
+export const withManagerGlobal: <G extends string = keyof GlobalMetadata>(global: G) => _ProvideNgxMetaManagerOptions;
 
 // @alpha
 export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPath']) => string;

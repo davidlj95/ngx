@@ -3,8 +3,8 @@ import {
   _GLOBAL_TITLE,
   _isDefined,
   _withModuleManagerSetterFactory,
+  _withSameNameGlobal,
   withManagerDeps,
-  withManagerGlobal,
 } from '@davidlj95/ngx-meta/core'
 import { provideStandardManager } from '../utils/provide-standard-manager'
 
@@ -14,7 +14,7 @@ import { provideStandardManager } from '../utils/provide-standard-manager'
  */
 export const STANDARD_TITLE_METADATA_PROVIDER = provideStandardManager(
   _GLOBAL_TITLE,
-  withManagerGlobal(_GLOBAL_TITLE),
+  _withSameNameGlobal(),
   withManagerDeps(Title),
   _withModuleManagerSetterFactory((titleService: Title) => (value) => {
     if (!_isDefined(value)) {

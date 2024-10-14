@@ -2,9 +2,9 @@ import {
   _GLOBAL_IMAGE,
   _maybeNonHttpUrlDevMessage,
   _withModuleManagerSetterFactory,
+  _withSameNameGlobal,
   NgxMetaElementsService,
   withContentAttribute,
-  withManagerGlobal,
   withManagerObjectMerging,
 } from '@davidlj95/ngx-meta/core'
 import { MODULE_NAME } from '../module-name'
@@ -17,7 +17,7 @@ import { provideTwitterCardManager } from '../utils/provide-twitter-card-manager
  */
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER = provideTwitterCardManager(
   _GLOBAL_IMAGE,
-  withManagerGlobal(_GLOBAL_IMAGE),
+  _withSameNameGlobal(),
   withManagerObjectMerging(),
   _withModuleManagerSetterFactory(
     (metaElementsService: NgxMetaElementsService) => (image) => {

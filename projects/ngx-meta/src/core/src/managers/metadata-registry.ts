@@ -20,6 +20,7 @@ const metadataRegistryFactory: () => MetadataRegistry = () => {
   const managers = _injectMetadataManagers()
   const managersById = new Map<string, NgxMetaMetadataManager>()
   const register: MetadataRegistry['register'] = (manager) => {
+    /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
     if (managersById.has(manager.id)) {
       return
     }

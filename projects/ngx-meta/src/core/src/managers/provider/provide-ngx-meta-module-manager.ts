@@ -56,7 +56,7 @@ export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
  * @internal
  */
 export const _withModuleManagerSetterFactory = <T>(
-  setterFactory: MetadataSetterFactory<T>,
+  setterFactory: _ProvideNgxMetaModuleManagerOptions<T>['f'],
 ): _ProvideNgxMetaModuleManagerOptions<T> => ({
   f: setterFactory,
 })
@@ -65,7 +65,7 @@ export const _withModuleManagerSetterFactory = <T>(
  * @internal
  */
 export const _withModuleManagerNameAttribute = <T>(
-  nameAttribute: NgxMetaElementNameAttribute,
+  nameAttribute: _ProvideNgxMetaModuleManagerOptions<T>['n'],
 ): _ProvideNgxMetaModuleManagerOptions<T> => ({
   n: nameAttribute,
 })
@@ -74,7 +74,7 @@ export const _withModuleManagerNameAttribute = <T>(
  * @internal
  */
 export const _withModuleManagerScope = <T>(
-  ...scope: ReadonlyArray<string>
+  ...scope: Exclude<_ProvideNgxMetaModuleManagerOptions<T>['s'], undefined>
 ): _ProvideNgxMetaModuleManagerOptions<T> => ({ s: scope })
 
 /**

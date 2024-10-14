@@ -637,13 +637,13 @@ export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPat
 export const withManagerObjectMerging: () => _ProvideNgxMetaManagerOptions;
 
 // @internal (undocumented)
-export const _withModuleManagerNameAttribute: <T>(nameAttribute: NgxMetaElementNameAttribute) => _ProvideNgxMetaModuleManagerOptions<T>;
+export const _withModuleManagerNameAttribute: <T>(nameAttribute: _ProvideNgxMetaModuleManagerOptions<T>['n']) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @internal (undocumented)
-export const _withModuleManagerScope: <T>(...scope: ReadonlyArray<string>) => _ProvideNgxMetaModuleManagerOptions<T>;
+export const _withModuleManagerScope: <T>(...scope: Exclude<_ProvideNgxMetaModuleManagerOptions<T>['s'], undefined>) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @internal (undocumented)
-export const _withModuleManagerSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>) => _ProvideNgxMetaModuleManagerOptions<T>;
+export const _withModuleManagerSetterFactory: <T>(setterFactory: _ProvideNgxMetaModuleManagerOptions<T>['f']) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @public
 export const withNameAttribute: (value: string) => readonly ["name", string];

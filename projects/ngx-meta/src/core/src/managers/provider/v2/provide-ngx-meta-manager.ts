@@ -5,6 +5,7 @@ import {
 } from '../../ngx-meta-metadata-manager'
 import { GlobalMetadata } from '../../../globals'
 import { MetadataSetterFactory } from '../metadata-setter-factory'
+import { StringKeyOf } from '../../../utils/string-key-of'
 
 /**
  * Creates an {@link NgxMetaMetadataManager} provider to manage some metadata.
@@ -135,10 +136,80 @@ export const withManagerObjectMerging = (): _ProvideNgxMetaManagerOptions => ({
  *
  * Useful to use with {@link provideNgxMetaManager} to avoid repeating same keys around.
  *
+ * @remarks
+ *
+ * You can specify a type to ensure the keys are valid. See example below.
+ *
+ * Beware that specifying a type won't work if:
+ *
+ * The type refers other types and more than 2 levels are specified:
+ *
+ * ```typescript
+ * interface CustomMetadata { custom: Custom }
+ * interface Custom { moar: Moar }
+ *
+ * // 👇❌ Reports incorrect Typescript error about `never` type
+ * withManagerJsonPath<CustomMetadata>('custom', 'moar', 'foo')
+ * ```
+ *
+ * More than 3 keys are specified:
+ *
+ * ```typescript
+ * interface CustomMetadata {
+ *   custom: {
+ *     moar: {
+ *       moarThanMoar: {
+ *         foo: string
+ *       }
+ *     }
+ *   }
+ * }
+ *
+ * // 👇❌ Reports incorrect Typescript error about `never` type
+ * withManagerJsonPath<CustomMetadata>('custom', 'moar', 'moarThanMoar', 'foo') //
+ * ```
+ *
+ * Omit the type to skip type checking and its limitations:
+ *
+ * ```typescript
+ * withManagerJsonPath('whatever', 'untyped', 'keys')
+ * ```
+ *
+ * @example
+ *
+ * ```typescript
+ * interface CustomMetadata {
+ *   custom: {
+ *     title: string
+ *   }
+ * }
+ *
+ * withManagerJsonPath<CustomMetadata>('custom','title') // ✅ No error. IDE helps you auto-complete.
+ * withManagerJsonPath<CustomMetadata>('custom','not-a-prop') // ❌ Typescript error
+ * withManagerJsonPath('no', 'type', 'checks')
+ * ```
+ *
  * @param jsonPath - Parts of the JSON Path to join into a string.
  *
  * @public
  */
-export const withManagerJsonPath = (
+export const withManagerJsonPath: WithManagerJsonPath = (
   ...jsonPath: MetadataResolverOptions['jsonPath']
-): string => jsonPath.join('.')
+) => jsonPath.join('.')
+
+/**
+ * @internal
+ */
+interface WithManagerJsonPath {
+  <T extends object>(key1: StringKeyOf<T>): string
+  <T extends object>(
+    key1: StringKeyOf<T>,
+    key2: StringKeyOf<T[typeof key1]>,
+  ): string
+  <T extends object>(
+    key1: StringKeyOf<T>,
+    key2: StringKeyOf<T[typeof key1]>,
+    key3: StringKeyOf<T[typeof key1][typeof key2]>,
+  ): string
+  (...jsonPaths: ReadonlyArray<string>): string
+}

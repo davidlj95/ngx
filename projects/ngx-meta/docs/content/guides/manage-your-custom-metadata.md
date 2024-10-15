@@ -71,6 +71,36 @@ export const provideCustomMetadataManager = () =>
 
 That would be it, there you have your metadata manager provider, ready to inject into your Angular's app dependencies.
 
+??? tip "You can use a helper to create and ensure a JSON Path is valid"
+
+    In the example, instead of `custom.title` JSON Path, you can use [`withManagerJsonPath`](ngx-meta.withmanagerjsonpath.md) helper.
+    It will:
+
+      - Ensure keys are valid (belong to the given type).
+
+      - Join the keys with a `.`
+
+    ```typescript
+    import {
+      withManagerJsonPath,
+    } from '@davidlj95/ngx-meta/core'
+
+    interface CustomMetadata {
+      custom: {
+        title: string
+      }
+    }
+
+    export const provideCustomMetadataManager = () =>
+      provideNgxMetaManager<string | undefined>(
+        withManagerJsonPath<CustomMetadata>('custom', 'title'),
+        // ...
+      )
+    )
+    ```
+
+    Check out [`withManagerJsonPath` API docs](ngx-meta.withmanagerjsonpath.md) for more information and known limitations.
+
 See the API reference of [`provideNgxMetaManager`](ngx-meta.providengxmetamanager.md) for more information.
 
 You can also check a full example at [example standalone app]'s [`provideCustomMetadataManager`](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/example-apps/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)

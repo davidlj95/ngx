@@ -433,8 +433,10 @@ export type _ProvideNgxMetaManagerOptions = Partial<{
 // @public
 export const provideNgxMetaMetadataLoader: () => Provider[];
 
+// Warning: (ae-forgotten-export) The symbol "StringKeyOf" needs to be exported by the entry point all-entry-points.d.ts
+//
 // @internal (undocumented)
-export const _provideNgxMetaModuleManager: <Type extends object, Key extends Extract<keyof Type, string>>(key: Key, scope: ReadonlyArray<string>, options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
+export const _provideNgxMetaModuleManager: <Type extends object, Key extends StringKeyOf<Type>>(key: Key, scope: ReadonlyArray<string>, options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
 
 // @internal (undocumented)
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
@@ -517,6 +519,9 @@ export interface StandardThemeColorMetadataObject {
     color: string;
     media?: string;
 }
+
+// @internal (undocumented)
+type StringKeyOf<T = object> = Extract<keyof T, string>;
 
 // @public
 export const TWITTER_CARD_CARD_METADATA_PROVIDER: FactoryProvider;
@@ -622,8 +627,22 @@ export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefin
 // @public
 export const withManagerGlobal: <G extends string = keyof GlobalMetadata>(global: G) => _ProvideNgxMetaManagerOptions;
 
+// @internal (undocumented)
+interface WithManagerJsonPath {
+    // (undocumented)
+    <T extends object>(key1: StringKeyOf<T>): string;
+    // (undocumented)
+    <T extends object>(key1: StringKeyOf<T>, key2: StringKeyOf<T[typeof key1]>): string;
+    // (undocumented)
+    <T extends object>(key1: StringKeyOf<T>, key2: StringKeyOf<T[typeof key1]>, key3: StringKeyOf<T[typeof key1][typeof key2]>): string;
+    // (undocumented)
+    (...jsonPaths: ReadonlyArray<string>): string;
+}
+
+// Warning: (ae-forgotten-export) The symbol "WithManagerJsonPath" needs to be exported by the entry point all-entry-points.d.ts
+//
 // @public
-export const withManagerJsonPath: (...jsonPath: MetadataResolverOptions['jsonPath']) => string;
+export const withManagerJsonPath: WithManagerJsonPath;
 
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerObjectMerging" is marked as @public, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //

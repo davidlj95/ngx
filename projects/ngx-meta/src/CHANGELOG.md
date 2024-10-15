@@ -1,3 +1,22 @@
+## [`ngx-meta` v1.0.0-beta.23](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.22...ngx-meta-v1.0.0-beta.23) (2024-10-15)
+
+### Features
+
+- add type checking for JSON Path utility ([#952](https://github.com/davidlj95/ngx/issues/952)) ([41c5a61](https://github.com/davidlj95/ngx/commit/41c5a6193aea8845196f9559c50897c114789540))
+
+### Documentation
+
+- add reference to guide & example file for meta meta service ([#951](https://github.com/davidlj95/ngx/issues/951)) ([4916cd3](https://github.com/davidlj95/ngx/commit/4916cd324af308ffc88707af15f1dfab8b5ef102))
+
+### Miscellaneous Chores
+
+- ignore unused APIs for coverage purposes ([#947](https://github.com/davidlj95/ngx/issues/947)) ([eb1aa61](https://github.com/davidlj95/ngx/commit/eb1aa61b17acb2654dcc02c9b5925c90c240325d))
+- more coverage ignores ([#950](https://github.com/davidlj95/ngx/issues/950)) ([ecb099c](https://github.com/davidlj95/ngx/commit/ecb099c70103fb9b4e0473a575f79c40c9c496ed))
+
+### Code Refactoring
+
+- organize manager providers by version ([#948](https://github.com/davidlj95/ngx/issues/948)) ([5e9c8cf](https://github.com/davidlj95/ngx/commit/5e9c8cfa9e53a1974f9c2360caad8e0bc233feb2))
+
 ## [`ngx-meta` v1.0.0-beta.21](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.20...ngx-meta-v1.0.0-beta.21) (2024-10-14)
 
 ### Features

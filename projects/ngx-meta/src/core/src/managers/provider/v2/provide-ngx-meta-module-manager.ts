@@ -13,13 +13,14 @@ import {
 } from '../../../meta-elements'
 import { MetadataSetterFactory } from '../metadata-setter-factory'
 import { withOptions } from '../../../utils'
+import { StringKeyOf } from '../../../utils/string-key-of'
 
 /**
  * @internal
  */
 export const _provideNgxMetaModuleManager = <
   Type extends object,
-  Key extends StringKey<Type>,
+  Key extends StringKeyOf<Type>,
 >(
   key: Key,
   scope: ReadonlyArray<string>,
@@ -39,8 +40,6 @@ export const _provideNgxMetaModuleManager = <
       options,
     ),
   )
-
-type StringKey<T = object> = Extract<keyof T, string>
 
 /**
  * @internal

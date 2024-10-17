@@ -5,6 +5,9 @@
  *
  * See {@link NgxMetaMetaService.set}
  *
+ * @deprecated Use {@link NgxMetaElementsService} APIs instead.
+ *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
+ *
  * @public
  */
 export type NgxMetaMetaContent = string | undefined | null

@@ -1,3 +1,5 @@
+// noinspection JSDeprecatedSymbols
+
 import { MetaDefinition } from '@angular/platform-browser'
 import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
 
@@ -18,6 +20,9 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
  *
  * Value is set by {@link NgxMetaMetaService.set} by providing this model and an
  * actual value
+ *
+ * @deprecated Use {@link NgxMetaElementsService} APIs instead.
+ *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
  *
  * @param keyName - Name of the key in the key/value meta definition
  * @param options - Specifies HTML attribute names and extras of the definition if any
@@ -45,6 +50,9 @@ export const makeKeyValMetaDefinition = (
 
 /**
  * Options argument object for {@link makeKeyValMetaDefinition}
+ *
+ * @deprecated Use {@link NgxMetaElementsService} APIs instead.
+ *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
  *
  * @public
  */

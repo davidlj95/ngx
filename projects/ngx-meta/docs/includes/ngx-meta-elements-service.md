@@ -6,7 +6,7 @@ Notice the use of [`NgxMetaElementsService`](/api/ngx-meta.ngxmetaelementsservic
 
 ??? tip "Were you looking for `NgxMetaMetaService`?"
 
-    Before [`NgxMetaElementsService`](/api/ngx-meta.ngxmetaelementsservice/) was introduced, the service managing those was [`NgxMetaMetaService`](/api/ngx-meta.ngxmetametaservice/). However, API design for it and its related util functions was a bit limited. It also didn't allow to manage multiple `#!html <meta>` elements. So they were replaced. See [the PR were newer APIs were introduced](https://github.com/davidlj95/ngx/pull/883) for more information.
+    Before [`NgxMetaElementsService`](/api/ngx-meta.ngxmetaelementsservice/) was introduced, the service managing those was [`NgxMetaMetaService`](/api/ngx-meta.ngxmetametaservice/). However, API design for it and its related util functions was a bit limited. It also didn't allow to manage multiple `#!html <meta>` elements. So they were replaced. And right now they are deprecated, so new ones should be used instead. See [the PR were newer APIs were introduced](https://github.com/davidlj95/ngx/pull/883) for more information.
 
     You can still checkout the [example app file using it](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.16/projects/ngx-meta/example-apps/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts) and the [custom metadata guide using that service instead](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.16/projects/ngx-meta/docs/content/guides/manage-your-custom-metadata.md)
 

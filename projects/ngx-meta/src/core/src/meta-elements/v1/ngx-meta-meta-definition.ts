@@ -9,6 +9,9 @@ import { MetaDefinition } from '@angular/platform-browser'
  *
  *  - {@link makeComposedKeyValMetaDefinition}
  *
+ * @deprecated Use {@link NgxMetaElementsService} APIs instead.
+ *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
+ *
  * @remarks
  *
  * Inspired by Angular {@link https://angular.dev/api/platform-browser/MetaDefinition | MetaDefinition}.
@@ -22,6 +25,9 @@ export interface NgxMetaMetaDefinition {
    *
    * With the given content as value of the `<meta>` element.
    *
+   * @deprecated Use {@link NgxMetaElementsService} APIs instead.
+   *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
+   *
    * @example
    * For instance, `(content) => ({name: 'description', content})` to create a
    * `<meta name='description' content='{content}'>` element. Where `content` will come from
@@ -32,6 +38,9 @@ export interface NgxMetaMetaDefinition {
   /**
    * {@link https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors | Attribute selector}
    * to identify the `<meta>` element. In order to remove this specific `<meta>` element when needed.
+   *
+   * @deprecated Use {@link NgxMetaElementsService} APIs instead.
+   *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
    *
    * @example
    * For instance, `[name='description']` for the `<meta name='description'>` element.

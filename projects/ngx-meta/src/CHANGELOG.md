@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-beta.25](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.24...ngx-meta-v1.0.0-beta.25) (2024-10-17)
+
+### Features
+
+- deprecate manager provider APIs v1 ([#956](https://github.com/davidlj95/ngx/issues/956)) ([ba1e20a](https://github.com/davidlj95/ngx/commit/ba1e20a7c2dd452e7176ce672042309cf22a5ad3))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#958](https://github.com/davidlj95/ngx/issues/958)) ([b3c7bb3](https://github.com/davidlj95/ngx/commit/b3c7bb33dbd2ef7a7bfcaa220814434e51f1feef))
+
 ## [`ngx-meta` v1.0.0-beta.24](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.23...ngx-meta-v1.0.0-beta.24) (2024-10-17)
 
 ### Features

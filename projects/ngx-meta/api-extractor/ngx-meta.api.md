@@ -119,10 +119,10 @@ export interface JsonLdMetadata {
 // @internal
 export type _LazyInjectionToken<T> = () => InjectionToken<T>;
 
-// @public
+// @public @deprecated
 export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
 
-// @public
+// @public @deprecated
 export interface MakeComposedKeyValMetaDefinitionOptions extends MakeKeyValMetaDefinitionOptions {
     separator?: string;
 }
@@ -130,10 +130,10 @@ export interface MakeComposedKeyValMetaDefinitionOptions extends MakeKeyValMetaD
 // @internal
 export const _makeInjectionToken: <T>(description: string, factory?: () => T) => InjectionToken<T>;
 
-// @public
-export const makeKeyValMetaDefinition: (keyName: string, options?: MakeKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
+// @public @deprecated
+export const makeKeyValMetaDefinition: (keyName: string, options: MakeKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
 
-// @public
+// @public @deprecated
 export interface MakeKeyValMetaDefinitionOptions {
     extras?: MetaDefinition;
     keyAttr?: string;
@@ -231,7 +231,7 @@ export class NgxMetaElementsService {
 export class NgxMetaJsonLdModule {
 }
 
-// @public
+// @public @deprecated
 export type NgxMetaMetaContent = string | undefined | null;
 
 // @public
@@ -245,15 +245,18 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
     abstract readonly set: MetadataSetter<Value>;
 }
 
-// @public
+// @public @deprecated
 export interface NgxMetaMetaDefinition {
+    // @deprecated
     readonly attrSelector: string;
+    // @deprecated
     readonly withContent: (content: string) => MetaDefinition;
 }
 
-// @public
+// @public @deprecated
 export class NgxMetaMetaService {
     constructor(meta: Meta);
+    // @deprecated
     set(definition: NgxMetaMetaDefinition, content: NgxMetaMetaContent): void;
 }
 

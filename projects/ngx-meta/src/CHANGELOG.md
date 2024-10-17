@@ -1,3 +1,17 @@
+## [`ngx-meta` v1.0.0-beta.24](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.23...ngx-meta-v1.0.0-beta.24) (2024-10-17)
+
+### Features
+
+- deprecate meta elements APIs v1 ([#955](https://github.com/davidlj95/ngx/issues/955)) ([64ec678](https://github.com/davidlj95/ngx/commit/64ec6788029062c5f6e5360153b6005890d0ccb8))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#953](https://github.com/davidlj95/ngx/issues/953)) ([8a57ad8](https://github.com/davidlj95/ngx/commit/8a57ad896159d6f010596a2b7469ef10e5bf6668))
+
+### Build System
+
+- **ide:** add `tsconfig.json` for JetBrains IDEs ([#954](https://github.com/davidlj95/ngx/issues/954)) ([29a6f3e](https://github.com/davidlj95/ngx/commit/29a6f3e480d0befef7e980f7a0c7f666a511eea2))
+
 ## [`ngx-meta` v1.0.0-beta.23](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.22...ngx-meta-v1.0.0-beta.23) (2024-10-15)
 
 ### Features

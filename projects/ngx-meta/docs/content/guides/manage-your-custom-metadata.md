@@ -114,9 +114,9 @@ You can also check a full example at [example standalone app]'s [`provideCustomM
     If you need, you can still check [this guide when it was using it](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.20/projects/ngx-meta/docs/content/guides/manage-your-custom-metadata.md)
     Or the [example app file using it](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.20/projects/ngx-meta/example-apps/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)
 
-    Anyway, it's recommended you upgrade to the new one described in the guide as soon as you can.
-    Otherwise, built-in modules are using the new one. And if you use this, then two functions will end up in
-    your bundle size that do the same. So some extra unwanted bytes in there.
+    However, beware that those APIs are now deprecated and will be removed in the future. It's recommended to upgrade to the new one described in the guide as soon as you can.
+
+    Also, built-in modules are using the new one. And if you use this, then two functions will end up in your bundle that do the same. So some extra unneeded bytes in there.
 
 ### Using a class
 

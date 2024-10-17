@@ -140,10 +140,10 @@ export interface MakeKeyValMetaDefinitionOptions {
     valAttr?: string;
 }
 
-// @public
+// @public @deprecated
 export const makeMetadataManagerProviderFromSetterFactory: <T>(setterFactory: MetadataSetterFactory<T>, opts: MakeMetadataManagerProviderFromSetterFactoryOptions) => FactoryProvider;
 
-// @public
+// @public @deprecated
 export interface MakeMetadataManagerProviderFromSetterFactoryOptions {
     d?: FactoryProvider['deps'];
     g?: MetadataResolverOptions['global'];

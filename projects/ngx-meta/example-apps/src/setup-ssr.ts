@@ -15,6 +15,7 @@ export async function setupSsr(opts: {
     Log.debug(
       `Skipping SSR setup: Angular CLI %s supports creating apps
    with SSR support, so assuming it has been added already at creation`,
+      opts.cliVersionSemVer,
     )
     return
   }

@@ -16,6 +16,7 @@ export const metadataResolver: _LazyInjectionToken<MetadataResolver> = () =>
       const value = jsonResolver(values, resolverOptions)
       const routeValue = jsonResolver(routeMetadataStrategy(), resolverOptions)
       const defaultValue = jsonResolver(defaults ?? undefined, resolverOptions)
+      /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
       if (
         isObject(value) &&
         (isObject(routeValue) || isObject(defaultValue)) &&

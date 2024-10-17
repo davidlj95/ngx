@@ -29,10 +29,7 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
  *
  * @public
  */
-export const makeKeyValMetaDefinition: (
-  keyName: string,
-  options: MakeKeyValMetaDefinitionOptions,
-) => NgxMetaMetaDefinition = (
+export const makeKeyValMetaDefinition = (
   keyName: string,
   /* istanbul ignore next - quite simple */
   options: MakeKeyValMetaDefinitionOptions = {},

@@ -1,0 +1,11 @@
+{
+  "name": "@ngx-meta/schematics",
+  "version": "0.0.0",
+  "description": "ngx-meta schematics infra",
+  "packageManager": "pnpm@9.12.1",
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "postbuild": "rsync -R **/schema.json collection.json ../dist/schematics",
+    "test": "jest"
+  }
+}

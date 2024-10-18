@@ -49,5 +49,6 @@
     "access": "public",
     "provenance": true
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "schematics": "./schematics/collection.json"
 }

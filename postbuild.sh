@@ -32,3 +32,9 @@ for dist_file_entry in "$NGX_META_DIST_DIR"/*; do
     rm -rf "$entrypoint_src_dir"
   fi
 done
+
+# Build schematics
+echo "ℹ️ Building schematics"
+cd projects/ngx-meta/schematics
+pnpm run build
+cd "$(dirname "$0")"

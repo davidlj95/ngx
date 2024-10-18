@@ -1,0 +1,36 @@
+// https://github.com/angular/angular/blob/18.2.8/adev/src/content/tools/cli/schematics-for-libraries.md
+// https://github.com/angular/angular/blob/18.2.8/adev/src/content/examples/schematics-for-libraries/projects/my-lib/tsconfig.schematics.json
+// Modifications:
+//  - Remove `jasmine` types
+//  - Update `outDir` to match project structure
+//  - Add testing exclusions
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": ["es2018", "dom"],
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "rootDir": ".",
+    "outDir": "../dist/schematics",
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "es6",
+    "types": ["node"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": [
+    "**/files/**/*",
+    "**/testing/**",
+    "**/*.spec.ts",
+    "jest.config.ts"
+  ]
+}

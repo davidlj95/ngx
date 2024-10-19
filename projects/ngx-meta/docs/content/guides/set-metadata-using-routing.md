@@ -32,18 +32,18 @@ First, ensure you added the module to your app.
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Open your `app.module.ts` where [`NgxMetaCoreModule`](ngx-meta.ngxmetacoremodule.md) is imported. Ensure [`NgxMetaRoutingModule`](ngx-meta.ngxmetaroutingmodule.md) is imported too by calling [`NgxMetaRoutingModule.forRoot`](ngx-meta.ngxmetaroutingmodule.forroot.md)
+    Open your `app.module.ts` where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided. Ensure the routing module is added by adding a call to [`provideNgxMetaRouting`](ngx-meta.providengxmetarouting.md)
 
     ```typescript title="app.module.ts"
-    import {NgxMetaCoreModule} from '@davidlj95/ngx-meta/core'
-    import {NgxMetaRoutingModule} from '@davidlj95/ngx-meta/routing'
+    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
+    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(),
       ],
       // ...
     })

@@ -102,7 +102,7 @@ export class CoolPageComponent implements OnInit {
 
 ## Clearing metadata
 
-In the example, we set the elements `#!html <title>` and `#!html <meta name="description|keywords">`. Those will stay when the route changes if the routing module / provider hasn't been added. If you want those metadata values to get removed when changing route without adding the routing module / provider, you can add a call to the service on the [`ngOnDestroy`](https://angular.dev/guide/components/lifecycle#ngondestroy) hook:
+In the example, we set the elements `#!html <title>` and `#!html <meta name="description|keywords">`. Those will stay when the route changes if the library's routing module has not been added. If you want those metadata values to get removed when changing route without adding the library's routing module, you can add a call to the service on the [`ngOnDestroy`](https://angular.dev/guide/components/lifecycle#ngondestroy) hook:
 
 ```typescript
 @Component({
@@ -113,7 +113,7 @@ export class CoolPageComponent implements OnInit, OnDestroy {
   // ...
   ngOnDestroy(): void {
     //👇 Clear metadata when changing page
-    //   If you have enabled the routing module / provider, this is not needed
+    //   If you have enabled the library's routing module, this is not needed
     this.ngxMetaService.clear()
   }
 }

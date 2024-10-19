@@ -39,20 +39,20 @@ This way, everytime you set your metadata values (either using the service or th
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Open your `app.module.ts` where [`NgxMetaCoreModule`](ngx-meta.ngxmetacoremodule.md) is imported.
+    Open your `app.module.ts` where [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) is provided.
 
     Provide your default values by adding a call to [`withNgxMetaDefaults`](ngx-meta.withngxmetadefaults.md) with the default values to set.
 
     ```typescript title="app.module.ts"
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(
+        provideNgxMetaCore(
           withNgxMetaDefaults({
             description: "Awesome products made real ✨"
-          } satisfies GlobalMetadata),
-        )
+          } satisfies GlobalMetadata)
+        ),
       ],
       // ...
     })

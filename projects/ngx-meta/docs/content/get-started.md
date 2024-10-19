@@ -8,7 +8,7 @@ Glad you're here 🥰 Let's set it up in 3 steps ⚡️
 ng add @davidlj95/ngx-meta
 ```
 
-Or just use your package manager's `install` command[^1]
+The command will install the library and add the core provider to your app configuration or root module.
 
 ## ⚙️ 2. Setup
 
@@ -18,7 +18,11 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     --8<-- "includes/standalone-apps-explanation.md"
 
-    Open your `app.config.ts` file and add at least the library's core module to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the library's routing module too. In order to set some standard `#!html <meta>`s, let's add the [standard module].
+    Open your `app.config.ts` file. Add at least the core provider to the `providers` section. It should be there already if installed the library with `ng add`.
+
+    If you want to set metadata in each route's `data` using Angular's `Router`, add the library's routing module too.
+
+    In order to set some standard `#!html <meta>`s, let's add the [standard module] provider.
 
     ```typescript title="app.config.ts"
     import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
@@ -43,7 +47,11 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Open your `app.module.ts` file and add at least the library's core module to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the library's routing module too. In order to set some standard `<meta>`s, let's add the [standard module].
+    Open your `app.module.ts` file. Add at least the library's core module to the `providers` section. It should be there already if installed the library with `ng add`.
+
+    If you want to set metadata in each route's `data` using Angular's `Router`, add the library's routing module too.
+
+    In order to set some standard `<meta>`s, let's add the [standard module].
 
     ```typescript title="app.module.ts"
     import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
@@ -96,5 +104,3 @@ To know about how to properly define the metadata values to set, check out the *
 If you already know about all that, maybe you want to explore the **library's [built-in modules](./built-in-modules/index.md) that allow setting common metadata**.
 
 Otherwise, take a look at "Guides" section to learn about other features of the library. If looking for examples, you can always check out [our example apps](example-apps.md) for some real examples on how to use the library.
-
-[^1]: The library doesn't include any schematics for now

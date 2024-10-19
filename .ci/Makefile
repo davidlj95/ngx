@@ -24,6 +24,9 @@ unit-test-libs:
 		--no-progress \
 		--reporters progress
 
+unit-test-schematics:
+	cd .. && pnpm run test:unit:schematics
+
 format-check:
 	cd .. && pnpm run format-check-all
 

@@ -27,10 +27,5 @@
     "types": ["node"]
   },
   "include": ["**/*.ts"],
-  "exclude": [
-    "**/files/**/*",
-    "**/testing/**",
-    "**/*.spec.ts",
-    "jest.config.ts"
-  ]
+  "exclude": ["**/files/**/*", "**/testing/**", "**/*.spec.ts"]
 }

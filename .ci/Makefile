@@ -18,8 +18,10 @@ lint-code:
 lint-gh-actions:
 	ationlint
 
-unit-test:
-	pnpm run test:unit:coverage --browsers=ChromeHeadless --no-watch --no-progress \
+unit-test-libs:
+	pnpm run test:unit:libs:coverage \
+		--browsers=ChromeHeadless \
+		--no-progress \
 		--reporters progress
 
 format-check:

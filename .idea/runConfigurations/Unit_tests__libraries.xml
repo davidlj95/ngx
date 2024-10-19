@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Unit tests: all" type="JavaScriptTestRunnerKarma">
+  <configuration default="false" name="Unit tests: libraries" type="JavaScriptTestRunnerKarma">
     <config-file value="" />
     <karma-options value="--browsers=ChromeHeadless" />
     <karma-package-dir value="$PROJECT_DIR$/node_modules/@angular/cli" />

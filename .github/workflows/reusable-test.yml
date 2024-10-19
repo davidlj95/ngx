@@ -8,8 +8,8 @@ env:
   COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX: -coverage-report
 
 jobs:
-  unit-test:
-    name: Unit tests
+  unit-test-libs:
+    name: Unit tests (libs)
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -18,7 +18,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run unit tests
-        run: cd .ci && make unit-test
+        run: cd .ci && make unit-test-libs
       - name: Upload coverage report
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
         if: failure() || success()

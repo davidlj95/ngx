@@ -173,26 +173,45 @@ To build all libraries
 
 #### Unit tests
 
-Unit tests are run with Angular's default test runner [Karma](https://karma-runner.github.io) and default framework [Jasmine](https://jasmine.github.io/)
+Unit tests for libraries are run with Angular's default test runner [Karma](https://karma-runner.github.io) and default framework [Jasmine](https://jasmine.github.io/)
 
-To run them all
+Run them with
+
+```sh
+pnpm run test:unit:libs
+```
+
+Unit tests for libraries' schematics are run with [Jest](https://jestjs.io/). They use a different tool given they need to be run by an engine like Node.js, not a browser environment.
+
+Run them with
+
+```sh
+pnpm run test:unit:schematics
+```
+
+Or to run them all in parallel
 
 ```sh
 pnpm run test:unit
 ```
 
 > [!TIP]
-> There's also a WebStorm run configuration (`Unit tests: all`) to run all unit tests and report the results inside the IDE
+> There are also WebStorm/JetBrains IDEs run configurations to run unit tests and report results inside the IDE:
+>
+> - `Unit tests: libraries`
+> - `Unit tests: schematics`
 
 ##### With coverage
 
 To enable coverage reporting, run the following run script
 
 ```sh
-pnpm run test:unit:coverage
+pnpm run test:unit:libs:coverage
 ```
 
-Reports will be generated in JSON, `lcov` and HTML format. JSON report file name is `unit-test.json`. See [coverage section](#coverage) for more details.
+> Schematics unit tests do not output coverage information for now
+
+Reports will be generated in JSON, `lcov` and HTML format. JSON report file name is `unit-test.json`. See [coverage section]() for more details.
 
 > [!NOTE]
 > You can also use WebStorm's [`Run with coverage` option](https://www.jetbrains.com/help/webstorm/code-coverage.html). However, seems that it will use a custom Karma config. So the coverage report configuration may be different. At the moment of writing this document, for instance, the report directory and format is not the same.

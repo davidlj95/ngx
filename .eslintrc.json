@@ -1,6 +1,9 @@
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
+  "env": {
+    "es6": true // for jest.config.js files
+  },
   "overrides": [
     {
       "files": ["*.ts"],

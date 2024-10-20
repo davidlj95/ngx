@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core'
 import { ROUTES } from '@/e2e/cypress/fixtures/routes'
-// @ts-ignore (in templates directory file doesn't exist)
+// @ts-expect-error(2307): in templates directory file doesn't exist
 import packageJson from '../../package.json'
 
 @Component({

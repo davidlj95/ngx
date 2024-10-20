@@ -49,22 +49,27 @@ describe('Open Graph image metadata manager', () => {
         ['property', 'og:image'],
         { content: image.url },
       )
+
       expect(metaElementsService.set).toHaveBeenCalledWith(
         ['property', 'og:image:alt'],
         { content: image.alt },
       )
+
       expect(metaElementsService.set).toHaveBeenCalledWith(
         ['property', 'og:image:secure_url'],
         { content: image.secureUrl },
       )
+
       expect(metaElementsService.set).toHaveBeenCalledWith(
         ['property', 'og:image:type'],
         { content: image.type },
       )
+
       expect(metaElementsService.set).toHaveBeenCalledWith(
         ['property', 'og:image:width'],
         { content: image.width.toString() },
       )
+
       expect(metaElementsService.set).toHaveBeenCalledWith(
         ['property', 'og:image:height'],
         { content: image.height.toString() },

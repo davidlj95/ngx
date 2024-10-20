@@ -26,6 +26,11 @@
     {
       "files": ["*.html"],
       "rules": {}
+    },
+    {
+      "files": ["*.spec.ts"],
+      "extends": ["plugin:jasmine/recommended"],
+      "plugins": ["jasmine"]
     }
   ]
 }

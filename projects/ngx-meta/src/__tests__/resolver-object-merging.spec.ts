@@ -50,6 +50,7 @@ describe('Metadata value resolver object merging', () => {
       expect(resolved).toEqual(VALUES_DUMMY_OBJ)
     })
   })
+
   describe('when object merging resolver option is enabled', () => {
     const resolverOptions: MetadataResolverOptions = {
       ...baseResolverOptions,

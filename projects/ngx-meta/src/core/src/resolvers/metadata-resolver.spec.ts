@@ -39,6 +39,16 @@ describe('Metadata resolver', () => {
     ) as jasmine.Spy<_RouteMetadataStrategy>
   }
 
+  const shouldReturnValueFromValuesObject = (
+    values: MetadataValues,
+    resolverOptions: MetadataResolverOptions,
+    value: unknown,
+  ) => {
+    it('should return value from values object', () => {
+      expect(sut(values, resolverOptions)).toEqual(value)
+    })
+  }
+
   describe('when value exists in provided values', () => {
     beforeEach(() => {
       sut = makeSut()
@@ -118,9 +128,11 @@ describe('Metadata resolver', () => {
         )
       })
 
-      it('should return value from values object', () => {
-        expect(sut(DUMMY_VALUES, baseResolverOptions)).toEqual(VALUE)
-      })
+      shouldReturnValueFromValuesObject(
+        DUMMY_VALUES,
+        baseResolverOptions,
+        VALUE,
+      )
     })
 
     describe('when object merging is enabled', () => {
@@ -144,9 +156,7 @@ describe('Metadata resolver', () => {
           )
         })
 
-        it('should return value from values object', () => {
-          expect(sut(DUMMY_VALUES, resolverOptions)).toEqual(VALUE)
-        })
+        shouldReturnValueFromValuesObject(DUMMY_VALUES, resolverOptions, VALUE)
       })
 
       describe('when values are objects', () => {
@@ -178,6 +188,7 @@ describe('Metadata resolver', () => {
   describe('when neither value, route value or default value exists', () => {
     it('should return nothing', () => {
       const sut = makeSut()
+
       expect(sut(DUMMY_VALUES, baseResolverOptions)).toBeUndefined()
     })
   })
@@ -188,10 +199,12 @@ function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
     providers: [
       MockProvider(
         metadataJsonResolver(),
+        // eslint-disable-next-line jasmine/no-unsafe-spy
         jasmine.createSpy('Metadata JSON resolver'),
       ),
       MockProvider(
         _routeMetadataStrategy(),
+        // eslint-disable-next-line jasmine/no-unsafe-spy
         jasmine.createSpy('Route metadata strategy'),
       ),
       opts.defaults ? [MockProvider(defaults(), opts.defaults)] : [],

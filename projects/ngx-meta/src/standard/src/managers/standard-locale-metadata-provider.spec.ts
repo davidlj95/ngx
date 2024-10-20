@@ -27,6 +27,7 @@ describe('Standard locale metadata', () => {
     likeWhenNullOrUndefined((testCase) => {
       it('should remove HTML element lang attribute', () => {
         htmlLangAttributeHarness.set('es')
+
         expect(htmlLangAttributeHarness.get()).toBeTruthy()
 
         sut.set(testCase)
@@ -43,6 +44,7 @@ describe('Standard locale metadata', () => {
       sut.set(locale)
 
       const htmlTagLangAttribute = htmlLangAttributeHarness.get()
+
       expect(htmlTagLangAttribute).not.toBeNull()
       expect(htmlTagLangAttribute?.value).toEqual(locale)
     })

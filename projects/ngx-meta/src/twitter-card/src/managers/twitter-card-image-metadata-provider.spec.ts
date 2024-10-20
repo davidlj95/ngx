@@ -44,6 +44,7 @@ describe('Twitter Card image metadata manager', () => {
         ['name', 'twitter:image'],
         { content: image.url },
       )
+
       expect(metaElementsService.set).toHaveBeenCalledWith(
         ['name', 'twitter:image:alt'],
         { content: image.alt },

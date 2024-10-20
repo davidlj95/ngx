@@ -18,24 +18,21 @@ describe('Head element upsert or remove', () => {
     headElementHarness = new HeadElementHarness(TestBed.inject(DOCUMENT))
     dummyElement = headElementHarness.createDummyElement('dummy 1')
   })
+
   afterEach(() => {
     headElementHarness.removeAllDummyElements()
   })
 
   describe('when element does not exist already', () => {
-    beforeEach(() => {
-      expect(headElementHarness.getAllDummyElements())
-        .withContext('element does not exist already')
-        .toHaveSize(0)
-    })
-
     describe('when element is defined', () => {
       it('should append it to head', () => {
         sut(headElementHarness.dummySelector, dummyElement)
 
         const elements = headElementHarness.getAllDummyElements()
+
         expect(elements).toHaveSize(1)
         const element = elements[0]
+
         expect(element).toEqual(dummyElement)
       })
     })
@@ -54,11 +51,9 @@ describe('Head element upsert or remove', () => {
   describe('when element exists already', () => {
     beforeEach(() => {
       headElementHarness.appendElement(dummyElement)
-      expect(headElementHarness.getAllDummyElements())
-        .withContext('element exists already')
-        .toHaveSize(1)
     })
 
+    // eslint-disable-next-line jasmine/no-suite-dupes
     describe('when element is defined', () => {
       it('should update it', () => {
         const anotherDummyElement =
@@ -66,12 +61,15 @@ describe('Head element upsert or remove', () => {
         sut(headElementHarness.dummySelector, anotherDummyElement)
 
         const elements = headElementHarness.getAllDummyElements()
+
         expect(elements).toHaveSize(1)
         const element = elements[0]
+
         expect(element).toEqual(anotherDummyElement)
       })
     })
 
+    // eslint-disable-next-line jasmine/no-suite-dupes
     describe('when element is not defined', () => {
       likeWhenNullOrUndefined((testCase) => {
         it('should remove it', () => {

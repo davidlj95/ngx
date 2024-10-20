@@ -54,11 +54,13 @@ describe('Main service', () => {
         dummyValues,
         firstMetadata.resolverOptions,
       )
+
       expect(firstMetadata.set).toHaveBeenCalledWith(dummyFirstMetadataValue)
       expect(resolver).toHaveBeenCalledWith(
         dummyValues,
         secondMetadata.resolverOptions,
       )
+
       expect(secondMetadata.set).toHaveBeenCalledWith(dummySecondMetadataValue)
     })
   })
@@ -78,8 +80,10 @@ function makeSut() {
     providers: [
       MockProvider(
         metadataRegistryToken(),
+        // eslint-disable-next-line jasmine/no-unsafe-spy
         jasmine.createSpyObj<MetadataRegistry>(['getAll']),
       ),
+      // eslint-disable-next-line jasmine/no-unsafe-spy
       MockProvider(metadataResolver(), jasmine.createSpy('Metadata resolver')),
     ],
   })

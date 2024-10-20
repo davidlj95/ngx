@@ -106,12 +106,14 @@ const makeSut = (
         provide: _headElementUpsertOrRemove(),
         useValue:
           opts.headElementUpsertOrRemove ??
+          // eslint-disable-next-line jasmine/no-unsafe-spy
           jasmine.createSpy('Head element upsert or remove'),
       },
       {
         provide: _urlResolver(),
         useValue:
           opts.urlResolver ??
+          // eslint-disable-next-line jasmine/no-unsafe-spy
           jasmine
             .createSpy<_UrlResolver>('URL Resolver')
             .and.callFake((url) => url?.toString()),

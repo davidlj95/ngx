@@ -8,16 +8,12 @@ describe('with content attribute', () => {
 
   describe('when no content is provided', () => {
     likeWhenNullOrUndefined((testCase) => {
-      describe('when not providing extras', () => {
-        it('should return undefined', () => {
-          expect(sut(testCase)).toBeUndefined()
-        })
+      it('should return undefined when not providing extras', () => {
+        expect(sut(testCase)).toBeUndefined()
       })
 
-      describe('when providing extras', () => {
-        it('should return undefined', () => {
-          expect(sut(testCase, extras)).toBeUndefined()
-        })
+      it('should return undefined when providing extras', () => {
+        expect(sut(testCase, extras)).toBeUndefined()
       })
     })
   })

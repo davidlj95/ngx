@@ -120,6 +120,7 @@ function makeSut(
       MockProvider(Router, { events: events$ }),
       MockProvider(
         NgxMetaService,
+        // eslint-disable-next-line jasmine/no-unsafe-spy
         jasmine.createSpyObj<NgxMetaService>(['set']),
       ),
     ],

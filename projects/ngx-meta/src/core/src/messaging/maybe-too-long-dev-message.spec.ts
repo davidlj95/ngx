@@ -8,25 +8,28 @@ describe('Maybe too long developer message', () => {
     spyOn(console, 'warn')
   })
 
-  describe('when message is not defined', () => {
-    const message = undefined
-
+  const shouldNotEmitAnyMessage = (
+    message: string | undefined,
+    maxLength: number,
+  ) => {
     it('should not emit any message', () => {
-      sut(message, 300, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
+      sut(message, maxLength, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
 
       expect(console.warn).not.toHaveBeenCalled()
     })
+  }
+
+  describe('when message is not defined', () => {
+    const message = undefined
+
+    shouldNotEmitAnyMessage(message, 300)
   })
 
   describe('when message is not too long', () => {
     const message = 'short'
     const maxLength = 300
 
-    it('should not emit any message', () => {
-      sut(message, maxLength, DUMMY_FORMAT_DEV_MESSAGE_OPTIONS)
-
-      expect(console.warn).not.toHaveBeenCalled()
-    })
+    shouldNotEmitAnyMessage(message, maxLength)
   })
 
   describe('when message is too long', () => {

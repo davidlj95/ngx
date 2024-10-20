@@ -3,6 +3,8 @@ import { NgxMetaElementsService } from './ngx-meta-elements.service'
 import { withNameAttribute } from './with-name-attribute'
 import { withContentAttribute } from './with-content-attribute'
 import { Meta, MetaDefinition } from '@angular/platform-browser'
+import { NgxMetaElementNameAttribute } from './ngx-meta-element-name-attribute'
+import { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
 
 describe('Meta element service', () => {
   const dummyMetaNameAttribute = withNameAttribute('dummy')
@@ -33,56 +35,105 @@ describe('Meta element service', () => {
     getDummyMetaElements().forEach((element) => element.remove())
   })
 
-  describe('when no elements exist', () => {
+  const whenNoContentsAreProvided = (
+    tests: (testCase: readonly [] | undefined) => void,
+  ) => {
     describe('when no contents are provided', () => {
       const TEST_CASES = [
         [[], 'empty array'],
         [undefined, 'undefined'],
       ] as const
-
       TEST_CASES.forEach(([testCase, testCaseName]) => {
         describe(`like when ${testCaseName}`, () => {
-          it('should not create any element', () => {
-            const sut = makeSut()
-
-            sut.set(dummyMetaNameAttribute, testCase)
-
-            expect(getDummyMetaElements()).toHaveSize(0)
-          })
+          tests(testCase)
         })
       })
     })
+  }
 
-    describe('when contents are provided', () => {
-      describe('when a single content is provided', () => {
+  const whenSingleContentIsProvided = (
+    tests: (
+      nameAttribute: NgxMetaElementNameAttribute,
+      contentAttributes: NgxMetaElementAttributes,
+      expectedAttributes: NgxMetaElementAttributes,
+    ) => void,
+  ) => {
+    describe('when a single content is provided', () => {
+      tests(
+        dummyMetaNameAttribute,
+        dummyMetaContentAttribute,
+        dummyMetaAttributes,
+      )
+    })
+  }
+
+  const whenMultipleContentsAreProvided = (
+    tests: (
+      nameAttribute: NgxMetaElementNameAttribute,
+      contentAttributes: ReadonlyArray<NgxMetaElementAttributes>,
+      expectedAttributes: ReadonlyArray<NgxMetaElementAttributes>,
+    ) => void,
+  ) => {
+    describe('when multiple contents are provided', () => {
+      tests(
+        dummyMetaNameAttribute,
+        [
+          dummyMetaContentAttribute,
+          anotherDummyMetaContentAttribute,
+          yetAnotherDummyMetaContentAttribute,
+        ],
+        [
+          dummyMetaAttributes,
+          anotherDummyMetaAttributes,
+          yetAnotherDummyMetaAttributes,
+        ],
+      )
+    })
+  }
+
+  describe('when no elements exist', () => {
+    whenNoContentsAreProvided((testCase) => {
+      it('should not create any element', () => {
+        const sut = makeSut()
+
+        sut.set(dummyMetaNameAttribute, testCase)
+
+        expect(getDummyMetaElements()).toHaveSize(0)
+      })
+    })
+
+    whenSingleContentIsProvided(
+      (nameAttribute, contentAttributes, expectedAttributes) => {
         it('should create the element', () => {
           const sut = makeSut()
-          sut.set(dummyMetaNameAttribute, dummyMetaContentAttribute)
+          sut.set(nameAttribute, contentAttributes)
 
           const elements = getDummyMetaElements()
+
           expect(elements.length).toBe(1)
           const element = elements[0]
+
           expect(htmlAttributesToJson(element.attributes)).toEqual(
-            dummyMetaAttributes,
+            expectedAttributes,
           )
         })
-      })
+      },
+    )
 
-      describe('when multiple contents are provided', () => {
+    whenMultipleContentsAreProvided(
+      (nameAttribute, contentAttributes, expectedAttributes) => {
         it('should create an element for each one', () => {
           const sut = makeSut()
-          sut.set(dummyMetaNameAttribute, [
-            dummyMetaContentAttribute,
-            anotherDummyMetaContentAttribute,
-          ])
+          sut.set(nameAttribute, contentAttributes)
 
           const elements = getDummyMetaElements()
+
           expect(
             elements.map((e) => e.attributes).map(htmlAttributesToJson),
-          ).toEqual([dummyMetaAttributes, anotherDummyMetaAttributes])
+          ).toEqual(expectedAttributes)
         })
-      })
-    })
+      },
+    )
   })
 
   describe('when elements exist', () => {
@@ -104,62 +155,46 @@ describe('Meta element service', () => {
           content: 'existing-content-2',
         },
       ] as MetaDefinition[])
-      expect(getDummyMetaElements())
-        .withContext('test setup: two elements should exist')
-        .toHaveSize(2)
     })
 
-    describe('when no contents are provided', () => {
-      const TEST_CASES = [
-        [[], 'empty array'],
-        [undefined, 'undefined'],
-      ] as const
+    whenNoContentsAreProvided((testCase) => {
+      it('should remove them all', () => {
+        sut.set(dummyMetaNameAttribute, testCase)
 
-      TEST_CASES.forEach(([testCase, testCaseName]) => {
-        describe(`like when ${testCaseName}`, () => {
-          it('should remove them all', () => {
-            sut.set(dummyMetaNameAttribute, testCase)
-
-            expect(getDummyMetaElements()).toHaveSize(0)
-          })
-        })
+        expect(getDummyMetaElements()).toHaveSize(0)
       })
     })
 
-    describe('when contents are provided', () => {
-      describe('when a single content is provided', () => {
+    whenSingleContentIsProvided(
+      (nameAttribute, contentAttributes, expectedAttributes) => {
         it('should remove existing elements and create the new one', () => {
-          sut.set(dummyMetaNameAttribute, dummyMetaContentAttribute)
+          sut.set(nameAttribute, contentAttributes)
 
           const elements = getDummyMetaElements()
+
           expect(elements.length).toBe(1)
           const element = elements[0]
+
           expect(htmlAttributesToJson(element.attributes)).toEqual(
-            dummyMetaAttributes,
+            expectedAttributes,
           )
         })
-      })
+      },
+    )
 
-      describe('when multiple contents are provided', () => {
+    whenMultipleContentsAreProvided(
+      (nameAttribute, contentAttributes, expectedAttributes) => {
         it('should remove existing elements and create new ones', () => {
-          sut.set(dummyMetaNameAttribute, [
-            dummyMetaContentAttribute,
-            anotherDummyMetaContentAttribute,
-            yetAnotherDummyMetaContentAttribute,
-          ])
+          sut.set(nameAttribute, contentAttributes)
 
           expect(
             getDummyMetaElements()
               .map((e) => e.attributes)
               .map(htmlAttributesToJson),
-          ).toEqual([
-            dummyMetaAttributes,
-            anotherDummyMetaAttributes,
-            yetAnotherDummyMetaAttributes,
-          ])
+          ).toEqual(expectedAttributes)
         })
-      })
-    })
+      },
+    )
   })
 })
 

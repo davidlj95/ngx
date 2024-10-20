@@ -12,9 +12,6 @@ install:
 	# https://pnpm.io/cli/install#--frozen-lockfile
 	pnpm install --frozen-lockfile
 
-lint-code:
-	pnpm run lint:code --max-warnings 0
-
 lint-gh-actions:
 	ationlint
 

@@ -1,8 +1,8 @@
 {
-  "*": ["pnpm run format"],
-  "projects/ngx-meta/src/**/*.ts": ["ng-lint-staged lint:code --fix --"],
-  "projects/ngx-meta/example-apps/**/*.ts": [
-    "ng-lint-staged lint:code --fix --"
+  "!(*.ts)": ["pnpm run format"],
+  "projects/ngx-meta/{src,e2e,example-apps,schematics}/**/*.ts": [
+    "ng-lint-staged lint:code --fix --",
+    "pnpm run format"
   ],
   ".github/**/*.{yml,yaml}": ["pnpm run lint:gh-actions"]
 }

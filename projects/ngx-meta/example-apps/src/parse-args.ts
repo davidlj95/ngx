@@ -28,8 +28,7 @@ export function parseArgs(
       continue
     }
     if (arg.startsWith(BASE_APP_DIR_ARG)) {
-      const [_, argValue] = arg.split('=')
-      baseAppDir = argValue
+      baseAppDir = arg.split('=')[1]
       continue
     }
     if (arg === NO_CLEANUP_ARG) {
@@ -37,8 +36,7 @@ export function parseArgs(
       continue
     }
     if (arg.startsWith(TMP_DIR_ARG)) {
-      const [_, argValue] = arg.split('=')
-      tmpDir = argValue
+      tmpDir = arg.split('=')[1]
       continue
     }
     if (appCliAlias === null) {

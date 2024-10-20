@@ -18,6 +18,7 @@ describe('Head element upsert or remove', () => {
     headElementHarness = new HeadElementHarness(TestBed.inject(DOCUMENT))
     dummyElement = headElementHarness.createDummyElement('dummy 1')
   })
+
   afterEach(() => {
     headElementHarness.removeAllDummyElements()
   })
@@ -34,8 +35,10 @@ describe('Head element upsert or remove', () => {
         sut(headElementHarness.dummySelector, dummyElement)
 
         const elements = headElementHarness.getAllDummyElements()
+
         expect(elements).toHaveSize(1)
         const element = elements[0]
+
         expect(element).toEqual(dummyElement)
       })
     })
@@ -54,6 +57,7 @@ describe('Head element upsert or remove', () => {
   describe('when element exists already', () => {
     beforeEach(() => {
       headElementHarness.appendElement(dummyElement)
+
       expect(headElementHarness.getAllDummyElements())
         .withContext('element exists already')
         .toHaveSize(1)
@@ -66,8 +70,10 @@ describe('Head element upsert or remove', () => {
         sut(headElementHarness.dummySelector, anotherDummyElement)
 
         const elements = headElementHarness.getAllDummyElements()
+
         expect(elements).toHaveSize(1)
         const element = elements[0]
+
         expect(element).toEqual(anotherDummyElement)
       })
     })

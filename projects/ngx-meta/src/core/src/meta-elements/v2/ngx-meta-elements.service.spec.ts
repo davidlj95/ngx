@@ -60,8 +60,10 @@ describe('Meta element service', () => {
           sut.set(dummyMetaNameAttribute, dummyMetaContentAttribute)
 
           const elements = getDummyMetaElements()
+
           expect(elements.length).toBe(1)
           const element = elements[0]
+
           expect(htmlAttributesToJson(element.attributes)).toEqual(
             dummyMetaAttributes,
           )
@@ -77,6 +79,7 @@ describe('Meta element service', () => {
           ])
 
           const elements = getDummyMetaElements()
+
           expect(
             elements.map((e) => e.attributes).map(htmlAttributesToJson),
           ).toEqual([dummyMetaAttributes, anotherDummyMetaAttributes])
@@ -104,6 +107,7 @@ describe('Meta element service', () => {
           content: 'existing-content-2',
         },
       ] as MetaDefinition[])
+
       expect(getDummyMetaElements())
         .withContext('test setup: two elements should exist')
         .toHaveSize(2)
@@ -132,8 +136,10 @@ describe('Meta element service', () => {
           sut.set(dummyMetaNameAttribute, dummyMetaContentAttribute)
 
           const elements = getDummyMetaElements()
+
           expect(elements.length).toBe(1)
           const element = elements[0]
+
           expect(htmlAttributesToJson(element.attributes)).toEqual(
             dummyMetaAttributes,
           )

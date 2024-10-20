@@ -11,6 +11,7 @@ describe('Metadata registry', () => {
     const sut = makeSut({ managers: [dummyManager] })
 
     const managers = [...sut.getAll()]
+
     expect(managers).toHaveSize(1)
     expect(managers).toEqual([dummyManager])
   })
@@ -21,6 +22,7 @@ describe('Metadata registry', () => {
     sut.register(dummyManager)
 
     const managers = [...sut.getAll()]
+
     expect(managers).toHaveSize(1)
     expect(managers).toEqual([dummyManager])
   })
@@ -35,6 +37,7 @@ describe('Metadata registry', () => {
     sut.register(sameDummyManager)
 
     const managers = [...sut.getAll()]
+
     expect(managers).toHaveSize(1)
     expect(managers).toEqual([dummyManager])
   })
@@ -50,6 +53,7 @@ describe('Metadata registry', () => {
     sut.register(globalDummyManager)
 
     const managers = [...sut.findByGlobalOrJsonPath(global)]
+
     expect(managers).toHaveSize(1)
     expect(managers).toEqual([globalDummyManager])
   })
@@ -65,6 +69,7 @@ describe('Metadata registry', () => {
     sut.register(jsonPathManager)
 
     const managers = [...sut.findByGlobalOrJsonPath(jsonPath.join('.'))]
+
     expect(managers).toHaveSize(1)
     expect(managers).toEqual([jsonPathManager])
   })

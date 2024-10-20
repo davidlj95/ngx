@@ -178,6 +178,7 @@ describe('Metadata resolver', () => {
   describe('when neither value, route value or default value exists', () => {
     it('should return nothing', () => {
       const sut = makeSut()
+
       expect(sut(DUMMY_VALUES, baseResolverOptions)).toBeUndefined()
     })
   })

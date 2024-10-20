@@ -54,11 +54,13 @@ describe('Main service', () => {
         dummyValues,
         firstMetadata.resolverOptions,
       )
+
       expect(firstMetadata.set).toHaveBeenCalledWith(dummyFirstMetadataValue)
       expect(resolver).toHaveBeenCalledWith(
         dummyValues,
         secondMetadata.resolverOptions,
       )
+
       expect(secondMetadata.set).toHaveBeenCalledWith(dummySecondMetadataValue)
     })
   })

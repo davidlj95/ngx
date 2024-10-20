@@ -34,6 +34,7 @@ describe('Open Graph URL metadata manager', () => {
       ['property', 'og:url'],
       { content: dummyResolvedUrl },
     )
+
     expect(urlResolver).toHaveBeenCalledWith(dummyUrl)
   })
 })

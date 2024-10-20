@@ -39,6 +39,7 @@ describe('Metadata JSON resolver', () => {
           expect(sut(values, resolverOptionsWithGlobal)).toBeUndefined()
         })
       })
+
       describe('and global value exists', () => {
         const valuesWithGlobal = { [global]: value, ...values }
 
@@ -59,6 +60,7 @@ describe('Metadata JSON resolver', () => {
         expect(sut(values, { jsonPath: ['dummy'] })).toBeUndefined()
       })
     })
+
     describe('like when key does not exist', () => {
       const values = {}
       const resolverOptions = { jsonPath: [key, subKey] }

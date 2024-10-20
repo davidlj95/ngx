@@ -22,7 +22,7 @@ unit-test-libs:
 		--reporters progress
 
 unit-test-schematics:
-	cd .. && pnpm run test:unit:schematics
+	cd .. && pnpm run test:unit:schematics:coverage
 
 format-check:
 	cd .. && pnpm run format-check-all

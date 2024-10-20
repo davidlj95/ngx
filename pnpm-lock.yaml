@@ -84,6 +84,9 @@ importers:
       '@jest/globals':
         specifier: 29.7.0
         version: 29.7.0
+      '@jest/types':
+        specifier: 29.6.3
+        version: 29.6.3
       '@microsoft/api-documenter':
         specifier: 7.23.38
         version: 7.23.38(@types/node@22.7.6)

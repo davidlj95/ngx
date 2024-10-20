@@ -39,10 +39,11 @@
             "lintFilePatterns": [
               "projects/ngx-meta/src/**/*.ts",
               "projects/ngx-meta/src/**/*.html",
+              "projects/ngx-meta/e2e/**/*.ts",
               "projects/ngx-meta/example-apps/**/*.ts",
-              "projects/ngx-meta/e2e/**/*.cy.ts",
               "projects/ngx-meta/schematics/**/*.ts"
-            ]
+            ],
+            "maxWarnings": 0
           }
         }
       }

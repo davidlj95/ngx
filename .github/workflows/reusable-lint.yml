@@ -13,7 +13,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run linter
-        run: cd .ci && make lint-code
+        run: pnpm run lint:code
 
   github-actions:
     name: GitHub Actions

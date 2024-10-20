@@ -14,7 +14,7 @@ import { provideNgxMetaCore } from './provide-ngx-meta-core'
  *
  * Check out {@link provideNgxMetaCore} for the standalone, recommended API.
  *
- * Use {@link NgxMetaCoreModule.(forRoot:1)} method. Importing the module alone does nothing.
+ * Use {@link NgxMetaCoreModule.(forRoot:1)} method. Importing the module class alone does nothing.
  *
  * @public
  */
@@ -25,7 +25,7 @@ export class NgxMetaCoreModule {
    *
    * Check out {@link provideNgxMetaCore} for the standalone, recommended API.
    *
-   * Configures also extra features:
+   * Allows setting up additional features:
    *
    *  - {@link withNgxMetaDefaults}
    *

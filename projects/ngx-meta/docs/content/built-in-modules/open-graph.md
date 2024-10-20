@@ -30,7 +30,7 @@ Specifically, manages [basic](https://ogp.me/#metadata) and [optional](https://o
       providers: [
         // ...
         provideNgxMetaCore(),
-        provideNgxMetaRouting(),
+        provideNgxMetaRouting(), // (optional)
         provideNgxMetaOpenGraph(),
         // ...
       ],
@@ -41,18 +41,18 @@ Specifically, manages [basic](https://ogp.me/#metadata) and [optional](https://o
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Add [`NgxMetaOpenGraphModule`](ngx-meta.ngxmetaopengraphmodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
+    Add [`provideNgxMetaOpenGraph()`](ngx-meta.providengxmetaopengraph.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
 
     ```typescript title="app.module.ts"
-    import {NgxMetaOpenGraphModule} from '@davidlj95/ngx-meta/open-graph';
+    import {provideNgxMetaOpenGraph} from '@davidlj95/ngx-meta/open-graph';
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
-        NgxMetaOpenGraphModule,
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(), // (optional)
+        provideNgxMetaOpenGraph(),
         // ...
       ],
       // ...
@@ -78,7 +78,7 @@ Manages [profile](https://ogp.me/#type_profile) non-vertical metadata. Manages m
       providers: [
         // ...
         provideNgxMetaCore(),
-        provideNgxMetaRouting(),
+        provideNgxMetaRouting(), // (optional)
         provideNgxMetaOpenGraphProfile(),
         // ...
       ],
@@ -89,18 +89,18 @@ Manages [profile](https://ogp.me/#type_profile) non-vertical metadata. Manages m
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Add [`NgxMetaOpenGraphProfileModule`](ngx-meta.ngxmetaopengraphprofilemodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
+    Add [`provideNgxMetaOpenGraphProfile()`](ngx-meta.providengxmetaopengraphprofile.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
 
     ```typescript title="app.module.ts"
-    import {NgxMetaOpenGraphProfileModule} from '@davidlj95/ngx-meta/open-graph';
+    import {provideNgxMetaOpenGraphProfile} from '@davidlj95/ngx-meta/open-graph';
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
-        NgxMetaOpenGraphProfileModule,
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(), // (optional)
+        provideNgxMetaOpenGraphProfile(),
         // ...
       ],
       // ...

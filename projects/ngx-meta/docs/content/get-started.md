@@ -18,7 +18,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     --8<-- "includes/standalone-apps-explanation.md"
 
-    Open your `app.config.ts` file and add at least the core provider to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing provider too. In order to set some standard `#!html <meta>`s, let's add the [standard module] provider.
+    Open your `app.config.ts` file and add at least the library's core module to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the library's routing module too. In order to set some standard `#!html <meta>`s, let's add the [standard module].
 
     ```typescript title="app.config.ts"
     import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
@@ -30,7 +30,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
       providers: [
         // ...
         provideNgxMetaCore(),
-        provideNgxMetaRouting(),
+        provideNgxMetaRouting(), // (optional)
         provideNgxMetaStandard(),
         // ...
       ],
@@ -43,20 +43,20 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Open your `app.module.ts` file and add at least the core module to the `imports` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the routing module too. In order to set some standard `<meta>`s, let's add the [standard module].
+    Open your `app.module.ts` file and add at least the library's core module to the `providers` section. If you want to set metadata in each route's `data` using Angular's `Router`, add the library's routing module too. In order to set some standard `<meta>`s, let's add the [standard module].
 
     ```typescript title="app.module.ts"
-    import {NgxMetaCoreModule} from '@davidlj95/ngx-meta/core'
-    import {NgxMetaRoutingModule} from '@davidlj95/ngx-meta/routing'
-    import {NgxMetaStandardModule} from '@davidlj95/ngx-meta/standard'
+    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
+    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
+    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard'
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
-        NgxMetaStandardModule,
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(), // (optional)
+        provideNgxMetaStandard(),
       ],
       // ...
     })
@@ -83,7 +83,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
 ### Using [route's data]
 
-If you added the routing module / provider, you can set the metadata for a page using a [route's data]. For instance:
+If you added the library's routing module, you can set the metadata for a page using a [route's data]. For instance:
 
 --8<-- "includes/routing-usage.md"
 

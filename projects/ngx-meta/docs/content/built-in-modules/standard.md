@@ -22,7 +22,7 @@ Depending on what metadata you need to set, add one of more of the following mod
       providers: [
         // ...
         provideNgxMetaCore(),
-        provideNgxMetaRouting(),
+        provideNgxMetaRouting(), // (optional)
         provideNgxMetaStandard(),
         // ...
       ],
@@ -33,18 +33,18 @@ Depending on what metadata you need to set, add one of more of the following mod
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Add [`NgxMetaStandardModule`](ngx-meta.ngxmetastandardmodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
+    Add [`provideNgxMetaStandard()`](ngx-meta.providengxmetastandard.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
 
     ```typescript title="app.module.ts"
-    import {NgxMetaStandardModule} from '@davidlj95/ngx-meta/standard';
+    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard';
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
-        NgxMetaStandardModule,
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(), // (optional)
+        provideNgxMetaStandard(),
         // ...
       ],
       // ...

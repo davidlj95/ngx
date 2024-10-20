@@ -19,7 +19,7 @@ First, remove the metadata module from your main app config / module file
       providers: [
         // ...
         provideNgxMetaCore(),
-        provideNgxMetaRouting(),
+        provideNgxMetaRouting(), // (optional)
         provideNgxMetaStandard(),
         {--provideNgxMetaOpenGraph(),--}
         // ...
@@ -36,12 +36,12 @@ First, remove the metadata module from your main app config / module file
     ```title="app.module.ts"
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
-        NgxMetaStandardModule,
-        {--NgxMetaOpenGraphModule,--}
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(), // (optional)
+        provideNgxMetaStandard(),
+        {--provideNgxMetaOpenGraph(),--}
       ],
       // ...
     })
@@ -80,10 +80,12 @@ You can import it in the lazy-loaded module
 @NgModule({
   // ...
   imports: [
-    // ...
     RouterModule.forChild(routes), // blog routes
-    {++NgxMetaOpenGraphModule,++}
+    // ...
   ],
+  {++providers: [
+    provideNgxMetaOpenGraph(),
+  ]++}
   // ...
 })
 export class BlogModule {}
@@ -164,17 +166,17 @@ To add the metadata loader
 
 === "When using module import (feature module)"
 
-    Add [`NgxMetaMetadataLoaderModule`](ngx-meta.ngxmetametadataloadermodule.md)
+    Add [`provideNgxMetaMetadataLoader`](ngx-meta.providengxmetametadataloader.md)
 
     For instance:
 
     ```title="blog.module.ts"
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        {++NgxMetaOpenGraphModule,
-        NgxMetaMetadataLoaderModule,++}
+        {++provideNgxMetaOpenGraph(),
+        provideNgxMetaMetadataLoader(),++}
       ],
       // ...
     })

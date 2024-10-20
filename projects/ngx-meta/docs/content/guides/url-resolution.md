@@ -51,17 +51,17 @@ metadata value.
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Add [`withNgxMetaBaseUrl`](ngx-meta.withngxmetabaseurl.md) as an [`NgxMetaCoreModule.forRoot`](ngx-meta.ngxmetacoremodule.forroot.md) feature in `app.module.ts` file.
+    Add [`withNgxMetaBaseUrl`](ngx-meta.withngxmetabaseurl.md) as a [`provideNgxMetaCore`](ngx-meta.providengxmetacore.md) feature in the app's `app.module.ts` file.
 
     ```typescript title="app.module.ts"
-    import {NgxMetaCoreModule, withNgxMetaBaseUrl} from '@davidlj95/ngx-meta/core';
+    import {provideNgxMetaCore, withNgxMetaBaseUrl} from '@davidlj95/ngx-meta/core';
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(
-          withNgxMetaBaseUrl('https://example.com/app'),
+        provideNgxMetaCore(
+          withNgxMetaBaseUrl('https://example.com/app')
         ),
         // ...
       ],
@@ -119,7 +119,7 @@ You can also use the previous [`ANGULAR_ROUTER_URL`](ngx-meta.angularrouterurl.m
     --8<-- "includes/standalone-apps-explanation.md"
 
     ```typescript title="app.config.ts"
-    import {provideNgxMetaCore, withNgxMetaBaseUrl} from '@davidlj95/ngx-meta/core';
+    import {provideNgxMetaCore, withNgxMetaBaseUrl, ANGULAR_ROUTER_URL} from '@davidlj95/ngx-meta/core';
 
     export const appConfig: ApplicationConfig = {
       // ...
@@ -142,16 +142,18 @@ You can also use the previous [`ANGULAR_ROUTER_URL`](ngx-meta.angularrouterurl.m
     --8<-- "includes/module-apps-explanation.md"
 
     ```typescript title="app.module.ts"
-    import {NgxMetaCoreModule, withNgxMetaDefaults, ANGULAR_ROUTER_URL} from '@davidlj95/ngx-meta/core';
+    import {provideNgxMetaCore, withNgxMetaDefaults, ANGULAR_ROUTER_URL} from '@davidlj95/ngx-meta/core';
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(
-          withNgxMetaDefaults({
-            canonicalUrl: ANGULAR_ROUTER_URL,
-          } satisfies GlobalMetadata),
+        provideNgxMetaCore(
+          withNgxMetaDefaults(
+            {
+              canonicalUrl: ANGULAR_ROUTER_URL,
+            } satisfies GlobalMetadata
+          )
         ),
         // ...
       ],

@@ -276,7 +276,6 @@ export interface NgxMetaRouteData<Metadata = MetadataValues> {
 
 // @public
 export class NgxMetaRoutingModule {
-    // (undocumented)
     static forRoot(): ModuleWithProviders<NgxMetaRoutingModule>;
 }
 

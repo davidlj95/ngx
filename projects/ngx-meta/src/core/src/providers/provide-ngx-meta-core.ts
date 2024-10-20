@@ -9,7 +9,7 @@ import { CoreFeatures, providersFromCoreFeatures } from './core-feature'
  * This is the standalone, recommended API. Using this API is preferred.
  * However, you may also use {@link NgxMetaCoreModule.(forRoot:1)} as the Angular module-based equivalent API.
  *
- * Configures also extra features:
+ * Allows setting up additional features:
  *
  * - {@link withNgxMetaDefaults}
  *

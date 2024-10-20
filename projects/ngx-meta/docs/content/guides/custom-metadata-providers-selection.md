@@ -53,9 +53,9 @@ Now that you've found the metadata manager provider you want to use, add it as y
       providers: [
         // ...
         provideNgxMetaCore(),
-        provideNgxMetaRouting(),
+        provideNgxMetaRouting(), // (optional)
         {--provideNgxMetaStandard(),--}
-        {++STANDARD_TITLE_METADATA_PROVIDER++},
+        {++STANDARD_TITLE_METADATA_PROVIDER,++}
         // ...
       ]
     })
@@ -71,15 +71,12 @@ Now that you've found the metadata manager provider you want to use, add it as y
 
     @NgModule({
       // ...
-      imports: [
-        // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
-        {--NgxMetaStandardModule,--}
-      ],
       providers: [
         // ...
-        {++STANDARD_TITLE_METADATA_PROVIDER++},
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(), // (optional)
+        {--provideNgxMetaStandard(),--}
+        {++STANDARD_TITLE_METADATA_PROVIDER,++}
       ]
     })
     export class AppModule {}

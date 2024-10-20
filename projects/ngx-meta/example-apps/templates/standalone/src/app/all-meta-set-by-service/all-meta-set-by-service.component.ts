@@ -20,7 +20,7 @@ export class AllMetaSetByServiceComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     //👇 Clear metadata when changing page
-    //   If you have enabled the routing module, this is not needed
+    //   If you have enabled the library's routing module, this is not needed
     this.ngxMetaService.clear()
   }
 }

@@ -8,7 +8,7 @@ import { DEFAULT_ROUTE_METADATA_STRATEGY_PROVIDER } from '../route-metadata/defa
 import { routerListener } from '../listener/router-listener'
 
 /**
- * Allows to manage metadata of a page by specifying it in its Angular
+ * Enables managing metadata of a page by specifying it in its Angular
  * {@link https://angular.dev/api/router/Route#data | Route#data}
  *
  * @remarks

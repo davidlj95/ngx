@@ -24,7 +24,7 @@ The module allows you to embed a JSON-LD object inside a `#!html <script>` tag (
       providers: [
         // ...
         provideNgxMetaCore(),
-        provideNgxMetaRouting(),
+        provideNgxMetaRouting(), // (optional)
         provideNgxMetaJsonLd(),
         // ...
       ],
@@ -35,18 +35,18 @@ The module allows you to embed a JSON-LD object inside a `#!html <script>` tag (
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Add [`NgxMetaJsonLdModule`](ngx-meta.ngxmetajsonldmodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
+    Add [`provideNgxMetaJsonLd()`](ngx-meta.providengxmetajsonld.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
 
     ```typescript title="app.module.ts"
-    import {NgxMetaJsonLdModule} from '@davidlj95/ngx-meta/json-ld';
+    import {provideNgxMetaJsonLd} from '@davidlj95/ngx-meta/json-ld';
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
-        NgxMetaJsonLdModule,
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(), // (optional)
+        provideNgxMetaJsonLd()
         // ...
       ],
       // ...

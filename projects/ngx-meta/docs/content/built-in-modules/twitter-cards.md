@@ -28,7 +28,7 @@ To set the Twitter Card type or the basic _summary_ or _summary large_ cards, yo
       providers: [
         // ...
         provideNgxMetaCore(),
-        provideNgxMetaRouting(),
+        provideNgxMetaRouting(), // (optional)
         provideNgxMetaTwitterCard(),
         // ...
       ],
@@ -39,18 +39,18 @@ To set the Twitter Card type or the basic _summary_ or _summary large_ cards, yo
 
     --8<-- "includes/module-apps-explanation.md"
 
-    Add [`NgxMetaTwitterCardModule`](ngx-meta.ngxmetatwittercardmodule.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
+    Add [`provideNgxMetaTwitterCard()`](ngx-meta.providengxmetatwittercard.md) to your module-based app's `app.module.ts` file. Check out [get started setup] for more details.
 
     ```typescript title="app.module.ts"
-    import {NgxMetaTwitterCardModule} from '@davidlj95/ngx-meta/twitter-card';
+    import {provideNgxMetaTwitterCard} from '@davidlj95/ngx-meta/twitter-card';
 
     @NgModule({
       // ...
-      imports: [
+      providers: [
         // ...
-        NgxMetaCoreModule.forRoot(),
-        NgxMetaRoutingModule.forRoot(),
-        NgxMetaTwitterCardModule,
+        provideNgxMetaCore(),
+        provideNgxMetaRouting(), // (optional)
+        provideNgxMetaTwitterCard(),
         // ...
       ],
       // ...

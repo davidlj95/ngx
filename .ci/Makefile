@@ -18,9 +18,14 @@ lint-code:
 lint-gh-actions:
 	ationlint
 
-unit-test:
-	pnpm run test:unit:coverage --browsers=ChromeHeadless --no-watch --no-progress \
+unit-test-libs:
+	pnpm run test:unit:libs:coverage \
+		--browsers=ChromeHeadless \
+		--no-progress \
 		--reporters progress
+
+unit-test-schematics:
+	cd .. && pnpm run test:unit:schematics
 
 format-check:
 	cd .. && pnpm run format-check-all

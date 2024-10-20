@@ -1,3 +1,23 @@
+## [`ngx-meta` v1.0.0-beta.26](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.25...ngx-meta-v1.0.0-beta.26) (2024-10-20)
+
+### Features
+
+- add ng-add schematic ([#962](https://github.com/davidlj95/ngx/issues/962)) ([f07a15b](https://github.com/davidlj95/ngx/commit/f07a15b38694eb383edb9d0284d12db63424ba45))
+
+### Documentation
+
+- recommend using standalone APIs around ([#964](https://github.com/davidlj95/ngx/issues/964)) ([0cda049](https://github.com/davidlj95/ngx/commit/0cda04973b718a628a283242cf3285dd0626a3cc))
+
+### Miscellaneous Chores
+
+- ignore partial hit from coverage ([#957](https://github.com/davidlj95/ngx/issues/957)) ([f9e41a3](https://github.com/davidlj95/ngx/commit/f9e41a3b74fd526aa2c5dbd5aca3f3f1f42656fd))
+- **release:** update CHANGELOG.md ([#959](https://github.com/davidlj95/ngx/issues/959)) ([4b2a3f6](https://github.com/davidlj95/ngx/commit/4b2a3f6a25580abc9aa49efe98cca9183d66609b))
+
+### Build System
+
+- **dev-deps:** update dependency semantic-release to v24.1.3 ([#963](https://github.com/davidlj95/ngx/issues/963)) ([ae125c5](https://github.com/davidlj95/ngx/commit/ae125c52df04057670eb677ce5e8d5aa6aa98055))
+- output Angular CLI version in example apps msg ([877795b](https://github.com/davidlj95/ngx/commit/877795bf88c7d25fe6f37ecf92f182bf51c94dba))
+
 ## [`ngx-meta` v1.0.0-beta.25](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.24...ngx-meta-v1.0.0-beta.25) (2024-10-17)
 
 ### Features

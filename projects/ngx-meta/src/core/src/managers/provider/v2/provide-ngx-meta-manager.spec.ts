@@ -61,7 +61,7 @@ describe('provide manager', () => {
   describe('when global is given', () => {
     const global = 'global'
 
-    it('should set it in the manager', () => {
+    it('should set the manager global', () => {
       const provider = makeSut({ global })
 
       const manager = provideAndInject(provider)
@@ -73,7 +73,7 @@ describe('provide manager', () => {
   describe('when object merging is enabled', () => {
     const objectMerge = true
 
-    it('should set it in the manager', () => {
+    it('should enable object merging in the manager', () => {
       const provider = makeSut({ objectMerge })
 
       const manager = provideAndInject(provider)

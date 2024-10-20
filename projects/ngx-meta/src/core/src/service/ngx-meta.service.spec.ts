@@ -80,8 +80,10 @@ function makeSut() {
     providers: [
       MockProvider(
         metadataRegistryToken(),
+        // eslint-disable-next-line jasmine/no-unsafe-spy
         jasmine.createSpyObj<MetadataRegistry>(['getAll']),
       ),
+      // eslint-disable-next-line jasmine/no-unsafe-spy
       MockProvider(metadataResolver(), jasmine.createSpy('Metadata resolver')),
     ],
   })

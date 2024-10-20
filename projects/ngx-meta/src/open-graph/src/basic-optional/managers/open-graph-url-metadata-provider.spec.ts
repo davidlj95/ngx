@@ -47,6 +47,7 @@ function makeSut(opts: {
       MockProvider(NgxMetaElementsService),
       {
         provide: _urlResolver(),
+        // eslint-disable-next-line jasmine/no-unsafe-spy
         useValue: opts.urlResolver ?? jasmine.createSpy(),
       },
       OPEN_GRAPH_URL_METADATA_PROVIDER,

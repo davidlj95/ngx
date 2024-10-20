@@ -5,6 +5,7 @@ import { MockProvider } from 'ng-mocks'
 import { Meta } from '@angular/platform-browser'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { makeKeyValMetaDefinition } from './make-key-val-meta-definition'
+import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('Meta service', () => {
   enableAutoSpy()
@@ -17,46 +18,32 @@ describe('Meta service', () => {
     meta = TestBed.inject(Meta)
   })
 
-  describe('set', () => {
-    const metaDefinition = makeKeyValMetaDefinition('dummy', {
-      keyAttr: 'propertyName',
-      valAttr: 'propertyContent',
-    })
+  const metaDefinition = makeKeyValMetaDefinition('dummy', {
+    keyAttr: 'propertyName',
+    valAttr: 'propertyContent',
+  })
 
-    describe('when content is not provided (undefined)', () => {
-      const content = undefined
-
+  describe('when content is not provided', () => {
+    likeWhenNullOrUndefined((testCase) => {
       it('should remove meta element', () => {
-        sut.set(metaDefinition, content)
+        sut.set(metaDefinition, testCase)
 
         expect(meta.removeTag).toHaveBeenCalledOnceWith(
           metaDefinition.attrSelector,
         )
       })
     })
+  })
 
-    describe('when content is null', () => {
-      const content = null
+  describe('when content is provided', () => {
+    const content = 'Lorem ipsum lorem'
 
-      it('should remove meta element', () => {
-        sut.set(metaDefinition, content)
+    it('should update the meta tag', () => {
+      sut.set(metaDefinition, content)
 
-        expect(meta.removeTag).toHaveBeenCalledOnceWith(
-          metaDefinition.attrSelector,
-        )
-      })
-    })
-
-    describe('when content is provided', () => {
-      const content = 'Lorem ipsum lorem'
-
-      it('should update the meta tag', () => {
-        sut.set(metaDefinition, content)
-
-        expect(meta.updateTag).toHaveBeenCalledOnceWith(
-          metaDefinition.withContent(content),
-        )
-      })
+      expect(meta.updateTag).toHaveBeenCalledOnceWith(
+        metaDefinition.withContent(content),
+      )
     })
   })
 })

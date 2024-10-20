@@ -18,14 +18,31 @@ describe('Metadata JSON resolver', () => {
   const global = 'global'
   const value = 'value'
 
+  const shouldReturnUndefined = (
+    values: MetadataValues | undefined,
+    resolverOptions: MetadataResolverOptions,
+  ) => {
+    it('should return undefined', () => {
+      expect(sut(values, resolverOptions)).toBeUndefined()
+    })
+  }
+
+  const shouldReturnSpecificValue = (
+    values: MetadataValues | undefined,
+    resolverOptions: MetadataResolverOptions,
+    value: unknown,
+  ) => {
+    it('should return specific value', () => {
+      expect(sut(values, resolverOptions)).toEqual(value)
+    })
+  }
+
   function testGlobalMayBeRetrieved(
     values: MetadataValues,
     resolverOptions: MetadataResolverOptions,
   ) {
     describe('when global is not defined', () => {
-      it('should return undefined', () => {
-        expect(sut(values, resolverOptions)).toBeUndefined()
-      })
+      shouldReturnUndefined(values, resolverOptions)
     })
 
     describe('when global is defined', () => {
@@ -35,9 +52,7 @@ describe('Metadata JSON resolver', () => {
       }
 
       describe('but global value does not exist', () => {
-        it('should return undefined', () => {
-          expect(sut(values, resolverOptionsWithGlobal)).toBeUndefined()
-        })
+        shouldReturnUndefined(values, resolverOptionsWithGlobal)
       })
 
       describe('and global value exists', () => {
@@ -56,9 +71,7 @@ describe('Metadata JSON resolver', () => {
     describe('like when values are undefined', () => {
       const values = undefined
 
-      it('should return undefined', () => {
-        expect(sut(values, { jsonPath: ['dummy'] })).toBeUndefined()
-      })
+      shouldReturnUndefined(values, { jsonPath: ['dummy'] })
     })
 
     describe('like when key does not exist', () => {
@@ -120,9 +133,7 @@ describe('Metadata JSON resolver', () => {
         }
         const resolverOptions = { jsonPath: [key, subKey], global }
 
-        it('should return specific value', () => {
-          expect(sut(values, resolverOptions)).toEqual(value)
-        })
+        shouldReturnSpecificValue(values, resolverOptions, value)
       })
 
       describe('when object merging is enabled', () => {
@@ -140,9 +151,7 @@ describe('Metadata JSON resolver', () => {
             },
           }
 
-          it('should return specific value', () => {
-            expect(sut(values, resolverOptions)).toEqual(value)
-          })
+          shouldReturnSpecificValue(values, resolverOptions, value)
         })
 
         describe('when values are objects', () => {

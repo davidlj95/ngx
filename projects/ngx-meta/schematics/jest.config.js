@@ -6,5 +6,6 @@ const defaultPreset = createDefaultPreset({
 
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
+  displayName: 'ngx-meta/schematics',
   ...defaultPreset,
 }

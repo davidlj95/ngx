@@ -203,15 +203,19 @@ pnpm run test:unit
 
 ##### With coverage
 
-To enable coverage reporting, run the following run script
+To enable coverage reporting, use the previous run scripts, but with `:coverage` suffix.
+
+For instance:
 
 ```sh
 pnpm run test:unit:libs:coverage
+pnpm run test:unit:schematics:coverage
+pnpm run test:unit:coverage # both in parallel
 ```
 
-> Schematics unit tests do not output coverage information for now
+Reports will be generated in JSON, `lcov` and HTML format. JSON report file name is `unit-test.json` for libraries and `jest/coverage-final.json` for Jest schematic tests.
 
-Reports will be generated in JSON, `lcov` and HTML format. JSON report file name is `unit-test.json`. See [coverage section]() for more details.
+See [coverage section](#coverage) for more details.
 
 > [!NOTE]
 > You can also use WebStorm's [`Run with coverage` option](https://www.jetbrains.com/help/webstorm/code-coverage.html). However, seems that it will use a custom Karma config. So the coverage report configuration may be different. At the moment of writing this document, for instance, the report directory and format is not the same.
@@ -234,10 +238,10 @@ In order to get the coverage for all kinds of tests, [`nyc` CLI](https://github.
 
 First, run all tests with coverage you want to merge to emit those JSON code coverage reports.
 
-Then, you can use the `coverage:report:all` run script in `package.json` to merge reports. For instance, for `ngx-meta`:
+Then, you can use the `coverage:report:all` run script in `package.json` to merge reports.
 
 ```sh
-pnpm run ngx-meta:coverage:report:all
+pnpm run coverage:report:all
 ```
 
 The global coverage report will be in `lcov`(`.info`) and HTML format.

@@ -38,3 +38,10 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run unit tests
         run: cd .ci && make unit-test-schematics
+      - name: Upload coverage report
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4
+        if: failure() || success()
+        with:
+          name: unit-test-schematics${{ env.COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX }}
+          path: coverage/jest/*.json
+          retention-days: 5

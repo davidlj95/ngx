@@ -1,8 +1,8 @@
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
-  "env": {
-    "es6": true // for jest.config.js files
+  "parserOptions": {
+    "ecmaVersion": 9 // for jest.config.js files on IntelliJ
   },
   "overrides": [
     {

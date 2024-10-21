@@ -1,4 +1,5 @@
-import { access, rename, rm } from 'fs/promises'
+import { existsSync } from 'fs'
+import { rename, rm } from 'fs/promises'
 import { join } from 'path'
 import { loadNycConfig } from '@istanbuljs/load-nyc-config'
 
@@ -38,7 +39,7 @@ export async function renameJsonReport() {
   const jsonReportName =
     process.env['COVERAGE_JSON_REPORT_NAME'] ?? DEFAULT_RENAMED_JSON_REPORT_NAME
   const oldPath = join(coverageDirectory, DEFAULT_JSON_REPORT_NAME)
-  if (!(await _fileExists(oldPath))) {
+  if (!existsSync(oldPath)) {
     console.info('No JSON coverage report exists. Skipping rename')
     return
   }
@@ -49,15 +50,6 @@ export async function renameJsonReport() {
   console.info(" Destination: '%s'", newPath)
 
   await rename(oldPath, newPath)
-}
-
-const _fileExists = async (path: string) => {
-  try {
-    await access(path)
-  } catch {
-    return false
-  }
-  return true
 }
 
 const DEFAULT_COVERAGE_DIR = 'coverage'

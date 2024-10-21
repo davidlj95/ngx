@@ -4,8 +4,9 @@ import { beforeEach, describe } from '@jest/globals'
 import { join } from 'path'
 import { Schema as NgAddSchema } from './schema'
 import { ProviderTestCase } from './testing/provider-test-case'
-import { shouldAddRootProvider } from './testing/should-add-root-provider'
 import { createTestApp } from '../testing/create-test-app'
+import { shouldAddRootProvider } from './testing/should-add-root-provider'
+import { shouldNotAddRootProvider } from './testing/should-not-add-root-provider'
 
 // https://github.com/angular/components/blob/18.2.8/src/cdk/schematics/ng-add/index.spec.ts
 // https://github.com/angular/components/blob/18.2.8/src/material/schematics/ng-add/index.spec.ts
@@ -17,6 +18,7 @@ describe('ng-add schematic', () => {
 
   const defaultOptions: NgAddSchema = {
     project: 'test',
+    routing: false,
   }
 
   beforeEach(async () => {
@@ -29,6 +31,10 @@ describe('ng-add schematic', () => {
   const CORE_PROVIDER = new ProviderTestCase({
     name: 'core',
     symbol: 'provideNgxMetaCore',
+  })
+  const ROUTING_PROVIDER = new ProviderTestCase({
+    name: 'routing',
+    symbol: 'provideNgxMetaRouting',
   })
 
   ;([true, false] as const).forEach((standalone) => {
@@ -53,6 +59,22 @@ describe('ng-add schematic', () => {
         })
 
         shouldAddRootProvider(CORE_PROVIDER, () => tree, standalone)
+        shouldNotAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
+      })
+
+      describe('when routing option is true', () => {
+        const routing = true
+        let tree: Tree
+
+        beforeEach(async () => {
+          tree = await runner.runSchematic<NgAddSchema>(
+            SCHEMATIC_NAME,
+            { ...defaultOptions, routing },
+            appTree,
+          )
+        })
+
+        shouldAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
       })
     })
   })

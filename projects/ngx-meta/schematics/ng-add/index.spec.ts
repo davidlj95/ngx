@@ -24,52 +24,33 @@ describe('ng-add schematic', () => {
       join(__dirname, '..', 'collection.json'),
     )
   })
-
-  describe('when the app is standalone', () => {
-    beforeEach(async () => {
-      appTree = await createTestApp(runner, {
-        name: defaultOptions.project,
-        standalone: true, // to be explicit, but it's the default now
+  ;([true, false] as const).forEach((standalone) => {
+    const appKind = standalone ? 'standalone' : 'module-based'
+    describe(`when the app is ${appKind}`, () => {
+      beforeEach(async () => {
+        appTree = await createTestApp(runner, {
+          name: defaultOptions.project,
+          standalone,
+        })
       })
-    })
 
-    it('should add core provider to app config', async () => {
-      const tree = await runner.runSchematic<NgAddSchema>(
-        SCHEMATIC_NAME,
-        defaultOptions,
-        appTree,
-      )
-      const appConfig = getFileContent(tree, '/src/app/app.config.ts')
-      expect(appConfig).toContain(
-        `import { provideNgxMetaCore } from '${LIB_NAME}/core`,
-      )
-      expect(stripWhitespace(appConfig)).toMatch(
-        /providers:\[.*provideNgxMetaCore\(\).*]/,
-      )
-    })
-  })
-
-  describe('when the app is module-based', () => {
-    beforeEach(async () => {
-      appTree = await createTestApp(runner, {
-        name: defaultOptions.project,
-        standalone: false,
+      it('should add core provider', async () => {
+        const tree = await runner.runSchematic<NgAddSchema>(
+          SCHEMATIC_NAME,
+          defaultOptions,
+          appTree,
+        )
+        const appConfigOrAppModule = getAppConfigOrAppModuleContents(
+          tree,
+          standalone,
+        )
+        expect(appConfigOrAppModule).toContain(
+          `import { provideNgxMetaCore } from '${LIB_NAME}/core`,
+        )
+        expect(stripWhitespace(appConfigOrAppModule)).toMatch(
+          /providers:\[.*provideNgxMetaCore\(\).*]/,
+        )
       })
-    })
-
-    it('should add core provider to app module', async () => {
-      const tree = await runner.runSchematic<NgAddSchema>(
-        SCHEMATIC_NAME,
-        defaultOptions,
-        appTree,
-      )
-      const appModule = getFileContent(tree, '/src/app/app.module.ts')
-      expect(appModule).toContain(
-        `import { provideNgxMetaCore } from '${LIB_NAME}/core`,
-      )
-      expect(stripWhitespace(appModule)).toMatch(
-        /providers:\[.*provideNgxMetaCore\(\).*]/,
-      )
     })
   })
 })
@@ -90,6 +71,11 @@ const createTestApp = async (
     },
   )
 }
+
+const getAppConfigOrAppModuleContents = (tree: Tree, standalone: boolean) =>
+  standalone
+    ? getFileContent(tree, '/src/app/app.config.ts')
+    : getFileContent(tree, '/src/app/app.module.ts')
 
 // https://github.com/angular/components/blob/18.2.8/src/cdk/schematics/testing/file-content.ts
 const getFileContent = (tree: Tree, filePath: string): string => {

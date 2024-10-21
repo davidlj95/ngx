@@ -1,3 +1,17 @@
+## [`ngx-meta` v1.0.0-beta.28](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.27...ngx-meta-v1.0.0-beta.28) (2024-10-21)
+
+### Features
+
+- add `ng-add` option to provide metadata modules ([#978](https://github.com/davidlj95/ngx/issues/978)) ([b86627b](https://github.com/davidlj95/ngx/commit/b86627be424ad8e249150202f881c37493b1edde))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#976](https://github.com/davidlj95/ngx/issues/976)) ([c0c35e5](https://github.com/davidlj95/ngx/commit/c0c35e5445b55e9a9078a560fc79118b77df057e))
+
+### Tests
+
+- do not rely on `ng-add` defaults for tests ([#977](https://github.com/davidlj95/ngx/issues/977)) ([f487862](https://github.com/davidlj95/ngx/commit/f487862087ef72dcb0c94ebe249c4d4ab80f7c1f))
+
 ## [`ngx-meta` v1.0.0-beta.27](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.26...ngx-meta-v1.0.0-beta.27) (2024-10-21)
 
 ### Features

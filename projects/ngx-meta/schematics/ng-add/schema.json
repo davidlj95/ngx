@@ -10,6 +10,13 @@
       "$default": {
         "$source": "projectName"
       }
+    },
+    "routing": {
+      "type": "boolean",
+      "description": "Enables routing module to provide metadata in Angular routes' data",
+      "default": false,
+      "//todo": "Enable x-prompts for this and metadata modules to include when both are ready",
+      "//x-prompt": "Would you like to provide metadata in Angular routes' data?"
     }
   },
   "required": []

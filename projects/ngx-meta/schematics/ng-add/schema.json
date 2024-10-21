@@ -17,6 +17,38 @@
       "default": false,
       "//todo": "Enable x-prompts for this and metadata modules to include when both are ready",
       "//x-prompt": "Would you like to provide metadata in Angular routes' data?"
+    },
+    "metadataModules": {
+      "type": "array",
+      "description": "Built-in metadata modules to use",
+      "default": [],
+      "//todo": "Enable x-prompts for this and metadata modules to include when both are ready",
+      "//x-prompt": {
+        "type": "list",
+        "message": "What metadata would you like to set?",
+        "items": [
+          {
+            "label": "JSON-LD              [ https://ngx-meta.dev/built-in-modules/json-ld/            ]",
+            "value": "json-ld"
+          },
+          {
+            "label": "Open Graph           [ https://ngx-meta.dev/built-in-modules/open-graph/         ]",
+            "value": "open-graph"
+          },
+          {
+            "label": "Open Graph's profile [ https://ngx-meta.dev/built-in-modules/open-graph/#profile ]",
+            "value": "open-graph-profile"
+          },
+          {
+            "label": "Standard             [ https://ngx-meta.dev/built-in-modules/standard/           ]",
+            "value": "standard"
+          },
+          {
+            "label": "Twitter Card         [ https://ngx-meta.dev/built-in-modules/twitter-cards/      ]",
+            "value": "twitter-card"
+          }
+        ]
+      }
     }
   },
   "required": []

@@ -17,7 +17,7 @@ export const shouldAddRootProvider = (
       standalone,
     )
     expect(appConfigOrAppModuleContents).toContain(
-      `import { ${providerTestCase.symbol} } from '${LIB_NAME}/${providerTestCase.entrypoint}`,
+      `import { ${providerTestCase.symbol} } from '${LIB_NAME}/${providerTestCase.entrypoint}'`,
     )
     expect(stripWhitespace(appConfigOrAppModuleContents)).toMatch(
       new RegExp(`providers:\\[.*${regexpEscape(providerTestCase.code)}.*]`),

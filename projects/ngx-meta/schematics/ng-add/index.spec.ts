@@ -16,10 +16,9 @@ describe('ng-add schematic', () => {
   let runner: SchematicTestRunner
   let appTree: Tree
 
-  const defaultOptions: NgAddSchema = {
+  const defaultOptions = {
     project: 'test',
-    routing: false,
-  }
+  } satisfies Partial<NgAddSchema>
 
   beforeEach(async () => {
     runner = new SchematicTestRunner(
@@ -51,7 +50,7 @@ describe('ng-add schematic', () => {
         let tree: Tree
 
         beforeEach(async () => {
-          tree = await runner.runSchematic<NgAddSchema>(
+          tree = await runner.runSchematic<Partial<NgAddSchema>>(
             SCHEMATIC_NAME,
             defaultOptions,
             appTree,
@@ -61,20 +60,22 @@ describe('ng-add schematic', () => {
         shouldAddRootProvider(CORE_PROVIDER, () => tree, standalone)
         shouldNotAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
       })
+      ;[true, false].forEach((routing) => {
+        describe(`when routing option is ${routing}`, () => {
+          let tree: Tree
 
-      describe('when routing option is true', () => {
-        const routing = true
-        let tree: Tree
+          beforeEach(async () => {
+            tree = await runner.runSchematic<Partial<NgAddSchema>>(
+              SCHEMATIC_NAME,
+              { ...defaultOptions, routing },
+              appTree,
+            )
+          })
 
-        beforeEach(async () => {
-          tree = await runner.runSchematic<NgAddSchema>(
-            SCHEMATIC_NAME,
-            { ...defaultOptions, routing },
-            appTree,
-          )
+          routing
+            ? shouldAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
+            : shouldNotAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
         })
-
-        shouldAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
       })
     })
   })

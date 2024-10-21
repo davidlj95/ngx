@@ -1,3 +1,32 @@
+## [`ngx-meta` v1.0.0-beta.27](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.26...ngx-meta-v1.0.0-beta.27) (2024-10-21)
+
+### Features
+
+- ask whether to add routing in `ng-add` schematic ([#975](https://github.com/davidlj95/ngx/issues/975)) ([d0355bc](https://github.com/davidlj95/ngx/commit/d0355bcb2558ed21369d5444f7509ae322e471e5))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#966](https://github.com/davidlj95/ngx/issues/966)) ([fae3b6b](https://github.com/davidlj95/ngx/commit/fae3b6b9aefa817caa359c77d2c7943495c0386d))
+
+### Tests
+
+- refactor `ng-add` to make it easier to add moar tests ([#974](https://github.com/davidlj95/ngx/issues/974)) ([b028e11](https://github.com/davidlj95/ngx/commit/b028e11db5e0bc75450d31099c66a46784339b56))
+- refactor ng-add test to do same for standalone and module ([#973](https://github.com/davidlj95/ngx/issues/973)) ([0639ca0](https://github.com/davidlj95/ngx/commit/0639ca0720b8154ec92f6488e664df6b914c68e8))
+
+### Build System
+
+- add code coverage to schematic tests ([#971](https://github.com/davidlj95/ngx/issues/971)) ([6ef23f4](https://github.com/davidlj95/ngx/commit/6ef23f4ba7bb71d201ab6e8bdb5ae906af891d76))
+- add ESLint to example apps infra ([#969](https://github.com/davidlj95/ngx/issues/969)) ([2bd6d44](https://github.com/davidlj95/ngx/commit/2bd6d44b014109260d06c846a8c3cb65f8a6feba))
+- add Jest run config for JetBrains IDEs ([2cd8c94](https://github.com/davidlj95/ngx/commit/2cd8c94fc2f15b731ab27eb2a5141224c733264f))
+- add linting for schematics ([#967](https://github.com/davidlj95/ngx/issues/967)) ([2706878](https://github.com/davidlj95/ngx/commit/270687835c7a626ce327bbb43c7858b61d60def8))
+- add linting to Jasmine test files ([#968](https://github.com/davidlj95/ngx/issues/968)) ([1bade01](https://github.com/davidlj95/ngx/commit/1bade01d190e29e741db1be137ec186b63f0adcd))
+- improve lint-staged setup ([#970](https://github.com/davidlj95/ngx/issues/970)) ([234deca](https://github.com/davidlj95/ngx/commit/234deca8894f6ca941b7cce4cdfdc0800be980e5))
+- remove linter warning in jest.config.js [skip ci] ([44e97b0](https://github.com/davidlj95/ngx/commit/44e97b027782c943687b3bb92be3bb428223b25b))
+
+### Continuous (Integration|Deployment)
+
+- configure Jest for GitHub Actions reporting ([#972](https://github.com/davidlj95/ngx/issues/972)) ([f03557e](https://github.com/davidlj95/ngx/commit/f03557ec1d4cb22ffab19866bebaa7fc31401af8))
+
 ## [`ngx-meta` v1.0.0-beta.26](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.25...ngx-meta-v1.0.0-beta.26) (2024-10-20)
 
 ### Features

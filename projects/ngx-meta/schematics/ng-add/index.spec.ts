@@ -2,7 +2,7 @@ import { SchematicTestRunner } from '@angular-devkit/schematics/testing'
 import { Tree } from '@angular-devkit/schematics'
 import { beforeEach, describe } from '@jest/globals'
 import { join } from 'path'
-import { Schema as NgAddSchema } from './schema'
+import { MetadataModules, Schema as NgAddSchema } from './schema'
 import { ProviderTestCase } from './testing/provider-test-case'
 import { createTestApp } from '../testing/create-test-app'
 import { shouldAddRootProvider } from './testing/should-add-root-provider'
@@ -35,6 +35,36 @@ describe('ng-add schematic', () => {
     name: 'routing',
     symbol: 'provideNgxMetaRouting',
   })
+  const PROVIDERS_BY_MODULE_NAME: {
+    // 👇 With this type we ensure that all possible types are tested
+    //    If we miss one, the type will be incomplete
+    [K in MetadataModules]: ProviderTestCase
+  } = {
+    'json-ld': new ProviderTestCase({
+      name: 'JSON-LD',
+      symbol: 'provideNgxMetaJsonLd',
+      entrypoint: 'json-ld',
+    }),
+    'open-graph': new ProviderTestCase({
+      name: 'Open Graph',
+      symbol: 'provideNgxMetaOpenGraph',
+      entrypoint: 'open-graph',
+    }),
+    'open-graph-profile': new ProviderTestCase({
+      name: 'Open Graph (profile)',
+      symbol: 'provideNgxMetaOpenGraphProfile',
+      entrypoint: 'open-graph',
+    }),
+    standard: new ProviderTestCase({
+      name: 'standard',
+      symbol: 'provideNgxMetaStandard',
+    }),
+    'twitter-card': new ProviderTestCase({
+      name: 'Twitter Card',
+      symbol: 'provideNgxMetaTwitterCard',
+      entrypoint: 'twitter-card',
+    }),
+  }
 
   ;([true, false] as const).forEach((standalone) => {
     const appKind = standalone ? 'standalone' : 'module-based'
@@ -59,6 +89,9 @@ describe('ng-add schematic', () => {
 
         shouldAddRootProvider(CORE_PROVIDER, () => tree, standalone)
         shouldNotAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
+        Object.values(PROVIDERS_BY_MODULE_NAME).forEach((provider) => {
+          shouldNotAddRootProvider(provider, () => tree, standalone)
+        })
       })
       ;[true, false].forEach((routing) => {
         describe(`when routing option is ${routing}`, () => {
@@ -77,6 +110,27 @@ describe('ng-add schematic', () => {
             : shouldNotAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
         })
       })
+      Object.keys(PROVIDERS_BY_MODULE_NAME).forEach(
+        (metadataModule: MetadataModules) => {
+          describe(`when metadata module option contains '${metadataModule}'`, () => {
+            let tree: Tree
+
+            beforeEach(async () => {
+              tree = await runner.runSchematic<Partial<NgAddSchema>>(
+                SCHEMATIC_NAME,
+                { ...defaultOptions, metadataModules: [metadataModule] },
+                appTree,
+              )
+            })
+
+            shouldAddRootProvider(
+              PROVIDERS_BY_MODULE_NAME[metadataModule],
+              () => tree,
+              standalone,
+            )
+          })
+        },
+      )
     })
   })
 })

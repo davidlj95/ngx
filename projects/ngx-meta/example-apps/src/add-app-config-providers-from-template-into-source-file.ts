@@ -1,4 +1,9 @@
-import { Expression, SourceFile, SyntaxKind } from 'ts-morph'
+import {
+  ArrayLiteralExpression,
+  CallExpression,
+  SourceFile,
+  SyntaxKind,
+} from 'ts-morph'
 import { Log } from './utils.js'
 import { PROVIDERS_PROPERTY } from './constants.js'
 
@@ -12,29 +17,18 @@ export function addAppConfigProvidersFromTemplateIntoSourceFile({
   const [templateProviders, destinationProviders] = [template, destination].map(
     getAppConfigProvidersFromSourceFileOrThrow,
   )
-  const destinationProviderExpressionsAsTexts = destinationProviders
-    .getElements()
-    .map((expression) => expression.getText())
-  const providersToAdd = templateProviders
-    .getElements()
-    .reduce<ReadonlyArray<Expression>>((accumulator, templateExpression) => {
-      // Skip if exists
-      if (
-        destinationProviderExpressionsAsTexts.includes(
-          templateExpression.getText(),
-        )
-      ) {
-        return accumulator
-      }
-      // Add from template
-      return [...accumulator, templateExpression]
-    }, [])
-  destinationProviders.addElements(providersToAdd.map((p) => p.getText()))
+  removeProvidersSpecifiedInTemplate({
+    templateProviders,
+    destinationProviders,
+  })
+  addProvidersFromTemplate({ templateProviders, destinationProviders })
 }
 
 const APP_CONFIG_VARIABLE_NAME = 'appConfig'
 
-function getAppConfigProvidersFromSourceFileOrThrow(sourceFile: SourceFile) {
+function getAppConfigProvidersFromSourceFileOrThrow(
+  sourceFile: SourceFile,
+): ArrayLiteralExpression {
   const variableStatement = sourceFile.getVariableStatementOrThrow(
     APP_CONFIG_VARIABLE_NAME,
   )
@@ -57,5 +51,40 @@ function getAppConfigProvidersFromSourceFileOrThrow(sourceFile: SourceFile) {
     .asKindOrThrow(SyntaxKind.PropertyAssignment)
   return providersProperty.getInitializerIfKindOrThrow(
     SyntaxKind.ArrayLiteralExpression,
+  )
+}
+
+function removeProvidersSpecifiedInTemplate({
+  templateProviders,
+  destinationProviders,
+}: {
+  templateProviders: ArrayLiteralExpression
+  destinationProviders: ArrayLiteralExpression
+}) {
+  const destinationCallExpressions =
+    destinationProviders.getElements() as CallExpression[]
+  const templateCallExpressionsExpressionsAsTexts = (
+    templateProviders.getElements() as CallExpression[]
+  ).map((callExpression) => callExpression.getExpression().getText())
+  destinationCallExpressions.forEach((destinationCallExpression) => {
+    if (
+      templateCallExpressionsExpressionsAsTexts.includes(
+        destinationCallExpression.getExpression().getText(),
+      )
+    ) {
+      destinationProviders.removeElement(destinationCallExpression)
+    }
+  })
+}
+
+function addProvidersFromTemplate({
+  templateProviders,
+  destinationProviders,
+}: {
+  templateProviders: ArrayLiteralExpression
+  destinationProviders: ArrayLiteralExpression
+}) {
+  destinationProviders.addElements(
+    templateProviders.getElements().map((p) => p.getText()),
   )
 }

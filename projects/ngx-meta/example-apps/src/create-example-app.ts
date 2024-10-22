@@ -15,6 +15,7 @@ import { copyTemplates } from './copy-templates.js'
 import { updateTsConfigToImportJsonFilesAndSetPathMappings } from './update-ts-config-to-import-json-files-and-set-path-mappings.js'
 import { updateAppModuleOrAppConfigFromTemplates } from './update-app-module-or-app-config-from-templates.js'
 import { isStandaloneDefaultForVersion } from './is-standalone-default-for-version.js'
+import { ngAddLibrary } from './ng-add-library.js'
 
 async function createExampleApp({
   angularCliVersion,
@@ -53,9 +54,10 @@ async function createExampleApp({
     })(),
     copyTemplates({ appDir, standalone }),
     updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
-    updateAppModuleOrAppConfigFromTemplates(appDir, standalone),
   ])
   await install({ projectDir: appDir, what: 'app dependencies' })
+  await ngAddLibrary(appDir)
+  await updateAppModuleOrAppConfigFromTemplates(appDir, standalone)
 }
 
 if (isMain(import.meta.url)) {

@@ -21,6 +21,17 @@
     "metadataModules": {
       "type": "array",
       "description": "Built-in metadata modules to use",
+      "items": {
+        "type": "string",
+        "enum": [
+          "json-ld",
+          "open-graph",
+          "open-graph-profile",
+          "standard",
+          "twitter-card"
+        ]
+      },
+      "uniqueItems": true,
       "default": [],
       "//todo": "Enable x-prompts for this and metadata modules to include when both are ready",
       "//x-prompt": {

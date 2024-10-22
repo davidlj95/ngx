@@ -1,7 +1,6 @@
-import { jsonToString, Log } from './utils.js'
-import { join } from 'path'
-import { PACKAGE_JSON } from './constants.js'
-import { readFile, writeFile } from 'fs/promises'
+import { Log } from './utils.js'
+import { readPackageJsonInDir } from './read-package-json-in-dir.js'
+import { writePackageJsonInDir } from './write-package-json-in-dir.js'
 
 const BUILD_SSR_RUN_SCRIPT = 'build:ssr'
 //👇 Since v17, this script name includes :{projectName} at the end
@@ -19,12 +18,7 @@ export async function addCiRunScripts(opts: {
 }) {
   // Builds with SSR + source maps
   Log.step('Adding build and serve common run scripts for CI/CD')
-  const appPkgJsonFile = join(opts.appDir, PACKAGE_JSON)
-  const appPkgJson = JSON.parse(
-    await readFile(join(opts.appDir, PACKAGE_JSON), 'utf8'),
-  ) as {
-    scripts: Record<string, string>
-  }
+  const appPkgJson = await readPackageJsonInDir(opts.appDir)
 
   // Build script
   if (BUILD_SSR_RUN_SCRIPT in appPkgJson.scripts) {
@@ -43,5 +37,5 @@ export async function addCiRunScripts(opts: {
   }
   appPkgJson.scripts[CI_SERVE_RUN_SCRIPT] =
     `export ${SSR_PORT_ENV_VAR}=${SSR_SERVE_PORT} && pnpm run ${serveSsrRunScript}`
-  await writeFile(appPkgJsonFile, jsonToString(appPkgJson))
+  await writePackageJsonInDir(opts.appDir, appPkgJson)
 }

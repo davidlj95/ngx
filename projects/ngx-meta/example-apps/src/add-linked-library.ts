@@ -1,12 +1,6 @@
-import {
-  getLibraryDistDir,
-  getRelativeLibraryDistDir,
-  jsonToString,
-  Log,
-} from './utils.js'
-import { join } from 'path'
-import { PACKAGE_JSON } from './constants.js'
-import { readFile, writeFile } from 'fs/promises'
+import { getLibraryDistDir, getRelativeLibraryDistDir, Log } from './utils.js'
+import { readPackageJsonInDir } from './read-package-json-in-dir.js'
+import { writePackageJsonInDir } from './write-package-json-in-dir.js'
 
 /**
  * Due to caching lockfile in CI/CD, cannot use `pnpm add/install`
@@ -20,18 +14,8 @@ import { readFile, writeFile } from 'fs/promises'
  */
 export async function addLinkedLibrary(appDir: string) {
   Log.step('Adding linked library')
-  const appPkgJsonFile = join(appDir, PACKAGE_JSON)
-  const [libPkgJson, appPkgJson] = (
-    await Promise.all([
-      readFile(join(getLibraryDistDir(), PACKAGE_JSON), 'utf8'),
-      readFile(appPkgJsonFile, 'utf8'),
-    ])
-  ).map(
-    (data) =>
-      JSON.parse(data) as {
-        name: string
-        dependencies: Record<string, string>
-      },
+  const [libPkgJson, appPkgJson] = await Promise.all(
+    [getLibraryDistDir(), appDir].map(readPackageJsonInDir),
   )
 
   //👇 Can't use link: protocol (default when you pnpm i <relativeDir>)
@@ -39,5 +23,5 @@ export async function addLinkedLibrary(appDir: string) {
   //   Even with preserveSymlinks: true in angular.json + hoisted node-linker
   appPkgJson.dependencies[libPkgJson.name] =
     `file:${getRelativeLibraryDistDir()}`
-  await writeFile(appPkgJsonFile, jsonToString(appPkgJson))
+  await writePackageJsonInDir(appDir, appPkgJson)
 }

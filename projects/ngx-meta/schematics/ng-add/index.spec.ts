@@ -1,12 +1,20 @@
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing'
 import { Tree } from '@angular-devkit/schematics'
-import { beforeEach, describe } from '@jest/globals'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  jest,
+} from '@jest/globals'
 import { join } from 'path'
 import { MetadataModules, Schema as NgAddSchema } from './schema'
 import { ProviderTestCase } from './testing/provider-test-case'
 import { createTestApp } from '../testing/create-test-app'
 import { shouldAddRootProvider } from './testing/should-add-root-provider'
 import { shouldNotAddRootProvider } from './testing/should-not-add-root-provider'
+import * as AngularSchematicsUtilities from '@schematics/angular/utility'
 
 // https://github.com/angular/components/blob/18.2.8/src/cdk/schematics/ng-add/index.spec.ts
 // https://github.com/angular/components/blob/18.2.8/src/material/schematics/ng-add/index.spec.ts
@@ -130,6 +138,37 @@ describe('ng-add schematic', () => {
             )
           })
         },
+      )
+    })
+  })
+
+  // Below Angular v16.1
+  describe("when addRootProvider isn't available", () => {
+    let consoleLog: jest.Spied<Console['log']>
+
+    beforeEach(async () => {
+      consoleLog = jest.spyOn(console, 'log').mockReturnValue()
+      jest.mock<Partial<typeof AngularSchematicsUtilities>>(
+        '@schematics/angular/utility',
+        () =>
+          ({
+            ...AngularSchematicsUtilities,
+            addRootProvider: undefined,
+          }) satisfies Partial<typeof AngularSchematicsUtilities>,
+      )
+      await runner.runSchematic<Partial<NgAddSchema>>(
+        SCHEMATIC_NAME,
+        defaultOptions,
+        appTree,
+      )
+    })
+    afterEach(() => {
+      jest.restoreAllMocks()
+    })
+
+    it('should log a message', () => {
+      expect(consoleLog).toHaveBeenCalledWith(
+        expect.stringContaining('Please, setup the library manually'),
       )
     })
   })

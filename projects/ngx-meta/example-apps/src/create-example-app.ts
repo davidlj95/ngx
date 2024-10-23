@@ -1,5 +1,5 @@
 import { Log } from './tools/index.js'
-import { CreateExampleAppOptions, parseArgs } from './parse-args.js'
+import { parseArgs } from './parse-args.js'
 import {
   addCiRunScripts,
   addLinkedLibrary,
@@ -18,6 +18,7 @@ import {
 import { join } from 'path'
 import { isStandaloneDefaultForVersion } from './angular/index.js'
 import { isMain } from './utils/index.js'
+import { CreateExampleAppOptions } from './create-example-app-options.js'
 
 async function createExampleApp({
   angularCliVersion,

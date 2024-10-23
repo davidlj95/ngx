@@ -4,17 +4,11 @@ import {
   getAvailableAngularCliVersionAliases,
   isAngularCliVersionAlias,
 } from './angular/index.js'
+import { CreateExampleAppOptions } from './create-example-app-options.js'
 
 const BASE_APP_DIR_ARG = '--base-app-dir'
 const NO_CLEANUP_ARG = '--no-cleanup'
 const TMP_DIR_ARG = '--tmp-dir'
-
-export interface CreateExampleAppOptions {
-  readonly angularCliVersion: AngularCliVersion
-  readonly baseAppDir?: string
-  readonly noCleanup?: boolean
-  readonly tmpDir?: string
-}
 
 export function parseArgs(
   argv: ReadonlyArray<string>,

@@ -2,8 +2,8 @@ import { Project } from 'ts-morph'
 import { Log } from '../tools/index.js'
 import { join } from 'path'
 import {
-  addAppModuleFromTemplateIntoSourceFile,
   addImportsFromTemplateIntoSourceFile,
+  mergeAppModuleProvidersWithTemplate,
 } from '../typescript/index.js'
 import { MODULE_TEMPLATES_DIR } from './module-templates-dir.js'
 
@@ -21,7 +21,7 @@ export async function updateAppModule(tsMorphProject: Project, appDir: string) {
     destination: appModuleFile,
     template: appModuleTemplateFile,
   })
-  addAppModuleFromTemplateIntoSourceFile({
+  mergeAppModuleProvidersWithTemplate({
     destination: appModuleFile,
     template: appModuleTemplateFile,
   })

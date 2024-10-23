@@ -1,8 +1,8 @@
 import { Log } from '../tools/index.js'
 import { join } from 'path'
 import {
-  addAppConfigProvidersFromTemplateIntoSourceFile,
   addImportsFromTemplateIntoSourceFile,
+  mergeAppConfigProvidersFromTemplate,
 } from '../typescript/index.js'
 import { Project } from 'ts-morph'
 import { STANDALONE_TEMPLATES_DIR } from './standalone-templates-dir.js'
@@ -21,7 +21,7 @@ export async function updateAppConfig(tsMorphProject: Project, appDir: string) {
     destination: appConfigFile,
     template: appConfigTemplateFile,
   })
-  addAppConfigProvidersFromTemplateIntoSourceFile({
+  mergeAppConfigProvidersFromTemplate({
     destination: appConfigFile,
     template: appConfigTemplateFile,
   })

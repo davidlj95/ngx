@@ -1,4 +1,4 @@
-export { findTsConfigFileOrExit } from './find-ts-config-file-or-exit.js'
 export { addImportsFromTemplateIntoSourceFile } from './add-imports-from-template-into-source-file.js'
-export { addAppModuleFromTemplateIntoSourceFile } from './add-app-module-from-template-into-source-file.js'
-export { addAppConfigProvidersFromTemplateIntoSourceFile } from './add-app-config-providers-from-template-into-source-file.js'
+export { findTsConfigFileOrExit } from './find-ts-config-file-or-exit.js'
+export { mergeAppConfigProvidersFromTemplate } from './merge-app-config-providers-with-template.js'
+export { mergeAppModuleProvidersWithTemplate } from './merge-app-module-providers-with-template.js'

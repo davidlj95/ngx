@@ -1,3 +1,22 @@
+## [`ngx-meta` v1.0.0-beta.29](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.28...ngx-meta-v1.0.0-beta.29) (2024-10-23)
+
+### Bug Fixes
+
+- do not fail if `ng-add` schematic util isn't available ([#984](https://github.com/davidlj95/ngx/issues/984)) ([d5f7d25](https://github.com/davidlj95/ngx/commit/d5f7d252c65215bf6593222cf86430d9c795638d))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#979](https://github.com/davidlj95/ngx/issues/979)) ([bfdf3d9](https://github.com/davidlj95/ngx/commit/bfdf3d9aa19cb5e7b015c429a4f5c13c8947ad94))
+
+### Code Refactoring
+
+- introduce utils for r/w package.json files ([#980](https://github.com/davidlj95/ngx/issues/980)) ([a5fbc2b](https://github.com/davidlj95/ngx/commit/a5fbc2b19cee8691f11fee23b5b585ceebd6ebeb))
+
+### Build System
+
+- **deps:** bump http-proxy-middleware from 2.0.6 to 2.0.7 ([#983](https://github.com/davidlj95/ngx/issues/983)) ([1d703b5](https://github.com/davidlj95/ngx/commit/1d703b5bc353d259c752b4a71ccc1137309ff0d9))
+- use provider APIs for module-based example apps ([#981](https://github.com/davidlj95/ngx/issues/981)) ([92b6a43](https://github.com/davidlj95/ngx/commit/92b6a43f405736a735097007fb5017688098d238))
+
 ## [`ngx-meta` v1.0.0-beta.28](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.27...ngx-meta-v1.0.0-beta.28) (2024-10-21)
 
 ### Features

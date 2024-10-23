@@ -77,7 +77,7 @@ jobs:
           pnpm_store_path="$(pnpm store path --silent)"
           angular_cli_version="$(jq -r \
             '.devDependencies.${{ matrix.cli-version-alias }}' \
-            'src/angular-cli-versions.json' |
+            'angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
           )"
           week_of_year="$(date --utc '+%V')"

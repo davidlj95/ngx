@@ -12,5 +12,5 @@ runs:
       id: example-apps-version-aliases
       with:
         script: |
-          const angularCliVersions = require('./projects/ngx-meta/example-apps/src/angular-cli-versions.json')
+          const angularCliVersions = require('./projects/ngx-meta/example-apps/angular-cli-versions.json')
           return Object.keys(angularCliVersions.devDependencies)

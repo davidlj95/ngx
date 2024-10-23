@@ -1,0 +1,8 @@
+export { AngularCliVersion } from './angular-cli-version.js'
+export { ANGULAR_CLI_VERSIONS } from './angular-cli-versions.js'
+export { AngularCliVersionAlias } from './angular-cli-version-alias.js'
+export { getAvailableAngularCliVersionAliases } from './get-available-angular-cli-version-aliases.js'
+export { isAngularCliVersionAlias } from './is-angular-cli-version-alias.js'
+export { isStandaloneDefaultForVersion } from './is-standalone-default-for-version.js'
+export { PROVIDERS_PROPERTY } from './providers-property.js'
+export { supportsNgNewWithSsr } from './supports-ng-new-with-ssr.js'

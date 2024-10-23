@@ -1,21 +1,23 @@
-import { isMain, Log } from './utils.js'
+import { Log } from './tools/index.js'
 import { CreateExampleAppOptions, parseArgs } from './parse-args.js'
-import { generateTmpDirAndRegisterCleanupCallback } from './generate-tmp-dir-and-register-cleanup-callback.js'
-import { createPackageJsonWithAngularCli } from './create-package-json-with-angular-cli.js'
-import { install } from './install.js'
-import { createAngularApp } from './create-angular-app.js'
+import {
+  addCiRunScripts,
+  addLinkedLibrary,
+  copyAppDirIntoProject,
+  copyTemplates,
+  createAngularApp,
+  createPackageJsonWithAngularCli,
+  disableAnalytics,
+  generateTmpDirAndRegisterCleanupCallback,
+  install,
+  ngAddLibrary,
+  setupSsr,
+  updateAppModuleOrAppConfigFromTemplates,
+  updateTsConfigToImportJsonFilesAndSetPathMappings,
+} from './steps/index.js'
 import { join } from 'path'
-import { ANGULAR_CLI_BINARY_PATH } from './constants.js'
-import { disableAnalytics } from './disable-analytics.js'
-import { setupSsr } from './setup-ssr.js'
-import { copyAppDirIntoProject } from './copy-app-dir-into-project.js'
-import { addLinkedLibrary } from './add-linked-library.js'
-import { addCiRunScripts } from './add-ci-run-scripts.js'
-import { copyTemplates } from './copy-templates.js'
-import { updateTsConfigToImportJsonFilesAndSetPathMappings } from './update-ts-config-to-import-json-files-and-set-path-mappings.js'
-import { updateAppModuleOrAppConfigFromTemplates } from './update-app-module-or-app-config-from-templates.js'
-import { isStandaloneDefaultForVersion } from './is-standalone-default-for-version.js'
-import { ngAddLibrary } from './ng-add-library.js'
+import { isStandaloneDefaultForVersion } from './angular/index.js'
+import { isMain } from './utils/index.js'
 
 async function createExampleApp({
   angularCliVersion,
@@ -59,6 +61,8 @@ async function createExampleApp({
   await ngAddLibrary(appDir)
   await updateAppModuleOrAppConfigFromTemplates(appDir, standalone)
 }
+
+export const ANGULAR_CLI_BINARY_PATH = join('node_modules', '.bin', 'ng')
 
 if (isMain(import.meta.url)) {
   await createExampleApp(parseArgs(process.argv))

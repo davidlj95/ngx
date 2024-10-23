@@ -1,9 +1,9 @@
-import { Log } from './utils.js'
+import { Log } from './tools/index.js'
 import {
   AngularCliVersion,
-  getAvailableAliases,
-  isValidAngularCliVersionAlias,
-} from './angular-cli-versions.js'
+  getAvailableAngularCliVersionAliases,
+  isAngularCliVersionAlias,
+} from './angular/index.js'
 
 const BASE_APP_DIR_ARG = '--base-app-dir'
 const NO_CLEANUP_ARG = '--no-cleanup'
@@ -54,7 +54,7 @@ export function parseArgs(
     printUsage()
     process.exit(1)
   }
-  if (!isValidAngularCliVersionAlias(appCliAlias)) {
+  if (!isAngularCliVersionAlias(appCliAlias)) {
     Log.error('Angular CLI version alias "%s" is invalid. ', appCliAlias)
     printAvailableAngularCliAliases()
     process.exit(1)
@@ -97,5 +97,5 @@ Usage: node ${scriptName} ANGULAR_CLI_ALIAS
 
 function printAvailableAngularCliAliases() {
   Log.info('Available Angular CLI aliases:')
-  getAvailableAliases().forEach((name) => Log.item(name))
+  getAvailableAngularCliVersionAliases().forEach((name) => Log.item(name))
 }

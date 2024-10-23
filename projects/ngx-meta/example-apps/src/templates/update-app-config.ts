@@ -5,7 +5,7 @@ import {
   addImportsFromTemplateIntoSourceFile,
 } from '../typescript/index.js'
 import { Project } from 'ts-morph'
-import { getStandaloneTemplatesDir } from '../utils/index.js'
+import { STANDALONE_TEMPLATES_DIR } from './standalone-templates-dir.js'
 
 const APP_CONFIG_TEMPLATE_FILENAME = 'app.config.template.ts'
 const APP_CONFIG_FILENAME = 'app.config.ts'
@@ -13,12 +13,7 @@ const APP_CONFIG_FILENAME = 'app.config.ts'
 export async function updateAppConfig(tsMorphProject: Project, appDir: string) {
   Log.step('Updating app config from template')
   const [appConfigTemplateFile, appConfigFile] = [
-    join(
-      getStandaloneTemplatesDir(),
-      'src',
-      'app',
-      APP_CONFIG_TEMPLATE_FILENAME,
-    ),
+    join(STANDALONE_TEMPLATES_DIR, 'src', 'app', APP_CONFIG_TEMPLATE_FILENAME),
     join(appDir, 'src', 'app', APP_CONFIG_FILENAME),
   ].map((path) => tsMorphProject.addSourceFileAtPath(path))
 

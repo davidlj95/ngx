@@ -3,8 +3,8 @@ import {
   readPackageJsonInDir,
   writePackageJsonInDir,
 } from '../package-json/index.js'
-import { getLibraryDistDir } from '../utils/index.js'
 import { join } from 'path'
+import { getLibraryName } from '../library/index.js'
 
 const RELATIVE_DIST_DIR = join('..', '..', '..', 'dist')
 
@@ -20,13 +20,11 @@ const RELATIVE_DIST_DIR = join('..', '..', '..', 'dist')
  */
 export async function addLinkedLibrary(appDir: string) {
   Log.step('Adding linked library')
-  const [libPkgJson, appPkgJson] = await Promise.all(
-    [getLibraryDistDir(), appDir].map(readPackageJsonInDir),
-  )
+  const appPkgJson = await readPackageJsonInDir(appDir)
 
   //👇 Can't use link: protocol (default when you pnpm i <relativeDir>)
   //   When building SSR target if using `@nguniversal`, it fails
   //   Even with preserveSymlinks: true in angular.json + hoisted node-linker
-  appPkgJson.dependencies[libPkgJson.name] = `file:${RELATIVE_DIST_DIR}`
+  appPkgJson.dependencies[await getLibraryName()] = `file:${RELATIVE_DIST_DIR}`
   await writePackageJsonInDir(appDir, appPkgJson)
 }

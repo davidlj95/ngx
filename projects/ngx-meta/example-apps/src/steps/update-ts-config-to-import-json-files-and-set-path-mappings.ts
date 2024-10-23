@@ -3,7 +3,9 @@ import { findTsConfigFileOrExit } from '../typescript/index.js'
 import ts from 'typescript'
 import { join } from 'path'
 import { writeFile } from 'fs/promises'
-import { getRelativeLibraryE2EDir, jsonToString } from '../utils/index.js'
+import { jsonToString } from '../utils/index.js'
+
+export const RELATIVE_E2E_DIR_FROM_APP_DIR = join('..', '..', '..', 'e2e')
 
 export async function updateTsConfigToImportJsonFilesAndSetPathMappings(
   appDir: string,
@@ -29,7 +31,7 @@ export async function updateTsConfigToImportJsonFilesAndSetPathMappings(
   rawConfig.compilerOptions.allowSyntheticDefaultImports = true
   rawConfig.compilerOptions.paths = {
     ...rawConfig.compilerOptions.paths,
-    '@/e2e/*': [join(getRelativeLibraryE2EDir(), '*')],
+    '@/e2e/*': [join(RELATIVE_E2E_DIR_FROM_APP_DIR, '*')],
   }
   await writeFile(configFileName, jsonToString(config.raw))
 }

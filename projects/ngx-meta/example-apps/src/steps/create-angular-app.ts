@@ -6,10 +6,10 @@ import { supportsNgNewWithSsr } from '../angular/index.js'
 export async function createAngularApp(opts: {
   appName: string
   dir: string
-  cliVersionSemver: SemVer
+  cliVersion: SemVer
 }): Promise<string> {
   Log.step('Creating Angular app using Angular CLI')
-  const ngNewSupportsSsr = supportsNgNewWithSsr(opts.cliVersionSemver)
+  const ngNewSupportsSsr = supportsNgNewWithSsr(opts.cliVersion)
   if (ngNewSupportsSsr) {
     Log.info('Adding built-in SSR support')
   }

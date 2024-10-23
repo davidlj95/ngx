@@ -36,14 +36,14 @@ async function createExampleApp({
     baseAppDir = await createAngularApp({
       appName,
       dir: tmpDir,
-      cliVersionSemver: angularCliVersion.asSemVer,
+      cliVersion: angularCliVersion.asSemVer,
     })
     const cliBinary = join('..', ANGULAR_CLI_BINARY_PATH)
     await disableAnalytics({ cliBinary, appDir: baseAppDir })
     await setupSsr({
       cliBinary,
       appDir: baseAppDir,
-      cliVersionSemVer: angularCliVersion.asSemVer,
+      cliVersion: angularCliVersion.asSemVer,
     })
   }
 

@@ -9,13 +9,13 @@ export const NPMRC_FILENAME = '.npmrc'
 export async function setupSsr(opts: {
   cliBinary: string
   appDir: string
-  cliVersionSemVer: SemVer
+  cliVersion: SemVer
 }) {
-  if (supportsNgNewWithSsr(opts.cliVersionSemVer)) {
+  if (supportsNgNewWithSsr(opts.cliVersion)) {
     Log.debug(
       `Skipping SSR setup: Angular CLI %s supports creating apps
    with SSR support, so assuming it has been added already at creation`,
-      opts.cliVersionSemVer,
+      opts.cliVersion,
     )
     return
   }

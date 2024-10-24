@@ -1,3 +1,21 @@
+## [`ngx-meta` v1.0.0-beta.30](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.29...ngx-meta-v1.0.0-beta.30) (2024-10-24)
+
+### Features
+
+- improve `ng-add` logging ([#988](https://github.com/davidlj95/ngx/issues/988)) ([becf288](https://github.com/davidlj95/ngx/commit/becf28852b7f16e288cc5214ba54002186f87c12))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#985](https://github.com/davidlj95/ngx/issues/985)) ([68bc090](https://github.com/davidlj95/ngx/commit/68bc090a5eb613529d32a14cdff93c6e3d8acfdb))
+
+### Code Refactoring
+
+- organize example apps infra into dirs ([#986](https://github.com/davidlj95/ngx/issues/986)) ([d478b34](https://github.com/davidlj95/ngx/commit/d478b34af84ef69bea2d5dae0b51991e0f87fb2f))
+
+### Tests
+
+- run ng-add in example apps ([#982](https://github.com/davidlj95/ngx/issues/982)) ([4144c73](https://github.com/davidlj95/ngx/commit/4144c7391b192c45ec75a11023b431ddc764eb08))
+
 ## [`ngx-meta` v1.0.0-beta.29](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.28...ngx-meta-v1.0.0-beta.29) (2024-10-23)
 
 ### Bug Fixes

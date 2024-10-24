@@ -14,7 +14,7 @@ import { provideTwitterCardManager } from '../utils/provide-twitter-card-manager
  * Manages the {@link TwitterCard.description} metadata
  * @public
  */
-export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER =
+export const provideTwitterCardDescription = () =>
   provideTwitterCardManager(
     _GLOBAL_DESCRIPTION,
     _withModuleManagerSameGlobalKey(),

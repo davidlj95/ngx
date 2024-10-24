@@ -6,7 +6,7 @@ import {
 import { TestBed } from '@angular/core/testing'
 import { MockProviders } from 'ng-mocks'
 import { TwitterCard } from '../types'
-import { TWITTER_CARD_IMAGE_METADATA_PROVIDER } from './twitter-card-image-metadata-provider'
+import { provideTwitterCardImage } from './provide-twitter-card-image'
 import { TwitterCardImage } from './twitter-card-image'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 
@@ -70,7 +70,7 @@ function makeSut(): NgxMetaMetadataManager<TwitterCard['image']> {
   TestBed.configureTestingModule({
     providers: [
       MockProviders(NgxMetaElementsService),
-      TWITTER_CARD_IMAGE_METADATA_PROVIDER,
+      provideTwitterCardImage(),
     ],
   })
   return injectOneMetadataManager()

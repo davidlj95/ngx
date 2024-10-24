@@ -487,6 +487,24 @@ export const provideStandardThemeColor: () => Provider;
 // @public
 export const provideStandardTitle: () => Provider;
 
+// @public
+export const provideTwitterCardCard: () => Provider;
+
+// @public
+export const provideTwitterCardCreator: () => Provider;
+
+// @public
+export const provideTwitterCardDescription: () => Provider;
+
+// @public
+export const provideTwitterCardImage: () => Provider;
+
+// @public
+export const provideTwitterCardSite: () => Provider;
+
+// @public
+export const provideTwitterCardTitle: () => Provider;
+
 // @internal (undocumented)
 export type _RouteMetadataStrategy = () => MetadataValues | undefined;
 
@@ -522,24 +540,6 @@ export interface StandardThemeColorMetadataObject {
 
 // @internal (undocumented)
 type StringKeyOf<T = object> = Extract<keyof T, string>;
-
-// @public
-export const TWITTER_CARD_CARD_METADATA_PROVIDER: Provider;
-
-// @public
-export const TWITTER_CARD_CREATOR_METADATA_PROVIDER: Provider;
-
-// @public
-export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER: Provider;
-
-// @public
-export const TWITTER_CARD_IMAGE_METADATA_PROVIDER: Provider;
-
-// @public
-export const TWITTER_CARD_SITE_METADATA_PROVIDER: Provider;
-
-// @public
-export const TWITTER_CARD_TITLE_METADATA_PROVIDER: Provider;
 
 // @public
 export const TWITTER_CARD_TYPE_APP = "app";

@@ -7,7 +7,7 @@
  *
  * Provider:
  *
- * {@link TWITTER_CARD_CREATOR_METADATA_PROVIDER}
+ * {@link provideTwitterCardCreator}
  *
  * See also:
  *

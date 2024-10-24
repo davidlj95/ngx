@@ -9,6 +9,12 @@
 export interface JsonLdMetadata {
   /**
    * JSON-LD object (as a JSON object) to set in the page
+   *
+   * @remarks
+   *
+   * Provider:
+   *
+   * {@link provideJsonLdInHead}
    */
   readonly jsonLd?: object | null
 }

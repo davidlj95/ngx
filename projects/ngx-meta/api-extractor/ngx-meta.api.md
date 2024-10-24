@@ -109,9 +109,6 @@ export const _injectMetadataManagers: () => readonly NgxMetaMetadataManager[];
 export const _isDefined: <T>(value: T | null | undefined) => value is T;
 
 // @public
-export const JSON_LD_METADATA_PROVIDER: Provider;
-
-// @public
 export interface JsonLdMetadata {
     readonly jsonLd?: object | null;
 }
@@ -377,6 +374,9 @@ export type OpenGraphProfileGender = typeof OPEN_GRAPH_PROFILE_GENDER_FEMALE | t
 
 // @public
 export type OpenGraphType = typeof OPEN_GRAPH_TYPE_MUSIC_SONG | typeof OPEN_GRAPH_TYPE_MUSIC_ALBUM | typeof OPEN_GRAPH_TYPE_MUSIC_PLAYLIST | typeof OPEN_GRAPH_TYPE_MUSIC_RADIO_STATION | typeof OPEN_GRAPH_TYPE_VIDEO_MOVIE | typeof OPEN_GRAPH_TYPE_VIDEO_EPISODE | typeof OPEN_GRAPH_TYPE_VIDEO_TV_SHOW | typeof OPEN_GRAPH_TYPE_VIDEO_OTHER | typeof OPEN_GRAPH_TYPE_ARTICLE | typeof OPEN_GRAPH_TYPE_BOOK | typeof OPEN_GRAPH_TYPE_PROFILE | typeof OPEN_GRAPH_TYPE_WEBSITE;
+
+// @public
+export const provideJsonLdInHead: () => Provider;
 
 // @public
 export const provideNgxMetaCore: (...features: CoreFeatures) => EnvironmentProviders;

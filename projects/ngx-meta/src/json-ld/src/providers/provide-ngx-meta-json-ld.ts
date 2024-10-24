@@ -1,5 +1,5 @@
+import { provideJsonLdInHead } from '../managers'
 import { Provider } from '@angular/core'
-import { JSON_LD_METADATA_PROVIDER } from '../managers'
 
 /**
  * Provides {@link https://ngx-meta.dev/built-in-modules/json-ld/ | JSON-LD module}
@@ -12,4 +12,4 @@ import { JSON_LD_METADATA_PROVIDER } from '../managers'
  *
  * @public
  */
-export const provideNgxMetaJsonLd = (): Provider => [JSON_LD_METADATA_PROVIDER]
+export const provideNgxMetaJsonLd = (): Provider => provideJsonLdInHead()

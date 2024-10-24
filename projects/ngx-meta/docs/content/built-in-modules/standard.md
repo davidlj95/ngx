@@ -4,7 +4,7 @@ This module allows managing HTML `#!html <meta>` tags whose [`name` attribute is
 
 ## Setup
 
-Depending on what metadata you need to set, add one of more of the following modules / providers.
+Depending on what metadata you need to set, add one of more of the following providers.
 
 ### Main
 
@@ -52,12 +52,24 @@ Depending on what metadata you need to set, add one of more of the following mod
     export class AppModule {}
     ```
 
-## Type
+#### Metadata
 
-Following Typescript type provides you with all implemented metadata you can set:
+To check all the metadata that can be set with this module, check out
+
+[`Standard` API Reference](ngx-meta.standard.md)
+
+## Utility type
+
+Following Typescript type will help you provide metadata values:
 
 ```typescript
 import { StandardMetadata } from '@davidlj95/ngx-meta/standard'
+
+const metadata = {
+  standard: {
+    keywords: ['cool', 'site'],
+  },
+} satisfies StandardMetadata
 ```
 
 [`StandardMetadata` API Reference](ngx-meta.standardmetadata.md)

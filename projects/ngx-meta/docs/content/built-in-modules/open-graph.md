@@ -8,7 +8,7 @@ This module will help you set those tags to provide metadata to social networks 
 
 ## Setup
 
-Depending on what metadata you need to set, add one of more of the Open Graph modules / providers.
+Depending on what metadata you need to set, add one of more of the Open Graph providers.
 
 ### Main
 
@@ -60,6 +60,14 @@ Specifically, manages [basic](https://ogp.me/#metadata) and [optional](https://o
     export class AppModule {}
     ```
 
+#### Metadata
+
+To check all the metadata that can be set with this provider, check out
+
+[`OpenGraph` API Reference](ngx-meta.opengraph.md)
+
+> Except if the property indicates otherwise, like `profile`.
+
 ### Profile
 
 Manages [profile](https://ogp.me/#type_profile) non-vertical metadata. Manages metadata under [`OpenGraph.profile`](ngx-meta.opengraph.profile.md)
@@ -108,12 +116,27 @@ Manages [profile](https://ogp.me/#type_profile) non-vertical metadata. Manages m
     export class AppModule {}
     ```
 
-## Type
+#### Metadata
 
-Following Typescript type provides you with all implemented metadata you can set:
+To check all the metadata that can be set with this provider, check out
+
+[`OpenGraphProfile` API Reference](ngx-meta.opengraphprofile.md)
+
+## Utility type
+
+Following Typescript type will help you provide metadata values:
 
 ```typescript
-import { OpenGraphMetadata } from '@davidlj95/ngx-meta/open-graph'
+import { OpenGraphMetadata, OPEN_GRAPH_TYPE_WEBSITE } from '@davidlj95/ngx-meta/open-graph'
+
+const metadata = {
+  openGraph: {
+    type: OPEN_GRAPH_TYPE_WEBSITE,
+    profile: {
+      username: 'angular',
+    },
+  },
+} satisfies OpenGraphMetadata
 ```
 
 [`OpenGraphMetadata` API Reference](ngx-meta.opengraphmetadata.md)

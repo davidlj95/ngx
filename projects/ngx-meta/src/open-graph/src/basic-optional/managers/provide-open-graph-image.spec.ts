@@ -8,7 +8,7 @@ import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { OpenGraphImage } from './open-graph-image'
 import { OpenGraph } from '../../types'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
-import { OPEN_GRAPH_IMAGE_METADATA_PROVIDER } from './open-graph-image-metadata-provider'
+import { provideOpenGraphImage } from './provide-open-graph-image'
 
 describe('Open Graph image metadata manager', () => {
   enableAutoSpy()
@@ -93,10 +93,7 @@ describe('Open Graph image metadata manager', () => {
 
 function makeSut(): NgxMetaMetadataManager<OpenGraph['image']> {
   TestBed.configureTestingModule({
-    providers: [
-      MockProvider(NgxMetaElementsService),
-      OPEN_GRAPH_IMAGE_METADATA_PROVIDER,
-    ],
+    providers: [MockProvider(NgxMetaElementsService), provideOpenGraphImage()],
   })
   return injectOneMetadataManager()
 }

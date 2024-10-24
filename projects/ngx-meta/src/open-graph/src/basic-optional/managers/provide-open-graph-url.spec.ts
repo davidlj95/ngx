@@ -6,10 +6,10 @@ import {
   NgxMetaMetadataManager,
 } from '@davidlj95/ngx-meta/core'
 import { OpenGraph } from '../../types'
-import { OPEN_GRAPH_URL_METADATA_PROVIDER } from './open-graph-url-metadata-provider'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { MockProvider } from 'ng-mocks'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
+import { provideOpenGraphUrl } from './provide-open-graph-url'
 
 describe('Open Graph URL metadata manager', () => {
   enableAutoSpy()
@@ -50,7 +50,7 @@ function makeSut(opts: {
         // eslint-disable-next-line jasmine/no-unsafe-spy
         useValue: opts.urlResolver ?? jasmine.createSpy(),
       },
-      OPEN_GRAPH_URL_METADATA_PROVIDER,
+      provideOpenGraphUrl(),
     ],
   })
   return injectOneMetadataManager()

@@ -296,6 +296,7 @@ export class NgxMetaTwitterCardModule {
 }
 
 // @public
+<<<<<<< HEAD
 export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: Provider;
 
 // @public
@@ -306,6 +307,9 @@ export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: Provider;
 
 // @public
 export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: Provider;
+=======
+export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: FactoryProvider;
+>>>>>>> 939a259 (refactor: turn Open Graph providers into tree-shakeable ones)
 
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
@@ -323,21 +327,27 @@ export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER: Provider;
 export const OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER: Provider;
 
 // @public
+<<<<<<< HEAD
 export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: Provider;
 
 // @public
 export const OPEN_GRAPH_TITLE_METADATA_PROVIDER: Provider;
 
 // @public
+=======
+>>>>>>> 939a259 (refactor: turn Open Graph providers into tree-shakeable ones)
 export const OPEN_GRAPH_TYPE_ARTICLE = "article";
 
 // @public
 export const OPEN_GRAPH_TYPE_BOOK = "book";
 
 // @public
+<<<<<<< HEAD
 export const OPEN_GRAPH_TYPE_METADATA_PROVIDER: Provider;
 
 // @public
+=======
+>>>>>>> 939a259 (refactor: turn Open Graph providers into tree-shakeable ones)
 export const OPEN_GRAPH_TYPE_MUSIC_ALBUM = "music.album";
 
 // @public
@@ -368,9 +378,12 @@ export const OPEN_GRAPH_TYPE_VIDEO_TV_SHOW = "video.tv_show";
 export const OPEN_GRAPH_TYPE_WEBSITE = "website";
 
 // @public
+<<<<<<< HEAD
 export const OPEN_GRAPH_URL_METADATA_PROVIDER: Provider;
 
 // @public
+=======
+>>>>>>> 939a259 (refactor: turn Open Graph providers into tree-shakeable ones)
 export interface OpenGraph {
     readonly description?: string | null;
     readonly image?: OpenGraphImage | null;
@@ -459,6 +472,27 @@ export const provideNgxMetaStandard: () => Provider;
 
 // @public
 export const provideNgxMetaTwitterCard: () => Provider;
+
+// @public
+export const provideOpenGraphDescription: () => FactoryProvider;
+
+// @public
+export const provideOpenGraphImage: () => FactoryProvider;
+
+// @public
+export const provideOpenGraphLocale: () => FactoryProvider;
+
+// @public
+export const provideOpenGraphSiteName: () => FactoryProvider;
+
+// @public
+export const provideOpenGraphTitle: () => FactoryProvider;
+
+// @public
+export const provideOpenGraphType: () => FactoryProvider;
+
+// @public
+export const provideOpenGraphUrl: () => FactoryProvider;
 
 // @internal (undocumented)
 export type _RouteMetadataStrategy = () => MetadataValues | undefined;

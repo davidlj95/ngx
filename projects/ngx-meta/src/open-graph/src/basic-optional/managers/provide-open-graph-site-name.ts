@@ -10,8 +10,11 @@ import { withOpenGraphPropertyAttribute } from '../../utils/with-open-graph-prop
  * Manages the {@link OpenGraph.siteName} metadata
  * @public
  */
-export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER = provideOpenGraphManager(
-  'siteName',
-  withManagerGlobal(_GLOBAL_APPLICATION_NAME),
-  _withModuleManagerNameAttribute(withOpenGraphPropertyAttribute('site_name')),
-)
+export const provideOpenGraphSiteName = () =>
+  provideOpenGraphManager(
+    'siteName',
+    withManagerGlobal(_GLOBAL_APPLICATION_NAME),
+    _withModuleManagerNameAttribute(
+      withOpenGraphPropertyAttribute('site_name'),
+    ),
+  )

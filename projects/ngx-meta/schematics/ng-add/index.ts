@@ -13,7 +13,7 @@ export function ngAdd(options: Schema): Rule {
         [
           'ngx-meta `ng add` schematics only work for Angular v16.1 and above, sorry :(',
           "Please, setup the library manually. Don't worry, it's just a few lines around :)",
-          'You can find a guide at: https://ngx-meta.dev/get-started/',
+          'You can find a guide at: https://ngx-meta.dev/guides/manual-setup/',
         ].join('\n'),
       )
       logLibraryInfo(context.logger)

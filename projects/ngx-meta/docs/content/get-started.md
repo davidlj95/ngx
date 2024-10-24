@@ -2,84 +2,27 @@
 
 Glad you're here 🥰 Let's set it up in 3 steps ⚡️
 
-## ➕ 1. Install
+## ➕ 1. Install and setup
 
 ```shell
 ng add @davidlj95/ngx-meta
 ```
 
-The command will install the library and add the core provider to your app configuration or root module.
+The command will install the library and add ask you if you want to set up the routing module to set metadata values in Angular routes' `data`.
 
-## ⚙️ 2. Setup
+Then, to set some metadata to get started, choose at least the [standard module].
 
-Let's add the library to your Angular site and set some standard `#!html <meta>` tags.
+??? tip "Select just the metadata modules you need"
 
-=== "For standalone, module-free apps"
+    In order to reduce the bundle size. You can also [lazy load them later](late-loading-modules.md) if you don't need to setup some metadata until the user reaches a specific page.
 
-    --8<-- "includes/standalone-apps-explanation.md"
+??? note "You can set it up manually too"
 
-    Open your `app.config.ts` file. Add at least the core provider to the `providers` section. It should be there already if installed the library with `ng add`.
+    Check out the [manual setup](manual-setup.md) guide for more information.
 
-    If you want to set metadata in each route's `data` using Angular's `Router`, add the library's routing module too.
+## 🏷️ 2. Set some metadata
 
-    In order to set some standard `#!html <meta>`s, let's add the [standard module] provider.
-
-    ```typescript title="app.config.ts"
-    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
-    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
-    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard'
-
-    export const appConfig: ApplicationConfig = {
-      // ...
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(), // (optional)
-        provideNgxMetaStandard(),
-        // ...
-      ],
-    }
-    ```
-
-    --8<-- "includes/example-standalone-app-config.md"
-
-=== "For non-standalone, module-based apps"
-
-    --8<-- "includes/module-apps-explanation.md"
-
-    Open your `app.module.ts` file. Add at least the library's core module to the `providers` section. It should be there already if installed the library with `ng add`.
-
-    If you want to set metadata in each route's `data` using Angular's `Router`, add the library's routing module too.
-
-    In order to set some standard `<meta>`s, let's add the [standard module].
-
-    ```typescript title="app.module.ts"
-    import {provideNgxMetaCore} from '@davidlj95/ngx-meta/core'
-    import {provideNgxMetaRouting} from '@davidlj95/ngx-meta/routing'
-    import {provideNgxMetaStandard} from '@davidlj95/ngx-meta/standard'
-
-    @NgModule({
-      // ...
-      providers: [
-        // ...
-        provideNgxMetaCore(),
-        provideNgxMetaRouting(), // (optional)
-        provideNgxMetaStandard(),
-      ],
-      // ...
-    })
-    export class AppModule {}
-    ```
-
-    --8<-- "includes/example-module-based-app-module.md"
-
-??? tip "Lazy load them if you want!"
-
-    You can load metadata modules (like [Open Graph module]) later. They can be lazy loaded too actually. So if you don't need all metadata modules to be available in all your app, you can reduce the main bundle size by loading some later. Check out the [late loading modules guide](late-loading-modules.md) for more information
-
-## 🏷️ 3. Set some metadata
-
-### Using the service
+### 2.1 Using the service
 
 --8<-- "includes/service-usage.md"
 
@@ -89,7 +32,7 @@ Let's add the library to your Angular site and set some standard `#!html <meta>`
 
     See [service guide about clearing metadata values](set-metadata-using-service.md#clearing-metadata-values) for more information
 
-### Using [route's data]
+### 2.2 Using [route's data]
 
 If you added the library's routing module, you can set the metadata for a page using a [route's data]. For instance:
 

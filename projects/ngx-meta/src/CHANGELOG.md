@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-beta.31](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.30...ngx-meta-v1.0.0-beta.31) (2024-10-24)
+
+### Features
+
+- enable `ng-add` prompts for routing & metadata modules ([#990](https://github.com/davidlj95/ngx/issues/990)) ([5f4c2c3](https://github.com/davidlj95/ngx/commit/5f4c2c30aa1dc62ebd1fdd47d214f7e329b946eb))
+
+### Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#989](https://github.com/davidlj95/ngx/issues/989)) ([0a62f6e](https://github.com/davidlj95/ngx/commit/0a62f6e7cbf8d8f57c63c614b1b78827644efeb9))
+
 ## [`ngx-meta` v1.0.0-beta.30](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.29...ngx-meta-v1.0.0-beta.30) (2024-10-24)
 
 ### Features

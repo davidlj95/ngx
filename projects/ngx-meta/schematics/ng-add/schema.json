@@ -15,8 +15,7 @@
       "type": "boolean",
       "description": "Enables routing module to provide metadata in Angular routes' data",
       "default": false,
-      "//todo": "Enable x-prompts for this and metadata modules to include when both are ready",
-      "//x-prompt": "Would you like to provide metadata in Angular routes' data?"
+      "x-prompt": "Would you like to provide metadata in Angular routes' data?"
     },
     "metadataModules": {
       "type": "array",
@@ -33,8 +32,7 @@
       },
       "uniqueItems": true,
       "default": [],
-      "//todo": "Enable x-prompts for this and metadata modules to include when both are ready",
-      "//x-prompt": {
+      "x-prompt": {
         "type": "list",
         "message": "What metadata would you like to set?",
         "items": [

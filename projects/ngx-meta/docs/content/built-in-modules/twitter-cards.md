@@ -8,7 +8,7 @@ Some [Twitter Cards tags fallback to Open Graph equivalent properties if they ca
 
 ## Setup
 
-Depending on what metadata you need to set, add one of more of the Twitter Card modules / providers.
+Depending on what metadata you need to set, add one of more of the Twitter Card providers.
 
 ### Main
 
@@ -58,12 +58,24 @@ To set the Twitter Card type or the basic _summary_ or _summary large_ cards, yo
     export class AppModule {}
     ```
 
-## Type
+#### Metadata
 
-Following Typescript type provides you with all implemented metadata you can set:
+To check all the metadata that can be set with this provider, check out
+
+[`TwitterCard` API Reference](ngx-meta.twittercard.md)
+
+## Utility type
+
+Following Typescript type will help you provide metadata values:
 
 ```typescript
 import { TwitterCardMetadata } from '@davidlj95/ngx-meta/twitter-card'
+
+const metadata = {
+  twitterCard: {
+    site: { username: '@angular' },
+  },
+} satisfies TwitterCardMetadata
 ```
 
 [`TwitterCardMetadata` API Reference](ngx-meta.twittercardmetadata.md)

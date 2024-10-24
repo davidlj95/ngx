@@ -54,12 +54,27 @@ The module allows you to embed a JSON-LD object inside a `#!html <script>` tag (
     export class AppModule {}
     ```
 
-## Type
+## Utility type
 
-Following Typescript type provides you with all implemented metadata you can set:
+Following Typescript type will help you provide metadata values:
 
 ```typescript
 import { JsonLdMetadata } from '@davidlj95/ngx-meta/json-ld'
+
+const metadata = {
+  jsonLd: {
+    '@context': 'https://schema.org/',
+    '@type': 'Recipe',
+    name: 'Party Coffee Cake',
+    author: {
+      '@type': 'Person',
+      name: 'Mary Stone',
+    },
+    datePublished: '2018-03-10',
+    description: 'This coffee cake is awesome and perfect for parties.',
+    prepTime: 'PT20M',
+  },
+} satisfies JsonLdMetadata
 ```
 
 [`JsonLdMetadata` API Reference](ngx-meta.jsonldmetadata.md)

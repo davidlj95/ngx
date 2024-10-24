@@ -15,6 +15,7 @@ import { createTestApp } from '../testing/create-test-app'
 import { shouldAddRootProvider } from './testing/should-add-root-provider'
 import { shouldNotAddRootProvider } from './testing/should-not-add-root-provider'
 import * as AngularSchematicsUtilities from '@schematics/angular/utility'
+import { logging } from '@angular-devkit/core'
 
 // https://github.com/angular/components/blob/18.2.8/src/cdk/schematics/ng-add/index.spec.ts
 // https://github.com/angular/components/blob/18.2.8/src/material/schematics/ng-add/index.spec.ts
@@ -29,10 +30,14 @@ describe('ng-add schematic', () => {
   } satisfies Partial<NgAddSchema>
 
   beforeEach(async () => {
+    jest.spyOn(logging.Logger.prototype, 'info').mockReturnValue()
     runner = new SchematicTestRunner(
       'schematics',
       join(__dirname, '..', 'collection.json'),
     )
+  })
+  afterEach(() => {
+    jest.restoreAllMocks()
   })
 
   const CORE_PROVIDER = new ProviderTestCase({
@@ -144,10 +149,10 @@ describe('ng-add schematic', () => {
 
   // Below Angular v16.1
   describe("when addRootProvider isn't available", () => {
-    let consoleLog: jest.Spied<Console['log']>
+    let logSpy: jest.Spied<(typeof logging.Logger.prototype)['warn']>
 
     beforeEach(async () => {
-      consoleLog = jest.spyOn(console, 'log').mockReturnValue()
+      logSpy = jest.spyOn(logging.Logger.prototype, 'warn').mockReturnValue()
       jest.mock<Partial<typeof AngularSchematicsUtilities>>(
         '@schematics/angular/utility',
         () =>
@@ -162,12 +167,9 @@ describe('ng-add schematic', () => {
         appTree,
       )
     })
-    afterEach(() => {
-      jest.restoreAllMocks()
-    })
 
     it('should log a message', () => {
-      expect(consoleLog).toHaveBeenCalledWith(
+      expect(logSpy).toHaveBeenCalledWith(
         expect.stringContaining('Please, setup the library manually'),
       )
     })

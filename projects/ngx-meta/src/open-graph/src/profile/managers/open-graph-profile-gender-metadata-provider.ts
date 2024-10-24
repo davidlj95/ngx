@@ -4,5 +4,5 @@ import { provideOpenGraphProfileManager } from '../utils/provide-open-graph-prof
  * Manages the {@link OpenGraphProfile.gender} metadata
  * @public
  */
-export const OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER =
+export const provideOpenGraphProfileGender = () =>
   provideOpenGraphProfileManager('gender')

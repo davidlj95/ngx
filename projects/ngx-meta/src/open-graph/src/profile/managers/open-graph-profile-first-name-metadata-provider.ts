@@ -7,7 +7,7 @@ import { OPEN_GRAPH_PROFILE_KEY } from '../utils/open-graph-profile-key'
  * Manages the {@link OpenGraphProfile.firstName} metadata
  * @public
  */
-export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER =
+export const provideOpenGraphProfileFirstName = () =>
   provideOpenGraphProfileManager(
     'firstName',
     _withModuleManagerNameAttribute(

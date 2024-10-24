@@ -7,7 +7,7 @@ import { withOpenGraphPropertyAttribute } from '../../utils/with-open-graph-prop
  * Manages the {@link OpenGraphProfile.lastName} metadata
  * @public
  */
-export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER =
+export const provideOpenGraphProfileLastName = () =>
   provideOpenGraphProfileManager(
     'lastName',
     _withModuleManagerNameAttribute(

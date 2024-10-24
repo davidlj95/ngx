@@ -460,6 +460,33 @@ export const provideOpenGraphType: () => Provider;
 // @public
 export const provideOpenGraphUrl: () => Provider;
 
+// @public
+export const provideStandardApplicationName: () => Provider;
+
+// @public
+export const provideStandardAuthor: () => Provider;
+
+// @public
+export const provideStandardCanonicalUrl: () => Provider;
+
+// @public
+export const provideStandardDescription: () => Provider;
+
+// @public
+export const provideStandardGenerator: () => Provider;
+
+// @public
+export const provideStandardKeywords: () => Provider;
+
+// @public
+export const provideStandardLocale: () => Provider;
+
+// @public
+export const provideStandardThemeColor: () => Provider;
+
+// @public
+export const provideStandardTitle: () => Provider;
+
 // @internal (undocumented)
 export type _RouteMetadataStrategy = () => MetadataValues | undefined;
 
@@ -478,33 +505,6 @@ export interface Standard {
     readonly themeColor?: StandardThemeColorMetadata | null;
     readonly title?: GlobalMetadata['title'];
 }
-
-// @public
-export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER: Provider;
-
-// @public
-export const STANDARD_AUTHOR_METADATA_PROVIDER: Provider;
-
-// @public
-export const STANDARD_CANONICAL_URL_METADATA_PROVIDER: Provider;
-
-// @public
-export const STANDARD_DESCRIPTION_METADATA_PROVIDER: Provider;
-
-// @public
-export const STANDARD_GENERATOR_METADATA_PROVIDER: Provider;
-
-// @public
-export const STANDARD_KEYWORDS_METADATA_PROVIDER: Provider;
-
-// @public
-export const STANDARD_LOCALE_METADATA_PROVIDER: Provider;
-
-// @public
-export const STANDARD_THEME_COLOR_METADATA_PROVIDER: Provider;
-
-// @public
-export const STANDARD_TITLE_METADATA_PROVIDER: Provider;
 
 // @public
 export interface StandardMetadata {

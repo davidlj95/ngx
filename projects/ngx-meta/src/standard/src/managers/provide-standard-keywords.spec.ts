@@ -6,7 +6,7 @@ import {
   NgxMetaMetadataManager,
 } from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'
-import { STANDARD_KEYWORDS_METADATA_PROVIDER } from './standard-keywords-metadata-provider'
+import { provideStandardKeywords } from './provide-standard-keywords'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 
 describe('Standard keywords metadata manager', () => {
@@ -39,7 +39,7 @@ function makeSut(): NgxMetaMetadataManager<Standard['keywords']> {
   TestBed.configureTestingModule({
     providers: [
       MockProvider(NgxMetaElementsService),
-      STANDARD_KEYWORDS_METADATA_PROVIDER,
+      provideStandardKeywords(),
     ],
   })
   return injectOneMetadataManager()

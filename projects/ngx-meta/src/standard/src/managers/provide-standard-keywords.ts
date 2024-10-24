@@ -13,13 +13,14 @@ const KEY = 'keywords' satisfies keyof Standard
  * Manages the {@link Standard.keywords} metadata
  * @public
  */
-export const STANDARD_KEYWORDS_METADATA_PROVIDER = provideStandardManager(
-  KEY,
-  _withModuleManagerSetterFactory(
-    (metaElementsService: NgxMetaElementsService) => (value) =>
-      metaElementsService.set(
-        withNameAttribute(KEY),
-        withContentAttribute(value?.join(',')),
-      ),
-  ),
-)
+export const provideStandardKeywords = () =>
+  provideStandardManager(
+    KEY,
+    _withModuleManagerSetterFactory(
+      (metaElementsService: NgxMetaElementsService) => (value) =>
+        metaElementsService.set(
+          withNameAttribute(KEY),
+          withContentAttribute(value?.join(',')),
+        ),
+    ),
+  )

@@ -8,7 +8,7 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { VERSION } from '@angular/core'
 import { Standard } from '../types'
-import { STANDARD_GENERATOR_METADATA_PROVIDER } from './standard-generator-metadata-provider'
+import { provideStandardGenerator } from './provide-standard-generator'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
@@ -59,7 +59,7 @@ function makeSut(): NgxMetaMetadataManager<Standard['generator']> {
   TestBed.configureTestingModule({
     providers: [
       MockProvider(NgxMetaElementsService),
-      STANDARD_GENERATOR_METADATA_PROVIDER,
+      provideStandardGenerator(),
     ],
   })
   return injectOneMetadataManager()

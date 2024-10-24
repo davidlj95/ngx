@@ -8,7 +8,5 @@ import { provideStandardManager } from '../utils/provide-standard-manager'
  * Manages the {@link Standard.description} metadata
  * @public
  */
-export const STANDARD_DESCRIPTION_METADATA_PROVIDER = provideStandardManager(
-  _GLOBAL_DESCRIPTION,
-  _withModuleManagerSameGlobalKey(),
-)
+export const provideStandardDescription = () =>
+  provideStandardManager(_GLOBAL_DESCRIPTION, _withModuleManagerSameGlobalKey())

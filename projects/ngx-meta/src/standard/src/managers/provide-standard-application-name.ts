@@ -10,7 +10,7 @@ import { provideStandardManager } from '../utils/provide-standard-manager'
  * Manages the {@link Standard.applicationName} metadata
  * @public
  */
-export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER =
+export const provideStandardApplicationName = () =>
   provideStandardManager(
     _GLOBAL_APPLICATION_NAME,
     _withModuleManagerSameGlobalKey(),

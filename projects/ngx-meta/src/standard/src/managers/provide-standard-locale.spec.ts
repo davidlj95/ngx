@@ -5,7 +5,7 @@ import { HtmlLangAttributeHarness } from './__tests__/html-lang-attribute-harnes
 import { NgxMetaMetadataManager } from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
-import { STANDARD_LOCALE_METADATA_PROVIDER } from './standard-locale-metadata-provider'
+import { provideStandardLocale } from './provide-standard-locale'
 import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('Standard locale metadata', () => {
@@ -53,7 +53,7 @@ describe('Standard locale metadata', () => {
 
 function makeSut(): NgxMetaMetadataManager<Standard['locale']> {
   TestBed.configureTestingModule({
-    providers: [STANDARD_LOCALE_METADATA_PROVIDER],
+    providers: [provideStandardLocale()],
   })
   return injectOneMetadataManager()
 }

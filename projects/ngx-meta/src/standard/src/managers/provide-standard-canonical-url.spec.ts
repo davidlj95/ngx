@@ -9,7 +9,7 @@ import {
 import { TestBed } from '@angular/core/testing'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
 import { Standard } from '../types'
-import { STANDARD_CANONICAL_URL_METADATA_PROVIDER } from './standard-canonical-url-metadata-provider'
+import { provideStandardCanonicalUrl } from './provide-standard-canonical-url'
 import { likeWhenNullOrUndefined } from '@/ngx-meta/test/like-when-null-or-undefined'
 
 describe('Standard canonical URL metadata manager', () => {
@@ -118,7 +118,7 @@ const makeSut = (
             .createSpy<_UrlResolver>('URL Resolver')
             .and.callFake((url) => url?.toString()),
       },
-      STANDARD_CANONICAL_URL_METADATA_PROVIDER,
+      provideStandardCanonicalUrl(),
     ],
   })
   return injectOneMetadataManager()

@@ -12,14 +12,15 @@ import { provideStandardManager } from '../utils/provide-standard-manager'
  * Manages the {@link Standard.title} metadata
  * @public
  */
-export const STANDARD_TITLE_METADATA_PROVIDER = provideStandardManager(
-  _GLOBAL_TITLE,
-  _withModuleManagerSameGlobalKey(),
-  withManagerDeps(Title),
-  _withModuleManagerSetterFactory((titleService: Title) => (value) => {
-    if (!_isDefined(value)) {
-      return
-    }
-    titleService.setTitle(value)
-  }),
-)
+export const provideStandardTitle = () =>
+  provideStandardManager(
+    _GLOBAL_TITLE,
+    _withModuleManagerSameGlobalKey(),
+    withManagerDeps(Title),
+    _withModuleManagerSetterFactory((titleService: Title) => (value) => {
+      if (!_isDefined(value)) {
+        return
+      }
+      titleService.setTitle(value)
+    }),
+  )

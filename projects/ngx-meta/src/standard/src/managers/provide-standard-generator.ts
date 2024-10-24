@@ -14,15 +14,16 @@ const KEY = 'generator' satisfies keyof Standard
  * Manages the {@link Standard.generator} metadata
  * @public
  */
-export const STANDARD_GENERATOR_METADATA_PROVIDER = provideStandardManager(
-  KEY,
-  _withModuleManagerSetterFactory(
-    (metaElementsService: NgxMetaElementsService) => (value) =>
-      metaElementsService.set(
-        withNameAttribute(KEY),
-        withContentAttribute(
-          value === true ? `Angular v${VERSION.full}` : value,
+export const provideStandardGenerator = () =>
+  provideStandardManager(
+    KEY,
+    _withModuleManagerSetterFactory(
+      (metaElementsService: NgxMetaElementsService) => (value) =>
+        metaElementsService.set(
+          withNameAttribute(KEY),
+          withContentAttribute(
+            value === true ? `Angular v${VERSION.full}` : value,
+          ),
         ),
-      ),
-  ),
-)
+    ),
+  )

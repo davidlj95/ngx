@@ -6,7 +6,7 @@ import {
 import { Standard } from '../types'
 import { TestBed } from '@angular/core/testing'
 import { MockProvider } from 'ng-mocks'
-import { STANDARD_THEME_COLOR_METADATA_PROVIDER } from './standard-theme-color-metadata-provider'
+import { provideStandardThemeColor } from './provide-standard-theme-color'
 import { enableAutoSpy } from '@/ngx-meta/test/enable-auto-spy'
 import { MetaDefinition } from '@angular/platform-browser'
 import { StandardThemeColorMetadataObject } from './standard-theme-color-metadata'
@@ -85,7 +85,7 @@ function makeSut(): NgxMetaMetadataManager<Standard['themeColor']> {
   TestBed.configureTestingModule({
     providers: [
       MockProvider(NgxMetaElementsService),
-      STANDARD_THEME_COLOR_METADATA_PROVIDER,
+      provideStandardThemeColor(),
     ],
   })
   return injectOneMetadataManager()

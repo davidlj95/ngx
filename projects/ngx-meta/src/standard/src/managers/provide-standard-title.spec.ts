@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser'
 import { NgxMetaMetadataManager } from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'
 import { injectOneMetadataManager } from '@/ngx-meta/test/inject-one-metadata-manager'
-import { STANDARD_TITLE_METADATA_PROVIDER } from './standard-title-metadata-provider'
+import { provideStandardTitle } from './provide-standard-title'
 
 describe('Standard title metadata manager', () => {
   enableAutoSpy()
@@ -42,7 +42,7 @@ describe('Standard title metadata manager', () => {
 
 function makeSut(): NgxMetaMetadataManager<Standard['title']> {
   TestBed.configureTestingModule({
-    providers: [MockProvider(Title), STANDARD_TITLE_METADATA_PROVIDER],
+    providers: [MockProvider(Title), provideStandardTitle()],
   })
   return injectOneMetadataManager()
 }

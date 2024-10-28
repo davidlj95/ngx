@@ -12,5 +12,10 @@ module.exports = {
 
   coverageDirectory: '<rootDir>/coverage/jest',
   coverageReporters: ['json', 'text'],
-  collectCoverageFrom: ['<rootDir>/**/*.ts', '!**/testing/**'],
+  collectCoverageFrom: [
+    '<rootDir>/**/*.ts',
+    '!**/testing/**',
+    '!**/external-utils/**',
+    '!**/utils/**',
+  ],
 }

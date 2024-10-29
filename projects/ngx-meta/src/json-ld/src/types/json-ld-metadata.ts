@@ -14,7 +14,7 @@ export interface JsonLdMetadata {
    *
    * Provider:
    *
-   * {@link provideJsonLdInHead}
+   * {@link provideNgxMetaJsonLd}
    */
   readonly jsonLd?: object | null
 }

@@ -1,4 +1,4 @@
-import { provideJsonLdInHead } from '../managers'
+import { provideJsonLdInHead } from '../managers/provide-json-ld-in-head'
 import { Provider } from '@angular/core'
 
 /**

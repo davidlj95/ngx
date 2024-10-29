@@ -1,1 +1,1 @@
-export { provideJsonLdInHead } from './json-ld-metadata-provider'
+export { provideJsonLdInHead } from './provide-json-ld-in-head'

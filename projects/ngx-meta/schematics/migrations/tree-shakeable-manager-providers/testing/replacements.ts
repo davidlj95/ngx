@@ -21,7 +21,7 @@ export class ModuleReplacements {
 }
 
 export const JSON_LD_REPLACEMENTS: ModuleReplacements = new ModuleReplacements({
-  JSON_LD_METADATA_PROVIDER: 'provideJsonLdInHead',
+  JSON_LD_METADATA_PROVIDER: 'provideNgxMetaJsonLd',
 })
 
 export const OPEN_GRAPH_REPLACEMENTS = new ModuleReplacements({

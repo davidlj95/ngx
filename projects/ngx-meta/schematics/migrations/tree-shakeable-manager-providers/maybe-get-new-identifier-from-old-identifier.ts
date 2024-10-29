@@ -25,7 +25,7 @@ export const maybeGetNewIdentifierFromOldIdentifier = (
 }
 
 const SPECIAL_IDENTIFIER_MAPPINGS = new Map<string, string>([
-  ['JSON_LD_METADATA_PROVIDER', 'provideJsonLdInHead'],
+  ['JSON_LD_METADATA_PROVIDER', 'provideNgxMetaJsonLd'],
 ])
 
 const OLD_IDENTIFIER_PREFIXES = [

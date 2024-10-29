@@ -80,23 +80,23 @@ describe('Tree shakeable manager providers migration', () => {
       } from '@davidlj95/ngx-meta/core'
       import { provideNgxMetaRouting } from '${LIB_NAME}/routing'
       import {
-        ${JSON_LD_REPLACEMENTS.getOldIdentifiersLines()},
+        ${JSON_LD_REPLACEMENTS.oldIdentifiersLines},
         provideNgxMetaJsonLd
       } from '${LIB_NAME}/json-ld'
       import {
-        ${OPEN_GRAPH_REPLACEMENTS.getOldIdentifiersLines()},
+        ${OPEN_GRAPH_REPLACEMENTS.oldIdentifiersLines},
         provideNgxMetaOpenGraph
       } from '${LIB_NAME}/open-graph'
       import {
-        ${OPEN_GRAPH_PROFILE_REPLACEMENTS.getOldIdentifiersLines()},
+        ${OPEN_GRAPH_PROFILE_REPLACEMENTS.oldIdentifiersLines},
         provideNgxMetaOpenGraphProfile
       } from '${LIB_NAME}/open-graph'
       import {
-        ${STANDARD_REPLACEMENTS.getOldIdentifiersLines()},
+        ${STANDARD_REPLACEMENTS.oldIdentifiersLines},
         provideNgxMetaStandard
       } from '${LIB_NAME}/standard'
       import {
-        ${TWITTER_CARD_REPLACEMENTS.getOldIdentifiersLines()},
+        ${TWITTER_CARD_REPLACEMENTS.oldIdentifiersLines},
         provideNgxMetaTwitterCard
       } from '${LIB_NAME}/twitter-card'
 
@@ -109,15 +109,15 @@ describe('Tree shakeable manager providers migration', () => {
             withNgxMetaBaseUrl('https://example.com'),
           ),
           provideNgxMetaRouting(),
-          ${JSON_LD_REPLACEMENTS.getOldUsagesLines()},
+          ${JSON_LD_REPLACEMENTS.oldUsagesLines},
           provideNgxMetaJsonLd(),
-          ${OPEN_GRAPH_REPLACEMENTS.getOldUsagesLines()},
+          ${OPEN_GRAPH_REPLACEMENTS.oldUsagesLines},
           provideNgxMetaOpenGraph(),
-          ${OPEN_GRAPH_PROFILE_REPLACEMENTS.getOldUsagesLines()},
+          ${OPEN_GRAPH_PROFILE_REPLACEMENTS.oldUsagesLines},
           provideNgxMetaOpenGraphProfile(),
-          ${STANDARD_REPLACEMENTS.getOldUsagesLines()},
+          ${STANDARD_REPLACEMENTS.oldUsagesLines},
           provideNgxMetaStandard(),
-          ${TWITTER_CARD_REPLACEMENTS.getOldUsagesLines()},
+          ${TWITTER_CARD_REPLACEMENTS.oldUsagesLines},
           provideNgxMetaTwitterCard(),
         ],
       }`,
@@ -136,23 +136,23 @@ describe('Tree shakeable manager providers migration', () => {
       } from '@davidlj95/ngx-meta/core'
       import { provideNgxMetaRouting } from '${LIB_NAME}/routing'
       import {
-        ${JSON_LD_REPLACEMENTS.getNewIdentifiersLines()},
+        ${JSON_LD_REPLACEMENTS.newIdentifiersLines},
         provideNgxMetaJsonLd
       } from '${LIB_NAME}/json-ld'
       import {
-        ${OPEN_GRAPH_REPLACEMENTS.getNewIdentifiersLines()},
+        ${OPEN_GRAPH_REPLACEMENTS.newIdentifiersLines},
         provideNgxMetaOpenGraph
       } from '${LIB_NAME}/open-graph'
       import {
-        ${OPEN_GRAPH_PROFILE_REPLACEMENTS.getNewIdentifiersLines()},
+        ${OPEN_GRAPH_PROFILE_REPLACEMENTS.newIdentifiersLines},
         provideNgxMetaOpenGraphProfile
       } from '${LIB_NAME}/open-graph'
       import {
-        ${STANDARD_REPLACEMENTS.getNewIdentifiersLines()},
+        ${STANDARD_REPLACEMENTS.newIdentifiersLines},
         provideNgxMetaStandard
       } from '${LIB_NAME}/standard'
       import {
-        ${TWITTER_CARD_REPLACEMENTS.getNewIdentifiersLines()},
+        ${TWITTER_CARD_REPLACEMENTS.newIdentifiersLines},
         provideNgxMetaTwitterCard
       } from '${LIB_NAME}/twitter-card'
 
@@ -165,15 +165,15 @@ describe('Tree shakeable manager providers migration', () => {
             withNgxMetaBaseUrl('https://example.com'),
           ),
           provideNgxMetaRouting(),
-          ${JSON_LD_REPLACEMENTS.getNewUsagesLines()},
+          ${JSON_LD_REPLACEMENTS.newUsagesLines},
           provideNgxMetaJsonLd(),
-          ${OPEN_GRAPH_REPLACEMENTS.getNewUsagesLines()},
+          ${OPEN_GRAPH_REPLACEMENTS.newUsagesLines},
           provideNgxMetaOpenGraph(),
-          ${OPEN_GRAPH_PROFILE_REPLACEMENTS.getNewUsagesLines()},
+          ${OPEN_GRAPH_PROFILE_REPLACEMENTS.newUsagesLines},
           provideNgxMetaOpenGraphProfile(),
-          ${STANDARD_REPLACEMENTS.getNewUsagesLines()},
+          ${STANDARD_REPLACEMENTS.newUsagesLines},
           provideNgxMetaStandard(),
-          ${TWITTER_CARD_REPLACEMENTS.getNewUsagesLines()},
+          ${TWITTER_CARD_REPLACEMENTS.newUsagesLines},
           provideNgxMetaTwitterCard(),
         ],
       }`)

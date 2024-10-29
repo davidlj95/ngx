@@ -1,19 +1,19 @@
 export class ModuleReplacements {
   constructor(public readonly identifierReplacements: Record<string, string>) {}
 
-  getOldIdentifiersLines() {
+  get oldIdentifiersLines() {
     return Object.keys(this.identifierReplacements).join(',\n')
   }
 
-  getNewIdentifiersLines() {
+  get newIdentifiersLines() {
     return Object.values(this.identifierReplacements).join(',\n')
   }
 
-  getOldUsagesLines() {
+  get oldUsagesLines() {
     return Object.keys(this.identifierReplacements).join(',\n')
   }
 
-  getNewUsagesLines() {
+  get newUsagesLines() {
     return Object.values(this.identifierReplacements)
       .map((newIdentifier) => `${newIdentifier}()`)
       .join(',\n')

@@ -16,6 +16,5 @@ module.exports = {
     '<rootDir>/**/*.ts',
     '!**/testing/**',
     '!**/external-utils/**',
-    '!**/utils/**',
   ],
 }

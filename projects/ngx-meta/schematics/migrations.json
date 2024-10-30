@@ -2,9 +2,9 @@
   "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "tree-shakeable-manager-providers": {
-      "version": "1.0.0-beta.31",
+      "version": "1.0.0-beta.32",
       "description": "Updates non tree-shakeable built-in metadata manager providers into tree-shakeable ones. See https://github.com/davidlj95/ngx/pull/1004",
-      "factory": "./migrations/tree-shakeable-manager-providers#migrate"
+      "factory": "./migrations/tree-shakeable-manager-providers/index#migrate"
     }
   }
 }

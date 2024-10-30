@@ -3,7 +3,7 @@
   "schematics": {
     "tree-shakeable-manager-providers": {
       "version": "1.0.0-beta.32",
-      "description": "Updates non tree-shakeable built-in metadata manager providers into tree-shakeable ones. See https://github.com/davidlj95/ngx/pull/1004",
+      "description": "Changes non tree-shakeable built-in metadata manager providers by tree-shakeable ones. See https://github.com/davidlj95/ngx/pull/1004",
       "factory": "./migrations/tree-shakeable-manager-providers/index#migrate"
     }
   }

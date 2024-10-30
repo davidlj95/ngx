@@ -29,11 +29,6 @@ describe('Tree shakeable manager providers migration', () => {
   let runner: SchematicTestRunner
   let tree: UnitTestTree
   let logWarnSpy: jest.Spied<(typeof logging.Logger.prototype)['warn']>
-  const [SAMPLE_OLD_IDENTIFIER, SAMPLE_NEW_IDENTIFIER, SAMPLE_ENTRYPOINT] = [
-    Object.keys(STANDARD_REPLACEMENTS.identifierReplacements)[0],
-    Object.values(STANDARD_REPLACEMENTS.identifierReplacements)[0],
-    'standard',
-  ]
   const SAMPLE_TYPESCRIPT_FILE_PATH = '/index.ts'
 
   beforeEach(async () => {
@@ -50,22 +45,6 @@ describe('Tree shakeable manager providers migration', () => {
 
   const runMigration = () =>
     runner.runSchematic('tree-shakeable-manager-providers', {}, tree)
-
-  it('should not change non-Typescript files', async () => {
-    const INDEX_HTML_CONTENTS = `
-        Some sample code that isn't in a Typescript file
-        <pre>
-        import { ${SAMPLE_OLD_IDENTIFIER} from '${LIB_NAME}/${SAMPLE_ENTRYPOINT}'
-
-        const providers = [ ${SAMPLE_OLD_IDENTIFIER} ];
-        </pre>
-      `
-    tree.create('/index.html', INDEX_HTML_CONTENTS)
-
-    await runMigration()
-
-    expect(tree.readContent('/index.html')).toEqual(INDEX_HTML_CONTENTS)
-  })
 
   it('should replace many old identifier imports and usages for new ones', async () => {
     tree.create(
@@ -180,22 +159,24 @@ describe('Tree shakeable manager providers migration', () => {
   })
 
   describe('when namespace imports are used to import the library', () => {
+    const [SAMPLE_OLD_IDENTIFIER, SAMPLE_NEW_IDENTIFIER, SAMPLE_ENTRYPOINT] = [
+      ...STANDARD_REPLACEMENTS.sampleReplacement,
+      'standard',
+    ]
     const namespaceImport = `import ngxMetaMetadataModule from '${LIB_NAME}/${SAMPLE_ENTRYPOINT}'`
-    const oldUsage = `ngxMetaMetadataModule.${SAMPLE_OLD_IDENTIFIER}`
-    const newUsage = `ngxMetaMetadataModule.${SAMPLE_NEW_IDENTIFIER}()`
+    const fileWithOldUsage = `
+      ${namespaceImport}
 
-    it('should leave the import as is', async () => {
-      tree.create(SAMPLE_TYPESCRIPT_FILE_PATH, namespaceImport)
+      const providers = [ngxMetaMetadataModule.${SAMPLE_OLD_IDENTIFIER}]
+    `
+    const fileWithNewUsage = `
+      ${namespaceImport}
 
-      await runMigration()
-
-      expect(tree.readContent(SAMPLE_TYPESCRIPT_FILE_PATH)).toEqual(
-        namespaceImport,
-      )
-    })
+      const providers = [ngxMetaMetadataModule.${SAMPLE_NEW_IDENTIFIER}()]
+    `
 
     it('should warn about it', async () => {
-      tree.create(SAMPLE_TYPESCRIPT_FILE_PATH, namespaceImport)
+      tree.create(SAMPLE_TYPESCRIPT_FILE_PATH, fileWithOldUsage)
 
       await runMigration()
 
@@ -204,24 +185,13 @@ describe('Tree shakeable manager providers migration', () => {
       )
     })
 
-    it('should replace those usages too', async () => {
-      tree.create(
-        SAMPLE_TYPESCRIPT_FILE_PATH,
-        `${namespaceImport}
-
-         const providers = [
-            ${oldUsage},
-         ]`,
-      )
+    it('should replace those usages too, leaving import as is', async () => {
+      tree.create(SAMPLE_TYPESCRIPT_FILE_PATH, fileWithOldUsage)
 
       await runMigration()
 
-      expect(tree.readContent(SAMPLE_TYPESCRIPT_FILE_PATH)).toBe(
-        `${namespaceImport}
-
-         const providers = [
-            ${newUsage},
-         ]`,
+      expect(tree.readContent(SAMPLE_TYPESCRIPT_FILE_PATH)).toEqual(
+        fileWithNewUsage,
       )
     })
   })

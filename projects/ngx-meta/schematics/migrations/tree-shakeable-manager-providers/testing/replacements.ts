@@ -18,6 +18,10 @@ export class ModuleReplacements {
       .map((newIdentifier) => `${newIdentifier}()`)
       .join(',\n')
   }
+
+  get sampleReplacement() {
+    return Object.entries(this.identifierReplacements)[0]
+  }
 }
 
 export const JSON_LD_REPLACEMENTS: ModuleReplacements = new ModuleReplacements({

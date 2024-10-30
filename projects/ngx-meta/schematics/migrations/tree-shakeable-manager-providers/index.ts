@@ -1,8 +1,9 @@
 import { Rule } from '@angular-devkit/schematics'
-import { createSourceFile, ScriptTarget } from 'typescript'
 import { updateImports } from './update-imports'
 import { updateUsages } from './update-usages'
 import { applyChanges } from '../../utils/apply-changes'
+import { getAllTypescriptFiles } from '../../utils/get-all-typescript-files'
+import { OLD_IDENTIFIER_SUFFIX } from './maybe-get-new-identifier-from-old-identifier'
 
 // Sources visited to create this function (and `migrateFile` one):
 // https://github.com/angular/angular/blob/19.0.0-next.11/packages/core/schematics/migrations/provide-initializer/index.ts
@@ -15,23 +16,14 @@ import { applyChanges } from '../../utils/apply-changes'
 // noinspection JSUnusedGlobalSymbols
 export function migrate(): Rule {
   return (tree, context) => {
-    tree.visit((path) => {
-      if (!canMigrate(path)) {
-        return
-      }
-      const sourceFile = createSourceFile(
-        path,
-        tree.readText(path),
-        ScriptTarget.Latest,
-        true,
-      )
-      applyChanges(tree, path, [
-        ...updateImports(sourceFile, path, context.logger),
-        ...updateUsages(sourceFile, path),
-      ])
+    const typescriptFiles = getAllTypescriptFiles(tree, {
+      contentFilter: (content) => content.includes(OLD_IDENTIFIER_SUFFIX),
     })
+    for (const [filePath, sourceFile] of typescriptFiles) {
+      applyChanges(tree, filePath, [
+        ...updateImports(sourceFile, filePath, context.logger),
+        ...updateUsages(sourceFile, filePath),
+      ])
+    }
   }
 }
-
-const canMigrate = (path: string): boolean =>
-  ['.ts', '.mts'].some((suffix) => path.endsWith(suffix))

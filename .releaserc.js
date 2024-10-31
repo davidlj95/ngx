@@ -1,16 +1,39 @@
+const { execSync } = require('child_process')
+
+const useLocalBranch = Boolean(process.env.LOCAL_SEMANTIC_RELEASE_BRANCH)
+const getCurrentBranch = () =>
+  execSync('git rev-parse --abbrev-ref HEAD', {
+    encoding: 'utf-8',
+  }).trim()
+const repositoryUrl = process.env.LOCAL_SEMANTIC_RELEASE_REPOSITORY_URL?.trim()
+const isDotRepositoryUrl = repositoryUrl === '.'
+
 /**
  * @type {import('semantic-release').GlobalConfig}
  */
 module.exports = {
+  repositoryUrl,
   branches: [
     //👇 Fake branch so that we can release beta versions in `main`
     //   until we can release 1.0.0
     'semantic-release',
-    { name: 'main', prerelease: 'beta', channel: false },
+    {
+      name: useLocalBranch ? getCurrentBranch() : 'main',
+      prerelease: 'beta',
+      // ⚠️ Default channel is `undefined` for first release branch, but branch name for the rest.
+      // Using `false` to indicate default distribution channel
+      // https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration#branches-properties
+      channel: false,
+    },
   ],
   plugins: [
     '@semantic-release/commit-analyzer',
-    '@semantic-release/release-notes-generator',
+    // When running locally with repository URL set to `.`, it fails
+    // As tries to read parts from `.` which is not a URL:
+    // https://github.com/semantic-release/release-notes-generator/blob/v13.0.0/index.js#L37-L39
+    !isDotRepositoryUrl
+      ? '@semantic-release/release-notes-generator'
+      : undefined,
     [
       '@semantic-release/npm',
       //👇 Publish built version
@@ -20,14 +43,21 @@ module.exports = {
         npmPublish: true,
       },
     ],
-    ['@semantic-release/github', { assets: './projects/ngx-meta/dist/*.tgz' }],
+    // When using `.` as repository, interest is in publishing
+    // Hence there's no need for GitHub release, issue comments...
+    !isDotRepositoryUrl
+      ? [
+          '@semantic-release/github',
+          { assets: './projects/ngx-meta/dist/*.tgz' },
+        ]
+      : undefined,
     [
       '@semantic-release/changelog',
       {
         changelogFile: 'projects/ngx-meta/src/CHANGELOG.md',
       },
     ],
-  ],
+  ].filter((plugin) => !!plugin),
   //👇 Add library name in tag
   tagFormat: 'ngx-meta-v${version}',
   preset: 'conventionalcommits',

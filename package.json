@@ -37,7 +37,8 @@
     "commit": "pnpx @commitlint/prompt-cli",
     "validate-codecov-yml": "curl -X POST --data-binary @codecov.yml https://codecov.io/validate",
     "instrument-for-coverage": "./instrument-for-coverage.sh",
-    "update": "ng update @angular/cli @angular/core @angular-eslint/schematics"
+    "update": "ng update @angular/cli @angular/core @angular-eslint/schematics",
+    "semantic-release:local": "./semantic-release-local.sh"
   },
   "private": true,
   "packageManager": "pnpm@9.12.2",

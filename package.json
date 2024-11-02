@@ -81,7 +81,7 @@
     "@typescript-eslint/parser": "7.18.0",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "dts-bundle-generator": "9.5.1",
-    "eslint": "8.57.0",
+    "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-cypress": "3.6.0",
     "eslint-plugin-jasmine": "4.2.2",

@@ -1,6 +1,9 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  // 👇 Added `coverage/**/*` to be able to run 'eslint .' successfully
+  //    When upgrading to v9, can include .gitignore here. In v8, you need to add a CLI flag
+  //    Given 'eslint .' is not something ran often, it's good enough as ienough as is
+  "ignorePatterns": ["projects/**/*", "coverage/**/*"],
   "parserOptions": {
     "ecmaVersion": 9 // for jest.config.js files on IntelliJ
   },

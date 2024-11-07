@@ -32,10 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Calculate PR commits + 1
+        # https://github.com/actions/checkout/issues/520#issuecomment-1167205721
+        run: echo "pr_commits_plus_one=$(( ${{ github.event.pull_request.commits }} + 1 ))" >> "${GITHUB_ENV}"
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
-          fetch-depth: 0
+          fetch-depth: ${{ env.pr_commits_plus_one }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Lint last commit

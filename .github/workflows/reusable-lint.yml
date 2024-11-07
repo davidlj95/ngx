@@ -35,7 +35,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
-          fetch-depth: 0
+          # https://github.com/actions/checkout/issues/416#issuecomment-1172822734
+          # https://github.com/actions/runner/issues/409#issuecomment-752775072
+          fetch-depth: ${{ github.event_name == 'pull_request' && github.event.pull_request.commits || 1 }}
       - name: Setup
         uses: ./.github/actions/setup
       - name: Lint last commit

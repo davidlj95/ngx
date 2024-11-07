@@ -33,11 +33,11 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Calculate PR commits + 1
-        run: echo "pr_commits_plus_one=$(( ${{ github.event.pull_request.commitsy }} + 1 ))" >> "${GITHUB_ENV}"
+        # https://github.com/actions/checkout/issues/520#issuecomment-1167205721
+        run: echo "pr_commits_plus_one=$(( ${{ github.event.pull_request.commits }} + 1 ))" >> "${GITHUB_ENV}"
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
-          # https://github.com/actions/checkout/issues/520#issuecomment-1167205721
           fetch-depth: ${{ env.pr_commits_plus_one }}
       - name: Setup
         uses: ./.github/actions/setup

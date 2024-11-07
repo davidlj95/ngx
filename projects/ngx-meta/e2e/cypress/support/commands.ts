@@ -2,22 +2,19 @@
 import { ROUTES } from '../fixtures/routes'
 import { JSON_LD_MIME } from './json-ld'
 
-Cypress.Commands.add<'getMeta'>('getMeta', (name) => {
+Cypress.Commands.add('getMeta', (name) => {
   cy.get(`meta[name="${name}"]`)
 })
 
-Cypress.Commands.add<'getMetas'>('getMetas', (name) => {
+Cypress.Commands.add('getMetas', (name) => {
   cy.get(`meta[name="${name}"]`)
 })
 
-Cypress.Commands.add<'getMetaWithProperty'>(
-  'getMetaWithProperty',
-  (property) => {
-    cy.get(`meta[property="${property}"]`)
-  },
-)
+Cypress.Commands.add('getMetaWithProperty', (property) => {
+  cy.get(`meta[property="${property}"]`)
+})
 
-Cypress.Commands.add<'shouldHaveContent'>(
+Cypress.Commands.add(
   'shouldHaveContent',
   { prevSubject: true },
   (prevSubject) => {
@@ -25,7 +22,7 @@ Cypress.Commands.add<'shouldHaveContent'>(
   },
 )
 
-Cypress.Commands.add<'goToRootPage'>('goToRootPage', () => {
+Cypress.Commands.add('goToRootPage', () => {
   const selector = `#${ROUTES.root.linkId}`
   cy.get(selector).click()
   cy.location('pathname').should('eq', ROUTES.root.path)
@@ -49,24 +46,18 @@ const HTML_SCRIPTS_BUT_JSON_LD = new RegExp(
  *
  * Inspired from {@link https://blog.simonireilly.com/posts/server-side-rendering-tests-in-cypress/}
  */
-Cypress.Commands.add<'simulateSSRForRequest'>(
-  'simulateSSRForRequest',
-  (url) => {
-    cy.intercept(url, (req) => {
-      req.continue((res) => {
-        res.body = res.body.replace(HTML_SCRIPTS_BUT_JSON_LD, '')
-        res.send()
-      })
+Cypress.Commands.add('simulateSSRForRequest', (url) => {
+  cy.intercept(url, (req) => {
+    req.continue((res) => {
+      res.body = res.body.replace(HTML_SCRIPTS_BUT_JSON_LD, '')
+      res.send()
     })
-  },
-)
-Cypress.Commands.add<'shouldNotContainAppScripts'>(
-  'shouldNotContainAppScripts',
-  () => {
-    cy.get(`script`)
-      .not(`[type="${JSON_LD_MIME}"]`)
-      // 👇 Cypress injects always 1 <script> in page
-      .filter((_, element) => !element.innerHTML.includes('window.Cypress='))
-      .should('not.exist')
-  },
-)
+  })
+})
+Cypress.Commands.add('shouldNotContainAppScripts', () => {
+  cy.get(`script`)
+    .not(`[type="${JSON_LD_MIME}"]`)
+    // 👇 Cypress injects always 1 <script> in page
+    .filter((_, element) => !element.innerHTML.includes('window.Cypress='))
+    .should('not.exist')
+})

@@ -33,7 +33,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Calculate PR commits + 1
-        run: echo "pr_commits_plus_one=$(( ${{ github.event.pull_request.commits }} + 1 ))" >> "${GITHUB_ENV}"
+        run: echo "pr_commits_plus_one=$(( ${{ github.event.pull_request.commitsy }} + 1 ))" >> "${GITHUB_ENV}"
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:

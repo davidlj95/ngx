@@ -51,7 +51,7 @@ async function createExampleApp({
   const appDir = await copyAppDirIntoProject(baseAppDir)
   const standalone = isStandaloneDefaultForVersion(angularCliVersion.asSemVer)
   await Promise.all([
-    (async () => {
+    (async (): Promise<void> => {
       await addLinkedLibrary(appDir)
       await addCiRunScripts({ appDir, appName })
     })(),

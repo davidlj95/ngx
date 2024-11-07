@@ -32,7 +32,7 @@
     "format-all": "npm run format -- .",
     "prepare": "husky",
     "commitlint-edit-msg": "commitlint --verbose --edit",
-    "commitlint-last": "commitlint --verbose --from HEAD~1",
+    "commitlint-last": "commitlint --last --verbose",
     "cache-clean": "ng cache clean",
     "commit": "pnpx @commitlint/prompt-cli",
     "validate-codecov-yml": "curl -X POST --data-binary @codecov.yml https://codecov.io/validate",

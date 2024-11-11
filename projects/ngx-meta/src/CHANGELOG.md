@@ -1,3 +1,53 @@
+## [`ngx-meta` v1.0.0-beta.32](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.31...ngx-meta-v1.0.0-beta.32) (2024-11-11)
+
+### Bug Fixes
+
+- do not publish tarball inside package ([#1027](https://github.com/davidlj95/ngx/issues/1027)) ([f655141](https://github.com/davidlj95/ngx/commit/f655141427bf3cac8dbc7b898cbce8c840b3f9fa))
+
+### Documentation
+
+- split between utility types and metadata values types ([#992](https://github.com/davidlj95/ngx/issues/992)) ([994d707](https://github.com/davidlj95/ngx/commit/994d70759dd419d235ed1331b5d58dba80bf7d46))
+
+### Miscellaneous Chores
+
+- avoid repeating Cypress cmd name in type [skip ci] ([f6293a3](https://github.com/davidlj95/ngx/commit/f6293a38416be9f4837a245147649d6f08b3e192))
+- help IDE TS lang server understand return value [skip ci] ([e44dc85](https://github.com/davidlj95/ngx/commit/e44dc85d6648bdc981cf0f66c63232b82a07dba5))
+- **release:** update CHANGELOG.md ([#991](https://github.com/davidlj95/ngx/issues/991)) ([23da804](https://github.com/davidlj95/ngx/commit/23da80465b27c88bd5470b947196d7d44e69e83a))
+
+### Build System
+
+- add script to rehearse a release publish ([#1012](https://github.com/davidlj95/ngx/issues/1012)) ([f6cc1b5](https://github.com/davidlj95/ngx/commit/f6cc1b522fc21d350d0808591650cfc238494943))
+- **deps:** update actions/cache digest to 6849a64 ([c76cb75](https://github.com/davidlj95/ngx/commit/c76cb75a0ff73407e94ab203a0c57640e1364631))
+- **deps:** update actions/checkout digest to 11bd719 ([3cb80dc](https://github.com/davidlj95/ngx/commit/3cb80dc3779997421b9bb19e19b56f621680767c))
+- **deps:** update actions/setup-node digest to 39370e3 ([561e45d](https://github.com/davidlj95/ngx/commit/561e45da9a2625b5ff93e3dc98bb3d1431549cb5))
+- **deps:** update actions/setup-python digest to 0b93645 ([dff16ca](https://github.com/davidlj95/ngx/commit/dff16ca33b26b421126e7499a4a75dcbe32d940c))
+- **deps:** update Angular to v18.2.11 ([#1024](https://github.com/davidlj95/ngx/issues/1024)) ([3b6d10d](https://github.com/davidlj95/ngx/commit/3b6d10d3a2fc729f74f222f3332501b8e64984cd))
+- **deps:** update dependency mkdocs-git-revision-date-localized-plugin to v1.3.0 ([c9088ab](https://github.com/davidlj95/ngx/commit/c9088abf7a411522c1d6c3e69c60a136b4352e8e))
+- **deps:** update dependency mkdocs-material to v9.5.42 ([d5c87d7](https://github.com/davidlj95/ngx/commit/d5c87d781b2d08b1de26f90dbac8f4672ec8081d))
+- **deps:** update dependency mkdocs-material to v9.5.43 ([21c115a](https://github.com/davidlj95/ngx/commit/21c115ae4158456fb9a4523d96594e7c4dffcd2a))
+- **deps:** update dependency node to v20.18.0 ([f7a8367](https://github.com/davidlj95/ngx/commit/f7a836737230721b875dc86dc4a36637eb3143e9))
+- **deps:** update dependency node to v22 ([#1023](https://github.com/davidlj95/ngx/issues/1023)) ([d008e92](https://github.com/davidlj95/ngx/commit/d008e929fc0ff49d093b99cdd7e60adb1e2ad639))
+- **deps:** update pnpm to v9.12.2 ([7d390f6](https://github.com/davidlj95/ngx/commit/7d390f67aa6c95ab2f09c187ab288b212331f2a9))
+- **deps:** update pnpm to v9.12.3 ([ba87c85](https://github.com/davidlj95/ngx/commit/ba87c8555430d86fed4e52b33b3828857c5f91e5))
+- **dev-deps:** update commitlint monorepo to v19.5.0 ([e06dedc](https://github.com/davidlj95/ngx/commit/e06dedc4ca0be988c3284ddd688137ed06c16cf8))
+- **dev-deps:** update dependency @cypress/code-coverage to v3.13.4 ([533552e](https://github.com/davidlj95/ngx/commit/533552e91db5721800383d6fc0c98aa2cc847447))
+- **dev-deps:** update dependency @cypress/code-coverage to v3.13.5 ([2164ddb](https://github.com/davidlj95/ngx/commit/2164ddb6e33ab99774536b395838dec5dab03d4a))
+- **dev-deps:** update dependency @microsoft/api-extractor to v7.47.11 ([a7bc0e7](https://github.com/davidlj95/ngx/commit/a7bc0e7da4c353d55ff2045bc9e15153db380a5c))
+- **dev-deps:** update dependency @types/node to v20.17.3 ([8001393](https://github.com/davidlj95/ngx/commit/80013930323002facf3a28dcef37d571f530cbf4))
+- **dev-deps:** update dependency @types/node to v20.17.5 ([d2e705e](https://github.com/davidlj95/ngx/commit/d2e705e357109107f5eb9344beeb127bbdf5e6b9))
+- **dev-deps:** update dependency @types/node to v22.8.1 ([0271665](https://github.com/davidlj95/ngx/commit/0271665e1258c20c2878eff17197f5926434e3fb))
+- **dev-deps:** update dependency cypress to v13.15.1 ([a45120d](https://github.com/davidlj95/ngx/commit/a45120d5774244b5f79c0c7f9cee98c31e68d300))
+- **dev-deps:** update dependency eslint to v8.57.1 ([cb24789](https://github.com/davidlj95/ngx/commit/cb247891fcda10b13e98dc2bfed453eef3bc30ca))
+- **dev-deps:** update dependency execa to v9.5.0 ([d7ca10a](https://github.com/davidlj95/ngx/commit/d7ca10a4a09562a199a1a40e5a47bfda6c9c6d47))
+- **dev-deps:** update dependency execa to v9.5.1 ([ccb2c12](https://github.com/davidlj95/ngx/commit/ccb2c12c965c97d4d4fd31a613eb31b9620c3128))
+- **dev-deps:** update dependency semantic-release to v24.2.0 ([4caba67](https://github.com/davidlj95/ngx/commit/4caba6739df84945ec5bd24a2c0dd1b95985db1f))
+- **dev-deps:** update dependency start-server-and-test to v2.0.8 ([467e46f](https://github.com/davidlj95/ngx/commit/467e46f23f93900616a6c9beab3ec54313213c78))
+- ignore coverage when linting [skip ci] ([46b491e](https://github.com/davidlj95/ngx/commit/46b491edfa3746a84762157d57b58657e30c234a))
+
+### Continuous (Integration|Deployment)
+
+- try just fetching the needed depth ([#1026](https://github.com/davidlj95/ngx/issues/1026)) ([8725c28](https://github.com/davidlj95/ngx/commit/8725c2827804a3643af856a2a19ee3fdfbe996ba))
+
 ## [`ngx-meta` v1.0.0-beta.31](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.30...ngx-meta-v1.0.0-beta.31) (2024-10-24)
 
 ### Features

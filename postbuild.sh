@@ -37,4 +37,8 @@ done
 echo "ℹ️ Building schematics"
 cd projects/ngx-meta/schematics
 pnpm run build
-cd "$(dirname "$0")"
+cd -
+
+# Ignore tarballs
+echo "ℹ️ Ignore tarballs on dist dir"
+printf '\n# Ignore tarballs\n*.tgz' >> "$NGX_META_DIST_DIR/.npmignore"

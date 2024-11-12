@@ -1,15 +1,14 @@
 {
   "name": "@ngx-meta/example-apps",
   "version": "0.0.0",
+  "private": true,
   "description": "ngx-meta example apps infra",
+  "type": "module",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc --watch",
-    "create-example-app": "node dist/create-example-app.js"
+    "create-example-app": "node dist/create-example-app.js",
+    "watch": "tsc --watch"
   },
-  "packageManager": "pnpm@9.12.3",
-  "private": true,
-  "type": "module",
   "devDependencies": {
     "@types/node": "22.8.7",
     "@types/semver": "7.5.8",
@@ -17,5 +16,6 @@
     "semver": "7.6.3",
     "ts-morph": "24.0.0",
     "typescript": "5.5.3"
-  }
+  },
+  "packageManager": "pnpm@9.12.3"
 }

@@ -57,7 +57,8 @@
       "rules": {
         "json-files/require-unique-dependency-names": "error",
         "json-files/ensure-repository-directory": "error",
-        "json-files/restrict-ranges": ["error", { "versionHint": "pin" }]
+        "json-files/restrict-ranges": ["error", { "versionHint": "pin" }],
+        "json-files/sort-package-json": "error"
       }
     }
   ]

@@ -1,14 +1,14 @@
 {
   "name": "@ngx-meta/bundle-size",
   "version": "0.0.0",
+  "private": true,
   "description": "ngx-meta bundle size analysis infra",
   "scripts": {
     "analyze": "./analyze.sh",
     "report": "./report.sh"
   },
-  "packageManager": "pnpm@9.12.3",
-  "private": true,
   "devDependencies": {
     "source-map-explorer": "2.5.3"
-  }
+  },
+  "packageManager": "pnpm@9.12.3"
 }

@@ -21,11 +21,18 @@
     "angular universal"
   ],
   "homepage": "https://ngx-meta.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidlj95/ngx.git",
+    "directory": "projects/ngx-meta/src"
+  },
   "license": "MIT",
   "author": {
     "name": "David LJ",
     "url": "https://davidlj95.com"
   },
+  "sideEffects": false,
+  "scripts": {},
   "dependencies": {
     "tslib": "^2.3.0"
   },
@@ -39,16 +46,9 @@
       "optional": true
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/davidlj95/ngx.git",
-    "directory": "projects/ngx-meta/src"
-  },
-  "scripts": {},
   "publishConfig": {
     "access": "public",
     "provenance": true
   },
-  "sideEffects": false,
   "schematics": "./schematics/collection.json"
 }

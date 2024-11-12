@@ -132,9 +132,9 @@ If adding a whole metadata module, add it to the built-in modules section too.
 
 ### CI/CD jobs
 
-To easily reproduce locally CI/CD jobs, most commands run by CI/CD are stored in [`.ci/Makefile` file](.ci/Makefile).
+To easily reproduce locally CI/CD jobs, commands run by CI/CD which are different from commands ran locally are stored in [`.ci/Makefile` file](.ci/Makefile).
 
-For instance, you can run `make build` (or just `make` in this case) to ensure the command used to build is the same one the CI/CD job will use.
+For instance, you can run `make install` to run the same command used in CI/CD for installing.
 
 ### Release and versioning
 

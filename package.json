@@ -20,7 +20,6 @@
     "lint:code:raw": "eslint --max-warnings 0",
     "lint:commit-message": "pnpm run commitlint-edit-msg",
     "lint:gh-actions": "./actionlint.sh",
-    "ng": "ng",
     "ngx-meta:api-documenter": "api-documenter markdown -i ./projects/ngx-meta/api-extractor -o ./projects/ngx-meta/docs/content/api",
     "ngx-meta:api-extractor": "api-extractor run -c ./projects/ngx-meta/src/api-extractor.json",
     "ngx-meta:api-extractor:local": "pnpm run ngx-meta:tsc:lib && pnpm run ngx-meta:api-extractor --local",

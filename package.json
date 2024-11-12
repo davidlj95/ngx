@@ -38,7 +38,7 @@
     "test:unit:schematics": "jest",
     "test:unit:schematics:coverage": "pnpm run test:unit:schematics --collect-coverage",
     "update": "ng update @angular/cli @angular/core @angular-eslint/schematics",
-    "validate-codecov-yml": "curl -X POST --data-binary @codecov.yml https://codecov.io/validate",
+    "validate:codecov-yml": "curl -X POST --data-binary @codecov.yml https://codecov.io/validate",
     "watch": "ng build --watch --configuration development"
   },
   "dependencies": {

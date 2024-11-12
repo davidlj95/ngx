@@ -50,6 +50,8 @@
       "extends": ["plugin:cypress/recommended"]
     },
     {
+      //👇 `*.json` is needed so that when `lint-staged` sends any kind of JSON file,
+      //   ESLint doesn't complain about them. However, just `package.json` files are linted.
       "files": ["*.json"],
       "plugins": ["json-files"],
       "rules": {

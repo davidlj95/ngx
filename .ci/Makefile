@@ -24,9 +24,6 @@ unit-test-libs:
 unit-test-schematics:
 	cd .. && pnpm run test:unit:schematics:coverage
 
-format-check:
-	cd .. && pnpm run format-check-all
-
 release:
 	cd .. && pnpm semantic-release
 

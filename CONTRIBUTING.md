@@ -253,16 +253,14 @@ The global coverage report will be in `lcov`(`.info`) and HTML format.
 You can run
 
 ```sh
-pnpm run format-check-all
+pnpm run format
 ```
 
-To look for formatting errors. And
+To format all files in the repository. Or if just wanting to check if files are properly formatted, run:
 
 ```sh
-pnpm run format-all
+pnpm run format:check
 ```
-
-To fix them all
 
 [Git hooks] are provided to automatically ensure code is formatted before committing it.
 

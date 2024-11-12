@@ -13,4 +13,4 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Format check
-        run: cd .ci && make format-check
+        run: pnpm run format:check

@@ -31,6 +31,14 @@
       "files": ["*.spec.ts"],
       "extends": ["plugin:jasmine/recommended"],
       "plugins": ["jasmine"]
+    },
+    {
+      "files": ["package.json"],
+      "plugins": ["json-files"],
+      "rules": {
+        "json-files/require-license": "error",
+        "json-files/restrict-ranges": ["error", { "versionHint": "caret" }]
+      }
     }
   ]
 }

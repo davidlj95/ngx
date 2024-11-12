@@ -18,11 +18,8 @@
       </option>
       <option name="NpmBeforeRunTask" enabled="true">
         <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v18/package.json" />
-        <command value="run" />
-        <scripts>
-          <script value="ng" />
-        </scripts>
-        <arguments value="cache clean" />
+        <command value="exec" />
+        <arguments value="ng cache clean" />
         <node-interpreter value="project" />
         <envs />
       </option>

@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "build": "ng build && ./postbuild.sh",
-    "cache-clean": "ng cache clean",
     "commit": "pnpx @commitlint/prompt-cli",
     "commitlint-edit-msg": "commitlint --verbose --edit",
     "commitlint-last": "commitlint --last --verbose",

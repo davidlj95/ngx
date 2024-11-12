@@ -11,10 +11,8 @@
     <method v="2">
       <option name="NpmBeforeRunTask" enabled="true">
         <package-json value="$PROJECT_DIR$/package.json" />
-        <command value="run" />
-        <scripts>
-          <script value="cache-clean" />
-        </scripts>
+        <command value="exec" />
+        <arguments value="ng cache clean" />
         <node-interpreter value="project" />
         <envs />
       </option>
@@ -31,11 +29,8 @@
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="ngx-meta/example-apps/v18: create example app" run_configuration_type="NodeJSConfigurationType" />
       <option name="NpmBeforeRunTask" enabled="true">
         <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v18/package.json" />
-        <command value="run" />
-        <scripts>
-          <script value="ng" />
-        </scripts>
-        <arguments value="cache clean" />
+        <command value="exec" />
+        <arguments value="ng cache clean" />
         <node-interpreter value="project" />
         <envs />
       </option>

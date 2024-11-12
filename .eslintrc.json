@@ -4,7 +4,7 @@
   //    When upgrading to v9, can include .gitignore here. In v8, you need to add a CLI flag
   //    Given 'eslint .' is not something ran often, it's good enough as ienough as is
   //    Removing `projects/**/*` to allow using `eslint .` to lint everything.
-  "ignorePatterns": ["coverage/**/*"],
+  "ignorePatterns": ["coverage/**/*", "!.*.json"],
   "parserOptions": {
     "ecmaVersion": 9 // for jest.config.js files on IntelliJ
   },
@@ -50,7 +50,7 @@
       "extends": ["plugin:cypress/recommended"]
     },
     {
-      "files": ["package.json"],
+      "files": ["*.json"],
       "plugins": ["json-files"],
       "rules": {
         "json-files/require-unique-dependency-names": "error",

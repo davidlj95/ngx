@@ -1,5 +1,5 @@
 {
-  "!(*.ts)": ["pnpm run format"],
-  "*.ts": ["pnpm run lint:code:raw --fix", "pnpm run format"],
+  "!(*.{json,ts})": ["pnpm run format"],
+  "*.{json,ts}": ["pnpm run lint:code:raw --fix", "pnpm run format"],
   ".github/**/*.{yml,yaml}": ["pnpm run lint:gh-actions"]
 }

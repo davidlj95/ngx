@@ -29,7 +29,10 @@ module.exports = tseslint.config(
     ],
   },
   {
-    files: ['projects/*/src/**/*.ts'],
+    files: [
+      'projects/*/src/**/*.ts',
+      'projects/*/example-apps/templates/**/*.ts',
+    ],
     extends: [...angular.configs.tsRecommended],
     processor: angular.processInlineTemplates,
     rules: {
@@ -46,6 +49,27 @@ module.exports = tseslint.config(
         {
           type: 'element',
           prefix: 'lib',
+          style: 'kebab-case',
+        },
+      ],
+    },
+  },
+  {
+    files: ['projects/*/example-apps/templates/**/*.ts'],
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'error',
+        {
+          type: 'attribute',
+          prefix: 'app',
+          style: 'camelCase',
+        },
+      ],
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: 'app',
           style: 'kebab-case',
         },
       ],

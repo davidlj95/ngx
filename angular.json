@@ -32,6 +32,16 @@
             "karmaConfig": "projects/ngx-meta/src/karma.conf.js",
             "codeCoverageExclude": ["**/__tests__/**"]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-meta/src/**/*.ts",
+              "projects/ngx-meta/src/**/*.html"
+            ],
+            "eslintConfig": "projects/ngx-meta/src/eslint.config.js"
+          }
         }
       }
     }
@@ -42,6 +52,9 @@
       "environment": "all"
     },
     "packageManager": "pnpm",
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": [
+      "@angular-eslint/schematics",
+      "@angular-eslint/schematics"
+    ]
   }
 }

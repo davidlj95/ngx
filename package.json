@@ -73,8 +73,10 @@
     "@semantic-release/changelog": "6.0.3",
     "@types/jasmine": "5.1.4",
     "@types/node": "22.8.7",
+    "angular-eslint": "18.4.0",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "dts-bundle-generator": "9.5.1",
+    "eslint": "^9.13.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-cypress": "3.6.0",
     "eslint-plugin-jasmine": "4.2.2",
@@ -95,7 +97,8 @@
     "prettier": "3.3.3",
     "semantic-release": "24.2.0",
     "ts-jest": "29.2.5",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "typescript-eslint": "8.10.0"
   },
   "packageManager": "pnpm@9.12.3"
 }

@@ -77,7 +77,7 @@ describe('Metadata registry', () => {
 
 function makeSut(
   opts: {
-    managers?: ReadonlyArray<NgxMetaMetadataManager>
+    managers?: readonly NgxMetaMetadataManager[]
   } = {},
 ) {
   TestBed.configureTestingModule({

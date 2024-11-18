@@ -70,8 +70,8 @@ describe('Meta element service', () => {
   const whenMultipleContentsAreProvided = (
     tests: (
       nameAttribute: NgxMetaElementNameAttribute,
-      contentAttributes: ReadonlyArray<NgxMetaElementAttributes>,
-      expectedAttributes: ReadonlyArray<NgxMetaElementAttributes>,
+      contentAttributes: readonly NgxMetaElementAttributes[],
+      expectedAttributes: readonly NgxMetaElementAttributes[],
     ) => void,
   ) => {
     describe('when multiple contents are provided', () => {

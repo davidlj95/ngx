@@ -12,6 +12,5 @@
  *
  * @public
  */
-export const withOptions = <T extends object>(
-  ...options: ReadonlyArray<T>
-): T => options.reduce<T>((acc, curr) => ({ ...acc, ...curr }), {} as T)
+export const withOptions = <T extends object>(...options: readonly T[]): T =>
+  options.reduce<T>((acc, curr) => ({ ...acc, ...curr }), {} as T)

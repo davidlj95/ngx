@@ -24,7 +24,7 @@ describe('Default URL resolver', () => {
     const TEST_CASES = [
       { absoluteUrl: absoluteUrlString },
       { absoluteUrl: new URL(absoluteUrlString) },
-    ] satisfies ReadonlyArray<{ absoluteUrl: URL | string }>
+    ] satisfies readonly { absoluteUrl: URL | string }[]
 
     TEST_CASES.forEach((testCase) => {
       describe(`like a URL ${typeof testCase.absoluteUrl}`, () => {
@@ -58,7 +58,7 @@ describe('Default URL resolver', () => {
       description: string
       should: string
     }
-    const TEST_CASES: ReadonlyArray<TestCase> = [
+    const TEST_CASES: readonly TestCase[] = [
       {
         baseUrl: baseUrlWithTrailingSlash,
         relativeUrl: relativeUrlWithoutLeadingSlash,

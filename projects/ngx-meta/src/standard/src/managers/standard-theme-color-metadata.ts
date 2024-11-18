@@ -4,7 +4,7 @@
  */
 export type StandardThemeColorMetadata =
   | string
-  | ReadonlyArray<StandardThemeColorMetadataObject>
+  | readonly StandardThemeColorMetadataObject[]
 
 /**
  * See {@link Standard.themeColor}

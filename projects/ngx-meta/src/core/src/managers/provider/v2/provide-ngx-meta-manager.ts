@@ -67,7 +67,7 @@ export const provideNgxMetaManager = <T>(
 ): FactoryProvider => ({
   provide: NgxMetaMetadataManager,
   multi: true,
-  useFactory: (...deps: ReadonlyArray<unknown>) =>
+  useFactory: (...deps: readonly unknown[]) =>
     ({
       id: jsonPath,
       set: setterFactory(...deps),
@@ -211,5 +211,5 @@ interface WithManagerJsonPath {
     key2: StringKeyOf<T[typeof key1]>,
     key3: StringKeyOf<T[typeof key1][typeof key2]>,
   ): string
-  (...jsonPaths: ReadonlyArray<string>): string
+  (...jsonPaths: readonly string[]): string
 }

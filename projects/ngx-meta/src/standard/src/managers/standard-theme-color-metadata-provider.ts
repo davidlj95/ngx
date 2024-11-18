@@ -34,4 +34,4 @@ export const STANDARD_THEME_COLOR_METADATA_PROVIDER = provideStandardManager(
 
 type IsStandardThemeColorMetadataArray = (
   value: Standard['themeColor'],
-) => value is ReadonlyArray<StandardThemeColorMetadataObject>
+) => value is readonly StandardThemeColorMetadataObject[]

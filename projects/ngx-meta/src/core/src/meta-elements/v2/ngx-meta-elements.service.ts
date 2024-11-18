@@ -94,7 +94,7 @@ export class NgxMetaElementsService {
   set(
     nameAttribute: NgxMetaElementNameAttribute,
     content:
-      | ReadonlyArray<NgxMetaElementAttributes>
+      | readonly NgxMetaElementAttributes[]
       | NgxMetaElementAttributes
       | undefined,
   ): void {
@@ -119,6 +119,6 @@ export class NgxMetaElementsService {
 
 type isContentsArray = (
   contentOrContents:
-    | ReadonlyArray<NgxMetaElementAttributes>
+    | readonly NgxMetaElementAttributes[]
     | NgxMetaElementAttributes,
-) => contentOrContents is ReadonlyArray<NgxMetaElementAttributes>
+) => contentOrContents is readonly NgxMetaElementAttributes[]

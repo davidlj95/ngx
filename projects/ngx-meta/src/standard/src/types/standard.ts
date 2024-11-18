@@ -114,7 +114,7 @@ export interface Standard {
    *
    * - {@link https://developers.google.com/search/blog/2009/09/google-does-not-use-keywords-meta-tag | Google doesn't use meta keywords}
    */
-  readonly keywords?: ReadonlyArray<string> | null
+  readonly keywords?: readonly string[] | null
 
   /**
    * Sets the `<meta name='generator'>` HTML tag.

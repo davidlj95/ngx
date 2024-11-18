@@ -4,7 +4,7 @@ export function makeMetadataManagerSpy(
   opts: {
     id?: string
     global?: string
-    jsonPath?: ReadonlyArray<string>
+    jsonPath?: readonly string[]
   } = {},
 ): NgxMetaMetadataManager {
   return {

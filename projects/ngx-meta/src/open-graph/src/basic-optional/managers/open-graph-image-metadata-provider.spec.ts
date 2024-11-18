@@ -31,7 +31,7 @@ describe('Open Graph image metadata manager', () => {
     height: 875,
   } satisfies OpenGraphImage
 
-  const imageKeys = Object.keys(image) as ReadonlyArray<keyof OpenGraphImage>
+  const imageKeys = Object.keys(image) as readonly (keyof OpenGraphImage)[]
   const imageKeyToProperty = (key: keyof OpenGraphImage) => {
     const mappings = new Map<keyof OpenGraphImage, string | undefined>([
       ['url', ''],

@@ -1,5 +1,5 @@
 {
-  "!(*.{json,ts})": ["pnpm run format:files"],
-  "*.{json,ts}": ["pnpm run lint:code:files --fix", "pnpm run format:files"],
+  "!(*.{ts})": ["pnpm run format:files"],
+  "*.{ts}": ["pnpm run lint:code:files --fix", "pnpm run format:files"],
   ".github/**/*.{yml,yaml}": ["pnpm run lint:gh-actions"]
 }

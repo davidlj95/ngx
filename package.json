@@ -16,7 +16,7 @@
     "instrument-for-coverage": "./instrument-for-coverage.sh",
     "lint": "pnpm run '/^lint:[\\w-]+$/'",
     "lint:code": "pnpm run lint:code:files .",
-    "lint:code:files": "eslint --max-warnings 0 || true",
+    "lint:code:files": "eslint --max-warnings 0",
     "lint:code:files//": "☝️ lint-staged can't/shouldn't use 'ng lint'",
     "lint:commit-message": "pnpm run commitlint-edit-msg",
     "lint:gh-actions": "./actionlint.sh",

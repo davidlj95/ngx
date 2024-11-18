@@ -1,5 +1,5 @@
 /**
  * @internal
  */
-export const _composedMetadataName = (...names: ReadonlyArray<string>) =>
+export const _composedMetadataName = (...names: readonly string[]) =>
   names.join(':')

@@ -21,6 +21,5 @@ export type NgxMetaElementAttributes = Partial<{
   scheme: string
   url: string
   media: string
-}> & {
-  [key: string]: string
-}
+}> &
+  Record<string, string>

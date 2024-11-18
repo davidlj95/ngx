@@ -8,9 +8,7 @@ export class HeadElementHarness {
     return element
   }
 
-  get dummySelector(): string {
-    return "meta[name='dummy']"
-  }
+  readonly dummySelector = "meta[name='dummy']"
 
   appendElement(element: HTMLElement): void {
     this.doc.head.appendChild(element)

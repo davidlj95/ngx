@@ -3,15 +3,15 @@ const CONSOLE_INFO_OR_BELOW_METHODS = [
   'debug',
   'log',
   'info',
-] satisfies ReadonlyArray<ConsoleMethod>
+] satisfies readonly ConsoleMethod[]
 const CONSOLE_WARN_OR_ABOVE_METHODS = [
   'warn',
   'error',
-] satisfies ReadonlyArray<ConsoleMethod>
+] satisfies readonly ConsoleMethod[]
 const CONSOLE_METHODS_TO_SPY = [
   ...CONSOLE_INFO_OR_BELOW_METHODS,
   ...CONSOLE_WARN_OR_ABOVE_METHODS,
-] satisfies ReadonlyArray<ConsoleMethod>
+] satisfies readonly ConsoleMethod[]
 const consoleAliasFor = (method: ConsoleMethod) => `console.${method}`
 const consoleAliasAccessorFor = (method: ConsoleMethod) =>
   `@${consoleAliasFor(method)}`

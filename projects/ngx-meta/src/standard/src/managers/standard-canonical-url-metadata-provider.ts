@@ -23,7 +23,8 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER = provideStandardManager(
   _withModuleManagerSetterFactory(
     (headElementUpsertOrRemove, doc, urlResolver) => (url) => {
       const resolvedUrl = urlResolver(url)
-      ngDevMode &&
+      /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
+      if (ngDevMode) {
         _maybeNonHttpUrlDevMessage(resolvedUrl, {
           module: MODULE_NAME,
           property: _GLOBAL_CANONICAL_URL,
@@ -31,6 +32,7 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER = provideStandardManager(
           link: 'https://stackoverflow.com/a/8467966/3263250',
           shouldInsteadOfMust: true,
         })
+      }
       let linkElement: HTMLLinkElement | undefined
       if (_isDefined(resolvedUrl)) {
         linkElement = doc.createElement(LINK_TAG)

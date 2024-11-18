@@ -11,7 +11,7 @@ export const OPEN_GRAPH_KEY: keyof OpenGraphMetadata = 'openGraph'
 
 export const provideOpenGraphManager = <Key extends keyof OpenGraph>(
   key: Key,
-  ...options: ReadonlyArray<_ProvideNgxMetaModuleManagerOptions<OpenGraph[Key]>>
+  ...options: readonly _ProvideNgxMetaModuleManagerOptions<OpenGraph[Key]>[]
 ) =>
   _provideNgxMetaModuleManager<OpenGraph, Key>(
     key,

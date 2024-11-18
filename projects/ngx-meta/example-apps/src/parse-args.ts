@@ -10,12 +10,10 @@ const BASE_APP_DIR_ARG = '--base-app-dir'
 const NO_CLEANUP_ARG = '--no-cleanup'
 const TMP_DIR_ARG = '--tmp-dir'
 
-export function parseArgs(
-  argv: ReadonlyArray<string>,
-): CreateExampleAppOptions {
+export function parseArgs(argv: readonly string[]): CreateExampleAppOptions {
   let appCliAlias: string | null = null
   let baseAppDir: string | undefined
-  let noCleanup: boolean = false
+  let noCleanup = false
   let tmpDir: string | undefined
   for (const arg of argv) {
     if (arg.startsWith('/') || arg.startsWith('node')) {

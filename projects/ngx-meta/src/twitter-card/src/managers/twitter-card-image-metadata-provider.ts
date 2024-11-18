@@ -21,14 +21,15 @@ export const TWITTER_CARD_IMAGE_METADATA_PROVIDER = provideTwitterCardManager(
   withManagerObjectMerging(),
   _withModuleManagerSetterFactory(
     (metaElementsService: NgxMetaElementsService) => (image) => {
-      // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
-      ngDevMode &&
+      /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
+      if (ngDevMode) {
         _maybeNonHttpUrlDevMessage(image?.url, {
           module: MODULE_NAME,
           property: 'image',
           value: image?.url.toString(),
           link: 'https://devcommunity.x.com/t/card-error-unable-to-render-or-no-image-read-this-first/62736',
         })
+      }
       metaElementsService.set(
         withTwitterCardNameAttribute(_GLOBAL_IMAGE),
         withContentAttribute(image?.url?.toString()),

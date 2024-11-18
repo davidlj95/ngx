@@ -4,5 +4,5 @@ import {
 } from '@davidlj95/ngx-meta/core'
 
 export const withOpenGraphPropertyAttribute = (
-  ...propertyParts: ReadonlyArray<string>
+  ...propertyParts: readonly string[]
 ) => withPropertyAttribute(_composedMetadataName('og', ...propertyParts))

@@ -36,7 +36,7 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
  */
 /* istanbul ignore next - quite simple */
 export const makeComposedKeyValMetaDefinition = (
-  names: ReadonlyArray<string>,
+  names: readonly string[],
   options: MakeComposedKeyValMetaDefinitionOptions = {},
 ): NgxMetaMetaDefinition =>
   makeKeyValMetaDefinition(names.join(options.separator ?? ':'), options)

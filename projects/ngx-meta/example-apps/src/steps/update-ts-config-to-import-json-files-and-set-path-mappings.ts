@@ -23,7 +23,9 @@ export async function updateTsConfigToImportJsonFilesAndSetPathMappings(
     ts.sys,
     appDir,
   )
-  type TsConfig = { compilerOptions: ts.CompilerOptions }
+  interface TsConfig {
+    compilerOptions: ts.CompilerOptions
+  }
   const rawConfig = config.raw as TsConfig
   rawConfig.compilerOptions.resolveJsonModule = true
   // 👇 Not needed for Angular v17, given `esModuleInterop` is enabled there

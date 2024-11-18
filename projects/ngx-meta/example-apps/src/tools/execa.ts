@@ -3,7 +3,7 @@ import { Log } from './index.js'
 
 export const execa = (
   file: string,
-  args: ReadonlyArray<string>,
+  args: readonly string[],
   options: Options,
 ) => {
   const process = unwrappedExeca(file, args, {

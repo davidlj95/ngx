@@ -1,7 +1,7 @@
 import { RouteMatcher } from 'cypress/types/net-stubbing'
 
 declare global {
-  module Cypress {
+  namespace Cypress {
     interface Chainable {
       goToRootPage(): Chainable<void>
       getMeta(name: string): Chainable<HTMLMetaElement>

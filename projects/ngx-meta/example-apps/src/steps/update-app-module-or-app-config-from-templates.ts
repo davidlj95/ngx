@@ -11,7 +11,9 @@ export async function updateAppModuleOrAppConfigFromTemplates(
     skipAddingFilesFromTsConfig: true,
     skipFileDependencyResolution: true,
   })
-  standalone
-    ? await updateAppConfig(tsMorphProject, appDir)
-    : await updateAppModule(tsMorphProject, appDir)
+  if (standalone) {
+    await updateAppConfig(tsMorphProject, appDir)
+  } else {
+    await updateAppModule(tsMorphProject, appDir)
+  }
 }

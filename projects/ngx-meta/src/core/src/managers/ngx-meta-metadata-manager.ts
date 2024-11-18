@@ -41,12 +41,12 @@ export abstract class NgxMetaMetadataManager<Value = unknown> {
 /**
  * @internal
  */
-export const _injectMetadataManagers: () => ReadonlyArray<NgxMetaMetadataManager> =
+export const _injectMetadataManagers: () => readonly NgxMetaMetadataManager[] =
   () =>
     // https://stackoverflow.com/q/74598049/3263250
     (inject(NgxMetaMetadataManager, {
       optional: true,
-    }) as ReadonlyArray<NgxMetaMetadataManager> | null) ?? []
+    }) as readonly NgxMetaMetadataManager[] | null) ?? []
 
 /**
  * Options to resolve metadata values for a metadata manager
@@ -78,7 +78,7 @@ export interface MetadataResolverOptions {
    *
    * Would access the `bar` key inside the `foo` object and resolve `fooBar` as metadata value
    */
-  readonly jsonPath: ReadonlyArray<string>
+  readonly jsonPath: readonly string[]
 
   /**
    * Global key in a metadata values object to use when resolving a metadata value.

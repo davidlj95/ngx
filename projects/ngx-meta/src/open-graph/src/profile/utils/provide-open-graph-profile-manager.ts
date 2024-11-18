@@ -13,9 +13,9 @@ export const provideOpenGraphProfileManager = <
   Key extends keyof OpenGraphProfile,
 >(
   key: Key,
-  ...options: ReadonlyArray<
-    _ProvideNgxMetaModuleManagerOptions<OpenGraphProfile[Key]>
-  >
+  ...options: readonly _ProvideNgxMetaModuleManagerOptions<
+    OpenGraphProfile[Key]
+  >[]
 ) =>
   _provideNgxMetaModuleManager<OpenGraphProfile, Key>(
     key,

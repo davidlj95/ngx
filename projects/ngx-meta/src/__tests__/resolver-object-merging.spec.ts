@@ -10,7 +10,10 @@ import { defaults } from '../core/src/defaults/defaults'
 // may merge objs
 // We could extract merging into a common place and test that there
 describe('Metadata value resolver object merging', () => {
-  type Values = { obj: object; specific?: { obj: object } }
+  interface Values {
+    obj: object
+    specific?: { obj: object }
+  }
   const baseResolverOptions: MetadataResolverOptions = {
     jsonPath: [
       'specific' satisfies keyof Values,

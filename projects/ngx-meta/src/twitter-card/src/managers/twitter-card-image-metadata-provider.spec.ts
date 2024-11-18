@@ -26,7 +26,7 @@ describe('Twitter Card image metadata manager', () => {
     url: 'https://example.com/foo.png',
     alt: 'Alternative text',
   } satisfies TwitterCardImage
-  const imageKeys = Object.keys(image) as ReadonlyArray<keyof TwitterCardImage>
+  const imageKeys = Object.keys(image) as readonly (keyof TwitterCardImage)[]
   const imageKeyToProperty = (key: keyof TwitterCardImage) => {
     const mappings = new Map<keyof TwitterCardImage, string | undefined>([
       ['url', ''],

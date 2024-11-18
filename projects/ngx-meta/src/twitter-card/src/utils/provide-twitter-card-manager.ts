@@ -12,9 +12,7 @@ export const TWITTER_CARD_KEY =
 
 export const provideTwitterCardManager = <Key extends keyof TwitterCard>(
   key: Key,
-  ...options: ReadonlyArray<
-    _ProvideNgxMetaModuleManagerOptions<TwitterCard[Key]>
-  >
+  ...options: readonly _ProvideNgxMetaModuleManagerOptions<TwitterCard[Key]>[]
 ) =>
   _provideNgxMetaModuleManager<TwitterCard, Key>(
     key,

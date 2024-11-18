@@ -58,7 +58,7 @@ module.exports = tseslint.config(
     rules: {},
   },
   {
-    files: ['**/*.cy.ts'],
+    files: ['**/*.cy.ts', '**/cypress/**/*.ts'],
     ...eslintPluginCypress.configs.recommended,
   },
   {

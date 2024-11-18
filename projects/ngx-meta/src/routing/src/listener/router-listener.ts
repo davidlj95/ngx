@@ -19,7 +19,7 @@ export const routerListener = () =>
     let subscription: Subscription | undefined
     return {
       listen() {
-        // https://github.com/istanbuljs/istanbuljs/issues/719
+        /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
         if (ngDevMode && subscription) {
           console.warn(
             _formatDevMessage(

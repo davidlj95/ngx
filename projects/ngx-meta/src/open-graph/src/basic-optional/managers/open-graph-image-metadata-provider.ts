@@ -38,7 +38,7 @@ export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = provideOpenGraphManager(
       )
         ? value
         : NO_KEY_VALUE
-      // Checkout https://github.com/davidlj95/ngx/pull/731
+      /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
       if (ngDevMode) {
         _maybeNonHttpUrlDevMessage(imageUrl, {
           module: MODULE_NAME,

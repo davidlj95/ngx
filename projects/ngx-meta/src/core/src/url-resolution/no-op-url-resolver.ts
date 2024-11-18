@@ -4,6 +4,7 @@ import { MODULE_NAME } from '../module-name'
 import { _UrlResolver } from './url-resolver'
 
 export const noOpUrlResolver: _UrlResolver = (url) => {
+  /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
   if (ngDevMode && url === ANGULAR_ROUTER_URL) {
     console.warn(
       _formatDevMessage(

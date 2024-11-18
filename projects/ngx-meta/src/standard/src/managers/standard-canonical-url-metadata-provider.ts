@@ -23,6 +23,7 @@ export const STANDARD_CANONICAL_URL_METADATA_PROVIDER = provideStandardManager(
   _withModuleManagerSetterFactory(
     (headElementUpsertOrRemove, doc, urlResolver) => (url) => {
       const resolvedUrl = urlResolver(url)
+      /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
       if (ngDevMode) {
         _maybeNonHttpUrlDevMessage(resolvedUrl, {
           module: MODULE_NAME,

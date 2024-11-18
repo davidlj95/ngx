@@ -21,7 +21,7 @@ export const TWITTER_CARD_IMAGE_METADATA_PROVIDER = provideTwitterCardManager(
   withManagerObjectMerging(),
   _withModuleManagerSetterFactory(
     (metaElementsService: NgxMetaElementsService) => (image) => {
-      // https://github.com/davidlj95/ngx/pull/731
+      /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
       if (ngDevMode) {
         _maybeNonHttpUrlDevMessage(image?.url, {
           module: MODULE_NAME,

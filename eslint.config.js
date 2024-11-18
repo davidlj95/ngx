@@ -11,8 +11,11 @@ module.exports = tseslint.config(
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
       ...tseslint.configs.stylistic,
-      ...angular.configs.tsRecommended,
     ],
+  },
+  {
+    files: ['projects/*/src/**/*.ts'],
+    extends: [...angular.configs.tsRecommended],
     processor: angular.processInlineTemplates,
     rules: {
       '@angular-eslint/directive-selector': [
@@ -34,7 +37,7 @@ module.exports = tseslint.config(
     },
   },
   {
-    files: ['**/*.html'],
+    files: ['projects/*/src/**/*.html'],
     extends: [
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,

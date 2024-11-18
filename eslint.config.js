@@ -8,6 +8,8 @@ const eslintCompat = require('@eslint/compat')
 const path = require('path')
 const gitignorePath = path.resolve(__dirname, '.gitignore')
 
+const eslintConfigPrettier = require('eslint-config-prettier')
+
 module.exports = tseslint.config(
   eslintCompat.includeIgnoreFile(gitignorePath),
   {
@@ -49,4 +51,5 @@ module.exports = tseslint.config(
     ],
     rules: {},
   },
+  eslintConfigPrettier,
 )

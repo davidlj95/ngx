@@ -12,7 +12,7 @@ const eslintConfigPrettier = require('eslint-config-prettier')
 
 const eslintPluginCypress = require('eslint-plugin-cypress/flat')
 
-const jsonFiles = require('eslint-plugin-json-files')
+const eslintPluginJsonFiles = require('eslint-plugin-json-files')
 
 module.exports = tseslint.config(
   eslintCompat.includeIgnoreFile(gitignorePath),
@@ -61,8 +61,8 @@ module.exports = tseslint.config(
   },
   {
     files: ['**/*.json'],
-    plugins: { 'json-files': jsonFiles },
-    processor: jsonFiles.processors.json,
+    plugins: { 'json-files': eslintPluginJsonFiles },
+    processor: eslintPluginJsonFiles.processors.json,
     rules: {
       'json-files/require-unique-dependency-names': 'error',
       'json-files/restrict-ranges': [
@@ -84,7 +84,7 @@ module.exports = tseslint.config(
   // https://github.com/angular-eslint/angular-eslint/blob/v18.4.0/packages/schematics/src/utils.ts
   // Adding here below extra rules for subdirectories then:
   {
-    files: ['projects/ngx-meta/src/package.json'],
+    files: ['projects/*/src/package.json'],
     rules: {
       'json-files/require-license': 'error',
       'json-files/restrict-ranges': ['error', { versionHint: 'caret' }],

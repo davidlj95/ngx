@@ -82,7 +82,7 @@ export function addImportsFromTemplateIntoSourceFile({
 }
 
 function getDeclarationsByModuleSpecifier(
-  declarations: ReadonlyArray<ImportDeclarationStructure>,
+  declarations: readonly ImportDeclarationStructure[],
 ): DeclarationsByModuleSpecifier {
   return declarations.reduce<DeclarationsByModuleSpecifier>(
     (accumulator, declaration) => {
@@ -194,7 +194,7 @@ function mergeNamedImportSpecifiers(
       specifier.alias !== otherSpecifier.alias
     )
   }
-  return (otherSpecifiers as ReadonlyArray<ImportSpecifierStructure>).reduce<
+  return (otherSpecifiers as readonly ImportSpecifierStructure[]).reduce<
     ImportSpecifierStructure[]
   >(
     (accumulator, otherSpecifier) => {
@@ -206,6 +206,6 @@ function mergeNamedImportSpecifiers(
       }
       return [...accumulator, otherSpecifier]
     },
-    [...(specifiers as ReadonlyArray<ImportSpecifierStructure>)],
+    [...(specifiers as readonly ImportSpecifierStructure[])],
   )
 }

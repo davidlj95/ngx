@@ -74,7 +74,7 @@ function addToNgModuleDecoratorArrayPropertyFromTemplate({
   const elementsToAdd = templatePropertyArray
     .getElements()
     .reduce<
-      ReadonlyArray<Expression>
+      readonly Expression[]
     >((accumulator, templatePropertyExpression) => {
       // Avoid duplicates
       if (

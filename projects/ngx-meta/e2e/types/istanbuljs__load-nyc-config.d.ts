@@ -7,7 +7,7 @@ declare module '@istanbuljs/load-nyc-config' {
   export interface NycConfig {
     cwd: string
     reportDir?: string
-    reporter?: ReadonlyArray<string>
+    reporter?: readonly string[]
     tempDir?: string
   }
 }

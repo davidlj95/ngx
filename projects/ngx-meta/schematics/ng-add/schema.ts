@@ -1,7 +1,7 @@
 export interface Schema {
   project: string
   routing: boolean
-  metadataModules: ReadonlyArray<MetadataModules>
+  metadataModules: readonly MetadataModules[]
 }
 
 export type MetadataModules =

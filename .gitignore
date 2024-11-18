@@ -373,7 +373,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,vim,visualstudiocode,node,webstorm+iml,macos,linux,windows
-.npmrc
 .idea/git_toolbox_blame.xml
 projects/ngx-meta/example-apps/apps
 projects/ngx-meta/bundle-size/source-map-explorer*.json
@@ -390,7 +389,6 @@ projects/ngx-meta/api-extractor/*.api.json
 #   https://prettier.io/docs/en/ignore.html
 #
 # - Comment `.idea` in Angular to include IDE configs
-# - Add `.npmrc` to set registry to simulate releases, but avoid committing that
 # - Add Git Toolbox plugin blame config
 # - Add generated example apps
 # - Add base bundle size files

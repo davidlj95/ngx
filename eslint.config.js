@@ -1,4 +1,5 @@
 // @ts-check
+// noinspection NpmUsedModulesInstalled
 const eslint = require('@eslint/js')
 const tseslint = require('typescript-eslint')
 const angular = require('angular-eslint')

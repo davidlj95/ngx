@@ -22,7 +22,7 @@ export type AngularRouterUrl = typeof ANGULAR_ROUTER_URL;
 export type BaseUrl = string;
 
 // @internal (undocumented)
-export const _composedMetadataName: (...names: ReadonlyArray<string>) => string;
+export const _composedMetadataName: (...names: readonly string[]) => string;
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeatureKind" needs to be exported by the entry point all-entry-points.d.ts
 //
@@ -45,7 +45,7 @@ const enum CoreFeatureKind {
 // Warning: (ae-forgotten-export) The symbol "CoreFeature" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-type CoreFeatures = ReadonlyArray<CoreFeature<CoreFeatureKind>>;
+type CoreFeatures = readonly CoreFeature<CoreFeatureKind>[];
 
 // @internal (undocumented)
 export const _formatDevMessage: (message: string, options: _FormatDevMessageOptions) => string;
@@ -103,7 +103,7 @@ export type _HeadElementUpsertOrRemove = (selector: string, element: HTMLElement
 export const _headElementUpsertOrRemove: _LazyInjectionToken<_HeadElementUpsertOrRemove>;
 
 // @internal (undocumented)
-export const _injectMetadataManagers: () => ReadonlyArray<NgxMetaMetadataManager>;
+export const _injectMetadataManagers: () => readonly NgxMetaMetadataManager[];
 
 // @internal
 export const _isDefined: <T>(value: T | null | undefined) => value is T;
@@ -120,7 +120,7 @@ export interface JsonLdMetadata {
 export type _LazyInjectionToken<T> = () => InjectionToken<T>;
 
 // @public @deprecated
-export const makeComposedKeyValMetaDefinition: (names: ReadonlyArray<string>, options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
+export const makeComposedKeyValMetaDefinition: (names: readonly string[], options?: MakeComposedKeyValMetaDefinitionOptions) => NgxMetaMetaDefinition;
 
 // @public @deprecated
 export interface MakeComposedKeyValMetaDefinitionOptions extends MakeKeyValMetaDefinitionOptions {
@@ -176,7 +176,7 @@ type MetadataResolver = (values: MetadataValues, resolverOptions: MetadataResolv
 // @public
 export interface MetadataResolverOptions {
     readonly global?: string;
-    readonly jsonPath: ReadonlyArray<string>;
+    readonly jsonPath: readonly string[];
     readonly objectMerge?: boolean;
 }
 
@@ -214,9 +214,7 @@ export type NgxMetaElementAttributes = Partial<{
     scheme: string;
     url: string;
     media: string;
-}> & {
-    [key: string]: string;
-};
+}> & Record<string, string>;
 
 // @public
 export type NgxMetaElementNameAttribute = readonly [name: string, value: string];
@@ -224,7 +222,7 @@ export type NgxMetaElementNameAttribute = readonly [name: string, value: string]
 // @public
 export class NgxMetaElementsService {
     constructor(meta: Meta);
-    set(nameAttribute: NgxMetaElementNameAttribute, content: ReadonlyArray<NgxMetaElementAttributes> | NgxMetaElementAttributes | undefined): void;
+    set(nameAttribute: NgxMetaElementNameAttribute, content: readonly NgxMetaElementAttributes[] | NgxMetaElementAttributes | undefined): void;
 }
 
 // @public
@@ -438,7 +436,7 @@ export const provideNgxMetaMetadataLoader: () => Provider[];
 // Warning: (ae-forgotten-export) The symbol "StringKeyOf" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const _provideNgxMetaModuleManager: <Type extends object, Key extends StringKeyOf<Type>>(key: Key, scope: ReadonlyArray<string>, options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
+export const _provideNgxMetaModuleManager: <Type extends object, Key extends StringKeyOf<Type>>(key: Key, scope: readonly string[], options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
 
 // @internal (undocumented)
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
@@ -475,7 +473,7 @@ export interface Standard {
     readonly canonicalUrl?: GlobalMetadata['canonicalUrl'];
     readonly description?: GlobalMetadata['description'];
     readonly generator?: true | null;
-    readonly keywords?: ReadonlyArray<string> | null;
+    readonly keywords?: readonly string[] | null;
     readonly locale?: GlobalMetadata['locale'];
     readonly themeColor?: StandardThemeColorMetadata | null;
     readonly title?: GlobalMetadata['title'];
@@ -514,7 +512,7 @@ export interface StandardMetadata {
 }
 
 // @public
-export type StandardThemeColorMetadata = string | ReadonlyArray<StandardThemeColorMetadataObject>;
+export type StandardThemeColorMetadata = string | readonly StandardThemeColorMetadataObject[];
 
 // @public
 export interface StandardThemeColorMetadataObject {
@@ -638,7 +636,7 @@ interface WithManagerJsonPath {
     // (undocumented)
     <T extends object>(key1: StringKeyOf<T>, key2: StringKeyOf<T[typeof key1]>, key3: StringKeyOf<T[typeof key1][typeof key2]>): string;
     // (undocumented)
-    (...jsonPaths: ReadonlyArray<string>): string;
+    (...jsonPaths: readonly string[]): string;
 }
 
 // Warning: (ae-forgotten-export) The symbol "WithManagerJsonPath" needs to be exported by the entry point all-entry-points.d.ts
@@ -670,7 +668,7 @@ export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKi
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
 
 // @public
-export const withOptions: <T extends object>(...options: ReadonlyArray<T>) => T;
+export const withOptions: <T extends object>(...options: readonly T[]) => T;
 
 // @public
 export const withPropertyAttribute: (value: string) => readonly ["property", string];

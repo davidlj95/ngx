@@ -4,7 +4,12 @@ const eslint = require('@eslint/js')
 const tseslint = require('typescript-eslint')
 const angular = require('angular-eslint')
 
+const eslintCompat = require('@eslint/compat')
+const path = require('path')
+const gitignorePath = path.resolve(__dirname, '.gitignore')
+
 module.exports = tseslint.config(
+  eslintCompat.includeIgnoreFile(gitignorePath),
   {
     files: ['**/*.ts'],
     extends: [

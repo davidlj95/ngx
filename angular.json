@@ -32,18 +32,6 @@
             "karmaConfig": "projects/ngx-meta/src/karma.conf.js",
             "codeCoverageExclude": ["**/__tests__/**"]
           }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "projects/ngx-meta/src/**/*.{ts,html}",
-              "projects/ngx-meta/e2e/**/*.ts",
-              "projects/ngx-meta/example-apps/**/*.ts",
-              "projects/ngx-meta/schematics/**/*.ts"
-            ],
-            "maxWarnings": 0
-          }
         }
       }
     }

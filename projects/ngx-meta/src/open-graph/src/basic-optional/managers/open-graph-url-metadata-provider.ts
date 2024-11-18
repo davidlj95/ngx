@@ -28,13 +28,14 @@ export const OPEN_GRAPH_URL_METADATA_PROVIDER = provideOpenGraphManager(
     (metaElementsService: NgxMetaElementsService, urlResolver: _UrlResolver) =>
       (url) => {
         const resolvedUrl = urlResolver(url)
-        ngDevMode &&
+        if (ngDevMode) {
           _maybeNonHttpUrlDevMessage(resolvedUrl, {
             module: MODULE_NAME,
             property: KEY,
             value: resolvedUrl,
             link: 'https://ogp.me/#metadata',
           })
+        }
         metaElementsService.set(
           withOpenGraphPropertyAttribute(KEY),
           withContentAttribute(urlResolver(url)),

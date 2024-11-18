@@ -19,18 +19,18 @@ export const routerListener = () =>
     let subscription: Subscription | undefined
     return {
       listen() {
-        ngDevMode &&
-          subscription &&
-          // https://github.com/istanbuljs/istanbuljs/issues/719
-          // prettier-ignore
+        // https://github.com/istanbuljs/istanbuljs/issues/719
+        if (ngDevMode && subscription) {
           console.warn(
-              _formatDevMessage(
-                [
-                  'prevented listening for route changes twice',
-                  'Ensure routing provider or module is only imported once',
-                ].join('\n'),
-                { module: MODULE_NAME },
-              ))
+            _formatDevMessage(
+              [
+                'prevented listening for route changes twice',
+                'Ensure routing provider or module is only imported once',
+              ].join('\n'),
+              { module: MODULE_NAME },
+            ),
+          )
+        }
         /* istanbul ignore next https://github.com/istanbuljs/istanbuljs/issues/719 */
         if (subscription) {
           return

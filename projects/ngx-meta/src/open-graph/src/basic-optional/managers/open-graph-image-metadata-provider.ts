@@ -38,14 +38,15 @@ export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER = provideOpenGraphManager(
       )
         ? value
         : NO_KEY_VALUE
-      // Why not an `if`? Checkout https://github.com/davidlj95/ngx/pull/731
-      ngDevMode &&
+      // Checkout https://github.com/davidlj95/ngx/pull/731
+      if (ngDevMode) {
         _maybeNonHttpUrlDevMessage(imageUrl, {
           module: MODULE_NAME,
           property: _GLOBAL_IMAGE,
           value: imageUrl,
           link: 'https://stackoverflow.com/a/9858694/3263250',
         })
+      }
       metaElementsService.set(
         withOpenGraphPropertyAttribute(_GLOBAL_IMAGE),
         withContentAttribute(imageUrl),

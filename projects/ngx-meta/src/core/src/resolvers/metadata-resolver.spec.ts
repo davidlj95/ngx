@@ -199,12 +199,12 @@ function makeSut(opts: { defaults?: MetadataValues } = {}): MetadataResolver {
     providers: [
       MockProvider(
         metadataJsonResolver(),
-        // eslint-disable-next-line jasmine/no-unsafe-spy
+        // TODO: eslint-disable-next-line jasmine/no-unsafe-spy
         jasmine.createSpy('Metadata JSON resolver'),
       ),
       MockProvider(
         _routeMetadataStrategy(),
-        // eslint-disable-next-line jasmine/no-unsafe-spy
+        // TODO: eslint-disable-next-line jasmine/no-unsafe-spy
         jasmine.createSpy('Route metadata strategy'),
       ),
       opts.defaults ? [MockProvider(defaults(), opts.defaults)] : [],

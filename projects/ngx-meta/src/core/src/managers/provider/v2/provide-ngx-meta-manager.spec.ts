@@ -33,7 +33,7 @@ describe('provide manager', () => {
   })
 
   it('should provide a manager with the given factory', () => {
-    const setter = () => {}
+    const setter = jasmine.createSpy()
     const provider = makeSut({ factory: () => setter })
 
     const manager = provideAndInject(provider)
@@ -47,7 +47,7 @@ describe('provide manager', () => {
     it('should pass them to the factory function', () => {
       const factory = jasmine
         .createSpy<MetadataSetterFactory<unknown>>()
-        .and.returnValue(() => {})
+        .and.returnValue(jasmine.createSpy())
       const provider = makeSut({ deps, factory })
 
       provideAndInject(provider)
@@ -94,7 +94,7 @@ const makeSut = (
 ) =>
   provideNgxMetaManager(
     opts.jsonPath ?? 'dummy-scope.dummy-key',
-    opts.factory ?? (() => () => {}),
+    opts.factory ?? jasmine.createSpy(),
     withOptions(
       ...[
         opts.deps ? withManagerDeps(...opts.deps) : undefined,

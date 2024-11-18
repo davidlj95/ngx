@@ -53,7 +53,7 @@ describe('Head element upsert or remove', () => {
       headElementHarness.appendElement(dummyElement)
     })
 
-    // eslint-disable-next-line jasmine/no-suite-dupes
+    // TODO: eslint-disable-next-line jasmine/no-suite-dupes
     describe('when element is defined', () => {
       it('should update it', () => {
         const anotherDummyElement =
@@ -69,7 +69,7 @@ describe('Head element upsert or remove', () => {
       })
     })
 
-    // eslint-disable-next-line jasmine/no-suite-dupes
+    // TODO: eslint-disable-next-line jasmine/no-suite-dupes
     describe('when element is not defined', () => {
       likeWhenNullOrUndefined((testCase) => {
         it('should remove it', () => {

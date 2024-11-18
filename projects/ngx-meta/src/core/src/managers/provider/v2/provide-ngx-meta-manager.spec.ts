@@ -94,6 +94,7 @@ const makeSut = (
 ) =>
   provideNgxMetaManager(
     opts.jsonPath ?? 'dummy-scope.dummy-key',
+    // eslint-disable-next-line jasmine/no-unsafe-spy
     opts.factory ?? jasmine.createSpy(),
     withOptions(
       ...[

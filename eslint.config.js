@@ -14,6 +14,8 @@ const eslintPluginCypress = require('eslint-plugin-cypress/flat')
 
 const eslintPluginJsonFiles = require('eslint-plugin-json-files')
 
+const eslintPluginJasmine = require('eslint-plugin-jasmine')
+
 module.exports = tseslint.config(
   eslintCompat.includeIgnoreFile(gitignorePath),
   {
@@ -89,6 +91,13 @@ module.exports = tseslint.config(
       'json-files/require-license': 'error',
       'json-files/restrict-ranges': ['error', { versionHint: 'caret' }],
     },
+  },
+  {
+    files: ['projects/*/src/**/*.spec.ts'],
+    plugins: {
+      jasmine: eslintPluginJasmine,
+    },
+    ...eslintPluginJasmine.configs.recommended,
   },
   eslintConfigPrettier,
 )

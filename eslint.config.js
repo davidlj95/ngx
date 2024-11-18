@@ -16,6 +16,8 @@ const eslintPluginJsonFiles = require('eslint-plugin-json-files')
 
 const eslintPluginJasmine = require('eslint-plugin-jasmine')
 
+const eslintPluginJest = require('eslint-plugin-jest')
+
 module.exports = tseslint.config(
   eslintCompat.includeIgnoreFile(gitignorePath),
   {
@@ -98,6 +100,14 @@ module.exports = tseslint.config(
       jasmine: eslintPluginJasmine,
     },
     ...eslintPluginJasmine.configs.recommended,
+  },
+  {
+    files: ['projects/*/schematics/**/*.spec.ts'],
+    plugins: {
+      jest: eslintPluginJest,
+    },
+    ...eslintPluginJest.configs['flat/recommended'],
+    ...eslintPluginJest.configs['flat/style'],
   },
   eslintConfigPrettier,
 )

@@ -1,31 +1,31 @@
 // @ts-check
 // noinspection NpmUsedModulesInstalled
-const eslint = require('@eslint/js')
-const tseslint = require('typescript-eslint')
-const angular = require('angular-eslint')
+import eslint from '@eslint/js'
+import tsEslint from 'typescript-eslint'
+import angular from 'angular-eslint'
 
-const eslintCompat = require('@eslint/compat')
-const path = require('path')
-const gitignorePath = path.resolve(__dirname, '.gitignore')
+import { includeIgnoreFile } from '@eslint/compat'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 
-const eslintConfigPrettier = require('eslint-config-prettier')
+import eslintConfigPrettier from 'eslint-config-prettier'
+import eslintPluginCypress from 'eslint-plugin-cypress/flat'
+import eslintPluginJasmine from 'eslint-plugin-jasmine'
+import eslintPluginJest from 'eslint-plugin-jest'
+import eslintPluginJsonFiles from 'eslint-plugin-json-files'
 
-const eslintPluginCypress = require('eslint-plugin-cypress/flat')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const gitignorePath = resolve(__dirname, '.gitignore')
 
-const eslintPluginJsonFiles = require('eslint-plugin-json-files')
-
-const eslintPluginJasmine = require('eslint-plugin-jasmine')
-
-const eslintPluginJest = require('eslint-plugin-jest')
-
-module.exports = tseslint.config(
-  eslintCompat.includeIgnoreFile(gitignorePath),
+export default tsEslint.config(
+  includeIgnoreFile(gitignorePath),
   {
     files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...tseslint.configs.stylistic,
+      ...tsEslint.configs.recommended,
+      ...tsEslint.configs.stylistic,
     ],
   },
   {

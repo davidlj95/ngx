@@ -12,6 +12,8 @@ const eslintConfigPrettier = require('eslint-config-prettier')
 
 const eslintPluginCypress = require('eslint-plugin-cypress/flat')
 
+const jsonFiles = require('eslint-plugin-json-files')
+
 module.exports = tseslint.config(
   eslintCompat.includeIgnoreFile(gitignorePath),
   {
@@ -56,6 +58,31 @@ module.exports = tseslint.config(
   {
     files: ['**/*.cy.ts'],
     ...eslintPluginCypress.configs.recommended,
+  },
+  {
+    files: ['**/*.json'],
+    plugins: { 'json-files': jsonFiles },
+    processor: jsonFiles.processors.json,
+    rules: {
+      'json-files/require-unique-dependency-names': 'error',
+      'json-files/restrict-ranges': [
+        'error',
+        {
+          versionHint: 'pin',
+        },
+      ],
+      'json-files/sort-package-json': 'error',
+    },
+  },
+  // If not placed here and running `eslint .` on root repo dir,
+  // the `projects/ngx-meta/eslint.config.js` file isn't picked up
+  // Feature to do so is still experimental
+  {
+    files: ['projects/ngx-meta/src/package.json'],
+    rules: {
+      'json-files/require-license': 'error',
+      'json-files/restrict-ranges': ['error', { versionHint: 'caret' }],
+    },
   },
   eslintConfigPrettier,
 )

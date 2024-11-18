@@ -37,10 +37,12 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngx-meta/src/**/*.ts",
-              "projects/ngx-meta/src/**/*.html"
+              "projects/ngx-meta/src/**/*.{ts,html}",
+              "projects/ngx-meta/e2e/**/*.ts",
+              "projects/ngx-meta/example-apps/**/*.ts",
+              "projects/ngx-meta/schematics/**/*.ts"
             ],
-            "eslintConfig": "projects/ngx-meta/src/eslint.config.js"
+            "maxWarnings": 0
           }
         }
       }

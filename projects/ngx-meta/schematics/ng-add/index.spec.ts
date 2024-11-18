@@ -118,9 +118,11 @@ describe('ng-add schematic', () => {
             )
           })
 
-          routing
-            ? shouldAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
-            : shouldNotAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
+          if (routing) {
+            shouldAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
+          } else {
+            shouldNotAddRootProvider(ROUTING_PROVIDER, () => tree, standalone)
+          }
         })
       })
       Object.keys(PROVIDERS_BY_MODULE_NAME).forEach(

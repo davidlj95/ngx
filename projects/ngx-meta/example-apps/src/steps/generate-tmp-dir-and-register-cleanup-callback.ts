@@ -6,18 +6,20 @@ export async function generateTmpDirAndRegisterCleanupCallback(
 ): Promise<string> {
   const tmpDir = (await execa('mktemp', ['-d'])).stdout
   registerAbortAndExitCallback(
-    doCleanUp ? () => cleanUpTmpDir(tmpDir) : () => {},
+    doCleanUp ? () => cleanUpTmpDir(tmpDir) : undefined,
   )
   Log.debug('Temporary dir: "%s"', tmpDir)
   return tmpDir
 }
 
 // https://stackoverflow.com/a/14032965/3263250
-function registerAbortAndExitCallback(cleanUpCallback: () => void) {
+function registerAbortAndExitCallback(cleanUpCallback?: () => void) {
   //👇 Otherwise this prevents script from exiting
   // process.stdin.resume() // so the program will not close instantly
 
-  process.on('exit', cleanUpCallback)
+  if (cleanUpCallback) {
+    process.on('exit', cleanUpCallback)
+  }
   // catches ctrl+c event
   process.on('SIGINT', () => {
     Log.info('SIGINT received')

@@ -1,12 +1,15 @@
 #!/usr/bin/env sh
 # Analyzes bundle size of the library when bundled inside an app
 # Using source maps & thanks to `source-map-explorer`
-set -eu
-
-cd "$(dirname "$0")" || exit 1
+set -e
 
 app_name="$1"
 [ -z "$app_name" ] && echo "❌  App name not specified" >&2 && exit 1
+export_format_arg="$2"
+
+set -u
+cd "$(dirname "$0")" || exit 1
+
 . "./utils.sh"
 
 app_browser_dist_dir="../example-apps/apps/$app_name/dist/$app_name/browser"
@@ -28,7 +31,6 @@ sme_command() {
 }
 
 echo "⚙️ Analyzing ${app_name} main bundle" >&2
-export_format_arg="$2"
 if [ -z "$export_format_arg" ]; then
   sme_command
   exit

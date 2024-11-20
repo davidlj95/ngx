@@ -42,3 +42,12 @@ export const provideTwitterCardImage = () =>
       },
     ),
   )
+
+/**
+ * {@inheritDoc provideTwitterCardImage}
+ * @deprecated Use {@link provideTwitterCardImage} instead
+ * @public
+ */
+export const TWITTER_CARD_IMAGE_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideTwitterCardImage()

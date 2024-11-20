@@ -34,3 +34,12 @@ export const provideTwitterCardSite = () =>
       },
     ),
   )
+
+/**
+ * {@inheritDoc provideTwitterCardSite}
+ * @deprecated Use {@link provideTwitterCardSite} instead
+ * @public
+ */
+export const TWITTER_CARD_SITE_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideTwitterCardSite()

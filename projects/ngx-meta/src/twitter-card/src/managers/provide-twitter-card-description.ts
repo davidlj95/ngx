@@ -36,3 +36,12 @@ export const provideTwitterCardDescription = () =>
       },
     ),
   )
+
+/**
+ * {@inheritDoc provideTwitterCardDescription}
+ * @deprecated Use {@link provideTwitterCardDescription} instead
+ * @public
+ */
+export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideTwitterCardDescription()

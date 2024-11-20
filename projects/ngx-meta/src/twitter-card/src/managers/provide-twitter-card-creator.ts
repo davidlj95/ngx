@@ -38,3 +38,12 @@ export const provideTwitterCardCreator = () =>
       },
     ),
   )
+
+/**
+ * {@inheritDoc provideTwitterCardCreator}
+ * @deprecated Use {@link provideTwitterCardCreator} instead
+ * @public
+ */
+export const TWITTER_CARD_CREATOR_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideTwitterCardCreator()

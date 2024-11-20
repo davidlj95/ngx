@@ -62,4 +62,4 @@ describe('get all typescript files', () => {
 
 const getFilePathsFromResult = (
   iterableIterator: ReturnType<typeof getAllTypescriptFiles>,
-): ReadonlyArray<string> => [...iterableIterator].map(([filePath]) => filePath)
+): readonly string[] => [...iterableIterator].map(([filePath]) => filePath)

@@ -10,6 +10,6 @@ import { provideNgxMetaStandard } from './provide-ngx-meta-standard'
  * @public
  */
 @NgModule({
-  providers: provideNgxMetaStandard(),
+  providers: [provideNgxMetaStandard()],
 })
 export class NgxMetaStandardModule {}

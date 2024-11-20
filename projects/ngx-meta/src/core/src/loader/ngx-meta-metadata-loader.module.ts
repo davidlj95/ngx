@@ -9,6 +9,6 @@ import { provideNgxMetaMetadataLoader } from './provide-ngx-meta-metadata-loader
  * @public
  */
 @NgModule({
-  providers: provideNgxMetaMetadataLoader(),
+  providers: [provideNgxMetaMetadataLoader()],
 })
 export class NgxMetaMetadataLoaderModule {}

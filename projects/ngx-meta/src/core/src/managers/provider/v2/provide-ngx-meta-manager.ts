@@ -1,4 +1,4 @@
-import { FactoryProvider } from '@angular/core'
+import { FactoryProvider, Provider } from '@angular/core'
 import {
   MetadataResolverOptions,
   NgxMetaMetadataManager,
@@ -64,21 +64,22 @@ export const provideNgxMetaManager = <T>(
   setterFactory: MetadataSetterFactory<T>,
   /* istanbul ignore next - quite simple */
   options: _ProvideNgxMetaManagerOptions = {},
-): FactoryProvider => ({
-  provide: NgxMetaMetadataManager,
-  multi: true,
-  useFactory: (...deps: readonly unknown[]) =>
-    ({
-      id: jsonPath,
-      set: setterFactory(...deps),
-      resolverOptions: {
-        jsonPath: jsonPath.split('.'),
-        global: options.g,
-        objectMerge: options.o,
-      },
-    }) satisfies NgxMetaMetadataManager<T>,
-  deps: options.d,
-})
+): Provider =>
+  ({
+    provide: NgxMetaMetadataManager,
+    multi: true,
+    useFactory: (...deps: readonly unknown[]) =>
+      ({
+        id: jsonPath,
+        set: setterFactory(...deps),
+        resolverOptions: {
+          jsonPath: jsonPath.split('.'),
+          global: options.g,
+          objectMerge: options.o,
+        },
+      }) satisfies NgxMetaMetadataManager<T>,
+    deps: options.d,
+  }) satisfies FactoryProvider
 
 /**
  * @internal

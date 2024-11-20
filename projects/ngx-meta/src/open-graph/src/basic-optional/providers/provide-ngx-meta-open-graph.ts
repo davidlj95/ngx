@@ -20,7 +20,7 @@ import {
  *
  * @public
  */
-export const provideNgxMetaOpenGraph = (): Provider[] => [
+export const provideNgxMetaOpenGraph = (): Provider => [
   OPEN_GRAPH_TITLE_METADATA_PROVIDER,
   OPEN_GRAPH_TYPE_METADATA_PROVIDER,
   OPEN_GRAPH_IMAGE_METADATA_PROVIDER,

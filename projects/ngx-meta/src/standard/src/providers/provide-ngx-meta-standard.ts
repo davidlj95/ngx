@@ -22,7 +22,7 @@ import {
  *
  * @public
  */
-export const provideNgxMetaStandard = (): Provider[] => [
+export const provideNgxMetaStandard = (): Provider => [
   STANDARD_TITLE_METADATA_PROVIDER,
   STANDARD_DESCRIPTION_METADATA_PROVIDER,
   STANDARD_AUTHOR_METADATA_PROVIDER,

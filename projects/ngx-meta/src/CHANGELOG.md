@@ -1,3 +1,28 @@
+## [`ngx-meta` v1.0.0-beta.34](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.33...ngx-meta-v1.0.0-beta.34) (2024-11-20)
+
+### Performance Improvements
+
+- remove ANGULAR_ROUTER_URL if unused ([#1043](https://github.com/davidlj95/ngx/issues/1043)) ([18e4eb4](https://github.com/davidlj95/ngx/commit/18e4eb4b9dbe45a5096847361877cd23039f715e))
+
+### Miscellaneous Chores
+
+- remove unneeded entries in CI's Makefile ([#1034](https://github.com/davidlj95/ngx/issues/1034)) ([d263fb8](https://github.com/davidlj95/ngx/commit/d263fb893cbf3a2ee19622eeaf04a0e183c5b6ae))
+
+### Build System
+
+- **deps:** bump cross-spawn in /projects/ngx-meta/e2e ([#1036](https://github.com/davidlj95/ngx/issues/1036)) ([51ba17b](https://github.com/davidlj95/ngx/commit/51ba17b5eb34c104a99ab36ab9a8562ae1f812e8))
+- **dev-deps:** update dependency eslint-plugin-cypress to v4 ([#1040](https://github.com/davidlj95/ngx/issues/1040)) ([25ea17f](https://github.com/davidlj95/ngx/commit/25ea17f1cac6f9ff152cf12f2a65adff7148b7c9))
+- **dev-deps:** update dependency eslint-plugin-jest to v28.9.0 ([#1039](https://github.com/davidlj95/ngx/issues/1039)) ([99b5931](https://github.com/davidlj95/ngx/commit/99b5931eda01d3a0ec3bf4b8d5904b9e311e13eb))
+- **dev-deps:** update dependency eslint-plugin-json-files to v4.4.2 ([#1038](https://github.com/davidlj95/ngx/issues/1038)) ([5d2c55f](https://github.com/davidlj95/ngx/commit/5d2c55f48fe00d63d193b52363821024958c32a4))
+- fix unbound variable in bundle size analyze script ([#1042](https://github.com/davidlj95/ngx/issues/1042)) ([570d9c0](https://github.com/davidlj95/ngx/commit/570d9c0f1548c41ab1af0b3087b7c4706d9e86fe))
+- **ide:** format \*.mjs files [skip ci] ([2285a9b](https://github.com/davidlj95/ngx/commit/2285a9b8db6ae3e397dbabf5551742c897cbb496))
+- lint `package.json` files ([#1031](https://github.com/davidlj95/ngx/issues/1031)) ([69edb48](https://github.com/davidlj95/ngx/commit/69edb48f865c1441c6f8d1af3b3d232c8c7ad3b2))
+- **lint:** convert ESLint config to ESM ([#1037](https://github.com/davidlj95/ngx/issues/1037)) ([76f5406](https://github.com/davidlj95/ngx/commit/76f5406c267c96d38e5312f88065128c5bc9b919))
+- **lint:** migrate to ESLint v9 with flat config ([#1035](https://github.com/davidlj95/ngx/issues/1035)) ([33ef10d](https://github.com/davidlj95/ngx/commit/33ef10d10ba587f563f1032509b410c61d6b3e56))
+- sort `package.json` files ([#1032](https://github.com/davidlj95/ngx/issues/1032)) ([f1f9420](https://github.com/davidlj95/ngx/commit/f1f9420ddb003a31040e36de5b70a32587f2c1d5))
+- use eslint directly when linting ([#1030](https://github.com/davidlj95/ngx/issues/1030)) ([78a0cf9](https://github.com/davidlj95/ngx/commit/78a0cf95bae705f0a071968f7b8ca4e9b85db407))
+- use same pattern for format / lint run scripts ([#1033](https://github.com/davidlj95/ngx/issues/1033)) ([0632d88](https://github.com/davidlj95/ngx/commit/0632d88dea386975e4935980268c39771bba0eaf))
+
 ## [`ngx-meta` v1.0.0-beta.32](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.31...ngx-meta-v1.0.0-beta.32) (2024-11-11)
 
 ### Bug Fixes

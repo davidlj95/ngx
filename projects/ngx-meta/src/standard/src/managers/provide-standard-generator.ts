@@ -27,3 +27,12 @@ export const provideStandardGenerator = () =>
         ),
     ),
   )
+
+/**
+ * {@inheritDoc provideStandardGenerator}
+ * @deprecated Use {@link provideStandardGenerator} instead
+ * @public
+ */
+export const STANDARD_GENERATOR_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideStandardGenerator()

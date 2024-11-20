@@ -36,3 +36,12 @@ export const provideStandardThemeColor = () =>
 type IsStandardThemeColorMetadataArray = (
   value: Standard['themeColor'],
 ) => value is readonly StandardThemeColorMetadataObject[]
+
+/**
+ * {@inheritDoc provideStandardThemeColor}
+ * @deprecated Use {@link provideStandardThemeColor} instead
+ * @public
+ */
+export const STANDARD_THEME_COLOR_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideStandardThemeColor()

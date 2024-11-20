@@ -10,3 +10,12 @@ import { provideStandardManager } from '../utils/provide-standard-manager'
  */
 export const provideStandardDescription = () =>
   provideStandardManager(_GLOBAL_DESCRIPTION, _withModuleManagerSameGlobalKey())
+
+/**
+ * {@inheritDoc provideStandardDescription}
+ * @deprecated Use {@link provideStandardDescription} instead
+ * @public
+ */
+export const STANDARD_DESCRIPTION_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideStandardDescription()

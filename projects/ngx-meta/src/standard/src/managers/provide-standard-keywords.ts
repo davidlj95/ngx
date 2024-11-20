@@ -24,3 +24,12 @@ export const provideStandardKeywords = () =>
         ),
     ),
   )
+
+/**
+ * {@inheritDoc provideStandardKeywords}
+ * @deprecated Use {@link provideStandardKeywords} instead
+ * @public
+ */
+export const STANDARD_KEYWORDS_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideStandardKeywords()

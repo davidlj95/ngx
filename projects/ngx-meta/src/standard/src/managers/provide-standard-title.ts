@@ -24,3 +24,12 @@ export const provideStandardTitle = () =>
       titleService.setTitle(value)
     }),
   )
+
+/**
+ * {@inheritDoc provideStandardTitle}
+ * @deprecated Use {@link provideStandardTitle} instead
+ * @public
+ */
+export const STANDARD_TITLE_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideStandardTitle()

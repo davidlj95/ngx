@@ -28,3 +28,12 @@ export const provideStandardLocale = () =>
       htmlElement.setAttribute(ATTRIBUTE_NAME, locale)
     }),
   )
+
+/**
+ * {@inheritDoc provideStandardLocale}
+ * @deprecated Use {@link provideStandardLocale} instead
+ * @public
+ */
+export const STANDARD_LOCALE_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideStandardLocale()

@@ -16,3 +16,12 @@ export const provideStandardApplicationName = () =>
     _withModuleManagerSameGlobalKey(),
     _withModuleManagerNameAttribute(withNameAttribute('application-name')),
   )
+
+/**
+ * {@inheritDoc provideStandardApplicationName}
+ * @deprecated Use {@link provideStandardApplicationName} instead
+ * @public
+ */
+export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideStandardApplicationName()

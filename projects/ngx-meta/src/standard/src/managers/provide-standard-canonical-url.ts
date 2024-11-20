@@ -49,3 +49,12 @@ const LINK_TAG = 'link'
 const REL_ATTR = 'rel'
 const CANONICAL_VAL = 'canonical'
 const SELECTOR = `${LINK_TAG}[${REL_ATTR}='${CANONICAL_VAL}']`
+
+/**
+ * {@inheritDoc provideStandardCanonicalUrl}
+ * @deprecated Use {@link provideStandardCanonicalUrl} instead
+ * @public
+ */
+export const STANDARD_CANONICAL_URL_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideStandardCanonicalUrl()

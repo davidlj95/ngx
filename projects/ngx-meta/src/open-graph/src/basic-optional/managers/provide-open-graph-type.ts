@@ -6,3 +6,12 @@ import { provideOpenGraphManager } from '../../utils/provide-open-graph-manager'
  * @public
  */
 export const provideOpenGraphType = () => provideOpenGraphManager('type')
+
+/**
+ * {@inheritDoc provideOpenGraphType}
+ * @deprecated Use {@link provideOpenGraphType} instead
+ * @public
+ */
+export const OPEN_GRAPH_TYPE_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideOpenGraphType()

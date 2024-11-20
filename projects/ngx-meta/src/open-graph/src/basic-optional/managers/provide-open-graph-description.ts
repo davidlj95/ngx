@@ -36,3 +36,12 @@ export const provideOpenGraphDescription = () =>
       },
     ),
   )
+
+/**
+ * {@inheritDoc provideOpenGraphDescription}
+ * @deprecated Use {@link provideOpenGraphDescription} instead
+ * @public
+ */
+export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideOpenGraphDescription()

@@ -10,3 +10,12 @@ import { provideOpenGraphManager } from '../../utils/provide-open-graph-manager'
  */
 export const provideOpenGraphLocale = () =>
   provideOpenGraphManager(_GLOBAL_LOCALE, _withModuleManagerSameGlobalKey())
+
+/**
+ * {@inheritDoc provideOpenGraphLocale}
+ * @deprecated Use {@link provideOpenGraphLocale} instead
+ * @public
+ */
+export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideOpenGraphLocale()

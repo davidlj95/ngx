@@ -75,3 +75,12 @@ export const provideOpenGraphImage = () =>
       },
     ),
   )
+
+/**
+ * {@inheritDoc provideOpenGraphImage}
+ * @deprecated Use {@link provideOpenGraphImage} instead
+ * @public
+ */
+export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideOpenGraphImage()

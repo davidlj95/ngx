@@ -18,3 +18,12 @@ export const provideOpenGraphSiteName = () =>
       withOpenGraphPropertyAttribute('site_name'),
     ),
   )
+
+/**
+ * {@inheritDoc provideOpenGraphSiteName}
+ * @deprecated Use {@link provideOpenGraphSiteName} instead
+ * @public
+ */
+export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideOpenGraphSiteName()

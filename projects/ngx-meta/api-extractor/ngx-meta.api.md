@@ -292,17 +292,35 @@ export class NgxMetaStandardModule {
 export class NgxMetaTwitterCardModule {
 }
 
+// @public @deprecated
+export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: Provider;
+
+// @public @deprecated
+export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER: Provider;
+
+// @public @deprecated
+export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: Provider;
+
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
 
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_MALE = "male";
 
+// @public @deprecated
+export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: Provider;
+
+// @public @deprecated
+export const OPEN_GRAPH_TITLE_METADATA_PROVIDER: Provider;
+
 // @public
 export const OPEN_GRAPH_TYPE_ARTICLE = "article";
 
 // @public
 export const OPEN_GRAPH_TYPE_BOOK = "book";
+
+// @public @deprecated
+export const OPEN_GRAPH_TYPE_METADATA_PROVIDER: Provider;
 
 // @public
 export const OPEN_GRAPH_TYPE_MUSIC_ALBUM = "music.album";
@@ -333,6 +351,9 @@ export const OPEN_GRAPH_TYPE_VIDEO_TV_SHOW = "video.tv_show";
 
 // @public
 export const OPEN_GRAPH_TYPE_WEBSITE = "website";
+
+// @public @deprecated
+export const OPEN_GRAPH_URL_METADATA_PROVIDER: Provider;
 
 // @public
 export interface OpenGraph {

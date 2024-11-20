@@ -48,3 +48,12 @@ export const provideOpenGraphUrl = () =>
         },
     ),
   )
+
+/**
+ * {@inheritDoc provideOpenGraphUrl}
+ * @deprecated Use {@link provideOpenGraphUrl} instead
+ * @public
+ */
+export const OPEN_GRAPH_URL_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideOpenGraphUrl()

@@ -6,3 +6,12 @@ import { provideOpenGraphProfileManager } from '../utils/provide-open-graph-prof
  */
 export const provideOpenGraphProfileGender = () =>
   provideOpenGraphProfileManager('gender')
+
+/**
+ * {@inheritDoc provideOpenGraphProfileGender}
+ * @deprecated Use {@link provideOpenGraphProfileGender} instead
+ * @public
+ */
+export const OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideOpenGraphProfileGender()

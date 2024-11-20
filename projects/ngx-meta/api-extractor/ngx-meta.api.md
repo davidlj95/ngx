@@ -301,11 +301,23 @@ export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER: Provider;
 // @public @deprecated
 export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: Provider;
 
+// @public @deprecated
+export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: Provider;
+
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
 
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_MALE = "male";
+
+// @public @deprecated
+export const OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER: Provider;
+
+// @public @deprecated
+export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER: Provider;
+
+// @public @deprecated
+export const OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER: Provider;
 
 // @public @deprecated
 export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: Provider;

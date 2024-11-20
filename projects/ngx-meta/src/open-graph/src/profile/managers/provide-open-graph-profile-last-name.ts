@@ -14,3 +14,12 @@ export const provideOpenGraphProfileLastName = () =>
       withOpenGraphPropertyAttribute(OPEN_GRAPH_PROFILE_KEY, 'last_name'),
     ),
   )
+
+/**
+ * {@inheritDoc provideOpenGraphProfileLastName}
+ * @deprecated Use {@link provideOpenGraphProfileLastName} instead
+ * @public
+ */
+export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideOpenGraphProfileLastName()

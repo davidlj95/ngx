@@ -108,6 +108,9 @@ export const _injectMetadataManagers: () => readonly NgxMetaMetadataManager[];
 // @internal
 export const _isDefined: <T>(value: T | null | undefined) => value is T;
 
+// @public @deprecated
+export const JSON_LD_METADATA_PROVIDER: Provider;
+
 // @public
 export interface JsonLdMetadata {
     readonly jsonLd?: object | null;

@@ -9,7 +9,6 @@ import {
 } from '@davidlj95/ngx-meta/core'
 import { JsonLdMetadata } from '../types'
 
-const KEY = 'jsonLd' satisfies keyof JsonLdMetadata
 const SCRIPT_TYPE = 'application/ld+json'
 
 /**
@@ -18,7 +17,7 @@ const SCRIPT_TYPE = 'application/ld+json'
  */
 export const provideJsonLdInHead = () =>
   provideNgxMetaManager<JsonLdMetadata['jsonLd']>(
-    KEY,
+    'jsonLd' satisfies keyof JsonLdMetadata,
     (headElementUpsertOrRemove: _HeadElementUpsertOrRemove, doc: Document) =>
       (jsonLd) => {
         let scriptElement: HTMLScriptElement | undefined
@@ -34,3 +33,12 @@ export const provideJsonLdInHead = () =>
       },
     withOptions(withManagerDeps(_headElementUpsertOrRemove(), DOCUMENT)),
   )
+
+/**
+ * {@inheritDoc provideNgxMetaJsonLd}
+ * @deprecated Use {@link provideNgxMetaJsonLd} instead
+ * @public
+ */
+export const JSON_LD_METADATA_PROVIDER =
+  /* @__PURE__ */
+  provideJsonLdInHead()

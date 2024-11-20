@@ -17,7 +17,7 @@ import {
  *
  * @public
  */
-export const provideNgxMetaOpenGraphProfile = (): Provider[] => [
+export const provideNgxMetaOpenGraphProfile = (): Provider => [
   OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER,
   OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER,
   OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER,

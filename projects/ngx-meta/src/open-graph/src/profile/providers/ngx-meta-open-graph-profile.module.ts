@@ -10,6 +10,6 @@ import { provideNgxMetaOpenGraphProfile } from './provide-ngx-meta-open-graph-pr
  * @public
  */
 @NgModule({
-  providers: provideNgxMetaOpenGraphProfile(),
+  providers: [provideNgxMetaOpenGraphProfile()],
 })
 export class NgxMetaOpenGraphProfileModule {}

@@ -19,7 +19,7 @@ import {
  *
  * @public
  */
-export const provideNgxMetaTwitterCard = (): Provider[] => [
+export const provideNgxMetaTwitterCard = (): Provider => [
   TWITTER_CARD_CARD_METADATA_PROVIDER,
   TWITTER_CARD_SITE_METADATA_PROVIDER,
   TWITTER_CARD_CREATOR_METADATA_PROVIDER,

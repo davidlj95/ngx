@@ -10,6 +10,6 @@ import { provideNgxMetaJsonLd } from './provide-ngx-meta-json-ld'
  * @public
  */
 @NgModule({
-  providers: provideNgxMetaJsonLd(),
+  providers: [provideNgxMetaJsonLd()],
 })
 export class NgxMetaJsonLdModule {}

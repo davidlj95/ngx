@@ -109,7 +109,7 @@ export const _injectMetadataManagers: () => readonly NgxMetaMetadataManager[];
 export const _isDefined: <T>(value: T | null | undefined) => value is T;
 
 // @public
-export const JSON_LD_METADATA_PROVIDER: FactoryProvider;
+export const JSON_LD_METADATA_PROVIDER: Provider;
 
 // @public
 export interface JsonLdMetadata {
@@ -296,16 +296,16 @@ export class NgxMetaTwitterCardModule {
 }
 
 // @public
-export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: Provider;
 
 // @public
-export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER: Provider;
 
 // @public
-export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: Provider;
 
 // @public
-export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: Provider;
 
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
@@ -314,19 +314,19 @@ export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
 export const OPEN_GRAPH_PROFILE_GENDER_MALE = "male";
 
 // @public
-export const OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER: Provider;
 
 // @public
-export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER: Provider;
 
 // @public
-export const OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER: Provider;
 
 // @public
-export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: Provider;
 
 // @public
-export const OPEN_GRAPH_TITLE_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_TITLE_METADATA_PROVIDER: Provider;
 
 // @public
 export const OPEN_GRAPH_TYPE_ARTICLE = "article";
@@ -335,7 +335,7 @@ export const OPEN_GRAPH_TYPE_ARTICLE = "article";
 export const OPEN_GRAPH_TYPE_BOOK = "book";
 
 // @public
-export const OPEN_GRAPH_TYPE_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_TYPE_METADATA_PROVIDER: Provider;
 
 // @public
 export const OPEN_GRAPH_TYPE_MUSIC_ALBUM = "music.album";
@@ -368,7 +368,7 @@ export const OPEN_GRAPH_TYPE_VIDEO_TV_SHOW = "video.tv_show";
 export const OPEN_GRAPH_TYPE_WEBSITE = "website";
 
 // @public
-export const OPEN_GRAPH_URL_METADATA_PROVIDER: FactoryProvider;
+export const OPEN_GRAPH_URL_METADATA_PROVIDER: Provider;
 
 // @public
 export interface OpenGraph {
@@ -415,12 +415,12 @@ export type OpenGraphType = typeof OPEN_GRAPH_TYPE_MUSIC_SONG | typeof OPEN_GRAP
 export const provideNgxMetaCore: (...features: CoreFeatures) => EnvironmentProviders;
 
 // @public
-export const provideNgxMetaJsonLd: () => Provider[];
+export const provideNgxMetaJsonLd: () => Provider;
 
 // Warning: (ae-incompatible-release-tags) The symbol "provideNgxMetaManager" is marked as @public, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @public
-export const provideNgxMetaManager: <T>(jsonPath: string, setterFactory: MetadataSetterFactory<T>, options?: _ProvideNgxMetaManagerOptions) => FactoryProvider;
+export const provideNgxMetaManager: <T>(jsonPath: string, setterFactory: MetadataSetterFactory<T>, options?: _ProvideNgxMetaManagerOptions) => Provider;
 
 // @internal (undocumented)
 export type _ProvideNgxMetaManagerOptions = Partial<{
@@ -431,12 +431,12 @@ export type _ProvideNgxMetaManagerOptions = Partial<{
 }>;
 
 // @public
-export const provideNgxMetaMetadataLoader: () => Provider[];
+export const provideNgxMetaMetadataLoader: () => Provider;
 
 // Warning: (ae-forgotten-export) The symbol "StringKeyOf" needs to be exported by the entry point all-entry-points.d.ts
 //
 // @internal (undocumented)
-export const _provideNgxMetaModuleManager: <Type extends object, Key extends StringKeyOf<Type>>(key: Key, scope: readonly string[], options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => FactoryProvider;
+export const _provideNgxMetaModuleManager: <Type extends object, Key extends StringKeyOf<Type>>(key: Key, scope: readonly string[], options: _ProvideNgxMetaModuleManagerOptions<Type[Key]>) => Provider;
 
 // @internal (undocumented)
 export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
@@ -446,19 +446,19 @@ export type _ProvideNgxMetaModuleManagerOptions<T> = Partial<{
 }> & _ProvideNgxMetaManagerOptions;
 
 // @public
-export const provideNgxMetaOpenGraph: () => Provider[];
+export const provideNgxMetaOpenGraph: () => Provider;
 
 // @public
-export const provideNgxMetaOpenGraphProfile: () => Provider[];
+export const provideNgxMetaOpenGraphProfile: () => Provider;
 
 // @public
 export const provideNgxMetaRouting: () => EnvironmentProviders;
 
 // @public
-export const provideNgxMetaStandard: () => Provider[];
+export const provideNgxMetaStandard: () => Provider;
 
 // @public
-export const provideNgxMetaTwitterCard: () => Provider[];
+export const provideNgxMetaTwitterCard: () => Provider;
 
 // @internal (undocumented)
 export type _RouteMetadataStrategy = () => MetadataValues | undefined;
@@ -480,31 +480,31 @@ export interface Standard {
 }
 
 // @public
-export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER: Provider;
 
 // @public
-export const STANDARD_AUTHOR_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_AUTHOR_METADATA_PROVIDER: Provider;
 
 // @public
-export const STANDARD_CANONICAL_URL_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_CANONICAL_URL_METADATA_PROVIDER: Provider;
 
 // @public
-export const STANDARD_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_DESCRIPTION_METADATA_PROVIDER: Provider;
 
 // @public
-export const STANDARD_GENERATOR_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_GENERATOR_METADATA_PROVIDER: Provider;
 
 // @public
-export const STANDARD_KEYWORDS_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_KEYWORDS_METADATA_PROVIDER: Provider;
 
 // @public
-export const STANDARD_LOCALE_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_LOCALE_METADATA_PROVIDER: Provider;
 
 // @public
-export const STANDARD_THEME_COLOR_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_THEME_COLOR_METADATA_PROVIDER: Provider;
 
 // @public
-export const STANDARD_TITLE_METADATA_PROVIDER: FactoryProvider;
+export const STANDARD_TITLE_METADATA_PROVIDER: Provider;
 
 // @public
 export interface StandardMetadata {
@@ -524,22 +524,22 @@ export interface StandardThemeColorMetadataObject {
 type StringKeyOf<T = object> = Extract<keyof T, string>;
 
 // @public
-export const TWITTER_CARD_CARD_METADATA_PROVIDER: FactoryProvider;
+export const TWITTER_CARD_CARD_METADATA_PROVIDER: Provider;
 
 // @public
-export const TWITTER_CARD_CREATOR_METADATA_PROVIDER: FactoryProvider;
+export const TWITTER_CARD_CREATOR_METADATA_PROVIDER: Provider;
 
 // @public
-export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER: FactoryProvider;
+export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER: Provider;
 
 // @public
-export const TWITTER_CARD_IMAGE_METADATA_PROVIDER: FactoryProvider;
+export const TWITTER_CARD_IMAGE_METADATA_PROVIDER: Provider;
 
 // @public
-export const TWITTER_CARD_SITE_METADATA_PROVIDER: FactoryProvider;
+export const TWITTER_CARD_SITE_METADATA_PROVIDER: Provider;
 
 // @public
-export const TWITTER_CARD_TITLE_METADATA_PROVIDER: FactoryProvider;
+export const TWITTER_CARD_TITLE_METADATA_PROVIDER: Provider;
 
 // @public
 export const TWITTER_CARD_TYPE_APP = "app";

@@ -14,7 +14,7 @@ import {
  *
  * @public
  */
-export const provideNgxMetaMetadataLoader = (): Provider[] => [
+export const provideNgxMetaMetadataLoader = (): Provider => [
   provideMetadataRegistry(),
   {
     provide: ENVIRONMENT_INITIALIZER,

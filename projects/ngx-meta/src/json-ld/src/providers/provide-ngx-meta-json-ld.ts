@@ -12,6 +12,4 @@ import { JSON_LD_METADATA_PROVIDER } from '../managers'
  *
  * @public
  */
-export const provideNgxMetaJsonLd = (): Provider[] => [
-  JSON_LD_METADATA_PROVIDER,
-]
+export const provideNgxMetaJsonLd = (): Provider => [JSON_LD_METADATA_PROVIDER]

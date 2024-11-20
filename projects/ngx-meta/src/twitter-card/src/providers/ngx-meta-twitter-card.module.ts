@@ -10,6 +10,6 @@ import { provideNgxMetaTwitterCard } from './provide-ngx-meta-twitter-card'
  * @public
  */
 @NgModule({
-  providers: provideNgxMetaTwitterCard(),
+  providers: [provideNgxMetaTwitterCard()],
 })
 export class NgxMetaTwitterCardModule {}

@@ -9,7 +9,7 @@
  *
  * @public
  */
-export const ANGULAR_ROUTER_URL = Symbol(
+export const ANGULAR_ROUTER_URL = /* @__PURE__ */ Symbol(
   ngDevMode
     ? "NgxMeta: Use Angular's router URL as relative URL"
     : 'NgxMetaARU',

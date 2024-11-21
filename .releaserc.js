@@ -64,49 +64,53 @@ module.exports = {
   presetConfig: {
     header: 'CHANGELOG',
     types: [
+      //👇 Type list:
+      // https://github.com/conventional-changelog/conventional-changelog/blob/conventional-changelog-conventionalcommits-v8.0.0/packages/conventional-changelog-conventionalcommits/src/constants.js
+      //👇 Emojis:
+      // https://github.com/orhun/git-cliff/blob/v2.6.1/config/cliff.toml
       {
         type: 'feat',
-        section: 'Features',
+        section: '🚀 Features',
       },
       {
         type: 'fix',
-        section: 'Bug Fixes',
+        section: '🐛 Bug Fixes',
       },
       {
         type: 'perf',
-        section: 'Performance Improvements',
+        section: '⚡️ Performance Improvements',
       },
       {
         type: 'revert',
-        section: 'Reverts',
+        section: '↩️ Reverts',
       },
       {
         type: 'docs',
-        section: 'Documentation',
+        section: '📚 Documentation',
       },
       {
         type: 'style',
-        section: 'Style',
+        section: '🎨 Style',
       },
       {
         type: 'chore',
-        section: 'Miscellaneous Chores',
+        section: '💼 Miscellaneous Chores',
       },
       {
         type: 'refactor',
-        section: 'Code Refactoring',
+        section: '♻️ Code Refactoring',
       },
       {
         type: 'test',
-        section: 'Tests',
+        section: '🧪 Tests',
       },
       {
         type: 'build',
-        section: 'Build System',
+        section: '⚙️ Build System',
       },
       {
         type: 'ci',
-        section: 'Continuous (Integration|Deployment)',
+        section: '👷 Continuous (Integration|Deployment)',
       },
     ],
   },

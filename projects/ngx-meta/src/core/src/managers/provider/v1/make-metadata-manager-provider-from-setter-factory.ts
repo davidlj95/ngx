@@ -14,7 +14,7 @@ import { MetadataSetterFactory } from '../metadata-setter-factory'
  * See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | manage custom metadata guide} for an example.
  *
  * @deprecated Use {@link provideNgxMetaManager} APIs instead.
- *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more information.
+ *             See {@link https://ngx-meta.dev/migrations/02-manager-provider-apis/ } for more information.
  *
  * @remarks
  *
@@ -54,7 +54,7 @@ export const makeMetadataManagerProviderFromSetterFactory = <T>(
  * Options argument object for {@link makeMetadataManagerProviderFromSetterFactory}.
  *
  * @deprecated Use {@link provideNgxMetaManager} APIs instead.
- *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more information.
+ *             See {@link https://ngx-meta.dev/migrations/02-manager-provider-apis/ } for more information.
  *
  * @public
  */

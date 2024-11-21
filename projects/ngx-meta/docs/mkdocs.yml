@@ -40,6 +40,7 @@ nav:
   - changelog.md
   - Migrations:
       - migrations/01-meta-element-apis.md
+      - migrations/02-manager-provider-apis.md
       - migrations/03-const-to-function-manager-providers.md
   - Misc:
       - misc/example-apps.md

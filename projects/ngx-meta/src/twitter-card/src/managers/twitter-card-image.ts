@@ -11,7 +11,7 @@
  *
  * Provider:
  *
- * {@link TWITTER_CARD_IMAGE_METADATA_PROVIDER}
+ * {@link provideTwitterCardImage}
  *
  * See also:
  *

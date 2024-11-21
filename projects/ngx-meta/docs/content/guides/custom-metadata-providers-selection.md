@@ -22,19 +22,19 @@ In there, you'll see which metadata manager the module provides. For instance, f
 
 ```typescript
 export const provideNgxMetaStandard = (): Provider[] => [
-  STANDARD_TITLE_METADATA_PROVIDER,
-  STANDARD_DESCRIPTION_METADATA_PROVIDER,
+  provideStandardTitle(),
+  provideStandardDescription(),
   // ...
 ]
 ```
 
-The title provider can be easily found by its name: [`STANDARD_TITLE_METADATA_PROVIDER`](ngx-meta.standard_title_metadata_provider.md). Otherwise, look for it in the [API reference](ngx-meta.md). You'll find there that [`STANDARD_TITLE_METADATA_PROVIDER`](ngx-meta.standard_title_metadata_provider.md) manages the [`Standard.title`](ngx-meta.standard.title.md) value which sets the `#!html <title>` element.
+The title provider can be easily found by its name: [`provideStandardTitle`](ngx-meta.providestandardtitle.md). Otherwise, look for it in the [API reference](ngx-meta.md). You'll find there that [`provideStandardTitle`](ngx-meta.providestandardtitle.md) manages the [`Standard.title`](ngx-meta.standard.title.md) value which sets the `#!html <title>` element.
 
 ### In the API reference
 
 You can also directly check out the [API reference `variables` section](ngx-meta.md#variables). In there, you can look for the module name and the `_PROVIDER` suffix.
 
-You can find the [`STANDARD_TITLE_METADATA_PROVIDER`](ngx-meta.standard_title_metadata_provider.md) there too.
+You can find the [`provideStandardTitle`](ngx-meta.providestandardtitle.md) there too.
 
 ## 2. Add it/them
 
@@ -46,7 +46,7 @@ Now that you've found the metadata manager provider you want to use, add it as y
 
     ```title="app.config.ts"
     // ...
-    import {STANDARD_TITLE_METADATA_PROVIDER} from '@davidlj95/ngx-meta/standard'
+    import {provideStandardTitle} from '@davidlj95/ngx-meta/standard'
 
     export const appConfig: ApplicationConfig = {
       // ...
@@ -55,7 +55,7 @@ Now that you've found the metadata manager provider you want to use, add it as y
         provideNgxMetaCore(),
         provideNgxMetaRouting(), // (optional)
         {--provideNgxMetaStandard(),--}
-        {++STANDARD_TITLE_METADATA_PROVIDER,++}
+        {++provideStandardTitle(),++}
         // ...
       ]
     })
@@ -67,7 +67,7 @@ Now that you've found the metadata manager provider you want to use, add it as y
 
     ```title="app.module.ts"
     // ...
-    import {STANDARD_TITLE_METADATA_PROVIDER} from '@davidlj95/ngx-meta/standard'
+    import {provideStandardTitle} from '@davidlj95/ngx-meta/standard'
 
     @NgModule({
       // ...
@@ -76,7 +76,7 @@ Now that you've found the metadata manager provider you want to use, add it as y
         provideNgxMetaCore(),
         provideNgxMetaRouting(), // (optional)
         {--provideNgxMetaStandard(),--}
-        {++STANDARD_TITLE_METADATA_PROVIDER,++}
+        {++provideStandardTitle(),++}
       ]
     })
     export class AppModule {}

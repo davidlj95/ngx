@@ -27,7 +27,7 @@ export interface OpenGraphProfile {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER}
+   * {@link provideOpenGraphProfileFirstName}
    *
    * See also:
    *
@@ -42,7 +42,7 @@ export interface OpenGraphProfile {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER}
+   * {@link provideOpenGraphProfileLastName}
    *
    * See also:
    *
@@ -57,7 +57,7 @@ export interface OpenGraphProfile {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER}
+   * {@link provideOpenGraphProfileUsername}
    *
    * See also:
    *
@@ -78,7 +78,7 @@ export interface OpenGraphProfile {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER}
+   * {@link provideOpenGraphProfileGender}
    *
    * See also:
    *

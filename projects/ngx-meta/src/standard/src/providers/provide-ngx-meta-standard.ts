@@ -1,14 +1,14 @@
 import { Provider } from '@angular/core'
 import {
-  STANDARD_APPLICATION_NAME_METADATA_PROVIDER,
-  STANDARD_AUTHOR_METADATA_PROVIDER,
-  STANDARD_CANONICAL_URL_METADATA_PROVIDER,
-  STANDARD_DESCRIPTION_METADATA_PROVIDER,
-  STANDARD_GENERATOR_METADATA_PROVIDER,
-  STANDARD_KEYWORDS_METADATA_PROVIDER,
-  STANDARD_LOCALE_METADATA_PROVIDER,
-  STANDARD_THEME_COLOR_METADATA_PROVIDER,
-  STANDARD_TITLE_METADATA_PROVIDER,
+  provideStandardApplicationName,
+  provideStandardAuthor,
+  provideStandardCanonicalUrl,
+  provideStandardDescription,
+  provideStandardGenerator,
+  provideStandardKeywords,
+  provideStandardLocale,
+  provideStandardThemeColor,
+  provideStandardTitle,
 } from '../managers'
 
 /**
@@ -23,13 +23,13 @@ import {
  * @public
  */
 export const provideNgxMetaStandard = (): Provider => [
-  STANDARD_TITLE_METADATA_PROVIDER,
-  STANDARD_DESCRIPTION_METADATA_PROVIDER,
-  STANDARD_AUTHOR_METADATA_PROVIDER,
-  STANDARD_KEYWORDS_METADATA_PROVIDER,
-  STANDARD_GENERATOR_METADATA_PROVIDER,
-  STANDARD_APPLICATION_NAME_METADATA_PROVIDER,
-  STANDARD_CANONICAL_URL_METADATA_PROVIDER,
-  STANDARD_LOCALE_METADATA_PROVIDER,
-  STANDARD_THEME_COLOR_METADATA_PROVIDER,
+  provideStandardTitle(),
+  provideStandardDescription(),
+  provideStandardAuthor(),
+  provideStandardKeywords(),
+  provideStandardGenerator(),
+  provideStandardApplicationName(),
+  provideStandardCanonicalUrl(),
+  provideStandardLocale(),
+  provideStandardThemeColor(),
 ]

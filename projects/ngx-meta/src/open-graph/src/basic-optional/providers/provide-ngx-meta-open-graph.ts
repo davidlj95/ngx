@@ -1,12 +1,12 @@
 import { Provider } from '@angular/core'
 import {
-  OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER,
-  OPEN_GRAPH_IMAGE_METADATA_PROVIDER,
-  OPEN_GRAPH_LOCALE_METADATA_PROVIDER,
-  OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER,
-  OPEN_GRAPH_TITLE_METADATA_PROVIDER,
-  OPEN_GRAPH_TYPE_METADATA_PROVIDER,
-  OPEN_GRAPH_URL_METADATA_PROVIDER,
+  provideOpenGraphDescription,
+  provideOpenGraphImage,
+  provideOpenGraphLocale,
+  provideOpenGraphSiteName,
+  provideOpenGraphTitle,
+  provideOpenGraphType,
+  provideOpenGraphUrl,
 } from '../managers'
 
 /**
@@ -21,11 +21,11 @@ import {
  * @public
  */
 export const provideNgxMetaOpenGraph = (): Provider => [
-  OPEN_GRAPH_TITLE_METADATA_PROVIDER,
-  OPEN_GRAPH_TYPE_METADATA_PROVIDER,
-  OPEN_GRAPH_IMAGE_METADATA_PROVIDER,
-  OPEN_GRAPH_URL_METADATA_PROVIDER,
-  OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER,
-  OPEN_GRAPH_LOCALE_METADATA_PROVIDER,
-  OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER,
+  provideOpenGraphTitle(),
+  provideOpenGraphType(),
+  provideOpenGraphImage(),
+  provideOpenGraphUrl(),
+  provideOpenGraphDescription(),
+  provideOpenGraphLocale(),
+  provideOpenGraphSiteName(),
 ]

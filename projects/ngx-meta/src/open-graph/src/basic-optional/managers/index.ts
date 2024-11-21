@@ -1,9 +1,30 @@
-export { OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER } from './open-graph-description-metadata-provider'
-export { OPEN_GRAPH_IMAGE_METADATA_PROVIDER } from './open-graph-image-metadata-provider'
+export {
+  provideOpenGraphDescription,
+  OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER,
+} from './provide-open-graph-description'
+export {
+  provideOpenGraphImage,
+  OPEN_GRAPH_IMAGE_METADATA_PROVIDER,
+} from './provide-open-graph-image'
 export { OpenGraphImage } from './open-graph-image'
-export { OPEN_GRAPH_LOCALE_METADATA_PROVIDER } from './open-graph-locale-metadata-provider'
-export { OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER } from './open-graph-site-name-metadata-provider'
-export { OPEN_GRAPH_TITLE_METADATA_PROVIDER } from './open-graph-title-metadata-provider'
-export { OPEN_GRAPH_TYPE_METADATA_PROVIDER } from './open-graph-type-metadata-provider'
+export {
+  provideOpenGraphLocale,
+  OPEN_GRAPH_LOCALE_METADATA_PROVIDER,
+} from './provide-open-graph-locale'
+export {
+  provideOpenGraphSiteName,
+  OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER,
+} from './provide-open-graph-site-name'
+export {
+  provideOpenGraphTitle,
+  OPEN_GRAPH_TITLE_METADATA_PROVIDER,
+} from './provide-open-graph-title'
+export {
+  provideOpenGraphType,
+  OPEN_GRAPH_TYPE_METADATA_PROVIDER,
+} from './provide-open-graph-type'
 export * from './open-graph-type'
-export { OPEN_GRAPH_URL_METADATA_PROVIDER } from './open-graph-url-metadata-provider'
+export {
+  provideOpenGraphUrl,
+  OPEN_GRAPH_URL_METADATA_PROVIDER,
+} from './provide-open-graph-url'

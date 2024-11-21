@@ -27,7 +27,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_TITLE_METADATA_PROVIDER}
+   * {@link provideStandardTitle}
    *
    * See also:
    *
@@ -56,7 +56,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_DESCRIPTION_METADATA_PROVIDER}
+   * {@link provideStandardDescription}
    *
    * See also:
    *
@@ -78,7 +78,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_AUTHOR_METADATA_PROVIDER}
+   * {@link provideStandardAuthor}
    *
    * See also:
    *
@@ -100,7 +100,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_KEYWORDS_METADATA_PROVIDER}
+   * {@link provideStandardKeywords}
    *
    * See also:
    *
@@ -128,7 +128,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_GENERATOR_METADATA_PROVIDER}
+   * {@link provideStandardGenerator}
    *
    * See also:
    *
@@ -158,7 +158,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_APPLICATION_NAME_METADATA_PROVIDER}
+   * {@link provideStandardApplicationName}
    *
    * See also:
    *
@@ -188,7 +188,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_CANONICAL_URL_METADATA_PROVIDER}
+   * {@link provideStandardCanonicalUrl}
    *
    * See also:
    *
@@ -218,7 +218,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_LOCALE_METADATA_PROVIDER}
+   * {@link provideStandardLocale}
    *
    * See also:
    *
@@ -254,7 +254,7 @@ export interface Standard {
    *
    * Provider:
    *
-   * {@link STANDARD_THEME_COLOR_METADATA_PROVIDER}
+   * {@link provideStandardThemeColor}
    *
    * See also:
    *

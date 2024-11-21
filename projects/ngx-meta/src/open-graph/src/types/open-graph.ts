@@ -21,7 +21,7 @@ export interface OpenGraph {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_TITLE_METADATA_PROVIDER}
+   * {@link provideOpenGraphTitle}
    *
    * See also:
    *
@@ -42,7 +42,7 @@ export interface OpenGraph {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_TYPE_METADATA_PROVIDER}
+   * {@link provideOpenGraphType}
    *
    * See also:
    *
@@ -63,7 +63,7 @@ export interface OpenGraph {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_IMAGE_METADATA_PROVIDER}
+   * {@link provideOpenGraphImage}
    *
    * See also:
    *
@@ -89,7 +89,7 @@ export interface OpenGraph {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_URL_METADATA_PROVIDER}
+   * {@link provideOpenGraphUrl}
    *
    * See also:
    *
@@ -108,7 +108,7 @@ export interface OpenGraph {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER}
+   * {@link provideOpenGraphDescription}
    *
    * See also:
    *
@@ -128,7 +128,7 @@ export interface OpenGraph {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_LOCALE_METADATA_PROVIDER}
+   * {@link provideOpenGraphLocale}
    *
    * See also:
    *
@@ -148,7 +148,7 @@ export interface OpenGraph {
    *
    * Provider:
    *
-   * {@link OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER}
+   * {@link provideOpenGraphSiteName}
    *
    * See also:
    *

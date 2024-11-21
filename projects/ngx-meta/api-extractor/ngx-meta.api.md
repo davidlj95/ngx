@@ -108,7 +108,7 @@ export const _injectMetadataManagers: () => readonly NgxMetaMetadataManager[];
 // @internal
 export const _isDefined: <T>(value: T | null | undefined) => value is T;
 
-// @public
+// @public @deprecated
 export const JSON_LD_METADATA_PROVIDER: Provider;
 
 // @public
@@ -295,16 +295,16 @@ export class NgxMetaStandardModule {
 export class NgxMetaTwitterCardModule {
 }
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_DESCRIPTION_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_IMAGE_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_LOCALE_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER: Provider;
 
 // @public
@@ -313,19 +313,19 @@ export const OPEN_GRAPH_PROFILE_GENDER_FEMALE = "female";
 // @public
 export const OPEN_GRAPH_PROFILE_GENDER_MALE = "male";
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_SITE_NAME_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_TITLE_METADATA_PROVIDER: Provider;
 
 // @public
@@ -334,7 +334,7 @@ export const OPEN_GRAPH_TYPE_ARTICLE = "article";
 // @public
 export const OPEN_GRAPH_TYPE_BOOK = "book";
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_TYPE_METADATA_PROVIDER: Provider;
 
 // @public
@@ -367,7 +367,7 @@ export const OPEN_GRAPH_TYPE_VIDEO_TV_SHOW = "video.tv_show";
 // @public
 export const OPEN_GRAPH_TYPE_WEBSITE = "website";
 
-// @public
+// @public @deprecated
 export const OPEN_GRAPH_URL_METADATA_PROVIDER: Provider;
 
 // @public
@@ -460,6 +460,84 @@ export const provideNgxMetaStandard: () => Provider;
 // @public
 export const provideNgxMetaTwitterCard: () => Provider;
 
+// @public
+export const provideOpenGraphDescription: () => Provider;
+
+// @public
+export const provideOpenGraphImage: () => Provider;
+
+// @public
+export const provideOpenGraphLocale: () => Provider;
+
+// @public
+export const provideOpenGraphProfileFirstName: () => Provider;
+
+// @public
+export const provideOpenGraphProfileGender: () => Provider;
+
+// @public
+export const provideOpenGraphProfileLastName: () => Provider;
+
+// @public
+export const provideOpenGraphProfileUsername: () => Provider;
+
+// @public
+export const provideOpenGraphSiteName: () => Provider;
+
+// @public
+export const provideOpenGraphTitle: () => Provider;
+
+// @public
+export const provideOpenGraphType: () => Provider;
+
+// @public
+export const provideOpenGraphUrl: () => Provider;
+
+// @public
+export const provideStandardApplicationName: () => Provider;
+
+// @public
+export const provideStandardAuthor: () => Provider;
+
+// @public
+export const provideStandardCanonicalUrl: () => Provider;
+
+// @public
+export const provideStandardDescription: () => Provider;
+
+// @public
+export const provideStandardGenerator: () => Provider;
+
+// @public
+export const provideStandardKeywords: () => Provider;
+
+// @public
+export const provideStandardLocale: () => Provider;
+
+// @public
+export const provideStandardThemeColor: () => Provider;
+
+// @public
+export const provideStandardTitle: () => Provider;
+
+// @public
+export const provideTwitterCardCard: () => Provider;
+
+// @public
+export const provideTwitterCardCreator: () => Provider;
+
+// @public
+export const provideTwitterCardDescription: () => Provider;
+
+// @public
+export const provideTwitterCardImage: () => Provider;
+
+// @public
+export const provideTwitterCardSite: () => Provider;
+
+// @public
+export const provideTwitterCardTitle: () => Provider;
+
 // @internal (undocumented)
 export type _RouteMetadataStrategy = () => MetadataValues | undefined;
 
@@ -479,31 +557,31 @@ export interface Standard {
     readonly title?: GlobalMetadata['title'];
 }
 
-// @public
+// @public @deprecated
 export const STANDARD_APPLICATION_NAME_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const STANDARD_AUTHOR_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const STANDARD_CANONICAL_URL_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const STANDARD_DESCRIPTION_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const STANDARD_GENERATOR_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const STANDARD_KEYWORDS_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const STANDARD_LOCALE_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const STANDARD_THEME_COLOR_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const STANDARD_TITLE_METADATA_PROVIDER: Provider;
 
 // @public
@@ -523,22 +601,22 @@ export interface StandardThemeColorMetadataObject {
 // @internal (undocumented)
 type StringKeyOf<T = object> = Extract<keyof T, string>;
 
-// @public
+// @public @deprecated
 export const TWITTER_CARD_CARD_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const TWITTER_CARD_CREATOR_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const TWITTER_CARD_IMAGE_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const TWITTER_CARD_SITE_METADATA_PROVIDER: Provider;
 
-// @public
+// @public @deprecated
 export const TWITTER_CARD_TITLE_METADATA_PROVIDER: Provider;
 
 // @public

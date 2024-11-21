@@ -1,9 +1,9 @@
 import { Provider } from '@angular/core'
 import {
-  OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER,
-  OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER,
-  OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER,
-  OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER,
+  provideOpenGraphProfileFirstName,
+  provideOpenGraphProfileGender,
+  provideOpenGraphProfileLastName,
+  provideOpenGraphProfileUsername,
 } from '../managers'
 
 /**
@@ -18,8 +18,8 @@ import {
  * @public
  */
 export const provideNgxMetaOpenGraphProfile = (): Provider => [
-  OPEN_GRAPH_PROFILE_FIRST_NAME_METADATA_PROVIDER,
-  OPEN_GRAPH_PROFILE_LAST_NAME_METADATA_PROVIDER,
-  OPEN_GRAPH_PROFILE_USERNAME_METADATA_PROVIDER,
-  OPEN_GRAPH_PROFILE_GENDER_METADATA_PROVIDER,
+  provideOpenGraphProfileFirstName(),
+  provideOpenGraphProfileLastName(),
+  provideOpenGraphProfileUsername(),
+  provideOpenGraphProfileGender(),
 ]

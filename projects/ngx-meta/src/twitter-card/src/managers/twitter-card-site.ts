@@ -9,7 +9,7 @@
  *
  * Provider:
  *
- * {@link TWITTER_CARD_SITE_METADATA_PROVIDER}
+ * {@link provideTwitterCardSite}
  *
  * See also:
  *

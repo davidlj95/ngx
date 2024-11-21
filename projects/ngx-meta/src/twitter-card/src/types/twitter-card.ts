@@ -28,7 +28,7 @@ export interface TwitterCard {
    *
    * Provider:
    *
-   * {@link TWITTER_CARD_CARD_METADATA_PROVIDER}
+   * {@link provideTwitterCardCard}
    *
    * See also:
    *
@@ -59,7 +59,7 @@ export interface TwitterCard {
    *
    * Provider:
    *
-   * {@link TWITTER_CARD_DESCRIPTION_METADATA_PROVIDER}
+   * {@link provideTwitterCardDescription}
    *
    * See also:
    *
@@ -80,7 +80,7 @@ export interface TwitterCard {
    *
    * Provider:
    *
-   * {@link TWITTER_CARD_TITLE_METADATA_PROVIDER}
+   * {@link provideTwitterCardTitle}
    *
    * See also:
    *

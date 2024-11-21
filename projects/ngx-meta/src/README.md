@@ -75,3 +75,5 @@ Go deeper by:
 - [**Fine-grained choosing metadata elements**](https://ngx-meta.dev/guides/custom-metadata-providers-selection/) you're interested in. Rest of them won't end up in your bundle
 
 Are you by any chance looking for the [**API reference**](https://ngx-meta.dev/api/ngx-meta/)?
+
+If you see some deprecations and want to fix them, take a look at the **migrations** section in the [docs site](https://ngx-meta.dev)

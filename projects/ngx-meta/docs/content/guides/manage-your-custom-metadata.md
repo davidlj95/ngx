@@ -107,16 +107,9 @@ You can also check a full example at [example standalone app]'s [`provideCustomM
 
 --8<-- "includes/ngx-meta-elements-service.md"
 
-??? tip "Where is the awfully long `makeMetadataManagerProviderFromSetterFactory` function?"
+??? question "Where is the awfully long `makeMetadataManagerProviderFromSetterFactory` function?"
 
-    Well [it's still there](ngx-meta.makemetadatamanagerproviderfromsetterfactory.md).
-    But the one appearing above has been introduced as it's shorter and more developer friendly.
-    If you need, you can still check [this guide when it was using it](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.20/projects/ngx-meta/docs/content/guides/manage-your-custom-metadata.md)
-    Or the [example app file using it](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.20/projects/ngx-meta/example-apps/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)
-
-    However, beware that those APIs are now deprecated and will be removed in the future. It's recommended to upgrade to the new one described in the guide as soon as you can.
-
-    Also, built-in modules are using the new one. And if you use this, then two functions will end up in your bundle that do the same. So some extra unneeded bytes in there.
+    It has been deprecated. Yes, long name is one of the reasons. See the [migration guide](02-manager-provider-apis.md) for more information about how to migrate and more reasons for its deprecation.
 
 ### Using a class
 

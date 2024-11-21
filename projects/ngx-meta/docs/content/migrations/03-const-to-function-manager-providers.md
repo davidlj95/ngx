@@ -91,4 +91,14 @@ You can find a full list [in the schematics testing support file](https://github
 
 Finally, the [custom metadata providers selection guide](custom-metadata-providers-selection.md) has been updated with new usages. But you can check [an older version](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.31/projects/ngx-meta/docs/content/guides/custom-metadata-providers-selection.md) if you need to.
 
+## Notices
+
+It's recommended to upgrade to new APIs to reduce bundle size. As internally, new APIs are used. So if you consume the deprecated APIs in your project, you're adding two API sets to the bundle that achieve the same purpose.
+
+## Deprecated references
+
+If you still need to see information about deprecated APIs, check out:
+
+- [Custom metadata providers selection guide using deprecated APIs](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.34/projects/ngx-meta/docs/content/guides/custom-metadata-providers-selection.md)
+
 [^1]: See the [PR introducing changes](https://github.com/davidlj95/ngx/pull/1004) for details about the extra bundle size increase.

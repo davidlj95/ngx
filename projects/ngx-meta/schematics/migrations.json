@@ -1,10 +1,10 @@
 {
   "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "tree-shakeable-manager-providers": {
+    "const-to-function-manager-providers": {
       "version": "1.0.0-beta.32",
-      "description": "Changes non tree-shakeable built-in metadata manager providers by tree-shakeable ones. See https://github.com/davidlj95/ngx/pull/1004",
-      "factory": "./migrations/tree-shakeable-manager-providers/index#migrate"
+      "description": "Changes `const`-based metadata manager providers by `function`-based ones for tree shaking and extensibility purposes. See https://ngx-meta.dev/migrations/const-to-function-manager-providers/",
+      "factory": "./migrations/const-to-function-manager-providers/index#migrate"
     }
   }
 }

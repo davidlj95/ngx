@@ -44,7 +44,7 @@ describe('Tree shakeable manager providers migration', () => {
   })
 
   const runMigration = () =>
-    runner.runSchematic('tree-shakeable-manager-providers', {}, tree)
+    runner.runSchematic('const-to-function-manager-providers', {}, tree)
 
   it('should replace many old identifier imports and usages for new ones', async () => {
     tree.create(

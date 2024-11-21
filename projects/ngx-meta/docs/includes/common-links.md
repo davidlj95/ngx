@@ -11,6 +11,7 @@
 [route's data]: https://angular.dev/api/router/Route#data
 [typescript-satisfies]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator
 [get started setup]: /get-started/#2-setup
+[built-in metadata module]: /built-in-modules/
 [standard module]: /built-in-modules/standard/
 [Open Graph module]: /built-in-modules/open-graph/
 [Twitter Cards module]: /built-in-modules/twitter-cards/

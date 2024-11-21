@@ -39,7 +39,7 @@ nav:
   - API Reference: api/ngx-meta.md
   - changelog.md
   - Migrations:
-      - migrations/const-to-function-manager-providers.md
+      - migrations/03-const-to-function-manager-providers.md
   - Misc:
       - misc/example-apps.md
       - misc/bundle-size.md

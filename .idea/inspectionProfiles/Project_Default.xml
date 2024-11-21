@@ -437,6 +437,16 @@
         </option>
         <option name="myCustomValuesEnabled" value="true" />
       </scope>
+      <scope name="ngx-meta doc contents" level="WARNING" enabled="true">
+        <option name="myValues">
+          <value>
+            <list size="1">
+              <item index="0" class="java.lang.String" itemvalue="markdown" />
+            </list>
+          </value>
+        </option>
+        <option name="myCustomValuesEnabled" value="true" />
+      </scope>
       <option name="myValues">
         <value>
           <list size="0" />

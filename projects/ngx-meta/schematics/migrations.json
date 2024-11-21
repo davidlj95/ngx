@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "const-to-function-manager-providers": {
+      "version": "1.0.0-beta.35",
+      "description": "Changes `const`-based metadata manager providers by `function`-based ones for tree shaking and extensibility purposes. See https://ngx-meta.dev/migrations/const-to-function-manager-providers/",
+      "factory": "./migrations/const-to-function-manager-providers/index#migrate"
+    }
+  }
+}

@@ -4,8 +4,9 @@
   "description": "ngx-meta schematics infra",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "rsync -R **/schema.json collection.json ../dist/schematics",
-    "test": "jest"
+    "postbuild": "rsync -R **/schema.json collection.json migrations.json ../dist/schematics",
+    "test": "jest",
+    "watch": "pnpm run build --watch"
   },
   "packageManager": "pnpm@9.12.3"
 }

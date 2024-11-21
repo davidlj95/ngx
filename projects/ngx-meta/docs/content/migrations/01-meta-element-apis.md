@@ -196,4 +196,17 @@ metaService.set(
 
 <!-- prettier-ignore-end -->
 
+For a detailed explanation of new APIs, visit its [API reference](ngx-meta.ngxmetaelementsservice.set.md)
+
+## Notices
+
+It's recommended to upgrade to new APIs to reduce bundle size. As internally, new APIs are used. So if you consume the deprecated APIs in your project, you're adding two API sets to the bundle that achieve the same purpose.
+
+## Deprecated references
+
+If you still need to see information about deprecated APIs, check out:
+
+- [Custom metadata guide using deprecated APIs](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.16/projects/ngx-meta/docs/content/guides/manage-your-custom-metadata.md)
+- [Example app file using deprecated APIs](https://github.com/davidlj95/ngx/blob/ngx-meta-v1.0.0-beta.16/projects/ngx-meta/example-apps/templates/standalone/src/app/meta-late-loaded/provide-custom-metadata-manager.ts)
+
 [^1]: For more details, check out the [deprecation PR](https://github.com/davidlj95/ngx/pull/955)

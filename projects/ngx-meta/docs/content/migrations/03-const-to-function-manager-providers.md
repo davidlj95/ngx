@@ -33,7 +33,7 @@ Until `1.0.0-beta.35`, individual metadata manager providers were `const`s that 
 However, the way these tokens are created means they aren't tree-shakeable (see [GitHub issue] for more details about why).
 Therefore, defeating its purpose of reducing the bundle size by just using the ones you need. All providers from a [built-in metadata module] would be included in the bundle size even if just one is used.
 
-### Options
+### Solution
 
 If using [pure annotations](https://terser.org/docs/miscellaneous/#annotations) , `const`-based providers can be tree-shaken. But it's easy to forget to add them hence resulting in non-tree shakeable providers. Some tests could be added to enforce that, but it's more infra to maintain.
 

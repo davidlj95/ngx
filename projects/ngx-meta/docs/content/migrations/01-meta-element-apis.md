@@ -4,7 +4,7 @@
 
 APIs to manage `<meta>` elements on the page changed to improve development experience. [`NgxMetaMetaService`](ngx-meta.ngxmetametaservice.md) and related APIs are deprecated in favour of [`NgxMetaElementsService`](ngx-meta.ngxmetaelementsservice.md) and related APIs
 
-See [migration](#migration) for more info about running automatic migrations or migrating manually.
+See [migration](#migration) for more info about how to migrate.
 
 ## Summary
 
@@ -59,7 +59,7 @@ Following set of APIs are deprecated[^1]:
 - [`NgxMetaMetaMetaDefinition`](ngx-meta.ngxmetametadefinition.md)
   - [`makeKeyValMetaDefinition`](ngx-meta.makekeyvalmetadefinition.md)
   - [`makeComposedKeyValMetaDefinition`](ngx-meta.makecomposedkeyvalmetadefinition.md)
-    - [`MakeComopsedKeyValMetaDefinitionOptions`](ngx-meta.makecomposedkeyvalmetadefinitionoptions.md)
+    - [`MakeComposedKeyValMetaDefinitionOptions`](ngx-meta.makecomposedkeyvalmetadefinitionoptions.md)
 - [`NgxMetaMetaContent`](ngx-meta.ngxmetametacontent.md)
 
 And the following set of APIs are introduced:

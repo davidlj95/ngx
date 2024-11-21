@@ -33,6 +33,11 @@ env:
 
 jobs:
   semantic-release:
+    # Skip release based on commit message.
+    # Sometimes can be useful like shipping a deprecation with its migration schematics, but having each of those
+    # in a separate PR
+    # https://stackoverflow.com/a/59775665/3263250
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip release]')"
     name: Semantic Release
     runs-on: ubuntu-latest
     #👇 Bit more time here, as if many things to release, GitHub API may

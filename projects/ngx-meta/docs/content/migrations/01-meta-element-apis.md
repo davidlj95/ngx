@@ -83,6 +83,8 @@ No automatic migration via schematics are available for this change. Manual migr
 
 Here you have some examples of how the same thing can be achieved using old and new APIs:
 
+<!-- prettier-ignore-start -->
+
 #### Set a single `<meta>` element
 
 Let's set a `<meta name="description">` element:
@@ -91,12 +93,18 @@ Let's set a `<meta name="description">` element:
 
 ```typescript title="Before"
 const metaService = inject(NgxMetaMetaService)
-metaService.set(makeKeyValMetaDefinition('description'), 'foo')
+metaService.set(
+  makeKeyValMetaDefinition('description'), 
+  'foo'
+)
 ```
 
 ```typescript title="After"
 const metaService = inject(NgxMetaElementsService)
-metaService.set(withNameAttribute('description'), withContentAttribute('foo'))
+metaService.set(
+  withNameAttribute('description'), 
+  withContentAttribute('foo')
+)
 ```
 
 </div>
@@ -122,7 +130,10 @@ metaService.set(
   undefined, // or null or empty array
 )
 // or also just
-metaService.set(withNameAttribute('description'), withContentAttribute(undefined))
+metaService.set(
+  withNameAttribute('description'), 
+  withContentAttribute(undefined)
+)
 ```
 
 </div>
@@ -135,12 +146,24 @@ Like a `<meta name="theme-color">` with a `media` attribute:
 
 ```typescript title="Before"
 const metaService = inject(NgxMetaMetaService)
-metaService.set(makeKeyValMetaDefinition('theme-color', { extras: { media: '(prefers-color-scheme: dark)' } }), 'darkblue')
+metaService.set(
+  makeKeyValMetaDefinition(
+    'theme-color', 
+    { extras: { media: '(prefers-color-scheme: dark)' } }
+  ), 
+  'darkblue'
+)
 ```
 
 ```typescript title="After"
 const metaService = inject(NgxMetaElementsService)
-metaService.set(withNameAttribute('theme-color'), withContentAttribute('darkblue', { media: '(prefers-color-scheme: dark)' }))
+metaService.set(
+  withNameAttribute('theme-color'), 
+  withContentAttribute(
+    'darkblue',
+    { media: '(prefers-color-scheme: dark)' }
+  )
+)
 ```
 
 </div>
@@ -157,9 +180,20 @@ Like multiple `<meta name="theme-color">`:
 
 ```typescript title="After"
 const metaService = inject(NgxMetaElementsService)
-metaService.set(withNameAttribute('theme-color'), [withContentAttribute('darkblue', { media: '(prefers-color-scheme: dark)' }), withContentAttribute('lightblue')])
+metaService.set(
+  withNameAttribute('theme-color'), 
+  [
+    withContentAttribute(
+      'darkblue', 
+      { media: '(prefers-color-scheme: dark)' }
+    ),
+    withContentAttribute('lightblue')
+  ]
+)
 ```
 
 </div>
+
+<!-- prettier-ignore-end -->
 
 [^1]: For more details, check out the [deprecation PR](https://github.com/davidlj95/ngx/pull/955)

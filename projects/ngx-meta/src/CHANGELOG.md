@@ -1,3 +1,35 @@
+## [`ngx-meta` v1.0.0-beta.35](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.34...ngx-meta-v1.0.0-beta.35) (2024-11-21)
+
+### 🚀 Features
+
+- add function-based manager providers [skip release] ([#1004](https://github.com/davidlj95/ngx/issues/1004)) ([2276c9f](https://github.com/davidlj95/ngx/commit/2276c9f246cfce9411ed2ab32a4713132696c8f3))
+- add migration schematic for function-based providers ([#1005](https://github.com/davidlj95/ngx/issues/1005)) ([d9ad305](https://github.com/davidlj95/ngx/commit/d9ad305acdedec87bacd669d5dbe8eac8e4a5472))
+
+### 📚 Documentation
+
+- add migration guide for const to function manager providers ([#1013](https://github.com/davidlj95/ngx/issues/1013)) ([9760930](https://github.com/davidlj95/ngx/commit/9760930bbd9d0eca4b6f42c73a14520edc99c032))
+
+### 💼 Miscellaneous Chores
+
+- add emojis to CHANGELOG [skip ci] ([8cb007b](https://github.com/davidlj95/ngx/commit/8cb007b34a42d3f01b3cb53255b5164b0da25ce8))
+- **release:** update CHANGELOG.md ([#1044](https://github.com/davidlj95/ngx/issues/1044)) ([ff46452](https://github.com/davidlj95/ngx/commit/ff46452e4b1a9818960c8d94905f78f338cbf368))
+- remove alpha state comment from elements service ([aff8234](https://github.com/davidlj95/ngx/commit/aff8234017a6b3f25d1a652c29b87ad9a507b487))
+
+### ♻️ Code Refactoring
+
+- return generic `Provider` type for providers ([#1045](https://github.com/davidlj95/ngx/issues/1045)) ([d7a8f77](https://github.com/davidlj95/ngx/commit/d7a8f777e17ea7d53283ff7f2c0c10d1a94e3d44))
+
+### ⚙️ Build System
+
+- **deps:** bump cross-spawn from 7.0.3 to 7.0.6 ([#1041](https://github.com/davidlj95/ngx/issues/1041)) ([6d6eb81](https://github.com/davidlj95/ngx/commit/6d6eb81cc1f6852bbe5d5fc6ff06540ed70e9df5))
+- **deps:** bump cross-spawn in /projects/ngx-meta/example-apps ([#1046](https://github.com/davidlj95/ngx/issues/1046)) ([665c741](https://github.com/davidlj95/ngx/commit/665c741a8e4d5fdfae20b5b6a862842dbbcf0360))
+- **ide:** fix mistake in tsconfig solution file [skip ci] ([6f6961a](https://github.com/davidlj95/ngx/commit/6f6961a0e4553631cc503849bd3023b39a6e57fe))
+
+### 👷 Continuous (Integration|Deployment)
+
+- allow to [skip release] based on commit msg ([2a71abc](https://github.com/davidlj95/ngx/commit/2a71abce01eefc37827cd44f8ab8632e72471b7f))
+- manually trigger a release ([2c5649e](https://github.com/davidlj95/ngx/commit/2c5649e7dba8ed29b0649fc1b61c606678b36bc1))
+
 ## [`ngx-meta` v1.0.0-beta.34](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.33...ngx-meta-v1.0.0-beta.34) (2024-11-20)
 
 ### Performance Improvements

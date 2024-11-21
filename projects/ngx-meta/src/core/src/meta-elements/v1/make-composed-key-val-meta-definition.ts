@@ -28,7 +28,7 @@ import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
  * ```
  *
  * @deprecated Use {@link NgxMetaElementsService} APIs instead.
- *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
+ *             See {@link https://ngx-meta.dev/migrations/01-meta-element-apis | migration guide} for more info
  *
  * @param names - Names to create they key name
  * @param options - Options object
@@ -45,7 +45,7 @@ export const makeComposedKeyValMetaDefinition = (
  * Options argument object for {@link makeComposedKeyValMetaDefinition}
  *
  * @deprecated Use {@link NgxMetaElementsService} APIs instead.
- *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
+ *             See {@link https://ngx-meta.dev/migrations/01-meta-element-apis | migration guide} for more info
  *
  * @public
  */

@@ -11,7 +11,7 @@ import { NgxMetaMetaContent } from './ngx-meta-meta-content'
  * Uses Angular {@link https://angular.dev/api/platform-browser/Meta | Meta} APIs under the hood.
  *
  * @deprecated Use {@link NgxMetaElementsService} APIs instead.
- *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
+ *             See {@link https://ngx-meta.dev/migrations/01-meta-element-apis | migration guide} for more info
  *
  * @public
  */
@@ -27,7 +27,7 @@ export class NgxMetaMetaService {
    * The element is created with the provided content. If no content is given, element is removed.
    *
    * @deprecated Use {@link NgxMetaElementsService} APIs instead.
-   *             See {@link https://ngx-meta.dev/guides/manage-your-custom-metadata/ | custom metadata guide} for more info
+   *             See {@link https://ngx-meta.dev/migrations/01-meta-element-apis | migration guide} for more info
    *
    * @param definition - `<meta>` element to create, update or remove
    * @param content - Content value to create or update the `<meta>` element.

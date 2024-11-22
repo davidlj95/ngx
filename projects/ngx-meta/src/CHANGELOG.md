@@ -1,3 +1,24 @@
+## [`ngx-meta` v1.0.0-beta.36](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.35...ngx-meta-v1.0.0-beta.36) (2024-11-22)
+
+### 🚀 Features
+
+- add support for Angular v19 ([#1052](https://github.com/davidlj95/ngx/issues/1052)) ([898152e](https://github.com/davidlj95/ngx/commit/898152e9672f5cb1bbd160cbb2f1c156036181c2))
+
+### 📚 Documentation
+
+- add migration doc for metadata manager provider APIs ([#1049](https://github.com/davidlj95/ngx/issues/1049)) ([875e5fb](https://github.com/davidlj95/ngx/commit/875e5fbc60d8858418369cf16e79ab89a94be0ea))
+- add migration document for meta element APIs ([#1048](https://github.com/davidlj95/ngx/issues/1048)) ([110d2ef](https://github.com/davidlj95/ngx/commit/110d2efa0bbd005907b3aeafcb18248691f3c1d1))
+- add prefix to migration docs files to sort them ([a8052bf](https://github.com/davidlj95/ngx/commit/a8052bf4c7a95a9f3274cabe35aff5485f256fa4))
+- update docs to point to migration docs ([#1050](https://github.com/davidlj95/ngx/issues/1050)) ([58c06d3](https://github.com/davidlj95/ngx/commit/58c06d38ae75e9010153e90e567657ba3bdfc2d0))
+
+### 💼 Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#1047](https://github.com/davidlj95/ngx/issues/1047)) ([538a038](https://github.com/davidlj95/ngx/commit/538a0387c607f37f1d6c18cc94881c1c9be999af))
+
+### ⚙️ Build System
+
+- ensure all scripts are removed when testing SSR ([#1051](https://github.com/davidlj95/ngx/issues/1051)) ([dc052a4](https://github.com/davidlj95/ngx/commit/dc052a4432ebeab176c442ad1109a525ee4fc619))
+
 ## [`ngx-meta` v1.0.0-beta.35](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.34...ngx-meta-v1.0.0-beta.35) (2024-11-21)
 
 ### 🚀 Features

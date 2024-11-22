@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/example-apps/v18: create example app" type="NodeJSConfigurationType" application-parameters="v18" path-to-js-file="projects/ngx-meta/example-apps/dist/create-example-app.js" working-dir="$PROJECT_DIR$">
-    <method v="2" />
-  </configuration>
-</component>

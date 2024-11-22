@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 import { ROUTES } from '../fixtures/routes'
 import { JSON_LD_MIME } from './json-ld'
+import { CyHttpMessages } from 'cypress/types/net-stubbing'
 
 Cypress.Commands.add('getMeta', (name) => {
   cy.get(`meta[name="${name}"]`)
@@ -28,10 +29,12 @@ Cypress.Commands.add('goToRootPage', () => {
   cy.location('pathname').should('eq', ROUTES.root.path)
 })
 
-const HTML_SCRIPTS_BUT_JSON_LD = new RegExp(
-  `<script(?!\\s*type="${JSON_LD_MIME.replace('+', '\\+')}")[^<]*</script>`,
+const HTML_SCRIPTS_REGEXP = /<script\b[^>]*>([\s\S]*?)<\/script>/gi
+const JSON_LD_SCRIPT_REGEXP = new RegExp(
+  `<script\\s+type="${JSON_LD_MIME.replace('+', '\\+')}">(.*?)</script>`,
   'gi',
 )
+
 /**
  * Intercepts URL(s) and modifies the response to remove `<script>` tags in it.
  * This way we simulate no JavaScript being rendered on the client
@@ -48,8 +51,14 @@ const HTML_SCRIPTS_BUT_JSON_LD = new RegExp(
  */
 Cypress.Commands.add('simulateSSRForRequest', (url) => {
   cy.intercept(url, (req) => {
-    req.continue((res) => {
-      res.body = res.body.replace(HTML_SCRIPTS_BUT_JSON_LD, '')
+    req.continue((res: CyHttpMessages.IncomingHttpResponse<string>) => {
+      const scripts = res.body.matchAll(HTML_SCRIPTS_REGEXP)
+      for (const matchesArray of scripts) {
+        const [script] = matchesArray
+        if (!script.match(JSON_LD_SCRIPT_REGEXP)) {
+          res.body = res.body.replace(script, '')
+        }
+      }
       res.send()
     })
   })

@@ -1,6 +1,6 @@
 ![<ngx-meta/> for Angular](../docs/content/images/logo.png)
 
-[![Angular](https://img.shields.io/badge/Works_with-Angular_v15--v18-f11653?logo=angular&logoColor=white&link=https%3A%2F%2Fangular.dev%2F)](https://angular.dev/)
+[![Angular](https://img.shields.io/badge/Works_with-Angular_v15--v19-f11653?logo=angular&logoColor=white&link=https%3A%2F%2Fangular.dev%2F)](https://angular.dev/)
 [![Supports Angular SSR/Universal](https://custom-icon-badges.demolab.com/badge/Supports-Angular_SSR%2FUniversal-blue.svg?logo=angular-universal&link=https%3A%2F%2Fangular.dev%2Fguide%2Fssr)][SSR]
 
 [![NPM Downloads](https://img.shields.io/npm/dt/%40davidlj95%2Fngx-meta?logo=npm&label=NPM%20downloads&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40davidlj95%2Fngx-meta)](https://www.npmjs.com/package/@davidlj95/ngx-meta)

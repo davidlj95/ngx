@@ -58,7 +58,7 @@
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       automerge: true,
     },
-    // Angular v18
+    // Angular version installed
     {
       matchDepNames: ['@angular{/,}**'],
       matchFileNames: ['package.json'],
@@ -85,6 +85,20 @@
       ],
       matchDepNames: ['v17'],
       allowedVersions: '^17',
+    },
+    {
+      matchFileNames: [
+        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+      ],
+      matchDepNames: ['v18'],
+      allowedVersions: '^18',
+    },
+    {
+      matchFileNames: [
+        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+      ],
+      matchDepNames: ['v19'],
+      allowedVersions: '^19',
     },
     // API Documenter to use Markdown tables
     // Watching issue to see if we can upgrade when fixed

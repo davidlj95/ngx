@@ -17,7 +17,7 @@ Actually, a series of E2E tests are in place to ensure support for SSR and hydra
 
 ### 🤝 Compatibility with [Angular actively supported versions]
 
-Right now being Angular v16, v17 and v18. Update from an Angular version to another when you're ready: this library won't be an issue! Latest version will be compatible with all [Angular actively supported versions]. [There are some E2E tests to ensure that indeed][E2E tests]
+Right now being Angular v17, v18 and v19. Update from an Angular version to another when you're ready: this library won't be an issue! Latest version will be compatible with all [Angular actively supported versions]. [There are some E2E tests to ensure that indeed][E2E tests]
 
 !!! info "Older versions may be supported"
 

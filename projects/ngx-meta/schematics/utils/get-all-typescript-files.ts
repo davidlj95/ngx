@@ -22,6 +22,8 @@ export function* getAllTypescriptFiles(
     yield [filePath, sourceFile]
   }
 }
+
+/** @visibleForTesting **/
 export type GetAllTypescriptFilesOptions = Partial<{
   contentFilter: (content: string) => boolean
 }>

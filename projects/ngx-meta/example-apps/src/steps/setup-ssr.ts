@@ -4,8 +4,6 @@ import { execa, Log } from '../tools/index.js'
 import { writeFile } from 'fs/promises'
 import { join } from 'path'
 
-export const NPMRC_FILENAME = '.npmrc'
-
 export async function setupSsr(opts: {
   cliBinary: string
   appDir: string
@@ -42,3 +40,5 @@ export async function setupSsr(opts: {
     cwd: opts.appDir,
   })
 }
+
+const NPMRC_FILENAME = '.npmrc'

@@ -2,7 +2,9 @@ import { InjectionToken } from '@angular/core'
 import { _formatDevMessage } from '../messaging'
 import { MODULE_NAME } from '../module-name'
 
+/** @visibleForTesting */
 export const INJECTION_TOKENS = new Map<string, InjectionToken<unknown>>()
+/** @visibleForTesting */
 export const INJECTION_TOKEN_FACTORIES = new Map<string, () => unknown>()
 
 /**

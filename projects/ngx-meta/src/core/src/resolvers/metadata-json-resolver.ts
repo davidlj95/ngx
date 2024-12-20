@@ -42,6 +42,7 @@ export const metadataJsonResolver: _LazyInjectionToken<
     },
   )
 
+/** @visibleForTesting */
 export type MetadataJsonResolver = (
   values: MetadataValues | undefined,
   resolverOptions: MetadataResolverOptions,

@@ -7,16 +7,13 @@ import {
 import { TwitterCard, TwitterCardMetadata } from '../types'
 import { withTwitterCardNameAttribute } from './with-twitter-card-name-attribute'
 
-export const TWITTER_CARD_KEY =
-  'twitterCard' satisfies keyof TwitterCardMetadata
-
 export const provideTwitterCardManager = <Key extends keyof TwitterCard>(
   key: Key,
   ...options: readonly _ProvideNgxMetaModuleManagerOptions<TwitterCard[Key]>[]
 ) =>
   _provideNgxMetaModuleManager<TwitterCard, Key>(
     key,
-    [TWITTER_CARD_KEY],
+    ['twitterCard' satisfies keyof TwitterCardMetadata],
     withOptions(
       _withModuleManagerNameAttribute(withTwitterCardNameAttribute(key)),
       ...options,

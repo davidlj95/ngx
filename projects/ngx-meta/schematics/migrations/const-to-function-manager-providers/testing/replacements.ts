@@ -1,4 +1,4 @@
-export class ModuleReplacements {
+class ModuleReplacements {
   constructor(public readonly identifierReplacements: Record<string, string>) {}
 
   get oldIdentifiersLines() {

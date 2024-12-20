@@ -48,4 +48,6 @@ export const routerListener = () =>
       ngOnDestroy: () => subscription?.unsubscribe(),
     }
   })
+
+/** @visibleForTesting */
 export type RouterListener = { listen: () => void } & OnDestroy

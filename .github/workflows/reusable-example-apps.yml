@@ -125,7 +125,7 @@ jobs:
           pnpm run create-example-app ${{ matrix.cli-version-alias }}
           --tmp-dir=${{ runner.temp }}
       - name: Build example app
-        run: pnpm ci:build # includes SSR and source maps
+        run: pnpm run ci:build # includes SSR and source maps
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
         # 👇 We can't do just `pnpm prune --prod` or `pnpm i --prod`
         #    GitHub Actions `actions/upload-artifact` doesn't like symlinks

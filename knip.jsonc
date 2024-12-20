@@ -36,6 +36,19 @@
     },
     "./projects/ngx-meta/e2e": {
       "project": ["**/*.ts"],
+      "entry": [
+        //👇 Due to Cypress config not read (see below)
+        "cypress.config.ts",
+        "cypress/support/coverage.ts",
+      ],
+      // 👇 Disable reading config to avoid installing Cypress when running knip in CI/CD
+      "cypress": {
+        "config": [],
+      },
+      "ignoreBinaries": [
+        // 👇 Unlisted in CI/CD: because Cypress not installed
+        "cypress",
+      ],
       "ignoreDependencies": [
         // 👇 Used in homonym shell script
         "start-server-and-test",

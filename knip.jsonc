@@ -1,0 +1,84 @@
+{
+  "$schema": "node_modules/knip/schema.json",
+  "workspaces": {
+    ".": {
+      "project": [],
+      "entry": ["dts-config.js"],
+      "ignore": [
+        // 👇 Can't ignore "projects" being imported when shouldn't be
+        "jest.config.js",
+        // 👇 Unresolved: referenced "types". As they need to be resolved taking into account `typeRoots`
+        "projects/ngx-meta/e2e/tsconfig.json",
+        "projects/ngx-meta/src/tsconfig.lib.json",
+      ],
+      "ignoreDependencies": [
+        // 👇 Unused: used in post-build shell script
+        "dts-bundle-generator",
+        // 👇 Unlisted: Needed by semantic release https://github.com/semantic-release/commit-analyzer
+        "conventional-changelog-conventionalcommits",
+        // 👇 Unresolved: Not hoisted by pnpm, but they're there. Added due to Semantic Release plugin
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/github",
+        "@semantic-release/npm",
+        "@semantic-release/release-notes-generator",
+        // 👇 Unresolved: Not hoisted by pnpm, but it's there due to `angular-esbuild` dep
+        "@angular-eslint/builder",
+        // 👇 Unlisted: Manually hoisted by pnpm, but not specified in package.json
+        "@eslint/js",
+        // 👇 Unused: added by Angular CLI by default
+        "@angular/compiler",
+        "@angular/platform-browser-dynamic",
+        "@angular/router",
+        // actually used, but mistakenly from peer dep
+        // 👇 Unused: will be fixed soon when Knip tracks polyfills
+        "zone.js",
+      ],
+    },
+    "./projects/ngx-meta/e2e": {
+      "project": ["**/*.ts"],
+      "entry": [
+        //👇 Due to Cypress config not read (see below)
+        "cypress.config.ts",
+        "cypress/support/coverage.ts",
+      ],
+      // 👇 Disable reading config to avoid installing Cypress when running knip in CI/CD
+      "cypress": {
+        "config": [],
+      },
+      "ignoreBinaries": [
+        // 👇 Unlisted in CI/CD: because Cypress not installed
+        "cypress",
+      ],
+      "ignoreDependencies": [
+        // 👇 Used in homonym shell script
+        "start-server-and-test",
+        // 👇 Seems it's needed by Cypress https://github.com/davidlj95/ngx/pull/679
+        "tslib",
+      ],
+    },
+    "./projects/ngx-meta/example-apps": {
+      "project": ["src/**/*.ts"],
+      "entry": ["src/create-example-app.ts"],
+    },
+    "./projects/ngx-meta/schematics": {
+      "project": ["**/*.ts!", "!**/testing/**/*.ts!"],
+      "entry": [
+        "ng-add/index.ts!",
+        "migrations/const-to-function-manager-providers/index.ts!",
+      ],
+      "ignore": ["external-utils/**/*.ts"],
+      "ignoreBinaries": ["rsync"],
+    },
+    "./projects/ngx-meta/src": {
+      "project": ["**/*.ts!"],
+      "entry": ["all-entry-points.ts!", "index.ts!"],
+      "ignoreDependencies": [
+        // 👇 Unused: As recommended to include in Angular Package Format v10+
+        //    https://angular.dev/tools/libraries/angular-package-format#tslib
+        "tslib",
+        // 👇 Referenced optional peerDep: If not using "router" entrypoint, it's fine
+        "@angular/router",
+      ],
+    },
+  },
+}

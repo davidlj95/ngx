@@ -51,3 +51,15 @@ jobs:
             --from ${{ github.event.pull_request.base.sha }} \
             --to ${{ github.event.pull_request.head.sha }} \
             --verbose
+
+  unused:
+    name: Unused
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Run
+        run: pnpm run lint:unused

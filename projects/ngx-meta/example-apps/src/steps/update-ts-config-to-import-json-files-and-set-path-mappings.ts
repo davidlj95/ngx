@@ -5,8 +5,6 @@ import { join } from 'path'
 import { writeFile } from 'fs/promises'
 import { jsonToString } from '../utils/index.js'
 
-export const RELATIVE_E2E_DIR_FROM_APP_DIR = join('..', '..', '..', 'e2e')
-
 export async function updateTsConfigToImportJsonFilesAndSetPathMappings(
   appDir: string,
 ) {
@@ -37,3 +35,5 @@ export async function updateTsConfigToImportJsonFilesAndSetPathMappings(
   }
   await writeFile(configFileName, jsonToString(config.raw))
 }
+
+const RELATIVE_E2E_DIR_FROM_APP_DIR = join('..', '..', '..', 'e2e')

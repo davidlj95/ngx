@@ -33,6 +33,12 @@
         // 👇 Unused: will be fixed soon when Knip tracks polyfills
         "zone.js",
       ],
+      "ignoreBinaries": [
+        //👇 Unlisted: appeared in version 5.42.0
+        "commitlint",
+        "semantic-release",
+        "lint-staged",
+      ],
     },
     "./projects/ngx-meta/e2e": {
       "project": ["**/*.ts"],
@@ -67,7 +73,6 @@
         "migrations/const-to-function-manager-providers/index.ts!",
       ],
       "ignore": ["external-utils/**/*.ts"],
-      "ignoreBinaries": ["rsync"],
     },
     "./projects/ngx-meta/src": {
       "project": ["**/*.ts!"],

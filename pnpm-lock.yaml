@@ -148,8 +148,8 @@ importers:
         specifier: 15.3.0
         version: 15.3.0
       ng-mocks:
-        specifier: 14.13.1
-        version: 14.13.1(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@angular/forms@18.2.10(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.10(@angular/animations@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))(@angular/platform-browser@18.2.10(@angular/animations@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))
+        specifier: 14.13.2
+        version: 14.13.2(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@angular/forms@18.2.10(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.10(@angular/animations@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))(@angular/platform-browser@18.2.10(@angular/animations@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))
       ng-packagr:
         specifier: 18.2.1
         version: 18.2.1(@angular/compiler-cli@18.2.10(@angular/compiler@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(typescript@5.4.5))(tslib@2.7.0)(typescript@5.4.5)
@@ -4959,13 +4959,13 @@ packages:
   nerf-dart@1.0.0:
     resolution: {integrity: sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==}
 
-  ng-mocks@14.13.1:
-    resolution: {integrity: sha512-eyfnjXeC108SqVD09i/cBwCpKkK0JjBoAg8jp7oQS2HS081K3WJTttFpgLGeLDYKmZsZ6nYpI+HHNQ3OksaJ7A==}
+  ng-mocks@14.13.2:
+    resolution: {integrity: sha512-ItAB72Pc0uznL1j4TPsFp1wehhitVp7DARkc67aafeIk1FDgwnAZvzJwntMnIp/IWMSbzrEQ6kl3cc5euX1NRA==}
     peerDependencies:
-      '@angular/common': 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17 || 18.0.0-alpha - 18
-      '@angular/core': 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17 || 18.0.0-alpha - 18
-      '@angular/forms': 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17 || 18.0.0-alpha - 18
-      '@angular/platform-browser': 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17 || 18.0.0-alpha - 18
+      '@angular/common': 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17 || 18.0.0-alpha - 18 || 19.0.0-alpha - 19
+      '@angular/core': 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17 || 18.0.0-alpha - 18 || 19.0.0-alpha - 19
+      '@angular/forms': 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17 || 18.0.0-alpha - 18 || 19.0.0-alpha - 19
+      '@angular/platform-browser': 5.0.0-alpha - 5 || 6.0.0-alpha - 6 || 7.0.0-alpha - 7 || 8.0.0-alpha - 8 || 9.0.0-alpha - 9 || 10.0.0-alpha - 10 || 11.0.0-alpha - 11 || 12.0.0-alpha - 12 || 13.0.0-alpha - 13 || 14.0.0-alpha - 14 || 15.0.0-alpha - 15 || 16.0.0-alpha - 16 || 17.0.0-alpha - 17 || 18.0.0-alpha - 18 || 19.0.0-alpha - 19
 
   ng-packagr@18.2.1:
     resolution: {integrity: sha512-dy9ZDpZb3QpAz+Y/m8VAu7ctr2VrnRU3gmQwJagnNybVJtCsKn3lZA3IW7Z7GTLoG5IALSPouiCgiB/C8ozv7w==}
@@ -12298,7 +12298,7 @@ snapshots:
 
   nerf-dart@1.0.0: {}
 
-  ng-mocks@14.13.1(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@angular/forms@18.2.10(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.10(@angular/animations@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))(@angular/platform-browser@18.2.10(@angular/animations@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))):
+  ng-mocks@14.13.2(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@angular/forms@18.2.10(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(@angular/platform-browser@18.2.10(@angular/animations@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(rxjs@7.8.1))(@angular/platform-browser@18.2.10(@angular/animations@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10)))(@angular/common@18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))):
     dependencies:
       '@angular/common': 18.2.10(@angular/core@18.2.10(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
       '@angular/core': 18.2.10(rxjs@7.8.1)(zone.js@0.14.10)

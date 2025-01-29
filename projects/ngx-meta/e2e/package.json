@@ -11,7 +11,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "3.13.10",
     "@istanbuljs/load-nyc-config": "1.1.0",
-    "@types/node": "22.10.6",
+    "@types/node": "22.12.0",
     "cypress": "13.16.0",
     "start-server-and-test": "2.0.10",
     "tslib": "2.7.0",

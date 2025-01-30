@@ -48,11 +48,9 @@ describe('ng-add schematic', () => {
     name: 'routing',
     symbol: 'provideNgxMetaRouting',
   })
-  const PROVIDERS_BY_MODULE_NAME: {
-    // 👇 With this type we ensure that all possible types are tested
-    //    If we miss one, the type will be incomplete
-    [K in MetadataModules]: ProviderTestCase
-  } = {
+  // 👇 With this type we ensure that all possible types are tested
+  //    If we miss one, the type will be incomplete
+  const PROVIDERS_BY_MODULE_NAME: Record<MetadataModules, ProviderTestCase> = {
     'json-ld': new ProviderTestCase({
       name: 'JSON-LD',
       symbol: 'provideNgxMetaJsonLd',

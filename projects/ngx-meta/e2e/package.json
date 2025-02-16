@@ -12,7 +12,7 @@
     "@cypress/code-coverage": "3.13.11",
     "@istanbuljs/load-nyc-config": "1.1.0",
     "@types/node": "22.12.0",
-    "cypress": "14.0.1",
+    "cypress": "14.0.3",
     "start-server-and-test": "2.0.10",
     "tslib": "2.7.0",
     "typescript": "5.5.3"

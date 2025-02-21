@@ -83,7 +83,7 @@
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-cypress": "4.1.0",
     "eslint-plugin-jasmine": "4.2.2",
-    "eslint-plugin-jest": "28.9.0",
+    "eslint-plugin-jest": "28.11.0",
     "eslint-plugin-json-files": "4.4.2",
     "husky": "9.1.7",
     "jasmine-core": "5.4.0",

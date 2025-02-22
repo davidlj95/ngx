@@ -85,8 +85,8 @@ importers:
         specifier: 6.0.3
         version: 6.0.3(semantic-release@24.2.3(typescript@5.4.5))
       '@types/jasmine':
-        specifier: 5.1.5
-        version: 5.1.5
+        specifier: 5.1.7
+        version: 5.1.7
       '@types/node':
         specifier: 22.12.0
         version: 22.12.0
@@ -2251,8 +2251,8 @@ packages:
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
 
-  '@types/jasmine@5.1.5':
-    resolution: {integrity: sha512-SaCZ3kM5NjOiJqMRYwHpLbTfUC2Dyk1KS3QanNFsUYPGTk70CWVK/J9ueun6zNhw/UkgV7xl8V4ZLQZNRbfnNw==}
+  '@types/jasmine@5.1.7':
+    resolution: {integrity: sha512-DVOfk9FaClQfNFpSfaML15jjB5cjffDMvjtph525sroR5BEAW2uKnTOYUTqTFuZFjNvH0T5XMIydvIctnUKufw==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -9203,7 +9203,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
-  '@types/jasmine@5.1.5': {}
+  '@types/jasmine@5.1.7': {}
 
   '@types/json-schema@7.0.15': {}
 

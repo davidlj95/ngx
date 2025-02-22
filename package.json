@@ -67,7 +67,7 @@
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@commitlint/types": "19.5.0",
-    "@eslint/compat": "1.2.6",
+    "@eslint/compat": "1.2.7",
     "@jest/globals": "29.7.0",
     "@jest/types": "29.6.3",
     "@microsoft/api-documenter": "7.23.38",

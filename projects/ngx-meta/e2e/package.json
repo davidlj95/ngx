@@ -17,5 +17,10 @@
     "tslib": "2.7.0",
     "typescript": "5.5.3"
   },
-  "packageManager": "pnpm@10.4.1"
+  "packageManager": "pnpm@10.4.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "cypress"
+    ]
+  }
 }

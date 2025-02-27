@@ -43,16 +43,24 @@
       "username": "example"
     }
   },
-  "jsonLd": {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "author": {
-      "@type": "Person",
-      "name": "Mr. Foo Bar",
+  "jsonLd": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "author": {
+        "@type": "Person",
+        "name": "Mr. Foo Bar",
+        "url": "https://example.com/foo"
+      },
+      "name": "Foo bar",
+      "headline": "Foo bar at your service",
       "url": "https://example.com/foo"
     },
-    "name": "Foo bar",
-    "headline": "Foo bar at your service",
-    "url": "https://example.com/foo"
-  }
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Banana Bread Recipe",
+      "description": "The best banana bread recipe you'll ever find! Learn how to use up all those extra bananas."
+    }
+  ]
 }

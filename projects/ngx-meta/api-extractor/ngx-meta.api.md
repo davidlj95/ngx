@@ -113,7 +113,7 @@ export const JSON_LD_METADATA_PROVIDER: Provider;
 
 // @public
 export interface JsonLdMetadata {
-    readonly jsonLd?: object | null;
+    readonly jsonLd?: object | readonly object[] | null;
 }
 
 // @internal

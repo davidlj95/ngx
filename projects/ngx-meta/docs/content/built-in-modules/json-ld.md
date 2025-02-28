@@ -6,7 +6,7 @@ Structured data refers to a way of organizing and presenting data on the web to 
 
 JSON-LD is used in the context of structured data on the web by allowing website owners and developers to embed structured data directly into their HTML documents. This structured data is often in the form of [schema.org](https://schema.org) vocabulary, which provides a set of schemas (types, properties, and relationships) to describe various entities on the web, such as articles, events, products, and more.
 
-The module allows you to embed a JSON-LD object inside a `#!html <script>` tag (with proper JSON-LD types set) under the `#!html <head>` of the page. It does no validation or whatsoever about the JSON-LD object set.
+The module allows you to embed one or more JSON-LD objects inside a `#!html <script>` tag (with proper JSON-LD type set) under the `#!html <head>` of the page. It does no validation or whatsoever about the JSON-LD object(s) set.
 
 ## Setup
 
@@ -76,6 +76,8 @@ const metadata = {
   },
 } satisfies JsonLdMetadata
 ```
+
+An array of objects can be used to insert multiple JSON-LD objects inside the same `<script>` element. Which follows [Google's guidelines to insert multiple individual structured data items in one page](https://developers.google.com/search/docs/appearance/structured-data/sd-policies#individual-items)
 
 [`JsonLdMetadata` API Reference](ngx-meta.jsonldmetadata.md)
 

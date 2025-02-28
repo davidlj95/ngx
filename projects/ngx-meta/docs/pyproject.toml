@@ -5,6 +5,7 @@ description = "@davidlj95/ngx-meta NPM/JS library docs"
 authors = ["David LJ <mail@davidlj95.com>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "==3.12.6"

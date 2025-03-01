@@ -9,6 +9,7 @@ import ALL_METADATA_JSON from '@/e2e/cypress/fixtures/all-metadata.json'
 import { MetaLateLoadedModule } from './meta-late-loaded/meta-late-loaded.module'
 import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta-set-by-service.component'
 import { UrlResolutionMetaComponent } from './url-resolution-meta/url-resolution-meta.component'
+import { TitleFormatterComponent } from './title-formatter/title-formatter.component'
 
 const ngxMetaRouteData: NgxMetaRouteData = { meta: ALL_METADATA_JSON }
 
@@ -38,6 +39,14 @@ const routes: Routes = [
   {
     path: ROUTES.urlResolutionMeta.path,
     component: UrlResolutionMetaComponent,
+  },
+  {
+    path: ROUTES.titleFormatter.path,
+    component: TitleFormatterComponent,
+    data: {
+      meta: { title: ALL_METADATA_JSON.title },
+    },
+    // TODO: set the formater here
   },
 ]
 

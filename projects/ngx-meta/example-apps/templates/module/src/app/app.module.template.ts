@@ -25,6 +25,7 @@ import { provideNgxMetaJsonLd } from '@davidlj95/ngx-meta/json-ld'
 import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta-set-by-service.component'
 import { UrlResolutionMetaComponent } from './url-resolution-meta/url-resolution-meta.component'
 import { BASE_URL } from '@/e2e/cypress/fixtures/base-url'
+import { TitleFormatterComponent } from './title-formatter/title-formatter.component'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { BASE_URL } from '@/e2e/cypress/fixtures/base-url'
     MetaSetByRouteAndServiceComponent,
     OneMetaSetByServiceComponent,
     UrlResolutionMetaComponent,
+    TitleFormatterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgForOf, RouterOutlet, JsonPipe],
   providers: [

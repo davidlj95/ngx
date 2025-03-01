@@ -34,4 +34,9 @@ export const ROUTES = {
     displayName: 'URL resolution meta',
     linkId: undefined,
   },
+  titleFormatter: {
+    path: 'title-formatter',
+    displayName: 'Title formatter',
+    linkId: undefined,
+  },
 }

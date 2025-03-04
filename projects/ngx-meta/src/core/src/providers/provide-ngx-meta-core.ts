@@ -15,6 +15,8 @@ import { CoreFeatures, providersFromCoreFeatures } from './core-feature'
  *
  * - {@link withNgxMetaBaseUrl}
  *
+ * - {@link withNgxMetaTitleFormatter}
+ *
  * @param features - Features to configure
  *
  * @public

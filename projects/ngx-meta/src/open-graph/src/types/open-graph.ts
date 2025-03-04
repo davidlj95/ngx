@@ -17,6 +17,8 @@ export interface OpenGraph {
    *
    * Can be set with {@link GlobalMetadata.title}.
    *
+   * Title will be formatted if {@link https://ngx-meta.dev/guides/title-formatting | title formatting} is set up.
+   *
    * @remarks
    *
    * Provider:

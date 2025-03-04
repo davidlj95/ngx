@@ -39,7 +39,9 @@ const enum CoreFeatureKind {
     // (undocumented)
     BaseUrl = 1,
     // (undocumented)
-    Defaults = 0
+    Defaults = 0,
+    // (undocumented)
+    TitleFormatter = 2
 }
 
 // Warning: (ae-forgotten-export) The symbol "CoreFeature" needs to be exported by the entry point all-entry-points.d.ts
@@ -601,6 +603,12 @@ export interface StandardThemeColorMetadataObject {
 // @internal (undocumented)
 type StringKeyOf<T = object> = Extract<keyof T, string>;
 
+// @beta
+export type TitleFormatter = (title: string) => string;
+
+// @internal
+export const _titleFormatter: _LazyInjectionToken<TitleFormatter>;
+
 // @public @deprecated
 export const TWITTER_CARD_CARD_METADATA_PROVIDER: Provider;
 
@@ -744,6 +752,9 @@ export const withNgxMetaBaseUrl: (baseUrl: BaseUrl) => CoreFeature<CoreFeatureKi
 
 // @public
 export const withNgxMetaDefaults: (defaults: MetadataValues) => CoreFeature<CoreFeatureKind.Defaults>;
+
+// @beta
+export const withNgxMetaTitleFormatter: (titleFormatter: TitleFormatter) => CoreFeature<CoreFeatureKind.TitleFormatter>;
 
 // @public
 export const withOptions: <T extends object>(...options: readonly T[]) => T;

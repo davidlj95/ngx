@@ -30,7 +30,7 @@ Then, to set some metadata to get started, choose at least the [standard module]
 
     Those elements will be there even if you change the page unless the routing module is added.
 
-    See [service guide about clearing metadata values](set-metadata-using-service.md#clearing-metadata-values) for more information
+    See [service guide about clearing metadata values](set-metadata-using-service.md#clearing-metadata) for more information
 
 ### 2.2 Using [route's data]
 

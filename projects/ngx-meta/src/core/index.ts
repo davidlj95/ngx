@@ -1,4 +1,5 @@
 export * from './src/defaults'
+export * from './src/formatter'
 export * from './src/globals'
 export * from './src/head-elements'
 export * from './src/loader'

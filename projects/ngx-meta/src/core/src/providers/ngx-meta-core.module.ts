@@ -31,6 +31,8 @@ export class NgxMetaCoreModule {
    *
    *  - {@link withNgxMetaBaseUrl}
    *
+   *  - {@link withNgxMetaTitleFormatter}
+   *
    * Previous features configuration with an options object has been deprecated.
    * See {@link NgxMetaCoreModule.(forRoot:2)} for more information and how to migrate.
    *

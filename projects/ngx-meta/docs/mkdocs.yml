@@ -26,6 +26,7 @@ nav:
       - guides/metadata-values-json.md
       - guides/defaults.md
       - guides/url-resolution.md
+      - guides/title-formatting.md
       - guides/late-loading-modules.md
       - guides/manage-your-custom-metadata.md
       - guides/custom-metadata-providers-selection.md

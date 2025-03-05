@@ -15,6 +15,9 @@ export interface GlobalMetadata {
    *  - {@link OpenGraph.title} (needs Open Graph module)
    *
    *  - {@link TwitterCard.title} (needs Twitter Cards module)
+   *
+   * Title will be formatted for all of them when
+   * {@link https://ngx-meta.dev/guides/title-formatting | title formatting} is set up.
    */
   readonly title?: string
 

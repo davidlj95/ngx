@@ -2,8 +2,10 @@ import { Title } from '@angular/platform-browser'
 import {
   _GLOBAL_TITLE,
   _isDefined,
+  _titleFormatter,
   _withModuleManagerSameGlobalKey,
   _withModuleManagerSetterFactory,
+  TitleFormatter,
   withManagerDeps,
 } from '@davidlj95/ngx-meta/core'
 import { provideStandardManager } from '../utils/provide-standard-manager'
@@ -16,13 +18,15 @@ export const provideStandardTitle = () =>
   provideStandardManager(
     _GLOBAL_TITLE,
     _withModuleManagerSameGlobalKey(),
-    withManagerDeps(Title),
-    _withModuleManagerSetterFactory((titleService: Title) => (value) => {
-      if (!_isDefined(value)) {
-        return
-      }
-      titleService.setTitle(value)
-    }),
+    withManagerDeps(Title, _titleFormatter()),
+    _withModuleManagerSetterFactory(
+      (titleService: Title, titleFormatter: TitleFormatter) => (value) => {
+        if (!_isDefined(value)) {
+          return
+        }
+        titleService.setTitle(titleFormatter(value))
+      },
+    ),
   )
 
 /**

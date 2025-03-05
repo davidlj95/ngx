@@ -7,11 +7,13 @@ import { _titleFormatter, TitleFormatter } from './title-formatter'
 import { FactoryProvider } from '@angular/core'
 
 /**
- * Allows formatting page titles automatically
+ * Provides a page title formatter.
  *
- * This way you can prepend or append your site name or brand, for instance.
+ * The formatter will be called with the specified page title metadata.
+ * Its output will be the value placed as the page's title by the metadata manager.
+ * This way you can prepend or append your site name or brand to all page titles, for instance.
  *
- * Metadata managers that use this formatter are:
+ * Built-in metadata managers that use this formatter are:
  *
  *  - {@link Standard.title}
  *
@@ -44,7 +46,7 @@ import { FactoryProvider } from '@angular/core'
  * - {@link https://ngx-meta.dev/guides/title-formatting/ | Title formatting guide}
  *
  *
- * @param titleFormatter - A function that takes the page title set in metadata and returns the formatted title
+ * @param titleFormatter - A function that takes the page title set in metadata values and returns the formatted title
  *
  * @beta
  */

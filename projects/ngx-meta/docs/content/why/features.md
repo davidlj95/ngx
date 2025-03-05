@@ -61,6 +61,10 @@ To reduce main bundle size, you can also lazy load some metadata. This way, you 
 
 For metadata values where an absolute URL is required, a base URL can be provided so that you only need to specify relative URLs around and don't repeat the app URL over and over around. Or use the Angular's route path if that one is appropriate. Check out [URL resolution guide](url-resolution.md) for more information.
 
+### 💅 Title formatting
+
+You may want all your page titles to be consistent and include your brand or site name. Maybe separated by a hyphen or a vertical bar. Don't worry, no need to call some formatting function over and over, provide one to the library. The formatter function will be called automatically before setting page titles. Go to the [title formatting guide](title-formatting.md) for more information.
+
 ### 0️⃣ Zero dependencies[^2]
 
 So less pain with dependency management

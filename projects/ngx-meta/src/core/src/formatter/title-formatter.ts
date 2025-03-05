@@ -16,7 +16,8 @@ export const _titleFormatter: _LazyInjectionToken<TitleFormatter> = () =>
 /**
  * Page title formatter function type
  *
- * Takes the page title as input and returns the formatted title as output.
+ * @param titleFormatter - Title to format. The one specified in metadata values.
+ * @returns Formatted title
  *
  * @beta
  */

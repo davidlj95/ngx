@@ -21,7 +21,7 @@ The same URL prefix repeats around `https://example.com/app`.
 
 But don't worry, got you covered 😉 Set up URL resolution and the problem will be over
 
-## Set up
+## Setup
 
 To avoid repeating the same URL prefix over and over, the library provides a way to configure a **base URL**. This way, when specifying a relative URL where an absolute URL is required or preferred, the **base URL** will be prepended. So that eventually an absolute URL appears as
 metadata value.

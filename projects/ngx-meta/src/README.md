@@ -70,6 +70,7 @@ Go deeper by:
 
 - [**Setting default metadata**](https://ngx-meta.dev/guides/defaults/) values for all pages
 - [**Setting up URL resolution**](https://ngx-meta.dev/guides/url-resolution/) to use relative URLs but get absolute URLs as metadata values
+- [**Formatting page titles**](https://ngx-meta.dev/guides/title-formatting/) to apply a consistent format to all page titles
 - [**Loading metadata later**](https://ngx-meta.dev/guides/late-loading-modules/) to reduce main bundle size
 - [**Providing your custom metadata managers**](https://ngx-meta.dev/guides/manage-your-custom-metadata/)
 - [**Fine-grained choosing metadata elements**](https://ngx-meta.dev/guides/custom-metadata-providers-selection/) you're interested in. Rest of them won't end up in your bundle

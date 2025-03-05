@@ -1,3 +1,13 @@
+## [`ngx-meta` v1.0.0-beta.38](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.37...ngx-meta-v1.0.0-beta.38) (2025-03-05)
+
+### 🚀 Features
+
+- page title format ([#1128](https://github.com/davidlj95/ngx/issues/1128)) ([67efe00](https://github.com/davidlj95/ngx/commit/67efe00c2601dbd1fac9cf2f2cc15cddfdbf839b))
+
+### 💼 Miscellaneous Chores
+
+- **release:** update CHANGELOG.md ([#1125](https://github.com/davidlj95/ngx/issues/1125)) ([448fcc2](https://github.com/davidlj95/ngx/commit/448fcc2aaeead30e6ea0b69578470fc5f596cbea))
+
 ## [`ngx-meta` v1.0.0-beta.37](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.36...ngx-meta-v1.0.0-beta.37) (2025-02-28)
 
 ### 🐛 Bug Fixes

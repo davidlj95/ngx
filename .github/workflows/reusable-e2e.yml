@@ -82,7 +82,7 @@ jobs:
           # Given we're doing caching manually, installing apart to leverage cache
           install: false
       - name: Upload coverage report
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: failure() || success()
         with:
           name: ngx-meta-e2e-${{ matrix.cli-version-alias }}${{ env.COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX }}

@@ -46,7 +46,7 @@ jobs:
         cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
     steps:
       - name: Download bundle size analysis results
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
+        uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4
         with:
           name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
           #👇 Need to specify it, otherwise, `run-id` argument won't be taken into account

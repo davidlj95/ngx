@@ -48,7 +48,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Download example app distribution files
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
+        uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4
         with:
           name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
           path: ${{ env.EXAMPLE_APP_DIR }}
@@ -116,7 +116,7 @@ jobs:
         cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
     steps:
       - name: Download main bundle analysis results
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4
+        uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4
         with:
           name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
       - name: Create check run

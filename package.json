@@ -98,7 +98,7 @@
     "ng-mocks": "14.13.4",
     "ng-packagr": "18.2.1",
     "nyc": "17.1.0",
-    "prettier": "3.5.1",
+    "prettier": "3.5.3",
     "semantic-release": "24.2.3",
     "ts-jest": "29.2.5",
     "typescript": "5.4.5",

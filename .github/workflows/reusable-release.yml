@@ -7,7 +7,7 @@ on:
       # 👇 Built-in GitHub token can't create Pull Requests
       # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#preventing-github-actions-from-creating-or-approving-pull-requests
       # So a special fine-grained PAT is used instead. This way, just this PAT
-      # can be used for those purposes and other actions don't have this perm
+      # can be used for those purposes. And other actions don't have this perm
       github-token-pr:
         required: true
 
@@ -15,7 +15,7 @@ on:
 # https://github.com/semantic-release/github
 # https://github.com/semantic-release/npm
 permissions:
-  # For GitHub release creation & issues / PR comments
+  # For GitHub release creation and issues / PR comments
   contents: write
   issues: write
   pull-requests: write
@@ -28,12 +28,12 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # 👇 Keep in sync with build workflow
+  # 👇 Keep in sync with the build workflow
   DIST_ARTIFACT_NAME_SUFFIX: -dist
 
 jobs:
   semantic-release:
-    # Skip release based on commit message.
+    # Skip release based on the commit message.
     # Sometimes can be useful like shipping a deprecation with its migration schematics, but having each of those
     # in a separate PR
     # https://stackoverflow.com/a/59775665/3263250

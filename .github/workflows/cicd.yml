@@ -1,8 +1,11 @@
-#👇 Keep in sync with pull request completed workflow
-name: Pull request
+name: CI/CD
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -39,12 +42,27 @@ jobs:
     needs: example-apps
     name: Bundle size
     uses: ./.github/workflows/reusable-bundle-size.yml
+    permissions:
+      checks: write
   docs:
-    needs: [api-extractor, bundle-size]
     name: Docs
+    needs: [api-extractor, bundle-size]
     uses: ./.github/workflows/reusable-docs.yml
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     permissions:
       deployments: write
+  release:
+    name: Release
+    if: github.event_name == 'push' && github.ref_name == 'main'
+    needs: [build, test, lint, style, e2e, coverage]
+    uses: ./.github/workflows/reusable-release.yml
+    secrets:
+      npm-token: ${{ secrets.NPM_TOKEN }}
+      github-token-pr: ${{ secrets.PR_GH_TOKEN }}
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write

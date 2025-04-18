@@ -5,7 +5,7 @@ on:
 env:
   # 👇 Keep in sync with release and example apps workflow
   DIST_ARTIFACT_NAME_SUFFIX: -dist
-  # 👇 Keep in sync with example apps workflow
+  # 👇 Keep in sync with the example apps workflow
   COVERAGE_ARTIFACT_NAME_SUFFIX: -coverage
   # 👇 Keep in sync with API Extractor workflow
   TSC_ARTIFACT_NAME_SUFFIX: -tsc

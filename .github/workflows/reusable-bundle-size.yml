@@ -1,46 +1,36 @@
 name: Bundle size
 on:
   workflow_call:
+    inputs:
+      ng-cli-version-aliases:
+        type: string
+        required: true
 
 #permissions:
 #  👇 Needed for main bundle size check store only
 #  checks: write
 
 env:
-  # 👇 Keep in sync with pull request completed workflow
+  # 👇 Keep in sync with the pull request completed workflow
   BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-
   BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX: ngx-meta-bundle-size-
   BUNDLE_SIZE_DIR: projects/ngx-meta/bundle-size
-  # 👇 Keep in sync with example apps workflow
+  # 👇 Keep in sync with the example apps workflow
   EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
-  # 👇 Keep in sync with pull request completed and docs workflow
+  # 👇 Keep in sync with the pull request completed and the docs' workflow
   BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX: -bundle-size
 
 jobs:
-  load-config:
-    name: Load CI/CD configuration
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    outputs:
-      example-apps-version-aliases: ${{ steps.load-config.outputs.example-apps-version-aliases }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Load CI/CD configuration
-        id: load-config
-        uses: ./.github/actions/config
-
   analysis:
-    name: Analysis - Angular ${{ matrix.cli-version-alias }}
-    needs: load-config
+    name: Analysis - Angular ${{ matrix.ng-cli-version-alias }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
+        ng-cli-version-alias: ${{ fromJSON(inputs.ng-cli-version-aliases) }}
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.cli-version-alias }}
-      OUTPUT_DIR: out/${{ matrix.cli-version-alias }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.ng-cli-version-alias }}
+      OUTPUT_DIR: out/${{ matrix.ng-cli-version-alias }}
     defaults:
       run:
         working-directory: ${{ env.BUNDLE_SIZE_DIR }}
@@ -50,7 +40,7 @@ jobs:
       - name: Download example app distribution files
         uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4
         with:
-          name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
+          name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}
           path: ${{ env.EXAMPLE_APP_DIR }}
       - name: Setup pnpm
         uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
@@ -63,7 +53,7 @@ jobs:
       - name: Install bundle size analysis dependencies
         run: pnpm install --frozen-lockfile
       - name: Analyze main bundle size
-        run: pnpm run analyze ${{ matrix.cli-version-alias }} --json
+        run: pnpm run analyze ${{ matrix.ng-cli-version-alias }} --json
       - name: Fetch bundle size analysis results from 'main' branch
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         if: github.event_name == 'pull_request'
@@ -73,7 +63,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: 'heads/main',
-              check_name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.cli-version-alias }}',
+              check_name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.ng-cli-version-alias }}',
               per_page: 1,
             })
             const checkRuns = checkRunResponse.data.check_runs
@@ -91,34 +81,34 @@ jobs:
       - name: Generate bundle size PR comment
         if: github.event_name == 'pull_request'
         run: >
-          pnpm run report ${{ matrix.cli-version-alias }}
+          pnpm run report ${{ matrix.ng-cli-version-alias }}
           --git-ref '${{ github.event.pull_request.head.sha }}'
-          --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.cli-version-alias }}'
+          --hidden-info '${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.ng-cli-version-alias }}'
           --base-file '${{ env.OUTPUT_DIR }}/source-map-explorer-main.json'
           --output-file '${{ env.OUTPUT_DIR }}/bundle-size-pr-comment.md'
       - name: Generate bundle size report
-        run: pnpm run report ${{ matrix.cli-version-alias }} --git-ref '${{ github.sha }}'
+        run: pnpm run report ${{ matrix.ng-cli-version-alias }} --git-ref '${{ github.sha }}'
       - name: Upload bundle size analysis results
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
+          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}
           path: ${{ env.BUNDLE_SIZE_DIR }}/${{ env.OUTPUT_DIR }}
           retention-days: 5
 
   store:
-    needs: [load-config, analysis]
+    needs: analysis
     if: github.event_name == 'push'
-    name: Store - Angular ${{ matrix.cli-version-alias }}
+    name: Store - Angular ${{ matrix.ng-cli-version-alias }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
+        ng-cli-version-alias: ${{ fromJSON(inputs.ng-cli-version-aliases) }}
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4
         with:
-          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}
+          name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}
       - name: Create check run
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         with:
@@ -128,7 +118,7 @@ jobs:
             return github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.cli-version-alias }}',
+              name: '${{ env.BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX }}${{ matrix.ng-cli-version-alias }}',
               head_sha: context.sha,
               // In case you're testing this in a PR, you'll want the head SHA
               // otherwise, `context.sha` refers to the GitHub PR merge branch
@@ -136,9 +126,9 @@ jobs:
               // head_sha: '${{ github.event.pull_request.head.sha }}',
               conclusion: 'neutral',
               output: {
-                title: 'Bundle size - Angular ${{ matrix.cli-version-alias }}',
+                title: 'Bundle size - Angular ${{ matrix.ng-cli-version-alias }}',
                 summary: 'Sizes of the library modules when packed inside a ' +
-                         'main bundle of an Angular ${{ matrix.cli-version-alias }} ' +
+                         'main bundle of an Angular ${{ matrix.ng-cli-version-alias }} ' +
                          'app. In bytes. Thanks to `source-map-explorer` :)',
                 text: smeJsonString,
               }

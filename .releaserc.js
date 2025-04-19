@@ -8,27 +8,16 @@ const getCurrentBranch = () =>
 const repositoryUrl = process.env.LOCAL_SEMANTIC_RELEASE_REPOSITORY_URL?.trim()
 const isDotRepositoryUrl = repositoryUrl === '.'
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * @type {import('semantic-release').GlobalConfig}
  */
 module.exports = {
   repositoryUrl,
-  branches: [
-    //👇 Fake branch so that we can release beta versions in `main`
-    //   until we can release 1.0.0
-    'semantic-release',
-    {
-      name: useLocalBranch ? getCurrentBranch() : 'main',
-      prerelease: 'beta',
-      // ⚠️ Default channel is `undefined` for first release branch, but branch name for the rest.
-      // Using `false` to indicate default distribution channel
-      // https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration#branches-properties
-      channel: false,
-    },
-  ],
+  branches: [useLocalBranch ? getCurrentBranch() : 'main'],
   plugins: [
     '@semantic-release/commit-analyzer',
-    // When running locally with repository URL set to `.`, it fails
+    // When running locally with the repository URL set to `.`, it fails
     // As tries to read parts from `.` which is not a URL:
     // https://github.com/semantic-release/release-notes-generator/blob/v13.0.0/index.js#L37-L39
     !isDotRepositoryUrl
@@ -43,7 +32,7 @@ module.exports = {
         npmPublish: true,
       },
     ],
-    // When using `.` as repository, interest is in publishing
+    // When using `.` as a repository, interest is in publishing
     // Hence there's no need for GitHub release, issue comments...
     !isDotRepositoryUrl
       ? [
@@ -126,17 +115,13 @@ module.exports = {
       subject: '*maintenance*',
       release: 'patch',
     },
-    // Trigger a beta release
-    {
-      body: '*BETA RELEASE*',
-      release: 'patch',
-    },
   ],
   writerOpts: {
     //👇 Add library name in release notes
     // https://github.com/conventional-changelog/conventional-changelog/tree/conventional-changelog-writer-v7.0.1/packages/conventional-changelog-writer#finalizecontext
-    finalizeContext: (context) => {
-      return { ...context, version: `\`ngx-meta\` v${context.version}` }
-    },
+    finalizeContext: (context) => ({
+      ...context,
+      version: `\`ngx-meta\` v${context.version}`,
+    }),
   },
 }

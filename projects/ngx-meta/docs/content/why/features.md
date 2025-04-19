@@ -13,7 +13,7 @@ Metadata is set using Angular's built-in services to manipulate DOM. So (server/
 
 Actually, a series of E2E tests are in place to ensure support for SSR and hydration for all Angular versions the library claims to be compatible with.
 
-[hydration]: https://angular.dev/guide/hydration)
+[hydration]: https://angular.dev/guide/hydration
 
 ### 🤝 Compatibility with [Angular actively supported versions]
 

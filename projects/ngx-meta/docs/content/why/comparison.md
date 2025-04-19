@@ -69,11 +69,11 @@ It is certainly a better option than installing a poorly maintained library. But
 [repo-ngx-seo]: https://github.com/avivharuzi/ngx-seo
 [repo-ngaox-seo]: https://github.com/ngaox/ngaox
 [repo-ngx-meta]: https://github.com/fulls1z3/ngx-meta
-[ci-b-this]: https://github.com/davidlj95/ngx/actions/workflows/main.yml/badge.svg
+[ci-b-this]: https://github.com/davidlj95/ngx/actions/workflows/cicd.yml/badge.svg
 [ci-b-ngx-seo]: https://github.com/avivharuzi/ngx-seo/actions/workflows/pr.yml/badge.svg
 [ci-b-ngaox-seo]: https://github.com/ngaox/ngaox/actions/workflows/integrate.yml/badge.svg
 [ci-b-ngx-meta]: https://circleci.com/gh/fulls1z3/ngx-meta.svg?style=shield
-[ci-l-this]: https://github.com/davidlj95/ngx/actions/workflows/main.yml
+[ci-l-this]: https://github.com/davidlj95/ngx/actions/workflows/cicd.yml
 [ci-l-ngx-seo]: https://github.com/avivharuzi/ngx-seo/actions/workflows/pr.yml
 [ci-l-ngaox-seo]: https://github.com/ngaox/ngxaox/actions/workflows/integrate.yml
 [ci-l-ngx-meta]: https://circleci.com/gh/fulls1z3/ngx-meta

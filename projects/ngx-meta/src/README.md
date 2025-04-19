@@ -6,7 +6,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dt/%40davidlj95%2Fngx-meta?logo=npm&label=NPM%20downloads&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40davidlj95%2Fngx-meta)](https://www.npmjs.com/package/@davidlj95/ngx-meta)
 [![NPM License](https://img.shields.io/npm/l/%40davidlj95%2Fngx-meta?logo=npm&label=License&link=https%3A%2F%2Fgithub.com%2Fdavidlj95%2Fngx%2Fblob%2Fmain%2Fprojects%2Fngx-meta%2Fsrc%2FLICENSE)](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/src/LICENSE)
 [![NPM Version](https://img.shields.io/npm/v/%40davidlj95%2Fngx-meta?logo=npm&label=Latest%20version&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40davidlj95%2Fngx-meta)](https://www.npmjs.com/package/@davidlj95/ngx-meta)
-[![Main CI/CD workflow](https://github.com/davidlj95/ngx/actions/workflows/main.yml/badge.svg)](https://github.com/davidlj95/ngx/actions/workflows/main.yml)
+[![CI/CD workflow](https://github.com/davidlj95/ngx/actions/workflows/cicd.yml/badge.svg)](https://github.com/davidlj95/ngx/actions/workflows/cicd.yml)
 [![Codecov](https://codecov.io/gh/davidlj95/ngx/graph/badge.svg)](https://codecov.io/gh/davidlj95/ngx)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/davidlj95/ngx/main?logo=github&label=Last%20commit&link=https%3A%2F%2Fgithub.com%2Fdavidlj95%2Fngx%2Fcommits%2Fmain%2F)](https://github.com/davidlj95/ngx/commits/main/)
 

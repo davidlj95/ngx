@@ -8,17 +8,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  load-config:
-    name: Load CI/CD configuration
+  config:
+    name: CI/CD configuration
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      cli-version-aliases: ${{ steps.load-config.outputs.example-apps-version-aliases }}
+      ng-cli-version-aliases: ${{ steps.config.outputs.ng-cli-version-aliases }}
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Load CI/CD configuration
-        id: load-config
+      - name: CI/CD configuration
+        id: config
         uses: ./.github/actions/config
   build:
     name: Build
@@ -37,17 +37,17 @@ jobs:
     name: API Extractor
     uses: ./.github/workflows/reusable-api-extractor.yml
   example-apps:
-    needs: [build, load-config]
+    needs: [build, config]
     name: Example apps
     uses: ./.github/workflows/reusable-example-apps.yml
     with:
-      cli-version-aliases: ${{ needs.load-config.outputs.cli-version-aliases }}
+      ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
   e2e:
-    needs: [example-apps, load-config]
+    needs: [example-apps, config]
     name: E2E
     uses: ./.github/workflows/reusable-e2e.yml
     with:
-      cli-version-aliases: ${{ needs.load-config.outputs.cli-version-aliases }}
+      ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
   coverage:
     needs: [e2e, test]
     name: Coverage
@@ -55,11 +55,11 @@ jobs:
     secrets:
       codecov-token: ${{ secrets.CODECOV_TOKEN }}
   bundle-size:
-    needs: [example-apps, load-config]
+    needs: [example-apps, config]
     name: Bundle size
     uses: ./.github/workflows/reusable-bundle-size.yml
     with:
-      cli-version-aliases: ${{ needs.load-config.outputs.cli-version-aliases }}
+      ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
     permissions:
       checks: write
   docs:

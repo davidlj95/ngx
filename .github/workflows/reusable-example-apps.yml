@@ -2,13 +2,13 @@ name: Example apps
 on:
   workflow_call:
     inputs:
-      cli-version-aliases:
+      ng-cli-version-aliases:
         type: string
         required: true
 
 env:
   EXAMPLE_APPS_DIR: projects/ngx-meta/example-apps
-  # 👇 Keep in sync with build workflow
+  # 👇 Keep in sync with the build workflow
   DIST_ARTIFACT_NAME_SUFFIX: -dist
   # 👇 Keep in sync with build and E2E tests workflow
   COVERAGE_ARTIFACT_NAME_SUFFIX: -coverage
@@ -17,15 +17,15 @@ env:
 
 jobs:
   example-app:
-    name: Example app - Angular ${{ matrix.cli-version-alias }} - Coverage ${{ matrix.coverage }}
+    name: Example app - Angular ${{ matrix.ng-cli-version-alias }} - Coverage ${{ matrix.coverage }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        cli-version-alias: ${{ fromJSON(inputs.cli-version-aliases) }}
+        ng-cli-version-alias: ${{ fromJSON(inputs.ng-cli-version-aliases) }}
         coverage: [enabled, disabled]
     env:
-      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.cli-version-alias }}
+      EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.ng-cli-version-alias }}
     defaults:
       run:
         working-directory: ${{ env.EXAMPLE_APPS_DIR }}
@@ -40,7 +40,7 @@ jobs:
           fi
           echo "dist_artifact_name=$dist_artifact_name" | tee -a "$GITHUB_ENV"
 
-          example_app_artifact_name="ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.cli-version-alias }}"
+          example_app_artifact_name="ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}"
           if [ "${{ matrix.coverage }}" = "enabled" ]; then
             example_app_artifact_name="$example_app_artifact_name${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}"
           fi
@@ -61,12 +61,12 @@ jobs:
           node-version-file: .node-version # TODO: may vary depending on Angular version
         # 👇 For caching, see below
         # - PNPM store: https://github.com/pnpm/action-setup/tree/v3.0.0?tab=readme-ov-file#use-cache-to-reduce-installation-time
-        # - Angular CLI version: from versions file
+        # - Angular CLI version: from the versions' file
       - name: Get caching key info
         run: |
           pnpm_store_path="$(pnpm store path --silent)"
           angular_cli_version="$(jq -r \
-            '.devDependencies.${{ matrix.cli-version-alias }}' \
+            '.devDependencies.${{ matrix.ng-cli-version-alias }}' \
             'angular-cli-versions.json' |
             sed 's|npm:@angular/cli@||g'
           )"
@@ -95,15 +95,15 @@ jobs:
             ${{ env.EXAMPLE_APP_DIR }}/pnpm-lock.yaml
           # Key is designed to be invalidated if:
           # - Example apps infra dependencies change
-          # - Angular CLI version is updated
+          # - Angular CLI's version is updated
           # - Week of year (UTC) changes
           # Last one is because we can't know before generating the Angular app
           # which patch version of Angular will be installed.
-          # Angular CLI creates an app with same minor version:
+          # Angular CLI creates an app with the same minor version:
           # https://github.com/angular/angular-cli/blob/17.3.4/packages/schematics/angular/utility/latest-versions.ts#L20-L21
           # So patch is up to dependency resolution step
-          # By invalidating cache each week, if a patch release appears it
-          # will be taken into account in max 1 week time
+          # By invalidating cache each week, if a patch release appears, it
+          # will be taken into account in max 1-week time
           # Patch releases shouldn't break anything anyway
           key: ${{ env.cache-name }}-${{ env.example_apps_lockfile_hash }}-${{ env.angular_cli_version }}-${{ env.week_of_year }}
       - name: Install example apps infra dependencies
@@ -112,7 +112,7 @@ jobs:
         run: pnpm run build
       - name: Create example app
         run: >
-          pnpm run create-example-app ${{ matrix.cli-version-alias }}
+          pnpm run create-example-app ${{ matrix.ng-cli-version-alias }}
           --tmp-dir=${{ runner.temp }}
       - name: Build example app
         run: pnpm run ci:build # includes SSR and source maps
@@ -127,8 +127,8 @@ jobs:
         #    See https://github.com/actions/upload-artifact/issues/418
         #    So we need to perform an installation with hoisted node linker
         #    https://pnpm.io/npmrc#node-linker
-        #    After that, neither of previous commands work :(
-        #    Neither does `pnpm deploy --prod`. So easiest is remove and reinstall
+        #    After that, previous commands do not work :(
+        #    Neither does `pnpm deploy --prod`. So easiest is to remove and reinstall
       - name: Remove development dependencies
         run: |
           rm -rf node_modules/

@@ -1,12 +1,12 @@
 # Split into another workflow to make it work with PRs from forked repos
 # https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
-# Tried using just bundle size reusable workflow file/name, but doesn't work
-name: Pull request completed
+# Tried using just bundle size reusable workflow, but doesn't work yet
+name: CI/CD completed
 
 on:
   workflow_run:
-    #👇 Keep in sync with the pull request workflow
-    workflows: [Pull request]
+    #👇 Keep in sync with the CI/CD workflow
+    workflows: [CI/CD]
     types:
       - completed
 
@@ -23,6 +23,8 @@ env:
 jobs:
   config:
     name: Load CI/CD configuration
+    if: github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:

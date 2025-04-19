@@ -1,34 +1,61 @@
 const { execSync } = require('child_process')
+const micromatch = require('micromatch')
 
-const useLocalBranch = Boolean(process.env.LOCAL_SEMANTIC_RELEASE_BRANCH)
+const localBranchAsMain = Boolean(
+  process.env.LOCAL_SEMANTIC_RELEASE_BRANCH_AS_MAIN,
+)
 const getCurrentBranch = () =>
   execSync('git rev-parse --abbrev-ref HEAD', {
     encoding: 'utf-8',
   }).trim()
 const repositoryUrl = process.env.LOCAL_SEMANTIC_RELEASE_REPOSITORY_URL?.trim()
 const isDotRepositoryUrl = repositoryUrl === '.'
+const MAINTENANCE_BRANCH_GLOB = '*[0-9]+.x'
+const getMaintenanceBranchConfig = () => {
+  const baseConfig = {
+    name: MAINTENANCE_BRANCH_GLOB,
+  }
+  const currentBranch = getCurrentBranch()
+  const isMaintenanceBranch = micromatch.isMatch(
+    currentBranch,
+    MAINTENANCE_BRANCH_GLOB,
+  )
+  if (!isMaintenanceBranch) return baseConfig
+  const prefixedMajorVersion = currentBranch.split('.').at(-2)
+  const matches = /[0-9]+$/.exec(prefixedMajorVersion)
+  const majorVersion = matches[0]
+  if (
+    matches.index === 0 &&
+    prefixedMajorVersion.length === majorVersion.length
+  )
+    throw new Error('Non major version maintenance branches are not supported')
+  return {
+    ...baseConfig,
+    range: `${majorVersion}.x`,
+    channel: `v${majorVersion}`,
+  }
+}
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * @type {import('semantic-release').GlobalConfig}
  */
 module.exports = {
   repositoryUrl,
   branches: [
-    //👇 Fake branch so that we can release beta versions in `main`
-    //   until we can release 1.0.0
-    'semantic-release',
+    //👇 Major version maintenance branches
+    getMaintenanceBranchConfig(),
     {
-      name: useLocalBranch ? getCurrentBranch() : 'main',
-      prerelease: 'beta',
+      name: localBranchAsMain ? getCurrentBranch() : 'main',
       // ⚠️ Default channel is `undefined` for first release branch, but branch name for the rest.
-      // Using `false` to indicate default distribution channel
+      // Using `false` to indicate the default distribution channel
       // https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration#branches-properties
       channel: false,
     },
   ],
   plugins: [
     '@semantic-release/commit-analyzer',
-    // When running locally with repository URL set to `.`, it fails
+    // When running locally with the repository URL set to `.`, it fails
     // As tries to read parts from `.` which is not a URL:
     // https://github.com/semantic-release/release-notes-generator/blob/v13.0.0/index.js#L37-L39
     !isDotRepositoryUrl
@@ -43,7 +70,7 @@ module.exports = {
         npmPublish: true,
       },
     ],
-    // When using `.` as repository, interest is in publishing
+    // When using `.` as a repository, interest is in publishing
     // Hence there's no need for GitHub release, issue comments...
     !isDotRepositoryUrl
       ? [
@@ -126,17 +153,13 @@ module.exports = {
       subject: '*maintenance*',
       release: 'patch',
     },
-    // Trigger a beta release
-    {
-      body: '*BETA RELEASE*',
-      release: 'patch',
-    },
   ],
   writerOpts: {
     //👇 Add library name in release notes
     // https://github.com/conventional-changelog/conventional-changelog/tree/conventional-changelog-writer-v7.0.1/packages/conventional-changelog-writer#finalizecontext
-    finalizeContext: (context) => {
-      return { ...context, version: `\`ngx-meta\` v${context.version}` }
-    },
+    finalizeContext: (context) => ({
+      ...context,
+      version: `\`ngx-meta\` v${context.version}`,
+    }),
   },
 }

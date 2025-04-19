@@ -19,10 +19,8 @@ echo "ℹ️ Copying trimmed README file"
 README_FILENAME="README.md"
 README_FILE="../src/$README_FILENAME"
 # Everything but last x lines
-sed "s|../docs/content||g" $README_FILE | # Fix logo path
-  sed "s/> \([A-Z]\)/    \1/g" | # Remove quoted block + proper admonition 👇
-  sed "s/> \[!NOTE\]/!!! note \"Beta version\"\n/g" \
-    > "$INCLUDES_DIR/$README_FILENAME"
+# Fix logo path
+sed "s|../docs/content||g" $README_FILE > "$INCLUDES_DIR/$README_FILENAME"
 
 # 📅 CHANGELOG.md
 echo "ℹ️ Copying CHANGELOG file"

@@ -35,10 +35,6 @@ Supports SSR (and Angular Universal).
 Use a service. Use routes' data.
 Set it up in a flash! 🚀
 
-> [!NOTE]
-> Current version is a beta. APIs are now very stable and very open for feedback.
-> Version 1.0.0 will be published after it has been in the wild for a while
-
 ## Motivation
 
 You have a nice Angular-powered website. You want to improve its SEO and decide to add some metadata in your pages. You also enable [Server Side Rendering (SSR)][SSR] so when search engines visit your site, metadata elements are already in the HTML returned by the server. You start adding nice `<meta name="description">` to describe your home page. Then Open Graph metadata like `<meta property="og:title">` [to customize social cards / link previews](https://www.freecodecamp.org/news/what-is-open-graph-and-how-can-i-use-it-for-my-website/). You use [Angular's `Meta` APIs][Angular Meta APIs] to insert those in your DOM. All good so far 😊
@@ -58,7 +54,7 @@ If only there was a way to easily specify metadata I want for each page in a dec
 
 First, welcome 🥰
 
-Wondering why this library and not another one? Take a look at [why section](https://ngx-meta.dev/why/). Probably most interesting parts are [**features**](https://ngx-meta.dev/why/features/) and [**comparison**](https://ngx-meta.dev/why/comparison/) pages.
+Wondering why this library and not another one? Take a look at [why section](https://ngx-meta.dev/why/). Probably, the most interesting parts are [**features**](https://ngx-meta.dev/why/features/) and [**comparison**](https://ngx-meta.dev/why/comparison/) pages.
 
 For the hands-on devs ([_this is the way_](https://knowyourmeme.com/memes/this-is-the-way)), [**get started now** ⚡️](https://ngx-meta.dev/get-started/)
 

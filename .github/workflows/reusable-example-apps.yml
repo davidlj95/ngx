@@ -1,6 +1,10 @@
 name: Example apps
 on:
   workflow_call:
+    inputs:
+      cli-version-aliases:
+        type: string
+        required: true
 
 env:
   EXAMPLE_APPS_DIR: projects/ngx-meta/example-apps
@@ -12,27 +16,13 @@ env:
   EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
 
 jobs:
-  load-config:
-    name: Load CI/CD configuration
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    outputs:
-      example-apps-version-aliases: ${{ steps.load-config.outputs.example-apps-version-aliases }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Load CI/CD configuration
-        id: load-config
-        uses: ./.github/actions/config
-
   example-app:
-    needs: load-config
     name: Example app - Angular ${{ matrix.cli-version-alias }} - Coverage ${{ matrix.coverage }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
+        cli-version-alias: ${{ fromJSON(inputs.cli-version-aliases) }}
         coverage: [enabled, disabled]
     env:
       EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.cli-version-alias }}

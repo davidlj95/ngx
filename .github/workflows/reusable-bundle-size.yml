@@ -1,43 +1,33 @@
 name: Bundle size
 on:
   workflow_call:
+    inputs:
+      cli-version-aliases:
+        type: string
+        required: true
 
 #permissions:
 #  👇 Needed for main bundle size check store only
 #  checks: write
 
 env:
-  # 👇 Keep in sync with pull request completed workflow
+  # 👇 Keep in sync with the pull request completed workflow
   BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-
   BUNDLE_SIZE_CHECK_RUN_NAME_PREFIX: ngx-meta-bundle-size-
   BUNDLE_SIZE_DIR: projects/ngx-meta/bundle-size
-  # 👇 Keep in sync with example apps workflow
+  # 👇 Keep in sync with the example apps workflow
   EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
-  # 👇 Keep in sync with pull request completed and docs workflow
+  # 👇 Keep in sync with the pull request completed and the docs' workflow
   BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX: -bundle-size
 
 jobs:
-  load-config:
-    name: Load CI/CD configuration
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    outputs:
-      example-apps-version-aliases: ${{ steps.load-config.outputs.example-apps-version-aliases }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Load CI/CD configuration
-        id: load-config
-        uses: ./.github/actions/config
-
   analysis:
     name: Analysis - Angular ${{ matrix.cli-version-alias }}
-    needs: load-config
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
+        cli-version-alias: ${{ fromJSON(inputs.cli-version-aliases) }}
     env:
       EXAMPLE_APP_DIR: projects/ngx-meta/example-apps/apps/${{ matrix.cli-version-alias }}
       OUTPUT_DIR: out/${{ matrix.cli-version-alias }}
@@ -106,14 +96,14 @@ jobs:
           retention-days: 5
 
   store:
-    needs: [load-config, analysis]
+    needs: analysis
     if: github.event_name == 'push'
     name: Store - Angular ${{ matrix.cli-version-alias }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        cli-version-alias: ${{ fromJSON(needs.load-config.outputs.example-apps-version-aliases) }}
+        cli-version-alias: ${{ fromJSON(inputs.cli-version-aliases) }}
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4

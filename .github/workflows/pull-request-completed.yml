@@ -5,7 +5,7 @@ name: Pull request completed
 
 on:
   workflow_run:
-    #👇 Keep in sync with pull request workflow
+    #👇 Keep in sync with the pull request workflow
     workflows: [Pull request]
     types:
       - completed
@@ -15,9 +15,9 @@ permissions:
   pull-requests: write
 
 env:
-  #👇 Keep in sync with bundle size workflow
+  #👇 Keep in sync with the bundle size workflow
   BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX: -bundle-size
-  #👇 Keep in sync with bundle size workflow
+  #👇 Keep in sync with the bundle size workflow
   BUNDLE_SIZE_COMMENT_ID_PREFIX: bundle-size-comment-
 
 jobs:

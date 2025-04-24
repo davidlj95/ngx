@@ -10,6 +10,10 @@ Using your package manager's install command. For instance, with `npm`:
 npm install @davidlj95/ngx-meta
 ```
 
+??? note "If using Angular v15 or v16"
+
+    Run `npm install @davidlj95/ngx-meta@1.0.0-beta.38`. As latest v19 production version is not compatible with v15, v16. But latest beta version is. Soon will launch production versions to support older Angular versions. There are no other differences between last beta version and v19 version, so for now they can be used interchangeably.
+
 ## 2. Add library's providers
 
 Now, let's add some providers to set the library up.

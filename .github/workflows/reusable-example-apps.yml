@@ -16,7 +16,7 @@ env:
   EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
 
 permissions:
-  contents: read
+  contents: none
 
 jobs:
   example-app:

@@ -15,7 +15,7 @@ env:
   BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX: -bundle-size
 
 permissions:
-  contents: read
+  contents: none
 
 jobs:
   docs:

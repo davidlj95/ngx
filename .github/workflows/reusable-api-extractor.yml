@@ -3,13 +3,13 @@ on:
   workflow_call:
 
 env:
-  # 👇 Keep in sync with build workflow
+  # 👇 Keep in sync with the build workflow
   TSC_ARTIFACT_NAME_SUFFIX: -tsc
   # 👇 Keep in sync with docs workflow
   API_DOCS_ARTIFACT_NAME_SUFFIX: -api-docs
 
 permissions:
-  contents: read
+  contents: none
 
 jobs:
   api-extractor:

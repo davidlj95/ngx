@@ -7,7 +7,7 @@ on:
         required: true
 
 permissions:
-  contents: read
+  contents: none
 
 env:
   E2E_DIR: projects/ngx-meta/e2e

@@ -11,7 +11,7 @@ env:
   TSC_ARTIFACT_NAME_SUFFIX: -tsc
 
 permissions:
-  contents: read
+  contents: none
 
 jobs:
   build:

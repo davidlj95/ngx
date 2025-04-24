@@ -12,7 +12,7 @@ env:
   COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX: -coverage-report
 
 permissions:
-  contents: read
+  contents: none
 
 jobs:
   upload-to-codecov:

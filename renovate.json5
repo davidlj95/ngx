@@ -69,29 +69,15 @@
       matchFileNames: [
         'projects/ngx-meta/example-apps/angular-cli-versions.json',
       ],
-      matchDepNames: ['v15'],
-      allowedVersions: '^15',
-    },
-    {
-      matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
-      ],
-      matchDepNames: ['v16'],
-      allowedVersions: '^16',
-    },
-    {
-      matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
-      ],
       matchDepNames: ['v17'],
-      allowedVersions: '^17',
+      allowedVersions: '17.0.x',
     },
     {
       matchFileNames: [
         'projects/ngx-meta/example-apps/angular-cli-versions.json',
       ],
       matchDepNames: ['v18'],
-      allowedVersions: '^18',
+      allowedVersions: '18.0.x',
     },
     {
       matchFileNames: [

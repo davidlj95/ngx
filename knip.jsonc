@@ -25,6 +25,7 @@
         "@angular-eslint/builder",
         // 👇 Unlisted: Manually hoisted by pnpm, but not specified in package.json
         "@eslint/js",
+        "micromatch",
         // 👇 Unused: added by Angular CLI by default
         "@angular/compiler",
         "@angular/platform-browser-dynamic",

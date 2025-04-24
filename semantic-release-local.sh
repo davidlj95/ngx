@@ -4,9 +4,10 @@
 
 # Warn if not using local branch just in case
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
-if [ -z "$LOCAL_SEMANTIC_RELEASE_BRANCH" ] && [ "$current_branch" != "main" ]; then
-  echo "💡 Publishing from local branch hasn't been configured. It's probable no release will be done"
-  echo "   export LOCAL_SEMANTIC_RELEASE_BRANCH=true # to use local branch as if it was main one"
+if [ -z "$LOCAL_SEMANTIC_RELEASE_BRANCH_AS_MAIN" ] && [ "$current_branch" != "main" ]; then
+  echo "💡 Publishing from local branch as if it was main one hasn't been configured."
+  echo "   It's probable no release will be done"
+  echo "   export LOCAL_SEMANTIC_RELEASE_BRANCH_AS_MAIN=true # to use local branch as if it was main one"
 fi
 
 # Ensure repository URL set

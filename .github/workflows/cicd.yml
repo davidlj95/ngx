@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - '*[0-9]+.x'
   pull_request:
   workflow_dispatch:
 
@@ -73,7 +74,7 @@ jobs:
       deployments: write
   release:
     name: Release
-    if: github.event_name == 'push' && github.ref_name == 'main'
+    if: github.event_name == 'push'
     needs: [build, test, lint, style, e2e, coverage]
     uses: ./.github/workflows/reusable-release.yml
     secrets:

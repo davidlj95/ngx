@@ -9,9 +9,9 @@ on:
 env:
   E2E_DIR: projects/ngx-meta/e2e
   COVERAGE_DIR: coverage/ngx-meta
-  # 👇 Keep in sync with example apps workflow
+  # 👇 Keep in sync with the example apps workflow
   COVERAGE_ARTIFACT_NAME_SUFFIX: -coverage
-  # 👇 Keep in sync with example apps workflow
+  # 👇 Keep in sync with the example apps workflow
   EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
   # 👇 Keep in sync with e2e and coverage workflows
   COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX: -coverage-report

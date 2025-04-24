@@ -17,11 +17,13 @@ Actually, a series of E2E tests are in place to ensure support for SSR and hydra
 
 ### 🤝 Compatibility with [Angular actively supported versions]
 
-Right now being Angular v17, v18 and v19. Update from an Angular version to another when you're ready: this library won't be an issue! Latest version will be compatible with all [Angular actively supported versions]. [There are some E2E tests to ensure that indeed][E2E tests]
+Right now this means the last three major versions. Update from an Angular version to another when you're ready: this library won't be an issue! The latest version will be compatible with [Angular actively supported versions] at that time. [There are some E2E tests to ensure that indeed][E2E tests]
 
 !!! info "Older versions may be supported"
 
     Latest version of the library may support older Angular versions other than the currently [actively supported ones][Angular actively supported versions]. But it's not guaranteed to do so. Checkout the library's [`package.json` `peerDependencies` field for exact versions compatibility claims](https://github.com/davidlj95/ngx/blob/main/projects/ngx-meta/src/package.json). It may even work for older versions than the ones specified in there, but those haven't been tested.
+
+    While production versions for older versions are being launched, you can still use version `ngx-meta@1.0.0-beta.38` that supports v15 until v19
 
 [E2E tests]: https://github.com/davidlj95/ngx/blob/main/.github/workflows/reusable-e2e.yml
 

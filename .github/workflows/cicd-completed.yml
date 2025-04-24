@@ -11,8 +11,7 @@ on:
       - completed
 
 permissions:
-  # 👇 Needed for PR bundle size comment only
-  pull-requests: write
+  contents: read
 
 env:
   #👇 Keep in sync with the bundle size workflow
@@ -46,6 +45,8 @@ jobs:
     strategy:
       matrix:
         ng-cli-version-alias: ${{ fromJSON(needs.config.outputs.ng-cli-version-aliases) }}
+    permissions:
+      pull-requests: write
     steps:
       - name: Download bundle size analysis results
         uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4

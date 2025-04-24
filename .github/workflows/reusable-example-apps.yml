@@ -15,6 +15,9 @@ env:
   # 👇 Keep in sync with bundle size and E2E tests workflow
   EXAMPLE_APP_ARTIFACT_NAME_SUFFIX: -example-app
 
+permissions:
+  contents: read
+
 jobs:
   example-app:
     name: Example app - Angular ${{ matrix.ng-cli-version-alias }} - Coverage ${{ matrix.coverage }}

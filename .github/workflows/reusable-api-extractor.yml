@@ -8,6 +8,9 @@ env:
   # 👇 Keep in sync with docs workflow
   API_DOCS_ARTIFACT_NAME_SUFFIX: -api-docs
 
+permissions:
+  contents: read
+
 jobs:
   api-extractor:
     name: API Extractor

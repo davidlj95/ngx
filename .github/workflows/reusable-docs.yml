@@ -15,7 +15,7 @@ env:
   BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX: -bundle-size
 
 permissions:
-  deployments: write
+  contents: read
 
 jobs:
   docs:
@@ -31,6 +31,8 @@ jobs:
         github.event_name == 'pull_request' &&
         contains(github.event.pull_request.labels.*.name, 'preview docs')
       )
+    permissions:
+      deployments: write
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4

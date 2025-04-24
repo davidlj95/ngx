@@ -10,6 +10,9 @@ env:
   # 👇 Keep in sync with API Extractor workflow
   TSC_ARTIFACT_NAME_SUFFIX: -tsc
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build libraries

@@ -7,6 +7,9 @@ env:
   # 👇 Keep in sync with e2e and coverage workflows
   COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX: -coverage-report
 
+permissions:
+  contents: read
+
 jobs:
   unit-test-libs:
     name: Unit tests (libs)

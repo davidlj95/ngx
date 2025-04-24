@@ -6,6 +6,9 @@ on:
         type: string
         required: true
 
+permissions:
+  contents: none
+
 env:
   E2E_DIR: projects/ngx-meta/e2e
   COVERAGE_DIR: coverage/ngx-meta

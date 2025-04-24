@@ -2,6 +2,9 @@ name: Style
 on:
   workflow_call:
 
+permissions:
+  contents: none
+
 jobs:
   build:
     name: Format check

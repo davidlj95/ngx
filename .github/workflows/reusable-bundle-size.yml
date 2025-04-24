@@ -6,9 +6,8 @@ on:
         type: string
         required: true
 
-#permissions:
-#  👇 Needed for main bundle size check store only
-#  checks: write
+permissions:
+  contents: none
 
 env:
   # 👇 Keep in sync with the pull request completed workflow
@@ -104,6 +103,8 @@ jobs:
     strategy:
       matrix:
         ng-cli-version-alias: ${{ fromJSON(inputs.ng-cli-version-aliases) }}
+    permissions:
+      checks: write
     steps:
       - name: Download main bundle analysis results
         uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4

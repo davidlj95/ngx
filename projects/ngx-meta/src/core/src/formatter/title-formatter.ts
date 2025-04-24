@@ -3,7 +3,7 @@ import { _LazyInjectionToken, _makeInjectionToken } from '../utils'
 /**
  * Formats page titles.
  *
- * Default is to provide the page title as is.
+ * The default is to provide the page title as is.
  *
  * @internal
  */

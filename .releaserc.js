@@ -43,14 +43,10 @@ const getMaintenanceBranchConfig = () => {
 module.exports = {
   repositoryUrl,
   branches: [
-    //👇 Fake branch so that we can release beta versions in `main`
-    //   until we can release a production one
-    'semantic-release',
     //👇 Major version maintenance branches
     getMaintenanceBranchConfig(),
     {
       name: localBranchAsMain ? getCurrentBranch() : 'main',
-      prerelease: 'beta',
       // ⚠️ Default channel is `undefined` for first release branch, but branch name for the rest.
       // Using `false` to indicate the default distribution channel
       // https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration#branches-properties

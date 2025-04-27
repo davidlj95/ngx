@@ -1,3 +1,52 @@
+## [`ngx-meta` v1.0.0-beta.39](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.38...ngx-meta-v1.0.0-beta.39) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+- launch first production version :rocket: (#1144)
+
+### 🚀 Features
+
+- launch first production version :rocket: ([#1144](https://github.com/davidlj95/ngx/issues/1144)) ([2ea16e1](https://github.com/davidlj95/ngx/commit/2ea16e1ea41be2c809ca8bcee982c90123b0ec07))
+
+### 📚 Documentation
+
+- update link to main CI/CD workflow ([4c0b928](https://github.com/davidlj95/ngx/commit/4c0b928989eaa9d14071e0af6c7e076166214717))
+
+### 💼 Miscellaneous Chores
+
+- back to beta for now [skip ci] ([9bd8bf4](https://github.com/davidlj95/ngx/commit/9bd8bf41b936e151913f02af45973dcf34c5ec23))
+- keep releasing beta versions for now ([fe8bc9c](https://github.com/davidlj95/ngx/commit/fe8bc9cd6218aa4c1da819468e73672898801389))
+- **release:** update CHANGELOG.md ([#1129](https://github.com/davidlj95/ngx/issues/1129)) ([0434532](https://github.com/davidlj95/ngx/commit/04345322efe70591616afdcac5f5021398876996))
+- use Renovate shared preset ([#1150](https://github.com/davidlj95/ngx/issues/1150)) ([4c573ac](https://github.com/davidlj95/ngx/commit/4c573ac6c8615195b6c60ecafa234b553b41ff2b))
+
+### ♻️ Code Refactoring
+
+- join CICD pipelines in one workflow ([#1141](https://github.com/davidlj95/ngx/issues/1141)) ([2cad610](https://github.com/davidlj95/ngx/commit/2cad61018a73cc28c3ed4c8449a0b56eb8c710ad))
+
+### ⚙️ Build System
+
+- **deps:** update actions/cache digest to 5a3ec84 ([#1131](https://github.com/davidlj95/ngx/issues/1131)) ([df8c6ee](https://github.com/davidlj95/ngx/commit/df8c6eeb4dd76178c0b07bc6849388e5ed913c81))
+- **deps:** update actions/download-artifact digest to 95815c3 ([#1132](https://github.com/davidlj95/ngx/issues/1132)) ([345a097](https://github.com/davidlj95/ngx/commit/345a0977fc4fb1a1fdf99f4b5d8681983f784562))
+- **deps:** update actions/setup-node digest to cdca736 ([#1133](https://github.com/davidlj95/ngx/issues/1133)) ([f2960c6](https://github.com/davidlj95/ngx/commit/f2960c603648bf5afe2efadf4d1aabad57b34ab8))
+- **deps:** update actions/upload-artifact digest to ea165f8 ([#1134](https://github.com/davidlj95/ngx/issues/1134)) ([f15d69e](https://github.com/davidlj95/ngx/commit/f15d69e0ad7f066aedf9a031cf9f3860eec5d298))
+- **deps:** update cypress-io/github-action action to v6.7.16 ([#1135](https://github.com/davidlj95/ngx/issues/1135)) ([6ca1d07](https://github.com/davidlj95/ngx/commit/6ca1d075639a461552f06d07489260d20f9cc32d))
+- **deps:** update peter-evans/create-pull-request digest to 271a8d0 ([#1136](https://github.com/davidlj95/ngx/issues/1136)) ([dff2905](https://github.com/davidlj95/ngx/commit/dff29054de9c1060cb16cdb0e24990aa569a3780))
+- **dev-deps:** update dependency @cypress/code-coverage to v3.13.12 ([#1137](https://github.com/davidlj95/ngx/issues/1137)) ([1356717](https://github.com/davidlj95/ngx/commit/135671775788cae4958043a928e729d4d27916c7))
+- **dev-deps:** update dependency @types/node to v22.13.11 ([#1138](https://github.com/davidlj95/ngx/issues/1138)) ([919c4de](https://github.com/davidlj95/ngx/commit/919c4de96a1cb14132c318091c963a2af5bedf79))
+- **dev-deps:** update dependency angular-eslint to v18.4.3 ([#1139](https://github.com/davidlj95/ngx/issues/1139)) ([1f969dc](https://github.com/davidlj95/ngx/commit/1f969dcdd36985627f689069af1843e67bf08467))
+- **dev-deps:** update dependency ng-mocks to v14.13.4 ([#1130](https://github.com/davidlj95/ngx/issues/1130)) ([0f5f9d9](https://github.com/davidlj95/ngx/commit/0f5f9d922db24a626eeea8e0d609823889dd5891))
+- **dev-deps:** update dependency prettier to v3.5.3 ([#1140](https://github.com/davidlj95/ngx/issues/1140)) ([70f3f13](https://github.com/davidlj95/ngx/commit/70f3f13f8feb914e983ef887518972d9fa19eebc))
+- **ide:** rename Karma template run config ([8240190](https://github.com/davidlj95/ngx/commit/8240190ba0473b53ce0d79873c9596459b28f0b7))
+- prepare for major version maintenance branches ([#1146](https://github.com/davidlj95/ngx/issues/1146)) ([0800b35](https://github.com/davidlj95/ngx/commit/0800b3573fada9b7beafdcb730371552af689d01))
+- support only actively supported versions ([#1149](https://github.com/davidlj95/ngx/issues/1149)) ([5779f65](https://github.com/davidlj95/ngx/commit/5779f6580aef554ee9f42c3fad25c215cbe2bad6))
+
+### 👷 Continuous (Integration|Deployment)
+
+- fix GITHUB_TOKEN privileges on reusable workflows ([#1148](https://github.com/davidlj95/ngx/issues/1148)) ([9b18916](https://github.com/davidlj95/ngx/commit/9b18916ceae0b0c5acb0411020eb9f2dea974f71))
+- fix pull request completed workflow ([#1145](https://github.com/davidlj95/ngx/issues/1145)) ([352f3fe](https://github.com/davidlj95/ngx/commit/352f3fea74b5b0ff5d22a41658b30dcb2268666b))
+- reduce number of times load-config job runs ([#1143](https://github.com/davidlj95/ngx/issues/1143)) ([c115081](https://github.com/davidlj95/ngx/commit/c115081c7749dcdc88d2149fd0be7df379979157))
+- restrict GITHUB_TOKEN permissions ([#1147](https://github.com/davidlj95/ngx/issues/1147)) ([4b1d880](https://github.com/davidlj95/ngx/commit/4b1d8804d86b8f301ea2cb40aa0fe18b7ebf3eef))
+
 ## [`ngx-meta` v1.0.0-beta.38](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.37...ngx-meta-v1.0.0-beta.38) (2025-03-05)
 
 ### 🚀 Features

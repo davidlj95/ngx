@@ -5,18 +5,8 @@
     'config:best-practices',
     'config:js-app',
     'github>davidlj95/renovate-config:angular/v18.2.x',
+    'github>davidlj95/renovate-config:personal/config',
   ],
-  prHourlyLimit: 0,
-  prConcurrentLimit: 5,
-  schedule: [
-    // Validate using https://codepen.io/rationaltiger24/full/ZExQEgK
-    // Though even if that says is valid, maybe invalid 🙃 as it wants 0 errors despite compiling
-    // So to be sure, `npm i later` on a tmp dir, `var later = require('later')' and check
-    // `later.parse.text('whatever schedule')` returns no errors (-1)
-    'at 9:00 am on the 1-7 day of the month on Saturday',
-  ],
-  timezone: 'Europe/Madrid',
-  labels: ['dependencies'],
   npm: {
     // Keep Angular CLI versions used to create example apps updated
     fileMatch: ['projects/ngx-meta/example-apps/angular-cli-versions.json'],
@@ -26,37 +16,6 @@
     {
       matchFileNames: ['projects/ngx-meta/src/package.json'],
       extends: ['config:js-lib'],
-    },
-    // Semantic commit messages & PR titles. Mocks @dependabot ones:
-    // build(deps) for production dependencies, build(deps-dev) for dev dependencies (see below)
-    // ℹ️ If placing this 👇 commit type and scope default in root config doesn't work. Most probably the config
-    // presets override that
-    {
-      matchFileNames: ['**/*'],
-      semanticCommitType: 'build',
-      semanticCommitScope: 'deps',
-    },
-    {
-      matchDepTypes: ['devDependencies'],
-      semanticCommitScope: 'dev-deps',
-    },
-    // Tagging
-    {
-      matchManagers: ['github-actions'],
-      addLabels: ['github-actions'],
-    },
-    {
-      matchCategories: ['js'],
-      addLabels: ['javascript'],
-    },
-    {
-      matchCategories: ['node'],
-      addLabels: ['node'],
-    },
-    // Auto-merge minor/patch production ones, dev dependencies, E2E deps
-    {
-      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      automerge: true,
     },
     // Angular version installed
     {
@@ -87,7 +46,7 @@
       allowedVersions: '^19',
     },
     // API Documenter to use Markdown tables
-    // Watching issue to see if we can upgrade when fixed
+    // Watching the issue to see if we can upgrade when fixed
     // https://github.com/microsoft/rushstack/issues/4586
     {
       matchDepNames: ['@microsoft/api-documenter'],

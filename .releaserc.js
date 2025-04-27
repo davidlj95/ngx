@@ -43,7 +43,6 @@ const getMaintenanceBranchConfig = () => {
 module.exports = {
   repositoryUrl,
   branches: [
-    'semantic-release',
     //👇 Major version maintenance branches
     getMaintenanceBranchConfig(),
     {

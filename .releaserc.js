@@ -48,7 +48,6 @@ module.exports = {
     getMaintenanceBranchConfig(),
     {
       name: localBranchAsMain ? getCurrentBranch() : 'main',
-      prerelease: 'beta',
       // ⚠️ Default channel is `undefined` for first release branch, but branch name for the rest.
       // Using `false` to indicate the default distribution channel
       // https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration#branches-properties

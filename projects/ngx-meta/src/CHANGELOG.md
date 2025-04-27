@@ -1,3 +1,13 @@
+## [`ngx-meta` v19.0.0](https://github.com/davidlj95/ngx/compare/ngx-meta-v18.0.0...ngx-meta-v19.0.0) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+- publish first production version v19 :rocket: (#1152)
+
+### 🚀 Features
+
+- publish first production version v19 :rocket: ([#1152](https://github.com/davidlj95/ngx/issues/1152)) ([212c385](https://github.com/davidlj95/ngx/commit/212c38557e3792d5a79cc3b6b755978f97129a2d))
+
 ## [`ngx-meta` v1.0.0-beta.39](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.38...ngx-meta-v1.0.0-beta.39) (2025-04-27)
 
 ### ⚠ BREAKING CHANGES

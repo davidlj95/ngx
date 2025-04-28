@@ -1,3 +1,17 @@
+## [`ngx-meta` v17.0.0](https://github.com/davidlj95/ngx/compare/ngx-meta-v16.0.0...ngx-meta-v17.0.0) (2025-04-28)
+
+### ⚠ BREAKING CHANGES
+
+- publish v17 version (#1156)
+
+### 🚀 Features
+
+- publish v17 version ([#1156](https://github.com/davidlj95/ngx/issues/1156)) ([407d20c](https://github.com/davidlj95/ngx/commit/407d20c792b787c3b7ab7c4c55768a931c279fc5))
+
+### 💼 Miscellaneous Chores
+
+- remove unneeded release branch [skip ci] ([7927c2b](https://github.com/davidlj95/ngx/commit/7927c2bd925395174ce95ac233683633597c5e69))
+
 ## [`ngx-meta` v1.0.0-beta.38](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.37...ngx-meta-v1.0.0-beta.38) (2025-03-05)
 
 ### 🚀 Features

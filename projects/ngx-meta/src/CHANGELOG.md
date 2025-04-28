@@ -1,3 +1,13 @@
+## [`ngx-meta` v18.0.0](https://github.com/davidlj95/ngx/compare/ngx-meta-v17.0.0...ngx-meta-v18.0.0) (2025-04-28)
+
+### ⚠ BREAKING CHANGES
+
+- publish v18 version (#1154)
+
+### 🚀 Features
+
+- publish v18 version ([#1154](https://github.com/davidlj95/ngx/issues/1154)) ([d62e3d4](https://github.com/davidlj95/ngx/commit/d62e3d48c34a60b8caa44d19b4ffdce3995c2c16))
+
 ## [`ngx-meta` v1.0.0-beta.38](https://github.com/davidlj95/ngx/compare/ngx-meta-v1.0.0-beta.37...ngx-meta-v1.0.0-beta.38) (2025-03-05)
 
 ### 🚀 Features

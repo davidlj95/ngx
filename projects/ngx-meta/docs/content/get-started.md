@@ -8,9 +8,11 @@ Glad you're here 🥰 Let's set it up in 3 steps ⚡️
 ng add @davidlj95/ngx-meta
 ```
 
-??? note "If using Angular v15 or v16"
+??? note "If not using the latest Angular major version"
 
-    Run `ng add @davidlj95/ngx-meta@1.0.0-beta.38`. As latest v19 production version is not compatible with v15, v16. But latest beta version is. Soon will launch production versions to support older Angular versions. There are no other differences between last beta version and v19 version, so for now they can be used interchangeably.
+    You can run `ng add @davidlj95/ngx-meta@18` to install v18 for instance.
+    Each major version supports the last three major versions.
+    So you can use v17 with an Angular v15 app.
 
 The command will install the library and add ask you if you want to set up the routing module to set metadata values in Angular routes' `data`.
 

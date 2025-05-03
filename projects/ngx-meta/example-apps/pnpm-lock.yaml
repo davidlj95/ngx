@@ -12,8 +12,8 @@ importers:
         specifier: 22.13.11
         version: 22.13.11
       '@types/semver':
-        specifier: 7.5.8
-        version: 7.5.8
+        specifier: 7.7.0
+        version: 7.7.0
       execa:
         specifier: 9.5.2
         version: 9.5.2
@@ -54,8 +54,8 @@ packages:
   '@types/node@22.13.11':
     resolution: {integrity: sha512-iEUCUJoU0i3VnrCmgoWCXttklWcvoCIx4jzcP22fioIVSdTmjgoEvmAO/QPw6TcS9k5FrNgn4w7q5lGOd1CT5g==}
 
-  '@types/semver@7.5.8':
-    resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
+  '@types/semver@7.7.0':
+    resolution: {integrity: sha512-k107IF4+Xr7UHjwDc7Cfd6PRQfbdkiRabXGRjo07b4WyPahFBZCZ1sE+BNxYIJPPg73UkfOsVOLwqVc/6ETrIA==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -258,7 +258,7 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
-  '@types/semver@7.5.8': {}
+  '@types/semver@7.7.0': {}
 
   balanced-match@1.0.2: {}
 

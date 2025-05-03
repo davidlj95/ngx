@@ -9,10 +9,10 @@
     "test": "./start-server-and-test.sh"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "3.13.12",
+    "@cypress/code-coverage": "3.14.0",
     "@istanbuljs/load-nyc-config": "1.1.0",
     "@types/node": "22.13.11",
-    "cypress": "14.0.3",
+    "cypress": "14.3.2",
     "start-server-and-test": "2.0.10",
     "tslib": "2.7.0",
     "typescript": "5.5.3"

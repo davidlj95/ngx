@@ -4,7 +4,7 @@
   "description": "ngx-meta docs infra",
   "scripts": {},
   "devDependencies": {
-    "@fontsource-variable/inter-tight": "5.1.0",
+    "@fontsource-variable/inter-tight": "5.2.5",
     "@fontsource/dm-mono": "5.1.0"
   }
 }

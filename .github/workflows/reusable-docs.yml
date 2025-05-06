@@ -25,12 +25,6 @@ jobs:
         working-directory: ${{ env.DOCS_DIR }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: |
-      (github.event_name == 'push' && github.ref_name == 'main') ||
-      (
-        github.event_name == 'pull_request' &&
-        contains(github.event.pull_request.labels.*.name, 'preview docs')
-      )
     permissions:
       deployments: write
     steps:
@@ -85,6 +79,12 @@ jobs:
       - name: Build
         run: make build
       - name: Publish
+        if: |
+          (github.event_name == 'push' && github.ref_name == 'main') ||
+          (
+            github.event_name == 'pull_request' &&
+            contains(github.event.pull_request.labels.*.name, 'preview docs')
+          )
         uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # 1
         with:
           accountId: ${{ secrets.cloudflare-account-id }}

@@ -66,6 +66,7 @@
     "./projects/ngx-meta/example-apps": {
       "project": ["src/**/*.ts"],
       "entry": ["src/create-example-app.ts"],
+      "ignoreBinaries": ["mktemp"],
     },
     "./projects/ngx-meta/schematics": {
       "project": ["**/*.ts!", "!**/testing/**/*.ts!"],

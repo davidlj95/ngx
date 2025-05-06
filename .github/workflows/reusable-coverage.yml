@@ -33,7 +33,7 @@ jobs:
       - name: Merge coverage reports
         run: pnpm run coverage:report:all
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4.6.0
+        uses: codecov/codecov-action@ad3126e916f78f00edff4ed0317cf185271ccc2d # v5.4.2
         with:
           disable_search: true
           file: ${{ env.COVERAGE_DIR }}/lcov.info

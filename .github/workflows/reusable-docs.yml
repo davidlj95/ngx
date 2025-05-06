@@ -36,25 +36,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Download API reference docs
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
-        with:
-          name: ngx-meta${{ env.API_DOCS_ARTIFACT_NAME_SUFFIX }}
-          path: projects/ngx-meta/docs/content/api
-      - name: Download bundle size info
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
-        with:
-          pattern: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}*
-      - name: Copy reports into directories
-        working-directory: .
-        run: |
-          # shellcheck disable=SC2001
-          for artifact_dir in "ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}"*; do
-            app_name="$(echo "$artifact_dir" | sed "s/^ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-//")"
-            bundle_size_app_dir="projects/ngx-meta/bundle-size/out/$app_name"
-            mkdir -p "$bundle_size_app_dir"
-            cp "$artifact_dir/bundle-size-report.md" "$bundle_size_app_dir"
-          done
+      #- name: Download API reference docs
+      #  uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+      #  with:
+      #    name: ngx-meta${{ env.API_DOCS_ARTIFACT_NAME_SUFFIX }}
+      #    path: projects/ngx-meta/docs/content/api
+      #- name: Download bundle size info
+      #  uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+      #  with:
+      #    pattern: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}*
+      #- name: Copy reports into directories
+      #  working-directory: .
+      #  run: |
+      #    # shellcheck disable=SC2001
+      #    for artifact_dir in "ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_PREFIX }}"*; do
+      #      app_name="$(echo "$artifact_dir" | sed "s/^ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-//")"
+      #      bundle_size_app_dir="projects/ngx-meta/bundle-size/out/$app_name"
+      #      mkdir -p "$bundle_size_app_dir"
+      #      cp "$artifact_dir/bundle-size-report.md" "$bundle_size_app_dir"
+      #    done
       - name: Install poetry # pipx comes built-in in GitHub runner
         run: pipx install poetry
       - name: Setup Python
@@ -82,17 +82,17 @@ jobs:
           path: ${{ env.DOCS_DIR }}/.cache
           restore-keys: |
             mkdocs-material-
-      - name: Build
-        run: make build
-      - name: Publish
-        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # 1
-        with:
-          accountId: ${{ secrets.cloudflare-account-id }}
-          apiToken: ${{ secrets.cloudflare-api-token }}
-          # Somehow if this is not set, it deploys to production when building on a PR
-          # https://github.com/cloudflare/pages-action/issues/97
-          branch: ${{ github.head_ref || github.ref_name }}
-          projectName: ngx-meta
-          directory: site
-          workingDirectory: ${{ env.DOCS_DIR }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      #- name: Build
+      #  run: make build
+      #- name: Publish
+      #  uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # 1
+      #  with:
+      #    accountId: ${{ secrets.cloudflare-account-id }}
+      #    apiToken: ${{ secrets.cloudflare-api-token }}
+      #    # Somehow if this is not set, it deploys to production when building on a PR
+      #    # https://github.com/cloudflare/pages-action/issues/97
+      #    branch: ${{ github.head_ref || github.ref_name }}
+      #    projectName: ngx-meta
+      #    directory: site
+      #    workingDirectory: ${{ env.DOCS_DIR }}
+      #    gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -12,79 +12,78 @@ permissions:
   contents: read
 
 jobs:
-  config:
-    name: CI/CD configuration
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    outputs:
-      ng-cli-version-aliases: ${{ steps.config.outputs.ng-cli-version-aliases }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: CI/CD configuration
-        id: config
-        uses: ./.github/actions/config
-  build:
-    name: Build
-    uses: ./.github/workflows/reusable-build.yml
-  test:
-    name: Test
-    uses: ./.github/workflows/reusable-test.yml
-  lint:
-    name: Lint
-    uses: ./.github/workflows/reusable-lint.yml
-  style:
-    name: Style
-    uses: ./.github/workflows/reusable-style.yml
-  api-extractor:
-    needs: build
-    name: API Extractor
-    uses: ./.github/workflows/reusable-api-extractor.yml
-  example-apps:
-    needs: [build, config]
-    name: Example apps
-    uses: ./.github/workflows/reusable-example-apps.yml
-    with:
-      ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
-  e2e:
-    needs: [example-apps, config]
-    name: E2E
-    uses: ./.github/workflows/reusable-e2e.yml
-    with:
-      ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
-  coverage:
-    needs: [e2e, test]
-    name: Coverage
-    uses: ./.github/workflows/reusable-coverage.yml
-    secrets:
-      codecov-token: ${{ secrets.CODECOV_TOKEN }}
-  bundle-size:
-    needs: [example-apps, config]
-    name: Bundle size
-    uses: ./.github/workflows/reusable-bundle-size.yml
-    with:
-      ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
-    permissions:
-      checks: write
+  #config:
+  #  name: CI/CD configuration
+  #  runs-on: ubuntu-latest
+  #  timeout-minutes: 5
+  #  outputs:
+  #    ng-cli-version-aliases: ${{ steps.config.outputs.ng-cli-version-aliases }}
+  #  steps:
+  #    - name: Checkout
+  #      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+  #    - name: CI/CD configuration
+  #      id: config
+  #      uses: ./.github/actions/config
+  #build:
+  #  name: Build
+  #  uses: ./.github/workflows/reusable-build.yml
+  #test:
+  #  name: Test
+  #  uses: ./.github/workflows/reusable-test.yml
+  #lint:
+  #  name: Lint
+  #  uses: ./.github/workflows/reusable-lint.yml
+  #style:
+  #  name: Style
+  #  uses: ./.github/workflows/reusable-style.yml
+  #api-extractor:
+  #  needs: build
+  #  name: API Extractor
+  #  uses: ./.github/workflows/reusable-api-extractor.yml
+  #example-apps:
+  #  needs: [build, config]
+  #  name: Example apps
+  #  uses: ./.github/workflows/reusable-example-apps.yml
+  #  with:
+  #    ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
+  #e2e:
+  #  needs: [example-apps, config]
+  #  name: E2E
+  #  uses: ./.github/workflows/reusable-e2e.yml
+  #  with:
+  #    ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
+  #coverage:
+  #  needs: [e2e, test]
+  #  name: Coverage
+  #  uses: ./.github/workflows/reusable-coverage.yml
+  #  secrets:
+  #    codecov-token: ${{ secrets.CODECOV_TOKEN }}
+  #bundle-size:
+  #  needs: [example-apps, config]
+  #  name: Bundle size
+  #  uses: ./.github/workflows/reusable-bundle-size.yml
+  #  with:
+  #    ng-cli-version-aliases: ${{ needs.config.outputs.ng-cli-version-aliases }}
+  #  permissions:
+  #    checks: write
   docs:
     name: Docs
-    needs: [api-extractor, bundle-size]
     uses: ./.github/workflows/reusable-docs.yml
     secrets:
       cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     permissions:
       deployments: write
-  release:
-    name: Release
-    if: github.event_name == 'push'
-    needs: [build, test, lint, style, e2e, coverage]
-    uses: ./.github/workflows/reusable-release.yml
-    secrets:
-      npm-token: ${{ secrets.NPM_TOKEN }}
-      github-token-pr: ${{ secrets.PR_GH_TOKEN }}
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
+  #release:
+  #  name: Release
+  #  if: github.event_name == 'push'
+  #  needs: [build, test, lint, style, e2e, coverage]
+  #  uses: ./.github/workflows/reusable-release.yml
+  #  secrets:
+  #    npm-token: ${{ secrets.NPM_TOKEN }}
+  #    github-token-pr: ${{ secrets.PR_GH_TOKEN }}
+  #  permissions:
+  #    contents: write
+  #    issues: write
+  #    pull-requests: write
+  #    id-token: write

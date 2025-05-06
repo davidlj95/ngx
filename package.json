@@ -67,7 +67,7 @@
     "@commitlint/cli": "19.8.0",
     "@commitlint/config-conventional": "19.8.0",
     "@commitlint/types": "19.8.0",
-    "@eslint/compat": "1.2.7",
+    "@eslint/compat": "1.2.9",
     "@jest/globals": "29.7.0",
     "@jest/types": "29.6.3",
     "@microsoft/api-documenter": "7.23.38",
@@ -79,9 +79,9 @@
     "angular-eslint": "18.4.3",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "dts-bundle-generator": "9.5.1",
-    "eslint": "9.21.0",
-    "eslint-config-prettier": "10.0.1",
-    "eslint-plugin-cypress": "4.1.0",
+    "eslint": "9.26.0",
+    "eslint-config-prettier": "10.1.2",
+    "eslint-plugin-cypress": "4.3.0",
     "eslint-plugin-jasmine": "4.2.2",
     "eslint-plugin-jest": "28.11.0",
     "eslint-plugin-json-files": "4.4.2",
@@ -93,7 +93,7 @@
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "knip": "5.42.0",
+    "knip": "5.54.1",
     "lint-staged": "15.5.1",
     "ng-mocks": "14.13.4",
     "ng-packagr": "18.2.1",
@@ -102,7 +102,7 @@
     "semantic-release": "24.2.3",
     "ts-jest": "29.3.2",
     "typescript": "5.5.4",
-    "typescript-eslint": "8.24.1"
+    "typescript-eslint": "8.32.0"
   },
   "packageManager": "pnpm@10.10.0"
 }

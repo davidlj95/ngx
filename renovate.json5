@@ -1,56 +1,50 @@
 {
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  // 👇 Defined in https://github.com/renovatebot/renovate/blob/37.71.1/lib/config/presets/internal/config.ts
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    'config:best-practices',
-    'config:js-app',
-    'github>davidlj95/renovate-config:angular/v18.2.x',
-    'github>davidlj95/renovate-config:personal/config',
+    "config:best-practices",
+    "config:js-app",
+    "github>davidlj95/renovate-config:angular/v18.2.x",
+    "github>davidlj95/renovate-config:personal/config",
   ],
   npm: {
-    // Keep Angular CLI versions used to create example apps updated
-    fileMatch: ['projects/ngx-meta/example-apps/angular-cli-versions.json'],
+    managerFilePatterns: [
+      "/projects/ngx-meta/example-apps/angular-cli-versions.json/",
+    ],
   },
   packageRules: [
-    // Lib config for published package JSONs
     {
-      matchFileNames: ['projects/ngx-meta/src/package.json'],
-      extends: ['config:js-lib'],
+      matchFileNames: ["projects/ngx-meta/src/package.json"],
+      extends: ["config:js-lib"],
     },
-    // Angular version installed
     {
-      matchDepNames: ['@angular{/,}**'],
-      matchFileNames: ['package.json'],
-      allowedVersions: '^18',
-    },
-    // Example apps major versions
-    {
-      matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
-      ],
-      matchDepNames: ['v17'],
-      allowedVersions: '17.0.x',
+      matchDepNames: ["@angular{/,}**"],
+      matchFileNames: ["package.json"],
+      allowedVersions: "^18",
     },
     {
       matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+        "projects/ngx-meta/example-apps/angular-cli-versions.json",
       ],
-      matchDepNames: ['v18'],
-      allowedVersions: '18.0.x',
+      matchDepNames: ["v17"],
+      allowedVersions: "17.0.x",
     },
     {
       matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+        "projects/ngx-meta/example-apps/angular-cli-versions.json",
       ],
-      matchDepNames: ['v19'],
-      allowedVersions: '^19',
+      matchDepNames: ["v18"],
+      allowedVersions: "18.0.x",
     },
-    // API Documenter to use Markdown tables
-    // Watching the issue to see if we can upgrade when fixed
-    // https://github.com/microsoft/rushstack/issues/4586
     {
-      matchDepNames: ['@microsoft/api-documenter'],
-      allowedVersions: '7.23.38',
+      matchFileNames: [
+        "projects/ngx-meta/example-apps/angular-cli-versions.json",
+      ],
+      matchDepNames: ["v19"],
+      allowedVersions: "^19",
+    },
+    {
+      matchDepNames: ["@microsoft/api-documenter"],
+      allowedVersions: "7.23.38",
     },
   ],
 }

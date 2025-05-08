@@ -9,7 +9,9 @@
   ],
   npm: {
     // Keep Angular CLI versions used to create example apps updated
-    fileMatch: ['projects/ngx-meta/example-apps/angular-cli-versions.json'],
+    managerFilePatterns: [
+      'projects/ngx-meta/example-apps/angular-cli-versions.json',
+    ],
   },
   packageRules: [
     // Lib config for published package JSONs

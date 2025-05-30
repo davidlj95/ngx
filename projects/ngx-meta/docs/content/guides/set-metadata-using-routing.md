@@ -87,8 +87,8 @@ export const routes: Routes = [
         standard: {
           keywords: ['cool', 'awesomeness'],
         },
-      } satisfies NgxMetaRouteData<GlobalMetadata & StandardMetadata>,
-    },
+      },
+    } satisfies NgxMetaRouteData<GlobalMetadata & StandardMetadata>,
   },
 ]
 ```

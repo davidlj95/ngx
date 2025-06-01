@@ -21,7 +21,7 @@
     },
     // Angular version installed
     {
-      matchDepNames: ['@angular**', '@schematics**'],
+      matchDepNames: ['@angular**', '@schematics**', 'ng-packagr'],
       matchFileNames: ['package.json'],
       allowedVersions: '^18',
     },

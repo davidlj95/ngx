@@ -81,7 +81,7 @@
     "dts-bundle-generator": "9.5.1",
     "eslint": "9.28.0",
     "eslint-config-prettier": "10.1.5",
-    "eslint-plugin-cypress": "4.3.0",
+    "eslint-plugin-cypress": "5.0.1",
     "eslint-plugin-jasmine": "4.2.2",
     "eslint-plugin-jest": "28.12.0",
     "eslint-plugin-json-files": "4.4.2",

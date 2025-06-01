@@ -96,7 +96,7 @@
     "knip": "5.59.1",
     "lint-staged": "15.5.2",
     "ng-mocks": "14.13.5",
-    "ng-packagr": "18.2.1",
+    "ng-packagr": "20.0.0",
     "nyc": "17.1.0",
     "prettier": "3.5.3",
     "semantic-release": "24.2.5",

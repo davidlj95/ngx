@@ -94,7 +94,7 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
     "knip": "5.59.1",
-    "lint-staged": "15.5.2",
+    "lint-staged": "16.1.0",
     "ng-mocks": "14.13.5",
     "ng-packagr": "18.2.1",
     "nyc": "17.1.0",

@@ -706,7 +706,7 @@ export const withContentAttribute: {
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerDeps" is marked as @public, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
 // @public
-export const withManagerDeps: (...deps: Exclude<FactoryProvider['deps'], undefined>) => _ProvideNgxMetaManagerOptions;
+export const withManagerDeps: (...deps: Exclude<FactoryProvider["deps"], undefined>) => _ProvideNgxMetaManagerOptions;
 
 // Warning: (ae-incompatible-release-tags) The symbol "withManagerGlobal" is marked as @public, but its signature references "_ProvideNgxMetaManagerOptions" which is marked as @internal
 //
@@ -736,13 +736,13 @@ export const withManagerJsonPath: WithManagerJsonPath;
 export const withManagerObjectMerging: () => _ProvideNgxMetaManagerOptions;
 
 // @internal (undocumented)
-export const _withModuleManagerNameAttribute: <T>(nameAttribute: _ProvideNgxMetaModuleManagerOptions<T>['n']) => _ProvideNgxMetaModuleManagerOptions<T>;
+export const _withModuleManagerNameAttribute: <T>(nameAttribute: _ProvideNgxMetaModuleManagerOptions<T>["n"]) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @internal (undocumented)
 export const _withModuleManagerSameGlobalKey: <T>() => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @internal (undocumented)
-export const _withModuleManagerSetterFactory: <T>(setterFactory: _ProvideNgxMetaModuleManagerOptions<T>['f']) => _ProvideNgxMetaModuleManagerOptions<T>;
+export const _withModuleManagerSetterFactory: <T>(setterFactory: _ProvideNgxMetaModuleManagerOptions<T>["f"]) => _ProvideNgxMetaModuleManagerOptions<T>;
 
 // @public
 export const withNameAttribute: (value: string) => readonly ["name", string];

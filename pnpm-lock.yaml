@@ -76,8 +76,8 @@ importers:
         specifier: 7.23.38
         version: 7.23.38(@types/node@22.15.29)
       '@microsoft/api-extractor':
-        specifier: 7.52.7
-        version: 7.52.7(@types/node@22.15.29)
+        specifier: 7.52.8
+        version: 7.52.8(@types/node@22.15.29)
       '@schematics/angular':
         specifier: 18.2.19
         version: 18.2.19(chokidar@3.6.0)
@@ -1728,8 +1728,8 @@ packages:
   '@microsoft/api-extractor-model@7.30.6':
     resolution: {integrity: sha512-znmFn69wf/AIrwHya3fxX6uB5etSIn6vg4Q4RB/tb5VDDs1rqREc+AvMC/p19MUN13CZ7+V/8pkYPTj7q8tftg==}
 
-  '@microsoft/api-extractor@7.52.7':
-    resolution: {integrity: sha512-YLdPS644MfbLJt4hArP1WcldcaEUBh9wnFjcLEcQnVG0AMznbLh2sdE0F5Wr+w6+Lyp5/XUPvRAg3sYGSP3GCw==}
+  '@microsoft/api-extractor@7.52.8':
+    resolution: {integrity: sha512-cszYIcjiNscDoMB1CIKZ3My61+JOhpERGlGr54i6bocvGLrcL/wo9o+RNXMBrb7XgLtKaizZWUpqRduQuHQLdg==}
     hasBin: true
 
   '@microsoft/tsdoc-config@0.16.2':
@@ -8864,7 +8864,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.52.7(@types/node@22.15.29)':
+  '@microsoft/api-extractor@7.52.8(@types/node@22.15.29)':
     dependencies:
       '@microsoft/api-extractor-model': 7.30.6(@types/node@22.15.29)
       '@microsoft/tsdoc': 0.15.1
@@ -8955,7 +8955,7 @@ snapshots:
 
   '@npmcli/fs@3.1.0':
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   '@npmcli/git@5.0.3':
     dependencies:
@@ -10253,7 +10253,7 @@ snapshots:
 
   builtins@5.0.1:
     dependencies:
-      semver: 7.7.1
+      semver: 7.7.2
 
   bundle-name@4.1.0:
     dependencies:
@@ -10506,7 +10506,7 @@ snapshots:
       conventional-commits-filter: 5.0.0
       handlebars: 4.7.8
       meow: 13.2.0
-      semver: 7.7.1
+      semver: 7.7.2
 
   conventional-commits-filter@5.0.0: {}
 
@@ -12837,7 +12837,7 @@ snapshots:
       make-fetch-happen: 13.0.0
       nopt: 7.2.0
       proc-log: 3.0.0
-      semver: 7.7.1
+      semver: 7.7.2
       tar: 6.2.1
       which: 4.0.0
     transitivePeerDependencies:
@@ -12861,7 +12861,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.1
       is-core-module: 2.13.1
-      semver: 7.7.1
+      semver: 7.7.2
       validate-npm-package-license: 3.0.4
 
   normalize-path@3.0.0: {}

@@ -12,7 +12,7 @@
   "devDependencies": {
     "@types/node": "22.15.3",
     "@types/semver": "7.7.0",
-    "execa": "9.5.2",
+    "execa": "9.6.0",
     "semver": "7.7.2",
     "ts-morph": "25.0.1",
     "typescript": "5.8.3"

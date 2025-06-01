@@ -14,7 +14,7 @@
     "@types/semver": "7.7.0",
     "execa": "9.6.0",
     "semver": "7.7.2",
-    "ts-morph": "25.0.1",
+    "ts-morph": "26.0.0",
     "typescript": "5.8.3"
   },
   "packageManager": "pnpm@10.11.0"

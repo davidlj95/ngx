@@ -14,7 +14,7 @@ export const shouldContainAllStandardMetadata = () =>
           .and('eq', metadata.standard.keywords.join(','))
         cy.getMeta('generator')
           .shouldHaveContent()
-          .and('match', /^Angular v1/)
+          .and('match', /^Angular v/)
         //👆 v1 cause we E2E test v15+
         cy.getMeta('application-name')
           .shouldHaveContent()

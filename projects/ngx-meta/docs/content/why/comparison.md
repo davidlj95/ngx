@@ -48,7 +48,7 @@ It is certainly a better option than installing a poorly maintained library. But
 
 | Maintenance                       |        🙋 `ngx-meta`        |      `@avivharuzi/ngx-seo`      |             `@ngaox/seo`              |          `@ngx-meta/core`           |
 | --------------------------------- | :-------------------------: | :-----------------------------: | :-----------------------------------: | :---------------------------------: |
-| :simple-angular: versions support | [**v15-v19**][pkg-this][^6] |      [v13-16][pkg-ngx-seo]      |         [v15][pkg-ngaox-seo]          |         [v9][pkg-ngx-meta]          |
+| :simple-angular: versions support | [**v15-v20**][pkg-this][^6] |      [v13-16][pkg-ngx-seo]      |         [v15][pkg-ngaox-seo]          |         [v9][pkg-ngx-meta]          |
 | Documentation                     |             ✅              |               ✅                |                  ✅                   |                 ✅                  |
 | Last commit                       |   [![lc-this]][repo-this]   |  [![lc-ngx-seo]][repo-ngx-seo]  |   [![lc-ngaox-seo]][repo-ngaox-seo]   |   [![lc-ngx-meta]][repo-ngx-meta]   |
 | Unit tests                        |  [![ci-b-this]][ci-l-this]  | [![ci-b-ngx-seo]][ci-l-ngx-seo] |  [![ci-b-ngaox-seo]][ci-l-ngaox-seo]  |  [![ci-b-ngx-meta]][ci-l-ngx-meta]  |

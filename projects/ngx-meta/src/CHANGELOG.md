@@ -1,3 +1,69 @@
+## [`ngx-meta` v20.0.0](https://github.com/davidlj95/ngx/compare/ngx-meta-v19.0.0...ngx-meta-v20.0.0) (2025-06-02)
+
+### ⚠ BREAKING CHANGES
+
+- drop support for v17
+
+### 🚀 Features
+
+- add support for v20 ([#1204](https://github.com/davidlj95/ngx/issues/1204)) ([f8efc94](https://github.com/davidlj95/ngx/commit/f8efc94d61045821f804bd16093b7145a7888c02))
+
+### 📚 Documentation
+
+- fix NgxMetaRouteData usage in routing example ([#1183](https://github.com/davidlj95/ngx/issues/1183)) ([4c88db6](https://github.com/davidlj95/ngx/commit/4c88db6d5b77bf89b895eaaebc7df37baf20cb6b))
+- update install instructions for older major versions ([#1158](https://github.com/davidlj95/ngx/issues/1158)) ([9dc5ccb](https://github.com/davidlj95/ngx/commit/9dc5ccb756355d61ea31f93e147dee1bb9442790))
+
+### 💼 Miscellaneous Chores
+
+- do not automatically update angular majors ([29f0116](https://github.com/davidlj95/ngx/commit/29f0116311bad0545099de98640bbf944071f69c))
+- include ng-packagr in non autoupdated deps ([6077b17](https://github.com/davidlj95/ngx/commit/6077b17c1b135b270f59d4330fb20e9b3d9034cc))
+- migrate Renovate filePath config [skip ci] ([bcd3538](https://github.com/davidlj95/ngx/commit/bcd353807dce801edd624fd2271a29c3cc80e413))
+- **release:** update CHANGELOG.md ([#1153](https://github.com/davidlj95/ngx/issues/1153)) ([f65fbeb](https://github.com/davidlj95/ngx/commit/f65fbebd91c47437b87ff0a11227c632016c5a46))
+- remove empty actionlint config ([d0bb8bf](https://github.com/davidlj95/ngx/commit/d0bb8bf135905aafd2b346034d78159febbfcb76))
+- remove fake branch from release config [skip ci] ([b86cb77](https://github.com/davidlj95/ngx/commit/b86cb77e261b1362e7338116053cdb4f1ec4229c))
+
+### ⚙️ Build System
+
+- **deps-dev:** update angular-cli monorepo ([#1160](https://github.com/davidlj95/ngx/issues/1160)) ([7067874](https://github.com/davidlj95/ngx/commit/7067874edca1e1305787ed00a924aceb4bf678ac))
+- **deps-dev:** update commit message linting to v19.8.0 ([#1163](https://github.com/davidlj95/ngx/issues/1163)) ([a440534](https://github.com/davidlj95/ngx/commit/a440534d64b5b9d52f20f054ebd564869db6a0b7))
+- **deps-dev:** update commit message linting to v19.8.1 ([#1184](https://github.com/davidlj95/ngx/issues/1184)) ([5005c47](https://github.com/davidlj95/ngx/commit/5005c470bf749a84475f8e96909f2074f05cbeab))
+- **deps-dev:** update dependency @fontsource-variable/inter-tight to v5.2.5 ([#1164](https://github.com/davidlj95/ngx/issues/1164)) ([3934738](https://github.com/davidlj95/ngx/commit/3934738a0b51d519c649eb3a0b75296cfce5cd31))
+- **deps-dev:** update dependency @fontsource/dm-mono to v5.2.5 ([#1165](https://github.com/davidlj95/ngx/issues/1165)) ([16ab902](https://github.com/davidlj95/ngx/commit/16ab9025447bd2633ef1e2210a27eced1cc87d5b))
+- **deps-dev:** update dependency @types/semver to v7.7.0 ([#1166](https://github.com/davidlj95/ngx/issues/1166)) ([0633865](https://github.com/davidlj95/ngx/commit/06338656549e506598a9af9a517841fcf3ef3132))
+- **deps-dev:** update dependency conventional-changelog-conventionalcommits to v9 ([#1198](https://github.com/davidlj95/ngx/issues/1198)) ([b404423](https://github.com/davidlj95/ngx/commit/b404423b1b011110fec5a56461f3ea82356c65d1))
+- **deps-dev:** update dependency eslint-plugin-cypress to v5 ([#1199](https://github.com/davidlj95/ngx/issues/1199)) ([468d2d4](https://github.com/davidlj95/ngx/commit/468d2d4a5a4ebe001b98f7387c75e31f437c0f68))
+- **deps-dev:** update dependency execa to v9.6.0 ([#1194](https://github.com/davidlj95/ngx/issues/1194)) ([1cb7163](https://github.com/davidlj95/ngx/commit/1cb7163e43b25e024c984912bc58f4d5b8d7d07b))
+- **deps-dev:** update dependency lint-staged to v16 ([#1200](https://github.com/davidlj95/ngx/issues/1200)) ([fb6810a](https://github.com/davidlj95/ngx/commit/fb6810a02a898664f77af5cee6dbcd45d99f48c6))
+- **deps-dev:** update dependency semantic-release to v24.2.5 ([#1185](https://github.com/davidlj95/ngx/issues/1185)) ([1015017](https://github.com/davidlj95/ngx/commit/1015017bd47a9f70cc1eb102da6820a3f9794b6f))
+- **deps-dev:** update dependency semver to v7.7.2 ([#1186](https://github.com/davidlj95/ngx/issues/1186)) ([68f8f9c](https://github.com/davidlj95/ngx/commit/68f8f9cb140401a279e19593f72a29800ca17893))
+- **deps-dev:** update dependency ts-morph to v26 ([#1201](https://github.com/davidlj95/ngx/issues/1201)) ([059eaad](https://github.com/davidlj95/ngx/commit/059eaaddb84c357067569c37999e3a8031c7dbfe))
+- **deps-dev:** update dependency v19 to v19.2.14 ([#1187](https://github.com/davidlj95/ngx/issues/1187)) ([753148e](https://github.com/davidlj95/ngx/commit/753148ed0d82baa677a30914d72401643823cca1))
+- **deps-dev:** update docs tooling ([#1167](https://github.com/davidlj95/ngx/issues/1167)) ([186a5da](https://github.com/davidlj95/ngx/commit/186a5da5ed01679e9963245f0a98cc0bb6cb7884))
+- **deps-dev:** update docs tooling ([#1188](https://github.com/davidlj95/ngx/issues/1188)) ([0c62514](https://github.com/davidlj95/ngx/commit/0c62514e7b9f6e4ccebd21f67378fab4d3be37fd))
+- **deps-dev:** update e2e testing ([#1168](https://github.com/davidlj95/ngx/issues/1168)) ([f87666d](https://github.com/davidlj95/ngx/commit/f87666daa25fccf6f636dd018bf7db032fa8a494))
+- **deps-dev:** update e2e testing ([#1189](https://github.com/davidlj95/ngx/issues/1189)) ([030af5d](https://github.com/davidlj95/ngx/commit/030af5d67e5e8f88b79d3c142dc9b696f079a5a2))
+- **deps-dev:** update js devexp tooling ([#1169](https://github.com/davidlj95/ngx/issues/1169)) ([9c11f65](https://github.com/davidlj95/ngx/commit/9c11f6502c015e92cb7b89c03da33eec04360665))
+- **deps-dev:** update js devexp tooling ([#1190](https://github.com/davidlj95/ngx/issues/1190)) ([a13745b](https://github.com/davidlj95/ngx/commit/a13745bff7eadf9ae2e0df97bc5a23196083e822))
+- **deps-dev:** update js linting ([#1161](https://github.com/davidlj95/ngx/issues/1161)) ([fdb66bf](https://github.com/davidlj95/ngx/commit/fdb66bf5c860a6447b162ae2cdd18e29fae45da8))
+- **deps-dev:** update js linting ([#1195](https://github.com/davidlj95/ngx/issues/1195)) ([1976f7f](https://github.com/davidlj95/ngx/commit/1976f7ff9ed05b66bb6e843f650524a84863c95c))
+- **deps-dev:** update js unit testing ([#1170](https://github.com/davidlj95/ngx/issues/1170)) ([c2017e1](https://github.com/davidlj95/ngx/commit/c2017e1ebbe760796d61d5a922114f0539c67500))
+- **deps-dev:** update js unit testing ([#1191](https://github.com/davidlj95/ngx/issues/1191)) ([bdeee99](https://github.com/davidlj95/ngx/commit/bdeee99a3cd246fdc32a3061beaa28a85f9d12fe))
+- **deps-dev:** update runtimes ([#1171](https://github.com/davidlj95/ngx/issues/1171)) ([a2b4e84](https://github.com/davidlj95/ngx/commit/a2b4e84c5e01d9834d87cb5c4e2baf4bbd58334b))
+- **deps-dev:** update runtimes ([#1192](https://github.com/davidlj95/ngx/issues/1192)) ([b4d1a36](https://github.com/davidlj95/ngx/commit/b4d1a362dae460964a9673c9bf251b262b89a267))
+- **deps-dev:** update typescript packages ([#1172](https://github.com/davidlj95/ngx/issues/1172)) ([6b05c2a](https://github.com/davidlj95/ngx/commit/6b05c2ab1914229024eb9f52cff348620f4732d9))
+- **deps:** update angular monorepo to v18.2.13 ([#1162](https://github.com/davidlj95/ngx/issues/1162)) ([f71beb5](https://github.com/davidlj95/ngx/commit/f71beb5c615405fd6519b883f64580a0756787d0))
+- **deps:** update cicd ([#1159](https://github.com/davidlj95/ngx/issues/1159)) ([10f81d6](https://github.com/davidlj95/ngx/commit/10f81d64b917f5e64c950a0f374fac63f7d5d9cb))
+- **deps:** update cicd ([#1193](https://github.com/davidlj95/ngx/issues/1193)) ([1274055](https://github.com/davidlj95/ngx/commit/127405575dc25727a1287d87a42d59e72a3dfa48))
+- **deps:** update codecov/codecov-action action to v5 ([#1178](https://github.com/davidlj95/ngx/issues/1178)) ([033011a](https://github.com/davidlj95/ngx/commit/033011a939603b25880de342be2e0f1093d8fe83))
+- **deps:** update pnpm to v10.10.0 ([#1173](https://github.com/davidlj95/ngx/issues/1173)) ([bf08870](https://github.com/davidlj95/ngx/commit/bf088708c4c5fa078e69885de121b3319bf6ccdc))
+- **deps:** update pnpm to v10.11.0 ([#1196](https://github.com/davidlj95/ngx/issues/1196)) ([266b018](https://github.com/davidlj95/ngx/commit/266b018b0ceaa577c3bb59df57a50cf5dfc9d103))
+- **deps:** update python to v3.13.3 ([#1174](https://github.com/davidlj95/ngx/issues/1174)) ([926cef3](https://github.com/davidlj95/ngx/commit/926cef3cc1c5898850efd5ff73fc46f640288ffe))
+- fix Python poetry dep install error ([#1179](https://github.com/davidlj95/ngx/issues/1179)) ([64a1757](https://github.com/davidlj95/ngx/commit/64a1757e88891b723a3e85c5e0ce2acbb932a265))
+
+### 👷 Continuous (Integration|Deployment)
+
+- always build docs, deploy only if needed ([#1180](https://github.com/davidlj95/ngx/issues/1180)) ([78af25d](https://github.com/davidlj95/ngx/commit/78af25dd0c1d016082fcc8918e1d62045e398947))
+
 ## [`ngx-meta` v19.0.0](https://github.com/davidlj95/ngx/compare/ngx-meta-v18.0.0...ngx-meta-v19.0.0) (2025-04-27)
 
 ### ⚠ BREAKING CHANGES

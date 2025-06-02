@@ -8,10 +8,22 @@ import { META_LATE_LOADED_ROUTES } from './meta-late-loaded/meta-late-loaded.rou
 import { NgxMetaRouteData } from '@davidlj95/ngx-meta/routing'
 import { OneMetaSetByServiceComponent } from './one-meta-set-by-service/one-meta-set-by-service.component'
 import { UrlResolutionMetaComponent } from './url-resolution-meta/url-resolution-meta.component'
+import { Component } from '@angular/core'
 
 const ngxMetaRouteData: NgxMetaRouteData = { meta: ALL_METADATA_JSON }
 
+@Component({
+  template: 'Navigate somewhere to see something!',
+  standalone: true,
+})
+class EmptyComponent {}
+
 export const routes: Routes = [
+  {
+    path: '',
+    component: EmptyComponent,
+    pathMatch: 'full',
+  },
   {
     path: ROUTES.allMetaSetByService.path,
     component: AllMetaSetByServiceComponent,

@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/e2e/v19: build with coverage, serve &amp; test" type="js.build_tools.npm">
+  <configuration default="false" name="ngx-meta/e2e/v20: build with coverage, serve &amp; test" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/projects/ngx-meta/e2e/package.json" />
     <command value="run" />
     <scripts>
       <script value="test" />
     </scripts>
-    <arguments value="v19" />
+    <arguments value="v20" />
     <node-interpreter value="project" />
     <envs />
     <method v="2">
@@ -26,16 +26,16 @@
         <node-interpreter value="project" />
         <envs />
       </option>
-      <option name="RunConfigurationTask" enabled="false" run_configuration_name="ngx-meta/example-apps/v19: create example app" run_configuration_type="NodeJSConfigurationType" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="ngx-meta/example-apps/v20: create example app" run_configuration_type="NodeJSConfigurationType" />
       <option name="NpmBeforeRunTask" enabled="true">
-        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v19/package.json" />
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v20/package.json" />
         <command value="exec" />
         <arguments value="ng cache clean" />
         <node-interpreter value="project" />
         <envs />
       </option>
       <option name="NpmBeforeRunTask" enabled="true">
-        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v19/package.json" />
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v20/package.json" />
         <command value="run" />
         <scripts>
           <script value="ci:build" />

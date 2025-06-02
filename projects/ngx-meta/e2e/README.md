@@ -45,10 +45,10 @@ First, build an example app.
 Then run
 
 ```sh
-pnpm run test v19
+pnpm run test <app>
 ```
 
-Where v19 is the directory name of the example app. A script will automatically serve the built app, start tests and then stop serving the app.
+Where `<app>` is the directory name of the example app. A script will automatically serve the built app, start tests and then stop serving the app.
 
 If code is instrumented for coverage reporting, the JSON report filename will be suffixed with the app name being tested.
 

@@ -9,5 +9,5 @@ export { generateTmpDirAndRegisterCleanupCallback } from './generate-tmp-dir-and
 export { install } from './install.js'
 export { ngAddLibrary } from './ng-add-library.js'
 export { setupSsr } from './setup-ssr.js'
-export { updateAppModuleOrAppConfigFromTemplates } from './update-app-module-or-app-config-from-templates.js'
+export { updateAppConfigAndMain } from './update-app-config-and-main.js'
 export { updateTsConfigToImportJsonFilesAndSetPathMappings } from './update-ts-config-to-import-json-files-and-set-path-mappings.js'

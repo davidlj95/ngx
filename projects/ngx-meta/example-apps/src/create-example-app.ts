@@ -12,13 +12,14 @@ import {
   install,
   ngAddLibrary,
   setupSsr,
-  updateAppModuleOrAppConfigFromTemplates,
+  updateAppConfigAndMain,
   updateTsConfigToImportJsonFilesAndSetPathMappings,
 } from './steps/index.js'
 import { join } from 'path'
 import { isStandaloneDefaultForVersion } from './angular/index.js'
 import { isMain } from './utils/index.js'
 import { CreateExampleAppOptions } from './create-example-app-options.js'
+import { createdFilesHaveTypeSuffixesInVersion } from './angular/created-files-have-type-suffixes-in-version.js'
 
 async function createExampleApp({
   angularCliVersion,
@@ -55,12 +56,21 @@ async function createExampleApp({
       await addLinkedLibrary(appDir)
       await addCiRunScripts({ appDir, appName })
     })(),
-    copyTemplates({ appDir, standalone }),
+    copyTemplates({
+      appDir,
+      standalone,
+    }),
     updateTsConfigToImportJsonFilesAndSetPathMappings(appDir),
   ])
   await install({ projectDir: appDir, what: 'app dependencies' })
   await ngAddLibrary(appDir)
-  await updateAppModuleOrAppConfigFromTemplates(appDir, standalone)
+  await updateAppConfigAndMain({
+    appDir,
+    standalone,
+    typeSuffixes: createdFilesHaveTypeSuffixesInVersion(
+      angularCliVersion.asSemVer,
+    ),
+  })
 }
 
 export const ANGULAR_CLI_BINARY_PATH = join('node_modules', '.bin', 'ng')

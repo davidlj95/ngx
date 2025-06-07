@@ -76,7 +76,7 @@
     "@semantic-release/changelog": "6.0.3",
     "@types/jasmine": "5.1.8",
     "@types/node": "22.15.30",
-    "angular-eslint": "18.4.3",
+    "angular-eslint": "20.0.0",
     "conventional-changelog-conventionalcommits": "9.0.0",
     "dts-bundle-generator": "9.5.1",
     "eslint": "9.28.0",

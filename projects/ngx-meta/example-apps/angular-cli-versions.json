@@ -9,6 +9,6 @@
   "devDependencies": {
     "v18": "npm:@angular/cli@18.0.7",
     "v19": "npm:@angular/cli@19.2.14",
-    "v20": "npm:@angular/cli@20.0.1"
+    "v20": "npm:@angular/cli@20.0.5"
   }
 }

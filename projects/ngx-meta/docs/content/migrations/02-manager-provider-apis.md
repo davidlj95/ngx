@@ -41,7 +41,6 @@ Provide a new API that solves existing issues by:
 - **Shortening its name**
 
 - **Options with helper functions**. This way they can be short. But given using functions to refer to them, the user can use long names when specifying them. Like Angular's [`provideRouter` API with features provided by calling `withX` prefixed functions](https://angular.dev/api/router/provideRouter?tab=usage-notes).
-
   - Providing an object with long option names was discarded to reduce uncompressed bundle size. Though maybe with compression those long option names are not an issue anyway. However, by adding functions it's also easier to refactor the internal implementation without any API changes.
 
 - **JSON Path as first argument**: as it's used for all current use cases. Plus using a `string` instead of an array as it's more handy to write. A utility is provided to turn arrays into those `strings` ([`withJsonPath`](ngx-meta.withjsonpath.md))

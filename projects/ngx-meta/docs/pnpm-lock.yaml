@@ -9,22 +9,22 @@ importers:
   .:
     devDependencies:
       '@fontsource-variable/inter-tight':
-        specifier: 5.2.5
-        version: 5.2.5
+        specifier: 5.2.6
+        version: 5.2.6
       '@fontsource/dm-mono':
         specifier: 5.2.5
         version: 5.2.5
 
 packages:
 
-  '@fontsource-variable/inter-tight@5.2.5':
-    resolution: {integrity: sha512-f7WqR3BQ7YmWT+3i1bR1mqQ1FoIDCfmwKRTENEARFRtkhhR4JPxzF+rB3T75AjZ+dTjIx/nO47LOQDLFWAwJWA==}
+  '@fontsource-variable/inter-tight@5.2.6':
+    resolution: {integrity: sha512-umb36PJO+bwzqvpKkikmIEDs0YF3P5vUBQe+UEBgPSDffzDZyKVIU07M4/1cWcsZgU1PaXjyheUYKwlsJteopA==}
 
   '@fontsource/dm-mono@5.2.5':
     resolution: {integrity: sha512-+dTNMXWxmvNtEWE/45MxFO7s60sy9famJhbtNghcvuEleMFcf32anQe3y4FqoCEL/rdQFvRiCoMCDguHw9krog==}
 
 snapshots:
 
-  '@fontsource-variable/inter-tight@5.2.5': {}
+  '@fontsource-variable/inter-tight@5.2.6': {}
 
   '@fontsource/dm-mono@5.2.5': {}

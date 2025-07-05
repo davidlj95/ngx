@@ -10,7 +10,7 @@
     "watch": "tsc --watch"
   },
   "devDependencies": {
-    "@types/node": "22.15.30",
+    "@types/node": "22.16.0",
     "@types/semver": "7.7.0",
     "execa": "9.6.0",
     "semver": "7.7.2",

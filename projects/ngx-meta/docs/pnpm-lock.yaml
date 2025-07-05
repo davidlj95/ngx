@@ -12,19 +12,19 @@ importers:
         specifier: 5.2.6
         version: 5.2.6
       '@fontsource/dm-mono':
-        specifier: 5.2.5
-        version: 5.2.5
+        specifier: 5.2.6
+        version: 5.2.6
 
 packages:
 
   '@fontsource-variable/inter-tight@5.2.6':
     resolution: {integrity: sha512-umb36PJO+bwzqvpKkikmIEDs0YF3P5vUBQe+UEBgPSDffzDZyKVIU07M4/1cWcsZgU1PaXjyheUYKwlsJteopA==}
 
-  '@fontsource/dm-mono@5.2.5':
-    resolution: {integrity: sha512-+dTNMXWxmvNtEWE/45MxFO7s60sy9famJhbtNghcvuEleMFcf32anQe3y4FqoCEL/rdQFvRiCoMCDguHw9krog==}
+  '@fontsource/dm-mono@5.2.6':
+    resolution: {integrity: sha512-d38urf08wZ/UcAM13kmuPkhr9xGEo0S9undlZ/99nBb7dK5+w1uqriP6VVJ8T7pYiNtRtZq7NxV/2KI/6Obsog==}
 
 snapshots:
 
   '@fontsource-variable/inter-tight@5.2.6': {}
 
-  '@fontsource/dm-mono@5.2.5': {}
+  '@fontsource/dm-mono@5.2.6': {}

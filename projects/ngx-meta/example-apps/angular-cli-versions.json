@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "ngx-meta example apps pinned Angular CLI versions",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.15.1",
   "//1": "👇 Updated by dependency bot, but restricted to major versions",
   "//2": "   See Renovate configuration for more information",
   "devDependencies": {

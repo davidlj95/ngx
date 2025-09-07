@@ -8,7 +8,7 @@ readme = "README.md"
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "==3.13.5"
+python = "==3.13.7"
 mkdocs-autolinks-plugin = "0.7.1"
 
 [tool.poetry.group.dev.dependencies]

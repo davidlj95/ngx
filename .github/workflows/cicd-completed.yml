@@ -30,7 +30,7 @@ jobs:
       ng-cli-version-aliases: ${{ steps.config.outputs.ng-cli-version-aliases }}
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Load CI/CD configuration
         id: config
         uses: ./.github/actions/config
@@ -49,7 +49,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Download bundle size analysis results
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
         with:
           name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}
           #👇 Need to specify it. Otherwise, the ` run-id ` argument won't be taken into account
@@ -60,7 +60,7 @@ jobs:
       # https://github.com/orgs/community/discussions/25220
       - name: Find associated pull request
         id: pr
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         with:
           retries: 3
           #👇 Default except 403, which is the rate limit sometimes raised

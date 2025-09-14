@@ -29,7 +29,7 @@ jobs:
       deployments: write
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
       - name: Download API reference docs
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
@@ -70,7 +70,7 @@ jobs:
       - name: Generate cache id for Mkdocs build
         run: echo "cache_id=$(date --utc '+%V')" >> "$GITHUB_ENV"
       - name: Cache Mkdocs build
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
           path: ${{ env.DOCS_DIR }}/.cache

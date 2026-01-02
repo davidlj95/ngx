@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/example-apps/v20: build &amp; serve" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v20/package.json" />
+  <configuration default="false" name="ngx-meta/example-apps/v21: build &amp; serve" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v21/package.json" />
     <command value="run" />
     <scripts>
       <script value="ng" />
@@ -17,7 +17,7 @@
         <envs />
       </option>
       <option name="NpmBeforeRunTask" enabled="true">
-        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v20/package.json" />
+        <package-json value="$PROJECT_DIR$/projects/ngx-meta/example-apps/apps/v21/package.json" />
         <command value="exec" />
         <arguments value="ng cache clean" />
         <node-interpreter value="project" />

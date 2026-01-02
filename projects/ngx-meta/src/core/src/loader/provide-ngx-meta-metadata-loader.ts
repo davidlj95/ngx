@@ -1,11 +1,11 @@
-import { ENVIRONMENT_INITIALIZER, inject, Provider } from '@angular/core'
+import { inject, provideEnvironmentInitializer, Provider } from '@angular/core'
 import {
   metadataRegistry,
   provideMetadataRegistry,
 } from '../managers/metadata-registry'
 
 /**
- * Allows to load metadata managers after library has been initialized.
+ * Allows loading metadata managers after global initialization.
  *
  * @remarks
  *
@@ -16,18 +16,11 @@ import {
  */
 export const provideNgxMetaMetadataLoader = (): Provider => [
   provideMetadataRegistry(),
-  {
-    provide: ENVIRONMENT_INITIALIZER,
-    multi: true,
-    useFactory: () => {
-      const globalRegistry = inject(metadataRegistry(), { skipSelf: true })
-      const localRegistry = inject(metadataRegistry())
-      return () => {
-        const localMetadata = localRegistry.getAll()
-        for (const metadata of localMetadata) {
-          globalRegistry.register(metadata)
-        }
-      }
-    },
-  },
+  provideEnvironmentInitializer(() => {
+    const globalRegistry = inject(metadataRegistry(), { skipSelf: true })
+    const localMetadata = inject(metadataRegistry()).getAll()
+    for (const metadata of localMetadata) {
+      globalRegistry.register(metadata)
+    }
+  }),
 ]

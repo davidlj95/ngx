@@ -1,8 +1,8 @@
 import {
-  ENVIRONMENT_INITIALIZER,
   EnvironmentProviders,
   inject,
   makeEnvironmentProviders,
+  provideEnvironmentInitializer,
 } from '@angular/core'
 import { DEFAULT_ROUTE_METADATA_STRATEGY_PROVIDER } from '../route-metadata/default-route-metadata-strategy'
 import { routerListener } from '../listener/router-listener'
@@ -21,9 +21,7 @@ import { routerListener } from '../listener/router-listener'
 export const provideNgxMetaRouting = (): EnvironmentProviders =>
   makeEnvironmentProviders([
     DEFAULT_ROUTE_METADATA_STRATEGY_PROVIDER,
-    {
-      provide: ENVIRONMENT_INITIALIZER,
-      multi: true,
-      useFactory: () => inject(routerListener()).listen,
-    },
+    provideEnvironmentInitializer(() => {
+      inject(routerListener()).listen()
+    }),
   ])

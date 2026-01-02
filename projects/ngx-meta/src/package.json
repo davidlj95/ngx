@@ -37,9 +37,9 @@
     "tslib": "^2.3.0"
   },
   "peerDependencies": {
-    "@angular/common": "^20 || ^19 || ^18",
-    "@angular/core": "^20 || ^19 || ^18",
-    "@angular/router": "^20 || ^19 || ^18"
+    "@angular/common": "^21 || ^20 || ^19",
+    "@angular/core": "^21 || ^20 || ^19",
+    "@angular/router": "^21 || ^20 || ^19"
   },
   "peerDependenciesMeta": {
     "@angular/router": {

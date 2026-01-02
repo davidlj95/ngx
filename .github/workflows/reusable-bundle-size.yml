@@ -35,16 +35,16 @@ jobs:
         working-directory: ${{ env.BUNDLE_SIZE_DIR }}
     steps:
       - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - name: Download example app distribution files
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           name: ngx-meta${{ env.EXAMPLE_APP_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}
           path: ${{ env.EXAMPLE_APP_DIR }}
       - name: Setup pnpm
         uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
       - name: Setup Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
         with:
           cache: pnpm
           cache-dependency-path: ${{ env.BUNDLE_SIZE_DIR }}/pnpm-lock.yaml
@@ -54,7 +54,7 @@ jobs:
       - name: Analyze main bundle size
         run: pnpm run analyze ${{ matrix.ng-cli-version-alias }} --json
       - name: Fetch bundle size analysis results from target branch
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         if: github.event_name == 'pull_request'
         with:
           script: |
@@ -88,7 +88,7 @@ jobs:
       - name: Generate bundle size report
         run: pnpm run report ${{ matrix.ng-cli-version-alias }} --git-ref '${{ github.sha }}'
       - name: Upload bundle size analysis results
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}
           path: ${{ env.BUNDLE_SIZE_DIR }}/${{ env.OUTPUT_DIR }}
@@ -107,11 +107,11 @@ jobs:
       checks: write
     steps:
       - name: Download main bundle analysis results
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}
       - name: Create check run
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         with:
           script: |
             const smeJson = require('./source-map-explorer.json');

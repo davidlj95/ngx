@@ -17,13 +17,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run unit tests
         run: cd .ci && make unit-test-libs
       - name: Upload coverage report
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: failure() || success()
         with:
           name: ngx-meta-unit-test${{ env.COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX }}
@@ -36,13 +36,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run unit tests
         run: pnpm run test:unit:schematics:coverage
       - name: Upload coverage report
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: failure() || success()
         with:
           name: unit-test-schematics${{ env.COVERAGE_REPORT_ARTIFACT_NAME_SUFFIX }}

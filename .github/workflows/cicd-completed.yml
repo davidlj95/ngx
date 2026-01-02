@@ -30,7 +30,7 @@ jobs:
       ng-cli-version-aliases: ${{ steps.config.outputs.ng-cli-version-aliases }}
     steps:
       - name: Checkout
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - name: Load CI/CD configuration
         id: config
         uses: ./.github/actions/config
@@ -49,7 +49,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Download bundle size analysis results
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
           name: ngx-meta${{ env.BUNDLE_SIZE_ARTIFACT_NAME_SUFFIX }}-${{ matrix.ng-cli-version-alias }}
           #👇 Need to specify it. Otherwise, the ` run-id ` argument won't be taken into account
@@ -60,7 +60,7 @@ jobs:
       # https://github.com/orgs/community/discussions/25220
       - name: Find associated pull request
         id: pr
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         with:
           retries: 3
           #👇 Default except 403, which is the rate limit sometimes raised
@@ -81,7 +81,7 @@ jobs:
             console.info("Pull request number is", pullRequestNumber)
             return pullRequestNumber
       - name: Find bundle size PR comment
-        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4
         if: steps.pr.outputs.result != ''
         id: fc
         with:
@@ -89,7 +89,7 @@ jobs:
           comment-author: github-actions[bot]
           body-includes: ${{ env.BUNDLE_SIZE_COMMENT_ID_PREFIX }}${{ matrix.ng-cli-version-alias }}
       - name: Update bundle size PR comment
-        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5
         if: steps.pr.outputs.result != ''
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}

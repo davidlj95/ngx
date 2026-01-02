@@ -6,10 +6,10 @@ declare global {
     // noinspection JSUnusedGlobalSymbols
     interface Chainable {
       goToRootPage(): Chainable<void>
-      getMeta(name: string): Chainable<HTMLMetaElement>
+      getMeta(name: string): Chainable<JQuery<HTMLMetaElement>>
       getMetas(name: string): Chainable<JQuery<HTMLMetaElement>>
-      getMetaWithProperty(property: string): Chainable<HTMLMetaElement>
-      shouldHaveContent(): Chainable<string | undefined>
+      getMetaWithProperty(property: string): Chainable<JQuery<HTMLMetaElement>>
+      shouldHaveContent(): Chainable<string>
       simulateSSRForRequest(url: RouteMatcher): Chainable<void>
       shouldNotContainAppScripts(): Chainable<void>
     }

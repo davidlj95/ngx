@@ -4,11 +4,11 @@ In order to keep library take as few bytes as possible from your app's bundle si
 
 ## Last commit on `main`
 
-Here's how much bytes the library takes of your main bundle size when using all its features:
+Here's how many bytes the library takes of your main bundle size when using all its features:
 
+--8<-- "includes/bundle-size/v21/bundle-size-report.md"
 --8<-- "includes/bundle-size/v20/bundle-size-report.md"
 --8<-- "includes/bundle-size/v19/bundle-size-report.md"
---8<-- "includes/bundle-size/v18/bundle-size-report.md"
 
 ## Pull request
 

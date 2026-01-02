@@ -15,13 +15,16 @@ Cypress.Commands.add('getMetaWithProperty', (property) => {
   cy.get(`meta[property="${property}"]`)
 })
 
-Cypress.Commands.add(
-  'shouldHaveContent',
-  { prevSubject: true },
-  (prevSubject) => {
-    cy.wrap(prevSubject).should('have.attr', 'content')
-  },
-)
+//👇 Callback must be a `function` and not an arrow function for timeouts
+//   https://github.com/cypress-io/cypress-documentation/blob/9c4c60988fa66b15202ce1190542f3a446f8e7d4/docs/api/cypress-api/custom-queries.mdx#arguments
+Cypress.Commands.addQuery('shouldHaveContent', function () {
+  return (subject) => {
+    const content = subject.attr('content')
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    expect(content).not.to.be.undefined
+    return content
+  }
+})
 
 Cypress.Commands.add('goToRootPage', () => {
   const selector = `#${ROUTES.root.linkId}`

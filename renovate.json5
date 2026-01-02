@@ -4,7 +4,7 @@
   extends: [
     'config:best-practices',
     'config:js-app',
-    'github>davidlj95/renovate-config:angular/v18.2.x',
+    'github>davidlj95/renovate-config:angular/v19.2.x',
     'github>davidlj95/renovate-config:personal/config',
   ],
   npm: {
@@ -28,22 +28,15 @@
         'ng-packagr',
       ],
       matchFileNames: ['package.json'],
-      allowedVersions: '^18',
+      allowedVersions: '^19',
     },
     // Example apps major versions
     {
       matchFileNames: [
         'projects/ngx-meta/example-apps/angular-cli-versions.json',
       ],
-      matchDepNames: ['v18'],
-      allowedVersions: '18.0.x',
-    },
-    {
-      matchFileNames: [
-        'projects/ngx-meta/example-apps/angular-cli-versions.json',
-      ],
       matchDepNames: ['v19'],
-      allowedVersions: '19.0.x',
+      allowedVersions: 'v19',
     },
     {
       matchFileNames: [
@@ -51,6 +44,13 @@
       ],
       matchDepNames: ['v20'],
       allowedVersions: '^20',
+    },
+    {
+      matchFileNames: [
+        'projects/ngx-meta/example-apps/angular-cli-versions.json',
+      ],
+      matchDepNames: ['v21'],
+      allowedVersions: '^21',
     },
     // API Documenter to use Markdown tables
     // Watching the issue to see if we can upgrade when fixed

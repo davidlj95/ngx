@@ -7,9 +7,7 @@
     "outDir": "../out",
     "declaration": true,
     "declarationMap": true,
-    "inlineSources": true,
-    "typeRoots": ["./types"],
-    "types": ["angular"]
+    "inlineSources": true
   },
   "include": ["**/*.ts"],
   "exclude": ["**/*.spec.ts", "**/__tests__/*.ts"]

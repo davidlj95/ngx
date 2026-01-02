@@ -4,7 +4,7 @@
   extends: [
     'config:best-practices',
     'config:js-app',
-    'github>davidlj95/renovate-config:angular/v18.2.x',
+    'github>davidlj95/renovate-config:angular/v19.2.x',
     'github>davidlj95/renovate-config:personal/config',
   ],
   npm: {
@@ -28,7 +28,7 @@
         'ng-packagr',
       ],
       matchFileNames: ['package.json'],
-      allowedVersions: '^18',
+      allowedVersions: '^19',
     },
     // Example apps major versions
     {

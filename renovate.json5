@@ -59,5 +59,11 @@
       matchDepNames: ['@microsoft/api-documenter'],
       allowedVersions: '7.23.38',
     },
+    // Jest / Angular compat
+    // https://www.npmjs.com/package/@angular-devkit/build-angular/v/19.2.19?activeTab=code
+    {
+      matchDepNames: ['jest', '@jest**'],
+      allowedVersions: '^29',
+    },
   ],
 }

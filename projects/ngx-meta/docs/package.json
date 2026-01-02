@@ -5,6 +5,6 @@
   "scripts": {},
   "devDependencies": {
     "@fontsource-variable/inter-tight": "5.2.6",
-    "@fontsource/dm-mono": "5.2.6"
+    "@fontsource/dm-mono": "5.2.7"
   }
 }

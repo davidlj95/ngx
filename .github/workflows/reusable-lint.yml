@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run linter
@@ -24,9 +24,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Run GitHub Actions linter
-        uses: docker://rhysd/actionlint:latest@sha256:887a259a5a534f3c4f36cb02dca341673c6089431057242cdc931e9f133147e9
+        uses: docker://rhysd/actionlint:latest@sha256:ef8299f97635c4c30e2298f48f30763ab782a4ad2c95b744649439a039421e36
         with:
           args: -color
 
@@ -39,7 +39,7 @@ jobs:
         # https://github.com/actions/checkout/issues/520#issuecomment-1167205721
         run: echo "pr_commits_plus_one=$(( ${{ github.event.pull_request.commits }} + 1 ))" >> "${GITHUB_ENV}"
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: ${{ env.pr_commits_plus_one }}
       - name: Setup
@@ -61,7 +61,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run

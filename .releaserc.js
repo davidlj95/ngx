@@ -43,8 +43,10 @@ const getMaintenanceBranchConfig = () => {
 module.exports = {
   repositoryUrl,
   branches: [
-    //👇 Major version maintenance branches
-    getMaintenanceBranchConfig(),
+    //👇 To properly create a GitHub release (and not a pre-release), the main
+    //   branch must be the first one configured
+    //   https://github.com/semantic-release/semantic-release/blob/v25.0.2/lib/branches/normalize.js#L87
+    //   https://github.com/semantic-release/github/blob/v12.0.2/lib/is-prerelease.js#L7
     {
       name: localBranchAsMain ? getCurrentBranch() : 'main',
       // ⚠️ Default channel is `undefined` for first release branch, but branch name for the rest.
@@ -52,6 +54,8 @@ module.exports = {
       // https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration#branches-properties
       channel: false,
     },
+    //👇 Major version maintenance branches
+    getMaintenanceBranchConfig(),
   ],
   plugins: [
     '@semantic-release/commit-analyzer',

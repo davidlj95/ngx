@@ -1,3 +1,43 @@
+## [`ngx-meta` v21.0.1](https://github.com/davidlj95/ngx/compare/ngx-meta-v21.0.0...ngx-meta-v21.0.1) (2026-01-03)
+
+### 💼 Miscellaneous Chores
+
+- fix Python version for mkdocs compat ([#1299](https://github.com/davidlj95/ngx/issues/1299)) ([ff3764b](https://github.com/davidlj95/ngx/commit/ff3764b9046a7ebeb57207507a52c02bd526a0a1))
+- fix Renovate configs with globs ([#1294](https://github.com/davidlj95/ngx/issues/1294)) ([9200cf7](https://github.com/davidlj95/ngx/commit/9200cf7c6d836bcc43c40238ee61a40d8c3f345b))
+- **release:** maintenance release to test trusted publishing ([7da3bce](https://github.com/davidlj95/ngx/commit/7da3bce7b1ad536f4bf1ac4aeb992c5f69a599d5))
+- **release:** update CHANGELOG.md ([#1273](https://github.com/davidlj95/ngx/issues/1273)) ([7c0e6b6](https://github.com/davidlj95/ngx/commit/7c0e6b68dda65493ad86fd0199abb5486d8b3f12))
+- use provideEnvironmentInitializer ([#1275](https://github.com/davidlj95/ngx/issues/1275)) ([5aef0be](https://github.com/davidlj95/ngx/commit/5aef0bec741be5b167cd25574026b55e773edf21))
+
+### 🧪 Tests
+
+- improve Cypress commands def ([#1274](https://github.com/davidlj95/ngx/issues/1274)) ([7566907](https://github.com/davidlj95/ngx/commit/75669076add4f61d73c0ab73e2069778dcbe6fe5))
+
+### ⚙️ Build System
+
+- **deps-dev:** update commit message linting to v20 ([#1291](https://github.com/davidlj95/ngx/issues/1291)) ([b7e911c](https://github.com/davidlj95/ngx/commit/b7e911c060f8f73d94a5d67dc692b63b24da0146))
+- **deps-dev:** update dependency @cypress/code-coverage to v3.14.7 ([#1277](https://github.com/davidlj95/ngx/issues/1277)) ([b865415](https://github.com/davidlj95/ngx/commit/b8654150ef12d52708e59c5f4f0b8ba9fac512d2))
+- **deps-dev:** update dependency @eslint/compat to v2 ([#1295](https://github.com/davidlj95/ngx/issues/1295)) ([36a6e85](https://github.com/davidlj95/ngx/commit/36a6e859657d0536eafbdb92e6644b8db8aeb8b0))
+- **deps-dev:** update dependency cypress to v15 ([#1296](https://github.com/davidlj95/ngx/issues/1296)) ([71f4d7c](https://github.com/davidlj95/ngx/commit/71f4d7c734f29bc32c3d0690c50e47722304fca2))
+- **deps-dev:** update dependency execa to v9.6.1 ([#1278](https://github.com/davidlj95/ngx/issues/1278)) ([7922498](https://github.com/davidlj95/ngx/commit/7922498e292d1ae8afae6d6384ce795d2c643b96))
+- **deps-dev:** update dependency prettier to v3.7.4 ([#1283](https://github.com/davidlj95/ngx/issues/1283)) ([d238ba3](https://github.com/davidlj95/ngx/commit/d238ba331dd532ce73d543fe2e50ca2fd86c2b2d))
+- **deps-dev:** update dependency semantic-release to v24.2.9 ([#1279](https://github.com/davidlj95/ngx/issues/1279)) ([cfc4660](https://github.com/davidlj95/ngx/commit/cfc466003536c349f6d6de0267f0453751155e16))
+- **deps-dev:** update dependency semantic-release to v25 ([#1292](https://github.com/davidlj95/ngx/issues/1292)) ([91475f4](https://github.com/davidlj95/ngx/commit/91475f4f2bffd0ac13c4069b8cfc79aa653f69db))
+- **deps-dev:** update dependency semver to v7.7.3 ([#1280](https://github.com/davidlj95/ngx/issues/1280)) ([f828204](https://github.com/davidlj95/ngx/commit/f828204744a7ea3bb55831087e30ee933e947412))
+- **deps-dev:** update dependency ts-morph to v27 ([#1297](https://github.com/davidlj95/ngx/issues/1297)) ([70faea0](https://github.com/davidlj95/ngx/commit/70faea0086159ee498d01b861f8595c5d3f43765))
+- **deps-dev:** update docs tooling ([#1284](https://github.com/davidlj95/ngx/issues/1284)) ([6371e53](https://github.com/davidlj95/ngx/commit/6371e531298a1b69505960ad8931bc3b0e3c3a9b))
+- **deps-dev:** update js devexp tooling ([#1285](https://github.com/davidlj95/ngx/issues/1285)) ([be22fcf](https://github.com/davidlj95/ngx/commit/be22fcfcf420eb15ce321626a9cd1513ca0b569e))
+- **deps-dev:** update js linting ([#1286](https://github.com/davidlj95/ngx/issues/1286)) ([20ce4d5](https://github.com/davidlj95/ngx/commit/20ce4d576f01e4e3248c4eeb1746dbe526e8989f))
+- **deps-dev:** update js unit testing ([#1281](https://github.com/davidlj95/ngx/issues/1281)) ([01f70e8](https://github.com/davidlj95/ngx/commit/01f70e86be6f07a6bef0510eeaf572d207d675c2))
+- **deps-dev:** update runtimes ([#1287](https://github.com/davidlj95/ngx/issues/1287)) ([0628193](https://github.com/davidlj95/ngx/commit/06281936d40dff03f59e1df7799e5ea26f449031))
+- **deps-dev:** update typescript packages ([#1282](https://github.com/davidlj95/ngx/issues/1282)) ([7126556](https://github.com/davidlj95/ngx/commit/712655617d8ca5fe89a139cdd21b7625392386bd))
+- **deps:** update pnpm to v10.27.0 ([#1288](https://github.com/davidlj95/ngx/issues/1288)) ([f8e4a62](https://github.com/davidlj95/ngx/commit/f8e4a62141805be1db5622c752ae71c3842b1599))
+
+### 👷 Continuous (Integration|Deployment)
+
+- **release:** do not trigger a GitHub pre-release ([#1276](https://github.com/davidlj95/ngx/issues/1276)) ([543f402](https://github.com/davidlj95/ngx/commit/543f402675405eb7d51d4994723f0024378e20d7))
+- **release:** use newer npm CLI when releasing ([6c5884f](https://github.com/davidlj95/ngx/commit/6c5884f4f1c4d305c2e5759b7bb281de9eb5613e))
+- **release:** use npm's trusted publishing to avoid long lived tokens ([#1293](https://github.com/davidlj95/ngx/issues/1293)) ([3489454](https://github.com/davidlj95/ngx/commit/3489454e7b1a453e07b6a484c3d58ef13d39ff02))
+
 ## [`ngx-meta` v21.0.0](https://github.com/davidlj95/ngx/compare/ngx-meta-v20.0.1...ngx-meta-v21.0.0) (2026-01-02)
 
 ### ⚠ BREAKING CHANGES

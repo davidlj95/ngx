@@ -54,8 +54,6 @@ fi
 
 # Tweak the package.json file
 # - Registry: local registry
-# - Provenance: disabled as Verdaccio doesn't support `provenance`:
-#   https://github.com/orgs/verdaccio/discussions/3903)
 package_json="$(cat "$DIST_PACKAGE_JSON")"
 cleanup() {
   echo "ℹ️ Restoring original package JSON file"
@@ -70,19 +68,14 @@ trap cleanup EXIT INT HUP
 
 LOCAL_REGISTRY_URL='http://localhost:4873'
 tweaked_package_json="$(
-  jq ".publishConfig.provenance=false | .publishConfig.registry=\"${LOCAL_REGISTRY_URL}\"" \
+  jq ".publishConfig.registry=\"${LOCAL_REGISTRY_URL}\"" \
     $DIST_PACKAGE_JSON
 )"
 echo "ℹ️ Tweaking package JSON file"
-echo "   Setting local registry and disabling provenance"
+echo "   Setting local registry"
 echo "$tweaked_package_json" >"$DIST_PACKAGE_JSON"
 
 # Verify tweak
-provenance="$(jq -r ".publishConfig.provenance" "$DIST_PACKAGE_JSON")"
-if [ "$provenance" != "false" ]; then
-  echo "❌ Provenance wasn't updated. Can't proceed."
-  exit 1
-fi
 registry="$(jq -r ".publishConfig.registry" "$DIST_PACKAGE_JSON")"
 if [ "$registry" != "$LOCAL_REGISTRY_URL" ]; then
   echo "❌ Registry wasn't updated. Can't proceed."

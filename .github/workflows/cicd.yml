@@ -81,7 +81,6 @@ jobs:
     needs: [build, test, lint, style, e2e, coverage]
     uses: ./.github/workflows/reusable-release.yml
     secrets:
-      npm-token: ${{ secrets.NPM_TOKEN }}
       github-token-pr: ${{ secrets.PR_GH_TOKEN }}
     permissions:
       contents: write

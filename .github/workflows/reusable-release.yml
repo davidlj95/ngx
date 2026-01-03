@@ -2,8 +2,6 @@ name: Release
 on:
   workflow_call:
     secrets:
-      npm-token:
-        required: true
       # 👇 Built-in GitHub token can't create Pull Requests
       # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#preventing-github-actions-from-creating-or-approving-pull-requests
       # So a special fine-grained PAT is used instead. This way, just this PAT
@@ -43,7 +41,7 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
-      # For NPM provenance
+      # For NPM Trusted publishing via GitHub OpenID Connect
       id-token: write
     steps:
       - name: Checkout
@@ -60,7 +58,6 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.npm-token }}
         run: pnpm semantic-release
       - name: Create Pull Request
         id: cpr

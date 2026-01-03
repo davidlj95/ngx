@@ -15,8 +15,8 @@ importers:
         specifier: 1.1.0
         version: 1.1.0
       '@types/node':
-        specifier: 22.18.1
-        version: 22.18.1
+        specifier: 22.19.3
+        version: 22.19.3
       cypress:
         specifier: 14.5.4
         version: 14.5.4
@@ -692,8 +692,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@22.18.1':
-    resolution: {integrity: sha512-rzSDyhn4cYznVG+PCzGe1lwuMYJrcBS1fc3JqSa2PvtABwWo+dZ1ij5OVok3tqfpEBCBoaR4d7upFJk73HRJDw==}
+  '@types/node@22.19.3':
+    resolution: {integrity: sha512-1N9SBnWYOJTrNZCdh/yJE+t910Y128BoyY+zBLWhL3r0TYzlTmFdXrPwHL9DyFZmlEXNQQolTZh3KHV31QDhyA==}
 
   '@types/sinonjs__fake-timers@8.1.1':
     resolution: {integrity: sha512-0kSuKjAS0TrGLJ0M/+8MaFkGsQhZpB6pxOmvS3K8FYI72K//YmdfoW9X2qPsAKh1mkwxGD5zib9s1FIFed6E8g==}
@@ -3038,7 +3038,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@22.18.1':
+  '@types/node@22.19.3':
     dependencies:
       undici-types: 6.21.0
 
@@ -3048,7 +3048,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.18.1
+      '@types/node': 22.19.3
     optional: true
 
   '@webassemblyjs/ast@1.12.1':
@@ -3857,7 +3857,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.18.1
+      '@types/node': 22.19.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
 

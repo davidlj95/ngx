@@ -49,8 +49,7 @@ export const makeComposedKeyValMetaDefinition = (
  *
  * @public
  */
-export interface MakeComposedKeyValMetaDefinitionOptions
-  extends MakeKeyValMetaDefinitionOptions {
+export interface MakeComposedKeyValMetaDefinitionOptions extends MakeKeyValMetaDefinitionOptions {
   /**
    * Character to use to join key strings
    *

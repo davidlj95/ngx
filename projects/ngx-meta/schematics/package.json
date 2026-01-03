@@ -8,5 +8,5 @@
     "test": "jest",
     "watch": "pnpm run build --watch"
   },
-  "packageManager": "pnpm@10.15.1"
+  "packageManager": "pnpm@10.27.0"
 }

@@ -48,6 +48,11 @@ jobs:
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - name: Setup
         uses: ./.github/actions/setup
+        #👇 Needed at least 11.5.1 for trusted publishing
+        #   https://github.blog/changelog/2025-07-31-npm-trusted-publishing-with-oidc-is-generally-available
+        #   Node v22.21.1 comes with npm v10.9.4. We can't update to v24 til moving to Angular v20
+      - name: Update npm CLI
+        run: npm i -g npm@11.5.x
       - name: Installed dependencies integrity check
         run: npm audit signatures
       - name: Download distribution files

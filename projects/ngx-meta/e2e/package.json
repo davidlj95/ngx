@@ -9,7 +9,7 @@
     "test": "./start-server-and-test.sh"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "3.14.6",
+    "@cypress/code-coverage": "3.14.7",
     "@istanbuljs/load-nyc-config": "1.1.0",
     "@types/node": "22.18.1",
     "cypress": "14.5.4",

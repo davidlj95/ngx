@@ -15,7 +15,7 @@
     "execa": "9.6.1",
     "semver": "7.7.2",
     "ts-morph": "26.0.0",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   },
   "packageManager": "pnpm@10.15.1"
 }

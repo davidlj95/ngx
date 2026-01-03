@@ -66,5 +66,15 @@
       matchDepNames: ['jest', '@jest/*'],
       allowedVersions: '^29',
     },
+    // mkdocs-material[imaging] & Python
+    // It requires Pillow 11:
+    // https://github.com/squidfunk/mkdocs-material/blob/9.7.1/pyproject.toml#L66
+    // Which is just compatible with at most Python 3.13
+    // https://github.com/python-pillow/Pillow/blob/12.0.0/docs/installation/newer-versions.csv
+    {
+      matchManagers: ['poetry'],
+      matchDepNames: ['python'],
+      allowedVersions: '3.13.x',
+    },
   ],
 }

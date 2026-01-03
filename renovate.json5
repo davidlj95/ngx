@@ -22,8 +22,9 @@
     // Angular version installed
     {
       matchDepNames: [
-        '@angular**',
-        '@schematics**',
+        '@angular/*',
+        '@angular-devkit/*',
+        '@schematics/*',
         'angular-eslint',
         'ng-packagr',
       ],
@@ -36,7 +37,7 @@
         'projects/ngx-meta/example-apps/angular-cli-versions.json',
       ],
       matchDepNames: ['v19'],
-      allowedVersions: 'v19',
+      allowedVersions: '^19',
     },
     {
       matchFileNames: [
@@ -62,7 +63,7 @@
     // Jest / Angular compat
     // https://www.npmjs.com/package/@angular-devkit/build-angular/v/19.2.19?activeTab=code
     {
-      matchDepNames: ['jest', '@jest**'],
+      matchDepNames: ['jest', '@jest/*'],
       allowedVersions: '^29',
     },
   ],

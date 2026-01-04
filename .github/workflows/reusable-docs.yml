@@ -89,5 +89,6 @@ jobs:
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
           apiToken: ${{ secrets.cloudflare-api-token }}
-          command: pages deploy ${{ env.DOCS_DIR }}/site --project-name ngx-meta
+          command: pages deploy site --project-name ngx-meta
+          workingDirectory: ${{ env.DOCS_DIR }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

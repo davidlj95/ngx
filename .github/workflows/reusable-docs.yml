@@ -85,7 +85,7 @@ jobs:
             github.event_name == 'pull_request' &&
             contains(github.event.pull_request.labels.*.name, 'preview docs')
           )
-        uses: cloudflare/wrangler-action@v3.14.1
+        uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3.14.1
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
           apiToken: ${{ secrets.cloudflare-api-token }}

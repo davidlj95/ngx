@@ -85,14 +85,9 @@ jobs:
             github.event_name == 'pull_request' &&
             contains(github.event.pull_request.labels.*.name, 'preview docs')
           )
-        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # 1
+        uses: cloudflare/wrangler-action@v3.14.1
         with:
           accountId: ${{ secrets.cloudflare-account-id }}
           apiToken: ${{ secrets.cloudflare-api-token }}
-          # Somehow if this is not set, it deploys to production when building on a PR
-          # https://github.com/cloudflare/pages-action/issues/97
-          branch: ${{ github.head_ref || github.ref_name }}
-          projectName: ngx-meta
-          directory: site
-          workingDirectory: ${{ env.DOCS_DIR }}
+          command: pages deploy ${{ env.DOCS_DIR }}/site --project-name ngx-meta
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -6,6 +6,6 @@
   "devDependencies": {
     "@fontsource-variable/inter-tight": "5.2.7",
     "@fontsource/dm-mono": "5.2.7",
-    "wrangler": "4.54.0"
+    "wrangler": "4.59.1"
   }
 }

@@ -34,7 +34,7 @@ jobs:
         working-directory: ${{ env.E2E_DIR }}
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Download example app with coverage instrumentation
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
@@ -43,7 +43,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
       - name: Setup Node.js
-        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6
         with:
           cache: pnpm
           cache-dependency-path: ${{ env.E2E_DIR }}/pnpm-lock.yaml
@@ -51,7 +51,7 @@ jobs:
       - name: Configure Cypress cache directory
         run: echo "CYPRESS_CACHE_FOLDER=$HOME/.cache/Cypress" >> "$GITHUB_ENV"
       - name: Cypress cache
-        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
         env:
           cache-name: ngx-meta-e2e-cypress
           e2e_lockfile_hash: ${{ hashFiles(format('{0}/pnpm-lock.yaml', env.E2E_DIR)) }}
@@ -64,7 +64,7 @@ jobs:
         run: pnpm run ci:serve &
         working-directory: ${{ env.EXAMPLE_APP_DIR }}
       - name: Cypress run
-        uses: cypress-io/github-action@2ad32e649e4db26c07674ebae31a297601dbcbaf # v6.10.8
+        uses: cypress-io/github-action@f790eee7a50d9505912f50c2095510be7de06aa7 # v6.10.9
         env:
           COVERAGE_JSON_REPORT_NAME: e2e-${{ matrix.ng-cli-version-alias }}.json
         with:

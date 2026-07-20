@@ -20,18 +20,18 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Setup
         uses: ./.github/actions/setup
       - name: Cache Angular build
-        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5
+        uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5.1.0
         with:
           path: .angular/cache
           key: angular-cache
       - name: Build libraries
         run: pnpm run build
       - name: Upload distribution files
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/dist
@@ -40,7 +40,7 @@ jobs:
       - name: Instrument for coverage
         run: pnpm run instrument-for-coverage
       - name: Upload distribution files with coverage instrumentation
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}${{ env.COVERAGE_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/dist
@@ -52,13 +52,13 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Setup
         uses: ./.github/actions/setup
       - name: Run tsc
         run: pnpm run ngx-meta:tsc
       - name: Upload compiled JS files
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: ngx-meta${{ env.TSC_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/out

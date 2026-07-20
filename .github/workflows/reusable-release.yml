@@ -45,7 +45,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Setup
         uses: ./.github/actions/setup
         #👇 Needed at least 11.5.1 for trusted publishing
@@ -56,7 +56,7 @@ jobs:
       - name: Installed dependencies integrity check
         run: npm audit signatures
       - name: Download distribution files
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
         with:
           name: ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/dist
@@ -66,7 +66,7 @@ jobs:
         run: pnpm semantic-release
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@98357b18bf14b5342f975ff684046ec3b2a07725 # v8
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           token: ${{ secrets.github-token-pr }}
           commit-message: 'chore(release): update CHANGELOG.md'

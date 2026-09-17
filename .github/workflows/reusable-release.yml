@@ -45,7 +45,7 @@ jobs:
       id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Setup
         uses: ./.github/actions/setup
         #👇 Needed at least 11.5.1 for trusted publishing
@@ -56,7 +56,7 @@ jobs:
       - name: Installed dependencies integrity check
         run: npm audit signatures
       - name: Download distribution files
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: ngx-meta${{ env.DIST_ARTIFACT_NAME_SUFFIX }}
           path: projects/ngx-meta/dist

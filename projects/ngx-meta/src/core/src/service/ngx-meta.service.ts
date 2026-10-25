@@ -1,5 +1,5 @@
 import { MetadataValues } from './metadata-values'
-import { Inject, Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
 import {
   MetadataRegistry,
   metadataRegistry,
@@ -18,10 +18,8 @@ import { MODULE_NAME } from '../module-name'
  */
 @Injectable({ providedIn: 'root' })
 export class NgxMetaService {
-  constructor(
-    @Inject(metadataRegistry()) private registry: MetadataRegistry,
-    @Inject(metadataResolver()) private resolver: MetadataResolver,
-  ) {}
+  private registry = inject<MetadataRegistry>(metadataRegistry())
+  private resolver = inject<MetadataResolver>(metadataResolver())
 
   /**
    * Sets the metadata values of the current page

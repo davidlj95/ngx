@@ -1,7 +1,8 @@
+import { DOCUMENT } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
 import { HeadElementHarness } from './__tests__/head-element-harness'
-import { DOCUMENT } from '@angular/common'
+
 import {
   _headElementUpsertOrRemove,
   _HeadElementUpsertOrRemove,

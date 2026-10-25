@@ -1,6 +1,6 @@
+import { DOCUMENT } from '@angular/core'
 import { TestBed } from '@angular/core/testing'
 
-import { DOCUMENT } from '@angular/common'
 import { HtmlLangAttributeHarness } from './__tests__/html-lang-attribute-harness'
 import { NgxMetaMetadataManager } from '@davidlj95/ngx-meta/core'
 import { Standard } from '../types'

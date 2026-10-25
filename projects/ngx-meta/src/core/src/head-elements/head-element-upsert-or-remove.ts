@@ -1,5 +1,5 @@
-import { inject } from '@angular/core'
-import { DOCUMENT } from '@angular/common'
+import { inject, DOCUMENT } from '@angular/core'
+
 import { _isDefined, _LazyInjectionToken, _makeInjectionToken } from '../utils'
 
 /**

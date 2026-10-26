@@ -243,8 +243,8 @@ importers:
         specifier: 6.0.3
         version: 6.0.3(semantic-release@25.0.3(supports-color@8.1.1)(typescript@5.8.3))
       '@types/jasmine':
-        specifier: 5.1.15
-        version: 5.1.15
+        specifier: 7.0.0
+        version: 7.0.0
       '@types/node':
         specifier: 22.19.8
         version: 22.19.8
@@ -279,8 +279,8 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       jasmine-core:
-        specifier: 5.13.0
-        version: 5.13.0
+        specifier: 7.0.2
+        version: 7.0.2
       jest:
         specifier: 29.7.0
         version: 29.7.0(@types/node@22.19.8)(supports-color@8.1.1)
@@ -298,7 +298,7 @@ importers:
         version: 5.1.0(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1))
       karma-jasmine-html-reporter:
         specifier: 2.2.0
-        version: 2.2.0(jasmine-core@5.13.0)(karma-jasmine@5.1.0(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)))(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1))
+        version: 2.2.0(jasmine-core@7.0.2)(karma-jasmine@5.1.0(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)))(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1))
       knip:
         specifier: 5.83.0
         version: 5.83.0(@types/node@22.19.8)(typescript@5.8.3)
@@ -312,8 +312,8 @@ importers:
         specifier: 20.3.2
         version: 20.3.2(@angular/compiler-cli@20.3.34(@angular/compiler@20.3.34)(supports-color@8.1.1)(typescript@5.8.3))(supports-color@8.1.1)(tslib@2.8.1)(typescript@5.8.3)
       nyc:
-        specifier: 17.1.0
-        version: 17.1.0(supports-color@8.1.1)
+        specifier: 18.0.0
+        version: 18.0.0(supports-color@8.1.1)
       prettier:
         specifier: 3.8.1
         version: 3.8.1
@@ -2551,8 +2551,8 @@ packages:
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
 
-  '@types/jasmine@5.1.15':
-    resolution: {integrity: sha512-ZAC8KjmV2MJxbNTrwXFN+HKeajpXQZp6KpPiR6Aa4XvaEnjP6qh23lL/Rqb7AYzlp3h/rcwDrQ7Gg7q28cQTQg==}
+  '@types/jasmine@7.0.0':
+    resolution: {integrity: sha512-6yNx9BsBSKiXO2yqLXs/GZDuD58Gkn6Ty26254FFOuw6B4XU5Xq8mAR0xFy8zHgAhqQd++y41fSJ8BdwrWXhqQ==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -4196,9 +4196,9 @@ packages:
     resolution: {integrity: sha512-Vtgk7L/R2JHyyGW07spoFlB8/lpjiOLTjMdms6AFMraYt3BaJauod/NGrfnVG/y4Ix1JEuMRPDPEj2ua+zz1/Q==}
     engines: {node: '>=10'}
 
-  istanbul-lib-processinfo@2.0.3:
-    resolution: {integrity: sha512-NkwHbo3E00oybX6NGJi6ar0B29vxyvNwoC7eJ4G4Yq28UfY758Hgn/heV8VRFhevPED4LXfFz0DQ8z/0kw9zMg==}
-    engines: {node: '>=8'}
+  istanbul-lib-processinfo@3.0.1:
+    resolution: {integrity: sha512-s3mX05h5wGZeScG6XnOanygPh4SJu5ujMc9YbvpnLGXWy1cRiGbp0NdVcjHxgoZt3WfQppfBsa0y+gWdYJ2pGQ==}
+    engines: {node: 20 || >=22}
 
   istanbul-lib-report@3.0.1:
     resolution: {integrity: sha512-GCfE1mtsHGOELCU8e/Z7YWzpmybrx/+dSTfLrvY8qRmaY6zXTKWn6WQIjaAFw069icm6GVMNkgu0NzI4iPZUNw==}
@@ -4215,8 +4215,8 @@ packages:
   jasmine-core@4.6.1:
     resolution: {integrity: sha512-VYz/BjjmC3klLJlLwA4Kw8ytk0zDSmbbDLNs794VnWmkcCB7I9aAL/D48VNQtmITyPvea2C3jdUMfc3kAoy0PQ==}
 
-  jasmine-core@5.13.0:
-    resolution: {integrity: sha512-vsYjfh7lyqvZX5QgqKc4YH8phs7g96Z8bsdIFNEU3VqXhlHaq+vov/Fgn/sr6MiUczdZkyXRC3TX369Ll4Nzbw==}
+  jasmine-core@7.0.2:
+    resolution: {integrity: sha512-YMVijt84KPQQFm1db1AQAxTXfq0k3wU06OkepLViljURFqiRQ7EYYX2eUAshhUv9fA9t1E2N65GrdqvupA9VPQ==}
 
   java-properties@1.0.2:
     resolution: {integrity: sha512-qjdpeo2yKlYTH7nFdK0vbZWuTCesk4o63v5iVOlhMQPfuIZQfW/HI35SjfhA+4qpg36rnFSvUK5b1m+ckIblQQ==}
@@ -5010,9 +5010,9 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nyc@17.1.0:
-    resolution: {integrity: sha512-U42vQ4czpKa0QdI1hu950XuNhYqgoM+ZF1HT+VuUHL9hPfDPVvNQyltmMqdE9bUHMVa+8yNbc3QKTj8zQhlVxQ==}
-    engines: {node: '>=18'}
+  nyc@18.0.0:
+    resolution: {integrity: sha512-G5UyHinFkB1BxqGTrmZdB6uIYH0+v7ZnVssuflUDi+J+RhKWyAhRT1RCehBSI6jLFLuUUgFDyLt49mUtdO1XeQ==}
+    engines: {node: 20 || >=22}
     hasBin: true
 
   object-assign@4.1.1:
@@ -5123,6 +5123,9 @@ packages:
   package-hash@4.0.0:
     resolution: {integrity: sha512-whdkPIooSu/bASggZ96BWVvZTRMOFxnyUG5PnTSGKoJE2gd5mbVNmR2Nj20QFzxYYgAXpoqC+AiXzl+UMRh7zQ==}
     engines: {node: '>=8'}
+
+  package-json-from-dist@1.0.1:
+    resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
 
   pacote@21.5.1:
     resolution: {integrity: sha512-KvcJ9iy3crysCsgqc4+PknH/w6jkrp8JN36mpZBPwNaDRwTfMZD37YzRazNstiZUOhuF5pno9f78n9mEJBavwg==}
@@ -5467,6 +5470,11 @@ packages:
     deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
+  rimraf@6.1.3:
+    resolution: {integrity: sha512-LKg+Cr2ZF61fkcaK1UdkH2yEBBKnYjTyWzTJT6KNPcSPaiT7HSdhtMXQuN5wkTX0Xu72KQ1l8S42rlmexS2hSA==}
+    engines: {node: 20 || >=22}
+    hasBin: true
+
   rollup-plugin-dts@6.5.1:
     resolution: {integrity: sha512-jODTXp3H7MK/Ur/ErtsrQ0G1GvaCmc3du+y5pNrdBMf6d7HlL2Nd/N6TkEr+f75CkUj01zEoEd7y2elH0eHi1Q==}
     engines: {node: '>=20'}
@@ -5686,8 +5694,8 @@ packages:
   spawn-error-forwarder@1.0.0:
     resolution: {integrity: sha512-gRjMgK5uFjbCvdibeGJuy3I5OYz6VLoVdsOJdA6wV0WlfQVLFueoqMxwwYD9RODdgb6oUIvlRlsyFSiQkMKu0g==}
 
-  spawn-wrap@2.0.0:
-    resolution: {integrity: sha512-EeajNjfN9zMnULLwhZZQU3GWBoFNkbngTUPfaawT4RkMiviTxcX0qfhVbGey39mfctfDHkWtuecgQ8NJcyQWHg==}
+  spawn-wrap@3.0.0:
+    resolution: {integrity: sha512-z+s5vv4KzFPJVddGab0xX2n7kQPGMdNUX5l9T8EJqsXdKTWpcxmAqWHpsgHEXoC1taGBCc7b79bi62M5kdbrxQ==}
     engines: {node: '>=8'}
 
   spdx-correct@3.2.0:
@@ -5847,6 +5855,10 @@ packages:
   test-exclude@6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
     engines: {node: '>=8'}
+
+  test-exclude@8.0.0:
+    resolution: {integrity: sha512-ZOffsNrXYggvU1mDGHk54I96r26P8SyMjO5slMKSc7+IWmtB/MQKnEC2fP51imB3/pT6YK5cT5E8f+Dd9KdyOQ==}
+    engines: {node: 20 || >=22}
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -6071,11 +6083,6 @@ packages:
   utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
-
-  uuid@8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
-    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
-    hasBin: true
 
   v8-to-istanbul@9.3.0:
     resolution: {integrity: sha512-kiGUalWN+rgBJ/1OHZsBtU4rXZOfj/7rKQxULKlIzwzQSvMJUUNgPwJEEh7gU6xEVxC0ahoOBvN2YI8GH6FNgA==}
@@ -8503,7 +8510,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
-  '@types/jasmine@5.1.15': {}
+  '@types/jasmine@7.0.0': {}
 
   '@types/json-schema@7.0.15': {}
 
@@ -10330,14 +10337,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  istanbul-lib-processinfo@2.0.3:
+  istanbul-lib-processinfo@3.0.1:
     dependencies:
       archy: 1.0.0
       cross-spawn: 7.0.6
       istanbul-lib-coverage: 3.2.2
       p-map: 3.0.0
-      rimraf: 3.0.2
-      uuid: 8.3.2
+      rimraf: 6.1.3
 
   istanbul-lib-report@3.0.1:
     dependencies:
@@ -10360,7 +10366,7 @@ snapshots:
 
   jasmine-core@4.6.1: {}
 
-  jasmine-core@5.13.0: {}
+  jasmine-core@7.0.2: {}
 
   java-properties@1.0.2: {}
 
@@ -10752,9 +10758,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  karma-jasmine-html-reporter@2.2.0(jasmine-core@5.13.0)(karma-jasmine@5.1.0(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)))(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)):
+  karma-jasmine-html-reporter@2.2.0(jasmine-core@7.0.2)(karma-jasmine@5.1.0(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)))(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)):
     dependencies:
-      jasmine-core: 5.13.0
+      jasmine-core: 7.0.2
       karma: 6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       karma-jasmine: 5.1.0(karma@6.4.4(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1))
 
@@ -11350,7 +11356,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nyc@17.1.0(supports-color@8.1.1):
+  nyc@18.0.0(supports-color@8.1.1):
     dependencies:
       '@istanbuljs/load-nyc-config': 1.1.0
       '@istanbuljs/schema': 0.1.6
@@ -11361,11 +11367,11 @@ snapshots:
       find-up: 4.1.0
       foreground-child: 3.3.1
       get-package-type: 0.1.0
-      glob: 7.2.3
+      glob: 13.0.6
       istanbul-lib-coverage: 3.2.2
       istanbul-lib-hook: 3.0.0
       istanbul-lib-instrument: 6.0.3(supports-color@8.1.1)
-      istanbul-lib-processinfo: 2.0.3
+      istanbul-lib-processinfo: 3.0.1
       istanbul-lib-report: 3.0.1
       istanbul-lib-source-maps: 4.0.1(supports-color@8.1.1)
       istanbul-reports: 3.2.0
@@ -11374,10 +11380,10 @@ snapshots:
       p-map: 3.0.0
       process-on-spawn: 1.1.0
       resolve-from: 5.0.0
-      rimraf: 3.0.2
+      rimraf: 6.1.3
       signal-exit: 3.0.7
-      spawn-wrap: 2.0.0
-      test-exclude: 6.0.0
+      spawn-wrap: 3.0.0
+      test-exclude: 8.0.0
       yargs: 15.4.1
     transitivePeerDependencies:
       - supports-color
@@ -11510,6 +11516,8 @@ snapshots:
       hasha: 5.2.2
       lodash.flattendeep: 4.4.0
       release-zalgo: 1.0.0
+
+  package-json-from-dist@1.0.1: {}
 
   pacote@21.5.1(supports-color@8.1.1):
     dependencies:
@@ -11841,6 +11849,11 @@ snapshots:
   rimraf@3.0.2:
     dependencies:
       glob: 7.2.3
+
+  rimraf@6.1.3:
+    dependencies:
+      glob: 13.0.6
+      package-json-from-dist: 1.0.1
 
   rollup-plugin-dts@6.5.1(rollup@4.65.0)(typescript@5.8.3):
     dependencies:
@@ -12194,12 +12207,13 @@ snapshots:
 
   spawn-error-forwarder@1.0.0: {}
 
-  spawn-wrap@2.0.0:
+  spawn-wrap@3.0.0:
     dependencies:
+      cross-spawn: 7.0.6
       foreground-child: 2.0.0
       is-windows: 1.0.2
       make-dir: 3.1.0
-      rimraf: 3.0.2
+      rimraf: 6.1.3
       signal-exit: 3.0.7
       which: 2.0.2
 
@@ -12363,6 +12377,12 @@ snapshots:
       '@istanbuljs/schema': 0.1.6
       glob: 7.2.3
       minimatch: 3.1.5
+
+  test-exclude@8.0.0:
+    dependencies:
+      '@istanbuljs/schema': 0.1.6
+      glob: 13.0.6
+      minimatch: 10.2.6
 
   thenify-all@1.6.0:
     dependencies:
@@ -12538,8 +12558,6 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   utils-merge@1.0.1: {}
-
-  uuid@8.3.2: {}
 
   v8-to-istanbul@9.3.0:
     dependencies:

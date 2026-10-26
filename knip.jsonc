@@ -33,6 +33,8 @@
         // actually used, but mistakenly from peer dep
         // 👇 Unused: will be fixed soon when Knip tracks polyfills
         "zone.js",
+        // 👇 Appears unused but it is used by Karma
+        "@angular-devkit/build-angular",
       ],
       "ignoreBinaries": [
         //👇 Unlisted: appeared in version 5.42.0

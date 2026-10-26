@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/core'
 import {
   _GLOBAL_CANONICAL_URL,
   _headElementUpsertOrRemove,
@@ -8,7 +9,7 @@ import {
   _withModuleManagerSetterFactory,
   withManagerDeps,
 } from '@davidlj95/ngx-meta/core'
-import { DOCUMENT } from '@angular/common'
+
 import { MODULE_NAME } from '../module-name'
 import { provideStandardManager } from '../utils/provide-standard-manager'
 

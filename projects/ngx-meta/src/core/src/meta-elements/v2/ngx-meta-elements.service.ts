@@ -1,6 +1,6 @@
 import { NgxMetaElementAttributes } from './ngx-meta-element-attributes'
 import { Meta } from '@angular/platform-browser'
-import { Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
 import { NgxMetaElementNameAttribute } from './ngx-meta-element-name-attribute'
 
 /**
@@ -10,7 +10,7 @@ import { NgxMetaElementNameAttribute } from './ngx-meta-element-name-attribute'
  */
 @Injectable({ providedIn: 'root' })
 export class NgxMetaElementsService {
-  constructor(private meta: Meta) {}
+  private meta = inject(Meta)
 
   /**
    * Creates, updates or removes some kind of `<meta>` elements inside `<head>` in a declarative fashion.

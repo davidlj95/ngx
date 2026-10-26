@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ngx-meta/bundle-size/v21: report" type="js.build_tools.npm">
+  <configuration default="false" name="ngx-meta/bundle-size/v22: report" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/projects/ngx-meta/bundle-size/package.json" />
     <command value="run" />
     <scripts>
       <script value="report" />
     </scripts>
-    <arguments value="v21" />
+    <arguments value="v22" />
     <node-interpreter value="project" />
     <envs />
     <method v="2">

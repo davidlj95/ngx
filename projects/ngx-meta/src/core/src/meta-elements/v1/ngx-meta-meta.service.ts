@@ -1,6 +1,6 @@
 // noinspection JSDeprecatedSymbols
 
-import { Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
 import { Meta } from '@angular/platform-browser'
 import { NgxMetaMetaDefinition } from './ngx-meta-meta-definition'
 import { NgxMetaMetaContent } from './ngx-meta-meta-content'
@@ -17,7 +17,7 @@ import { NgxMetaMetaContent } from './ngx-meta-meta-content'
  */
 @Injectable({ providedIn: 'root' })
 export class NgxMetaMetaService {
-  constructor(private readonly meta: Meta) {}
+  private readonly meta = inject(Meta)
 
   /**
    * Creates, updates or removes a specific `<meta>` element.

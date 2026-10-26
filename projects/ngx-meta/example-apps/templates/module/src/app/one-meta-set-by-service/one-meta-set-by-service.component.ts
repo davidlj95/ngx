@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component, inject, OnDestroy, OnInit } from '@angular/core'
 import ONE_METADATA_JSON from '@/e2e/cypress/fixtures/one-metadata.json'
 import { NgxMetaService } from '@davidlj95/ngx-meta/core'
 
@@ -8,8 +8,7 @@ import { NgxMetaService } from '@davidlj95/ngx-meta/core'
 })
 export class OneMetaSetByServiceComponent implements OnInit, OnDestroy {
   public readonly oneMetadataJson = ONE_METADATA_JSON
-
-  constructor(private readonly ngxMetaService: NgxMetaService) {}
+  private readonly ngxMetaService = inject(NgxMetaService)
 
   ngOnInit(): void {
     this.ngxMetaService.setOne(

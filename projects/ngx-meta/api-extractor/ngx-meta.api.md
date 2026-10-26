@@ -7,7 +7,6 @@
 import { EnvironmentProviders } from '@angular/core';
 import { FactoryProvider } from '@angular/core';
 import { InjectionToken } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
 import { MetaDefinition } from '@angular/platform-browser';
 import { ModuleWithProviders } from '@angular/core';
 import { Provider } from '@angular/core';
@@ -162,19 +161,6 @@ export const _maybeNonHttpUrlDevMessage: (url: string | URL | undefined | null, 
 // @internal
 export const _maybeTooLongDevMessage: (value: string | undefined | null, maxLength: number, opts: _FormatDevMessageOptions) => void;
 
-// @internal (undocumented)
-interface MetadataRegistry {
-    // (undocumented)
-    readonly findByGlobalOrJsonPath: (globalOrJsonPath: string) => Iterable<NgxMetaMetadataManager>;
-    // (undocumented)
-    readonly getAll: () => Iterable<NgxMetaMetadataManager>;
-    // (undocumented)
-    readonly register: (manager: NgxMetaMetadataManager) => void;
-}
-
-// @internal (undocumented)
-type MetadataResolver = (values: MetadataValues, resolverOptions: MetadataResolverOptions) => unknown;
-
 // @public
 export interface MetadataResolverOptions {
     readonly global?: string;
@@ -223,7 +209,6 @@ export type NgxMetaElementNameAttribute = readonly [name: string, value: string]
 
 // @public
 export class NgxMetaElementsService {
-    constructor(meta: Meta);
     set(nameAttribute: NgxMetaElementNameAttribute, content: readonly NgxMetaElementAttributes[] | NgxMetaElementAttributes | undefined): void;
 }
 
@@ -255,7 +240,6 @@ export interface NgxMetaMetaDefinition {
 
 // @public @deprecated
 export class NgxMetaMetaService {
-    constructor(meta: Meta);
     // @deprecated
     set(definition: NgxMetaMetaDefinition, content: NgxMetaMetaContent): void;
 }
@@ -281,9 +265,6 @@ export class NgxMetaRoutingModule {
 
 // @public
 export class NgxMetaService {
-    // Warning: (ae-forgotten-export) The symbol "MetadataRegistry" needs to be exported by the entry point all-entry-points.d.ts
-    // Warning: (ae-forgotten-export) The symbol "MetadataResolver" needs to be exported by the entry point all-entry-points.d.ts
-    constructor(registry: MetadataRegistry, resolver: MetadataResolver);
     clear(): void;
     set(values?: MetadataValues): void;
     setOne(globalOrJsonPath: string, value: unknown): void;

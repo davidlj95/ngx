@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common'
 import {
   _headElementUpsertOrRemove,
   _HeadElementUpsertOrRemove,
@@ -8,6 +7,7 @@ import {
   withOptions,
 } from '@davidlj95/ngx-meta/core'
 import { JsonLdMetadata } from '../types'
+import { DOCUMENT } from '@angular/core'
 
 const SCRIPT_TYPE = 'application/ld+json'
 

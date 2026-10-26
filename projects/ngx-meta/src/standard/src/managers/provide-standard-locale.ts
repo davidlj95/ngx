@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/core'
 import {
   _GLOBAL_LOCALE,
   _isDefined,
@@ -5,7 +6,7 @@ import {
   _withModuleManagerSetterFactory,
   withManagerDeps,
 } from '@davidlj95/ngx-meta/core'
-import { DOCUMENT } from '@angular/common'
+
 import { provideStandardManager } from '../utils/provide-standard-manager'
 
 const ATTRIBUTE_NAME = 'lang'

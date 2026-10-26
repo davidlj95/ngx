@@ -7,4 +7,4 @@ export const getAppConfigOrAppModuleContent = (
 ) =>
   standalone
     ? getFileContent(tree, '/src/app/app.config.ts')
-    : getFileContent(tree, '/src/app/app.module.ts')
+    : getFileContent(tree, '/src/app/app-module.ts')

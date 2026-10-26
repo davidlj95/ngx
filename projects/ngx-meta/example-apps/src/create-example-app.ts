@@ -3,6 +3,7 @@ import { parseArgs } from './parse-args.js'
 import {
   addCiRunScripts,
   addLinkedLibrary,
+  allowLocalhostForSsr,
   copyAppDirIntoProject,
   copyTemplates,
   createAngularApp,
@@ -71,6 +72,9 @@ async function createExampleApp({
       angularCliVersion.asSemVer,
     ),
   })
+  // Introduced in v22👇
+  // to avoid: Header "host" with value "localhost:4200" is not allowed.
+  await allowLocalhostForSsr({ appDir, appName })
 }
 
 export const ANGULAR_CLI_BINARY_PATH = join('node_modules', '.bin', 'ng')

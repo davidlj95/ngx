@@ -1,5 +1,6 @@
 export { addCiRunScripts } from './add-ci-run-scripts.js'
 export { addLinkedLibrary } from './add-linked-library.js'
+export { allowLocalhostForSsr } from './allow-localhost-for-ssr.js'
 export { copyAppDirIntoProject } from './copy-app-dir-into-project.js'
 export { copyTemplates } from './copy-templates.js'
 export { createAngularApp } from './create-angular-app.js'

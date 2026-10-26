@@ -54,7 +54,7 @@ jobs:
       - name: Update npm CLI
         run: npm i -g npm@11.5.x
       - name: Installed dependencies integrity check
-        run: npm audit signatures
+        run: pnpm audit signatures
       - name: Download distribution files
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:

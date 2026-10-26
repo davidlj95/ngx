@@ -7,8 +7,8 @@
   "//1": "👇 Updated by dependency bot, but restricted to major versions",
   "//2": "   See Renovate configuration for more information",
   "devDependencies": {
-    "v20": "npm:@angular/cli@20.3.15",
-    "v21": "npm:@angular/cli@21.1.2",
+    "v20": "npm:@angular/cli@20.3.41",
+    "v21": "npm:@angular/cli@21.2.28",
     "v22": "npm:@angular/cli@22.2.4"
   }
 }

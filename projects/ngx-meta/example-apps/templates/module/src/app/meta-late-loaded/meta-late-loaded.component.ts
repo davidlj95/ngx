@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { provideCustomMetadataManager } from './provide-custom-metadata-manager'
 
@@ -7,11 +7,7 @@ import { provideCustomMetadataManager } from './provide-custom-metadata-manager'
   templateUrl: './meta-late-loaded.component.html',
 })
 export class MetaLateLoadedComponent {
-  protected readonly routeData: unknown
-  protected readonly providerSourceCode: string
-
-  constructor(activatedRoute: ActivatedRoute) {
-    this.routeData = activatedRoute.snapshot.data
-    this.providerSourceCode = provideCustomMetadataManager.toString()
-  }
+  protected readonly routeData: unknown = inject(ActivatedRoute).snapshot.data
+  protected readonly providerSourceCode: string =
+    provideCustomMetadataManager().toString()
 }

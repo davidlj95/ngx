@@ -8,7 +8,16 @@ export async function install({
   what: string
 }) {
   Log.step(`Installing ${what}`)
-  return execa('pnpm', ['install'], {
+  const packagesWithAllowedBuildScripts = [
+    '@parcel/watcher',
+    'esbuild',
+    'lmdb',
+    'msgpackr-extract',
+  ]
+  const allowPackagesArgs = packagesWithAllowedBuildScripts.flatMap(
+    (pkgName) => ['--allow-build', pkgName],
+  )
+  return execa('pnpm', ['install'].concat(allowPackagesArgs), {
     cwd: projectDir,
   })
 }

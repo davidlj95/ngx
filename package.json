@@ -59,10 +59,10 @@
     "zone.js": "0.15.1"
   },
   "devDependencies": {
-    "@angular-devkit/core": "20.3.41",
-    "@angular-devkit/schematics": "20.3.41",
-    "@angular/build": "20.3.41",
-    "@angular/cli": "20.3.41",
+    "@angular-devkit/core": "20.3.42",
+    "@angular-devkit/schematics": "20.3.42",
+    "@angular/build": "20.3.42",
+    "@angular/cli": "20.3.42",
     "@angular/compiler-cli": "20.3.34",
     "@commitlint/cli": "20.4.1",
     "@commitlint/config-conventional": "20.4.1",
@@ -72,7 +72,7 @@
     "@jest/types": "29.6.3",
     "@microsoft/api-documenter": "7.23.38",
     "@microsoft/api-extractor": "7.56.1",
-    "@schematics/angular": "20.3.41",
+    "@schematics/angular": "20.3.42",
     "@semantic-release/changelog": "6.0.3",
     "@types/jasmine": "5.1.15",
     "@types/node": "22.19.8",
